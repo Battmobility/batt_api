@@ -10,5 +10,4 @@ targets:
             input_folder: "lib/api/definition/"
             input_urls:
               - url: "https://api-staging.battmobility.be/openapi.json"
-                file_name: "openapi.json"
             output_folder: "lib/api/generated/"
