@@ -5,6 +5,9 @@ on:
 jobs:
   build_runner:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required to push changes to the repository
+      pull-requests: write  # Required to create PRs
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -20,7 +23,7 @@ jobs:
         run: flutter pub get
 
       - name: Run build_runner
-        run: dart run build_runner build --delete-conflicting-outputs
+        run: dart run build_runner build
 
       - name: Commit and push changes (if any)
         id: commit
