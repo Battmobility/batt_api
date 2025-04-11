@@ -8,6 +8,6 @@ targets:
           options:
             separate_models: true
             input_folder: "lib/api/definition/"
-            input_urls:
-              - url: "https://api-staging.battmobility.be/openapi.json"
+            #input_urls:
+             # - url: "https://api-staging.battmobility.be/openapi.json"
             output_folder: "lib/api/generated/"

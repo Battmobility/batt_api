@@ -5,7 +5,7 @@ import 'package:json_annotation/json_annotation.dart' as json;
 import 'package:collection/collection.dart';
 import 'dart:convert';
 
-import 'openapi.models.swagger.dart';
+import 'batt_kit.models.swagger.dart';
 import 'package:chopper/chopper.dart';
 
 import 'client_mapping.dart';
@@ -13,19 +13,19 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart' show MultipartFile;
 import 'package:chopper/chopper.dart' as chopper;
-import 'openapi.enums.swagger.dart' as enums;
-export 'openapi.enums.swagger.dart';
-export 'openapi.models.swagger.dart';
+import 'batt_kit.enums.swagger.dart' as enums;
+export 'batt_kit.enums.swagger.dart';
+export 'batt_kit.models.swagger.dart';
 
-part 'openapi.swagger.chopper.dart';
+part 'batt_kit.swagger.chopper.dart';
 
 // **************************************************************************
 // SwaggerChopperGenerator
 // **************************************************************************
 
 @ChopperApi()
-abstract class Openapi extends ChopperService {
-  static Openapi create({
+abstract class BattKit extends ChopperService {
+  static BattKit create({
     ChopperClient? client,
     http.Client? httpClient,
     Authenticator? authenticator,
@@ -35,18 +35,18 @@ abstract class Openapi extends ChopperService {
     List<Interceptor>? interceptors,
   }) {
     if (client != null) {
-      return _$Openapi(client);
+      return _$BattKit(client);
     }
 
     final newClient = ChopperClient(
-        services: [_$Openapi()],
+        services: [_$BattKit()],
         converter: converter ?? $JsonSerializableConverter(),
         interceptors: interceptors ?? [],
         client: httpClient,
         authenticator: authenticator,
         errorConverter: errorConverter,
         baseUrl: baseUrl ?? Uri.parse('http://'));
-    return _$Openapi(newClient);
+    return _$BattKit(newClient);
   }
 
   ///

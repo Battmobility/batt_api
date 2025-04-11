@@ -1,7 +1,7 @@
 // dart format width=80
 //Generated code
 
-part of 'openapi.swagger.dart';
+part of 'batt_kit.swagger.dart';
 
 // **************************************************************************
 // ChopperGenerator
@@ -9,14 +9,14 @@ part of 'openapi.swagger.dart';
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-final class _$Openapi extends Openapi {
-  _$Openapi([ChopperClient? client]) {
+final class _$BattKit extends BattKit {
+  _$BattKit([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
   }
 
   @override
-  final Type definitionType = Openapi;
+  final Type definitionType = BattKit;
 
   @override
   Future<Response<NonAvailabilityResponse>>

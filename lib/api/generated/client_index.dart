@@ -1,1 +1,1 @@
-export 'openapi.swagger.dart' show Openapi;
+export 'batt_kit.swagger.dart' show BattKit;

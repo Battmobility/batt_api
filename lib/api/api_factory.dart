@@ -1,7 +1,7 @@
-import 'package:batt_api/api/generated/client_index.dart';
+import 'package:batt_kit/api/generated/batt_kit.swagger.dart';
 import 'package:chopper/chopper.dart';
 
 class ApiFactory {
-  static Openapi getMobileApi(Uri baseUri, Interceptor authInterceptor) =>
-      Openapi.create(baseUrl: baseUri, interceptors: [authInterceptor]);
+  static BattKit getMobileApi(Uri baseUri, Interceptor authInterceptor) =>
+      BattKit.create(baseUrl: baseUri, interceptors: [authInterceptor]);
 }
