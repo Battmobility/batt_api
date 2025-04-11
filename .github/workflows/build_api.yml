@@ -23,7 +23,7 @@ jobs:
         run: flutter pub get
 
       - name: Run build_runner
-        run: dart run build_runner build
+        run: dart run build_runner build --delete-conflicting-outputs  
 
       - name: Commit and push changes (if any)
         id: commit
