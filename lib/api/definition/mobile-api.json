@@ -1,0 +1,6972 @@
+{
+  "components": {
+    "schemas": {
+      "AddVehicleLocationRequest": {
+        "properties": {
+          "from": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "vehicleBaseLocationId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "AddVehiclesToGroupRequest": {
+        "properties": {
+          "vehicleIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "type": "object"
+      },
+      "AdjacentNonAvailability": {
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "bookingId": {
+            "type": "string"
+          },
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "type": {
+            "enum": [
+              "BOOKING",
+              "NOT_AVAILABLE"
+            ],
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "userName": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ApiErrorResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "errors": {
+            "items": {
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "ApiValidationResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "validationErrors": {
+            "additionalProperties": {
+              "items": {
+                "$ref": "#/components/schemas/ValidationErrorCode"
+              },
+              "type": "array"
+            },
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "BillingPrice": {
+        "properties": {
+          "amount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "changeFromHourlyToDaily": {
+            "type": "boolean"
+          },
+          "endDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "hourlyTotalNotCharged": {
+            "type": "number"
+          },
+          "hourlyTotalNotChargedExclVat": {
+            "type": "number"
+          },
+          "km": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "kmPrice": {
+            "type": "number"
+          },
+          "kmPriceExclVat": {
+            "type": "number"
+          },
+          "kmTotal": {
+            "type": "number"
+          },
+          "kmTotalExclVat": {
+            "type": "number"
+          },
+          "startDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "timeAmount": {
+            "type": "number"
+          },
+          "timeTotal": {
+            "type": "number"
+          },
+          "timeTotalExclVat": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "totalExclVat": {
+            "type": "number"
+          },
+          "totalVat": {
+            "type": "number"
+          },
+          "unit": {
+            "enum": [
+              "DAYS",
+              "HOURS"
+            ],
+            "type": "string"
+          },
+          "unitPrice": {
+            "type": "number"
+          },
+          "unitPriceExclVat": {
+            "type": "number"
+          },
+          "vatRate": {
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "BodyStyle": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "BodyStylePage": {
+        "properties": {
+          "bodyStyles": {
+            "items": {
+              "$ref": "#/components/schemas/BodyStyle"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Booking": {
+        "properties": {
+          "adminComments": {
+            "type": "string"
+          },
+          "billingPrice": {
+            "$ref": "#/components/schemas/BillingPrice"
+          },
+          "canBeStarted": {
+            "type": "boolean"
+          },
+          "cancelDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "cancelReason": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "string"
+          },
+          "dateCreated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "invoiceStatus": {
+            "enum": [
+              "TO_BE_INVOICED",
+              "NEEDS_CORRECTION",
+              "NOT_INVOICED",
+              "INVOICED"
+            ],
+            "type": "string"
+          },
+          "lastUpdated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "nextPossibleStatuses": {
+            "items": {
+              "enum": [
+                "AWAITING_APPROVAL",
+                "APPROVED",
+                "REJECTED",
+                "CANCELED",
+                "CANCELED_REMOTE",
+                "EXPIRED",
+                "ACTIVE",
+                "STOPPED"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "originalEndDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "status": {
+            "enum": [
+              "AWAITING_APPROVAL",
+              "APPROVED",
+              "REJECTED",
+              "CANCELED",
+              "CANCELED_REMOTE",
+              "EXPIRED",
+              "ACTIVE",
+              "STOPPED"
+            ],
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "vehicle": {
+            "$ref": "#/components/schemas/Vehicle"
+          },
+          "vehicleUsage": {
+            "$ref": "#/components/schemas/VehicleUsage"
+          }
+        },
+        "type": "object"
+      },
+      "BookingBillingPrice": {
+        "properties": {
+          "amount": {
+            "description": "Amount is deprecated and should not be used.",
+            "type": "integer"
+          },
+          "changeFromHourlyToDaily": {
+            "description": "ChangeFromHourlyToDaily is set to true if the booking was changed from hourly to daily price",
+            "type": "boolean"
+          },
+          "endDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "hourlyTotalNotCharged": {
+            "description": "HourlyTotalNotCharged is set to the total hour price in case the booking was changed to day price",
+            "type": "number"
+          },
+          "hourlyTotalNotChargedExclVat": {
+            "description": "HourlyTotalNotChargedExclVat is set to HourlyTotalNotCharged, but without VAT",
+            "type": "number"
+          },
+          "km": {
+            "description": "Km is the number of driven kilometers",
+            "type": "integer"
+          },
+          "kmPrice": {
+            "description": "KmPrice is the price per kilometer (VAT included)",
+            "type": "number"
+          },
+          "kmPriceExclVat": {
+            "description": "KmPriceExclVat is set to KmPrice, but without VAT",
+            "type": "number"
+          },
+          "kmTotal": {
+            "description": "KmTotal is the total price for kilometers (VAT included)",
+            "type": "number"
+          },
+          "kmTotalExclVat": {
+            "description": "KmTotalExclVat is set to KmTotal, but without VAT",
+            "type": "number"
+          },
+          "startDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "timeAmount": {
+            "description": "TimeAmount is the amount of time units (in hours or days, depending on the unit) used to determine the price",
+            "type": "number"
+          },
+          "timeTotal": {
+            "description": "TimeTotal is the total price based on time (VAT included)",
+            "type": "number"
+          },
+          "timeTotalExclVat": {
+            "description": "TimeTotalExclVat is set to TimeTotal, but without VAT",
+            "type": "number"
+          },
+          "total": {
+            "description": "Total is the total price (VAT included)",
+            "type": "number"
+          },
+          "totalExclVat": {
+            "description": "TotalExclVat is set to Total, but without VAT",
+            "type": "number"
+          },
+          "totalVat": {
+            "description": "TotalVat is set to the total VAT amount",
+            "type": "number"
+          },
+          "unit": {
+            "description": "Unit is the used time unit: DAYS or HOURS",
+            "type": "string"
+          },
+          "unitPrice": {
+            "description": "UnitPrice is the price per time unit (VAT included)",
+            "type": "number"
+          },
+          "unitPriceExclVat": {
+            "description": "UnitPriceExclVat is set to UnitPrice, but without VAT",
+            "type": "number"
+          },
+          "vatRate": {
+            "description": "VatRate is set to the VAT rate (1.21)",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "BookingBillingPriceResponse": {
+        "properties": {
+          "bookingBillingPrice": {
+            "$ref": "#/components/schemas/BookingBillingPrice"
+          },
+          "dayPrice": {
+            "description": "DayPrice is the price per day (VAT included)",
+            "type": "number"
+          },
+          "hourPrice": {
+            "description": "HourPrice is the price per hour (VAT included)",
+            "type": "number"
+          },
+          "kmPrice": {
+            "description": "KmPrice is the price per kilometer (VAT included)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "bookingBillingPrice",
+          "dayPrice",
+          "hourPrice",
+          "kmPrice"
+        ],
+        "type": "object"
+      },
+      "BookingPrice": {
+        "properties": {
+          "dayPrice": {
+            "format": "float",
+            "type": "number"
+          },
+          "hourPrice": {
+            "format": "float",
+            "type": "number"
+          },
+          "kmPrice": {
+            "format": "float",
+            "type": "number"
+          }
+        },
+        "required": [
+          "dayPrice",
+          "hourPrice",
+          "kmPrice"
+        ],
+        "type": "object"
+      },
+      "BookingsPage": {
+        "properties": {
+          "bookings": {
+            "items": {
+              "$ref": "#/components/schemas/Booking"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "CancelBookingRequest": {
+        "properties": {
+          "bookingId": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ChangeContractCommitmentHints": {
+        "additionalProperties": false,
+        "properties": {
+          "actionAllowed": {
+            "type": "boolean"
+          },
+          "canDecrease": {
+            "type": "boolean"
+          },
+          "canIncrease": {
+            "type": "boolean"
+          },
+          "changeOption": {
+            "$ref": "#/components/schemas/CommitmentChangeOption"
+          },
+          "currentCommitmentAmountInclVat": {
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "decreaseBlockedReason": {
+            "$ref": "#/components/schemas/ValidationErrorCode"
+          },
+          "earliestDecreaseDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "earliestIncreaseDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "increaseBlockedReason": {
+            "$ref": "#/components/schemas/ValidationErrorCode"
+          }
+        },
+        "type": "object"
+      },
+      "ChangeContractCommitmentHintsApiDataResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ChangeContractCommitmentHints"
+          }
+        },
+        "type": "object"
+      },
+      "ChangeContractCommitmentRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "changeDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "commitmentAmountInclVat": {
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "memo": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ChangeContractFormulaHints": {
+        "additionalProperties": false,
+        "properties": {
+          "actionAllowed": {
+            "type": "boolean"
+          },
+          "currentCommitmentAmountInclVat": {
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "currentFormula": {
+            "$ref": "#/components/schemas/ClientContractFormula"
+          },
+          "currentFormulaEnd": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "currentFormulaStart": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "hints": {
+            "items": {
+              "$ref": "#/components/schemas/ChangeToContractFormulaHint"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "willOverrideFutureFormula": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "ChangeContractFormulaHintsApiDataResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ChangeContractFormulaHints"
+          }
+        },
+        "type": "object"
+      },
+      "ChangeContractFormulaRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "changeDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "commitmentAmountInclVat": {
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "formula": {
+            "$ref": "#/components/schemas/ClientContractFormula"
+          },
+          "memo": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ChangeToContractFormulaHint": {
+        "additionalProperties": false,
+        "properties": {
+          "changeOption": {
+            "$ref": "#/components/schemas/FormulaChangeOption"
+          },
+          "earliestChangeDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "targetFormula": {
+            "$ref": "#/components/schemas/ClientContractFormula"
+          }
+        },
+        "type": "object"
+      },
+      "Client": {
+        "properties": {
+          "billingEmail": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "nr": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
+          "users": {
+            "items": {
+              "$ref": "#/components/schemas/ContractUser"
+            },
+            "type": "array"
+          },
+          "vat": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ClientContractBaseSearchRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "flexSearch": {
+            "nullable": true,
+            "type": "string"
+          },
+          "orderBy": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ClientContractDto": {
+        "additionalProperties": false,
+        "properties": {
+          "billingInstructions": {
+            "nullable": true,
+            "type": "string"
+          },
+          "billingType": {
+            "nullable": true,
+            "type": "string"
+          },
+          "client": {
+            "$ref": "#/components/schemas/ClientReferenceDto"
+          },
+          "clientContractType": {
+            "$ref": "#/components/schemas/ClientContractType"
+          },
+          "contractDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "contractFileName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "currentFormula": {
+            "$ref": "#/components/schemas/ClientContractFormula"
+          },
+          "dateOfCancellation": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isCompletelySettled": {
+            "type": "boolean"
+          },
+          "isSuspended": {
+            "type": "boolean"
+          },
+          "memo": {
+            "nullable": true,
+            "type": "string"
+          },
+          "overrideAutoDescription": {
+            "nullable": true,
+            "type": "string"
+          },
+          "reasonOfCancellation": {
+            "nullable": true,
+            "type": "string"
+          },
+          "settings": {
+            "nullable": true,
+            "type": "string"
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ClientContractStatus"
+          },
+          "suspensionReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "usage": {
+            "$ref": "#/components/schemas/ClientContractUsageDto"
+          }
+        },
+        "type": "object"
+      },
+      "ClientContractDtoApiDataResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ClientContractDto"
+          }
+        },
+        "type": "object"
+      },
+      "ClientContractFormula": {
+        "enum": [
+          "BattFun",
+          "BattFunPlus",
+          "BattFunPlusDL",
+          "BattForBusiness",
+          "BattFan",
+          "BattFanPlus",
+          "BattMax",
+          "EigenBeheer",
+          "Straal"
+        ],
+        "type": "string"
+      },
+      "ClientContractStatus": {
+        "enum": [
+          "Draft",
+          "Active",
+          "Suspended",
+          "Cancelled",
+          "Stopped"
+        ],
+        "type": "string"
+      },
+      "ClientContractSummaryDto": {
+        "additionalProperties": false,
+        "properties": {
+          "client": {
+            "$ref": "#/components/schemas/ClientReferenceDto"
+          },
+          "clientContractType": {
+            "$ref": "#/components/schemas/ClientContractType"
+          },
+          "contractDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "currentFormula": {
+            "$ref": "#/components/schemas/ClientContractFormula"
+          },
+          "dateOfCancellation": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isSuspended": {
+            "type": "boolean"
+          },
+          "overrideAutoDescription": {
+            "nullable": true,
+            "type": "string"
+          },
+          "reasonOfCancellation": {
+            "nullable": true,
+            "type": "string"
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ClientContractStatus"
+          },
+          "suspensionReason": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ClientContractSummaryDtoApiPagedResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "nextPage": {
+            "nullable": true,
+            "type": "string"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/ClientContractSummaryDto"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "totalCount": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "ClientContractType": {
+        "enum": [
+          "Unknown",
+          "Usage",
+          "Vehicle"
+        ],
+        "type": "string"
+      },
+      "ClientContractUsageDataDto": {
+        "additionalProperties": false,
+        "properties": {
+          "commentOnInvoice": {
+            "nullable": true,
+            "type": "string"
+          },
+          "commitmentAmountInclVat": {
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "endDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "formula": {
+            "$ref": "#/components/schemas/ClientContractFormula"
+          },
+          "memo": {
+            "nullable": true,
+            "type": "string"
+          },
+          "minimalEndDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "overrideRateCardId": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "requestDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ClientContractUsageDto": {
+        "additionalProperties": false,
+        "properties": {
+          "finalInvoiceId": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "firstInvoiceId": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "memo": {
+            "nullable": true,
+            "type": "string"
+          },
+          "trustedByClientContractId": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "usageData": {
+            "items": {
+              "$ref": "#/components/schemas/ClientContractUsageDataDto"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "ClientReferenceDto": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CommitmentChangeOption": {
+        "enum": [
+          "AnyDay",
+          "SameDayOfMonth"
+        ],
+        "type": "string"
+      },
+      "ContractUser": {
+        "properties": {
+          "boxNumber": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "dateCurrentLicense": {
+            "type": "string"
+          },
+          "dateLicenseUntil": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string"
+          },
+          "documentLinks": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "houseNumber": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "licenseNum": {
+            "type": "string"
+          },
+          "licenseType": {
+            "type": "integer"
+          },
+          "nationality": {
+            "type": "string"
+          },
+          "nrOfAccidents": {
+            "type": "integer"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "sofBattRemoteId": {
+            "type": "string"
+          },
+          "streetname": {
+            "type": "string"
+          },
+          "subscriptions": {
+            "items": {
+              "$ref": "#/components/schemas/Subscription"
+            },
+            "type": "array"
+          },
+          "verifiedCellPhoneNumber": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "CreateBodyStyleRequest": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CreateBooking": {
+        "properties": {
+          "comments": {
+            "type": "string"
+          },
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "period",
+          "vehicleId"
+        ],
+        "type": "object"
+      },
+      "CreateBookingRequest": {
+        "properties": {
+          "bookingPrice": {
+            "$ref": "#/components/schemas/BookingPrice"
+          },
+          "comments": {
+            "maxLength": 200,
+            "type": "string"
+          },
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "bookingPrice",
+          "period",
+          "vehicleId"
+        ],
+        "type": "object"
+      },
+      "CreateNewUsageContractRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "commitmentAmountInclVat": {
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "formula": {
+            "$ref": "#/components/schemas/ClientContractFormula"
+          },
+          "memo": {
+            "nullable": true,
+            "type": "string"
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CreateNonAvailabilityRequest": {
+        "properties": {
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "period",
+          "vehicleId"
+        ],
+        "type": "object"
+      },
+      "CreateUserRequest": {
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "remoteId": {
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "remoteId"
+        ],
+        "type": "object"
+      },
+      "CreateVehicleGroupRequest": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CreateVehicleModelRequest": {
+        "properties": {
+          "bodyStyleId": {
+            "type": "string"
+          },
+          "brandId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CreateVehicleModelsRatesRequest": {
+        "properties": {
+          "dayPrice": {
+            "description": "DayPrice is the optional price per day for the vehicle model (VAT included). If not included, the day price will be calculated based on the hour price.",
+            "type": "number"
+          },
+          "hourPrice": {
+            "description": "HourPrice is the price per hour for the vehicle model (VAT included).",
+            "type": "number"
+          },
+          "kmPrice": {
+            "description": "KmPrice is the price per kilometer for the vehicle model (VAT included).",
+            "type": "number"
+          },
+          "modelIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "overrideDefaultPeriod": {
+            "description": "OverrideDefaultPeriod is a flag to indicate if the default period in the database (which has no valid_until entry) should be overridden by this entry.",
+            "type": "boolean"
+          },
+          "validFrom": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "validUntil": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "hourPrice",
+          "kmPrice",
+          "modelIds",
+          "validFrom"
+        ],
+        "type": "object"
+      },
+      "CreateVehicleModelsRatesResponse": {
+        "properties": {
+          "rates": {
+            "items": {
+              "$ref": "#/components/schemas/VehicleModelRate"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "rates"
+        ],
+        "type": "object"
+      },
+      "CreateVehicleRequest": {
+        "properties": {
+          "licensePlate": {
+            "type": "string"
+          },
+          "vehicleModelId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "vehicleModelId"
+        ],
+        "type": "object"
+      },
+      "CreateVehiclesRatesRequest": {
+        "properties": {
+          "dayPrice": {
+            "type": "number"
+          },
+          "discountPercent": {
+            "type": "integer"
+          },
+          "hourPrice": {
+            "type": "number"
+          },
+          "kmPrice": {
+            "type": "number"
+          },
+          "overrideDefaultPeriod": {
+            "description": "OverrideDefaultPeriod is a flag to indicate if the default period in the database (which has no valid_until entry) should be overridden by this entry.",
+            "type": "boolean"
+          },
+          "validFrom": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "validUntil": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "vehicleIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "validFrom",
+          "vehicleIds"
+        ],
+        "type": "object"
+      },
+      "CreateVehiclesRatesResponse": {
+        "properties": {
+          "rates": {
+            "items": {
+              "$ref": "#/components/schemas/VehicleRate"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "rates"
+        ],
+        "type": "object"
+      },
+      "DeleteVehiclesFromGroupRequest": {
+        "properties": {
+          "vehicleIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "type": "object"
+      },
+      "EndVehicleUsageRequest": {
+        "properties": {
+          "mileageValue": {
+            "format": "double",
+            "type": "number"
+          },
+          "vehicleUsageId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ErrorResponse": {
+        "properties": {
+          "debugKey": {
+            "type": "string"
+          },
+          "debugMsg": {
+            "type": "string"
+          },
+          "debugParameters": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "FiltersForBooking": {
+        "properties": {
+          "gpsLocation": {
+            "$ref": "#/components/schemas/GpsLocation"
+          },
+          "vehicleFilterCriteria": {
+            "$ref": "#/components/schemas/VehicleFilterCriteria"
+          }
+        },
+        "type": "object"
+      },
+      "FormulaChangeOption": {
+        "enum": [
+          "AnyDay",
+          "SameDayOfMonth"
+        ],
+        "type": "string"
+      },
+      "GetVehicleModelsRatesEntry": {
+        "properties": {
+          "dayPrice": {
+            "type": "number"
+          },
+          "hourPrice": {
+            "type": "number"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "kmPrice": {
+            "type": "number"
+          },
+          "validFrom": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "validUntil": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "dayPrice",
+          "hourPrice",
+          "id",
+          "kmPrice",
+          "validFrom"
+        ],
+        "type": "object"
+      },
+      "GetVehicleModelsRatesResponse": {
+        "properties": {
+          "rates": {
+            "additionalProperties": {
+              "items": {
+                "$ref": "#/components/schemas/GetVehicleModelsRatesEntry"
+              },
+              "type": "array"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "GetVehiclesRatesEntry": {
+        "properties": {
+          "dayPrice": {
+            "type": "number"
+          },
+          "hourPrice": {
+            "type": "number"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "kmPrice": {
+            "type": "number"
+          },
+          "validFrom": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "validUntil": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "validFrom"
+        ],
+        "type": "object"
+      },
+      "GetVehiclesRatesResponse": {
+        "properties": {
+          "rates": {
+            "additionalProperties": {
+              "items": {
+                "$ref": "#/components/schemas/GetVehiclesRatesEntry"
+              },
+              "type": "array"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "GpsCoordinate": {
+        "properties": {
+          "latitude": {
+            "format": "double",
+            "type": "number"
+          },
+          "longitude": {
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "GpsLocation": {
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "coordinates": {
+            "$ref": "#/components/schemas/GpsCoordinate"
+          },
+          "vehicleBaseLocationId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "HomeFeedCard": {
+        "properties": {
+          "date": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "fullBooking": {
+            "$ref": "#/components/schemas/Booking"
+          },
+          "type": {
+            "enum": [
+              "OVERDUE_BOOKING",
+              "ACTIVE_VEHICLE_USAGE",
+              "CANCELED_REMOTE",
+              "BOOKING_TO_APPROVE",
+              "UPCOMING_BOOKING"
+            ],
+            "type": "string"
+          },
+          "vehicle": {
+            "$ref": "#/components/schemas/Vehicle"
+          },
+          "vehicleUsage": {
+            "$ref": "#/components/schemas/VehicleUsageReference"
+          }
+        },
+        "type": "object"
+      },
+      "HomeFeedPage": {
+        "properties": {
+          "homeFeedCards": {
+            "items": {
+              "$ref": "#/components/schemas/HomeFeedCard"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Invoice": {
+        "properties": {
+          "amount": {
+            "type": "number"
+          },
+          "customerName": {
+            "type": "string"
+          },
+          "dueDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "invoiceDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "paymentStatus": {
+            "enum": [
+              "paid",
+              "not_paid",
+              "partially_paid",
+              "reversed"
+            ],
+            "type": "string"
+          },
+          "pdfUrl": {
+            "type": "string"
+          },
+          "webUrl": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "InvoiceResponse": {
+        "properties": {
+          "invoices": {
+            "items": {
+              "$ref": "#/components/schemas/Invoice"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "MyAvailableVehicle": {
+        "properties": {
+          "nextNonAvailability": {
+            "$ref": "#/components/schemas/AdjacentNonAvailability"
+          },
+          "overdue": {
+            "type": "boolean"
+          },
+          "previousNonAvailability": {
+            "$ref": "#/components/schemas/AdjacentNonAvailability"
+          },
+          "type": {
+            "enum": [
+              "AVAILABLE",
+              "BLOCKED"
+            ],
+            "type": "string"
+          },
+          "vehicle": {
+            "$ref": "#/components/schemas/Vehicle"
+          },
+          "vehicleUsage": {
+            "$ref": "#/components/schemas/VehicleUsage"
+          }
+        },
+        "type": "object"
+      },
+      "MyAvailableVehiclesPage": {
+        "properties": {
+          "currentNonAvailablePeriods": {
+            "items": {
+              "$ref": "#/components/schemas/MyAvailableVehicle"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "NonAvailabilitiesPage": {
+        "properties": {
+          "nonAvailabilities": {
+            "items": {
+              "$ref": "#/components/schemas/NonAvailability"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "NonAvailabilitiesPerVehicle": {
+        "properties": {
+          "currentPrivateUsageOverdue": {
+            "type": "boolean"
+          },
+          "currentPrivateUsageStart": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "nonAvailabilities": {
+            "items": {
+              "$ref": "#/components/schemas/NonAvailability"
+            },
+            "type": "array"
+          },
+          "vehicleId": {
+            "type": "string"
+          },
+          "vehicleName": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "NonAvailabilitiesPerVehiclePage": {
+        "properties": {
+          "availabilityEventsPerVehicle": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/NonAvailabilitiesPerVehicle"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "NonAvailability": {
+        "properties": {
+          "booking": {
+            "$ref": "#/components/schemas/Booking"
+          },
+          "fullPeriod": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "id": {
+            "type": "string"
+          },
+          "overdue": {
+            "type": "boolean"
+          },
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "plannedPeriod": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "type": {
+            "enum": [
+              "BOOKING",
+              "NOT_AVAILABLE"
+            ],
+            "type": "string"
+          },
+          "usagePeriod": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "NonAvailabilityResponse": {
+        "properties": {
+          "nonAvailabilities": {
+            "items": {
+              "$ref": "#/components/schemas/NonAvailability"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Period": {
+        "properties": {
+          "end": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "start": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "RegisterDeviceRequest": {
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "token"
+        ],
+        "type": "object"
+      },
+      "ReplaceBookingRequest": {
+        "properties": {
+          "adminComments": {
+            "maxLength": 4096,
+            "type": "string"
+          },
+          "authorizationComments": {
+            "maxLength": 200,
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "comments": {
+            "maxLength": 200,
+            "type": "string"
+          },
+          "filtersForBooking": {
+            "$ref": "#/components/schemas/FiltersForBooking"
+          },
+          "invoiceComments": {
+            "maxLength": 1024,
+            "type": "string"
+          },
+          "originalBookingId": {
+            "type": "string"
+          },
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SearchBookingsRequest": {
+        "properties": {
+          "adminComments": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "string"
+          },
+          "endPeriod": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "invoiceStatuses": {
+            "items": {
+              "enum": [
+                "TO_BE_INVOICED",
+                "NEEDS_CORRECTION",
+                "NOT_INVOICED",
+                "INVOICED"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "licensePlate": {
+            "type": "string"
+          },
+          "startPeriod": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "statuses": {
+            "items": {
+              "enum": [
+                "AWAITING_APPROVAL",
+                "APPROVED",
+                "REJECTED",
+                "CANCELED",
+                "CANCELED_REMOTE",
+                "EXPIRED",
+                "ACTIVE",
+                "STOPPED"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SearchClientContractsRequest": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ClientContractBaseSearchRequest"
+          }
+        ],
+        "properties": {
+          "clientId": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "contractId": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "endDateFrom": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "endDateTo": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "startDateFrom": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "startDateTo": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SearchNonAvailabilityEventsRequest": {
+        "properties": {
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "vehicleIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "SearchUsersRequest": {
+        "properties": {
+          "defaultMembershipId": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "favoriteLocation": {
+            "$ref": "#/components/schemas/GpsLocation"
+          },
+          "favoritelocationDistance": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "homeLocation": {
+            "$ref": "#/components/schemas/GpsLocation"
+          },
+          "homelocationDistance": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "remoteId": {
+            "type": "string"
+          },
+          "userName": {
+            "type": "string"
+          },
+          "workLocation": {
+            "$ref": "#/components/schemas/GpsLocation"
+          },
+          "worklocationDistance": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "SearchVehiclesRequest": {
+        "properties": {
+          "location": {
+            "$ref": "#/components/schemas/GpsCoordinate"
+          },
+          "maxDistance": {
+            "format": "double",
+            "type": "number"
+          },
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "subscriptionId": {
+            "type": "string"
+          },
+          "vehicleFilterCriteria": {
+            "$ref": "#/components/schemas/VehicleFilterCriteria"
+          }
+        },
+        "type": "object"
+      },
+      "StartVehicleUsageRequest": {
+        "properties": {
+          "bookingId": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Subscription": {
+        "properties": {
+          "clientId": {
+            "type": "integer"
+          },
+          "clientName": {
+            "type": "string"
+          },
+          "clientRoles": {
+            "enum": [
+              "User",
+              "MainUser"
+            ],
+            "type": "string"
+          },
+          "commitment": {
+            "type": "integer"
+          },
+          "endDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "startDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "subscriptionType": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          },
+          "vehicles": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "TerminateContractHints": {
+        "additionalProperties": false,
+        "properties": {
+          "actionAllowed": {
+            "type": "boolean"
+          },
+          "maximalDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "minimalDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "terminateOption": {
+            "$ref": "#/components/schemas/TerminateDayOption"
+          }
+        },
+        "type": "object"
+      },
+      "TerminateContractHintsApiDataResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/TerminateContractHints"
+          }
+        },
+        "type": "object"
+      },
+      "TerminateContractRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "reason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "terminationDate": {
+            "format": "date",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "TerminateDayOption": {
+        "enum": [
+          "AnyDay",
+          "SameDayOfMonth"
+        ],
+        "type": "string"
+      },
+      "UpdateBookingRequest": {
+        "properties": {
+          "adminComments": {
+            "maxLength": 4096,
+            "type": "string"
+          },
+          "authorizationComments": {
+            "maxLength": 200,
+            "type": "string"
+          },
+          "comments": {
+            "maxLength": 200,
+            "type": "string"
+          },
+          "doNotInvoice": {
+            "type": "boolean"
+          },
+          "invoiceComments": {
+            "maxLength": 1024,
+            "type": "string"
+          },
+          "invoiced": {
+            "type": "boolean"
+          },
+          "needsCorrection": {
+            "type": "boolean"
+          },
+          "needsCorrectionComments": {
+            "maxLength": 255,
+            "type": "string"
+          },
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          }
+        },
+        "type": "object"
+      },
+      "UpdateUserRequest": {
+        "properties": {
+          "biography": {
+            "maxLength": 512,
+            "type": "string"
+          },
+          "defaultMembershipId": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "favoriteLocation": {
+            "$ref": "#/components/schemas/GpsLocation"
+          },
+          "homeLocation": {
+            "$ref": "#/components/schemas/GpsLocation"
+          },
+          "joinedSince": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "pushNotificationsEnabled": {
+            "type": "boolean"
+          },
+          "role": {
+            "enum": [
+              "BATTFUN",
+              "BATTFAN",
+              "BATTMAX",
+              "BATTADMIN"
+            ],
+            "type": "string"
+          },
+          "tripRegistrationEnabled": {
+            "type": "boolean"
+          },
+          "userName": {
+            "type": "string"
+          },
+          "workLocation": {
+            "$ref": "#/components/schemas/GpsLocation"
+          }
+        },
+        "type": "object"
+      },
+      "UpdateVehicleRequest": {
+        "properties": {
+          "addVehicleLocationRequest": {
+            "$ref": "#/components/schemas/AddVehicleLocationRequest"
+          },
+          "approvalType": {
+            "enum": [
+              "AUTOMATIC",
+              "FIRST_TIME_ONLY",
+              "MANUAL"
+            ],
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 512,
+            "type": "string"
+          },
+          "electricRange": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "equipmentIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "expectedInFleetDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "expectedOutOfFleetDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "intentIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "lastPosition": {
+            "$ref": "#/components/schemas/GpsLocation"
+          },
+          "lastPositionTimestamp": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "licensePlate": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "operationalStatus": {
+            "enum": [
+              "ONBOARDING",
+              "ACTIVE",
+              "PHASED_OUT"
+            ],
+            "type": "string"
+          },
+          "seats": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "typeId": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          },
+          "vehicleInfo": {
+            "type": "string"
+          },
+          "vehicleInfoPreBooking": {
+            "type": "string"
+          },
+          "vehicleModelId": {
+            "type": "string"
+          },
+          "vehicleTypeId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "User": {
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "homeLocation": {
+            "$ref": "#/components/schemas/GpsLocation"
+          },
+          "id": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "joinedSince": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "pushNotificationsEnabled": {
+            "type": "boolean"
+          },
+          "workLocation": {
+            "$ref": "#/components/schemas/GpsLocation"
+          }
+        },
+        "type": "object"
+      },
+      "UserPage": {
+        "properties": {
+          "users": {
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "ValidationErrorCode": {
+        "enum": [
+          "NotFound",
+          "RequiredField",
+          "ValueCannotBeNegative",
+          "DateCannotBeInThePast",
+          "InvalidDate",
+          "InvalidEnum",
+          "MalformedRequestBody",
+          "InvalidGuidFormat",
+          "FanCommitmentShouldBeAtLeast75",
+          "ContractAlreadyHasThisFormula",
+          "BeforeContractStartDate",
+          "AfterContractEndDate",
+          "CannotChangeBattForBusinessFormula",
+          "BattMaxRequiresNewContract",
+          "BattForBusinessRequiresNewContract",
+          "CanOnlyChangeFormulaForUsageContract",
+          "CanOnlyChangeCommitmentForFanOrBusinessContract",
+          "CanOnlyChangeOnInvoiceDay",
+          "DelegatedTrustWrongFormula",
+          "InvalidBillingPeriodStatusForInvoicing",
+          "PeriodAlreadyInvoiced",
+          "OldInvoicesNotSupported",
+          "CanOnlyApproveDraftInvoices",
+          "CanOnlyDeleteDraftInvoices",
+          "NotYetSwitchedToNewInvoicing",
+          "CanOnlyRegenerateApprovedInvoices",
+          "ClientAlreadyHasUsageContract",
+          "InvalidProperty",
+          "DuplicateProperties",
+          "InvalidOrderByDirection",
+          "InvalidOrderByClause",
+          "InvalidPageToken"
+        ],
+        "type": "string"
+      },
+      "Vehicle": {
+        "properties": {
+          "distance": {
+            "format": "double",
+            "type": "number"
+          },
+          "electricRange": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "fanPrice": {
+            "$ref": "#/components/schemas/BookingPrice"
+          },
+          "favorite": {
+            "type": "boolean"
+          },
+          "funPrice": {
+            "$ref": "#/components/schemas/BookingPrice"
+          },
+          "homePosition": {
+            "$ref": "#/components/schemas/GpsLocation"
+          },
+          "id": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "lastPosition": {
+            "$ref": "#/components/schemas/GpsLocation"
+          },
+          "lastPositionTimestamp": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "licensePlate": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "operationalStatus": {
+            "enum": [
+              "ONBOARDING",
+              "ACTIVE",
+              "PHASED_OUT"
+            ],
+            "type": "string"
+          },
+          "vehicleBodyStyle": {
+            "$ref": "#/components/schemas/BodyStyle"
+          },
+          "vehicleBrand": {
+            "$ref": "#/components/schemas/VehicleBrand"
+          },
+          "vehicleModel": {
+            "$ref": "#/components/schemas/VehicleModel"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleBaseLocation": {
+        "properties": {
+          "adType": {
+            "type": "string"
+          },
+          "borough": {
+            "type": "string"
+          },
+          "homePosition": {
+            "$ref": "#/components/schemas/GpsLocation"
+          },
+          "id": {
+            "type": "string"
+          },
+          "memo": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleBaseLocationPage": {
+        "properties": {
+          "vehicleBaseLocations": {
+            "items": {
+              "$ref": "#/components/schemas/VehicleBaseLocation"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleBrand": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleBrandPage": {
+        "properties": {
+          "vehicleBrands": {
+            "items": {
+              "$ref": "#/components/schemas/VehicleBrand"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleFilterCriteria": {
+        "properties": {
+          "bodyStyleIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "brandIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "licensePlate": {
+            "type": "string"
+          },
+          "minRange": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "modelIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleFilterEnums": {
+        "properties": {
+          "bodyStyles": {
+            "items": {
+              "$ref": "#/components/schemas/BodyStyle"
+            },
+            "type": "array"
+          },
+          "brands": {
+            "items": {
+              "$ref": "#/components/schemas/VehicleBrand"
+            },
+            "type": "array"
+          },
+          "models": {
+            "items": {
+              "$ref": "#/components/schemas/VehicleModel"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleGroup": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "vehicles": {
+            "items": {
+              "$ref": "#/components/schemas/Vehicle"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleGroupPage": {
+        "properties": {
+          "vehicleGroups": {
+            "items": {
+              "$ref": "#/components/schemas/VehicleGroup"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleModel": {
+        "properties": {
+          "bodyStyle": {
+            "$ref": "#/components/schemas/BodyStyle"
+          },
+          "brandId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleModelPage": {
+        "properties": {
+          "vehicleModels": {
+            "items": {
+              "$ref": "#/components/schemas/VehicleModel"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleModelRate": {
+        "properties": {
+          "dateCreated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "dayPrice": {
+            "type": "number"
+          },
+          "hourPrice": {
+            "type": "number"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "kmPrice": {
+            "type": "number"
+          },
+          "lastUpdated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "validFrom": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "validUntil": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "vehicleModelId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dateCreated",
+          "dayPrice",
+          "hourPrice",
+          "id",
+          "kmPrice",
+          "lastUpdated",
+          "validFrom",
+          "vehicleModelId"
+        ],
+        "type": "object"
+      },
+      "VehicleRate": {
+        "properties": {
+          "dateCreated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "dayPrice": {
+            "type": "number"
+          },
+          "discountPercent": {
+            "type": "number"
+          },
+          "hourPrice": {
+            "type": "number"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "kmPrice": {
+            "type": "number"
+          },
+          "lastUpdated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "validFrom": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "validUntil": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dateCreated",
+          "id",
+          "lastUpdated",
+          "validFrom",
+          "vehicleId"
+        ],
+        "type": "object"
+      },
+      "VehicleUsage": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "mileageDelta": {
+            "format": "double",
+            "type": "number"
+          },
+          "mileageEndValue": {
+            "format": "double",
+            "type": "number"
+          },
+          "mileageStartValue": {
+            "format": "double",
+            "type": "number"
+          },
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "status": {
+            "enum": [
+              "UNLOCKING",
+              "BLUETOOTH_UNLOCKING",
+              "UNLOCK_FAILED",
+              "UNLOCKED",
+              "LOCKING",
+              "BLUETOOTH_LOCKING",
+              "LOCK_FAILED",
+              "LOCKED"
+            ],
+            "type": "string"
+          },
+          "statusMessage": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleUsagePage": {
+        "properties": {
+          "vehicleUsages": {
+            "items": {
+              "$ref": "#/components/schemas/VehicleUsage"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleUsageReference": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "status": {
+            "enum": [
+              "UNLOCKING",
+              "BLUETOOTH_UNLOCKING",
+              "UNLOCK_FAILED",
+              "UNLOCKED",
+              "LOCKING",
+              "BLUETOOTH_LOCKING",
+              "LOCK_FAILED",
+              "LOCKED"
+            ],
+            "type": "string"
+          },
+          "statusMessage": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleUsageUpdateStatusRequest": {
+        "properties": {
+          "mileage": {
+            "format": "double",
+            "type": "number"
+          },
+          "status": {
+            "enum": [
+              "UNLOCKING",
+              "BLUETOOTH_UNLOCKING",
+              "UNLOCK_FAILED",
+              "UNLOCKED",
+              "LOCKING",
+              "BLUETOOTH_LOCKING",
+              "LOCK_FAILED",
+              "LOCKED"
+            ],
+            "type": "string"
+          },
+          "statusMessage": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "type": "object"
+      },
+      "VehiclesPage": {
+        "properties": {
+          "vehicles": {
+            "items": {
+              "$ref": "#/components/schemas/Vehicle"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "contracts.Convictions": {
+        "properties": {
+          "convictionBloodTestRefusal": {
+            "type": "boolean"
+          },
+          "convictionDrunk": {
+            "type": "boolean"
+          },
+          "convictionHitAndRun": {
+            "type": "boolean"
+          },
+          "convictionIntoxicated": {
+            "type": "boolean"
+          },
+          "convictionLicenseRevocation": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "contracts.CreateClient": {
+        "properties": {
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "houseNumber": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
+          "vat": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "city",
+          "country",
+          "email",
+          "houseNumber",
+          "name",
+          "postalCode",
+          "street"
+        ],
+        "type": "object"
+      },
+      "contracts.Onboarding": {
+        "properties": {
+          "legal": {
+            "$ref": "#/components/schemas/contracts.OnboardingLegal"
+          },
+          "personal": {
+            "$ref": "#/components/schemas/contracts.OnboardingPersonal"
+          },
+          "phone": {
+            "$ref": "#/components/schemas/contracts.OnboardingPhone"
+          },
+          "status": {
+            "enum": [
+              "NONE",
+              "CONVICTION",
+              "DOCUMENTS",
+              "PERSONAL",
+              "PHONE",
+              "COMPLETED"
+            ],
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "contracts.OnboardingLegal": {
+        "properties": {
+          "convictions": {
+            "$ref": "#/components/schemas/contracts.Convictions"
+          },
+          "nrOfAccidents": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "convictions",
+          "nrOfAccidents"
+        ],
+        "type": "object"
+      },
+      "contracts.OnboardingPersonal": {
+        "properties": {
+          "box": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "dateCurrentLicense": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "dateLicenseUntil": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "houseNumber": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "licenseNumber": {
+            "type": "string"
+          },
+          "licenseType": {
+            "enum": [
+              "BELGIAN",
+              "EUROPEAN",
+              "OTHER"
+            ],
+            "type": "string"
+          },
+          "nationality": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "socialSecurityNumber": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "box",
+          "city",
+          "dateCurrentLicense",
+          "dateLicenseUntil",
+          "dateOfBirth",
+          "firstName",
+          "houseNumber",
+          "lastName",
+          "licenseNumber",
+          "licenseType",
+          "nationality",
+          "postalCode",
+          "socialSecurityNumber",
+          "street"
+        ],
+        "type": "object"
+      },
+      "contracts.OnboardingPhone": {
+        "properties": {
+          "phoneNumber": {
+            "type": "string"
+          },
+          "phoneNumberValidationCode": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "phoneNumber"
+        ],
+        "type": "object"
+      },
+      "contracts.PasswordReset": {
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "type": "object"
+      },
+      "contracts.ResendVerificationEmail": {
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "type": "object"
+      },
+      "contracts.SignupUser": {
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "openapi": "3.0.1",
+  "paths": {
+    "/availability/v1/non-availabilities": {
+      "post": {
+        "operationId": "createNonAvailability",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateNonAvailabilityRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/NonAvailabilityResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "availability-facade"
+        ]
+      }
+    },
+    "/availability/v1/non-availabilities/searches": {
+      "post": {
+        "operationId": "searchNonAvailabilitiesForVehicles",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchNonAvailabilityEventsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/NonAvailabilitiesPerVehiclePage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "availability-facade"
+        ]
+      }
+    },
+    "/availability/v1/non-availabilities/{nonAvailabilityId}": {
+      "delete": {
+        "operationId": "removeNonAvailability",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "nonAvailabilityId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "availability-facade"
+        ]
+      }
+    },
+    "/availability/v1/non-availabilities/{vehicleId}": {
+      "get": {
+        "operationId": "getNonAvailabilitiesByVehicle",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "start",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "end",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/NonAvailabilitiesPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "availability-facade"
+        ]
+      }
+    },
+    "/booking/v1/bookings": {
+      "get": {
+        "operationId": "getMyBookings",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingsPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "booking-facade"
+        ]
+      },
+      "post": {
+        "description": "If successful, the booking for the user will be created.",
+        "parameters": [
+          {
+            "description": "Client ID",
+            "in": "header",
+            "name": "X-Client-Id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBooking"
+              }
+            }
+          },
+          "description": "Booking details",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Booking"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Create a new booking",
+        "tags": [
+          "booking-facade"
+        ]
+      }
+    },
+    "/booking/v1/bookings/actions/cancel": {
+      "post": {
+        "operationId": "cancelBooking",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelBookingRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Booking"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "booking-facade"
+        ]
+      }
+    },
+    "/booking/v1/bookings/actions/replacements": {
+      "post": {
+        "operationId": "replaceBooking",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReplaceBookingRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Booking"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "booking-facade"
+        ]
+      }
+    },
+    "/booking/v1/bookings/overdue": {
+      "get": {
+        "operationId": "getOverdueBookings",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingsPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "booking-facade"
+        ]
+      }
+    },
+    "/booking/v1/bookings/searches": {
+      "post": {
+        "operationId": "searchBookings",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBookingsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingsPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "booking-facade"
+        ]
+      }
+    },
+    "/booking/v1/bookings/summary": {
+      "get": {
+        "operationId": "getMyBookingsSummary",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingsPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "booking-facade"
+        ]
+      }
+    },
+    "/booking/v1/bookings/{bookingId}": {
+      "get": {
+        "operationId": "getById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "bookingId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeAdjacent",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Booking"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "booking-facade"
+        ]
+      },
+      "put": {
+        "operationId": "updateBooking",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "bookingId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBookingRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Booking"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "booking-facade"
+        ]
+      }
+    },
+    "/booking/v1/vehicles": {
+      "post": {
+        "description": "If successful, the vehicle will be created.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVehicleRequest"
+              }
+            }
+          },
+          "description": "Vehicle details",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Vehicle"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Create a new vehicle",
+        "tags": [
+          "vehicle-facade"
+        ]
+      },
+      "put": {
+        "description": "If successful, the vehicle details will be updated.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateVehicleRequest"
+              }
+            }
+          },
+          "description": "Vehicle details",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Vehicle"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update vehicle details",
+        "tags": [
+          "vehicle-facade"
+        ]
+      }
+    },
+    "/contract/v1/contracts": {
+      "get": {
+        "operationId": "GetContractsPaged",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractSummaryDtoApiPagedResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractSummaryDtoApiPagedResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractSummaryDtoApiPagedResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": [
+          "Contracts"
+        ]
+      }
+    },
+    "/contract/v1/contracts/clients/{clientId}/contracts/{contractId}": {
+      "get": {
+        "operationId": "GetContract",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contractId",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": [
+          "Contracts"
+        ]
+      }
+    },
+    "/contract/v1/contracts/clients/{clientId}/contracts/{contractId}/commitment": {
+      "post": {
+        "operationId": "ChangeContractCommitment",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contractId",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeContractCommitmentRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeContractCommitmentRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeContractCommitmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": [
+          "Contracts"
+        ]
+      }
+    },
+    "/contract/v1/contracts/clients/{clientId}/contracts/{contractId}/commitment/hints": {
+      "get": {
+        "operationId": "HintsForChangeContractCommitment",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contractId",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeContractCommitmentHintsApiDataResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeContractCommitmentHintsApiDataResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeContractCommitmentHintsApiDataResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": [
+          "Contracts"
+        ]
+      }
+    },
+    "/contract/v1/contracts/clients/{clientId}/contracts/{contractId}/formula": {
+      "post": {
+        "operationId": "ChangeContractFormula",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contractId",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeContractFormulaRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeContractFormulaRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeContractFormulaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": [
+          "Contracts"
+        ]
+      }
+    },
+    "/contract/v1/contracts/clients/{clientId}/contracts/{contractId}/formula/hints": {
+      "get": {
+        "operationId": "HintsForChangeContractFormula",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contractId",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeContractFormulaHintsApiDataResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeContractFormulaHintsApiDataResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeContractFormulaHintsApiDataResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": [
+          "Contracts"
+        ]
+      }
+    },
+    "/contract/v1/contracts/clients/{clientId}/contracts/{contractId}/terminate": {
+      "post": {
+        "operationId": "Terminate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contractId",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TerminateContractRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TerminateContractRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TerminateContractRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": [
+          "Contracts"
+        ]
+      }
+    },
+    "/contract/v1/contracts/clients/{clientId}/contracts/{contractId}/terminate/hints": {
+      "get": {
+        "operationId": "HintsForTerminate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contractId",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TerminateContractHintsApiDataResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TerminateContractHintsApiDataResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TerminateContractHintsApiDataResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": [
+          "Contracts"
+        ]
+      }
+    },
+    "/contract/v1/contracts/clients/{clientId}/delegatedTrust/{delegatedTrustClientId}": {
+      "post": {
+        "operationId": "Create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "delegatedTrustClientId",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateNewUsageContractRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateNewUsageContractRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateNewUsageContractRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractDtoApiDataResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": [
+          "Contracts"
+        ]
+      }
+    },
+    "/contract/v1/contracts/search": {
+      "post": {
+        "operationId": "SearchContractsPaged",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchClientContractsRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchClientContractsRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchClientContractsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractSummaryDtoApiPagedResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractSummaryDtoApiPagedResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractSummaryDtoApiPagedResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiValidationResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": [
+          "Contracts"
+        ]
+      }
+    },
+    "/homefeed/v1/bookings/homefeed": {
+      "get": {
+        "operationId": "getHomeFeed",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/HomeFeedPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "home-feed-facade"
+        ]
+      }
+    },
+    "/invoice/v1/clients/{clientId}/invoices": {
+      "get": {
+        "description": "Get invoices for a client of which the user is a main user",
+        "parameters": [
+          {
+            "description": "Client ID",
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get invoices",
+        "tags": [
+          "invoices-facade"
+        ]
+      }
+    },
+    "/invoice/v1/clients/{clientId}/invoices/{invoiceId}/invoice.pdf": {
+      "get": {
+        "description": "Get invoice pdf for a client of which the user is a main user",
+        "parameters": [
+          {
+            "description": "Client ID",
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Invoice ID",
+            "in": "path",
+            "name": "invoiceId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get invoice pdf",
+        "tags": [
+          "invoices-facade"
+        ]
+      }
+    },
+    "/pricing/v1/prices/booking-price": {
+      "get": {
+        "parameters": [
+          {
+            "description": "Client ID",
+            "in": "header",
+            "name": "X-Client-Id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Vehicle ID",
+            "in": "query",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Start Date",
+            "in": "query",
+            "name": "start",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "End Date",
+            "in": "query",
+            "name": "end",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingBillingPriceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Determines the price rates and billing details based on the booking parameters (vehicle, period)",
+        "tags": [
+          "pricing-facade"
+        ]
+      }
+    },
+    "/pricing/v1/rates/vehicle-models": {
+      "get": {
+        "description": "Gets all rates if no model IDs are specified. All rates, including past rates, are returned. Per model, the rates are ordered by valid_from in descending order.",
+        "parameters": [
+          {
+            "description": "Vehicle model IDs, separated by commas",
+            "in": "query",
+            "name": "models",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetVehicleModelsRatesResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get the rates for vehicle models",
+        "tags": [
+          "pricing-facade"
+        ]
+      },
+      "post": {
+        "description": "For convenience, multiple models can be specified for which the same rates hold.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVehicleModelsRatesRequest"
+              }
+            }
+          },
+          "description": "Vehicle model rates",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateVehicleModelsRatesResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Insert rates for vehicle models",
+        "tags": [
+          "pricing-facade"
+        ]
+      }
+    },
+    "/pricing/v1/rates/vehicle-models/{rateId}": {
+      "delete": {
+        "parameters": [
+          {
+            "description": "Rate ID",
+            "in": "path",
+            "name": "rateId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Deletes a single vehicle model rate",
+        "tags": [
+          "pricing-facade"
+        ]
+      }
+    },
+    "/pricing/v1/rates/vehicles": {
+      "get": {
+        "description": "Gets all rates if no vehicle IDs are specified. All rates, including past rates, are returned. Per vehicle, the rates are ordered by valid_from in descending order.",
+        "parameters": [
+          {
+            "description": "Vehicle IDs, separated by commas",
+            "in": "query",
+            "name": "vehicles",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetVehiclesRatesResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get the rates for vehicles",
+        "tags": [
+          "pricing-facade"
+        ]
+      },
+      "post": {
+        "description": "For convenience, multiple vehicles can be specified for which the same rates hold.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVehiclesRatesRequest"
+              }
+            }
+          },
+          "description": "Vehicle model rates",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateVehiclesRatesResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Insert rates for vehicles",
+        "tags": [
+          "pricing-facade"
+        ]
+      }
+    },
+    "/pricing/v1/rates/vehicles/{rateId}": {
+      "delete": {
+        "parameters": [
+          {
+            "description": "Rate ID",
+            "in": "path",
+            "name": "rateId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Deletes a single vehicle rate",
+        "tags": [
+          "pricing-facade"
+        ]
+      }
+    },
+    "/user/v1/clients": {
+      "post": {
+        "description": "Create a new client and",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/contracts.CreateClient"
+              }
+            }
+          },
+          "description": "Client",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Client"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create a new client (company with VAT nr. or private person)",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/clients/{clientId}": {
+      "get": {
+        "description": "Members of client, contract etc",
+        "parameters": [
+          {
+            "description": "Client ID",
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Client"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get information about a client you are the MainUser of",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/clients/{clientId}/users/{userEmail}": {
+      "delete": {
+        "description": "Delete a user from a client",
+        "parameters": [
+          {
+            "description": "Client ID",
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "User Email",
+            "in": "path",
+            "name": "userEmail",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Client"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete a user from a client",
+        "tags": [
+          "user-facade"
+        ]
+      },
+      "put": {
+        "description": "Add a user to a client as a Mainuser of a client",
+        "parameters": [
+          {
+            "description": "Client ID",
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "User Email",
+            "in": "path",
+            "name": "userEmail",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Client"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Add a user to a client",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/home-location": {
+      "get": {
+        "operationId": "getHomeLocation",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GpsLocation"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "user-facade"
+        ]
+      },
+      "put": {
+        "operationId": "setHomeLocation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GpsLocation"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/image/{userId}": {
+      "post": {
+        "operationId": "uploadUserImage",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "file": {
+                    "format": "binary",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "file"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/password-resets": {
+      "post": {
+        "description": "Requests a password reset email to be sent",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/contracts.PasswordReset"
+              }
+            }
+          },
+          "description": "User email",
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Requests a password reset email to be sent",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users": {
+      "post": {
+        "description": "If successful, the user is created in the databases and keycloak email verification is initiated.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/contracts.SignupUser"
+              }
+            }
+          },
+          "description": "User",
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Initiates user signup",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/devices": {
+      "put": {
+        "operationId": "registerDevice",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDeviceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/documents/{filename}": {
+      "get": {
+        "description": "Get an uploaded document from the user",
+        "parameters": [
+          {
+            "description": "File name",
+            "in": "path",
+            "name": "filename",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              " application/pdf": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              " image/heic": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              " image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              " image/tiff": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              " image/webp": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Document"
+          }
+        },
+        "summary": "Get an uploaded document from the user",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/images/{userImageId}": {
+      "get": {
+        "operationId": "getUserImage",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userImageId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "items": {
+                    "format": "byte",
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/me": {
+      "get": {
+        "description": "Retrieves your own user information, contracts etc.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContractUser"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get information about your own user",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/onboarding": {
+      "get": {
+        "description": "Gets information about where we are in the onboarding process",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contracts.Onboarding"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get the onboarding status of your own user",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/onboarding/documents": {
+      "put": {
+        "description": "Registers documents to start a Battmobility contract",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "backDriverLicense": {
+                    "description": "Back driver license",
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "backId": {
+                    "description": "Back id",
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "damageStatistic": {
+                    "description": "Damage claim statistic",
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "frontDriverLicense": {
+                    "description": "Front driver license",
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "frontId": {
+                    "description": "Front id",
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "selfie": {
+                    "description": "Selfie with front id",
+                    "format": "binary",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contracts.Onboarding"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Upload your own documents",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/onboarding/legal": {
+      "put": {
+        "description": "Registers legal information to start a Battmobility contract",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/contracts.OnboardingLegal"
+              }
+            }
+          },
+          "description": "Legal information",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contracts.Onboarding"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Upload your legal information",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/onboarding/personal": {
+      "put": {
+        "description": "Registers data to start driving from id and license",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/contracts.OnboardingPersonal"
+              }
+            }
+          },
+          "description": "Onboarding information",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contracts.Onboarding"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update your information",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/onboarding/phone": {
+      "put": {
+        "description": "Registers or verifies your phone number",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/contracts.OnboardingPhone"
+              }
+            }
+          },
+          "description": "Phone nr or verification code",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contracts.Onboarding"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Register or verify your phone number",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/roles/{role}": {
+      "get": {
+        "operationId": "getUsersByRole",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "role",
+            "required": true,
+            "schema": {
+              "enum": [
+                "BATTFUN",
+                "BATTFAN",
+                "BATTMAX",
+                "BATTADMIN"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/searches": {
+      "get": {
+        "description": "Search users based on first and last name and return user details for each found user",
+        "parameters": [
+          {
+            "description": "First name",
+            "in": "query",
+            "name": "firstNameHint",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Last name",
+            "in": "query",
+            "name": "lastNameHint",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ContractUser"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Search users based on first and last name",
+        "tags": [
+          "user-facade"
+        ]
+      },
+      "put": {
+        "operationId": "searchUsers",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchUsersRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/{id}": {
+      "put": {
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/{userId}": {
+      "delete": {
+        "operationId": "deleteUser",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "user-facade"
+        ]
+      },
+      "get": {
+        "operationId": "getUser",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/verification-email-resends": {
+      "post": {
+        "description": "No email will be sent if the user signup process was not completed up to the point of email verification or if the email is already verified.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/contracts.ResendVerificationEmail"
+              }
+            }
+          },
+          "description": "User email",
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Requests a resend of the verification email that is part of the user signup process",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/vehicle-group/v1/vehicle-groups": {
+      "get": {
+        "operationId": "getVehicleGroups",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleGroupPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-group-facade"
+        ]
+      },
+      "post": {
+        "operationId": "createVehicleGroup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVehicleGroupRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleGroup"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-group-facade"
+        ]
+      }
+    },
+    "/vehicle-group/v1/vehicle-groups/{vehicleGroupId}": {
+      "delete": {
+        "operationId": "deleteVehicleGroup",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleGroupId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-group-facade"
+        ]
+      },
+      "get": {
+        "operationId": "getVehicleGroup",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleGroupId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleGroup"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-group-facade"
+        ]
+      }
+    },
+    "/vehicle-group/v1/vehicle-groups/{vehicleGroupId}/actions/add-vehicles": {
+      "put": {
+        "operationId": "addVehiclesToVehicleGroup",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleGroupId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddVehiclesToGroupRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-group-facade"
+        ]
+      }
+    },
+    "/vehicle-group/v1/vehicle-groups/{vehicleGroupId}/actions/delete-vehicles": {
+      "post": {
+        "operationId": "deleteVehiclesFromVehicleGroup",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleGroupId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteVehiclesFromGroupRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-group-facade"
+        ]
+      }
+    },
+    "/vehicle-group/v1/vehicle-groups/{vehicleGroupId}/vehicles/{vehicleId}": {
+      "delete": {
+        "operationId": "deleteVehicleFromVehicleGroup",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleGroupId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-group-facade"
+        ]
+      },
+      "put": {
+        "operationId": "addVehicleToVehicleGroup",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleGroupId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-group-facade"
+        ]
+      }
+    },
+    "/vehicle-usage/v1/active-usage/vehicle/{vehicleId}": {
+      "get": {
+        "operationId": "getActiveUsageForVehicle",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleUsage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-usage-facade"
+        ]
+      }
+    },
+    "/vehicle-usage/v1/end": {
+      "put": {
+        "operationId": "endVehicleUsage",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EndVehicleUsageRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleUsage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-usage-facade"
+        ]
+      }
+    },
+    "/vehicle-usage/v1/start": {
+      "put": {
+        "operationId": "startVehicleUsage",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartVehicleUsageRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleUsage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-usage-facade"
+        ]
+      }
+    },
+    "/vehicle-usage/v1/vehicle-usages": {
+      "get": {
+        "operationId": "getAllVehicleUsages",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleUsagePage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-usage-facade"
+        ]
+      }
+    },
+    "/vehicle-usage/v1/{vehicleUsageId}/status": {
+      "put": {
+        "operationId": "updateStatus",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleUsageId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VehicleUsageUpdateStatusRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleUsage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-usage-facade"
+        ]
+      }
+    },
+    "/vehicle/v1/body-styles": {
+      "get": {
+        "operationId": "getBodyStyles",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyStylePage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      },
+      "post": {
+        "operationId": "createBodyStyle",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBodyStyleRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyStyle"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      }
+    },
+    "/vehicle/v1/brands": {
+      "get": {
+        "operationId": "getVehicleBrands",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleBrandPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      },
+      "post": {
+        "operationId": "createVehicleBrand",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VehicleBrand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleBrand"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      }
+    },
+    "/vehicle/v1/filters": {
+      "get": {
+        "operationId": "getVehicleFilterEnums",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleFilterEnums"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      }
+    },
+    "/vehicle/v1/models": {
+      "get": {
+        "operationId": "getVehicleModels",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleModelPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      },
+      "post": {
+        "operationId": "createVehicleModel",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVehicleModelRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleModel"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      }
+    },
+    "/vehicle/v1/my-vehicles": {
+      "get": {
+        "operationId": "getMyVehicles",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehiclesPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      }
+    },
+    "/vehicle/v1/my-vehicles/available": {
+      "get": {
+        "operationId": "getCurrentlyAvailableForOwnerPeriods",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MyAvailableVehiclesPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      }
+    },
+    "/vehicle/v1/search": {
+      "post": {
+        "operationId": "searchVehicles",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchVehiclesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehiclesPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      }
+    },
+    "/vehicle/v1/vehicle/image/{vehicleId}": {
+      "post": {
+        "operationId": "uploadVehicleImage",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "file": {
+                    "format": "binary",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "file"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Vehicle"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      }
+    },
+    "/vehicle/v1/vehicle/image/{vehicleImageId}": {
+      "get": {
+        "operationId": "getVehicleImage",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleImageId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "items": {
+                    "format": "byte",
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      }
+    },
+    "/vehicle/v1/vehicles": {
+      "get": {
+        "operationId": "getVehicles",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "activeOnly",
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehiclesPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      },
+      "post": {
+        "operationId": "createVehicle",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVehicleRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Vehicle"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      },
+      "put": {
+        "operationId": "updateVehicle",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateVehicleRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Vehicle"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      }
+    },
+    "/vehicle/v1/vehicles/{vehicleId}": {
+      "get": {
+        "operationId": "getVehicle",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Vehicle"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      }
+    },
+    "/vehicle/v1/vehicles/{vehicleId}/favorite/{isFavorite}": {
+      "put": {
+        "operationId": "setFavorite",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "isFavorite",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-facade"
+        ]
+      }
+    },
+    "/vehiclebaselocation/v1/vehiclebaselocations": {
+      "get": {
+        "operationId": "getVehicleBaseLocations",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleBaseLocationPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-base-location-facade"
+        ]
+      },
+      "post": {
+        "operationId": "createVehicleBaseLocation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VehicleBaseLocation"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleBaseLocation"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-base-location-facade"
+        ]
+      }
+    },
+    "/vehiclebaselocation/v1/vehiclebaselocations/{id}": {
+      "delete": {
+        "operationId": "deleteVehicleBaseLocation",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-base-location-facade"
+        ]
+      },
+      "put": {
+        "operationId": "updateVehicleBaseLocation",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VehicleBaseLocation"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleBaseLocation"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-base-location-facade"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Battmobility backend API",
+      "url": "/"
+    }
+  ]
+}
