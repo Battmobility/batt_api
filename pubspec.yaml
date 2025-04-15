@@ -1,6 +1,6 @@
 name: batt_kit
 description: "API for the Batt Backend"
-version: 0.0.1
+version: 0.0.2
 
 environment:
   sdk: ^3.6.2
@@ -12,6 +12,7 @@ dependencies:
   
   json_annotation: ^4.8.0
   chopper: ^8.0.3
+  logger: ^2.5.0
 
 dev_dependencies:
   flutter_test:

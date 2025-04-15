@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:json_annotation/json_annotation.dart';
 import 'package:collection/collection.dart';
 
