@@ -41,7 +41,7 @@ jobs:
           fi
 
       - name: Create PR to main
-        if: steps.commit.outputs.no_changes == 'false' && github.ref_name != 'main'
+        if: github.ref_name != 'main'
         run: |
           gh pr create \
             --base main \
