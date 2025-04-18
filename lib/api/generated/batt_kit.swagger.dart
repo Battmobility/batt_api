@@ -315,20 +315,6 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response<Vehicle>> _bookingV1VehiclesPut(
       {@Body() required UpdateVehicleRequest? body});
 
-  ///Get all clients, optionally filtered by name
-  ///@param name Filter clients by name (LIKE search)
-  Future<chopper.Response<List<Client>>> clientV1ClientsGet({String? name}) {
-    generatedMapping.putIfAbsent(Client, () => Client.fromJsonFactory);
-
-    return _clientV1ClientsGet(name: name);
-  }
-
-  ///Get all clients, optionally filtered by name
-  ///@param name Filter clients by name (LIKE search)
-  @Get(path: '/client/v1/clients')
-  Future<chopper.Response<List<Client>>> _clientV1ClientsGet(
-      {@Query('name') String? name});
-
   ///
   ///@param page
   Future<chopper.Response<ClientContractSummaryDtoApiPagedResponse>>
@@ -786,7 +772,7 @@ abstract class BattKit extends ChopperService {
 
   ///Create a new client (company with VAT nr. or private person)
   Future<chopper.Response<Client>> userV1ClientsPost(
-      {required CreateClient? body}) {
+      {required ContractsCreateClient? body}) {
     generatedMapping.putIfAbsent(Client, () => Client.fromJsonFactory);
 
     return _userV1ClientsPost(body: body);
@@ -798,7 +784,7 @@ abstract class BattKit extends ChopperService {
     optionalBody: true,
   )
   Future<chopper.Response<Client>> _userV1ClientsPost(
-      {@Body() required CreateClient? body});
+      {@Body() required ContractsCreateClient? body});
 
   ///Get information about a client you are the MainUser of
   ///@param clientId Client ID
@@ -912,7 +898,7 @@ abstract class BattKit extends ChopperService {
 
   ///Requests a password reset email to be sent
   Future<chopper.Response> userV1PasswordResetsPost(
-      {required PasswordReset? body}) {
+      {required ContractsPasswordReset? body}) {
     return _userV1PasswordResetsPost(body: body);
   }
 
@@ -922,10 +908,11 @@ abstract class BattKit extends ChopperService {
     optionalBody: true,
   )
   Future<chopper.Response> _userV1PasswordResetsPost(
-      {@Body() required PasswordReset? body});
+      {@Body() required ContractsPasswordReset? body});
 
   ///Initiates user signup
-  Future<chopper.Response> userV1UsersPost({required SignupUser? body}) {
+  Future<chopper.Response> userV1UsersPost(
+      {required ContractsSignupUser? body}) {
     return _userV1UsersPost(body: body);
   }
 
@@ -935,7 +922,7 @@ abstract class BattKit extends ChopperService {
     optionalBody: true,
   )
   Future<chopper.Response> _userV1UsersPost(
-      {@Body() required SignupUser? body});
+      {@Body() required ContractsSignupUser? body});
 
   ///
   Future<chopper.Response> userV1UsersDevicesPut(
@@ -990,18 +977,20 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response<ContractUser>> _userV1UsersMeGet();
 
   ///Get the onboarding status of your own user
-  Future<chopper.Response<Onboarding>> userV1UsersOnboardingGet() {
-    generatedMapping.putIfAbsent(Onboarding, () => Onboarding.fromJsonFactory);
+  Future<chopper.Response<ContractsOnboarding>> userV1UsersOnboardingGet() {
+    generatedMapping.putIfAbsent(
+        ContractsOnboarding, () => ContractsOnboarding.fromJsonFactory);
 
     return _userV1UsersOnboardingGet();
   }
 
   ///Get the onboarding status of your own user
   @Get(path: '/user/v1/users/onboarding')
-  Future<chopper.Response<Onboarding>> _userV1UsersOnboardingGet();
+  Future<chopper.Response<ContractsOnboarding>> _userV1UsersOnboardingGet();
 
   ///Upload your own documents
-  Future<chopper.Response<Onboarding>> userV1UsersOnboardingDocumentsPut({
+  Future<chopper.Response<ContractsOnboarding>>
+      userV1UsersOnboardingDocumentsPut({
     List<int>? backDriverLicense,
     List<int>? backId,
     List<int>? damageStatistic,
@@ -1009,7 +998,8 @@ abstract class BattKit extends ChopperService {
     List<int>? frontId,
     List<int>? selfie,
   }) {
-    generatedMapping.putIfAbsent(Onboarding, () => Onboarding.fromJsonFactory);
+    generatedMapping.putIfAbsent(
+        ContractsOnboarding, () => ContractsOnboarding.fromJsonFactory);
 
     return _userV1UsersOnboardingDocumentsPut(
         backDriverLicense: backDriverLicense,
@@ -1026,7 +1016,8 @@ abstract class BattKit extends ChopperService {
     optionalBody: true,
   )
   @Multipart()
-  Future<chopper.Response<Onboarding>> _userV1UsersOnboardingDocumentsPut({
+  Future<chopper.Response<ContractsOnboarding>>
+      _userV1UsersOnboardingDocumentsPut({
     @PartFile() List<int>? backDriverLicense,
     @PartFile() List<int>? backId,
     @PartFile() List<int>? damageStatistic,
@@ -1036,9 +1027,10 @@ abstract class BattKit extends ChopperService {
   });
 
   ///Upload your legal information
-  Future<chopper.Response<Onboarding>> userV1UsersOnboardingLegalPut(
-      {required OnboardingLegal? body}) {
-    generatedMapping.putIfAbsent(Onboarding, () => Onboarding.fromJsonFactory);
+  Future<chopper.Response<ContractsOnboarding>> userV1UsersOnboardingLegalPut(
+      {required ContractsOnboardingLegal? body}) {
+    generatedMapping.putIfAbsent(
+        ContractsOnboarding, () => ContractsOnboarding.fromJsonFactory);
 
     return _userV1UsersOnboardingLegalPut(body: body);
   }
@@ -1048,13 +1040,15 @@ abstract class BattKit extends ChopperService {
     path: '/user/v1/users/onboarding/legal',
     optionalBody: true,
   )
-  Future<chopper.Response<Onboarding>> _userV1UsersOnboardingLegalPut(
-      {@Body() required OnboardingLegal? body});
+  Future<chopper.Response<ContractsOnboarding>> _userV1UsersOnboardingLegalPut(
+      {@Body() required ContractsOnboardingLegal? body});
 
   ///Update your information
-  Future<chopper.Response<Onboarding>> userV1UsersOnboardingPersonalPut(
-      {required OnboardingPersonal? body}) {
-    generatedMapping.putIfAbsent(Onboarding, () => Onboarding.fromJsonFactory);
+  Future<chopper.Response<ContractsOnboarding>>
+      userV1UsersOnboardingPersonalPut(
+          {required ContractsOnboardingPersonal? body}) {
+    generatedMapping.putIfAbsent(
+        ContractsOnboarding, () => ContractsOnboarding.fromJsonFactory);
 
     return _userV1UsersOnboardingPersonalPut(body: body);
   }
@@ -1064,13 +1058,15 @@ abstract class BattKit extends ChopperService {
     path: '/user/v1/users/onboarding/personal',
     optionalBody: true,
   )
-  Future<chopper.Response<Onboarding>> _userV1UsersOnboardingPersonalPut(
-      {@Body() required OnboardingPersonal? body});
+  Future<chopper.Response<ContractsOnboarding>>
+      _userV1UsersOnboardingPersonalPut(
+          {@Body() required ContractsOnboardingPersonal? body});
 
   ///Register or verify your phone number
-  Future<chopper.Response<Onboarding>> userV1UsersOnboardingPhonePut(
-      {required OnboardingPhone? body}) {
-    generatedMapping.putIfAbsent(Onboarding, () => Onboarding.fromJsonFactory);
+  Future<chopper.Response<ContractsOnboarding>> userV1UsersOnboardingPhonePut(
+      {required ContractsOnboardingPhone? body}) {
+    generatedMapping.putIfAbsent(
+        ContractsOnboarding, () => ContractsOnboarding.fromJsonFactory);
 
     return _userV1UsersOnboardingPhonePut(body: body);
   }
@@ -1080,8 +1076,8 @@ abstract class BattKit extends ChopperService {
     path: '/user/v1/users/onboarding/phone',
     optionalBody: true,
   )
-  Future<chopper.Response<Onboarding>> _userV1UsersOnboardingPhonePut(
-      {@Body() required OnboardingPhone? body});
+  Future<chopper.Response<ContractsOnboarding>> _userV1UsersOnboardingPhonePut(
+      {@Body() required ContractsOnboardingPhone? body});
 
   ///
   ///@param role
@@ -1188,7 +1184,7 @@ abstract class BattKit extends ChopperService {
 
   ///Requests a resend of the verification email that is part of the user signup process
   Future<chopper.Response> userV1VerificationEmailResendsPost(
-      {required ResendVerificationEmail? body}) {
+      {required ContractsResendVerificationEmail? body}) {
     return _userV1VerificationEmailResendsPost(body: body);
   }
 
@@ -1198,7 +1194,7 @@ abstract class BattKit extends ChopperService {
     optionalBody: true,
   )
   Future<chopper.Response> _userV1VerificationEmailResendsPost(
-      {@Body() required ResendVerificationEmail? body});
+      {@Body() required ContractsResendVerificationEmail? body});
 
   ///
   Future<chopper.Response<VehicleGroupPage>> vehicleGroupV1VehicleGroupsGet() {
@@ -1785,44 +1781,6 @@ abstract class BattKit extends ChopperService {
     @Path('id') required String? id,
     @Body() required VehicleBaseLocation? body,
   });
-
-  ///Create a new vehicle contract
-  Future<chopper.Response<ClientContractVehicleRecord>>
-      vehiclecontractV1VehiclecontractsPost(
-          {required CreateVehicleContract? body}) {
-    generatedMapping.putIfAbsent(ClientContractVehicleRecord,
-        () => ClientContractVehicleRecord.fromJsonFactory);
-
-    return _vehiclecontractV1VehiclecontractsPost(body: body);
-  }
-
-  ///Create a new vehicle contract
-  @Post(
-    path: '/vehiclecontract/v1/vehiclecontracts',
-    optionalBody: true,
-  )
-  Future<chopper.Response<ClientContractVehicleRecord>>
-      _vehiclecontractV1VehiclecontractsPost(
-          {@Body() required CreateVehicleContract? body});
-
-  ///Get all vehicle contracts for a specific client
-  ///@param clientId Client ID
-  Future<chopper.Response<VehicleContractResponse>>
-      vehiclecontractV1VehiclecontractsClientsClientIdGet(
-          {required int? clientId}) {
-    generatedMapping.putIfAbsent(
-        VehicleContractResponse, () => VehicleContractResponse.fromJsonFactory);
-
-    return _vehiclecontractV1VehiclecontractsClientsClientIdGet(
-        clientId: clientId);
-  }
-
-  ///Get all vehicle contracts for a specific client
-  ///@param clientId Client ID
-  @Get(path: '/vehiclecontract/v1/vehiclecontracts/clients/{clientId}')
-  Future<chopper.Response<VehicleContractResponse>>
-      _vehiclecontractV1VehiclecontractsClientsClientIdGet(
-          {@Path('clientId') required int? clientId});
 }
 
 typedef $JsonFactory<T> = T Function(Map<String, dynamic> json);
