@@ -49,4 +49,4 @@ jobs:
             --title "🤖 Auto generated changes" \
             --body "This PR contains auto-generated code from build_runner."
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}

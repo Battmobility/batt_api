@@ -405,8 +405,8 @@
           }
         },
         "required": [
-          "hourPrice",
           "dayPrice",
+          "hourPrice",
           "kmPrice"
         ],
         "type": "object"
