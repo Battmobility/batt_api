@@ -1,7 +1,6 @@
 name: Run build_runner on main
 on:
   push:
-    branches: [ main ]
     paths:
       - 'lib/api/definition/batt-kit.json'
 jobs:
@@ -37,7 +36,7 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Auto-generated code from build_runner"
-            git push origin main
+            git push origin ${{ github.ref_name }}
           fi
 
       - name: Create PR on merge conflict
