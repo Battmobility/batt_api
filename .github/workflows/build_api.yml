@@ -1,4 +1,4 @@
-name: Run build_runner on main
+name: Run build_runner when not on main
 on:
   push:
     paths:
@@ -6,6 +6,7 @@ on:
 jobs:
   build_runner:
     runs-on: ubuntu-latest
+    if: github.ref_name != 'main'
     permissions:
       contents: write  # Required to push changes to the repository
       pull-requests: write  # Required to create PRs
@@ -39,13 +40,13 @@ jobs:
             git push origin ${{ github.ref_name }}
           fi
 
-      - name: Create PR when not on main
-        if: github.ref_name != 'main'
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Auto-generated code from build_runner"
-          title: "🤖 Auto generated changes"
-          body: "This PR contains auto-generated code from build_runner."
-          branch: ${{ github.ref_name }}
-          base: main
+      - name: Create PR to main
+        if: steps.commit.outputs.no_changes == 'false' && github.ref_name != 'main'
+        run: |
+          gh pr create \
+            --base main \
+            --head ${{ github.ref_name }} \
+            --title "🤖 Auto generated changes" \
+            --body "This PR contains auto-generated code from build_runner."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
