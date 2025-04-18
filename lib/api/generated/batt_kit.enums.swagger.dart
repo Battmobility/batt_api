@@ -257,44 +257,6 @@ enum NonAvailabilityType {
   const NonAvailabilityType(this.value);
 }
 
-enum OnboardingStatus {
-  @JsonValue(null)
-  swaggerGeneratedUnknown(null),
-
-  @JsonValue('NONE')
-  none('NONE'),
-  @JsonValue('CONVICTION')
-  conviction('CONVICTION'),
-  @JsonValue('DOCUMENTS')
-  documents('DOCUMENTS'),
-  @JsonValue('PERSONAL')
-  personal('PERSONAL'),
-  @JsonValue('PHONE')
-  phone('PHONE'),
-  @JsonValue('COMPLETED')
-  completed('COMPLETED');
-
-  final String? value;
-
-  const OnboardingStatus(this.value);
-}
-
-enum OnboardingPersonalLicenseType {
-  @JsonValue(null)
-  swaggerGeneratedUnknown(null),
-
-  @JsonValue('BELGIAN')
-  belgian('BELGIAN'),
-  @JsonValue('EUROPEAN')
-  european('EUROPEAN'),
-  @JsonValue('OTHER')
-  other('OTHER');
-
-  final String? value;
-
-  const OnboardingPersonalLicenseType(this.value);
-}
-
 enum SearchBookingsRequestInvoiceStatuses {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),
@@ -585,6 +547,44 @@ enum VehicleUsageUpdateStatusRequestStatus {
   final String? value;
 
   const VehicleUsageUpdateStatusRequestStatus(this.value);
+}
+
+enum ContractsOnboardingStatus {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('NONE')
+  none('NONE'),
+  @JsonValue('CONVICTION')
+  conviction('CONVICTION'),
+  @JsonValue('DOCUMENTS')
+  documents('DOCUMENTS'),
+  @JsonValue('PERSONAL')
+  personal('PERSONAL'),
+  @JsonValue('PHONE')
+  phone('PHONE'),
+  @JsonValue('COMPLETED')
+  completed('COMPLETED');
+
+  final String? value;
+
+  const ContractsOnboardingStatus(this.value);
+}
+
+enum ContractsOnboardingPersonalLicenseType {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('BELGIAN')
+  belgian('BELGIAN'),
+  @JsonValue('EUROPEAN')
+  european('EUROPEAN'),
+  @JsonValue('OTHER')
+  other('OTHER');
+
+  final String? value;
+
+  const ContractsOnboardingPersonalLicenseType(this.value);
 }
 
 enum UserV1UsersRolesRoleGetRole {
