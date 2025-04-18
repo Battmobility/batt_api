@@ -740,20 +740,6 @@
         ],
         "type": "string"
       },
-      "ClientContractResponse": {
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "vehicleContracts": {
-            "items": {
-              "$ref": "#/components/schemas/VehicleContract"
-            },
-            "type": "array"
-          }
-        },
-        "type": "object"
-      },
       "ClientContractStatus": {
         "enum": [
           "Draft",
@@ -926,39 +912,6 @@
         },
         "type": "object"
       },
-      "ClientContractVehicleRecord": {
-        "properties": {
-          "battMaxType": {
-            "type": "string"
-          },
-          "clientContractId": {
-            "type": "integer"
-          },
-          "costForAdditionalKmsExclVat": {
-            "type": "number"
-          },
-          "effectiveStartDate": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "maxInvoiceAmountExclVat": {
-            "type": "number"
-          },
-          "monthlyLeaseAmountExclVat": {
-            "type": "number"
-          },
-          "numberOfMonths": {
-            "type": "integer"
-          },
-          "paidStartupCost": {
-            "type": "number"
-          },
-          "yearlyKmsOnContract": {
-            "type": "integer"
-          }
-        },
-        "type": "object"
-      },
       "ClientReferenceDto": {
         "additionalProperties": false,
         "properties": {
@@ -1054,26 +1007,6 @@
         },
         "type": "object"
       },
-      "Convictions": {
-        "properties": {
-          "convictionBloodTestRefusal": {
-            "type": "boolean"
-          },
-          "convictionDrunk": {
-            "type": "boolean"
-          },
-          "convictionHitAndRun": {
-            "type": "boolean"
-          },
-          "convictionIntoxicated": {
-            "type": "boolean"
-          },
-          "convictionLicenseRevocation": {
-            "type": "boolean"
-          }
-        },
-        "type": "object"
-      },
       "CreateBodyStyleRequest": {
         "properties": {
           "description": {
@@ -1123,44 +1056,6 @@
           "bookingPrice",
           "period",
           "vehicleId"
-        ],
-        "type": "object"
-      },
-      "CreateClient": {
-        "properties": {
-          "city": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "houseNumber": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "postalCode": {
-            "type": "string"
-          },
-          "street": {
-            "type": "string"
-          },
-          "vat": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "city",
-          "country",
-          "email",
-          "houseNumber",
-          "name",
-          "postalCode",
-          "street"
         ],
         "type": "object"
       },
@@ -1214,66 +1109,6 @@
         "required": [
           "email",
           "remoteId"
-        ],
-        "type": "object"
-      },
-      "CreateVehicleContract": {
-        "properties": {
-          "battMaxType": {
-            "type": "string"
-          },
-          "billingType": {
-            "type": "string"
-          },
-          "clientContractId": {
-            "description": "if present, creates new ClientContract",
-            "type": "integer"
-          },
-          "clientId": {
-            "type": "integer"
-          },
-          "costForAdditionalKmsExclVat": {
-            "type": "number"
-          },
-          "effectiveStartDate": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "endDate": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "monthlyLeaseAmountExclVat": {
-            "type": "number"
-          },
-          "monthlyMaxInvoiceAmountExclVat": {
-            "type": "number"
-          },
-          "numberOfMonths": {
-            "type": "integer"
-          },
-          "paidStartupCost": {
-            "type": "number"
-          },
-          "startDate": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "vehicleId": {
-            "description": "If ClientContractID is not present, these 3 fields are required",
-            "type": "string"
-          },
-          "yearlyKmsOnContract": {
-            "type": "integer"
-          }
-        },
-        "required": [
-          "battMaxType",
-          "clientId",
-          "effectiveStartDate",
-          "monthlyLeaseAmountExclVat",
-          "numberOfMonths",
-          "vehicleId"
         ],
         "type": "object"
       },
@@ -1823,142 +1658,6 @@
         },
         "type": "object"
       },
-      "Onboarding": {
-        "properties": {
-          "legal": {
-            "$ref": "#/components/schemas/OnboardingLegal"
-          },
-          "personal": {
-            "$ref": "#/components/schemas/OnboardingPersonal"
-          },
-          "phone": {
-            "$ref": "#/components/schemas/OnboardingPhone"
-          },
-          "status": {
-            "enum": [
-              "NONE",
-              "CONVICTION",
-              "DOCUMENTS",
-              "PERSONAL",
-              "PHONE",
-              "COMPLETED"
-            ],
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "OnboardingLegal": {
-        "properties": {
-          "convictions": {
-            "$ref": "#/components/schemas/Convictions"
-          },
-          "nrOfAccidents": {
-            "type": "integer"
-          }
-        },
-        "required": [
-          "convictions",
-          "nrOfAccidents"
-        ],
-        "type": "object"
-      },
-      "OnboardingPersonal": {
-        "properties": {
-          "box": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "dateCurrentLicense": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "dateLicenseUntil": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "dateOfBirth": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "firstName": {
-            "type": "string"
-          },
-          "houseNumber": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "licenseNumber": {
-            "type": "string"
-          },
-          "licenseType": {
-            "enum": [
-              "BELGIAN",
-              "EUROPEAN",
-              "OTHER"
-            ],
-            "type": "string"
-          },
-          "nationality": {
-            "type": "string"
-          },
-          "postalCode": {
-            "type": "string"
-          },
-          "socialSecurityNumber": {
-            "type": "string"
-          },
-          "street": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "box",
-          "city",
-          "dateCurrentLicense",
-          "dateLicenseUntil",
-          "dateOfBirth",
-          "firstName",
-          "houseNumber",
-          "lastName",
-          "licenseNumber",
-          "licenseType",
-          "nationality",
-          "postalCode",
-          "socialSecurityNumber",
-          "street"
-        ],
-        "type": "object"
-      },
-      "OnboardingPhone": {
-        "properties": {
-          "phoneNumber": {
-            "type": "string"
-          },
-          "phoneNumberValidationCode": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "phoneNumber"
-        ],
-        "type": "object"
-      },
-      "PasswordReset": {
-        "properties": {
-          "email": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "email"
-        ],
-        "type": "object"
-      },
       "Period": {
         "properties": {
           "end": {
@@ -2023,17 +1722,6 @@
             "type": "string"
           }
         },
-        "type": "object"
-      },
-      "ResendVerificationEmail": {
-        "properties": {
-          "email": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "email"
-        ],
         "type": "object"
       },
       "SearchBookingsRequest": {
@@ -2205,21 +1893,6 @@
             "$ref": "#/components/schemas/VehicleFilterCriteria"
           }
         },
-        "type": "object"
-      },
-      "SignupUser": {
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "email",
-          "password"
-        ],
         "type": "object"
       },
       "StartVehicleUsageRequest": {
@@ -2709,66 +2382,6 @@
         },
         "type": "object"
       },
-      "VehicleContract": {
-        "properties": {
-          "battMaxType": {
-            "type": "string"
-          },
-          "clientContractId": {
-            "type": "integer"
-          },
-          "clientId": {
-            "type": "integer"
-          },
-          "clientName": {
-            "type": "string"
-          },
-          "clientRoles": {
-            "type": "string"
-          },
-          "costForAdditionalKmsExclVat": {
-            "type": "number"
-          },
-          "endDate": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "maxInvoiceAmountExclVat": {
-            "type": "number"
-          },
-          "monthlyLeaseAmountExclVat": {
-            "type": "number"
-          },
-          "numberOfMonths": {
-            "type": "integer"
-          },
-          "paidStartupCost": {
-            "type": "number"
-          },
-          "startDate": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "vehicleId": {
-            "type": "string"
-          },
-          "yearlyKmsOnContract": {
-            "type": "integer"
-          }
-        },
-        "type": "object"
-      },
-      "VehicleContractResponse": {
-        "properties": {
-          "clientContracts": {
-            "items": {
-              "$ref": "#/components/schemas/ClientContractResponse"
-            },
-            "type": "array"
-          }
-        },
-        "type": "object"
-      },
       "VehicleFilterCriteria": {
         "properties": {
           "bodyStyleIds": {
@@ -3092,6 +2705,226 @@
             "type": "array"
           }
         },
+        "type": "object"
+      },
+      "contracts.Convictions": {
+        "properties": {
+          "convictionBloodTestRefusal": {
+            "type": "boolean"
+          },
+          "convictionDrunk": {
+            "type": "boolean"
+          },
+          "convictionHitAndRun": {
+            "type": "boolean"
+          },
+          "convictionIntoxicated": {
+            "type": "boolean"
+          },
+          "convictionLicenseRevocation": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "contracts.CreateClient": {
+        "properties": {
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "houseNumber": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
+          "vat": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "city",
+          "country",
+          "email",
+          "houseNumber",
+          "name",
+          "postalCode",
+          "street"
+        ],
+        "type": "object"
+      },
+      "contracts.Onboarding": {
+        "properties": {
+          "legal": {
+            "$ref": "#/components/schemas/contracts.OnboardingLegal"
+          },
+          "personal": {
+            "$ref": "#/components/schemas/contracts.OnboardingPersonal"
+          },
+          "phone": {
+            "$ref": "#/components/schemas/contracts.OnboardingPhone"
+          },
+          "status": {
+            "enum": [
+              "NONE",
+              "CONVICTION",
+              "DOCUMENTS",
+              "PERSONAL",
+              "PHONE",
+              "COMPLETED"
+            ],
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "contracts.OnboardingLegal": {
+        "properties": {
+          "convictions": {
+            "$ref": "#/components/schemas/contracts.Convictions"
+          },
+          "nrOfAccidents": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "convictions",
+          "nrOfAccidents"
+        ],
+        "type": "object"
+      },
+      "contracts.OnboardingPersonal": {
+        "properties": {
+          "box": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "dateCurrentLicense": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "dateLicenseUntil": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "houseNumber": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "licenseNumber": {
+            "type": "string"
+          },
+          "licenseType": {
+            "enum": [
+              "BELGIAN",
+              "EUROPEAN",
+              "OTHER"
+            ],
+            "type": "string"
+          },
+          "nationality": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "socialSecurityNumber": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "box",
+          "city",
+          "dateCurrentLicense",
+          "dateLicenseUntil",
+          "dateOfBirth",
+          "firstName",
+          "houseNumber",
+          "lastName",
+          "licenseNumber",
+          "licenseType",
+          "nationality",
+          "postalCode",
+          "socialSecurityNumber",
+          "street"
+        ],
+        "type": "object"
+      },
+      "contracts.OnboardingPhone": {
+        "properties": {
+          "phoneNumber": {
+            "type": "string"
+          },
+          "phoneNumberValidationCode": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "phoneNumber"
+        ],
+        "type": "object"
+      },
+      "contracts.PasswordReset": {
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "type": "object"
+      },
+      "contracts.ResendVerificationEmail": {
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "type": "object"
+      },
+      "contracts.SignupUser": {
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
         "type": "object"
       }
     }
@@ -3629,40 +3462,6 @@
         "summary": "Update vehicle details",
         "tags": [
           "vehicle-facade"
-        ]
-      }
-    },
-    "/client/v1/clients": {
-      "get": {
-        "description": "Retrieves a list of all clients. Can be filtered using the 'name' query parameter for a LIKE search.",
-        "parameters": [
-          {
-            "description": "Filter clients by name (LIKE search)",
-            "in": "query",
-            "name": "name",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/Client"
-                  },
-                  "type": "array"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "summary": "Get all clients, optionally filtered by name",
-        "tags": [
-          "client-facade"
         ]
       }
     },
@@ -5343,7 +5142,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateClient"
+                "$ref": "#/components/schemas/contracts.CreateClient"
               }
             }
           },
@@ -5576,7 +5375,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PasswordReset"
+                "$ref": "#/components/schemas/contracts.PasswordReset"
               }
             }
           },
@@ -5621,7 +5420,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SignupUser"
+                "$ref": "#/components/schemas/contracts.SignupUser"
               }
             }
           },
@@ -5808,7 +5607,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Onboarding"
+                  "$ref": "#/components/schemas/contracts.Onboarding"
                 }
               }
             },
@@ -5870,7 +5669,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Onboarding"
+                  "$ref": "#/components/schemas/contracts.Onboarding"
                 }
               }
             },
@@ -5890,7 +5689,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OnboardingLegal"
+                "$ref": "#/components/schemas/contracts.OnboardingLegal"
               }
             }
           },
@@ -5902,7 +5701,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Onboarding"
+                  "$ref": "#/components/schemas/contracts.Onboarding"
                 }
               }
             },
@@ -5922,7 +5721,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OnboardingPersonal"
+                "$ref": "#/components/schemas/contracts.OnboardingPersonal"
               }
             }
           },
@@ -5934,7 +5733,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Onboarding"
+                  "$ref": "#/components/schemas/contracts.Onboarding"
                 }
               }
             },
@@ -5954,7 +5753,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OnboardingPhone"
+                "$ref": "#/components/schemas/contracts.OnboardingPhone"
               }
             }
           },
@@ -5966,7 +5765,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Onboarding"
+                  "$ref": "#/components/schemas/contracts.Onboarding"
                 }
               }
             },
@@ -6185,7 +5984,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ResendVerificationEmail"
+                "$ref": "#/components/schemas/contracts.ResendVerificationEmail"
               }
             }
           },
@@ -7166,70 +6965,6 @@
         },
         "tags": [
           "vehicle-base-location-facade"
-        ]
-      }
-    },
-    "/vehiclecontract/v1/vehiclecontracts": {
-      "post": {
-        "description": "Creates a new vehicle contract based on the provided details.",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateVehicleContract"
-              }
-            }
-          },
-          "description": "Vehicle Contract details",
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientContractVehicleRecord"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "summary": "Create a new vehicle contract",
-        "tags": [
-          "vehiclecontracts"
-        ]
-      }
-    },
-    "/vehiclecontract/v1/vehiclecontracts/clients/{clientId}": {
-      "get": {
-        "description": "Retrieves a list of all vehicle contracts associated with a given client ID.",
-        "parameters": [
-          {
-            "description": "Client ID",
-            "in": "path",
-            "name": "clientId",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VehicleContractResponse"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "summary": "Get all vehicle contracts for a specific client",
-        "tags": [
-          "vehiclecontracts"
         ]
       }
     }

@@ -39,13 +39,13 @@ jobs:
             git push origin ${{ github.ref_name }}
           fi
 
-      - name: Create PR on merge conflict
-        if: steps.commit.outcome == 'failure'
+      - name: Create PR when not on main
+        if: github.ref_name != 'main'
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Auto-generated code from build_runner"
-          title: "Merge build_runner generated changes"
+          title: "🤖 Auto generated changes"
           body: "This PR contains auto-generated code from build_runner."
-          branch: "build_runner-updates"
+          branch: ${{ github.ref_name }}
           base: main
