@@ -244,6 +244,19 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<List<Client>>> _clientV1ClientsGet({String? name}) {
+    final Uri $url = Uri.parse('/client/v1/clients');
+    final Map<String, dynamic> $params = <String, dynamic>{'name': name};
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
+    return client.send<List<Client>, Client>($request);
+  }
+
+  @override
   Future<Response<ClientContractSummaryDtoApiPagedResponse>>
       _contractV1ContractsGet({String? page}) {
     final Uri $url = Uri.parse('/contract/v1/contracts');
@@ -581,8 +594,7 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<Client>> _userV1ClientsPost(
-      {required ContractsCreateClient? body}) {
+  Future<Response<Client>> _userV1ClientsPost({required CreateClient? body}) {
     final Uri $url = Uri.parse('/user/v1/clients');
     final $body = body;
     final Request $request = Request(
@@ -684,7 +696,7 @@ final class _$BattKit extends BattKit {
 
   @override
   Future<Response<dynamic>> _userV1PasswordResetsPost(
-      {required ContractsPasswordReset? body}) {
+      {required PasswordReset? body}) {
     final Uri $url = Uri.parse('/user/v1/password-resets');
     final $body = body;
     final Request $request = Request(
@@ -697,8 +709,7 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<dynamic>> _userV1UsersPost(
-      {required ContractsSignupUser? body}) {
+  Future<Response<dynamic>> _userV1UsersPost({required SignupUser? body}) {
     final Uri $url = Uri.parse('/user/v1/users');
     final $body = body;
     final Request $request = Request(
@@ -760,18 +771,18 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<ContractsOnboarding>> _userV1UsersOnboardingGet() {
+  Future<Response<Onboarding>> _userV1UsersOnboardingGet() {
     final Uri $url = Uri.parse('/user/v1/users/onboarding');
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
     );
-    return client.send<ContractsOnboarding, ContractsOnboarding>($request);
+    return client.send<Onboarding, Onboarding>($request);
   }
 
   @override
-  Future<Response<ContractsOnboarding>> _userV1UsersOnboardingDocumentsPut({
+  Future<Response<Onboarding>> _userV1UsersOnboardingDocumentsPut({
     List<int>? backDriverLicense,
     List<int>? backId,
     List<int>? damageStatistic,
@@ -813,12 +824,12 @@ final class _$BattKit extends BattKit {
       parts: $parts,
       multipart: true,
     );
-    return client.send<ContractsOnboarding, ContractsOnboarding>($request);
+    return client.send<Onboarding, Onboarding>($request);
   }
 
   @override
-  Future<Response<ContractsOnboarding>> _userV1UsersOnboardingLegalPut(
-      {required ContractsOnboardingLegal? body}) {
+  Future<Response<Onboarding>> _userV1UsersOnboardingLegalPut(
+      {required OnboardingLegal? body}) {
     final Uri $url = Uri.parse('/user/v1/users/onboarding/legal');
     final $body = body;
     final Request $request = Request(
@@ -827,12 +838,12 @@ final class _$BattKit extends BattKit {
       client.baseUrl,
       body: $body,
     );
-    return client.send<ContractsOnboarding, ContractsOnboarding>($request);
+    return client.send<Onboarding, Onboarding>($request);
   }
 
   @override
-  Future<Response<ContractsOnboarding>> _userV1UsersOnboardingPersonalPut(
-      {required ContractsOnboardingPersonal? body}) {
+  Future<Response<Onboarding>> _userV1UsersOnboardingPersonalPut(
+      {required OnboardingPersonal? body}) {
     final Uri $url = Uri.parse('/user/v1/users/onboarding/personal');
     final $body = body;
     final Request $request = Request(
@@ -841,12 +852,12 @@ final class _$BattKit extends BattKit {
       client.baseUrl,
       body: $body,
     );
-    return client.send<ContractsOnboarding, ContractsOnboarding>($request);
+    return client.send<Onboarding, Onboarding>($request);
   }
 
   @override
-  Future<Response<ContractsOnboarding>> _userV1UsersOnboardingPhonePut(
-      {required ContractsOnboardingPhone? body}) {
+  Future<Response<Onboarding>> _userV1UsersOnboardingPhonePut(
+      {required OnboardingPhone? body}) {
     final Uri $url = Uri.parse('/user/v1/users/onboarding/phone');
     final $body = body;
     final Request $request = Request(
@@ -855,7 +866,7 @@ final class _$BattKit extends BattKit {
       client.baseUrl,
       body: $body,
     );
-    return client.send<ContractsOnboarding, ContractsOnboarding>($request);
+    return client.send<Onboarding, Onboarding>($request);
   }
 
   @override
@@ -943,7 +954,7 @@ final class _$BattKit extends BattKit {
 
   @override
   Future<Response<dynamic>> _userV1VerificationEmailResendsPost(
-      {required ContractsResendVerificationEmail? body}) {
+      {required ResendVerificationEmail? body}) {
     final Uri $url = Uri.parse('/user/v1/verification-email-resends');
     final $body = body;
     final Request $request = Request(
@@ -1426,5 +1437,36 @@ final class _$BattKit extends BattKit {
       body: $body,
     );
     return client.send<VehicleBaseLocation, VehicleBaseLocation>($request);
+  }
+
+  @override
+  Future<Response<ClientContractVehicleRecord>>
+      _vehiclecontractV1VehiclecontractsPost(
+          {required CreateVehicleContract? body}) {
+    final Uri $url = Uri.parse('/vehiclecontract/v1/vehiclecontracts');
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<ClientContractVehicleRecord,
+        ClientContractVehicleRecord>($request);
+  }
+
+  @override
+  Future<Response<VehicleContractResponse>>
+      _vehiclecontractV1VehiclecontractsClientsClientIdGet(
+          {required int? clientId}) {
+    final Uri $url =
+        Uri.parse('/vehiclecontract/v1/vehiclecontracts/clients/${clientId}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client
+        .send<VehicleContractResponse, VehicleContractResponse>($request);
   }
 }

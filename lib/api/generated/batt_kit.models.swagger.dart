@@ -2645,6 +2645,64 @@ extension $ClientContractDtoApiDataResponseExtension
 }
 
 @JsonSerializable(explicitToJson: true)
+class ClientContractResponse {
+  const ClientContractResponse({
+    this.id,
+    this.vehicleContracts,
+  });
+
+  factory ClientContractResponse.fromJson(Map<String, dynamic> json) =>
+      _$ClientContractResponseFromJson(json);
+
+  static const toJsonFactory = _$ClientContractResponseToJson;
+  Map<String, dynamic> toJson() => _$ClientContractResponseToJson(this);
+
+  @JsonKey(name: 'id')
+  final int? id;
+  @JsonKey(name: 'vehicleContracts', defaultValue: <VehicleContract>[])
+  final List<VehicleContract>? vehicleContracts;
+  static const fromJsonFactory = _$ClientContractResponseFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is ClientContractResponse &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.vehicleContracts, vehicleContracts) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicleContracts, vehicleContracts)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(vehicleContracts) ^
+      runtimeType.hashCode;
+}
+
+extension $ClientContractResponseExtension on ClientContractResponse {
+  ClientContractResponse copyWith(
+      {int? id, List<VehicleContract>? vehicleContracts}) {
+    return ClientContractResponse(
+        id: id ?? this.id,
+        vehicleContracts: vehicleContracts ?? this.vehicleContracts);
+  }
+
+  ClientContractResponse copyWithWrapped(
+      {Wrapped<int?>? id, Wrapped<List<VehicleContract>?>? vehicleContracts}) {
+    return ClientContractResponse(
+        id: (id != null ? id.value : this.id),
+        vehicleContracts: (vehicleContracts != null
+            ? vehicleContracts.value
+            : this.vehicleContracts));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class ClientContractSummaryDto {
   const ClientContractSummaryDto({
     this.$client,
@@ -3175,6 +3233,167 @@ extension $ClientContractUsageDtoExtension on ClientContractUsageDto {
 }
 
 @JsonSerializable(explicitToJson: true)
+class ClientContractVehicleRecord {
+  const ClientContractVehicleRecord({
+    this.battMaxType,
+    this.clientContractId,
+    this.costForAdditionalKmsExclVat,
+    this.effectiveStartDate,
+    this.maxInvoiceAmountExclVat,
+    this.monthlyLeaseAmountExclVat,
+    this.numberOfMonths,
+    this.paidStartupCost,
+    this.yearlyKmsOnContract,
+  });
+
+  factory ClientContractVehicleRecord.fromJson(Map<String, dynamic> json) =>
+      _$ClientContractVehicleRecordFromJson(json);
+
+  static const toJsonFactory = _$ClientContractVehicleRecordToJson;
+  Map<String, dynamic> toJson() => _$ClientContractVehicleRecordToJson(this);
+
+  @JsonKey(name: 'battMaxType')
+  final String? battMaxType;
+  @JsonKey(name: 'clientContractId')
+  final int? clientContractId;
+  @JsonKey(name: 'costForAdditionalKmsExclVat')
+  final double? costForAdditionalKmsExclVat;
+  @JsonKey(name: 'effectiveStartDate')
+  final DateTime? effectiveStartDate;
+  @JsonKey(name: 'maxInvoiceAmountExclVat')
+  final double? maxInvoiceAmountExclVat;
+  @JsonKey(name: 'monthlyLeaseAmountExclVat')
+  final double? monthlyLeaseAmountExclVat;
+  @JsonKey(name: 'numberOfMonths')
+  final int? numberOfMonths;
+  @JsonKey(name: 'paidStartupCost')
+  final double? paidStartupCost;
+  @JsonKey(name: 'yearlyKmsOnContract')
+  final int? yearlyKmsOnContract;
+  static const fromJsonFactory = _$ClientContractVehicleRecordFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is ClientContractVehicleRecord &&
+            (identical(other.battMaxType, battMaxType) ||
+                const DeepCollectionEquality()
+                    .equals(other.battMaxType, battMaxType)) &&
+            (identical(other.clientContractId, clientContractId) ||
+                const DeepCollectionEquality()
+                    .equals(other.clientContractId, clientContractId)) &&
+            (identical(other.costForAdditionalKmsExclVat,
+                    costForAdditionalKmsExclVat) ||
+                const DeepCollectionEquality().equals(
+                    other.costForAdditionalKmsExclVat,
+                    costForAdditionalKmsExclVat)) &&
+            (identical(other.effectiveStartDate, effectiveStartDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.effectiveStartDate, effectiveStartDate)) &&
+            (identical(
+                    other.maxInvoiceAmountExclVat, maxInvoiceAmountExclVat) ||
+                const DeepCollectionEquality().equals(
+                    other.maxInvoiceAmountExclVat, maxInvoiceAmountExclVat)) &&
+            (identical(other.monthlyLeaseAmountExclVat,
+                    monthlyLeaseAmountExclVat) ||
+                const DeepCollectionEquality().equals(
+                    other.monthlyLeaseAmountExclVat,
+                    monthlyLeaseAmountExclVat)) &&
+            (identical(other.numberOfMonths, numberOfMonths) ||
+                const DeepCollectionEquality()
+                    .equals(other.numberOfMonths, numberOfMonths)) &&
+            (identical(other.paidStartupCost, paidStartupCost) ||
+                const DeepCollectionEquality()
+                    .equals(other.paidStartupCost, paidStartupCost)) &&
+            (identical(other.yearlyKmsOnContract, yearlyKmsOnContract) ||
+                const DeepCollectionEquality()
+                    .equals(other.yearlyKmsOnContract, yearlyKmsOnContract)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(battMaxType) ^
+      const DeepCollectionEquality().hash(clientContractId) ^
+      const DeepCollectionEquality().hash(costForAdditionalKmsExclVat) ^
+      const DeepCollectionEquality().hash(effectiveStartDate) ^
+      const DeepCollectionEquality().hash(maxInvoiceAmountExclVat) ^
+      const DeepCollectionEquality().hash(monthlyLeaseAmountExclVat) ^
+      const DeepCollectionEquality().hash(numberOfMonths) ^
+      const DeepCollectionEquality().hash(paidStartupCost) ^
+      const DeepCollectionEquality().hash(yearlyKmsOnContract) ^
+      runtimeType.hashCode;
+}
+
+extension $ClientContractVehicleRecordExtension on ClientContractVehicleRecord {
+  ClientContractVehicleRecord copyWith(
+      {String? battMaxType,
+      int? clientContractId,
+      double? costForAdditionalKmsExclVat,
+      DateTime? effectiveStartDate,
+      double? maxInvoiceAmountExclVat,
+      double? monthlyLeaseAmountExclVat,
+      int? numberOfMonths,
+      double? paidStartupCost,
+      int? yearlyKmsOnContract}) {
+    return ClientContractVehicleRecord(
+        battMaxType: battMaxType ?? this.battMaxType,
+        clientContractId: clientContractId ?? this.clientContractId,
+        costForAdditionalKmsExclVat:
+            costForAdditionalKmsExclVat ?? this.costForAdditionalKmsExclVat,
+        effectiveStartDate: effectiveStartDate ?? this.effectiveStartDate,
+        maxInvoiceAmountExclVat:
+            maxInvoiceAmountExclVat ?? this.maxInvoiceAmountExclVat,
+        monthlyLeaseAmountExclVat:
+            monthlyLeaseAmountExclVat ?? this.monthlyLeaseAmountExclVat,
+        numberOfMonths: numberOfMonths ?? this.numberOfMonths,
+        paidStartupCost: paidStartupCost ?? this.paidStartupCost,
+        yearlyKmsOnContract: yearlyKmsOnContract ?? this.yearlyKmsOnContract);
+  }
+
+  ClientContractVehicleRecord copyWithWrapped(
+      {Wrapped<String?>? battMaxType,
+      Wrapped<int?>? clientContractId,
+      Wrapped<double?>? costForAdditionalKmsExclVat,
+      Wrapped<DateTime?>? effectiveStartDate,
+      Wrapped<double?>? maxInvoiceAmountExclVat,
+      Wrapped<double?>? monthlyLeaseAmountExclVat,
+      Wrapped<int?>? numberOfMonths,
+      Wrapped<double?>? paidStartupCost,
+      Wrapped<int?>? yearlyKmsOnContract}) {
+    return ClientContractVehicleRecord(
+        battMaxType:
+            (battMaxType != null ? battMaxType.value : this.battMaxType),
+        clientContractId: (clientContractId != null
+            ? clientContractId.value
+            : this.clientContractId),
+        costForAdditionalKmsExclVat: (costForAdditionalKmsExclVat != null
+            ? costForAdditionalKmsExclVat.value
+            : this.costForAdditionalKmsExclVat),
+        effectiveStartDate: (effectiveStartDate != null
+            ? effectiveStartDate.value
+            : this.effectiveStartDate),
+        maxInvoiceAmountExclVat: (maxInvoiceAmountExclVat != null
+            ? maxInvoiceAmountExclVat.value
+            : this.maxInvoiceAmountExclVat),
+        monthlyLeaseAmountExclVat: (monthlyLeaseAmountExclVat != null
+            ? monthlyLeaseAmountExclVat.value
+            : this.monthlyLeaseAmountExclVat),
+        numberOfMonths: (numberOfMonths != null
+            ? numberOfMonths.value
+            : this.numberOfMonths),
+        paidStartupCost: (paidStartupCost != null
+            ? paidStartupCost.value
+            : this.paidStartupCost),
+        yearlyKmsOnContract: (yearlyKmsOnContract != null
+            ? yearlyKmsOnContract.value
+            : this.yearlyKmsOnContract));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class ClientReferenceDto {
   const ClientReferenceDto({
     this.id,
@@ -3510,6 +3729,115 @@ extension $ContractUserExtension on ContractUser {
 }
 
 @JsonSerializable(explicitToJson: true)
+class Convictions {
+  const Convictions({
+    this.convictionBloodTestRefusal,
+    this.convictionDrunk,
+    this.convictionHitAndRun,
+    this.convictionIntoxicated,
+    this.convictionLicenseRevocation,
+  });
+
+  factory Convictions.fromJson(Map<String, dynamic> json) =>
+      _$ConvictionsFromJson(json);
+
+  static const toJsonFactory = _$ConvictionsToJson;
+  Map<String, dynamic> toJson() => _$ConvictionsToJson(this);
+
+  @JsonKey(name: 'convictionBloodTestRefusal')
+  final bool? convictionBloodTestRefusal;
+  @JsonKey(name: 'convictionDrunk')
+  final bool? convictionDrunk;
+  @JsonKey(name: 'convictionHitAndRun')
+  final bool? convictionHitAndRun;
+  @JsonKey(name: 'convictionIntoxicated')
+  final bool? convictionIntoxicated;
+  @JsonKey(name: 'convictionLicenseRevocation')
+  final bool? convictionLicenseRevocation;
+  static const fromJsonFactory = _$ConvictionsFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is Convictions &&
+            (identical(other.convictionBloodTestRefusal,
+                    convictionBloodTestRefusal) ||
+                const DeepCollectionEquality().equals(
+                    other.convictionBloodTestRefusal,
+                    convictionBloodTestRefusal)) &&
+            (identical(other.convictionDrunk, convictionDrunk) ||
+                const DeepCollectionEquality()
+                    .equals(other.convictionDrunk, convictionDrunk)) &&
+            (identical(other.convictionHitAndRun, convictionHitAndRun) ||
+                const DeepCollectionEquality()
+                    .equals(other.convictionHitAndRun, convictionHitAndRun)) &&
+            (identical(other.convictionIntoxicated, convictionIntoxicated) ||
+                const DeepCollectionEquality().equals(
+                    other.convictionIntoxicated, convictionIntoxicated)) &&
+            (identical(other.convictionLicenseRevocation,
+                    convictionLicenseRevocation) ||
+                const DeepCollectionEquality().equals(
+                    other.convictionLicenseRevocation,
+                    convictionLicenseRevocation)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(convictionBloodTestRefusal) ^
+      const DeepCollectionEquality().hash(convictionDrunk) ^
+      const DeepCollectionEquality().hash(convictionHitAndRun) ^
+      const DeepCollectionEquality().hash(convictionIntoxicated) ^
+      const DeepCollectionEquality().hash(convictionLicenseRevocation) ^
+      runtimeType.hashCode;
+}
+
+extension $ConvictionsExtension on Convictions {
+  Convictions copyWith(
+      {bool? convictionBloodTestRefusal,
+      bool? convictionDrunk,
+      bool? convictionHitAndRun,
+      bool? convictionIntoxicated,
+      bool? convictionLicenseRevocation}) {
+    return Convictions(
+        convictionBloodTestRefusal:
+            convictionBloodTestRefusal ?? this.convictionBloodTestRefusal,
+        convictionDrunk: convictionDrunk ?? this.convictionDrunk,
+        convictionHitAndRun: convictionHitAndRun ?? this.convictionHitAndRun,
+        convictionIntoxicated:
+            convictionIntoxicated ?? this.convictionIntoxicated,
+        convictionLicenseRevocation:
+            convictionLicenseRevocation ?? this.convictionLicenseRevocation);
+  }
+
+  Convictions copyWithWrapped(
+      {Wrapped<bool?>? convictionBloodTestRefusal,
+      Wrapped<bool?>? convictionDrunk,
+      Wrapped<bool?>? convictionHitAndRun,
+      Wrapped<bool?>? convictionIntoxicated,
+      Wrapped<bool?>? convictionLicenseRevocation}) {
+    return Convictions(
+        convictionBloodTestRefusal: (convictionBloodTestRefusal != null
+            ? convictionBloodTestRefusal.value
+            : this.convictionBloodTestRefusal),
+        convictionDrunk: (convictionDrunk != null
+            ? convictionDrunk.value
+            : this.convictionDrunk),
+        convictionHitAndRun: (convictionHitAndRun != null
+            ? convictionHitAndRun.value
+            : this.convictionHitAndRun),
+        convictionIntoxicated: (convictionIntoxicated != null
+            ? convictionIntoxicated.value
+            : this.convictionIntoxicated),
+        convictionLicenseRevocation: (convictionLicenseRevocation != null
+            ? convictionLicenseRevocation.value
+            : this.convictionLicenseRevocation));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class CreateBodyStyleRequest {
   const CreateBodyStyleRequest({
     this.description,
@@ -3713,6 +4041,127 @@ extension $CreateBookingRequestExtension on CreateBookingRequest {
 }
 
 @JsonSerializable(explicitToJson: true)
+class CreateClient {
+  const CreateClient({
+    required this.city,
+    required this.country,
+    required this.email,
+    required this.houseNumber,
+    required this.name,
+    required this.postalCode,
+    required this.street,
+    this.vat,
+  });
+
+  factory CreateClient.fromJson(Map<String, dynamic> json) =>
+      _$CreateClientFromJson(json);
+
+  static const toJsonFactory = _$CreateClientToJson;
+  Map<String, dynamic> toJson() => _$CreateClientToJson(this);
+
+  @JsonKey(name: 'city')
+  final String city;
+  @JsonKey(name: 'country')
+  final String country;
+  @JsonKey(name: 'email')
+  final String email;
+  @JsonKey(name: 'houseNumber')
+  final String houseNumber;
+  @JsonKey(name: 'name')
+  final String name;
+  @JsonKey(name: 'postalCode')
+  final String postalCode;
+  @JsonKey(name: 'street')
+  final String street;
+  @JsonKey(name: 'vat')
+  final String? vat;
+  static const fromJsonFactory = _$CreateClientFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is CreateClient &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)) &&
+            (identical(other.country, country) ||
+                const DeepCollectionEquality()
+                    .equals(other.country, country)) &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.houseNumber, houseNumber) ||
+                const DeepCollectionEquality()
+                    .equals(other.houseNumber, houseNumber)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.postalCode, postalCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.postalCode, postalCode)) &&
+            (identical(other.street, street) ||
+                const DeepCollectionEquality().equals(other.street, street)) &&
+            (identical(other.vat, vat) ||
+                const DeepCollectionEquality().equals(other.vat, vat)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(city) ^
+      const DeepCollectionEquality().hash(country) ^
+      const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(houseNumber) ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(postalCode) ^
+      const DeepCollectionEquality().hash(street) ^
+      const DeepCollectionEquality().hash(vat) ^
+      runtimeType.hashCode;
+}
+
+extension $CreateClientExtension on CreateClient {
+  CreateClient copyWith(
+      {String? city,
+      String? country,
+      String? email,
+      String? houseNumber,
+      String? name,
+      String? postalCode,
+      String? street,
+      String? vat}) {
+    return CreateClient(
+        city: city ?? this.city,
+        country: country ?? this.country,
+        email: email ?? this.email,
+        houseNumber: houseNumber ?? this.houseNumber,
+        name: name ?? this.name,
+        postalCode: postalCode ?? this.postalCode,
+        street: street ?? this.street,
+        vat: vat ?? this.vat);
+  }
+
+  CreateClient copyWithWrapped(
+      {Wrapped<String>? city,
+      Wrapped<String>? country,
+      Wrapped<String>? email,
+      Wrapped<String>? houseNumber,
+      Wrapped<String>? name,
+      Wrapped<String>? postalCode,
+      Wrapped<String>? street,
+      Wrapped<String?>? vat}) {
+    return CreateClient(
+        city: (city != null ? city.value : this.city),
+        country: (country != null ? country.value : this.country),
+        email: (email != null ? email.value : this.email),
+        houseNumber:
+            (houseNumber != null ? houseNumber.value : this.houseNumber),
+        name: (name != null ? name.value : this.name),
+        postalCode: (postalCode != null ? postalCode.value : this.postalCode),
+        street: (street != null ? street.value : this.street),
+        vat: (vat != null ? vat.value : this.vat));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class CreateNewUsageContractRequest {
   const CreateNewUsageContractRequest({
     this.commitmentAmountInclVat,
@@ -3907,6 +4356,221 @@ extension $CreateUserRequestExtension on CreateUserRequest {
     return CreateUserRequest(
         email: (email != null ? email.value : this.email),
         remoteId: (remoteId != null ? remoteId.value : this.remoteId));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateVehicleContract {
+  const CreateVehicleContract({
+    required this.battMaxType,
+    this.billingType,
+    this.clientContractId,
+    required this.clientId,
+    this.costForAdditionalKmsExclVat,
+    required this.effectiveStartDate,
+    this.endDate,
+    required this.monthlyLeaseAmountExclVat,
+    this.monthlyMaxInvoiceAmountExclVat,
+    required this.numberOfMonths,
+    this.paidStartupCost,
+    this.startDate,
+    required this.vehicleId,
+    this.yearlyKmsOnContract,
+  });
+
+  factory CreateVehicleContract.fromJson(Map<String, dynamic> json) =>
+      _$CreateVehicleContractFromJson(json);
+
+  static const toJsonFactory = _$CreateVehicleContractToJson;
+  Map<String, dynamic> toJson() => _$CreateVehicleContractToJson(this);
+
+  @JsonKey(name: 'battMaxType')
+  final String battMaxType;
+  @JsonKey(name: 'billingType')
+  final String? billingType;
+  @JsonKey(name: 'clientContractId')
+  final int? clientContractId;
+  @JsonKey(name: 'clientId')
+  final int clientId;
+  @JsonKey(name: 'costForAdditionalKmsExclVat')
+  final double? costForAdditionalKmsExclVat;
+  @JsonKey(name: 'effectiveStartDate')
+  final DateTime effectiveStartDate;
+  @JsonKey(name: 'endDate')
+  final DateTime? endDate;
+  @JsonKey(name: 'monthlyLeaseAmountExclVat')
+  final double monthlyLeaseAmountExclVat;
+  @JsonKey(name: 'monthlyMaxInvoiceAmountExclVat')
+  final double? monthlyMaxInvoiceAmountExclVat;
+  @JsonKey(name: 'numberOfMonths')
+  final int numberOfMonths;
+  @JsonKey(name: 'paidStartupCost')
+  final double? paidStartupCost;
+  @JsonKey(name: 'startDate')
+  final DateTime? startDate;
+  @JsonKey(name: 'vehicleId')
+  final String vehicleId;
+  @JsonKey(name: 'yearlyKmsOnContract')
+  final int? yearlyKmsOnContract;
+  static const fromJsonFactory = _$CreateVehicleContractFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is CreateVehicleContract &&
+            (identical(other.battMaxType, battMaxType) ||
+                const DeepCollectionEquality()
+                    .equals(other.battMaxType, battMaxType)) &&
+            (identical(other.billingType, billingType) ||
+                const DeepCollectionEquality()
+                    .equals(other.billingType, billingType)) &&
+            (identical(other.clientContractId, clientContractId) ||
+                const DeepCollectionEquality()
+                    .equals(other.clientContractId, clientContractId)) &&
+            (identical(other.clientId, clientId) ||
+                const DeepCollectionEquality()
+                    .equals(other.clientId, clientId)) &&
+            (identical(other.costForAdditionalKmsExclVat, costForAdditionalKmsExclVat) ||
+                const DeepCollectionEquality().equals(
+                    other.costForAdditionalKmsExclVat,
+                    costForAdditionalKmsExclVat)) &&
+            (identical(other.effectiveStartDate, effectiveStartDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.effectiveStartDate, effectiveStartDate)) &&
+            (identical(other.endDate, endDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.endDate, endDate)) &&
+            (identical(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat) ||
+                const DeepCollectionEquality().equals(
+                    other.monthlyLeaseAmountExclVat,
+                    monthlyLeaseAmountExclVat)) &&
+            (identical(other.monthlyMaxInvoiceAmountExclVat, monthlyMaxInvoiceAmountExclVat) ||
+                const DeepCollectionEquality().equals(
+                    other.monthlyMaxInvoiceAmountExclVat,
+                    monthlyMaxInvoiceAmountExclVat)) &&
+            (identical(other.numberOfMonths, numberOfMonths) ||
+                const DeepCollectionEquality()
+                    .equals(other.numberOfMonths, numberOfMonths)) &&
+            (identical(other.paidStartupCost, paidStartupCost) ||
+                const DeepCollectionEquality()
+                    .equals(other.paidStartupCost, paidStartupCost)) &&
+            (identical(other.startDate, startDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.startDate, startDate)) &&
+            (identical(other.vehicleId, vehicleId) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicleId, vehicleId)) &&
+            (identical(other.yearlyKmsOnContract, yearlyKmsOnContract) ||
+                const DeepCollectionEquality()
+                    .equals(other.yearlyKmsOnContract, yearlyKmsOnContract)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(battMaxType) ^
+      const DeepCollectionEquality().hash(billingType) ^
+      const DeepCollectionEquality().hash(clientContractId) ^
+      const DeepCollectionEquality().hash(clientId) ^
+      const DeepCollectionEquality().hash(costForAdditionalKmsExclVat) ^
+      const DeepCollectionEquality().hash(effectiveStartDate) ^
+      const DeepCollectionEquality().hash(endDate) ^
+      const DeepCollectionEquality().hash(monthlyLeaseAmountExclVat) ^
+      const DeepCollectionEquality().hash(monthlyMaxInvoiceAmountExclVat) ^
+      const DeepCollectionEquality().hash(numberOfMonths) ^
+      const DeepCollectionEquality().hash(paidStartupCost) ^
+      const DeepCollectionEquality().hash(startDate) ^
+      const DeepCollectionEquality().hash(vehicleId) ^
+      const DeepCollectionEquality().hash(yearlyKmsOnContract) ^
+      runtimeType.hashCode;
+}
+
+extension $CreateVehicleContractExtension on CreateVehicleContract {
+  CreateVehicleContract copyWith(
+      {String? battMaxType,
+      String? billingType,
+      int? clientContractId,
+      int? clientId,
+      double? costForAdditionalKmsExclVat,
+      DateTime? effectiveStartDate,
+      DateTime? endDate,
+      double? monthlyLeaseAmountExclVat,
+      double? monthlyMaxInvoiceAmountExclVat,
+      int? numberOfMonths,
+      double? paidStartupCost,
+      DateTime? startDate,
+      String? vehicleId,
+      int? yearlyKmsOnContract}) {
+    return CreateVehicleContract(
+        battMaxType: battMaxType ?? this.battMaxType,
+        billingType: billingType ?? this.billingType,
+        clientContractId: clientContractId ?? this.clientContractId,
+        clientId: clientId ?? this.clientId,
+        costForAdditionalKmsExclVat:
+            costForAdditionalKmsExclVat ?? this.costForAdditionalKmsExclVat,
+        effectiveStartDate: effectiveStartDate ?? this.effectiveStartDate,
+        endDate: endDate ?? this.endDate,
+        monthlyLeaseAmountExclVat:
+            monthlyLeaseAmountExclVat ?? this.monthlyLeaseAmountExclVat,
+        monthlyMaxInvoiceAmountExclVat: monthlyMaxInvoiceAmountExclVat ??
+            this.monthlyMaxInvoiceAmountExclVat,
+        numberOfMonths: numberOfMonths ?? this.numberOfMonths,
+        paidStartupCost: paidStartupCost ?? this.paidStartupCost,
+        startDate: startDate ?? this.startDate,
+        vehicleId: vehicleId ?? this.vehicleId,
+        yearlyKmsOnContract: yearlyKmsOnContract ?? this.yearlyKmsOnContract);
+  }
+
+  CreateVehicleContract copyWithWrapped(
+      {Wrapped<String>? battMaxType,
+      Wrapped<String?>? billingType,
+      Wrapped<int?>? clientContractId,
+      Wrapped<int>? clientId,
+      Wrapped<double?>? costForAdditionalKmsExclVat,
+      Wrapped<DateTime>? effectiveStartDate,
+      Wrapped<DateTime?>? endDate,
+      Wrapped<double>? monthlyLeaseAmountExclVat,
+      Wrapped<double?>? monthlyMaxInvoiceAmountExclVat,
+      Wrapped<int>? numberOfMonths,
+      Wrapped<double?>? paidStartupCost,
+      Wrapped<DateTime?>? startDate,
+      Wrapped<String>? vehicleId,
+      Wrapped<int?>? yearlyKmsOnContract}) {
+    return CreateVehicleContract(
+        battMaxType:
+            (battMaxType != null ? battMaxType.value : this.battMaxType),
+        billingType:
+            (billingType != null ? billingType.value : this.billingType),
+        clientContractId: (clientContractId != null
+            ? clientContractId.value
+            : this.clientContractId),
+        clientId: (clientId != null ? clientId.value : this.clientId),
+        costForAdditionalKmsExclVat: (costForAdditionalKmsExclVat != null
+            ? costForAdditionalKmsExclVat.value
+            : this.costForAdditionalKmsExclVat),
+        effectiveStartDate: (effectiveStartDate != null
+            ? effectiveStartDate.value
+            : this.effectiveStartDate),
+        endDate: (endDate != null ? endDate.value : this.endDate),
+        monthlyLeaseAmountExclVat: (monthlyLeaseAmountExclVat != null
+            ? monthlyLeaseAmountExclVat.value
+            : this.monthlyLeaseAmountExclVat),
+        monthlyMaxInvoiceAmountExclVat: (monthlyMaxInvoiceAmountExclVat != null
+            ? monthlyMaxInvoiceAmountExclVat.value
+            : this.monthlyMaxInvoiceAmountExclVat),
+        numberOfMonths: (numberOfMonths != null
+            ? numberOfMonths.value
+            : this.numberOfMonths),
+        paidStartupCost: (paidStartupCost != null
+            ? paidStartupCost.value
+            : this.paidStartupCost),
+        startDate: (startDate != null ? startDate.value : this.startDate),
+        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+        yearlyKmsOnContract: (yearlyKmsOnContract != null
+            ? yearlyKmsOnContract.value
+            : this.yearlyKmsOnContract));
   }
 }
 
@@ -4200,7 +4864,7 @@ extension $CreateVehicleModelsRatesResponseExtension
 @JsonSerializable(explicitToJson: true)
 class CreateVehicleRequest {
   const CreateVehicleRequest({
-    this.licensePlate,
+    required this.licensePlate,
     required this.vehicleModelId,
   });
 
@@ -4211,7 +4875,7 @@ class CreateVehicleRequest {
   Map<String, dynamic> toJson() => _$CreateVehicleRequestToJson(this);
 
   @JsonKey(name: 'licensePlate')
-  final String? licensePlate;
+  final String licensePlate;
   @JsonKey(name: 'vehicleModelId')
   final String vehicleModelId;
   static const fromJsonFactory = _$CreateVehicleRequestFromJson;
@@ -4247,7 +4911,7 @@ extension $CreateVehicleRequestExtension on CreateVehicleRequest {
   }
 
   CreateVehicleRequest copyWithWrapped(
-      {Wrapped<String?>? licensePlate, Wrapped<String>? vehicleModelId}) {
+      {Wrapped<String>? licensePlate, Wrapped<String>? vehicleModelId}) {
     return CreateVehicleRequest(
         licensePlate:
             (licensePlate != null ? licensePlate.value : this.licensePlate),
@@ -5982,6 +6646,455 @@ extension $NonAvailabilityResponseExtension on NonAvailabilityResponse {
 }
 
 @JsonSerializable(explicitToJson: true)
+class Onboarding {
+  const Onboarding({
+    this.legal,
+    this.personal,
+    this.phone,
+    this.status,
+  });
+
+  factory Onboarding.fromJson(Map<String, dynamic> json) =>
+      _$OnboardingFromJson(json);
+
+  static const toJsonFactory = _$OnboardingToJson;
+  Map<String, dynamic> toJson() => _$OnboardingToJson(this);
+
+  @JsonKey(name: 'legal')
+  final OnboardingLegal? legal;
+  @JsonKey(name: 'personal')
+  final OnboardingPersonal? personal;
+  @JsonKey(name: 'phone')
+  final OnboardingPhone? phone;
+  @JsonKey(
+    name: 'status',
+    toJson: onboardingStatusNullableToJson,
+    fromJson: onboardingStatusNullableFromJson,
+  )
+  final enums.OnboardingStatus? status;
+  static const fromJsonFactory = _$OnboardingFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is Onboarding &&
+            (identical(other.legal, legal) ||
+                const DeepCollectionEquality().equals(other.legal, legal)) &&
+            (identical(other.personal, personal) ||
+                const DeepCollectionEquality()
+                    .equals(other.personal, personal)) &&
+            (identical(other.phone, phone) ||
+                const DeepCollectionEquality().equals(other.phone, phone)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(legal) ^
+      const DeepCollectionEquality().hash(personal) ^
+      const DeepCollectionEquality().hash(phone) ^
+      const DeepCollectionEquality().hash(status) ^
+      runtimeType.hashCode;
+}
+
+extension $OnboardingExtension on Onboarding {
+  Onboarding copyWith(
+      {OnboardingLegal? legal,
+      OnboardingPersonal? personal,
+      OnboardingPhone? phone,
+      enums.OnboardingStatus? status}) {
+    return Onboarding(
+        legal: legal ?? this.legal,
+        personal: personal ?? this.personal,
+        phone: phone ?? this.phone,
+        status: status ?? this.status);
+  }
+
+  Onboarding copyWithWrapped(
+      {Wrapped<OnboardingLegal?>? legal,
+      Wrapped<OnboardingPersonal?>? personal,
+      Wrapped<OnboardingPhone?>? phone,
+      Wrapped<enums.OnboardingStatus?>? status}) {
+    return Onboarding(
+        legal: (legal != null ? legal.value : this.legal),
+        personal: (personal != null ? personal.value : this.personal),
+        phone: (phone != null ? phone.value : this.phone),
+        status: (status != null ? status.value : this.status));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class OnboardingLegal {
+  const OnboardingLegal({
+    required this.convictions,
+    required this.nrOfAccidents,
+  });
+
+  factory OnboardingLegal.fromJson(Map<String, dynamic> json) =>
+      _$OnboardingLegalFromJson(json);
+
+  static const toJsonFactory = _$OnboardingLegalToJson;
+  Map<String, dynamic> toJson() => _$OnboardingLegalToJson(this);
+
+  @JsonKey(name: 'convictions')
+  final Convictions convictions;
+  @JsonKey(name: 'nrOfAccidents')
+  final int nrOfAccidents;
+  static const fromJsonFactory = _$OnboardingLegalFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is OnboardingLegal &&
+            (identical(other.convictions, convictions) ||
+                const DeepCollectionEquality()
+                    .equals(other.convictions, convictions)) &&
+            (identical(other.nrOfAccidents, nrOfAccidents) ||
+                const DeepCollectionEquality()
+                    .equals(other.nrOfAccidents, nrOfAccidents)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(convictions) ^
+      const DeepCollectionEquality().hash(nrOfAccidents) ^
+      runtimeType.hashCode;
+}
+
+extension $OnboardingLegalExtension on OnboardingLegal {
+  OnboardingLegal copyWith({Convictions? convictions, int? nrOfAccidents}) {
+    return OnboardingLegal(
+        convictions: convictions ?? this.convictions,
+        nrOfAccidents: nrOfAccidents ?? this.nrOfAccidents);
+  }
+
+  OnboardingLegal copyWithWrapped(
+      {Wrapped<Convictions>? convictions, Wrapped<int>? nrOfAccidents}) {
+    return OnboardingLegal(
+        convictions:
+            (convictions != null ? convictions.value : this.convictions),
+        nrOfAccidents:
+            (nrOfAccidents != null ? nrOfAccidents.value : this.nrOfAccidents));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class OnboardingPersonal {
+  const OnboardingPersonal({
+    required this.box,
+    required this.city,
+    required this.dateCurrentLicense,
+    required this.dateLicenseUntil,
+    required this.dateOfBirth,
+    required this.firstName,
+    required this.houseNumber,
+    required this.lastName,
+    required this.licenseNumber,
+    required this.licenseType,
+    required this.nationality,
+    required this.postalCode,
+    required this.socialSecurityNumber,
+    required this.street,
+  });
+
+  factory OnboardingPersonal.fromJson(Map<String, dynamic> json) =>
+      _$OnboardingPersonalFromJson(json);
+
+  static const toJsonFactory = _$OnboardingPersonalToJson;
+  Map<String, dynamic> toJson() => _$OnboardingPersonalToJson(this);
+
+  @JsonKey(name: 'box')
+  final String box;
+  @JsonKey(name: 'city')
+  final String city;
+  @JsonKey(name: 'dateCurrentLicense')
+  final DateTime dateCurrentLicense;
+  @JsonKey(name: 'dateLicenseUntil')
+  final DateTime dateLicenseUntil;
+  @JsonKey(name: 'dateOfBirth')
+  final DateTime dateOfBirth;
+  @JsonKey(name: 'firstName')
+  final String firstName;
+  @JsonKey(name: 'houseNumber')
+  final String houseNumber;
+  @JsonKey(name: 'lastName')
+  final String lastName;
+  @JsonKey(name: 'licenseNumber')
+  final String licenseNumber;
+  @JsonKey(
+    name: 'licenseType',
+    toJson: onboardingPersonalLicenseTypeToJson,
+    fromJson: onboardingPersonalLicenseTypeFromJson,
+  )
+  final enums.OnboardingPersonalLicenseType licenseType;
+  @JsonKey(name: 'nationality')
+  final String nationality;
+  @JsonKey(name: 'postalCode')
+  final String postalCode;
+  @JsonKey(name: 'socialSecurityNumber')
+  final String socialSecurityNumber;
+  @JsonKey(name: 'street')
+  final String street;
+  static const fromJsonFactory = _$OnboardingPersonalFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is OnboardingPersonal &&
+            (identical(other.box, box) ||
+                const DeepCollectionEquality().equals(other.box, box)) &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)) &&
+            (identical(other.dateCurrentLicense, dateCurrentLicense) ||
+                const DeepCollectionEquality()
+                    .equals(other.dateCurrentLicense, dateCurrentLicense)) &&
+            (identical(other.dateLicenseUntil, dateLicenseUntil) ||
+                const DeepCollectionEquality()
+                    .equals(other.dateLicenseUntil, dateLicenseUntil)) &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                const DeepCollectionEquality()
+                    .equals(other.dateOfBirth, dateOfBirth)) &&
+            (identical(other.firstName, firstName) ||
+                const DeepCollectionEquality()
+                    .equals(other.firstName, firstName)) &&
+            (identical(other.houseNumber, houseNumber) ||
+                const DeepCollectionEquality()
+                    .equals(other.houseNumber, houseNumber)) &&
+            (identical(other.lastName, lastName) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastName, lastName)) &&
+            (identical(other.licenseNumber, licenseNumber) ||
+                const DeepCollectionEquality()
+                    .equals(other.licenseNumber, licenseNumber)) &&
+            (identical(other.licenseType, licenseType) ||
+                const DeepCollectionEquality()
+                    .equals(other.licenseType, licenseType)) &&
+            (identical(other.nationality, nationality) ||
+                const DeepCollectionEquality()
+                    .equals(other.nationality, nationality)) &&
+            (identical(other.postalCode, postalCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.postalCode, postalCode)) &&
+            (identical(other.socialSecurityNumber, socialSecurityNumber) ||
+                const DeepCollectionEquality().equals(
+                    other.socialSecurityNumber, socialSecurityNumber)) &&
+            (identical(other.street, street) ||
+                const DeepCollectionEquality().equals(other.street, street)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(box) ^
+      const DeepCollectionEquality().hash(city) ^
+      const DeepCollectionEquality().hash(dateCurrentLicense) ^
+      const DeepCollectionEquality().hash(dateLicenseUntil) ^
+      const DeepCollectionEquality().hash(dateOfBirth) ^
+      const DeepCollectionEquality().hash(firstName) ^
+      const DeepCollectionEquality().hash(houseNumber) ^
+      const DeepCollectionEquality().hash(lastName) ^
+      const DeepCollectionEquality().hash(licenseNumber) ^
+      const DeepCollectionEquality().hash(licenseType) ^
+      const DeepCollectionEquality().hash(nationality) ^
+      const DeepCollectionEquality().hash(postalCode) ^
+      const DeepCollectionEquality().hash(socialSecurityNumber) ^
+      const DeepCollectionEquality().hash(street) ^
+      runtimeType.hashCode;
+}
+
+extension $OnboardingPersonalExtension on OnboardingPersonal {
+  OnboardingPersonal copyWith(
+      {String? box,
+      String? city,
+      DateTime? dateCurrentLicense,
+      DateTime? dateLicenseUntil,
+      DateTime? dateOfBirth,
+      String? firstName,
+      String? houseNumber,
+      String? lastName,
+      String? licenseNumber,
+      enums.OnboardingPersonalLicenseType? licenseType,
+      String? nationality,
+      String? postalCode,
+      String? socialSecurityNumber,
+      String? street}) {
+    return OnboardingPersonal(
+        box: box ?? this.box,
+        city: city ?? this.city,
+        dateCurrentLicense: dateCurrentLicense ?? this.dateCurrentLicense,
+        dateLicenseUntil: dateLicenseUntil ?? this.dateLicenseUntil,
+        dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+        firstName: firstName ?? this.firstName,
+        houseNumber: houseNumber ?? this.houseNumber,
+        lastName: lastName ?? this.lastName,
+        licenseNumber: licenseNumber ?? this.licenseNumber,
+        licenseType: licenseType ?? this.licenseType,
+        nationality: nationality ?? this.nationality,
+        postalCode: postalCode ?? this.postalCode,
+        socialSecurityNumber: socialSecurityNumber ?? this.socialSecurityNumber,
+        street: street ?? this.street);
+  }
+
+  OnboardingPersonal copyWithWrapped(
+      {Wrapped<String>? box,
+      Wrapped<String>? city,
+      Wrapped<DateTime>? dateCurrentLicense,
+      Wrapped<DateTime>? dateLicenseUntil,
+      Wrapped<DateTime>? dateOfBirth,
+      Wrapped<String>? firstName,
+      Wrapped<String>? houseNumber,
+      Wrapped<String>? lastName,
+      Wrapped<String>? licenseNumber,
+      Wrapped<enums.OnboardingPersonalLicenseType>? licenseType,
+      Wrapped<String>? nationality,
+      Wrapped<String>? postalCode,
+      Wrapped<String>? socialSecurityNumber,
+      Wrapped<String>? street}) {
+    return OnboardingPersonal(
+        box: (box != null ? box.value : this.box),
+        city: (city != null ? city.value : this.city),
+        dateCurrentLicense: (dateCurrentLicense != null
+            ? dateCurrentLicense.value
+            : this.dateCurrentLicense),
+        dateLicenseUntil: (dateLicenseUntil != null
+            ? dateLicenseUntil.value
+            : this.dateLicenseUntil),
+        dateOfBirth:
+            (dateOfBirth != null ? dateOfBirth.value : this.dateOfBirth),
+        firstName: (firstName != null ? firstName.value : this.firstName),
+        houseNumber:
+            (houseNumber != null ? houseNumber.value : this.houseNumber),
+        lastName: (lastName != null ? lastName.value : this.lastName),
+        licenseNumber:
+            (licenseNumber != null ? licenseNumber.value : this.licenseNumber),
+        licenseType:
+            (licenseType != null ? licenseType.value : this.licenseType),
+        nationality:
+            (nationality != null ? nationality.value : this.nationality),
+        postalCode: (postalCode != null ? postalCode.value : this.postalCode),
+        socialSecurityNumber: (socialSecurityNumber != null
+            ? socialSecurityNumber.value
+            : this.socialSecurityNumber),
+        street: (street != null ? street.value : this.street));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class OnboardingPhone {
+  const OnboardingPhone({
+    required this.phoneNumber,
+    this.phoneNumberValidationCode,
+  });
+
+  factory OnboardingPhone.fromJson(Map<String, dynamic> json) =>
+      _$OnboardingPhoneFromJson(json);
+
+  static const toJsonFactory = _$OnboardingPhoneToJson;
+  Map<String, dynamic> toJson() => _$OnboardingPhoneToJson(this);
+
+  @JsonKey(name: 'phoneNumber')
+  final String phoneNumber;
+  @JsonKey(name: 'phoneNumberValidationCode')
+  final String? phoneNumberValidationCode;
+  static const fromJsonFactory = _$OnboardingPhoneFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is OnboardingPhone &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                const DeepCollectionEquality()
+                    .equals(other.phoneNumber, phoneNumber)) &&
+            (identical(other.phoneNumberValidationCode,
+                    phoneNumberValidationCode) ||
+                const DeepCollectionEquality().equals(
+                    other.phoneNumberValidationCode,
+                    phoneNumberValidationCode)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(phoneNumber) ^
+      const DeepCollectionEquality().hash(phoneNumberValidationCode) ^
+      runtimeType.hashCode;
+}
+
+extension $OnboardingPhoneExtension on OnboardingPhone {
+  OnboardingPhone copyWith(
+      {String? phoneNumber, String? phoneNumberValidationCode}) {
+    return OnboardingPhone(
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        phoneNumberValidationCode:
+            phoneNumberValidationCode ?? this.phoneNumberValidationCode);
+  }
+
+  OnboardingPhone copyWithWrapped(
+      {Wrapped<String>? phoneNumber,
+      Wrapped<String?>? phoneNumberValidationCode}) {
+    return OnboardingPhone(
+        phoneNumber:
+            (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
+        phoneNumberValidationCode: (phoneNumberValidationCode != null
+            ? phoneNumberValidationCode.value
+            : this.phoneNumberValidationCode));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class PasswordReset {
+  const PasswordReset({
+    required this.email,
+  });
+
+  factory PasswordReset.fromJson(Map<String, dynamic> json) =>
+      _$PasswordResetFromJson(json);
+
+  static const toJsonFactory = _$PasswordResetToJson;
+  Map<String, dynamic> toJson() => _$PasswordResetToJson(this);
+
+  @JsonKey(name: 'email')
+  final String email;
+  static const fromJsonFactory = _$PasswordResetFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is PasswordReset &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(email) ^ runtimeType.hashCode;
+}
+
+extension $PasswordResetExtension on PasswordReset {
+  PasswordReset copyWith({String? email}) {
+    return PasswordReset(email: email ?? this.email);
+  }
+
+  PasswordReset copyWithWrapped({Wrapped<String>? email}) {
+    return PasswordReset(email: (email != null ? email.value : this.email));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class Period {
   const Period({
     this.end,
@@ -6236,6 +7349,49 @@ extension $ReplaceBookingRequestExtension on ReplaceBookingRequest {
         period: (period != null ? period.value : this.period),
         userId: (userId != null ? userId.value : this.userId),
         vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class ResendVerificationEmail {
+  const ResendVerificationEmail({
+    required this.email,
+  });
+
+  factory ResendVerificationEmail.fromJson(Map<String, dynamic> json) =>
+      _$ResendVerificationEmailFromJson(json);
+
+  static const toJsonFactory = _$ResendVerificationEmailToJson;
+  Map<String, dynamic> toJson() => _$ResendVerificationEmailToJson(this);
+
+  @JsonKey(name: 'email')
+  final String email;
+  static const fromJsonFactory = _$ResendVerificationEmailFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is ResendVerificationEmail &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(email) ^ runtimeType.hashCode;
+}
+
+extension $ResendVerificationEmailExtension on ResendVerificationEmail {
+  ResendVerificationEmail copyWith({String? email}) {
+    return ResendVerificationEmail(email: email ?? this.email);
+  }
+
+  ResendVerificationEmail copyWithWrapped({Wrapped<String>? email}) {
+    return ResendVerificationEmail(
+        email: (email != null ? email.value : this.email));
   }
 }
 
@@ -6844,6 +8000,60 @@ extension $SearchVehiclesRequestExtension on SearchVehiclesRequest {
         vehicleFilterCriteria: (vehicleFilterCriteria != null
             ? vehicleFilterCriteria.value
             : this.vehicleFilterCriteria));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class SignupUser {
+  const SignupUser({
+    required this.email,
+    required this.password,
+  });
+
+  factory SignupUser.fromJson(Map<String, dynamic> json) =>
+      _$SignupUserFromJson(json);
+
+  static const toJsonFactory = _$SignupUserToJson;
+  Map<String, dynamic> toJson() => _$SignupUserToJson(this);
+
+  @JsonKey(name: 'email')
+  final String email;
+  @JsonKey(name: 'password')
+  final String password;
+  static const fromJsonFactory = _$SignupUserFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is SignupUser &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.password, password) ||
+                const DeepCollectionEquality()
+                    .equals(other.password, password)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(password) ^
+      runtimeType.hashCode;
+}
+
+extension $SignupUserExtension on SignupUser {
+  SignupUser copyWith({String? email, String? password}) {
+    return SignupUser(
+        email: email ?? this.email, password: password ?? this.password);
+  }
+
+  SignupUser copyWithWrapped(
+      {Wrapped<String>? email, Wrapped<String>? password}) {
+    return SignupUser(
+        email: (email != null ? email.value : this.email),
+        password: (password != null ? password.value : this.password));
   }
 }
 
@@ -7599,7 +8809,7 @@ class UpdateVehicleRequest {
     this.operationalStatus,
     this.seats,
     this.typeId,
-    this.vehicleId,
+    required this.vehicleId,
     this.vehicleInfo,
     this.vehicleInfoPreBooking,
     this.vehicleModelId,
@@ -7655,7 +8865,7 @@ class UpdateVehicleRequest {
   @JsonKey(name: 'typeId')
   final String? typeId;
   @JsonKey(name: 'vehicleId')
-  final String? vehicleId;
+  final String vehicleId;
   @JsonKey(name: 'vehicleInfo')
   final String? vehicleInfo;
   @JsonKey(name: 'vehicleInfoPreBooking')
@@ -7828,7 +9038,7 @@ extension $UpdateVehicleRequestExtension on UpdateVehicleRequest {
       Wrapped<enums.UpdateVehicleRequestOperationalStatus?>? operationalStatus,
       Wrapped<int?>? seats,
       Wrapped<String?>? typeId,
-      Wrapped<String?>? vehicleId,
+      Wrapped<String>? vehicleId,
       Wrapped<String?>? vehicleInfo,
       Wrapped<String?>? vehicleInfoPreBooking,
       Wrapped<String?>? vehicleModelId,
@@ -8537,6 +9747,268 @@ extension $VehicleBrandPageExtension on VehicleBrandPage {
     return VehicleBrandPage(
         vehicleBrands:
             (vehicleBrands != null ? vehicleBrands.value : this.vehicleBrands));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class VehicleContract {
+  const VehicleContract({
+    this.battMaxType,
+    this.clientContractId,
+    this.clientId,
+    this.clientName,
+    this.clientRoles,
+    this.costForAdditionalKmsExclVat,
+    this.endDate,
+    this.maxInvoiceAmountExclVat,
+    this.monthlyLeaseAmountExclVat,
+    this.numberOfMonths,
+    this.paidStartupCost,
+    this.startDate,
+    this.vehicleId,
+    this.yearlyKmsOnContract,
+  });
+
+  factory VehicleContract.fromJson(Map<String, dynamic> json) =>
+      _$VehicleContractFromJson(json);
+
+  static const toJsonFactory = _$VehicleContractToJson;
+  Map<String, dynamic> toJson() => _$VehicleContractToJson(this);
+
+  @JsonKey(name: 'battMaxType')
+  final String? battMaxType;
+  @JsonKey(name: 'clientContractId')
+  final int? clientContractId;
+  @JsonKey(name: 'clientId')
+  final int? clientId;
+  @JsonKey(name: 'clientName')
+  final String? clientName;
+  @JsonKey(name: 'clientRoles')
+  final String? clientRoles;
+  @JsonKey(name: 'costForAdditionalKmsExclVat')
+  final double? costForAdditionalKmsExclVat;
+  @JsonKey(name: 'endDate')
+  final DateTime? endDate;
+  @JsonKey(name: 'maxInvoiceAmountExclVat')
+  final double? maxInvoiceAmountExclVat;
+  @JsonKey(name: 'monthlyLeaseAmountExclVat')
+  final double? monthlyLeaseAmountExclVat;
+  @JsonKey(name: 'numberOfMonths')
+  final int? numberOfMonths;
+  @JsonKey(name: 'paidStartupCost')
+  final double? paidStartupCost;
+  @JsonKey(name: 'startDate')
+  final DateTime? startDate;
+  @JsonKey(name: 'vehicleId')
+  final String? vehicleId;
+  @JsonKey(name: 'yearlyKmsOnContract')
+  final int? yearlyKmsOnContract;
+  static const fromJsonFactory = _$VehicleContractFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is VehicleContract &&
+            (identical(other.battMaxType, battMaxType) ||
+                const DeepCollectionEquality()
+                    .equals(other.battMaxType, battMaxType)) &&
+            (identical(other.clientContractId, clientContractId) ||
+                const DeepCollectionEquality()
+                    .equals(other.clientContractId, clientContractId)) &&
+            (identical(other.clientId, clientId) ||
+                const DeepCollectionEquality()
+                    .equals(other.clientId, clientId)) &&
+            (identical(other.clientName, clientName) ||
+                const DeepCollectionEquality()
+                    .equals(other.clientName, clientName)) &&
+            (identical(other.clientRoles, clientRoles) ||
+                const DeepCollectionEquality()
+                    .equals(other.clientRoles, clientRoles)) &&
+            (identical(other.costForAdditionalKmsExclVat, costForAdditionalKmsExclVat) ||
+                const DeepCollectionEquality().equals(
+                    other.costForAdditionalKmsExclVat,
+                    costForAdditionalKmsExclVat)) &&
+            (identical(other.endDate, endDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.endDate, endDate)) &&
+            (identical(other.maxInvoiceAmountExclVat, maxInvoiceAmountExclVat) ||
+                const DeepCollectionEquality().equals(
+                    other.maxInvoiceAmountExclVat, maxInvoiceAmountExclVat)) &&
+            (identical(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat) ||
+                const DeepCollectionEquality().equals(
+                    other.monthlyLeaseAmountExclVat,
+                    monthlyLeaseAmountExclVat)) &&
+            (identical(other.numberOfMonths, numberOfMonths) ||
+                const DeepCollectionEquality()
+                    .equals(other.numberOfMonths, numberOfMonths)) &&
+            (identical(other.paidStartupCost, paidStartupCost) ||
+                const DeepCollectionEquality()
+                    .equals(other.paidStartupCost, paidStartupCost)) &&
+            (identical(other.startDate, startDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.startDate, startDate)) &&
+            (identical(other.vehicleId, vehicleId) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicleId, vehicleId)) &&
+            (identical(other.yearlyKmsOnContract, yearlyKmsOnContract) ||
+                const DeepCollectionEquality()
+                    .equals(other.yearlyKmsOnContract, yearlyKmsOnContract)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(battMaxType) ^
+      const DeepCollectionEquality().hash(clientContractId) ^
+      const DeepCollectionEquality().hash(clientId) ^
+      const DeepCollectionEquality().hash(clientName) ^
+      const DeepCollectionEquality().hash(clientRoles) ^
+      const DeepCollectionEquality().hash(costForAdditionalKmsExclVat) ^
+      const DeepCollectionEquality().hash(endDate) ^
+      const DeepCollectionEquality().hash(maxInvoiceAmountExclVat) ^
+      const DeepCollectionEquality().hash(monthlyLeaseAmountExclVat) ^
+      const DeepCollectionEquality().hash(numberOfMonths) ^
+      const DeepCollectionEquality().hash(paidStartupCost) ^
+      const DeepCollectionEquality().hash(startDate) ^
+      const DeepCollectionEquality().hash(vehicleId) ^
+      const DeepCollectionEquality().hash(yearlyKmsOnContract) ^
+      runtimeType.hashCode;
+}
+
+extension $VehicleContractExtension on VehicleContract {
+  VehicleContract copyWith(
+      {String? battMaxType,
+      int? clientContractId,
+      int? clientId,
+      String? clientName,
+      String? clientRoles,
+      double? costForAdditionalKmsExclVat,
+      DateTime? endDate,
+      double? maxInvoiceAmountExclVat,
+      double? monthlyLeaseAmountExclVat,
+      int? numberOfMonths,
+      double? paidStartupCost,
+      DateTime? startDate,
+      String? vehicleId,
+      int? yearlyKmsOnContract}) {
+    return VehicleContract(
+        battMaxType: battMaxType ?? this.battMaxType,
+        clientContractId: clientContractId ?? this.clientContractId,
+        clientId: clientId ?? this.clientId,
+        clientName: clientName ?? this.clientName,
+        clientRoles: clientRoles ?? this.clientRoles,
+        costForAdditionalKmsExclVat:
+            costForAdditionalKmsExclVat ?? this.costForAdditionalKmsExclVat,
+        endDate: endDate ?? this.endDate,
+        maxInvoiceAmountExclVat:
+            maxInvoiceAmountExclVat ?? this.maxInvoiceAmountExclVat,
+        monthlyLeaseAmountExclVat:
+            monthlyLeaseAmountExclVat ?? this.monthlyLeaseAmountExclVat,
+        numberOfMonths: numberOfMonths ?? this.numberOfMonths,
+        paidStartupCost: paidStartupCost ?? this.paidStartupCost,
+        startDate: startDate ?? this.startDate,
+        vehicleId: vehicleId ?? this.vehicleId,
+        yearlyKmsOnContract: yearlyKmsOnContract ?? this.yearlyKmsOnContract);
+  }
+
+  VehicleContract copyWithWrapped(
+      {Wrapped<String?>? battMaxType,
+      Wrapped<int?>? clientContractId,
+      Wrapped<int?>? clientId,
+      Wrapped<String?>? clientName,
+      Wrapped<String?>? clientRoles,
+      Wrapped<double?>? costForAdditionalKmsExclVat,
+      Wrapped<DateTime?>? endDate,
+      Wrapped<double?>? maxInvoiceAmountExclVat,
+      Wrapped<double?>? monthlyLeaseAmountExclVat,
+      Wrapped<int?>? numberOfMonths,
+      Wrapped<double?>? paidStartupCost,
+      Wrapped<DateTime?>? startDate,
+      Wrapped<String?>? vehicleId,
+      Wrapped<int?>? yearlyKmsOnContract}) {
+    return VehicleContract(
+        battMaxType:
+            (battMaxType != null ? battMaxType.value : this.battMaxType),
+        clientContractId: (clientContractId != null
+            ? clientContractId.value
+            : this.clientContractId),
+        clientId: (clientId != null ? clientId.value : this.clientId),
+        clientName: (clientName != null ? clientName.value : this.clientName),
+        clientRoles:
+            (clientRoles != null ? clientRoles.value : this.clientRoles),
+        costForAdditionalKmsExclVat: (costForAdditionalKmsExclVat != null
+            ? costForAdditionalKmsExclVat.value
+            : this.costForAdditionalKmsExclVat),
+        endDate: (endDate != null ? endDate.value : this.endDate),
+        maxInvoiceAmountExclVat: (maxInvoiceAmountExclVat != null
+            ? maxInvoiceAmountExclVat.value
+            : this.maxInvoiceAmountExclVat),
+        monthlyLeaseAmountExclVat: (monthlyLeaseAmountExclVat != null
+            ? monthlyLeaseAmountExclVat.value
+            : this.monthlyLeaseAmountExclVat),
+        numberOfMonths: (numberOfMonths != null
+            ? numberOfMonths.value
+            : this.numberOfMonths),
+        paidStartupCost: (paidStartupCost != null
+            ? paidStartupCost.value
+            : this.paidStartupCost),
+        startDate: (startDate != null ? startDate.value : this.startDate),
+        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+        yearlyKmsOnContract: (yearlyKmsOnContract != null
+            ? yearlyKmsOnContract.value
+            : this.yearlyKmsOnContract));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class VehicleContractResponse {
+  const VehicleContractResponse({
+    this.clientContracts,
+  });
+
+  factory VehicleContractResponse.fromJson(Map<String, dynamic> json) =>
+      _$VehicleContractResponseFromJson(json);
+
+  static const toJsonFactory = _$VehicleContractResponseToJson;
+  Map<String, dynamic> toJson() => _$VehicleContractResponseToJson(this);
+
+  @JsonKey(name: 'clientContracts', defaultValue: <ClientContractResponse>[])
+  final List<ClientContractResponse>? clientContracts;
+  static const fromJsonFactory = _$VehicleContractResponseFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is VehicleContractResponse &&
+            (identical(other.clientContracts, clientContracts) ||
+                const DeepCollectionEquality()
+                    .equals(other.clientContracts, clientContracts)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(clientContracts) ^
+      runtimeType.hashCode;
+}
+
+extension $VehicleContractResponseExtension on VehicleContractResponse {
+  VehicleContractResponse copyWith(
+      {List<ClientContractResponse>? clientContracts}) {
+    return VehicleContractResponse(
+        clientContracts: clientContracts ?? this.clientContracts);
+  }
+
+  VehicleContractResponse copyWithWrapped(
+      {Wrapped<List<ClientContractResponse>?>? clientContracts}) {
+    return VehicleContractResponse(
+        clientContracts: (clientContracts != null
+            ? clientContracts.value
+            : this.clientContracts));
   }
 }
 
@@ -9601,788 +11073,6 @@ extension $VehiclesPageExtension on VehiclesPage {
   VehiclesPage copyWithWrapped({Wrapped<List<Vehicle>?>? vehicles}) {
     return VehiclesPage(
         vehicles: (vehicles != null ? vehicles.value : this.vehicles));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class ContractsConvictions {
-  const ContractsConvictions({
-    this.convictionBloodTestRefusal,
-    this.convictionDrunk,
-    this.convictionHitAndRun,
-    this.convictionIntoxicated,
-    this.convictionLicenseRevocation,
-  });
-
-  factory ContractsConvictions.fromJson(Map<String, dynamic> json) =>
-      _$ContractsConvictionsFromJson(json);
-
-  static const toJsonFactory = _$ContractsConvictionsToJson;
-  Map<String, dynamic> toJson() => _$ContractsConvictionsToJson(this);
-
-  @JsonKey(name: 'convictionBloodTestRefusal')
-  final bool? convictionBloodTestRefusal;
-  @JsonKey(name: 'convictionDrunk')
-  final bool? convictionDrunk;
-  @JsonKey(name: 'convictionHitAndRun')
-  final bool? convictionHitAndRun;
-  @JsonKey(name: 'convictionIntoxicated')
-  final bool? convictionIntoxicated;
-  @JsonKey(name: 'convictionLicenseRevocation')
-  final bool? convictionLicenseRevocation;
-  static const fromJsonFactory = _$ContractsConvictionsFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is ContractsConvictions &&
-            (identical(other.convictionBloodTestRefusal,
-                    convictionBloodTestRefusal) ||
-                const DeepCollectionEquality().equals(
-                    other.convictionBloodTestRefusal,
-                    convictionBloodTestRefusal)) &&
-            (identical(other.convictionDrunk, convictionDrunk) ||
-                const DeepCollectionEquality()
-                    .equals(other.convictionDrunk, convictionDrunk)) &&
-            (identical(other.convictionHitAndRun, convictionHitAndRun) ||
-                const DeepCollectionEquality()
-                    .equals(other.convictionHitAndRun, convictionHitAndRun)) &&
-            (identical(other.convictionIntoxicated, convictionIntoxicated) ||
-                const DeepCollectionEquality().equals(
-                    other.convictionIntoxicated, convictionIntoxicated)) &&
-            (identical(other.convictionLicenseRevocation,
-                    convictionLicenseRevocation) ||
-                const DeepCollectionEquality().equals(
-                    other.convictionLicenseRevocation,
-                    convictionLicenseRevocation)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(convictionBloodTestRefusal) ^
-      const DeepCollectionEquality().hash(convictionDrunk) ^
-      const DeepCollectionEquality().hash(convictionHitAndRun) ^
-      const DeepCollectionEquality().hash(convictionIntoxicated) ^
-      const DeepCollectionEquality().hash(convictionLicenseRevocation) ^
-      runtimeType.hashCode;
-}
-
-extension $ContractsConvictionsExtension on ContractsConvictions {
-  ContractsConvictions copyWith(
-      {bool? convictionBloodTestRefusal,
-      bool? convictionDrunk,
-      bool? convictionHitAndRun,
-      bool? convictionIntoxicated,
-      bool? convictionLicenseRevocation}) {
-    return ContractsConvictions(
-        convictionBloodTestRefusal:
-            convictionBloodTestRefusal ?? this.convictionBloodTestRefusal,
-        convictionDrunk: convictionDrunk ?? this.convictionDrunk,
-        convictionHitAndRun: convictionHitAndRun ?? this.convictionHitAndRun,
-        convictionIntoxicated:
-            convictionIntoxicated ?? this.convictionIntoxicated,
-        convictionLicenseRevocation:
-            convictionLicenseRevocation ?? this.convictionLicenseRevocation);
-  }
-
-  ContractsConvictions copyWithWrapped(
-      {Wrapped<bool?>? convictionBloodTestRefusal,
-      Wrapped<bool?>? convictionDrunk,
-      Wrapped<bool?>? convictionHitAndRun,
-      Wrapped<bool?>? convictionIntoxicated,
-      Wrapped<bool?>? convictionLicenseRevocation}) {
-    return ContractsConvictions(
-        convictionBloodTestRefusal: (convictionBloodTestRefusal != null
-            ? convictionBloodTestRefusal.value
-            : this.convictionBloodTestRefusal),
-        convictionDrunk: (convictionDrunk != null
-            ? convictionDrunk.value
-            : this.convictionDrunk),
-        convictionHitAndRun: (convictionHitAndRun != null
-            ? convictionHitAndRun.value
-            : this.convictionHitAndRun),
-        convictionIntoxicated: (convictionIntoxicated != null
-            ? convictionIntoxicated.value
-            : this.convictionIntoxicated),
-        convictionLicenseRevocation: (convictionLicenseRevocation != null
-            ? convictionLicenseRevocation.value
-            : this.convictionLicenseRevocation));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class ContractsCreateClient {
-  const ContractsCreateClient({
-    required this.city,
-    required this.country,
-    required this.email,
-    required this.houseNumber,
-    required this.name,
-    required this.postalCode,
-    required this.street,
-    this.vat,
-  });
-
-  factory ContractsCreateClient.fromJson(Map<String, dynamic> json) =>
-      _$ContractsCreateClientFromJson(json);
-
-  static const toJsonFactory = _$ContractsCreateClientToJson;
-  Map<String, dynamic> toJson() => _$ContractsCreateClientToJson(this);
-
-  @JsonKey(name: 'city')
-  final String city;
-  @JsonKey(name: 'country')
-  final String country;
-  @JsonKey(name: 'email')
-  final String email;
-  @JsonKey(name: 'houseNumber')
-  final String houseNumber;
-  @JsonKey(name: 'name')
-  final String name;
-  @JsonKey(name: 'postalCode')
-  final String postalCode;
-  @JsonKey(name: 'street')
-  final String street;
-  @JsonKey(name: 'vat')
-  final String? vat;
-  static const fromJsonFactory = _$ContractsCreateClientFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is ContractsCreateClient &&
-            (identical(other.city, city) ||
-                const DeepCollectionEquality().equals(other.city, city)) &&
-            (identical(other.country, country) ||
-                const DeepCollectionEquality()
-                    .equals(other.country, country)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.houseNumber, houseNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.houseNumber, houseNumber)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.postalCode, postalCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.postalCode, postalCode)) &&
-            (identical(other.street, street) ||
-                const DeepCollectionEquality().equals(other.street, street)) &&
-            (identical(other.vat, vat) ||
-                const DeepCollectionEquality().equals(other.vat, vat)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(city) ^
-      const DeepCollectionEquality().hash(country) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(houseNumber) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(postalCode) ^
-      const DeepCollectionEquality().hash(street) ^
-      const DeepCollectionEquality().hash(vat) ^
-      runtimeType.hashCode;
-}
-
-extension $ContractsCreateClientExtension on ContractsCreateClient {
-  ContractsCreateClient copyWith(
-      {String? city,
-      String? country,
-      String? email,
-      String? houseNumber,
-      String? name,
-      String? postalCode,
-      String? street,
-      String? vat}) {
-    return ContractsCreateClient(
-        city: city ?? this.city,
-        country: country ?? this.country,
-        email: email ?? this.email,
-        houseNumber: houseNumber ?? this.houseNumber,
-        name: name ?? this.name,
-        postalCode: postalCode ?? this.postalCode,
-        street: street ?? this.street,
-        vat: vat ?? this.vat);
-  }
-
-  ContractsCreateClient copyWithWrapped(
-      {Wrapped<String>? city,
-      Wrapped<String>? country,
-      Wrapped<String>? email,
-      Wrapped<String>? houseNumber,
-      Wrapped<String>? name,
-      Wrapped<String>? postalCode,
-      Wrapped<String>? street,
-      Wrapped<String?>? vat}) {
-    return ContractsCreateClient(
-        city: (city != null ? city.value : this.city),
-        country: (country != null ? country.value : this.country),
-        email: (email != null ? email.value : this.email),
-        houseNumber:
-            (houseNumber != null ? houseNumber.value : this.houseNumber),
-        name: (name != null ? name.value : this.name),
-        postalCode: (postalCode != null ? postalCode.value : this.postalCode),
-        street: (street != null ? street.value : this.street),
-        vat: (vat != null ? vat.value : this.vat));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class ContractsOnboarding {
-  const ContractsOnboarding({
-    this.legal,
-    this.personal,
-    this.phone,
-    this.status,
-  });
-
-  factory ContractsOnboarding.fromJson(Map<String, dynamic> json) =>
-      _$ContractsOnboardingFromJson(json);
-
-  static const toJsonFactory = _$ContractsOnboardingToJson;
-  Map<String, dynamic> toJson() => _$ContractsOnboardingToJson(this);
-
-  @JsonKey(name: 'legal')
-  final ContractsOnboardingLegal? legal;
-  @JsonKey(name: 'personal')
-  final ContractsOnboardingPersonal? personal;
-  @JsonKey(name: 'phone')
-  final ContractsOnboardingPhone? phone;
-  @JsonKey(
-    name: 'status',
-    toJson: contractsOnboardingStatusNullableToJson,
-    fromJson: contractsOnboardingStatusNullableFromJson,
-  )
-  final enums.ContractsOnboardingStatus? status;
-  static const fromJsonFactory = _$ContractsOnboardingFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is ContractsOnboarding &&
-            (identical(other.legal, legal) ||
-                const DeepCollectionEquality().equals(other.legal, legal)) &&
-            (identical(other.personal, personal) ||
-                const DeepCollectionEquality()
-                    .equals(other.personal, personal)) &&
-            (identical(other.phone, phone) ||
-                const DeepCollectionEquality().equals(other.phone, phone)) &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(legal) ^
-      const DeepCollectionEquality().hash(personal) ^
-      const DeepCollectionEquality().hash(phone) ^
-      const DeepCollectionEquality().hash(status) ^
-      runtimeType.hashCode;
-}
-
-extension $ContractsOnboardingExtension on ContractsOnboarding {
-  ContractsOnboarding copyWith(
-      {ContractsOnboardingLegal? legal,
-      ContractsOnboardingPersonal? personal,
-      ContractsOnboardingPhone? phone,
-      enums.ContractsOnboardingStatus? status}) {
-    return ContractsOnboarding(
-        legal: legal ?? this.legal,
-        personal: personal ?? this.personal,
-        phone: phone ?? this.phone,
-        status: status ?? this.status);
-  }
-
-  ContractsOnboarding copyWithWrapped(
-      {Wrapped<ContractsOnboardingLegal?>? legal,
-      Wrapped<ContractsOnboardingPersonal?>? personal,
-      Wrapped<ContractsOnboardingPhone?>? phone,
-      Wrapped<enums.ContractsOnboardingStatus?>? status}) {
-    return ContractsOnboarding(
-        legal: (legal != null ? legal.value : this.legal),
-        personal: (personal != null ? personal.value : this.personal),
-        phone: (phone != null ? phone.value : this.phone),
-        status: (status != null ? status.value : this.status));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class ContractsOnboardingLegal {
-  const ContractsOnboardingLegal({
-    required this.convictions,
-    required this.nrOfAccidents,
-  });
-
-  factory ContractsOnboardingLegal.fromJson(Map<String, dynamic> json) =>
-      _$ContractsOnboardingLegalFromJson(json);
-
-  static const toJsonFactory = _$ContractsOnboardingLegalToJson;
-  Map<String, dynamic> toJson() => _$ContractsOnboardingLegalToJson(this);
-
-  @JsonKey(name: 'convictions')
-  final ContractsConvictions convictions;
-  @JsonKey(name: 'nrOfAccidents')
-  final int nrOfAccidents;
-  static const fromJsonFactory = _$ContractsOnboardingLegalFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is ContractsOnboardingLegal &&
-            (identical(other.convictions, convictions) ||
-                const DeepCollectionEquality()
-                    .equals(other.convictions, convictions)) &&
-            (identical(other.nrOfAccidents, nrOfAccidents) ||
-                const DeepCollectionEquality()
-                    .equals(other.nrOfAccidents, nrOfAccidents)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(convictions) ^
-      const DeepCollectionEquality().hash(nrOfAccidents) ^
-      runtimeType.hashCode;
-}
-
-extension $ContractsOnboardingLegalExtension on ContractsOnboardingLegal {
-  ContractsOnboardingLegal copyWith(
-      {ContractsConvictions? convictions, int? nrOfAccidents}) {
-    return ContractsOnboardingLegal(
-        convictions: convictions ?? this.convictions,
-        nrOfAccidents: nrOfAccidents ?? this.nrOfAccidents);
-  }
-
-  ContractsOnboardingLegal copyWithWrapped(
-      {Wrapped<ContractsConvictions>? convictions,
-      Wrapped<int>? nrOfAccidents}) {
-    return ContractsOnboardingLegal(
-        convictions:
-            (convictions != null ? convictions.value : this.convictions),
-        nrOfAccidents:
-            (nrOfAccidents != null ? nrOfAccidents.value : this.nrOfAccidents));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class ContractsOnboardingPersonal {
-  const ContractsOnboardingPersonal({
-    required this.box,
-    required this.city,
-    required this.dateCurrentLicense,
-    required this.dateLicenseUntil,
-    required this.dateOfBirth,
-    required this.firstName,
-    required this.houseNumber,
-    required this.lastName,
-    required this.licenseNumber,
-    required this.licenseType,
-    required this.nationality,
-    required this.postalCode,
-    required this.socialSecurityNumber,
-    required this.street,
-  });
-
-  factory ContractsOnboardingPersonal.fromJson(Map<String, dynamic> json) =>
-      _$ContractsOnboardingPersonalFromJson(json);
-
-  static const toJsonFactory = _$ContractsOnboardingPersonalToJson;
-  Map<String, dynamic> toJson() => _$ContractsOnboardingPersonalToJson(this);
-
-  @JsonKey(name: 'box')
-  final String box;
-  @JsonKey(name: 'city')
-  final String city;
-  @JsonKey(name: 'dateCurrentLicense')
-  final DateTime dateCurrentLicense;
-  @JsonKey(name: 'dateLicenseUntil')
-  final DateTime dateLicenseUntil;
-  @JsonKey(name: 'dateOfBirth')
-  final DateTime dateOfBirth;
-  @JsonKey(name: 'firstName')
-  final String firstName;
-  @JsonKey(name: 'houseNumber')
-  final String houseNumber;
-  @JsonKey(name: 'lastName')
-  final String lastName;
-  @JsonKey(name: 'licenseNumber')
-  final String licenseNumber;
-  @JsonKey(
-    name: 'licenseType',
-    toJson: contractsOnboardingPersonalLicenseTypeToJson,
-    fromJson: contractsOnboardingPersonalLicenseTypeFromJson,
-  )
-  final enums.ContractsOnboardingPersonalLicenseType licenseType;
-  @JsonKey(name: 'nationality')
-  final String nationality;
-  @JsonKey(name: 'postalCode')
-  final String postalCode;
-  @JsonKey(name: 'socialSecurityNumber')
-  final String socialSecurityNumber;
-  @JsonKey(name: 'street')
-  final String street;
-  static const fromJsonFactory = _$ContractsOnboardingPersonalFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is ContractsOnboardingPersonal &&
-            (identical(other.box, box) ||
-                const DeepCollectionEquality().equals(other.box, box)) &&
-            (identical(other.city, city) ||
-                const DeepCollectionEquality().equals(other.city, city)) &&
-            (identical(other.dateCurrentLicense, dateCurrentLicense) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateCurrentLicense, dateCurrentLicense)) &&
-            (identical(other.dateLicenseUntil, dateLicenseUntil) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateLicenseUntil, dateLicenseUntil)) &&
-            (identical(other.dateOfBirth, dateOfBirth) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateOfBirth, dateOfBirth)) &&
-            (identical(other.firstName, firstName) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstName, firstName)) &&
-            (identical(other.houseNumber, houseNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.houseNumber, houseNumber)) &&
-            (identical(other.lastName, lastName) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastName, lastName)) &&
-            (identical(other.licenseNumber, licenseNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.licenseNumber, licenseNumber)) &&
-            (identical(other.licenseType, licenseType) ||
-                const DeepCollectionEquality()
-                    .equals(other.licenseType, licenseType)) &&
-            (identical(other.nationality, nationality) ||
-                const DeepCollectionEquality()
-                    .equals(other.nationality, nationality)) &&
-            (identical(other.postalCode, postalCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.postalCode, postalCode)) &&
-            (identical(other.socialSecurityNumber, socialSecurityNumber) ||
-                const DeepCollectionEquality().equals(
-                    other.socialSecurityNumber, socialSecurityNumber)) &&
-            (identical(other.street, street) ||
-                const DeepCollectionEquality().equals(other.street, street)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(box) ^
-      const DeepCollectionEquality().hash(city) ^
-      const DeepCollectionEquality().hash(dateCurrentLicense) ^
-      const DeepCollectionEquality().hash(dateLicenseUntil) ^
-      const DeepCollectionEquality().hash(dateOfBirth) ^
-      const DeepCollectionEquality().hash(firstName) ^
-      const DeepCollectionEquality().hash(houseNumber) ^
-      const DeepCollectionEquality().hash(lastName) ^
-      const DeepCollectionEquality().hash(licenseNumber) ^
-      const DeepCollectionEquality().hash(licenseType) ^
-      const DeepCollectionEquality().hash(nationality) ^
-      const DeepCollectionEquality().hash(postalCode) ^
-      const DeepCollectionEquality().hash(socialSecurityNumber) ^
-      const DeepCollectionEquality().hash(street) ^
-      runtimeType.hashCode;
-}
-
-extension $ContractsOnboardingPersonalExtension on ContractsOnboardingPersonal {
-  ContractsOnboardingPersonal copyWith(
-      {String? box,
-      String? city,
-      DateTime? dateCurrentLicense,
-      DateTime? dateLicenseUntil,
-      DateTime? dateOfBirth,
-      String? firstName,
-      String? houseNumber,
-      String? lastName,
-      String? licenseNumber,
-      enums.ContractsOnboardingPersonalLicenseType? licenseType,
-      String? nationality,
-      String? postalCode,
-      String? socialSecurityNumber,
-      String? street}) {
-    return ContractsOnboardingPersonal(
-        box: box ?? this.box,
-        city: city ?? this.city,
-        dateCurrentLicense: dateCurrentLicense ?? this.dateCurrentLicense,
-        dateLicenseUntil: dateLicenseUntil ?? this.dateLicenseUntil,
-        dateOfBirth: dateOfBirth ?? this.dateOfBirth,
-        firstName: firstName ?? this.firstName,
-        houseNumber: houseNumber ?? this.houseNumber,
-        lastName: lastName ?? this.lastName,
-        licenseNumber: licenseNumber ?? this.licenseNumber,
-        licenseType: licenseType ?? this.licenseType,
-        nationality: nationality ?? this.nationality,
-        postalCode: postalCode ?? this.postalCode,
-        socialSecurityNumber: socialSecurityNumber ?? this.socialSecurityNumber,
-        street: street ?? this.street);
-  }
-
-  ContractsOnboardingPersonal copyWithWrapped(
-      {Wrapped<String>? box,
-      Wrapped<String>? city,
-      Wrapped<DateTime>? dateCurrentLicense,
-      Wrapped<DateTime>? dateLicenseUntil,
-      Wrapped<DateTime>? dateOfBirth,
-      Wrapped<String>? firstName,
-      Wrapped<String>? houseNumber,
-      Wrapped<String>? lastName,
-      Wrapped<String>? licenseNumber,
-      Wrapped<enums.ContractsOnboardingPersonalLicenseType>? licenseType,
-      Wrapped<String>? nationality,
-      Wrapped<String>? postalCode,
-      Wrapped<String>? socialSecurityNumber,
-      Wrapped<String>? street}) {
-    return ContractsOnboardingPersonal(
-        box: (box != null ? box.value : this.box),
-        city: (city != null ? city.value : this.city),
-        dateCurrentLicense: (dateCurrentLicense != null
-            ? dateCurrentLicense.value
-            : this.dateCurrentLicense),
-        dateLicenseUntil: (dateLicenseUntil != null
-            ? dateLicenseUntil.value
-            : this.dateLicenseUntil),
-        dateOfBirth:
-            (dateOfBirth != null ? dateOfBirth.value : this.dateOfBirth),
-        firstName: (firstName != null ? firstName.value : this.firstName),
-        houseNumber:
-            (houseNumber != null ? houseNumber.value : this.houseNumber),
-        lastName: (lastName != null ? lastName.value : this.lastName),
-        licenseNumber:
-            (licenseNumber != null ? licenseNumber.value : this.licenseNumber),
-        licenseType:
-            (licenseType != null ? licenseType.value : this.licenseType),
-        nationality:
-            (nationality != null ? nationality.value : this.nationality),
-        postalCode: (postalCode != null ? postalCode.value : this.postalCode),
-        socialSecurityNumber: (socialSecurityNumber != null
-            ? socialSecurityNumber.value
-            : this.socialSecurityNumber),
-        street: (street != null ? street.value : this.street));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class ContractsOnboardingPhone {
-  const ContractsOnboardingPhone({
-    required this.phoneNumber,
-    this.phoneNumberValidationCode,
-  });
-
-  factory ContractsOnboardingPhone.fromJson(Map<String, dynamic> json) =>
-      _$ContractsOnboardingPhoneFromJson(json);
-
-  static const toJsonFactory = _$ContractsOnboardingPhoneToJson;
-  Map<String, dynamic> toJson() => _$ContractsOnboardingPhoneToJson(this);
-
-  @JsonKey(name: 'phoneNumber')
-  final String phoneNumber;
-  @JsonKey(name: 'phoneNumberValidationCode')
-  final String? phoneNumberValidationCode;
-  static const fromJsonFactory = _$ContractsOnboardingPhoneFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is ContractsOnboardingPhone &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.phoneNumber, phoneNumber)) &&
-            (identical(other.phoneNumberValidationCode,
-                    phoneNumberValidationCode) ||
-                const DeepCollectionEquality().equals(
-                    other.phoneNumberValidationCode,
-                    phoneNumberValidationCode)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(phoneNumber) ^
-      const DeepCollectionEquality().hash(phoneNumberValidationCode) ^
-      runtimeType.hashCode;
-}
-
-extension $ContractsOnboardingPhoneExtension on ContractsOnboardingPhone {
-  ContractsOnboardingPhone copyWith(
-      {String? phoneNumber, String? phoneNumberValidationCode}) {
-    return ContractsOnboardingPhone(
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        phoneNumberValidationCode:
-            phoneNumberValidationCode ?? this.phoneNumberValidationCode);
-  }
-
-  ContractsOnboardingPhone copyWithWrapped(
-      {Wrapped<String>? phoneNumber,
-      Wrapped<String?>? phoneNumberValidationCode}) {
-    return ContractsOnboardingPhone(
-        phoneNumber:
-            (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
-        phoneNumberValidationCode: (phoneNumberValidationCode != null
-            ? phoneNumberValidationCode.value
-            : this.phoneNumberValidationCode));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class ContractsPasswordReset {
-  const ContractsPasswordReset({
-    required this.email,
-  });
-
-  factory ContractsPasswordReset.fromJson(Map<String, dynamic> json) =>
-      _$ContractsPasswordResetFromJson(json);
-
-  static const toJsonFactory = _$ContractsPasswordResetToJson;
-  Map<String, dynamic> toJson() => _$ContractsPasswordResetToJson(this);
-
-  @JsonKey(name: 'email')
-  final String email;
-  static const fromJsonFactory = _$ContractsPasswordResetFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is ContractsPasswordReset &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(email) ^ runtimeType.hashCode;
-}
-
-extension $ContractsPasswordResetExtension on ContractsPasswordReset {
-  ContractsPasswordReset copyWith({String? email}) {
-    return ContractsPasswordReset(email: email ?? this.email);
-  }
-
-  ContractsPasswordReset copyWithWrapped({Wrapped<String>? email}) {
-    return ContractsPasswordReset(
-        email: (email != null ? email.value : this.email));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class ContractsResendVerificationEmail {
-  const ContractsResendVerificationEmail({
-    required this.email,
-  });
-
-  factory ContractsResendVerificationEmail.fromJson(
-          Map<String, dynamic> json) =>
-      _$ContractsResendVerificationEmailFromJson(json);
-
-  static const toJsonFactory = _$ContractsResendVerificationEmailToJson;
-  Map<String, dynamic> toJson() =>
-      _$ContractsResendVerificationEmailToJson(this);
-
-  @JsonKey(name: 'email')
-  final String email;
-  static const fromJsonFactory = _$ContractsResendVerificationEmailFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is ContractsResendVerificationEmail &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(email) ^ runtimeType.hashCode;
-}
-
-extension $ContractsResendVerificationEmailExtension
-    on ContractsResendVerificationEmail {
-  ContractsResendVerificationEmail copyWith({String? email}) {
-    return ContractsResendVerificationEmail(email: email ?? this.email);
-  }
-
-  ContractsResendVerificationEmail copyWithWrapped({Wrapped<String>? email}) {
-    return ContractsResendVerificationEmail(
-        email: (email != null ? email.value : this.email));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class ContractsSignupUser {
-  const ContractsSignupUser({
-    required this.email,
-    required this.password,
-  });
-
-  factory ContractsSignupUser.fromJson(Map<String, dynamic> json) =>
-      _$ContractsSignupUserFromJson(json);
-
-  static const toJsonFactory = _$ContractsSignupUserToJson;
-  Map<String, dynamic> toJson() => _$ContractsSignupUserToJson(this);
-
-  @JsonKey(name: 'email')
-  final String email;
-  @JsonKey(name: 'password')
-  final String password;
-  static const fromJsonFactory = _$ContractsSignupUserFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is ContractsSignupUser &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(password) ^
-      runtimeType.hashCode;
-}
-
-extension $ContractsSignupUserExtension on ContractsSignupUser {
-  ContractsSignupUser copyWith({String? email, String? password}) {
-    return ContractsSignupUser(
-        email: email ?? this.email, password: password ?? this.password);
-  }
-
-  ContractsSignupUser copyWithWrapped(
-      {Wrapped<String>? email, Wrapped<String>? password}) {
-    return ContractsSignupUser(
-        email: (email != null ? email.value : this.email),
-        password: (password != null ? password.value : this.password));
   }
 }
 
@@ -11594,6 +12284,152 @@ List<enums.NonAvailabilityType>? nonAvailabilityTypeNullableListFromJson(
       .toList();
 }
 
+String? onboardingStatusNullableToJson(
+    enums.OnboardingStatus? onboardingStatus) {
+  return onboardingStatus?.value;
+}
+
+String? onboardingStatusToJson(enums.OnboardingStatus onboardingStatus) {
+  return onboardingStatus.value;
+}
+
+enums.OnboardingStatus onboardingStatusFromJson(
+  Object? onboardingStatus, [
+  enums.OnboardingStatus? defaultValue,
+]) {
+  return enums.OnboardingStatus.values
+          .firstWhereOrNull((e) => e.value == onboardingStatus) ??
+      defaultValue ??
+      enums.OnboardingStatus.swaggerGeneratedUnknown;
+}
+
+enums.OnboardingStatus? onboardingStatusNullableFromJson(
+  Object? onboardingStatus, [
+  enums.OnboardingStatus? defaultValue,
+]) {
+  if (onboardingStatus == null) {
+    return null;
+  }
+  return enums.OnboardingStatus.values
+          .firstWhereOrNull((e) => e.value == onboardingStatus) ??
+      defaultValue;
+}
+
+String onboardingStatusExplodedListToJson(
+    List<enums.OnboardingStatus>? onboardingStatus) {
+  return onboardingStatus?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> onboardingStatusListToJson(
+    List<enums.OnboardingStatus>? onboardingStatus) {
+  if (onboardingStatus == null) {
+    return [];
+  }
+
+  return onboardingStatus.map((e) => e.value!).toList();
+}
+
+List<enums.OnboardingStatus> onboardingStatusListFromJson(
+  List? onboardingStatus, [
+  List<enums.OnboardingStatus>? defaultValue,
+]) {
+  if (onboardingStatus == null) {
+    return defaultValue ?? [];
+  }
+
+  return onboardingStatus
+      .map((e) => onboardingStatusFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.OnboardingStatus>? onboardingStatusNullableListFromJson(
+  List? onboardingStatus, [
+  List<enums.OnboardingStatus>? defaultValue,
+]) {
+  if (onboardingStatus == null) {
+    return defaultValue;
+  }
+
+  return onboardingStatus
+      .map((e) => onboardingStatusFromJson(e.toString()))
+      .toList();
+}
+
+String? onboardingPersonalLicenseTypeNullableToJson(
+    enums.OnboardingPersonalLicenseType? onboardingPersonalLicenseType) {
+  return onboardingPersonalLicenseType?.value;
+}
+
+String? onboardingPersonalLicenseTypeToJson(
+    enums.OnboardingPersonalLicenseType onboardingPersonalLicenseType) {
+  return onboardingPersonalLicenseType.value;
+}
+
+enums.OnboardingPersonalLicenseType onboardingPersonalLicenseTypeFromJson(
+  Object? onboardingPersonalLicenseType, [
+  enums.OnboardingPersonalLicenseType? defaultValue,
+]) {
+  return enums.OnboardingPersonalLicenseType.values
+          .firstWhereOrNull((e) => e.value == onboardingPersonalLicenseType) ??
+      defaultValue ??
+      enums.OnboardingPersonalLicenseType.swaggerGeneratedUnknown;
+}
+
+enums.OnboardingPersonalLicenseType?
+    onboardingPersonalLicenseTypeNullableFromJson(
+  Object? onboardingPersonalLicenseType, [
+  enums.OnboardingPersonalLicenseType? defaultValue,
+]) {
+  if (onboardingPersonalLicenseType == null) {
+    return null;
+  }
+  return enums.OnboardingPersonalLicenseType.values
+          .firstWhereOrNull((e) => e.value == onboardingPersonalLicenseType) ??
+      defaultValue;
+}
+
+String onboardingPersonalLicenseTypeExplodedListToJson(
+    List<enums.OnboardingPersonalLicenseType>? onboardingPersonalLicenseType) {
+  return onboardingPersonalLicenseType?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> onboardingPersonalLicenseTypeListToJson(
+    List<enums.OnboardingPersonalLicenseType>? onboardingPersonalLicenseType) {
+  if (onboardingPersonalLicenseType == null) {
+    return [];
+  }
+
+  return onboardingPersonalLicenseType.map((e) => e.value!).toList();
+}
+
+List<enums.OnboardingPersonalLicenseType>
+    onboardingPersonalLicenseTypeListFromJson(
+  List? onboardingPersonalLicenseType, [
+  List<enums.OnboardingPersonalLicenseType>? defaultValue,
+]) {
+  if (onboardingPersonalLicenseType == null) {
+    return defaultValue ?? [];
+  }
+
+  return onboardingPersonalLicenseType
+      .map((e) => onboardingPersonalLicenseTypeFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.OnboardingPersonalLicenseType>?
+    onboardingPersonalLicenseTypeNullableListFromJson(
+  List? onboardingPersonalLicenseType, [
+  List<enums.OnboardingPersonalLicenseType>? defaultValue,
+]) {
+  if (onboardingPersonalLicenseType == null) {
+    return defaultValue;
+  }
+
+  return onboardingPersonalLicenseType
+      .map((e) => onboardingPersonalLicenseTypeFromJson(e.toString()))
+      .toList();
+}
+
 String? searchBookingsRequestInvoiceStatusesNullableToJson(
     enums.SearchBookingsRequestInvoiceStatuses?
         searchBookingsRequestInvoiceStatuses) {
@@ -12495,162 +13331,6 @@ List<enums.VehicleUsageUpdateStatusRequestStatus>?
 
   return vehicleUsageUpdateStatusRequestStatus
       .map((e) => vehicleUsageUpdateStatusRequestStatusFromJson(e.toString()))
-      .toList();
-}
-
-String? contractsOnboardingStatusNullableToJson(
-    enums.ContractsOnboardingStatus? contractsOnboardingStatus) {
-  return contractsOnboardingStatus?.value;
-}
-
-String? contractsOnboardingStatusToJson(
-    enums.ContractsOnboardingStatus contractsOnboardingStatus) {
-  return contractsOnboardingStatus.value;
-}
-
-enums.ContractsOnboardingStatus contractsOnboardingStatusFromJson(
-  Object? contractsOnboardingStatus, [
-  enums.ContractsOnboardingStatus? defaultValue,
-]) {
-  return enums.ContractsOnboardingStatus.values
-          .firstWhereOrNull((e) => e.value == contractsOnboardingStatus) ??
-      defaultValue ??
-      enums.ContractsOnboardingStatus.swaggerGeneratedUnknown;
-}
-
-enums.ContractsOnboardingStatus? contractsOnboardingStatusNullableFromJson(
-  Object? contractsOnboardingStatus, [
-  enums.ContractsOnboardingStatus? defaultValue,
-]) {
-  if (contractsOnboardingStatus == null) {
-    return null;
-  }
-  return enums.ContractsOnboardingStatus.values
-          .firstWhereOrNull((e) => e.value == contractsOnboardingStatus) ??
-      defaultValue;
-}
-
-String contractsOnboardingStatusExplodedListToJson(
-    List<enums.ContractsOnboardingStatus>? contractsOnboardingStatus) {
-  return contractsOnboardingStatus?.map((e) => e.value!).join(',') ?? '';
-}
-
-List<String> contractsOnboardingStatusListToJson(
-    List<enums.ContractsOnboardingStatus>? contractsOnboardingStatus) {
-  if (contractsOnboardingStatus == null) {
-    return [];
-  }
-
-  return contractsOnboardingStatus.map((e) => e.value!).toList();
-}
-
-List<enums.ContractsOnboardingStatus> contractsOnboardingStatusListFromJson(
-  List? contractsOnboardingStatus, [
-  List<enums.ContractsOnboardingStatus>? defaultValue,
-]) {
-  if (contractsOnboardingStatus == null) {
-    return defaultValue ?? [];
-  }
-
-  return contractsOnboardingStatus
-      .map((e) => contractsOnboardingStatusFromJson(e.toString()))
-      .toList();
-}
-
-List<enums.ContractsOnboardingStatus>?
-    contractsOnboardingStatusNullableListFromJson(
-  List? contractsOnboardingStatus, [
-  List<enums.ContractsOnboardingStatus>? defaultValue,
-]) {
-  if (contractsOnboardingStatus == null) {
-    return defaultValue;
-  }
-
-  return contractsOnboardingStatus
-      .map((e) => contractsOnboardingStatusFromJson(e.toString()))
-      .toList();
-}
-
-String? contractsOnboardingPersonalLicenseTypeNullableToJson(
-    enums.ContractsOnboardingPersonalLicenseType?
-        contractsOnboardingPersonalLicenseType) {
-  return contractsOnboardingPersonalLicenseType?.value;
-}
-
-String? contractsOnboardingPersonalLicenseTypeToJson(
-    enums.ContractsOnboardingPersonalLicenseType
-        contractsOnboardingPersonalLicenseType) {
-  return contractsOnboardingPersonalLicenseType.value;
-}
-
-enums.ContractsOnboardingPersonalLicenseType
-    contractsOnboardingPersonalLicenseTypeFromJson(
-  Object? contractsOnboardingPersonalLicenseType, [
-  enums.ContractsOnboardingPersonalLicenseType? defaultValue,
-]) {
-  return enums.ContractsOnboardingPersonalLicenseType.values.firstWhereOrNull(
-          (e) => e.value == contractsOnboardingPersonalLicenseType) ??
-      defaultValue ??
-      enums.ContractsOnboardingPersonalLicenseType.swaggerGeneratedUnknown;
-}
-
-enums.ContractsOnboardingPersonalLicenseType?
-    contractsOnboardingPersonalLicenseTypeNullableFromJson(
-  Object? contractsOnboardingPersonalLicenseType, [
-  enums.ContractsOnboardingPersonalLicenseType? defaultValue,
-]) {
-  if (contractsOnboardingPersonalLicenseType == null) {
-    return null;
-  }
-  return enums.ContractsOnboardingPersonalLicenseType.values.firstWhereOrNull(
-          (e) => e.value == contractsOnboardingPersonalLicenseType) ??
-      defaultValue;
-}
-
-String contractsOnboardingPersonalLicenseTypeExplodedListToJson(
-    List<enums.ContractsOnboardingPersonalLicenseType>?
-        contractsOnboardingPersonalLicenseType) {
-  return contractsOnboardingPersonalLicenseType
-          ?.map((e) => e.value!)
-          .join(',') ??
-      '';
-}
-
-List<String> contractsOnboardingPersonalLicenseTypeListToJson(
-    List<enums.ContractsOnboardingPersonalLicenseType>?
-        contractsOnboardingPersonalLicenseType) {
-  if (contractsOnboardingPersonalLicenseType == null) {
-    return [];
-  }
-
-  return contractsOnboardingPersonalLicenseType.map((e) => e.value!).toList();
-}
-
-List<enums.ContractsOnboardingPersonalLicenseType>
-    contractsOnboardingPersonalLicenseTypeListFromJson(
-  List? contractsOnboardingPersonalLicenseType, [
-  List<enums.ContractsOnboardingPersonalLicenseType>? defaultValue,
-]) {
-  if (contractsOnboardingPersonalLicenseType == null) {
-    return defaultValue ?? [];
-  }
-
-  return contractsOnboardingPersonalLicenseType
-      .map((e) => contractsOnboardingPersonalLicenseTypeFromJson(e.toString()))
-      .toList();
-}
-
-List<enums.ContractsOnboardingPersonalLicenseType>?
-    contractsOnboardingPersonalLicenseTypeNullableListFromJson(
-  List? contractsOnboardingPersonalLicenseType, [
-  List<enums.ContractsOnboardingPersonalLicenseType>? defaultValue,
-]) {
-  if (contractsOnboardingPersonalLicenseType == null) {
-    return defaultValue;
-  }
-
-  return contractsOnboardingPersonalLicenseType
-      .map((e) => contractsOnboardingPersonalLicenseTypeFromJson(e.toString()))
       .toList();
 }
 
