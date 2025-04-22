@@ -4200,7 +4200,7 @@ extension $CreateVehicleModelsRatesResponseExtension
 @JsonSerializable(explicitToJson: true)
 class CreateVehicleRequest {
   const CreateVehicleRequest({
-    this.licensePlate,
+    required this.licensePlate,
     required this.vehicleModelId,
   });
 
@@ -4211,7 +4211,7 @@ class CreateVehicleRequest {
   Map<String, dynamic> toJson() => _$CreateVehicleRequestToJson(this);
 
   @JsonKey(name: 'licensePlate')
-  final String? licensePlate;
+  final String licensePlate;
   @JsonKey(name: 'vehicleModelId')
   final String vehicleModelId;
   static const fromJsonFactory = _$CreateVehicleRequestFromJson;
@@ -4247,7 +4247,7 @@ extension $CreateVehicleRequestExtension on CreateVehicleRequest {
   }
 
   CreateVehicleRequest copyWithWrapped(
-      {Wrapped<String?>? licensePlate, Wrapped<String>? vehicleModelId}) {
+      {Wrapped<String>? licensePlate, Wrapped<String>? vehicleModelId}) {
     return CreateVehicleRequest(
         licensePlate:
             (licensePlate != null ? licensePlate.value : this.licensePlate),
@@ -7599,7 +7599,7 @@ class UpdateVehicleRequest {
     this.operationalStatus,
     this.seats,
     this.typeId,
-    this.vehicleId,
+    required this.vehicleId,
     this.vehicleInfo,
     this.vehicleInfoPreBooking,
     this.vehicleModelId,
@@ -7655,7 +7655,7 @@ class UpdateVehicleRequest {
   @JsonKey(name: 'typeId')
   final String? typeId;
   @JsonKey(name: 'vehicleId')
-  final String? vehicleId;
+  final String vehicleId;
   @JsonKey(name: 'vehicleInfo')
   final String? vehicleInfo;
   @JsonKey(name: 'vehicleInfoPreBooking')
@@ -7828,7 +7828,7 @@ extension $UpdateVehicleRequestExtension on UpdateVehicleRequest {
       Wrapped<enums.UpdateVehicleRequestOperationalStatus?>? operationalStatus,
       Wrapped<int?>? seats,
       Wrapped<String?>? typeId,
-      Wrapped<String?>? vehicleId,
+      Wrapped<String>? vehicleId,
       Wrapped<String?>? vehicleInfo,
       Wrapped<String?>? vehicleInfoPreBooking,
       Wrapped<String?>? vehicleModelId,

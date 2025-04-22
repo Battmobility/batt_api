@@ -1001,7 +1001,7 @@ Map<String, dynamic> _$CreateVehicleModelsRatesResponseToJson(
 CreateVehicleRequest _$CreateVehicleRequestFromJson(
         Map<String, dynamic> json) =>
     CreateVehicleRequest(
-      licensePlate: json['licensePlate'] as String?,
+      licensePlate: json['licensePlate'] as String,
       vehicleModelId: json['vehicleModelId'] as String,
     );
 
@@ -1883,7 +1883,7 @@ UpdateVehicleRequest _$UpdateVehicleRequestFromJson(
           json['operationalStatus']),
       seats: (json['seats'] as num?)?.toInt(),
       typeId: json['typeId'] as String?,
-      vehicleId: json['vehicleId'] as String?,
+      vehicleId: json['vehicleId'] as String,
       vehicleInfo: json['vehicleInfo'] as String?,
       vehicleInfoPreBooking: json['vehicleInfoPreBooking'] as String?,
       vehicleModelId: json['vehicleModelId'] as String?,

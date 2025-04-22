@@ -1,12 +1,12 @@
-name: Run build_runner on main
+name: Run build_runner when not on main
 on:
   push:
-    branches: [ main ]
     paths:
       - 'lib/api/definition/batt-kit.json'
 jobs:
   build_runner:
     runs-on: ubuntu-latest
+    if: github.ref_name != 'main'
     permissions:
       contents: write  # Required to push changes to the repository
       pull-requests: write  # Required to create PRs
@@ -37,16 +37,17 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Auto-generated code from build_runner"
-            git push origin main
+            git push origin ${{ github.ref_name }}
           fi
 
-      - name: Create PR on merge conflict
-        if: steps.commit.outcome == 'failure'
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Auto-generated code from build_runner"
-          title: "Merge build_runner generated changes"
-          body: "This PR contains auto-generated code from build_runner."
-          branch: "build_runner-updates"
-          base: main
+      - name: Create PR to main
+        if: github.ref_name != 'main'
+        run: |
+          gh pr create \
+            --base main \
+            --head ${{ github.ref_name }} \
+            --title "🤖 Auto generated changes" \
+            --body "This PR contains auto-generated code from build_runner."
+            --reviewer Kris9000
+        env:
+          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
