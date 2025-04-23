@@ -630,6 +630,24 @@ Map<String, dynamic> _$ClientContractDtoApiDataResponseToJson(
       'data': instance.data?.toJson(),
     };
 
+ClientContractResponse _$ClientContractResponseFromJson(
+        Map<String, dynamic> json) =>
+    ClientContractResponse(
+      id: (json['id'] as num?)?.toInt(),
+      vehicleContracts: (json['vehicleContracts'] as List<dynamic>?)
+              ?.map((e) => VehicleContract.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$ClientContractResponseToJson(
+        ClientContractResponse instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'vehicleContracts':
+          instance.vehicleContracts?.map((e) => e.toJson()).toList(),
+    };
+
 ClientContractSummaryDto _$ClientContractSummaryDtoFromJson(
         Map<String, dynamic> json) =>
     ClientContractSummaryDto(
@@ -763,6 +781,39 @@ Map<String, dynamic> _$ClientContractUsageDtoToJson(
       'usageData': instance.usageData?.map((e) => e.toJson()).toList(),
     };
 
+ClientContractVehicleRecord _$ClientContractVehicleRecordFromJson(
+        Map<String, dynamic> json) =>
+    ClientContractVehicleRecord(
+      battMaxType: json['battMaxType'] as String?,
+      clientContractId: (json['clientContractId'] as num?)?.toInt(),
+      costForAdditionalKmsExclVat:
+          (json['costForAdditionalKmsExclVat'] as num?)?.toDouble(),
+      effectiveStartDate: json['effectiveStartDate'] == null
+          ? null
+          : DateTime.parse(json['effectiveStartDate'] as String),
+      maxInvoiceAmountExclVat:
+          (json['maxInvoiceAmountExclVat'] as num?)?.toDouble(),
+      monthlyLeaseAmountExclVat:
+          (json['monthlyLeaseAmountExclVat'] as num?)?.toDouble(),
+      numberOfMonths: (json['numberOfMonths'] as num?)?.toInt(),
+      paidStartupCost: (json['paidStartupCost'] as num?)?.toDouble(),
+      yearlyKmsOnContract: (json['yearlyKmsOnContract'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$ClientContractVehicleRecordToJson(
+        ClientContractVehicleRecord instance) =>
+    <String, dynamic>{
+      'battMaxType': instance.battMaxType,
+      'clientContractId': instance.clientContractId,
+      'costForAdditionalKmsExclVat': instance.costForAdditionalKmsExclVat,
+      'effectiveStartDate': instance.effectiveStartDate?.toIso8601String(),
+      'maxInvoiceAmountExclVat': instance.maxInvoiceAmountExclVat,
+      'monthlyLeaseAmountExclVat': instance.monthlyLeaseAmountExclVat,
+      'numberOfMonths': instance.numberOfMonths,
+      'paidStartupCost': instance.paidStartupCost,
+      'yearlyKmsOnContract': instance.yearlyKmsOnContract,
+    };
+
 ClientReferenceDto _$ClientReferenceDtoFromJson(Map<String, dynamic> json) =>
     ClientReferenceDto(
       id: (json['id'] as num?)?.toInt(),
@@ -830,6 +881,23 @@ Map<String, dynamic> _$ContractUserToJson(ContractUser instance) =>
       'verifiedCellPhoneNumber': instance.verifiedCellPhoneNumber,
     };
 
+Convictions _$ConvictionsFromJson(Map<String, dynamic> json) => Convictions(
+      convictionBloodTestRefusal: json['convictionBloodTestRefusal'] as bool?,
+      convictionDrunk: json['convictionDrunk'] as bool?,
+      convictionHitAndRun: json['convictionHitAndRun'] as bool?,
+      convictionIntoxicated: json['convictionIntoxicated'] as bool?,
+      convictionLicenseRevocation: json['convictionLicenseRevocation'] as bool?,
+    );
+
+Map<String, dynamic> _$ConvictionsToJson(Convictions instance) =>
+    <String, dynamic>{
+      'convictionBloodTestRefusal': instance.convictionBloodTestRefusal,
+      'convictionDrunk': instance.convictionDrunk,
+      'convictionHitAndRun': instance.convictionHitAndRun,
+      'convictionIntoxicated': instance.convictionIntoxicated,
+      'convictionLicenseRevocation': instance.convictionLicenseRevocation,
+    };
+
 CreateBodyStyleRequest _$CreateBodyStyleRequestFromJson(
         Map<String, dynamic> json) =>
     CreateBodyStyleRequest(
@@ -877,6 +945,29 @@ Map<String, dynamic> _$CreateBookingRequestToJson(
       'vehicleId': instance.vehicleId,
     };
 
+CreateClient _$CreateClientFromJson(Map<String, dynamic> json) => CreateClient(
+      city: json['city'] as String,
+      country: json['country'] as String,
+      email: json['email'] as String,
+      houseNumber: json['houseNumber'] as String,
+      name: json['name'] as String,
+      postalCode: json['postalCode'] as String,
+      street: json['street'] as String,
+      vat: json['vat'] as String?,
+    );
+
+Map<String, dynamic> _$CreateClientToJson(CreateClient instance) =>
+    <String, dynamic>{
+      'city': instance.city,
+      'country': instance.country,
+      'email': instance.email,
+      'houseNumber': instance.houseNumber,
+      'name': instance.name,
+      'postalCode': instance.postalCode,
+      'street': instance.street,
+      'vat': instance.vat,
+    };
+
 CreateNewUsageContractRequest _$CreateNewUsageContractRequestFromJson(
         Map<String, dynamic> json) =>
     CreateNewUsageContractRequest(
@@ -922,6 +1013,51 @@ Map<String, dynamic> _$CreateUserRequestToJson(CreateUserRequest instance) =>
     <String, dynamic>{
       'email': instance.email,
       'remoteId': instance.remoteId,
+    };
+
+CreateVehicleContract _$CreateVehicleContractFromJson(
+        Map<String, dynamic> json) =>
+    CreateVehicleContract(
+      battMaxType: json['battMaxType'] as String,
+      billingType: json['billingType'] as String?,
+      clientContractId: (json['clientContractId'] as num?)?.toInt(),
+      clientId: (json['clientId'] as num).toInt(),
+      costForAdditionalKmsExclVat:
+          (json['costForAdditionalKmsExclVat'] as num?)?.toDouble(),
+      effectiveStartDate: DateTime.parse(json['effectiveStartDate'] as String),
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
+      monthlyLeaseAmountExclVat:
+          (json['monthlyLeaseAmountExclVat'] as num).toDouble(),
+      monthlyMaxInvoiceAmountExclVat:
+          (json['monthlyMaxInvoiceAmountExclVat'] as num?)?.toDouble(),
+      numberOfMonths: (json['numberOfMonths'] as num).toInt(),
+      paidStartupCost: (json['paidStartupCost'] as num?)?.toDouble(),
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      vehicleId: json['vehicleId'] as String,
+      yearlyKmsOnContract: (json['yearlyKmsOnContract'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$CreateVehicleContractToJson(
+        CreateVehicleContract instance) =>
+    <String, dynamic>{
+      'battMaxType': instance.battMaxType,
+      'billingType': instance.billingType,
+      'clientContractId': instance.clientContractId,
+      'clientId': instance.clientId,
+      'costForAdditionalKmsExclVat': instance.costForAdditionalKmsExclVat,
+      'effectiveStartDate': instance.effectiveStartDate.toIso8601String(),
+      'endDate': instance.endDate?.toIso8601String(),
+      'monthlyLeaseAmountExclVat': instance.monthlyLeaseAmountExclVat,
+      'monthlyMaxInvoiceAmountExclVat': instance.monthlyMaxInvoiceAmountExclVat,
+      'numberOfMonths': instance.numberOfMonths,
+      'paidStartupCost': instance.paidStartupCost,
+      'startDate': instance.startDate?.toIso8601String(),
+      'vehicleId': instance.vehicleId,
+      'yearlyKmsOnContract': instance.yearlyKmsOnContract,
     };
 
 CreateVehicleGroupRequest _$CreateVehicleGroupRequestFromJson(
@@ -1456,6 +1592,99 @@ Map<String, dynamic> _$NonAvailabilityResponseToJson(
           instance.nonAvailabilities?.map((e) => e.toJson()).toList(),
     };
 
+Onboarding _$OnboardingFromJson(Map<String, dynamic> json) => Onboarding(
+      legal: json['legal'] == null
+          ? null
+          : OnboardingLegal.fromJson(json['legal'] as Map<String, dynamic>),
+      personal: json['personal'] == null
+          ? null
+          : OnboardingPersonal.fromJson(
+              json['personal'] as Map<String, dynamic>),
+      phone: json['phone'] == null
+          ? null
+          : OnboardingPhone.fromJson(json['phone'] as Map<String, dynamic>),
+      status: onboardingStatusNullableFromJson(json['status']),
+    );
+
+Map<String, dynamic> _$OnboardingToJson(Onboarding instance) =>
+    <String, dynamic>{
+      'legal': instance.legal?.toJson(),
+      'personal': instance.personal?.toJson(),
+      'phone': instance.phone?.toJson(),
+      'status': onboardingStatusNullableToJson(instance.status),
+    };
+
+OnboardingLegal _$OnboardingLegalFromJson(Map<String, dynamic> json) =>
+    OnboardingLegal(
+      convictions:
+          Convictions.fromJson(json['convictions'] as Map<String, dynamic>),
+      nrOfAccidents: (json['nrOfAccidents'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$OnboardingLegalToJson(OnboardingLegal instance) =>
+    <String, dynamic>{
+      'convictions': instance.convictions.toJson(),
+      'nrOfAccidents': instance.nrOfAccidents,
+    };
+
+OnboardingPersonal _$OnboardingPersonalFromJson(Map<String, dynamic> json) =>
+    OnboardingPersonal(
+      box: json['box'] as String,
+      city: json['city'] as String,
+      dateCurrentLicense: DateTime.parse(json['dateCurrentLicense'] as String),
+      dateLicenseUntil: DateTime.parse(json['dateLicenseUntil'] as String),
+      dateOfBirth: DateTime.parse(json['dateOfBirth'] as String),
+      firstName: json['firstName'] as String,
+      houseNumber: json['houseNumber'] as String,
+      lastName: json['lastName'] as String,
+      licenseNumber: json['licenseNumber'] as String,
+      licenseType: onboardingPersonalLicenseTypeFromJson(json['licenseType']),
+      nationality: json['nationality'] as String,
+      postalCode: json['postalCode'] as String,
+      socialSecurityNumber: json['socialSecurityNumber'] as String,
+      street: json['street'] as String,
+    );
+
+Map<String, dynamic> _$OnboardingPersonalToJson(OnboardingPersonal instance) =>
+    <String, dynamic>{
+      'box': instance.box,
+      'city': instance.city,
+      'dateCurrentLicense': instance.dateCurrentLicense.toIso8601String(),
+      'dateLicenseUntil': instance.dateLicenseUntil.toIso8601String(),
+      'dateOfBirth': instance.dateOfBirth.toIso8601String(),
+      'firstName': instance.firstName,
+      'houseNumber': instance.houseNumber,
+      'lastName': instance.lastName,
+      'licenseNumber': instance.licenseNumber,
+      'licenseType': onboardingPersonalLicenseTypeToJson(instance.licenseType),
+      'nationality': instance.nationality,
+      'postalCode': instance.postalCode,
+      'socialSecurityNumber': instance.socialSecurityNumber,
+      'street': instance.street,
+    };
+
+OnboardingPhone _$OnboardingPhoneFromJson(Map<String, dynamic> json) =>
+    OnboardingPhone(
+      phoneNumber: json['phoneNumber'] as String,
+      phoneNumberValidationCode: json['phoneNumberValidationCode'] as String?,
+    );
+
+Map<String, dynamic> _$OnboardingPhoneToJson(OnboardingPhone instance) =>
+    <String, dynamic>{
+      'phoneNumber': instance.phoneNumber,
+      'phoneNumberValidationCode': instance.phoneNumberValidationCode,
+    };
+
+PasswordReset _$PasswordResetFromJson(Map<String, dynamic> json) =>
+    PasswordReset(
+      email: json['email'] as String,
+    );
+
+Map<String, dynamic> _$PasswordResetToJson(PasswordReset instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+    };
+
 Period _$PeriodFromJson(Map<String, dynamic> json) => Period(
       end: json['end'] == null ? null : DateTime.parse(json['end'] as String),
       start: json['start'] == null
@@ -1515,6 +1744,18 @@ Map<String, dynamic> _$ReplaceBookingRequestToJson(
       'period': instance.period?.toJson(),
       'userId': instance.userId,
       'vehicleId': instance.vehicleId,
+    };
+
+ResendVerificationEmail _$ResendVerificationEmailFromJson(
+        Map<String, dynamic> json) =>
+    ResendVerificationEmail(
+      email: json['email'] as String,
+    );
+
+Map<String, dynamic> _$ResendVerificationEmailToJson(
+        ResendVerificationEmail instance) =>
+    <String, dynamic>{
+      'email': instance.email,
     };
 
 SearchBookingsRequest _$SearchBookingsRequestFromJson(
@@ -1668,6 +1909,17 @@ Map<String, dynamic> _$SearchVehiclesRequestToJson(
       'period': instance.period?.toJson(),
       'subscriptionId': instance.subscriptionId,
       'vehicleFilterCriteria': instance.vehicleFilterCriteria?.toJson(),
+    };
+
+SignupUser _$SignupUserFromJson(Map<String, dynamic> json) => SignupUser(
+      email: json['email'] as String,
+      password: json['password'] as String,
+    );
+
+Map<String, dynamic> _$SignupUserToJson(SignupUser instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+      'password': instance.password,
     };
 
 StartVehicleUsageRequest _$StartVehicleUsageRequestFromJson(
@@ -2084,6 +2336,66 @@ Map<String, dynamic> _$VehicleBrandPageToJson(VehicleBrandPage instance) =>
       'vehicleBrands': instance.vehicleBrands?.map((e) => e.toJson()).toList(),
     };
 
+VehicleContract _$VehicleContractFromJson(Map<String, dynamic> json) =>
+    VehicleContract(
+      battMaxType: json['battMaxType'] as String?,
+      clientContractId: (json['clientContractId'] as num?)?.toInt(),
+      clientId: (json['clientId'] as num?)?.toInt(),
+      clientName: json['clientName'] as String?,
+      clientRoles: json['clientRoles'] as String?,
+      costForAdditionalKmsExclVat:
+          (json['costForAdditionalKmsExclVat'] as num?)?.toDouble(),
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
+      maxInvoiceAmountExclVat:
+          (json['maxInvoiceAmountExclVat'] as num?)?.toDouble(),
+      monthlyLeaseAmountExclVat:
+          (json['monthlyLeaseAmountExclVat'] as num?)?.toDouble(),
+      numberOfMonths: (json['numberOfMonths'] as num?)?.toInt(),
+      paidStartupCost: (json['paidStartupCost'] as num?)?.toDouble(),
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      vehicleId: json['vehicleId'] as String?,
+      yearlyKmsOnContract: (json['yearlyKmsOnContract'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$VehicleContractToJson(VehicleContract instance) =>
+    <String, dynamic>{
+      'battMaxType': instance.battMaxType,
+      'clientContractId': instance.clientContractId,
+      'clientId': instance.clientId,
+      'clientName': instance.clientName,
+      'clientRoles': instance.clientRoles,
+      'costForAdditionalKmsExclVat': instance.costForAdditionalKmsExclVat,
+      'endDate': instance.endDate?.toIso8601String(),
+      'maxInvoiceAmountExclVat': instance.maxInvoiceAmountExclVat,
+      'monthlyLeaseAmountExclVat': instance.monthlyLeaseAmountExclVat,
+      'numberOfMonths': instance.numberOfMonths,
+      'paidStartupCost': instance.paidStartupCost,
+      'startDate': instance.startDate?.toIso8601String(),
+      'vehicleId': instance.vehicleId,
+      'yearlyKmsOnContract': instance.yearlyKmsOnContract,
+    };
+
+VehicleContractResponse _$VehicleContractResponseFromJson(
+        Map<String, dynamic> json) =>
+    VehicleContractResponse(
+      clientContracts: (json['clientContracts'] as List<dynamic>?)
+              ?.map((e) =>
+                  ClientContractResponse.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$VehicleContractResponseToJson(
+        VehicleContractResponse instance) =>
+    <String, dynamic>{
+      'clientContracts':
+          instance.clientContracts?.map((e) => e.toJson()).toList(),
+    };
+
 VehicleFilterCriteria _$VehicleFilterCriteriaFromJson(
         Map<String, dynamic> json) =>
     VehicleFilterCriteria(
@@ -2336,184 +2648,6 @@ VehiclesPage _$VehiclesPageFromJson(Map<String, dynamic> json) => VehiclesPage(
 Map<String, dynamic> _$VehiclesPageToJson(VehiclesPage instance) =>
     <String, dynamic>{
       'vehicles': instance.vehicles?.map((e) => e.toJson()).toList(),
-    };
-
-ContractsConvictions _$ContractsConvictionsFromJson(
-        Map<String, dynamic> json) =>
-    ContractsConvictions(
-      convictionBloodTestRefusal: json['convictionBloodTestRefusal'] as bool?,
-      convictionDrunk: json['convictionDrunk'] as bool?,
-      convictionHitAndRun: json['convictionHitAndRun'] as bool?,
-      convictionIntoxicated: json['convictionIntoxicated'] as bool?,
-      convictionLicenseRevocation: json['convictionLicenseRevocation'] as bool?,
-    );
-
-Map<String, dynamic> _$ContractsConvictionsToJson(
-        ContractsConvictions instance) =>
-    <String, dynamic>{
-      'convictionBloodTestRefusal': instance.convictionBloodTestRefusal,
-      'convictionDrunk': instance.convictionDrunk,
-      'convictionHitAndRun': instance.convictionHitAndRun,
-      'convictionIntoxicated': instance.convictionIntoxicated,
-      'convictionLicenseRevocation': instance.convictionLicenseRevocation,
-    };
-
-ContractsCreateClient _$ContractsCreateClientFromJson(
-        Map<String, dynamic> json) =>
-    ContractsCreateClient(
-      city: json['city'] as String,
-      country: json['country'] as String,
-      email: json['email'] as String,
-      houseNumber: json['houseNumber'] as String,
-      name: json['name'] as String,
-      postalCode: json['postalCode'] as String,
-      street: json['street'] as String,
-      vat: json['vat'] as String?,
-    );
-
-Map<String, dynamic> _$ContractsCreateClientToJson(
-        ContractsCreateClient instance) =>
-    <String, dynamic>{
-      'city': instance.city,
-      'country': instance.country,
-      'email': instance.email,
-      'houseNumber': instance.houseNumber,
-      'name': instance.name,
-      'postalCode': instance.postalCode,
-      'street': instance.street,
-      'vat': instance.vat,
-    };
-
-ContractsOnboarding _$ContractsOnboardingFromJson(Map<String, dynamic> json) =>
-    ContractsOnboarding(
-      legal: json['legal'] == null
-          ? null
-          : ContractsOnboardingLegal.fromJson(
-              json['legal'] as Map<String, dynamic>),
-      personal: json['personal'] == null
-          ? null
-          : ContractsOnboardingPersonal.fromJson(
-              json['personal'] as Map<String, dynamic>),
-      phone: json['phone'] == null
-          ? null
-          : ContractsOnboardingPhone.fromJson(
-              json['phone'] as Map<String, dynamic>),
-      status: contractsOnboardingStatusNullableFromJson(json['status']),
-    );
-
-Map<String, dynamic> _$ContractsOnboardingToJson(
-        ContractsOnboarding instance) =>
-    <String, dynamic>{
-      'legal': instance.legal?.toJson(),
-      'personal': instance.personal?.toJson(),
-      'phone': instance.phone?.toJson(),
-      'status': contractsOnboardingStatusNullableToJson(instance.status),
-    };
-
-ContractsOnboardingLegal _$ContractsOnboardingLegalFromJson(
-        Map<String, dynamic> json) =>
-    ContractsOnboardingLegal(
-      convictions: ContractsConvictions.fromJson(
-          json['convictions'] as Map<String, dynamic>),
-      nrOfAccidents: (json['nrOfAccidents'] as num).toInt(),
-    );
-
-Map<String, dynamic> _$ContractsOnboardingLegalToJson(
-        ContractsOnboardingLegal instance) =>
-    <String, dynamic>{
-      'convictions': instance.convictions.toJson(),
-      'nrOfAccidents': instance.nrOfAccidents,
-    };
-
-ContractsOnboardingPersonal _$ContractsOnboardingPersonalFromJson(
-        Map<String, dynamic> json) =>
-    ContractsOnboardingPersonal(
-      box: json['box'] as String,
-      city: json['city'] as String,
-      dateCurrentLicense: DateTime.parse(json['dateCurrentLicense'] as String),
-      dateLicenseUntil: DateTime.parse(json['dateLicenseUntil'] as String),
-      dateOfBirth: DateTime.parse(json['dateOfBirth'] as String),
-      firstName: json['firstName'] as String,
-      houseNumber: json['houseNumber'] as String,
-      lastName: json['lastName'] as String,
-      licenseNumber: json['licenseNumber'] as String,
-      licenseType:
-          contractsOnboardingPersonalLicenseTypeFromJson(json['licenseType']),
-      nationality: json['nationality'] as String,
-      postalCode: json['postalCode'] as String,
-      socialSecurityNumber: json['socialSecurityNumber'] as String,
-      street: json['street'] as String,
-    );
-
-Map<String, dynamic> _$ContractsOnboardingPersonalToJson(
-        ContractsOnboardingPersonal instance) =>
-    <String, dynamic>{
-      'box': instance.box,
-      'city': instance.city,
-      'dateCurrentLicense': instance.dateCurrentLicense.toIso8601String(),
-      'dateLicenseUntil': instance.dateLicenseUntil.toIso8601String(),
-      'dateOfBirth': instance.dateOfBirth.toIso8601String(),
-      'firstName': instance.firstName,
-      'houseNumber': instance.houseNumber,
-      'lastName': instance.lastName,
-      'licenseNumber': instance.licenseNumber,
-      'licenseType':
-          contractsOnboardingPersonalLicenseTypeToJson(instance.licenseType),
-      'nationality': instance.nationality,
-      'postalCode': instance.postalCode,
-      'socialSecurityNumber': instance.socialSecurityNumber,
-      'street': instance.street,
-    };
-
-ContractsOnboardingPhone _$ContractsOnboardingPhoneFromJson(
-        Map<String, dynamic> json) =>
-    ContractsOnboardingPhone(
-      phoneNumber: json['phoneNumber'] as String,
-      phoneNumberValidationCode: json['phoneNumberValidationCode'] as String?,
-    );
-
-Map<String, dynamic> _$ContractsOnboardingPhoneToJson(
-        ContractsOnboardingPhone instance) =>
-    <String, dynamic>{
-      'phoneNumber': instance.phoneNumber,
-      'phoneNumberValidationCode': instance.phoneNumberValidationCode,
-    };
-
-ContractsPasswordReset _$ContractsPasswordResetFromJson(
-        Map<String, dynamic> json) =>
-    ContractsPasswordReset(
-      email: json['email'] as String,
-    );
-
-Map<String, dynamic> _$ContractsPasswordResetToJson(
-        ContractsPasswordReset instance) =>
-    <String, dynamic>{
-      'email': instance.email,
-    };
-
-ContractsResendVerificationEmail _$ContractsResendVerificationEmailFromJson(
-        Map<String, dynamic> json) =>
-    ContractsResendVerificationEmail(
-      email: json['email'] as String,
-    );
-
-Map<String, dynamic> _$ContractsResendVerificationEmailToJson(
-        ContractsResendVerificationEmail instance) =>
-    <String, dynamic>{
-      'email': instance.email,
-    };
-
-ContractsSignupUser _$ContractsSignupUserFromJson(Map<String, dynamic> json) =>
-    ContractsSignupUser(
-      email: json['email'] as String,
-      password: json['password'] as String,
-    );
-
-Map<String, dynamic> _$ContractsSignupUserToJson(
-        ContractsSignupUser instance) =>
-    <String, dynamic>{
-      'email': instance.email,
-      'password': instance.password,
     };
 
 UserV1ImageUserIdPost$RequestBody _$UserV1ImageUserIdPost$RequestBodyFromJson(
