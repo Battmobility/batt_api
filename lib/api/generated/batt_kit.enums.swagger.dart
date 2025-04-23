@@ -163,6 +163,20 @@ enum ClientContractType {
   const ClientContractType(this.value);
 }
 
+enum ClientContractVehicleRecordBattMaxType {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('Bridge')
+  bridge('Bridge'),
+  @JsonValue('Standard')
+  standard('Standard');
+
+  final String? value;
+
+  const ClientContractVehicleRecordBattMaxType(this.value);
+}
+
 enum CommitmentChangeOption {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),
@@ -175,6 +189,34 @@ enum CommitmentChangeOption {
   final String? value;
 
   const CommitmentChangeOption(this.value);
+}
+
+enum CreateVehicleContractBattMaxType {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('Bridge')
+  bridge('Bridge'),
+  @JsonValue('Standard')
+  standard('Standard');
+
+  final String? value;
+
+  const CreateVehicleContractBattMaxType(this.value);
+}
+
+enum CreateVehicleContractBillingType {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('BattMax.LEASE.3days')
+  battmaxLease3days('BattMax.LEASE.3days'),
+  @JsonValue('BattMax.LEASE.FLAT')
+  battmaxLeaseFlat('BattMax.LEASE.FLAT');
+
+  final String? value;
+
+  const CreateVehicleContractBillingType(this.value);
 }
 
 enum FormulaChangeOption {
@@ -507,6 +549,20 @@ enum VehicleOperationalStatus {
   final String? value;
 
   const VehicleOperationalStatus(this.value);
+}
+
+enum VehicleContractBattMaxType {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('Bridge')
+  bridge('Bridge'),
+  @JsonValue('Standard')
+  standard('Standard');
+
+  final String? value;
+
+  const VehicleContractBattMaxType(this.value);
 }
 
 enum VehicleUsageStatus {

@@ -784,7 +784,8 @@ Map<String, dynamic> _$ClientContractUsageDtoToJson(
 ClientContractVehicleRecord _$ClientContractVehicleRecordFromJson(
         Map<String, dynamic> json) =>
     ClientContractVehicleRecord(
-      battMaxType: json['battMaxType'] as String?,
+      battMaxType: clientContractVehicleRecordBattMaxTypeNullableFromJson(
+          json['battMaxType']),
       clientContractId: (json['clientContractId'] as num?)?.toInt(),
       costForAdditionalKmsExclVat:
           (json['costForAdditionalKmsExclVat'] as num?)?.toDouble(),
@@ -803,7 +804,8 @@ ClientContractVehicleRecord _$ClientContractVehicleRecordFromJson(
 Map<String, dynamic> _$ClientContractVehicleRecordToJson(
         ClientContractVehicleRecord instance) =>
     <String, dynamic>{
-      'battMaxType': instance.battMaxType,
+      'battMaxType': clientContractVehicleRecordBattMaxTypeNullableToJson(
+          instance.battMaxType),
       'clientContractId': instance.clientContractId,
       'costForAdditionalKmsExclVat': instance.costForAdditionalKmsExclVat,
       'effectiveStartDate': instance.effectiveStartDate?.toIso8601String(),
@@ -1018,8 +1020,10 @@ Map<String, dynamic> _$CreateUserRequestToJson(CreateUserRequest instance) =>
 CreateVehicleContract _$CreateVehicleContractFromJson(
         Map<String, dynamic> json) =>
     CreateVehicleContract(
-      battMaxType: json['battMaxType'] as String,
-      billingType: json['billingType'] as String?,
+      battMaxType:
+          createVehicleContractBattMaxTypeFromJson(json['battMaxType']),
+      billingType:
+          createVehicleContractBillingTypeNullableFromJson(json['billingType']),
       clientContractId: (json['clientContractId'] as num?)?.toInt(),
       clientId: (json['clientId'] as num).toInt(),
       costForAdditionalKmsExclVat:
@@ -1044,8 +1048,10 @@ CreateVehicleContract _$CreateVehicleContractFromJson(
 Map<String, dynamic> _$CreateVehicleContractToJson(
         CreateVehicleContract instance) =>
     <String, dynamic>{
-      'battMaxType': instance.battMaxType,
-      'billingType': instance.billingType,
+      'battMaxType':
+          createVehicleContractBattMaxTypeToJson(instance.battMaxType),
+      'billingType':
+          createVehicleContractBillingTypeNullableToJson(instance.billingType),
       'clientContractId': instance.clientContractId,
       'clientId': instance.clientId,
       'costForAdditionalKmsExclVat': instance.costForAdditionalKmsExclVat,
@@ -2338,7 +2344,8 @@ Map<String, dynamic> _$VehicleBrandPageToJson(VehicleBrandPage instance) =>
 
 VehicleContract _$VehicleContractFromJson(Map<String, dynamic> json) =>
     VehicleContract(
-      battMaxType: json['battMaxType'] as String?,
+      battMaxType:
+          vehicleContractBattMaxTypeNullableFromJson(json['battMaxType']),
       clientContractId: (json['clientContractId'] as num?)?.toInt(),
       clientId: (json['clientId'] as num?)?.toInt(),
       clientName: json['clientName'] as String?,
@@ -2363,7 +2370,8 @@ VehicleContract _$VehicleContractFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$VehicleContractToJson(VehicleContract instance) =>
     <String, dynamic>{
-      'battMaxType': instance.battMaxType,
+      'battMaxType':
+          vehicleContractBattMaxTypeNullableToJson(instance.battMaxType),
       'clientContractId': instance.clientContractId,
       'clientId': instance.clientId,
       'clientName': instance.clientName,
