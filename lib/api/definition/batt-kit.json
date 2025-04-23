@@ -929,6 +929,10 @@
       "ClientContractVehicleRecord": {
         "properties": {
           "battMaxType": {
+            "enum": [
+              "Bridge",
+              "Standard"
+            ],
             "type": "string"
           },
           "clientContractId": {
@@ -1220,9 +1224,17 @@
       "CreateVehicleContract": {
         "properties": {
           "battMaxType": {
+            "enum": [
+              "Bridge",
+              "Standard"
+            ],
             "type": "string"
           },
           "billingType": {
+            "enum": [
+              "BattMax.LEASE.3days",
+              "BattMax.LEASE.FLAT"
+            ],
             "type": "string"
           },
           "clientContractId": {
@@ -2712,6 +2724,10 @@
       "VehicleContract": {
         "properties": {
           "battMaxType": {
+            "enum": [
+              "Bridge",
+              "Standard"
+            ],
             "type": "string"
           },
           "clientContractId": {
@@ -7193,6 +7209,26 @@
               }
             },
             "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
           }
         },
         "summary": "Create a new vehicle contract",
@@ -7225,6 +7261,26 @@
               }
             },
             "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
           }
         },
         "summary": "Get all vehicle contracts for a specific client",
