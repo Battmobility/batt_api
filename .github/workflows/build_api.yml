@@ -6,7 +6,8 @@ on:
 jobs:
   build_runner:
     runs-on: ubuntu-latest
-    if: github.ref_name != 'main'
+    # not on main and not on a tag
+    if: github.ref_name != 'main' && startsWith(github.ref_name, 'refs/tags/') == false
     permissions:
       contents: write  # Required to push changes to the repository
       pull-requests: write  # Required to create PRs
