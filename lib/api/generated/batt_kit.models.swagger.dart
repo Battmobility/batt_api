@@ -3252,8 +3252,12 @@ class ClientContractVehicleRecord {
   static const toJsonFactory = _$ClientContractVehicleRecordToJson;
   Map<String, dynamic> toJson() => _$ClientContractVehicleRecordToJson(this);
 
-  @JsonKey(name: 'battMaxType')
-  final String? battMaxType;
+  @JsonKey(
+    name: 'battMaxType',
+    toJson: clientContractVehicleRecordBattMaxTypeNullableToJson,
+    fromJson: clientContractVehicleRecordBattMaxTypeNullableFromJson,
+  )
+  final enums.ClientContractVehicleRecordBattMaxType? battMaxType;
   @JsonKey(name: 'clientContractId')
   final int? clientContractId;
   @JsonKey(name: 'costForAdditionalKmsExclVat')
@@ -3329,7 +3333,7 @@ class ClientContractVehicleRecord {
 
 extension $ClientContractVehicleRecordExtension on ClientContractVehicleRecord {
   ClientContractVehicleRecord copyWith(
-      {String? battMaxType,
+      {enums.ClientContractVehicleRecordBattMaxType? battMaxType,
       int? clientContractId,
       double? costForAdditionalKmsExclVat,
       DateTime? effectiveStartDate,
@@ -3354,7 +3358,7 @@ extension $ClientContractVehicleRecordExtension on ClientContractVehicleRecord {
   }
 
   ClientContractVehicleRecord copyWithWrapped(
-      {Wrapped<String?>? battMaxType,
+      {Wrapped<enums.ClientContractVehicleRecordBattMaxType?>? battMaxType,
       Wrapped<int?>? clientContractId,
       Wrapped<double?>? costForAdditionalKmsExclVat,
       Wrapped<DateTime?>? effectiveStartDate,
@@ -4384,10 +4388,18 @@ class CreateVehicleContract {
   static const toJsonFactory = _$CreateVehicleContractToJson;
   Map<String, dynamic> toJson() => _$CreateVehicleContractToJson(this);
 
-  @JsonKey(name: 'battMaxType')
-  final String battMaxType;
-  @JsonKey(name: 'billingType')
-  final String? billingType;
+  @JsonKey(
+    name: 'battMaxType',
+    toJson: createVehicleContractBattMaxTypeToJson,
+    fromJson: createVehicleContractBattMaxTypeFromJson,
+  )
+  final enums.CreateVehicleContractBattMaxType battMaxType;
+  @JsonKey(
+    name: 'billingType',
+    toJson: createVehicleContractBillingTypeNullableToJson,
+    fromJson: createVehicleContractBillingTypeNullableFromJson,
+  )
+  final enums.CreateVehicleContractBillingType? billingType;
   @JsonKey(name: 'clientContractId')
   final int? clientContractId;
   @JsonKey(name: 'clientId')
@@ -4489,8 +4501,8 @@ class CreateVehicleContract {
 
 extension $CreateVehicleContractExtension on CreateVehicleContract {
   CreateVehicleContract copyWith(
-      {String? battMaxType,
-      String? billingType,
+      {enums.CreateVehicleContractBattMaxType? battMaxType,
+      enums.CreateVehicleContractBillingType? billingType,
       int? clientContractId,
       int? clientId,
       double? costForAdditionalKmsExclVat,
@@ -4524,8 +4536,8 @@ extension $CreateVehicleContractExtension on CreateVehicleContract {
   }
 
   CreateVehicleContract copyWithWrapped(
-      {Wrapped<String>? battMaxType,
-      Wrapped<String?>? billingType,
+      {Wrapped<enums.CreateVehicleContractBattMaxType>? battMaxType,
+      Wrapped<enums.CreateVehicleContractBillingType?>? billingType,
       Wrapped<int?>? clientContractId,
       Wrapped<int>? clientId,
       Wrapped<double?>? costForAdditionalKmsExclVat,
@@ -9775,8 +9787,12 @@ class VehicleContract {
   static const toJsonFactory = _$VehicleContractToJson;
   Map<String, dynamic> toJson() => _$VehicleContractToJson(this);
 
-  @JsonKey(name: 'battMaxType')
-  final String? battMaxType;
+  @JsonKey(
+    name: 'battMaxType',
+    toJson: vehicleContractBattMaxTypeNullableToJson,
+    fromJson: vehicleContractBattMaxTypeNullableFromJson,
+  )
+  final enums.VehicleContractBattMaxType? battMaxType;
   @JsonKey(name: 'clientContractId')
   final int? clientContractId;
   @JsonKey(name: 'clientId')
@@ -9879,7 +9895,7 @@ class VehicleContract {
 
 extension $VehicleContractExtension on VehicleContract {
   VehicleContract copyWith(
-      {String? battMaxType,
+      {enums.VehicleContractBattMaxType? battMaxType,
       int? clientContractId,
       int? clientId,
       String? clientName,
@@ -9914,7 +9930,7 @@ extension $VehicleContractExtension on VehicleContract {
   }
 
   VehicleContract copyWithWrapped(
-      {Wrapped<String?>? battMaxType,
+      {Wrapped<enums.VehicleContractBattMaxType?>? battMaxType,
       Wrapped<int?>? clientContractId,
       Wrapped<int?>? clientId,
       Wrapped<String?>? clientName,
@@ -11853,6 +11869,89 @@ List<enums.ClientContractType>? clientContractTypeNullableListFromJson(
       .toList();
 }
 
+String? clientContractVehicleRecordBattMaxTypeNullableToJson(
+    enums.ClientContractVehicleRecordBattMaxType?
+        clientContractVehicleRecordBattMaxType) {
+  return clientContractVehicleRecordBattMaxType?.value;
+}
+
+String? clientContractVehicleRecordBattMaxTypeToJson(
+    enums.ClientContractVehicleRecordBattMaxType
+        clientContractVehicleRecordBattMaxType) {
+  return clientContractVehicleRecordBattMaxType.value;
+}
+
+enums.ClientContractVehicleRecordBattMaxType
+    clientContractVehicleRecordBattMaxTypeFromJson(
+  Object? clientContractVehicleRecordBattMaxType, [
+  enums.ClientContractVehicleRecordBattMaxType? defaultValue,
+]) {
+  return enums.ClientContractVehicleRecordBattMaxType.values.firstWhereOrNull(
+          (e) => e.value == clientContractVehicleRecordBattMaxType) ??
+      defaultValue ??
+      enums.ClientContractVehicleRecordBattMaxType.swaggerGeneratedUnknown;
+}
+
+enums.ClientContractVehicleRecordBattMaxType?
+    clientContractVehicleRecordBattMaxTypeNullableFromJson(
+  Object? clientContractVehicleRecordBattMaxType, [
+  enums.ClientContractVehicleRecordBattMaxType? defaultValue,
+]) {
+  if (clientContractVehicleRecordBattMaxType == null) {
+    return null;
+  }
+  return enums.ClientContractVehicleRecordBattMaxType.values.firstWhereOrNull(
+          (e) => e.value == clientContractVehicleRecordBattMaxType) ??
+      defaultValue;
+}
+
+String clientContractVehicleRecordBattMaxTypeExplodedListToJson(
+    List<enums.ClientContractVehicleRecordBattMaxType>?
+        clientContractVehicleRecordBattMaxType) {
+  return clientContractVehicleRecordBattMaxType
+          ?.map((e) => e.value!)
+          .join(',') ??
+      '';
+}
+
+List<String> clientContractVehicleRecordBattMaxTypeListToJson(
+    List<enums.ClientContractVehicleRecordBattMaxType>?
+        clientContractVehicleRecordBattMaxType) {
+  if (clientContractVehicleRecordBattMaxType == null) {
+    return [];
+  }
+
+  return clientContractVehicleRecordBattMaxType.map((e) => e.value!).toList();
+}
+
+List<enums.ClientContractVehicleRecordBattMaxType>
+    clientContractVehicleRecordBattMaxTypeListFromJson(
+  List? clientContractVehicleRecordBattMaxType, [
+  List<enums.ClientContractVehicleRecordBattMaxType>? defaultValue,
+]) {
+  if (clientContractVehicleRecordBattMaxType == null) {
+    return defaultValue ?? [];
+  }
+
+  return clientContractVehicleRecordBattMaxType
+      .map((e) => clientContractVehicleRecordBattMaxTypeFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.ClientContractVehicleRecordBattMaxType>?
+    clientContractVehicleRecordBattMaxTypeNullableListFromJson(
+  List? clientContractVehicleRecordBattMaxType, [
+  List<enums.ClientContractVehicleRecordBattMaxType>? defaultValue,
+]) {
+  if (clientContractVehicleRecordBattMaxType == null) {
+    return defaultValue;
+  }
+
+  return clientContractVehicleRecordBattMaxType
+      .map((e) => clientContractVehicleRecordBattMaxTypeFromJson(e.toString()))
+      .toList();
+}
+
 String? commitmentChangeOptionNullableToJson(
     enums.CommitmentChangeOption? commitmentChangeOption) {
   return commitmentChangeOption?.value;
@@ -11922,6 +12021,160 @@ List<enums.CommitmentChangeOption>? commitmentChangeOptionNullableListFromJson(
 
   return commitmentChangeOption
       .map((e) => commitmentChangeOptionFromJson(e.toString()))
+      .toList();
+}
+
+String? createVehicleContractBattMaxTypeNullableToJson(
+    enums.CreateVehicleContractBattMaxType? createVehicleContractBattMaxType) {
+  return createVehicleContractBattMaxType?.value;
+}
+
+String? createVehicleContractBattMaxTypeToJson(
+    enums.CreateVehicleContractBattMaxType createVehicleContractBattMaxType) {
+  return createVehicleContractBattMaxType.value;
+}
+
+enums.CreateVehicleContractBattMaxType createVehicleContractBattMaxTypeFromJson(
+  Object? createVehicleContractBattMaxType, [
+  enums.CreateVehicleContractBattMaxType? defaultValue,
+]) {
+  return enums.CreateVehicleContractBattMaxType.values.firstWhereOrNull(
+          (e) => e.value == createVehicleContractBattMaxType) ??
+      defaultValue ??
+      enums.CreateVehicleContractBattMaxType.swaggerGeneratedUnknown;
+}
+
+enums.CreateVehicleContractBattMaxType?
+    createVehicleContractBattMaxTypeNullableFromJson(
+  Object? createVehicleContractBattMaxType, [
+  enums.CreateVehicleContractBattMaxType? defaultValue,
+]) {
+  if (createVehicleContractBattMaxType == null) {
+    return null;
+  }
+  return enums.CreateVehicleContractBattMaxType.values.firstWhereOrNull(
+          (e) => e.value == createVehicleContractBattMaxType) ??
+      defaultValue;
+}
+
+String createVehicleContractBattMaxTypeExplodedListToJson(
+    List<enums.CreateVehicleContractBattMaxType>?
+        createVehicleContractBattMaxType) {
+  return createVehicleContractBattMaxType?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> createVehicleContractBattMaxTypeListToJson(
+    List<enums.CreateVehicleContractBattMaxType>?
+        createVehicleContractBattMaxType) {
+  if (createVehicleContractBattMaxType == null) {
+    return [];
+  }
+
+  return createVehicleContractBattMaxType.map((e) => e.value!).toList();
+}
+
+List<enums.CreateVehicleContractBattMaxType>
+    createVehicleContractBattMaxTypeListFromJson(
+  List? createVehicleContractBattMaxType, [
+  List<enums.CreateVehicleContractBattMaxType>? defaultValue,
+]) {
+  if (createVehicleContractBattMaxType == null) {
+    return defaultValue ?? [];
+  }
+
+  return createVehicleContractBattMaxType
+      .map((e) => createVehicleContractBattMaxTypeFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.CreateVehicleContractBattMaxType>?
+    createVehicleContractBattMaxTypeNullableListFromJson(
+  List? createVehicleContractBattMaxType, [
+  List<enums.CreateVehicleContractBattMaxType>? defaultValue,
+]) {
+  if (createVehicleContractBattMaxType == null) {
+    return defaultValue;
+  }
+
+  return createVehicleContractBattMaxType
+      .map((e) => createVehicleContractBattMaxTypeFromJson(e.toString()))
+      .toList();
+}
+
+String? createVehicleContractBillingTypeNullableToJson(
+    enums.CreateVehicleContractBillingType? createVehicleContractBillingType) {
+  return createVehicleContractBillingType?.value;
+}
+
+String? createVehicleContractBillingTypeToJson(
+    enums.CreateVehicleContractBillingType createVehicleContractBillingType) {
+  return createVehicleContractBillingType.value;
+}
+
+enums.CreateVehicleContractBillingType createVehicleContractBillingTypeFromJson(
+  Object? createVehicleContractBillingType, [
+  enums.CreateVehicleContractBillingType? defaultValue,
+]) {
+  return enums.CreateVehicleContractBillingType.values.firstWhereOrNull(
+          (e) => e.value == createVehicleContractBillingType) ??
+      defaultValue ??
+      enums.CreateVehicleContractBillingType.swaggerGeneratedUnknown;
+}
+
+enums.CreateVehicleContractBillingType?
+    createVehicleContractBillingTypeNullableFromJson(
+  Object? createVehicleContractBillingType, [
+  enums.CreateVehicleContractBillingType? defaultValue,
+]) {
+  if (createVehicleContractBillingType == null) {
+    return null;
+  }
+  return enums.CreateVehicleContractBillingType.values.firstWhereOrNull(
+          (e) => e.value == createVehicleContractBillingType) ??
+      defaultValue;
+}
+
+String createVehicleContractBillingTypeExplodedListToJson(
+    List<enums.CreateVehicleContractBillingType>?
+        createVehicleContractBillingType) {
+  return createVehicleContractBillingType?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> createVehicleContractBillingTypeListToJson(
+    List<enums.CreateVehicleContractBillingType>?
+        createVehicleContractBillingType) {
+  if (createVehicleContractBillingType == null) {
+    return [];
+  }
+
+  return createVehicleContractBillingType.map((e) => e.value!).toList();
+}
+
+List<enums.CreateVehicleContractBillingType>
+    createVehicleContractBillingTypeListFromJson(
+  List? createVehicleContractBillingType, [
+  List<enums.CreateVehicleContractBillingType>? defaultValue,
+]) {
+  if (createVehicleContractBillingType == null) {
+    return defaultValue ?? [];
+  }
+
+  return createVehicleContractBillingType
+      .map((e) => createVehicleContractBillingTypeFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.CreateVehicleContractBillingType>?
+    createVehicleContractBillingTypeNullableListFromJson(
+  List? createVehicleContractBillingType, [
+  List<enums.CreateVehicleContractBillingType>? defaultValue,
+]) {
+  if (createVehicleContractBillingType == null) {
+    return defaultValue;
+  }
+
+  return createVehicleContractBillingType
+      .map((e) => createVehicleContractBillingTypeFromJson(e.toString()))
       .toList();
 }
 
@@ -13104,6 +13357,79 @@ List<enums.VehicleOperationalStatus>?
 
   return vehicleOperationalStatus
       .map((e) => vehicleOperationalStatusFromJson(e.toString()))
+      .toList();
+}
+
+String? vehicleContractBattMaxTypeNullableToJson(
+    enums.VehicleContractBattMaxType? vehicleContractBattMaxType) {
+  return vehicleContractBattMaxType?.value;
+}
+
+String? vehicleContractBattMaxTypeToJson(
+    enums.VehicleContractBattMaxType vehicleContractBattMaxType) {
+  return vehicleContractBattMaxType.value;
+}
+
+enums.VehicleContractBattMaxType vehicleContractBattMaxTypeFromJson(
+  Object? vehicleContractBattMaxType, [
+  enums.VehicleContractBattMaxType? defaultValue,
+]) {
+  return enums.VehicleContractBattMaxType.values
+          .firstWhereOrNull((e) => e.value == vehicleContractBattMaxType) ??
+      defaultValue ??
+      enums.VehicleContractBattMaxType.swaggerGeneratedUnknown;
+}
+
+enums.VehicleContractBattMaxType? vehicleContractBattMaxTypeNullableFromJson(
+  Object? vehicleContractBattMaxType, [
+  enums.VehicleContractBattMaxType? defaultValue,
+]) {
+  if (vehicleContractBattMaxType == null) {
+    return null;
+  }
+  return enums.VehicleContractBattMaxType.values
+          .firstWhereOrNull((e) => e.value == vehicleContractBattMaxType) ??
+      defaultValue;
+}
+
+String vehicleContractBattMaxTypeExplodedListToJson(
+    List<enums.VehicleContractBattMaxType>? vehicleContractBattMaxType) {
+  return vehicleContractBattMaxType?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> vehicleContractBattMaxTypeListToJson(
+    List<enums.VehicleContractBattMaxType>? vehicleContractBattMaxType) {
+  if (vehicleContractBattMaxType == null) {
+    return [];
+  }
+
+  return vehicleContractBattMaxType.map((e) => e.value!).toList();
+}
+
+List<enums.VehicleContractBattMaxType> vehicleContractBattMaxTypeListFromJson(
+  List? vehicleContractBattMaxType, [
+  List<enums.VehicleContractBattMaxType>? defaultValue,
+]) {
+  if (vehicleContractBattMaxType == null) {
+    return defaultValue ?? [];
+  }
+
+  return vehicleContractBattMaxType
+      .map((e) => vehicleContractBattMaxTypeFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.VehicleContractBattMaxType>?
+    vehicleContractBattMaxTypeNullableListFromJson(
+  List? vehicleContractBattMaxType, [
+  List<enums.VehicleContractBattMaxType>? defaultValue,
+]) {
+  if (vehicleContractBattMaxType == null) {
+    return defaultValue;
+  }
+
+  return vehicleContractBattMaxType
+      .map((e) => vehicleContractBattMaxTypeFromJson(e.toString()))
       .toList();
 }
 
