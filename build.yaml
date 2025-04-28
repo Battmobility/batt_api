@@ -8,6 +8,7 @@ targets:
           options:
             separate_models: true
             input_folder: "lib/api/definition/"
+            multipart_file_type: 'MultipartFile'
             #input_urls:
              # - url: "https://api-staging.battmobility.be/openapi.json"
             output_folder: "lib/api/generated/"

@@ -1,6 +1,6 @@
 name: batt_kit
 description: "API for the Batt Backend"
-version: 0.0.2
+version: 0.0.3
 
 environment:
   sdk: ^3.6.2
