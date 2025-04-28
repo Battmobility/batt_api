@@ -1238,7 +1238,7 @@
             "type": "string"
           },
           "clientContractId": {
-            "description": "if present, creates new ClientContract",
+            "description": "if not present, creates new ClientContract. if present, attaches vehicle contract to existing ClientContract",
             "type": "integer"
           },
           "clientId": {
@@ -3028,6 +3028,9 @@
             "type": "string"
           },
           "statusMessage": {
+            "type": "string"
+          },
+          "vehicleId": {
             "type": "string"
           }
         },
