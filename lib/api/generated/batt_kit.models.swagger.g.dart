@@ -2584,6 +2584,7 @@ VehicleUsage _$VehicleUsageFromJson(Map<String, dynamic> json) => VehicleUsage(
           : Period.fromJson(json['period'] as Map<String, dynamic>),
       status: vehicleUsageStatusNullableFromJson(json['status']),
       statusMessage: json['statusMessage'] as String?,
+      vehicleId: json['vehicleId'] as String?,
     );
 
 Map<String, dynamic> _$VehicleUsageToJson(VehicleUsage instance) =>
@@ -2595,6 +2596,7 @@ Map<String, dynamic> _$VehicleUsageToJson(VehicleUsage instance) =>
       'period': instance.period?.toJson(),
       'status': vehicleUsageStatusNullableToJson(instance.status),
       'statusMessage': instance.statusMessage,
+      'vehicleId': instance.vehicleId,
     };
 
 VehicleUsagePage _$VehicleUsagePageFromJson(Map<String, dynamic> json) =>

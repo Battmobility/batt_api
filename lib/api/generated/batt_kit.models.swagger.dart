@@ -10732,6 +10732,7 @@ class VehicleUsage {
     this.period,
     this.status,
     this.statusMessage,
+    this.vehicleId,
   });
 
   factory VehicleUsage.fromJson(Map<String, dynamic> json) =>
@@ -10758,6 +10759,8 @@ class VehicleUsage {
   final enums.VehicleUsageStatus? status;
   @JsonKey(name: 'statusMessage')
   final String? statusMessage;
+  @JsonKey(name: 'vehicleId')
+  final String? vehicleId;
   static const fromJsonFactory = _$VehicleUsageFromJson;
 
   @override
@@ -10781,7 +10784,10 @@ class VehicleUsage {
                 const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.statusMessage, statusMessage) ||
                 const DeepCollectionEquality()
-                    .equals(other.statusMessage, statusMessage)));
+                    .equals(other.statusMessage, statusMessage)) &&
+            (identical(other.vehicleId, vehicleId) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicleId, vehicleId)));
   }
 
   @override
@@ -10796,6 +10802,7 @@ class VehicleUsage {
       const DeepCollectionEquality().hash(period) ^
       const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(statusMessage) ^
+      const DeepCollectionEquality().hash(vehicleId) ^
       runtimeType.hashCode;
 }
 
@@ -10807,7 +10814,8 @@ extension $VehicleUsageExtension on VehicleUsage {
       double? mileageStartValue,
       Period? period,
       enums.VehicleUsageStatus? status,
-      String? statusMessage}) {
+      String? statusMessage,
+      String? vehicleId}) {
     return VehicleUsage(
         id: id ?? this.id,
         mileageDelta: mileageDelta ?? this.mileageDelta,
@@ -10815,7 +10823,8 @@ extension $VehicleUsageExtension on VehicleUsage {
         mileageStartValue: mileageStartValue ?? this.mileageStartValue,
         period: period ?? this.period,
         status: status ?? this.status,
-        statusMessage: statusMessage ?? this.statusMessage);
+        statusMessage: statusMessage ?? this.statusMessage,
+        vehicleId: vehicleId ?? this.vehicleId);
   }
 
   VehicleUsage copyWithWrapped(
@@ -10825,7 +10834,8 @@ extension $VehicleUsageExtension on VehicleUsage {
       Wrapped<double?>? mileageStartValue,
       Wrapped<Period?>? period,
       Wrapped<enums.VehicleUsageStatus?>? status,
-      Wrapped<String?>? statusMessage}) {
+      Wrapped<String?>? statusMessage,
+      Wrapped<String?>? vehicleId}) {
     return VehicleUsage(
         id: (id != null ? id.value : this.id),
         mileageDelta:
@@ -10839,7 +10849,8 @@ extension $VehicleUsageExtension on VehicleUsage {
         period: (period != null ? period.value : this.period),
         status: (status != null ? status.value : this.status),
         statusMessage:
-            (statusMessage != null ? statusMessage.value : this.statusMessage));
+            (statusMessage != null ? statusMessage.value : this.statusMessage),
+        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
   }
 }
 
