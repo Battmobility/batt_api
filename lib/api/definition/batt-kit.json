@@ -41,8 +41,8 @@
           },
           "type": {
             "enum": [
-              "BOOKING",
-              "NOT_AVAILABLE"
+              "NOT_AVAILABLE",
+              "BOOKING"
             ],
             "type": "string"
           },
