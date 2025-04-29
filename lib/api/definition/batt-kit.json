@@ -135,10 +135,10 @@
           "total": {
             "type": "number"
           },
-          "totalExclVat": {
+          "totalVat": {
             "type": "number"
           },
-          "totalVat": {
+          "totalExclVat": {
             "type": "number"
           },
           "unit": {
