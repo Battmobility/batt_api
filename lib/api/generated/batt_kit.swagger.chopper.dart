@@ -675,11 +675,11 @@ final class _$BattKit extends BattKit {
   @override
   Future<Response<User>> _userV1ImageUserIdPost({
     required String? userId,
-    required List<int> file,
+    required MultipartFile file,
   }) {
     final Uri $url = Uri.parse('/user/v1/image/${userId}');
     final List<PartValue> $parts = <PartValue>[
-      PartValueFile<List<int>>(
+      PartValueFile<MultipartFile>(
         'file',
         file,
       )
@@ -783,36 +783,36 @@ final class _$BattKit extends BattKit {
 
   @override
   Future<Response<Onboarding>> _userV1UsersOnboardingDocumentsPut({
-    List<int>? backDriverLicense,
-    List<int>? backId,
-    List<int>? damageStatistic,
-    List<int>? frontDriverLicense,
-    List<int>? frontId,
-    List<int>? selfie,
+    MultipartFile? backDriverLicense,
+    MultipartFile? backId,
+    MultipartFile? damageStatistic,
+    MultipartFile? frontDriverLicense,
+    MultipartFile? frontId,
+    MultipartFile? selfie,
   }) {
     final Uri $url = Uri.parse('/user/v1/users/onboarding/documents');
     final List<PartValue> $parts = <PartValue>[
-      PartValueFile<List<int>?>(
+      PartValueFile<MultipartFile?>(
         'backDriverLicense',
         backDriverLicense,
       ),
-      PartValueFile<List<int>?>(
+      PartValueFile<MultipartFile?>(
         'backId',
         backId,
       ),
-      PartValueFile<List<int>?>(
+      PartValueFile<MultipartFile?>(
         'damageStatistic',
         damageStatistic,
       ),
-      PartValueFile<List<int>?>(
+      PartValueFile<MultipartFile?>(
         'frontDriverLicense',
         frontDriverLicense,
       ),
-      PartValueFile<List<int>?>(
+      PartValueFile<MultipartFile?>(
         'frontId',
         frontId,
       ),
-      PartValueFile<List<int>?>(
+      PartValueFile<MultipartFile?>(
         'selfie',
         selfie,
       ),
@@ -1279,11 +1279,11 @@ final class _$BattKit extends BattKit {
   @override
   Future<Response<Vehicle>> _vehicleV1VehicleImageVehicleIdPost({
     required String? vehicleId,
-    required List<int> file,
+    required MultipartFile file,
   }) {
     final Uri $url = Uri.parse('/vehicle/v1/vehicle/image/${vehicleId}');
     final List<PartValue> $parts = <PartValue>[
-      PartValueFile<List<int>>(
+      PartValueFile<MultipartFile>(
         'file',
         file,
       )

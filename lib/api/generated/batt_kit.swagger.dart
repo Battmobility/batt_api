@@ -891,7 +891,7 @@ abstract class BattKit extends ChopperService {
   ///@param userId
   Future<chopper.Response<User>> userV1ImageUserIdPost({
     required String? userId,
-    required List<int> file,
+    required MultipartFile file,
   }) {
     generatedMapping.putIfAbsent(User, () => User.fromJsonFactory);
 
@@ -907,7 +907,7 @@ abstract class BattKit extends ChopperService {
   @Multipart()
   Future<chopper.Response<User>> _userV1ImageUserIdPost({
     @Path('userId') required String? userId,
-    @PartFile() required List<int> file,
+    @PartFile() required MultipartFile file,
   });
 
   ///Requests a password reset email to be sent
@@ -1002,12 +1002,12 @@ abstract class BattKit extends ChopperService {
 
   ///Upload your own documents
   Future<chopper.Response<Onboarding>> userV1UsersOnboardingDocumentsPut({
-    List<int>? backDriverLicense,
-    List<int>? backId,
-    List<int>? damageStatistic,
-    List<int>? frontDriverLicense,
-    List<int>? frontId,
-    List<int>? selfie,
+    MultipartFile? backDriverLicense,
+    MultipartFile? backId,
+    MultipartFile? damageStatistic,
+    MultipartFile? frontDriverLicense,
+    MultipartFile? frontId,
+    MultipartFile? selfie,
   }) {
     generatedMapping.putIfAbsent(Onboarding, () => Onboarding.fromJsonFactory);
 
@@ -1027,12 +1027,12 @@ abstract class BattKit extends ChopperService {
   )
   @Multipart()
   Future<chopper.Response<Onboarding>> _userV1UsersOnboardingDocumentsPut({
-    @PartFile() List<int>? backDriverLicense,
-    @PartFile() List<int>? backId,
-    @PartFile() List<int>? damageStatistic,
-    @PartFile() List<int>? frontDriverLicense,
-    @PartFile() List<int>? frontId,
-    @PartFile() List<int>? selfie,
+    @PartFile() MultipartFile? backDriverLicense,
+    @PartFile() MultipartFile? backId,
+    @PartFile() MultipartFile? damageStatistic,
+    @PartFile() MultipartFile? frontDriverLicense,
+    @PartFile() MultipartFile? frontId,
+    @PartFile() MultipartFile? selfie,
   });
 
   ///Upload your legal information
@@ -1594,7 +1594,7 @@ abstract class BattKit extends ChopperService {
   ///@param vehicleId
   Future<chopper.Response<Vehicle>> vehicleV1VehicleImageVehicleIdPost({
     required String? vehicleId,
-    required List<int> file,
+    required MultipartFile file,
   }) {
     generatedMapping.putIfAbsent(Vehicle, () => Vehicle.fromJsonFactory);
 
@@ -1611,7 +1611,7 @@ abstract class BattKit extends ChopperService {
   @Multipart()
   Future<chopper.Response<Vehicle>> _vehicleV1VehicleImageVehicleIdPost({
     @Path('vehicleId') required String? vehicleId,
-    @PartFile() required List<int> file,
+    @PartFile() required MultipartFile file,
   });
 
   ///
