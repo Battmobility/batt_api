@@ -5,10 +5,10 @@ enum AdjacentNonAvailabilityType {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),
 
-  @JsonValue('BOOKING')
-  booking('BOOKING'),
   @JsonValue('NOT_AVAILABLE')
-  notAvailable('NOT_AVAILABLE');
+  notAvailable('NOT_AVAILABLE'),
+  @JsonValue('BOOKING')
+  booking('BOOKING');
 
   final String? value;
 
