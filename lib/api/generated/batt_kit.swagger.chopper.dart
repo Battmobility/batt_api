@@ -594,6 +594,209 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<BatteryStatus>> _telematicsV1BatteryVehicleIdGet(
+      {required String? vehicleId}) {
+    final Uri $url = Uri.parse('/telematics/v1/battery/${vehicleId}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<BatteryStatus, BatteryStatus>($request);
+  }
+
+  @override
+  Future<Response<List<VehicleTelematics>>> _telematicsV1DevicesGet() {
+    final Uri $url = Uri.parse('/telematics/v1/devices');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<List<VehicleTelematics>, VehicleTelematics>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _telematicsV1DevicesPost(
+      {required CreateTelematicsRequest? body}) {
+    final Uri $url = Uri.parse('/telematics/v1/devices');
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _telematicsV1DevicesVehicleIdDelete(
+      {required String? vehicleId}) {
+    final Uri $url = Uri.parse('/telematics/v1/devices/${vehicleId}');
+    final Request $request = Request(
+      'DELETE',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<VehicleTelematics>> _telematicsV1DevicesVehicleIdGet(
+      {required String? vehicleId}) {
+    final Uri $url = Uri.parse('/telematics/v1/devices/${vehicleId}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<VehicleTelematics, VehicleTelematics>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _telematicsV1DevicesVehicleIdPut({
+    required String? vehicleId,
+    required UpdateTelematicsRequest? body,
+  }) {
+    final Uri $url = Uri.parse('/telematics/v1/devices/${vehicleId}');
+    final $body = body;
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _telematicsV1ImmobilizerVehicleIdPut({
+    required String? vehicleId,
+    required ChangeLockRequest? body,
+  }) {
+    final Uri $url = Uri.parse('/telematics/v1/immobilizer/${vehicleId}');
+    final $body = body;
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<LocationValue>> _telematicsV1LocationVehicleIdGet(
+      {required String? vehicleId}) {
+    final Uri $url = Uri.parse('/telematics/v1/location/${vehicleId}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<LocationValue, LocationValue>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _telematicsV1LockVehicleIdPut({
+    required String? vehicleId,
+    required ChangeLockRequest? body,
+  }) {
+    final Uri $url = Uri.parse('/telematics/v1/lock/${vehicleId}');
+    final $body = body;
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<Mileage>> _telematicsV1MileageVehicleIdGet(
+      {required String? vehicleId}) {
+    final Uri $url = Uri.parse('/telematics/v1/mileage/${vehicleId}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<Mileage, Mileage>($request);
+  }
+
+  @override
+  Future<Response<ProviderPage>> _telematicsV1ProvidersGet() {
+    final Uri $url = Uri.parse('/telematics/v1/providers');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<ProviderPage, ProviderPage>($request);
+  }
+
+  @override
+  Future<Response<List<ProviderTelematics>>>
+      _telematicsV1ProvidersProviderIdDevicesGet(
+          {required String? providerId}) {
+    final Uri $url =
+        Uri.parse('/telematics/v1/providers/${providerId}/devices');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<List<ProviderTelematics>, ProviderTelematics>($request);
+  }
+
+  @override
+  Future<Response<List<TelematicsTracking>>> _telematicsV1TrackingsSearchesPost(
+      {required SearchTelematicsTrackingRequest? body}) {
+    final Uri $url = Uri.parse('/telematics/v1/trackings/searches');
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<List<TelematicsTracking>, TelematicsTracking>($request);
+  }
+
+  @override
+  Future<Response<TelematicsVehicleUsage>> _telematicsV1UsageVehicleIdPut({
+    required String? vehicleId,
+    required ChangeVehicleUsageRequest? body,
+  }) {
+    final Uri $url = Uri.parse('/telematics/v1/usage/${vehicleId}');
+    final $body = body;
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client
+        .send<TelematicsVehicleUsage, TelematicsVehicleUsage>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _telematicsV1WebhooksFlespiPost(
+      {required FlespiCallbackRequest? body}) {
+    final Uri $url = Uri.parse('/telematics/v1/webhooks/flespi');
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
   Future<Response<Client>> _userV1ClientsPost({required CreateClient? body}) {
     final Uri $url = Uri.parse('/user/v1/clients');
     final $body = body;
@@ -1135,6 +1338,18 @@ final class _$BattKit extends BattKit {
       client.baseUrl,
     );
     return client.send<VehicleUsagePage, VehicleUsagePage>($request);
+  }
+
+  @override
+  Future<Response<VehicleUsage>> _vehicleUsageV1VehicleUsageIdGet(
+      {required String? vehicleUsageId}) {
+    final Uri $url = Uri.parse('/vehicle-usage/v1/${vehicleUsageId}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<VehicleUsage, VehicleUsage>($request);
   }
 
   @override

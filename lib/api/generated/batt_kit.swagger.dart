@@ -784,6 +784,256 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response> _pricingV1RatesVehiclesRateIdDelete(
       {@Path('rateId') required String? rateId});
 
+  ///
+  ///@param vehicleId
+  Future<chopper.Response<BatteryStatus>> telematicsV1BatteryVehicleIdGet(
+      {required String? vehicleId}) {
+    generatedMapping.putIfAbsent(
+        BatteryStatus, () => BatteryStatus.fromJsonFactory);
+
+    return _telematicsV1BatteryVehicleIdGet(vehicleId: vehicleId);
+  }
+
+  ///
+  ///@param vehicleId
+  @Get(path: '/telematics/v1/battery/{vehicleId}')
+  Future<chopper.Response<BatteryStatus>> _telematicsV1BatteryVehicleIdGet(
+      {@Path('vehicleId') required String? vehicleId});
+
+  ///
+  Future<chopper.Response<List<VehicleTelematics>>> telematicsV1DevicesGet() {
+    generatedMapping.putIfAbsent(
+        VehicleTelematics, () => VehicleTelematics.fromJsonFactory);
+
+    return _telematicsV1DevicesGet();
+  }
+
+  ///
+  @Get(path: '/telematics/v1/devices')
+  Future<chopper.Response<List<VehicleTelematics>>> _telematicsV1DevicesGet();
+
+  ///
+  Future<chopper.Response> telematicsV1DevicesPost(
+      {required CreateTelematicsRequest? body}) {
+    return _telematicsV1DevicesPost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/telematics/v1/devices',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _telematicsV1DevicesPost(
+      {@Body() required CreateTelematicsRequest? body});
+
+  ///
+  ///@param vehicleId
+  Future<chopper.Response> telematicsV1DevicesVehicleIdDelete(
+      {required String? vehicleId}) {
+    return _telematicsV1DevicesVehicleIdDelete(vehicleId: vehicleId);
+  }
+
+  ///
+  ///@param vehicleId
+  @Delete(path: '/telematics/v1/devices/{vehicleId}')
+  Future<chopper.Response> _telematicsV1DevicesVehicleIdDelete(
+      {@Path('vehicleId') required String? vehicleId});
+
+  ///
+  ///@param vehicleId
+  Future<chopper.Response<VehicleTelematics>> telematicsV1DevicesVehicleIdGet(
+      {required String? vehicleId}) {
+    generatedMapping.putIfAbsent(
+        VehicleTelematics, () => VehicleTelematics.fromJsonFactory);
+
+    return _telematicsV1DevicesVehicleIdGet(vehicleId: vehicleId);
+  }
+
+  ///
+  ///@param vehicleId
+  @Get(path: '/telematics/v1/devices/{vehicleId}')
+  Future<chopper.Response<VehicleTelematics>> _telematicsV1DevicesVehicleIdGet(
+      {@Path('vehicleId') required String? vehicleId});
+
+  ///
+  ///@param vehicleId
+  Future<chopper.Response> telematicsV1DevicesVehicleIdPut({
+    required String? vehicleId,
+    required UpdateTelematicsRequest? body,
+  }) {
+    return _telematicsV1DevicesVehicleIdPut(vehicleId: vehicleId, body: body);
+  }
+
+  ///
+  ///@param vehicleId
+  @Put(
+    path: '/telematics/v1/devices/{vehicleId}',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _telematicsV1DevicesVehicleIdPut({
+    @Path('vehicleId') required String? vehicleId,
+    @Body() required UpdateTelematicsRequest? body,
+  });
+
+  ///
+  ///@param vehicleId
+  Future<chopper.Response> telematicsV1ImmobilizerVehicleIdPut({
+    required String? vehicleId,
+    required ChangeLockRequest? body,
+  }) {
+    return _telematicsV1ImmobilizerVehicleIdPut(
+        vehicleId: vehicleId, body: body);
+  }
+
+  ///
+  ///@param vehicleId
+  @Put(
+    path: '/telematics/v1/immobilizer/{vehicleId}',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _telematicsV1ImmobilizerVehicleIdPut({
+    @Path('vehicleId') required String? vehicleId,
+    @Body() required ChangeLockRequest? body,
+  });
+
+  ///
+  ///@param vehicleId
+  Future<chopper.Response<LocationValue>> telematicsV1LocationVehicleIdGet(
+      {required String? vehicleId}) {
+    generatedMapping.putIfAbsent(
+        LocationValue, () => LocationValue.fromJsonFactory);
+
+    return _telematicsV1LocationVehicleIdGet(vehicleId: vehicleId);
+  }
+
+  ///
+  ///@param vehicleId
+  @Get(path: '/telematics/v1/location/{vehicleId}')
+  Future<chopper.Response<LocationValue>> _telematicsV1LocationVehicleIdGet(
+      {@Path('vehicleId') required String? vehicleId});
+
+  ///
+  ///@param vehicleId
+  Future<chopper.Response> telematicsV1LockVehicleIdPut({
+    required String? vehicleId,
+    required ChangeLockRequest? body,
+  }) {
+    return _telematicsV1LockVehicleIdPut(vehicleId: vehicleId, body: body);
+  }
+
+  ///
+  ///@param vehicleId
+  @Put(
+    path: '/telematics/v1/lock/{vehicleId}',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _telematicsV1LockVehicleIdPut({
+    @Path('vehicleId') required String? vehicleId,
+    @Body() required ChangeLockRequest? body,
+  });
+
+  ///
+  ///@param vehicleId
+  Future<chopper.Response<Mileage>> telematicsV1MileageVehicleIdGet(
+      {required String? vehicleId}) {
+    generatedMapping.putIfAbsent(Mileage, () => Mileage.fromJsonFactory);
+
+    return _telematicsV1MileageVehicleIdGet(vehicleId: vehicleId);
+  }
+
+  ///
+  ///@param vehicleId
+  @Get(path: '/telematics/v1/mileage/{vehicleId}')
+  Future<chopper.Response<Mileage>> _telematicsV1MileageVehicleIdGet(
+      {@Path('vehicleId') required String? vehicleId});
+
+  ///
+  Future<chopper.Response<ProviderPage>> telematicsV1ProvidersGet() {
+    generatedMapping.putIfAbsent(
+        ProviderPage, () => ProviderPage.fromJsonFactory);
+
+    return _telematicsV1ProvidersGet();
+  }
+
+  ///
+  @Get(path: '/telematics/v1/providers')
+  Future<chopper.Response<ProviderPage>> _telematicsV1ProvidersGet();
+
+  ///
+  ///@param providerId
+  Future<chopper.Response<List<ProviderTelematics>>>
+      telematicsV1ProvidersProviderIdDevicesGet({required String? providerId}) {
+    generatedMapping.putIfAbsent(
+        ProviderTelematics, () => ProviderTelematics.fromJsonFactory);
+
+    return _telematicsV1ProvidersProviderIdDevicesGet(providerId: providerId);
+  }
+
+  ///
+  ///@param providerId
+  @Get(path: '/telematics/v1/providers/{providerId}/devices')
+  Future<chopper.Response<List<ProviderTelematics>>>
+      _telematicsV1ProvidersProviderIdDevicesGet(
+          {@Path('providerId') required String? providerId});
+
+  ///
+  Future<chopper.Response<List<TelematicsTracking>>>
+      telematicsV1TrackingsSearchesPost(
+          {required SearchTelematicsTrackingRequest? body}) {
+    generatedMapping.putIfAbsent(
+        TelematicsTracking, () => TelematicsTracking.fromJsonFactory);
+
+    return _telematicsV1TrackingsSearchesPost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/telematics/v1/trackings/searches',
+    optionalBody: true,
+  )
+  Future<chopper.Response<List<TelematicsTracking>>>
+      _telematicsV1TrackingsSearchesPost(
+          {@Body() required SearchTelematicsTrackingRequest? body});
+
+  ///
+  ///@param vehicleId
+  Future<chopper.Response<TelematicsVehicleUsage>>
+      telematicsV1UsageVehicleIdPut({
+    required String? vehicleId,
+    required ChangeVehicleUsageRequest? body,
+  }) {
+    generatedMapping.putIfAbsent(
+        TelematicsVehicleUsage, () => TelematicsVehicleUsage.fromJsonFactory);
+
+    return _telematicsV1UsageVehicleIdPut(vehicleId: vehicleId, body: body);
+  }
+
+  ///
+  ///@param vehicleId
+  @Put(
+    path: '/telematics/v1/usage/{vehicleId}',
+    optionalBody: true,
+  )
+  Future<chopper.Response<TelematicsVehicleUsage>>
+      _telematicsV1UsageVehicleIdPut({
+    @Path('vehicleId') required String? vehicleId,
+    @Body() required ChangeVehicleUsageRequest? body,
+  });
+
+  ///
+  Future<chopper.Response> telematicsV1WebhooksFlespiPost(
+      {required FlespiCallbackRequest? body}) {
+    return _telematicsV1WebhooksFlespiPost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/telematics/v1/webhooks/flespi',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _telematicsV1WebhooksFlespiPost(
+      {@Body() required FlespiCallbackRequest? body});
+
   ///Create a new client (company with VAT nr. or private person)
   Future<chopper.Response<Client>> userV1ClientsPost(
       {required CreateClient? body}) {
@@ -1423,6 +1673,22 @@ abstract class BattKit extends ChopperService {
   ///
   @Get(path: '/vehicle-usage/v1/vehicle-usages')
   Future<chopper.Response<VehicleUsagePage>> _vehicleUsageV1VehicleUsagesGet();
+
+  ///
+  ///@param vehicleUsageId
+  Future<chopper.Response<VehicleUsage>> vehicleUsageV1VehicleUsageIdGet(
+      {required String? vehicleUsageId}) {
+    generatedMapping.putIfAbsent(
+        VehicleUsage, () => VehicleUsage.fromJsonFactory);
+
+    return _vehicleUsageV1VehicleUsageIdGet(vehicleUsageId: vehicleUsageId);
+  }
+
+  ///
+  ///@param vehicleUsageId
+  @Get(path: '/vehicle-usage/v1/{vehicleUsageId}')
+  Future<chopper.Response<VehicleUsage>> _vehicleUsageV1VehicleUsageIdGet(
+      {@Path('vehicleUsageId') required String? vehicleUsageId});
 
   ///
   ///@param vehicleUsageId
