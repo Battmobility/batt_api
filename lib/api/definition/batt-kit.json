@@ -41,8 +41,8 @@
           },
           "type": {
             "enum": [
-              "BOOKING",
-              "NOT_AVAILABLE"
+              "NOT_AVAILABLE",
+              "BOOKING"
             ],
             "type": "string"
           },
@@ -80,6 +80,35 @@
             },
             "nullable": true,
             "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "BatteryStatus": {
+        "properties": {
+          "ageInSeconds": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "batteryPercentage": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "charging": {
+            "enum": [
+              "NOT_CHARGING",
+              "NORMAL_CHARGE",
+              "QUICK_CHARGE",
+              "UNKNOWN"
+            ],
+            "type": "string"
+          },
+          "cruisingRange": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "errorMessage": {
+            "type": "string"
           }
         },
         "type": "object"
@@ -156,6 +185,38 @@
           },
           "vatRate": {
             "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "BluetoothToken": {
+        "properties": {
+          "deviceId": {
+            "type": "string"
+          },
+          "encodedToken": {
+            "type": "string"
+          },
+          "end": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "sessionToken": {
+            "type": "string"
+          },
+          "start": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "tokenChunks": {
+            "items": {
+              "items": {
+                "format": "byte",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": "array"
           }
         },
         "type": "object"
@@ -568,6 +629,29 @@
         },
         "type": "object"
       },
+      "ChangeLockRequest": {
+        "properties": {
+          "keyFobCheck": {
+            "type": "boolean"
+          },
+          "lockStatus": {
+            "enum": [
+              "LOCKED",
+              "BLUETOOTH_UNLOCKING",
+              "BLUETOOTH_LOCKING",
+              "UNLOCKED"
+            ],
+            "type": "string"
+          },
+          "unlockDistanceCheck": {
+            "type": "boolean"
+          },
+          "userLocation": {
+            "$ref": "#/components/schemas/LocationPosition"
+          }
+        },
+        "type": "object"
+      },
       "ChangeToContractFormulaHint": {
         "additionalProperties": false,
         "properties": {
@@ -580,6 +664,14 @@
           },
           "targetFormula": {
             "$ref": "#/components/schemas/ClientContractFormula"
+          }
+        },
+        "type": "object"
+      },
+      "ChangeVehicleUsageRequest": {
+        "properties": {
+          "changeLockRequest": {
+            "$ref": "#/components/schemas/ChangeLockRequest"
           }
         },
         "type": "object"
@@ -1205,6 +1297,41 @@
         ],
         "type": "object"
       },
+      "CreateTelematicsRequest": {
+        "properties": {
+          "alwaysUseBluetooth": {
+            "type": "boolean"
+          },
+          "ignitionCheck": {
+            "type": "boolean"
+          },
+          "keyfobCheck": {
+            "type": "boolean"
+          },
+          "maxRange": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "providerDeviceId": {
+            "type": "string"
+          },
+          "providerId": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "providerDeviceId",
+          "providerId",
+          "vehicleId"
+        ],
+        "type": "object"
+      },
       "CreateUserRequest": {
         "properties": {
           "email": {
@@ -1238,7 +1365,7 @@
             "type": "string"
           },
           "clientContractId": {
-            "description": "if present, creates new ClientContract",
+            "description": "if not present, creates new ClientContract. if present, attaches vehicle contract to existing ClientContract",
             "type": "integer"
           },
           "clientId": {
@@ -1489,6 +1616,55 @@
         },
         "type": "object"
       },
+      "FlespiCallbackRequest": {
+        "properties": {
+          "begin": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "can.vehicle.battery.level": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "can.vehicle.mileage": {
+            "format": "double",
+            "type": "number"
+          },
+          "device.id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "duration": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "end": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "external.powersource.voltage": {
+            "format": "double",
+            "type": "number"
+          },
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "position.latitude": {
+            "format": "double",
+            "type": "number"
+          },
+          "position.longitude": {
+            "format": "double",
+            "type": "number"
+          },
+          "timestamp": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
       "FormulaChangeOption": {
         "enum": [
           "AnyDay",
@@ -1700,6 +1876,39 @@
               "$ref": "#/components/schemas/Invoice"
             },
             "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "LocationPosition": {
+        "properties": {
+          "lat": {
+            "format": "double",
+            "type": "number"
+          },
+          "lng": {
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "LocationValue": {
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "position": {
+            "$ref": "#/components/schemas/LocationPosition"
+          }
+        },
+        "type": "object"
+      },
+      "Mileage": {
+        "properties": {
+          "mileage": {
+            "format": "double",
+            "type": "number"
           }
         },
         "type": "object"
@@ -1984,6 +2193,39 @@
         },
         "type": "object"
       },
+      "Provider": {
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ProviderPage": {
+        "properties": {
+          "providers": {
+            "items": {
+              "$ref": "#/components/schemas/Provider"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "ProviderTelematics": {
+        "properties": {
+          "providerDeviceId": {
+            "type": "string"
+          },
+          "providerId": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "RegisterDeviceRequest": {
         "properties": {
           "active": {
@@ -2160,6 +2402,74 @@
         },
         "type": "object"
       },
+      "SearchTelematicsTrackingRequest": {
+        "properties": {
+          "charging": {
+            "type": "boolean"
+          },
+          "endDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "eventReason": {
+            "enum": [
+              "alarm_input_changed",
+              "alarm_input_2_changed",
+              "boot",
+              "boot_mass_storage_mode",
+              "can_value_high",
+              "can_value_low",
+              "card_reader_rfid_tag_read",
+              "central_lock_changed",
+              "central_lock_command_without_change",
+              "ev_charge_adapter_changed",
+              "ev_charge_changed",
+              "ev_quick_charge_changed",
+              "external_relay_triggered",
+              "first_fix",
+              "fuel_level_alarm",
+              "fuel_level_recovered",
+              "ignition_changed",
+              "immobilizer_changed",
+              "immobilizer_command_without_change",
+              "keyfob_changed",
+              "low_bat_alarm",
+              "low_bat_recovered",
+              "rfid_tag_changed",
+              "power_fail_detected",
+              "unknown",
+              "flespi_callback",
+              "continental_polling",
+              "doors_changed",
+              "central_lock_read_state_changed",
+              "bluetooth_authenticated",
+              "bluetooth_connected",
+              "bluetooth_disconnected",
+              "shock_detected",
+              "shock_data_ready"
+            ],
+            "type": "string"
+          },
+          "latestPerVehicle": {
+            "type": "boolean"
+          },
+          "maxResults": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "startDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "vehicleIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
       "SearchUsersRequest": {
         "properties": {
           "defaultMembershipId": {
@@ -2289,6 +2599,97 @@
         },
         "type": "object"
       },
+      "TelematicsTracking": {
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "batteryPercentage": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "charging": {
+            "type": "boolean"
+          },
+          "dateCreated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "eventReason": {
+            "enum": [
+              "alarm_input_changed",
+              "alarm_input_2_changed",
+              "boot",
+              "boot_mass_storage_mode",
+              "can_value_high",
+              "can_value_low",
+              "card_reader_rfid_tag_read",
+              "central_lock_changed",
+              "central_lock_command_without_change",
+              "ev_charge_adapter_changed",
+              "ev_charge_changed",
+              "ev_quick_charge_changed",
+              "external_relay_triggered",
+              "first_fix",
+              "fuel_level_alarm",
+              "fuel_level_recovered",
+              "ignition_changed",
+              "immobilizer_changed",
+              "immobilizer_command_without_change",
+              "keyfob_changed",
+              "low_bat_alarm",
+              "low_bat_recovered",
+              "rfid_tag_changed",
+              "power_fail_detected",
+              "unknown",
+              "flespi_callback",
+              "continental_polling",
+              "doors_changed",
+              "central_lock_read_state_changed",
+              "bluetooth_authenticated",
+              "bluetooth_connected",
+              "bluetooth_disconnected",
+              "shock_detected",
+              "shock_data_ready"
+            ],
+            "type": "string"
+          },
+          "locationPosition": {
+            "$ref": "#/components/schemas/LocationPosition"
+          },
+          "mileage": {
+            "format": "double",
+            "type": "number"
+          },
+          "telematicsId": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "TelematicsVehicleUsage": {
+        "properties": {
+          "inversBluetoothToken": {
+            "$ref": "#/components/schemas/BluetoothToken"
+          },
+          "lockStatus": {
+            "enum": [
+              "LOCKED",
+              "BLUETOOTH_UNLOCKING",
+              "BLUETOOTH_LOCKING",
+              "UNLOCKED"
+            ],
+            "type": "string"
+          },
+          "mileageInfo": {
+            "$ref": "#/components/schemas/Mileage"
+          }
+        },
+        "type": "object"
+      },
       "TerminateContractHints": {
         "additionalProperties": false,
         "properties": {
@@ -2375,6 +2776,37 @@
             "$ref": "#/components/schemas/Period"
           }
         },
+        "type": "object"
+      },
+      "UpdateTelematicsRequest": {
+        "properties": {
+          "alwaysUseBluetooth": {
+            "type": "boolean"
+          },
+          "ignitionCheck": {
+            "type": "boolean"
+          },
+          "keyfobCheck": {
+            "type": "boolean"
+          },
+          "maxRange": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "providerDeviceId": {
+            "type": "string"
+          },
+          "providerId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "providerDeviceId",
+          "providerId"
+        ],
         "type": "object"
       },
       "UpdateUserRequest": {
@@ -2994,6 +3426,27 @@
         ],
         "type": "object"
       },
+      "VehicleTelematics": {
+        "properties": {
+          "maxRange": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "providerDeviceId": {
+            "type": "string"
+          },
+          "providerId": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "VehicleUsage": {
         "properties": {
           "id": {
@@ -3028,6 +3481,9 @@
             "type": "string"
           },
           "statusMessage": {
+            "type": "string"
+          },
+          "vehicleId": {
             "type": "string"
           }
         },
@@ -5352,6 +5808,437 @@
         ]
       }
     },
+    "/telematics/v1/battery/{vehicleId}": {
+      "get": {
+        "operationId": "getBatteryStatus",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatteryStatus"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      }
+    },
+    "/telematics/v1/devices": {
+      "get": {
+        "operationId": "getAllTelematicsDevices",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/VehicleTelematics"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      },
+      "post": {
+        "operationId": "createDevice",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTelematicsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      }
+    },
+    "/telematics/v1/devices/{vehicleId}": {
+      "delete": {
+        "operationId": "deleteDevice",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      },
+      "get": {
+        "operationId": "getDeviceByVehicle",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleTelematics"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      },
+      "put": {
+        "operationId": "updateDevice",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTelematicsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      }
+    },
+    "/telematics/v1/immobilizer/{vehicleId}": {
+      "put": {
+        "operationId": "changeImmobilizer",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeLockRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      }
+    },
+    "/telematics/v1/location/{vehicleId}": {
+      "get": {
+        "operationId": "getVehicleLocation",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationValue"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      }
+    },
+    "/telematics/v1/lock/{vehicleId}": {
+      "put": {
+        "operationId": "changeLock",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeLockRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      }
+    },
+    "/telematics/v1/mileage/{vehicleId}": {
+      "get": {
+        "operationId": "getMileageInfo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mileage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      }
+    },
+    "/telematics/v1/providers": {
+      "get": {
+        "operationId": "getProviders",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      }
+    },
+    "/telematics/v1/providers/{providerId}/devices": {
+      "get": {
+        "operationId": "getAllDevices",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "providerId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProviderTelematics"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      }
+    },
+    "/telematics/v1/trackings/searches": {
+      "post": {
+        "operationId": "searchTrackings",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchTelematicsTrackingRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TelematicsTracking"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      }
+    },
+    "/telematics/v1/usage/{vehicleId}": {
+      "put": {
+        "operationId": "changeVehicleUsage",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeVehicleUsageRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelematicsVehicleUsage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      }
+    },
+    "/telematics/v1/webhooks/flespi": {
+      "post": {
+        "operationId": "handleFlespiWebhook",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FlespiCallbackRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "telematics-facade"
+        ]
+      }
+    },
     "/user/v1/clients": {
       "post": {
         "description": "Create a new client and",
@@ -6563,6 +7450,36 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/VehicleUsagePage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "vehicle-usage-facade"
+        ]
+      }
+    },
+    "/vehicle-usage/v1/{vehicleUsageId}": {
+      "get": {
+        "operationId": "getVehicleUsage",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "vehicleUsageId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleUsage"
                 }
               }
             },

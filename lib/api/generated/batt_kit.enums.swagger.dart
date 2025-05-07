@@ -5,14 +5,32 @@ enum AdjacentNonAvailabilityType {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),
 
-  @JsonValue('BOOKING')
-  booking('BOOKING'),
   @JsonValue('NOT_AVAILABLE')
-  notAvailable('NOT_AVAILABLE');
+  notAvailable('NOT_AVAILABLE'),
+  @JsonValue('BOOKING')
+  booking('BOOKING');
 
   final String? value;
 
   const AdjacentNonAvailabilityType(this.value);
+}
+
+enum BatteryStatusCharging {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('NOT_CHARGING')
+  notCharging('NOT_CHARGING'),
+  @JsonValue('NORMAL_CHARGE')
+  normalCharge('NORMAL_CHARGE'),
+  @JsonValue('QUICK_CHARGE')
+  quickCharge('QUICK_CHARGE'),
+  @JsonValue('UNKNOWN')
+  unknown('UNKNOWN');
+
+  final String? value;
+
+  const BatteryStatusCharging(this.value);
 }
 
 enum BillingPriceUnit {
@@ -97,6 +115,24 @@ enum BookingStatus {
   final String? value;
 
   const BookingStatus(this.value);
+}
+
+enum ChangeLockRequestLockStatus {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('LOCKED')
+  locked('LOCKED'),
+  @JsonValue('BLUETOOTH_UNLOCKING')
+  bluetoothUnlocking('BLUETOOTH_UNLOCKING'),
+  @JsonValue('BLUETOOTH_LOCKING')
+  bluetoothLocking('BLUETOOTH_LOCKING'),
+  @JsonValue('UNLOCKED')
+  unlocked('UNLOCKED');
+
+  final String? value;
+
+  const ChangeLockRequestLockStatus(this.value);
 }
 
 enum ClientContractFormula {
@@ -381,6 +417,84 @@ enum SearchBookingsRequestStatuses {
   const SearchBookingsRequestStatuses(this.value);
 }
 
+enum SearchTelematicsTrackingRequestEventReason {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('alarm_input_changed')
+  alarmInputChanged('alarm_input_changed'),
+  @JsonValue('alarm_input_2_changed')
+  alarmInput2Changed('alarm_input_2_changed'),
+  @JsonValue('boot')
+  boot('boot'),
+  @JsonValue('boot_mass_storage_mode')
+  bootMassStorageMode('boot_mass_storage_mode'),
+  @JsonValue('can_value_high')
+  canValueHigh('can_value_high'),
+  @JsonValue('can_value_low')
+  canValueLow('can_value_low'),
+  @JsonValue('card_reader_rfid_tag_read')
+  cardReaderRfidTagRead('card_reader_rfid_tag_read'),
+  @JsonValue('central_lock_changed')
+  centralLockChanged('central_lock_changed'),
+  @JsonValue('central_lock_command_without_change')
+  centralLockCommandWithoutChange('central_lock_command_without_change'),
+  @JsonValue('ev_charge_adapter_changed')
+  evChargeAdapterChanged('ev_charge_adapter_changed'),
+  @JsonValue('ev_charge_changed')
+  evChargeChanged('ev_charge_changed'),
+  @JsonValue('ev_quick_charge_changed')
+  evQuickChargeChanged('ev_quick_charge_changed'),
+  @JsonValue('external_relay_triggered')
+  externalRelayTriggered('external_relay_triggered'),
+  @JsonValue('first_fix')
+  firstFix('first_fix'),
+  @JsonValue('fuel_level_alarm')
+  fuelLevelAlarm('fuel_level_alarm'),
+  @JsonValue('fuel_level_recovered')
+  fuelLevelRecovered('fuel_level_recovered'),
+  @JsonValue('ignition_changed')
+  ignitionChanged('ignition_changed'),
+  @JsonValue('immobilizer_changed')
+  immobilizerChanged('immobilizer_changed'),
+  @JsonValue('immobilizer_command_without_change')
+  immobilizerCommandWithoutChange('immobilizer_command_without_change'),
+  @JsonValue('keyfob_changed')
+  keyfobChanged('keyfob_changed'),
+  @JsonValue('low_bat_alarm')
+  lowBatAlarm('low_bat_alarm'),
+  @JsonValue('low_bat_recovered')
+  lowBatRecovered('low_bat_recovered'),
+  @JsonValue('rfid_tag_changed')
+  rfidTagChanged('rfid_tag_changed'),
+  @JsonValue('power_fail_detected')
+  powerFailDetected('power_fail_detected'),
+  @JsonValue('unknown')
+  unknown('unknown'),
+  @JsonValue('flespi_callback')
+  flespiCallback('flespi_callback'),
+  @JsonValue('continental_polling')
+  continentalPolling('continental_polling'),
+  @JsonValue('doors_changed')
+  doorsChanged('doors_changed'),
+  @JsonValue('central_lock_read_state_changed')
+  centralLockReadStateChanged('central_lock_read_state_changed'),
+  @JsonValue('bluetooth_authenticated')
+  bluetoothAuthenticated('bluetooth_authenticated'),
+  @JsonValue('bluetooth_connected')
+  bluetoothConnected('bluetooth_connected'),
+  @JsonValue('bluetooth_disconnected')
+  bluetoothDisconnected('bluetooth_disconnected'),
+  @JsonValue('shock_detected')
+  shockDetected('shock_detected'),
+  @JsonValue('shock_data_ready')
+  shockDataReady('shock_data_ready');
+
+  final String? value;
+
+  const SearchTelematicsTrackingRequestEventReason(this.value);
+}
+
 enum SubscriptionClientRoles {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),
@@ -393,6 +507,102 @@ enum SubscriptionClientRoles {
   final String? value;
 
   const SubscriptionClientRoles(this.value);
+}
+
+enum TelematicsTrackingEventReason {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('alarm_input_changed')
+  alarmInputChanged('alarm_input_changed'),
+  @JsonValue('alarm_input_2_changed')
+  alarmInput2Changed('alarm_input_2_changed'),
+  @JsonValue('boot')
+  boot('boot'),
+  @JsonValue('boot_mass_storage_mode')
+  bootMassStorageMode('boot_mass_storage_mode'),
+  @JsonValue('can_value_high')
+  canValueHigh('can_value_high'),
+  @JsonValue('can_value_low')
+  canValueLow('can_value_low'),
+  @JsonValue('card_reader_rfid_tag_read')
+  cardReaderRfidTagRead('card_reader_rfid_tag_read'),
+  @JsonValue('central_lock_changed')
+  centralLockChanged('central_lock_changed'),
+  @JsonValue('central_lock_command_without_change')
+  centralLockCommandWithoutChange('central_lock_command_without_change'),
+  @JsonValue('ev_charge_adapter_changed')
+  evChargeAdapterChanged('ev_charge_adapter_changed'),
+  @JsonValue('ev_charge_changed')
+  evChargeChanged('ev_charge_changed'),
+  @JsonValue('ev_quick_charge_changed')
+  evQuickChargeChanged('ev_quick_charge_changed'),
+  @JsonValue('external_relay_triggered')
+  externalRelayTriggered('external_relay_triggered'),
+  @JsonValue('first_fix')
+  firstFix('first_fix'),
+  @JsonValue('fuel_level_alarm')
+  fuelLevelAlarm('fuel_level_alarm'),
+  @JsonValue('fuel_level_recovered')
+  fuelLevelRecovered('fuel_level_recovered'),
+  @JsonValue('ignition_changed')
+  ignitionChanged('ignition_changed'),
+  @JsonValue('immobilizer_changed')
+  immobilizerChanged('immobilizer_changed'),
+  @JsonValue('immobilizer_command_without_change')
+  immobilizerCommandWithoutChange('immobilizer_command_without_change'),
+  @JsonValue('keyfob_changed')
+  keyfobChanged('keyfob_changed'),
+  @JsonValue('low_bat_alarm')
+  lowBatAlarm('low_bat_alarm'),
+  @JsonValue('low_bat_recovered')
+  lowBatRecovered('low_bat_recovered'),
+  @JsonValue('rfid_tag_changed')
+  rfidTagChanged('rfid_tag_changed'),
+  @JsonValue('power_fail_detected')
+  powerFailDetected('power_fail_detected'),
+  @JsonValue('unknown')
+  unknown('unknown'),
+  @JsonValue('flespi_callback')
+  flespiCallback('flespi_callback'),
+  @JsonValue('continental_polling')
+  continentalPolling('continental_polling'),
+  @JsonValue('doors_changed')
+  doorsChanged('doors_changed'),
+  @JsonValue('central_lock_read_state_changed')
+  centralLockReadStateChanged('central_lock_read_state_changed'),
+  @JsonValue('bluetooth_authenticated')
+  bluetoothAuthenticated('bluetooth_authenticated'),
+  @JsonValue('bluetooth_connected')
+  bluetoothConnected('bluetooth_connected'),
+  @JsonValue('bluetooth_disconnected')
+  bluetoothDisconnected('bluetooth_disconnected'),
+  @JsonValue('shock_detected')
+  shockDetected('shock_detected'),
+  @JsonValue('shock_data_ready')
+  shockDataReady('shock_data_ready');
+
+  final String? value;
+
+  const TelematicsTrackingEventReason(this.value);
+}
+
+enum TelematicsVehicleUsageLockStatus {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('LOCKED')
+  locked('LOCKED'),
+  @JsonValue('BLUETOOTH_UNLOCKING')
+  bluetoothUnlocking('BLUETOOTH_UNLOCKING'),
+  @JsonValue('BLUETOOTH_LOCKING')
+  bluetoothLocking('BLUETOOTH_LOCKING'),
+  @JsonValue('UNLOCKED')
+  unlocked('UNLOCKED');
+
+  final String? value;
+
+  const TelematicsVehicleUsageLockStatus(this.value);
 }
 
 enum TerminateDayOption {

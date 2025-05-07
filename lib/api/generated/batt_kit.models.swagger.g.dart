@@ -87,6 +87,24 @@ Map<String, dynamic> _$ApiValidationResponseToJson(
       'validationErrors': instance.validationErrors,
     };
 
+BatteryStatus _$BatteryStatusFromJson(Map<String, dynamic> json) =>
+    BatteryStatus(
+      ageInSeconds: (json['ageInSeconds'] as num?)?.toInt(),
+      batteryPercentage: (json['batteryPercentage'] as num?)?.toInt(),
+      charging: batteryStatusChargingNullableFromJson(json['charging']),
+      cruisingRange: (json['cruisingRange'] as num?)?.toInt(),
+      errorMessage: json['errorMessage'] as String?,
+    );
+
+Map<String, dynamic> _$BatteryStatusToJson(BatteryStatus instance) =>
+    <String, dynamic>{
+      'ageInSeconds': instance.ageInSeconds,
+      'batteryPercentage': instance.batteryPercentage,
+      'charging': batteryStatusChargingNullableToJson(instance.charging),
+      'cruisingRange': instance.cruisingRange,
+      'errorMessage': instance.errorMessage,
+    };
+
 BillingPrice _$BillingPriceFromJson(Map<String, dynamic> json) => BillingPrice(
       amount: (json['amount'] as num?)?.toInt(),
       changeFromHourlyToDaily: json['changeFromHourlyToDaily'] as bool?,
@@ -109,8 +127,8 @@ BillingPrice _$BillingPriceFromJson(Map<String, dynamic> json) => BillingPrice(
       timeTotal: (json['timeTotal'] as num?)?.toDouble(),
       timeTotalExclVat: (json['timeTotalExclVat'] as num?)?.toDouble(),
       total: (json['total'] as num?)?.toDouble(),
-      totalExclVat: (json['totalExclVat'] as num?)?.toDouble(),
       totalVat: (json['totalVat'] as num?)?.toDouble(),
+      totalExclVat: (json['totalExclVat'] as num?)?.toDouble(),
       unit: billingPriceUnitNullableFromJson(json['unit']),
       unitPrice: (json['unitPrice'] as num?)?.toDouble(),
       unitPriceExclVat: (json['unitPriceExclVat'] as num?)?.toDouble(),
@@ -134,12 +152,38 @@ Map<String, dynamic> _$BillingPriceToJson(BillingPrice instance) =>
       'timeTotal': instance.timeTotal,
       'timeTotalExclVat': instance.timeTotalExclVat,
       'total': instance.total,
-      'totalExclVat': instance.totalExclVat,
       'totalVat': instance.totalVat,
+      'totalExclVat': instance.totalExclVat,
       'unit': billingPriceUnitNullableToJson(instance.unit),
       'unitPrice': instance.unitPrice,
       'unitPriceExclVat': instance.unitPriceExclVat,
       'vatRate': instance.vatRate,
+    };
+
+BluetoothToken _$BluetoothTokenFromJson(Map<String, dynamic> json) =>
+    BluetoothToken(
+      deviceId: json['deviceId'] as String?,
+      encodedToken: json['encodedToken'] as String?,
+      end: json['end'] == null ? null : DateTime.parse(json['end'] as String),
+      sessionToken: json['sessionToken'] as String?,
+      start: json['start'] == null
+          ? null
+          : DateTime.parse(json['start'] as String),
+      tokenChunks: (json['tokenChunks'] as List<dynamic>?)
+              ?.map(
+                  (e) => (e as List<dynamic>).map((e) => e as String?).toList())
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$BluetoothTokenToJson(BluetoothToken instance) =>
+    <String, dynamic>{
+      'deviceId': instance.deviceId,
+      'encodedToken': instance.encodedToken,
+      'end': instance.end?.toIso8601String(),
+      'sessionToken': instance.sessionToken,
+      'start': instance.start?.toIso8601String(),
+      'tokenChunks': instance.tokenChunks,
     };
 
 BodyStyle _$BodyStyleFromJson(Map<String, dynamic> json) => BodyStyle(
@@ -488,6 +532,27 @@ Map<String, dynamic> _$ChangeContractFormulaRequestToJson(
       'memo': instance.memo,
     };
 
+ChangeLockRequest _$ChangeLockRequestFromJson(Map<String, dynamic> json) =>
+    ChangeLockRequest(
+      keyFobCheck: json['keyFobCheck'] as bool?,
+      lockStatus:
+          changeLockRequestLockStatusNullableFromJson(json['lockStatus']),
+      unlockDistanceCheck: json['unlockDistanceCheck'] as bool?,
+      userLocation: json['userLocation'] == null
+          ? null
+          : LocationPosition.fromJson(
+              json['userLocation'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$ChangeLockRequestToJson(ChangeLockRequest instance) =>
+    <String, dynamic>{
+      'keyFobCheck': instance.keyFobCheck,
+      'lockStatus':
+          changeLockRequestLockStatusNullableToJson(instance.lockStatus),
+      'unlockDistanceCheck': instance.unlockDistanceCheck,
+      'userLocation': instance.userLocation?.toJson(),
+    };
+
 ChangeToContractFormulaHint _$ChangeToContractFormulaHintFromJson(
         Map<String, dynamic> json) =>
     ChangeToContractFormulaHint(
@@ -506,6 +571,21 @@ Map<String, dynamic> _$ChangeToContractFormulaHintToJson(
       'earliestChangeDate': _dateToJson(instance.earliestChangeDate),
       'targetFormula':
           clientContractFormulaNullableToJson(instance.targetFormula),
+    };
+
+ChangeVehicleUsageRequest _$ChangeVehicleUsageRequestFromJson(
+        Map<String, dynamic> json) =>
+    ChangeVehicleUsageRequest(
+      changeLockRequest: json['changeLockRequest'] == null
+          ? null
+          : ChangeLockRequest.fromJson(
+              json['changeLockRequest'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$ChangeVehicleUsageRequestToJson(
+        ChangeVehicleUsageRequest instance) =>
+    <String, dynamic>{
+      'changeLockRequest': instance.changeLockRequest?.toJson(),
     };
 
 Client _$ClientFromJson(Map<String, dynamic> json) => Client(
@@ -1005,6 +1085,32 @@ Map<String, dynamic> _$CreateNonAvailabilityRequestToJson(
       'vehicleId': instance.vehicleId,
     };
 
+CreateTelematicsRequest _$CreateTelematicsRequestFromJson(
+        Map<String, dynamic> json) =>
+    CreateTelematicsRequest(
+      alwaysUseBluetooth: json['alwaysUseBluetooth'] as bool?,
+      ignitionCheck: json['ignitionCheck'] as bool?,
+      keyfobCheck: json['keyfobCheck'] as bool?,
+      maxRange: (json['maxRange'] as num?)?.toInt(),
+      phoneNumber: json['phoneNumber'] as String?,
+      providerDeviceId: json['providerDeviceId'] as String,
+      providerId: json['providerId'] as String,
+      vehicleId: json['vehicleId'] as String,
+    );
+
+Map<String, dynamic> _$CreateTelematicsRequestToJson(
+        CreateTelematicsRequest instance) =>
+    <String, dynamic>{
+      'alwaysUseBluetooth': instance.alwaysUseBluetooth,
+      'ignitionCheck': instance.ignitionCheck,
+      'keyfobCheck': instance.keyfobCheck,
+      'maxRange': instance.maxRange,
+      'phoneNumber': instance.phoneNumber,
+      'providerDeviceId': instance.providerDeviceId,
+      'providerId': instance.providerId,
+      'vehicleId': instance.vehicleId,
+    };
+
 CreateUserRequest _$CreateUserRequestFromJson(Map<String, dynamic> json) =>
     CreateUserRequest(
       email: json['email'] as String,
@@ -1263,6 +1369,40 @@ Map<String, dynamic> _$FiltersForBookingToJson(FiltersForBooking instance) =>
       'vehicleFilterCriteria': instance.vehicleFilterCriteria?.toJson(),
     };
 
+FlespiCallbackRequest _$FlespiCallbackRequestFromJson(
+        Map<String, dynamic> json) =>
+    FlespiCallbackRequest(
+      begin: (json['begin'] as num?)?.toInt(),
+      canVehicleBatteryLevel:
+          (json['can.vehicle.battery.level'] as num?)?.toInt(),
+      canVehicleMileage: (json['can.vehicle.mileage'] as num?)?.toDouble(),
+      deviceId: (json['device.id'] as num?)?.toInt(),
+      duration: (json['duration'] as num?)?.toInt(),
+      end: (json['end'] as num?)?.toInt(),
+      externalPowersourceVoltage:
+          (json['external.powersource.voltage'] as num?)?.toDouble(),
+      id: (json['id'] as num?)?.toInt(),
+      positionLatitude: (json['position.latitude'] as num?)?.toDouble(),
+      positionLongitude: (json['position.longitude'] as num?)?.toDouble(),
+      timestamp: (json['timestamp'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$FlespiCallbackRequestToJson(
+        FlespiCallbackRequest instance) =>
+    <String, dynamic>{
+      'begin': instance.begin,
+      'can.vehicle.battery.level': instance.canVehicleBatteryLevel,
+      'can.vehicle.mileage': instance.canVehicleMileage,
+      'device.id': instance.deviceId,
+      'duration': instance.duration,
+      'end': instance.end,
+      'external.powersource.voltage': instance.externalPowersourceVoltage,
+      'id': instance.id,
+      'position.latitude': instance.positionLatitude,
+      'position.longitude': instance.positionLongitude,
+      'timestamp': instance.timestamp,
+    };
+
 GetVehicleModelsRatesEntry _$GetVehicleModelsRatesEntryFromJson(
         Map<String, dynamic> json) =>
     GetVehicleModelsRatesEntry(
@@ -1440,6 +1580,40 @@ InvoiceResponse _$InvoiceResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$InvoiceResponseToJson(InvoiceResponse instance) =>
     <String, dynamic>{
       'invoices': instance.invoices?.map((e) => e.toJson()).toList(),
+    };
+
+LocationPosition _$LocationPositionFromJson(Map<String, dynamic> json) =>
+    LocationPosition(
+      lat: (json['lat'] as num?)?.toDouble(),
+      lng: (json['lng'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$LocationPositionToJson(LocationPosition instance) =>
+    <String, dynamic>{
+      'lat': instance.lat,
+      'lng': instance.lng,
+    };
+
+LocationValue _$LocationValueFromJson(Map<String, dynamic> json) =>
+    LocationValue(
+      address: json['address'] as String?,
+      position: json['position'] == null
+          ? null
+          : LocationPosition.fromJson(json['position'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$LocationValueToJson(LocationValue instance) =>
+    <String, dynamic>{
+      'address': instance.address,
+      'position': instance.position?.toJson(),
+    };
+
+Mileage _$MileageFromJson(Map<String, dynamic> json) => Mileage(
+      mileage: (json['mileage'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$MileageToJson(Mileage instance) => <String, dynamic>{
+      'mileage': instance.mileage,
     };
 
 MyAvailableVehicle _$MyAvailableVehicleFromJson(Map<String, dynamic> json) =>
@@ -1703,6 +1877,40 @@ Map<String, dynamic> _$PeriodToJson(Period instance) => <String, dynamic>{
       'start': instance.start?.toIso8601String(),
     };
 
+Provider _$ProviderFromJson(Map<String, dynamic> json) => Provider(
+      id: json['id'] as String?,
+    );
+
+Map<String, dynamic> _$ProviderToJson(Provider instance) => <String, dynamic>{
+      'id': instance.id,
+    };
+
+ProviderPage _$ProviderPageFromJson(Map<String, dynamic> json) => ProviderPage(
+      providers: (json['providers'] as List<dynamic>?)
+              ?.map((e) => Provider.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$ProviderPageToJson(ProviderPage instance) =>
+    <String, dynamic>{
+      'providers': instance.providers?.map((e) => e.toJson()).toList(),
+    };
+
+ProviderTelematics _$ProviderTelematicsFromJson(Map<String, dynamic> json) =>
+    ProviderTelematics(
+      providerDeviceId: json['providerDeviceId'] as String?,
+      providerId: json['providerId'] as String?,
+      vehicleId: json['vehicleId'] as String?,
+    );
+
+Map<String, dynamic> _$ProviderTelematicsToJson(ProviderTelematics instance) =>
+    <String, dynamic>{
+      'providerDeviceId': instance.providerDeviceId,
+      'providerId': instance.providerId,
+      'vehicleId': instance.vehicleId,
+    };
+
 RegisterDeviceRequest _$RegisterDeviceRequestFromJson(
         Map<String, dynamic> json) =>
     RegisterDeviceRequest(
@@ -1854,6 +2062,39 @@ Map<String, dynamic> _$SearchNonAvailabilityEventsRequestToJson(
       'vehicleIds': instance.vehicleIds,
     };
 
+SearchTelematicsTrackingRequest _$SearchTelematicsTrackingRequestFromJson(
+        Map<String, dynamic> json) =>
+    SearchTelematicsTrackingRequest(
+      charging: json['charging'] as bool?,
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
+      eventReason: searchTelematicsTrackingRequestEventReasonNullableFromJson(
+          json['eventReason']),
+      latestPerVehicle: json['latestPerVehicle'] as bool?,
+      maxResults: (json['maxResults'] as num?)?.toInt(),
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      vehicleIds: (json['vehicleIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$SearchTelematicsTrackingRequestToJson(
+        SearchTelematicsTrackingRequest instance) =>
+    <String, dynamic>{
+      'charging': instance.charging,
+      'endDate': instance.endDate?.toIso8601String(),
+      'eventReason': searchTelematicsTrackingRequestEventReasonNullableToJson(
+          instance.eventReason),
+      'latestPerVehicle': instance.latestPerVehicle,
+      'maxResults': instance.maxResults,
+      'startDate': instance.startDate?.toIso8601String(),
+      'vehicleIds': instance.vehicleIds,
+    };
+
 SearchUsersRequest _$SearchUsersRequestFromJson(Map<String, dynamic> json) =>
     SearchUsersRequest(
       defaultMembershipId: json['defaultMembershipId'] as String?,
@@ -1977,6 +2218,62 @@ Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
       'vehicles': instance.vehicles,
     };
 
+TelematicsTracking _$TelematicsTrackingFromJson(Map<String, dynamic> json) =>
+    TelematicsTracking(
+      address: json['address'] as String?,
+      batteryPercentage: (json['batteryPercentage'] as num?)?.toInt(),
+      charging: json['charging'] as bool?,
+      dateCreated: json['dateCreated'] == null
+          ? null
+          : DateTime.parse(json['dateCreated'] as String),
+      eventReason:
+          telematicsTrackingEventReasonNullableFromJson(json['eventReason']),
+      locationPosition: json['locationPosition'] == null
+          ? null
+          : LocationPosition.fromJson(
+              json['locationPosition'] as Map<String, dynamic>),
+      mileage: (json['mileage'] as num?)?.toDouble(),
+      telematicsId: json['telematicsId'] as String?,
+      vehicleId: json['vehicleId'] as String?,
+    );
+
+Map<String, dynamic> _$TelematicsTrackingToJson(TelematicsTracking instance) =>
+    <String, dynamic>{
+      'address': instance.address,
+      'batteryPercentage': instance.batteryPercentage,
+      'charging': instance.charging,
+      'dateCreated': instance.dateCreated?.toIso8601String(),
+      'eventReason':
+          telematicsTrackingEventReasonNullableToJson(instance.eventReason),
+      'locationPosition': instance.locationPosition?.toJson(),
+      'mileage': instance.mileage,
+      'telematicsId': instance.telematicsId,
+      'vehicleId': instance.vehicleId,
+    };
+
+TelematicsVehicleUsage _$TelematicsVehicleUsageFromJson(
+        Map<String, dynamic> json) =>
+    TelematicsVehicleUsage(
+      inversBluetoothToken: json['inversBluetoothToken'] == null
+          ? null
+          : BluetoothToken.fromJson(
+              json['inversBluetoothToken'] as Map<String, dynamic>),
+      lockStatus:
+          telematicsVehicleUsageLockStatusNullableFromJson(json['lockStatus']),
+      mileageInfo: json['mileageInfo'] == null
+          ? null
+          : Mileage.fromJson(json['mileageInfo'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$TelematicsVehicleUsageToJson(
+        TelematicsVehicleUsage instance) =>
+    <String, dynamic>{
+      'inversBluetoothToken': instance.inversBluetoothToken?.toJson(),
+      'lockStatus':
+          telematicsVehicleUsageLockStatusNullableToJson(instance.lockStatus),
+      'mileageInfo': instance.mileageInfo?.toJson(),
+    };
+
 TerminateContractHints _$TerminateContractHintsFromJson(
         Map<String, dynamic> json) =>
     TerminateContractHints(
@@ -2061,6 +2358,30 @@ Map<String, dynamic> _$UpdateBookingRequestToJson(
       'needsCorrection': instance.needsCorrection,
       'needsCorrectionComments': instance.needsCorrectionComments,
       'period': instance.period?.toJson(),
+    };
+
+UpdateTelematicsRequest _$UpdateTelematicsRequestFromJson(
+        Map<String, dynamic> json) =>
+    UpdateTelematicsRequest(
+      alwaysUseBluetooth: json['alwaysUseBluetooth'] as bool?,
+      ignitionCheck: json['ignitionCheck'] as bool?,
+      keyfobCheck: json['keyfobCheck'] as bool?,
+      maxRange: (json['maxRange'] as num?)?.toInt(),
+      phoneNumber: json['phoneNumber'] as String?,
+      providerDeviceId: json['providerDeviceId'] as String,
+      providerId: json['providerId'] as String,
+    );
+
+Map<String, dynamic> _$UpdateTelematicsRequestToJson(
+        UpdateTelematicsRequest instance) =>
+    <String, dynamic>{
+      'alwaysUseBluetooth': instance.alwaysUseBluetooth,
+      'ignitionCheck': instance.ignitionCheck,
+      'keyfobCheck': instance.keyfobCheck,
+      'maxRange': instance.maxRange,
+      'phoneNumber': instance.phoneNumber,
+      'providerDeviceId': instance.providerDeviceId,
+      'providerId': instance.providerId,
     };
 
 UpdateUserRequest _$UpdateUserRequestFromJson(Map<String, dynamic> json) =>
@@ -2574,6 +2895,24 @@ Map<String, dynamic> _$VehicleRateToJson(VehicleRate instance) =>
       'vehicleId': instance.vehicleId,
     };
 
+VehicleTelematics _$VehicleTelematicsFromJson(Map<String, dynamic> json) =>
+    VehicleTelematics(
+      maxRange: (json['maxRange'] as num?)?.toInt(),
+      phoneNumber: json['phoneNumber'] as String?,
+      providerDeviceId: json['providerDeviceId'] as String?,
+      providerId: json['providerId'] as String?,
+      vehicleId: json['vehicleId'] as String?,
+    );
+
+Map<String, dynamic> _$VehicleTelematicsToJson(VehicleTelematics instance) =>
+    <String, dynamic>{
+      'maxRange': instance.maxRange,
+      'phoneNumber': instance.phoneNumber,
+      'providerDeviceId': instance.providerDeviceId,
+      'providerId': instance.providerId,
+      'vehicleId': instance.vehicleId,
+    };
+
 VehicleUsage _$VehicleUsageFromJson(Map<String, dynamic> json) => VehicleUsage(
       id: json['id'] as String?,
       mileageDelta: (json['mileageDelta'] as num?)?.toDouble(),
@@ -2584,6 +2923,7 @@ VehicleUsage _$VehicleUsageFromJson(Map<String, dynamic> json) => VehicleUsage(
           : Period.fromJson(json['period'] as Map<String, dynamic>),
       status: vehicleUsageStatusNullableFromJson(json['status']),
       statusMessage: json['statusMessage'] as String?,
+      vehicleId: json['vehicleId'] as String?,
     );
 
 Map<String, dynamic> _$VehicleUsageToJson(VehicleUsage instance) =>
@@ -2595,6 +2935,7 @@ Map<String, dynamic> _$VehicleUsageToJson(VehicleUsage instance) =>
       'period': instance.period?.toJson(),
       'status': vehicleUsageStatusNullableToJson(instance.status),
       'statusMessage': instance.statusMessage,
+      'vehicleId': instance.vehicleId,
     };
 
 VehicleUsagePage _$VehicleUsagePageFromJson(Map<String, dynamic> json) =>
