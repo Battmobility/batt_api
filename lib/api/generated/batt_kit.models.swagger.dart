@@ -436,8 +436,8 @@ class BillingPrice {
     this.timeTotal,
     this.timeTotalExclVat,
     this.total,
-    this.totalExclVat,
     this.totalVat,
+    this.totalExclVat,
     this.unit,
     this.unitPrice,
     this.unitPriceExclVat,
@@ -480,10 +480,10 @@ class BillingPrice {
   final double? timeTotalExclVat;
   @JsonKey(name: 'total')
   final double? total;
-  @JsonKey(name: 'totalExclVat')
-  final double? totalExclVat;
   @JsonKey(name: 'totalVat')
   final double? totalVat;
+  @JsonKey(name: 'totalExclVat')
+  final double? totalExclVat;
   @JsonKey(
     name: 'unit',
     toJson: billingPriceUnitNullableToJson,
@@ -544,8 +544,8 @@ class BillingPrice {
                 const DeepCollectionEquality()
                     .equals(other.timeTotalExclVat, timeTotalExclVat)) &&
             (identical(other.total, total) || const DeepCollectionEquality().equals(other.total, total)) &&
-            (identical(other.totalExclVat, totalExclVat) || const DeepCollectionEquality().equals(other.totalExclVat, totalExclVat)) &&
             (identical(other.totalVat, totalVat) || const DeepCollectionEquality().equals(other.totalVat, totalVat)) &&
+            (identical(other.totalExclVat, totalExclVat) || const DeepCollectionEquality().equals(other.totalExclVat, totalExclVat)) &&
             (identical(other.unit, unit) || const DeepCollectionEquality().equals(other.unit, unit)) &&
             (identical(other.unitPrice, unitPrice) || const DeepCollectionEquality().equals(other.unitPrice, unitPrice)) &&
             (identical(other.unitPriceExclVat, unitPriceExclVat) || const DeepCollectionEquality().equals(other.unitPriceExclVat, unitPriceExclVat)) &&
@@ -572,8 +572,8 @@ class BillingPrice {
       const DeepCollectionEquality().hash(timeTotal) ^
       const DeepCollectionEquality().hash(timeTotalExclVat) ^
       const DeepCollectionEquality().hash(total) ^
-      const DeepCollectionEquality().hash(totalExclVat) ^
       const DeepCollectionEquality().hash(totalVat) ^
+      const DeepCollectionEquality().hash(totalExclVat) ^
       const DeepCollectionEquality().hash(unit) ^
       const DeepCollectionEquality().hash(unitPrice) ^
       const DeepCollectionEquality().hash(unitPriceExclVat) ^
@@ -598,8 +598,8 @@ extension $BillingPriceExtension on BillingPrice {
       double? timeTotal,
       double? timeTotalExclVat,
       double? total,
-      double? totalExclVat,
       double? totalVat,
+      double? totalExclVat,
       enums.BillingPriceUnit? unit,
       double? unitPrice,
       double? unitPriceExclVat,
@@ -623,8 +623,8 @@ extension $BillingPriceExtension on BillingPrice {
         timeTotal: timeTotal ?? this.timeTotal,
         timeTotalExclVat: timeTotalExclVat ?? this.timeTotalExclVat,
         total: total ?? this.total,
-        totalExclVat: totalExclVat ?? this.totalExclVat,
         totalVat: totalVat ?? this.totalVat,
+        totalExclVat: totalExclVat ?? this.totalExclVat,
         unit: unit ?? this.unit,
         unitPrice: unitPrice ?? this.unitPrice,
         unitPriceExclVat: unitPriceExclVat ?? this.unitPriceExclVat,
@@ -647,8 +647,8 @@ extension $BillingPriceExtension on BillingPrice {
       Wrapped<double?>? timeTotal,
       Wrapped<double?>? timeTotalExclVat,
       Wrapped<double?>? total,
-      Wrapped<double?>? totalExclVat,
       Wrapped<double?>? totalVat,
+      Wrapped<double?>? totalExclVat,
       Wrapped<enums.BillingPriceUnit?>? unit,
       Wrapped<double?>? unitPrice,
       Wrapped<double?>? unitPriceExclVat,
@@ -681,9 +681,9 @@ extension $BillingPriceExtension on BillingPrice {
             ? timeTotalExclVat.value
             : this.timeTotalExclVat),
         total: (total != null ? total.value : this.total),
+        totalVat: (totalVat != null ? totalVat.value : this.totalVat),
         totalExclVat:
             (totalExclVat != null ? totalExclVat.value : this.totalExclVat),
-        totalVat: (totalVat != null ? totalVat.value : this.totalVat),
         unit: (unit != null ? unit.value : this.unit),
         unitPrice: (unitPrice != null ? unitPrice.value : this.unitPrice),
         unitPriceExclVat: (unitPriceExclVat != null
