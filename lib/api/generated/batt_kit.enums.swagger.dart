@@ -587,24 +587,6 @@ enum TelematicsTrackingEventReason {
   const TelematicsTrackingEventReason(this.value);
 }
 
-enum TelematicsVehicleUsageLockStatus {
-  @JsonValue(null)
-  swaggerGeneratedUnknown(null),
-
-  @JsonValue('LOCKED')
-  locked('LOCKED'),
-  @JsonValue('BLUETOOTH_UNLOCKING')
-  bluetoothUnlocking('BLUETOOTH_UNLOCKING'),
-  @JsonValue('BLUETOOTH_LOCKING')
-  bluetoothLocking('BLUETOOTH_LOCKING'),
-  @JsonValue('UNLOCKED')
-  unlocked('UNLOCKED');
-
-  final String? value;
-
-  const TelematicsVehicleUsageLockStatus(this.value);
-}
-
 enum TerminateDayOption {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),

@@ -997,13 +997,12 @@ abstract class BattKit extends ChopperService {
 
   ///
   ///@param vehicleId
-  Future<chopper.Response<TelematicsVehicleUsage>>
-      telematicsV1UsageVehicleIdPut({
+  Future<chopper.Response<VehicleUsage>> telematicsV1UsageVehicleIdPut({
     required String? vehicleId,
     required ChangeVehicleUsageRequest? body,
   }) {
     generatedMapping.putIfAbsent(
-        TelematicsVehicleUsage, () => TelematicsVehicleUsage.fromJsonFactory);
+        VehicleUsage, () => VehicleUsage.fromJsonFactory);
 
     return _telematicsV1UsageVehicleIdPut(vehicleId: vehicleId, body: body);
   }
@@ -1014,8 +1013,7 @@ abstract class BattKit extends ChopperService {
     path: '/telematics/v1/usage/{vehicleId}',
     optionalBody: true,
   )
-  Future<chopper.Response<TelematicsVehicleUsage>>
-      _telematicsV1UsageVehicleIdPut({
+  Future<chopper.Response<VehicleUsage>> _telematicsV1UsageVehicleIdPut({
     @Path('vehicleId') required String? vehicleId,
     @Body() required ChangeVehicleUsageRequest? body,
   });

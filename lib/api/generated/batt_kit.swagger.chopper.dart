@@ -766,7 +766,7 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<TelematicsVehicleUsage>> _telematicsV1UsageVehicleIdPut({
+  Future<Response<VehicleUsage>> _telematicsV1UsageVehicleIdPut({
     required String? vehicleId,
     required ChangeVehicleUsageRequest? body,
   }) {
@@ -778,8 +778,7 @@ final class _$BattKit extends BattKit {
       client.baseUrl,
       body: $body,
     );
-    return client
-        .send<TelematicsVehicleUsage, TelematicsVehicleUsage>($request);
+    return client.send<VehicleUsage, VehicleUsage>($request);
   }
 
   @override

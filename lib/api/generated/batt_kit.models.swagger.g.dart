@@ -866,16 +866,28 @@ ClientContractVehicleRecord _$ClientContractVehicleRecordFromJson(
     ClientContractVehicleRecord(
       battMaxType: clientContractVehicleRecordBattMaxTypeNullableFromJson(
           json['battMaxType']),
+      battOrderNumber: json['battOrderNumber'] as String?,
       clientContractId: (json['clientContractId'] as num?)?.toInt(),
       costForAdditionalKmsExclVat:
           (json['costForAdditionalKmsExclVat'] as num?)?.toDouble(),
+      creditedDayPriceExVat:
+          (json['creditedDayPriceExVat'] as num?)?.toDouble(),
+      creditedKmPriceExVat: (json['creditedKmPriceExVat'] as num?)?.toDouble(),
       effectiveStartDate: json['effectiveStartDate'] == null
           ? null
           : DateTime.parse(json['effectiveStartDate'] as String),
+      mainUserId: (json['mainUserId'] as num?)?.toInt(),
       maxInvoiceAmountExclVat:
           (json['maxInvoiceAmountExclVat'] as num?)?.toDouble(),
+      mileageKmAtEndOfContract:
+          (json['mileageKmAtEndOfContract'] as num?)?.toInt(),
+      mileageKmAtStartOfContract:
+          (json['mileageKmAtStartOfContract'] as num?)?.toInt(),
+      monthlyInsurance: (json['monthlyInsurance'] as num?)?.toDouble(),
       monthlyLeaseAmountExclVat:
           (json['monthlyLeaseAmountExclVat'] as num?)?.toDouble(),
+      monthlyPrefundElectricityExVat:
+          (json['monthlyPrefundElectricityExVat'] as num?)?.toDouble(),
       numberOfMonths: (json['numberOfMonths'] as num?)?.toInt(),
       paidStartupCost: (json['paidStartupCost'] as num?)?.toDouble(),
       yearlyKmsOnContract: (json['yearlyKmsOnContract'] as num?)?.toInt(),
@@ -886,11 +898,19 @@ Map<String, dynamic> _$ClientContractVehicleRecordToJson(
     <String, dynamic>{
       'battMaxType': clientContractVehicleRecordBattMaxTypeNullableToJson(
           instance.battMaxType),
+      'battOrderNumber': instance.battOrderNumber,
       'clientContractId': instance.clientContractId,
       'costForAdditionalKmsExclVat': instance.costForAdditionalKmsExclVat,
+      'creditedDayPriceExVat': instance.creditedDayPriceExVat,
+      'creditedKmPriceExVat': instance.creditedKmPriceExVat,
       'effectiveStartDate': instance.effectiveStartDate?.toIso8601String(),
+      'mainUserId': instance.mainUserId,
       'maxInvoiceAmountExclVat': instance.maxInvoiceAmountExclVat,
+      'mileageKmAtEndOfContract': instance.mileageKmAtEndOfContract,
+      'mileageKmAtStartOfContract': instance.mileageKmAtStartOfContract,
+      'monthlyInsurance': instance.monthlyInsurance,
       'monthlyLeaseAmountExclVat': instance.monthlyLeaseAmountExclVat,
+      'monthlyPrefundElectricityExVat': instance.monthlyPrefundElectricityExVat,
       'numberOfMonths': instance.numberOfMonths,
       'paidStartupCost': instance.paidStartupCost,
       'yearlyKmsOnContract': instance.yearlyKmsOnContract,
@@ -1128,20 +1148,33 @@ CreateVehicleContract _$CreateVehicleContractFromJson(
     CreateVehicleContract(
       battMaxType:
           createVehicleContractBattMaxTypeFromJson(json['battMaxType']),
+      battOrderNumber: json['battOrderNumber'] as String?,
       billingType:
           createVehicleContractBillingTypeNullableFromJson(json['billingType']),
       clientContractId: (json['clientContractId'] as num?)?.toInt(),
       clientId: (json['clientId'] as num).toInt(),
       costForAdditionalKmsExclVat:
           (json['costForAdditionalKmsExclVat'] as num?)?.toDouble(),
+      creditedDayPriceExclVat:
+          (json['creditedDayPriceExclVat'] as num?)?.toDouble(),
+      creditedKmPriceExclVat:
+          (json['creditedKmPriceExclVat'] as num?)?.toDouble(),
       effectiveStartDate: DateTime.parse(json['effectiveStartDate'] as String),
       endDate: json['endDate'] == null
           ? null
           : DateTime.parse(json['endDate'] as String),
+      mainUserId: (json['mainUserId'] as num?)?.toInt(),
+      mileageKmAtEndOfContract:
+          (json['mileageKmAtEndOfContract'] as num?)?.toInt(),
+      mileageKmAtStartOfContract:
+          (json['mileageKmAtStartOfContract'] as num?)?.toInt(),
+      monthlyInsurance: (json['monthlyInsurance'] as num?)?.toDouble(),
       monthlyLeaseAmountExclVat:
           (json['monthlyLeaseAmountExclVat'] as num).toDouble(),
       monthlyMaxInvoiceAmountExclVat:
           (json['monthlyMaxInvoiceAmountExclVat'] as num?)?.toDouble(),
+      monthlyPrefundElectricityExclVat:
+          (json['monthlyPrefundElectricityExclVat'] as num?)?.toDouble(),
       numberOfMonths: (json['numberOfMonths'] as num).toInt(),
       paidStartupCost: (json['paidStartupCost'] as num?)?.toDouble(),
       startDate: json['startDate'] == null
@@ -1156,15 +1189,24 @@ Map<String, dynamic> _$CreateVehicleContractToJson(
     <String, dynamic>{
       'battMaxType':
           createVehicleContractBattMaxTypeToJson(instance.battMaxType),
+      'battOrderNumber': instance.battOrderNumber,
       'billingType':
           createVehicleContractBillingTypeNullableToJson(instance.billingType),
       'clientContractId': instance.clientContractId,
       'clientId': instance.clientId,
       'costForAdditionalKmsExclVat': instance.costForAdditionalKmsExclVat,
+      'creditedDayPriceExclVat': instance.creditedDayPriceExclVat,
+      'creditedKmPriceExclVat': instance.creditedKmPriceExclVat,
       'effectiveStartDate': instance.effectiveStartDate.toIso8601String(),
       'endDate': instance.endDate?.toIso8601String(),
+      'mainUserId': instance.mainUserId,
+      'mileageKmAtEndOfContract': instance.mileageKmAtEndOfContract,
+      'mileageKmAtStartOfContract': instance.mileageKmAtStartOfContract,
+      'monthlyInsurance': instance.monthlyInsurance,
       'monthlyLeaseAmountExclVat': instance.monthlyLeaseAmountExclVat,
       'monthlyMaxInvoiceAmountExclVat': instance.monthlyMaxInvoiceAmountExclVat,
+      'monthlyPrefundElectricityExclVat':
+          instance.monthlyPrefundElectricityExclVat,
       'numberOfMonths': instance.numberOfMonths,
       'paidStartupCost': instance.paidStartupCost,
       'startDate': instance.startDate?.toIso8601String(),
@@ -2249,29 +2291,6 @@ Map<String, dynamic> _$TelematicsTrackingToJson(TelematicsTracking instance) =>
       'mileage': instance.mileage,
       'telematicsId': instance.telematicsId,
       'vehicleId': instance.vehicleId,
-    };
-
-TelematicsVehicleUsage _$TelematicsVehicleUsageFromJson(
-        Map<String, dynamic> json) =>
-    TelematicsVehicleUsage(
-      inversBluetoothToken: json['inversBluetoothToken'] == null
-          ? null
-          : BluetoothToken.fromJson(
-              json['inversBluetoothToken'] as Map<String, dynamic>),
-      lockStatus:
-          telematicsVehicleUsageLockStatusNullableFromJson(json['lockStatus']),
-      mileageInfo: json['mileageInfo'] == null
-          ? null
-          : Mileage.fromJson(json['mileageInfo'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$TelematicsVehicleUsageToJson(
-        TelematicsVehicleUsage instance) =>
-    <String, dynamic>{
-      'inversBluetoothToken': instance.inversBluetoothToken?.toJson(),
-      'lockStatus':
-          telematicsVehicleUsageLockStatusNullableToJson(instance.lockStatus),
-      'mileageInfo': instance.mileageInfo?.toJson(),
     };
 
 TerminateContractHints _$TerminateContractHintsFromJson(
