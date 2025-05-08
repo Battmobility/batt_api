@@ -1027,20 +1027,44 @@
             ],
             "type": "string"
           },
+          "battOrderNumber": {
+            "type": "string"
+          },
           "clientContractId": {
             "type": "integer"
           },
           "costForAdditionalKmsExclVat": {
             "type": "number"
           },
+          "creditedDayPriceExVat": {
+            "type": "number"
+          },
+          "creditedKmPriceExVat": {
+            "type": "number"
+          },
           "effectiveStartDate": {
             "format": "date-time",
             "type": "string"
           },
+          "mainUserId": {
+            "type": "integer"
+          },
           "maxInvoiceAmountExclVat": {
             "type": "number"
           },
+          "mileageKmAtEndOfContract": {
+            "type": "integer"
+          },
+          "mileageKmAtStartOfContract": {
+            "type": "integer"
+          },
+          "monthlyInsurance": {
+            "type": "number"
+          },
           "monthlyLeaseAmountExclVat": {
+            "type": "number"
+          },
+          "monthlyPrefundElectricityExVat": {
             "type": "number"
           },
           "numberOfMonths": {
@@ -1357,6 +1381,9 @@
             ],
             "type": "string"
           },
+          "battOrderNumber": {
+            "type": "string"
+          },
           "billingType": {
             "enum": [
               "BattMax.LEASE.3days",
@@ -1374,6 +1401,12 @@
           "costForAdditionalKmsExclVat": {
             "type": "number"
           },
+          "creditedDayPriceExclVat": {
+            "type": "number"
+          },
+          "creditedKmPriceExclVat": {
+            "type": "number"
+          },
           "effectiveStartDate": {
             "format": "date-time",
             "type": "string"
@@ -1382,10 +1415,25 @@
             "format": "date-time",
             "type": "string"
           },
+          "mainUserId": {
+            "type": "integer"
+          },
+          "mileageKmAtEndOfContract": {
+            "type": "integer"
+          },
+          "mileageKmAtStartOfContract": {
+            "type": "integer"
+          },
+          "monthlyInsurance": {
+            "type": "number"
+          },
           "monthlyLeaseAmountExclVat": {
             "type": "number"
           },
           "monthlyMaxInvoiceAmountExclVat": {
+            "type": "number"
+          },
+          "monthlyPrefundElectricityExclVat": {
             "type": "number"
           },
           "numberOfMonths": {
@@ -2666,26 +2714,6 @@
           },
           "vehicleId": {
             "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "TelematicsVehicleUsage": {
-        "properties": {
-          "inversBluetoothToken": {
-            "$ref": "#/components/schemas/BluetoothToken"
-          },
-          "lockStatus": {
-            "enum": [
-              "LOCKED",
-              "BLUETOOTH_UNLOCKING",
-              "BLUETOOTH_LOCKING",
-              "UNLOCKED"
-            ],
-            "type": "string"
-          },
-          "mileageInfo": {
-            "$ref": "#/components/schemas/Mileage"
           }
         },
         "type": "object"
@@ -6204,7 +6232,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/TelematicsVehicleUsage"
+                  "$ref": "#/components/schemas/VehicleUsage"
                 }
               }
             },
