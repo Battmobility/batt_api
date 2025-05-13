@@ -41,8 +41,8 @@
           },
           "type": {
             "enum": [
-              "NOT_AVAILABLE",
-              "BOOKING"
+              "BOOKING",
+              "NOT_AVAILABLE"
             ],
             "type": "string"
           },
@@ -2241,19 +2241,11 @@
         },
         "type": "object"
       },
-      "Provider": {
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
       "ProviderPage": {
         "properties": {
           "providers": {
             "items": {
-              "$ref": "#/components/schemas/Provider"
+              "$ref": "#/components/schemas/TelematicsProvider"
             },
             "type": "array"
           }
@@ -2647,6 +2639,14 @@
         },
         "type": "object"
       },
+      "TelematicsProvider": {
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "TelematicsTracking": {
         "properties": {
           "address": {
@@ -2714,6 +2714,26 @@
           },
           "vehicleId": {
             "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "TelematicsVehicleUsage": {
+        "properties": {
+          "inversBluetoothToken": {
+            "$ref": "#/components/schemas/BluetoothToken"
+          },
+          "lockStatus": {
+            "enum": [
+              "LOCKED",
+              "BLUETOOTH_UNLOCKING",
+              "BLUETOOTH_LOCKING",
+              "UNLOCKED"
+            ],
+            "type": "string"
+          },
+          "mileageInfo": {
+            "$ref": "#/components/schemas/Mileage"
           }
         },
         "type": "object"
@@ -3602,6 +3622,26 @@
   },
   "openapi": "3.0.1",
   "paths": {
+    "/.well-known/appspecific/com.tesla.3p.public-key.pem": {
+      "get": {
+        "operationId": "getPublicKey",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "tesla-facade"
+        ]
+      }
+    },
     "/availability/v1/non-availabilities": {
       "post": {
         "operationId": "createNonAvailability",
@@ -5426,6 +5466,29 @@
         ]
       }
     },
+    "/oauth/callback": {
+      "get": {
+        "operationId": "oauthCallback",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "code",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "tesla-facade"
+        ]
+      }
+    },
     "/pricing/v1/prices/booking-price": {
       "get": {
         "parameters": [
@@ -6232,7 +6295,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/VehicleUsage"
+                  "$ref": "#/components/schemas/TelematicsVehicleUsage"
                 }
               }
             },
