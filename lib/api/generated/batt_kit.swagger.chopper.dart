@@ -19,6 +19,18 @@ final class _$BattKit extends BattKit {
   final Type definitionType = BattKit;
 
   @override
+  Future<Response<String>> _wellKnownAppspecificComTesla3pPublicKeyPemGet() {
+    final Uri $url =
+        Uri.parse('/.well-known/appspecific/com.tesla.3p.public-key.pem');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<String, String>($request);
+  }
+
+  @override
   Future<Response<NonAvailabilityResponse>>
       _availabilityV1NonAvailabilitiesPost(
           {required CreateNonAvailabilityRequest? body}) {
@@ -479,6 +491,19 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<dynamic>> _oauthCallbackGet({required String? code}) {
+    final Uri $url = Uri.parse('/oauth/callback');
+    final Map<String, dynamic> $params = <String, dynamic>{'code': code};
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
   Future<Response<BookingBillingPriceResponse>>
       _pricingV1PricesBookingPriceGet({
     String? xClientId,
@@ -766,7 +791,7 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<VehicleUsage>> _telematicsV1UsageVehicleIdPut({
+  Future<Response<TelematicsVehicleUsage>> _telematicsV1UsageVehicleIdPut({
     required String? vehicleId,
     required ChangeVehicleUsageRequest? body,
   }) {
@@ -778,7 +803,8 @@ final class _$BattKit extends BattKit {
       client.baseUrl,
       body: $body,
     );
-    return client.send<VehicleUsage, VehicleUsage>($request);
+    return client
+        .send<TelematicsVehicleUsage, TelematicsVehicleUsage>($request);
   }
 
   @override

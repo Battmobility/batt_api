@@ -5,10 +5,10 @@ enum AdjacentNonAvailabilityType {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),
 
-  @JsonValue('NOT_AVAILABLE')
-  notAvailable('NOT_AVAILABLE'),
   @JsonValue('BOOKING')
-  booking('BOOKING');
+  booking('BOOKING'),
+  @JsonValue('NOT_AVAILABLE')
+  notAvailable('NOT_AVAILABLE');
 
   final String? value;
 
@@ -585,6 +585,24 @@ enum TelematicsTrackingEventReason {
   final String? value;
 
   const TelematicsTrackingEventReason(this.value);
+}
+
+enum TelematicsVehicleUsageLockStatus {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('LOCKED')
+  locked('LOCKED'),
+  @JsonValue('BLUETOOTH_UNLOCKING')
+  bluetoothUnlocking('BLUETOOTH_UNLOCKING'),
+  @JsonValue('BLUETOOTH_LOCKING')
+  bluetoothLocking('BLUETOOTH_LOCKING'),
+  @JsonValue('UNLOCKED')
+  unlocked('UNLOCKED');
+
+  final String? value;
+
+  const TelematicsVehicleUsageLockStatus(this.value);
 }
 
 enum TerminateDayOption {

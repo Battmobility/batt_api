@@ -50,6 +50,17 @@ abstract class BattKit extends ChopperService {
   }
 
   ///
+  Future<chopper.Response<String>>
+      wellKnownAppspecificComTesla3pPublicKeyPemGet() {
+    return _wellKnownAppspecificComTesla3pPublicKeyPemGet();
+  }
+
+  ///
+  @Get(path: '/.well-known/appspecific/com.tesla.3p.public-key.pem')
+  Future<chopper.Response<String>>
+      _wellKnownAppspecificComTesla3pPublicKeyPemGet();
+
+  ///
   Future<chopper.Response<NonAvailabilityResponse>>
       availabilityV1NonAvailabilitiesPost(
           {required CreateNonAvailabilityRequest? body}) {
@@ -653,6 +664,18 @@ abstract class BattKit extends ChopperService {
     @Path('invoiceId') required int? invoiceId,
   });
 
+  ///
+  ///@param code
+  Future<chopper.Response> oauthCallbackGet({required String? code}) {
+    return _oauthCallbackGet(code: code);
+  }
+
+  ///
+  ///@param code
+  @Get(path: '/oauth/callback')
+  Future<chopper.Response> _oauthCallbackGet(
+      {@Query('code') required String? code});
+
   ///Determines the price rates and billing details based on the booking parameters (vehicle, period)
   ///@param X-Client-Id Client ID
   ///@param vehicleId Vehicle ID
@@ -997,12 +1020,13 @@ abstract class BattKit extends ChopperService {
 
   ///
   ///@param vehicleId
-  Future<chopper.Response<VehicleUsage>> telematicsV1UsageVehicleIdPut({
+  Future<chopper.Response<TelematicsVehicleUsage>>
+      telematicsV1UsageVehicleIdPut({
     required String? vehicleId,
     required ChangeVehicleUsageRequest? body,
   }) {
     generatedMapping.putIfAbsent(
-        VehicleUsage, () => VehicleUsage.fromJsonFactory);
+        TelematicsVehicleUsage, () => TelematicsVehicleUsage.fromJsonFactory);
 
     return _telematicsV1UsageVehicleIdPut(vehicleId: vehicleId, body: body);
   }
@@ -1013,7 +1037,8 @@ abstract class BattKit extends ChopperService {
     path: '/telematics/v1/usage/{vehicleId}',
     optionalBody: true,
   )
-  Future<chopper.Response<VehicleUsage>> _telematicsV1UsageVehicleIdPut({
+  Future<chopper.Response<TelematicsVehicleUsage>>
+      _telematicsV1UsageVehicleIdPut({
     @Path('vehicleId') required String? vehicleId,
     @Body() required ChangeVehicleUsageRequest? body,
   });

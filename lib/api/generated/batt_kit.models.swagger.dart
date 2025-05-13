@@ -8136,48 +8136,6 @@ extension $PeriodExtension on Period {
 }
 
 @JsonSerializable(explicitToJson: true)
-class Provider {
-  const Provider({
-    this.id,
-  });
-
-  factory Provider.fromJson(Map<String, dynamic> json) =>
-      _$ProviderFromJson(json);
-
-  static const toJsonFactory = _$ProviderToJson;
-  Map<String, dynamic> toJson() => _$ProviderToJson(this);
-
-  @JsonKey(name: 'id')
-  final String? id;
-  static const fromJsonFactory = _$ProviderFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is Provider &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(id) ^ runtimeType.hashCode;
-}
-
-extension $ProviderExtension on Provider {
-  Provider copyWith({String? id}) {
-    return Provider(id: id ?? this.id);
-  }
-
-  Provider copyWithWrapped({Wrapped<String?>? id}) {
-    return Provider(id: (id != null ? id.value : this.id));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
 class ProviderPage {
   const ProviderPage({
     this.providers,
@@ -8189,8 +8147,8 @@ class ProviderPage {
   static const toJsonFactory = _$ProviderPageToJson;
   Map<String, dynamic> toJson() => _$ProviderPageToJson(this);
 
-  @JsonKey(name: 'providers', defaultValue: <Provider>[])
-  final List<Provider>? providers;
+  @JsonKey(name: 'providers', defaultValue: <TelematicsProvider>[])
+  final List<TelematicsProvider>? providers;
   static const fromJsonFactory = _$ProviderPageFromJson;
 
   @override
@@ -8211,11 +8169,12 @@ class ProviderPage {
 }
 
 extension $ProviderPageExtension on ProviderPage {
-  ProviderPage copyWith({List<Provider>? providers}) {
+  ProviderPage copyWith({List<TelematicsProvider>? providers}) {
     return ProviderPage(providers: providers ?? this.providers);
   }
 
-  ProviderPage copyWithWrapped({Wrapped<List<Provider>?>? providers}) {
+  ProviderPage copyWithWrapped(
+      {Wrapped<List<TelematicsProvider>?>? providers}) {
     return ProviderPage(
         providers: (providers != null ? providers.value : this.providers));
   }
@@ -9537,6 +9496,48 @@ extension $SubscriptionExtension on Subscription {
 }
 
 @JsonSerializable(explicitToJson: true)
+class TelematicsProvider {
+  const TelematicsProvider({
+    this.id,
+  });
+
+  factory TelematicsProvider.fromJson(Map<String, dynamic> json) =>
+      _$TelematicsProviderFromJson(json);
+
+  static const toJsonFactory = _$TelematicsProviderToJson;
+  Map<String, dynamic> toJson() => _$TelematicsProviderToJson(this);
+
+  @JsonKey(name: 'id')
+  final String? id;
+  static const fromJsonFactory = _$TelematicsProviderFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is TelematicsProvider &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^ runtimeType.hashCode;
+}
+
+extension $TelematicsProviderExtension on TelematicsProvider {
+  TelematicsProvider copyWith({String? id}) {
+    return TelematicsProvider(id: id ?? this.id);
+  }
+
+  TelematicsProvider copyWithWrapped({Wrapped<String?>? id}) {
+    return TelematicsProvider(id: (id != null ? id.value : this.id));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class TelematicsTracking {
   const TelematicsTracking({
     this.address,
@@ -9680,6 +9681,83 @@ extension $TelematicsTrackingExtension on TelematicsTracking {
         telematicsId:
             (telematicsId != null ? telematicsId.value : this.telematicsId),
         vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class TelematicsVehicleUsage {
+  const TelematicsVehicleUsage({
+    this.inversBluetoothToken,
+    this.lockStatus,
+    this.mileageInfo,
+  });
+
+  factory TelematicsVehicleUsage.fromJson(Map<String, dynamic> json) =>
+      _$TelematicsVehicleUsageFromJson(json);
+
+  static const toJsonFactory = _$TelematicsVehicleUsageToJson;
+  Map<String, dynamic> toJson() => _$TelematicsVehicleUsageToJson(this);
+
+  @JsonKey(name: 'inversBluetoothToken')
+  final BluetoothToken? inversBluetoothToken;
+  @JsonKey(
+    name: 'lockStatus',
+    toJson: telematicsVehicleUsageLockStatusNullableToJson,
+    fromJson: telematicsVehicleUsageLockStatusNullableFromJson,
+  )
+  final enums.TelematicsVehicleUsageLockStatus? lockStatus;
+  @JsonKey(name: 'mileageInfo')
+  final Mileage? mileageInfo;
+  static const fromJsonFactory = _$TelematicsVehicleUsageFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is TelematicsVehicleUsage &&
+            (identical(other.inversBluetoothToken, inversBluetoothToken) ||
+                const DeepCollectionEquality().equals(
+                    other.inversBluetoothToken, inversBluetoothToken)) &&
+            (identical(other.lockStatus, lockStatus) ||
+                const DeepCollectionEquality()
+                    .equals(other.lockStatus, lockStatus)) &&
+            (identical(other.mileageInfo, mileageInfo) ||
+                const DeepCollectionEquality()
+                    .equals(other.mileageInfo, mileageInfo)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(inversBluetoothToken) ^
+      const DeepCollectionEquality().hash(lockStatus) ^
+      const DeepCollectionEquality().hash(mileageInfo) ^
+      runtimeType.hashCode;
+}
+
+extension $TelematicsVehicleUsageExtension on TelematicsVehicleUsage {
+  TelematicsVehicleUsage copyWith(
+      {BluetoothToken? inversBluetoothToken,
+      enums.TelematicsVehicleUsageLockStatus? lockStatus,
+      Mileage? mileageInfo}) {
+    return TelematicsVehicleUsage(
+        inversBluetoothToken: inversBluetoothToken ?? this.inversBluetoothToken,
+        lockStatus: lockStatus ?? this.lockStatus,
+        mileageInfo: mileageInfo ?? this.mileageInfo);
+  }
+
+  TelematicsVehicleUsage copyWithWrapped(
+      {Wrapped<BluetoothToken?>? inversBluetoothToken,
+      Wrapped<enums.TelematicsVehicleUsageLockStatus?>? lockStatus,
+      Wrapped<Mileage?>? mileageInfo}) {
+    return TelematicsVehicleUsage(
+        inversBluetoothToken: (inversBluetoothToken != null
+            ? inversBluetoothToken.value
+            : this.inversBluetoothToken),
+        lockStatus: (lockStatus != null ? lockStatus.value : this.lockStatus),
+        mileageInfo:
+            (mileageInfo != null ? mileageInfo.value : this.mileageInfo));
   }
 }
 
@@ -14850,6 +14928,83 @@ List<enums.TelematicsTrackingEventReason>?
 
   return telematicsTrackingEventReason
       .map((e) => telematicsTrackingEventReasonFromJson(e.toString()))
+      .toList();
+}
+
+String? telematicsVehicleUsageLockStatusNullableToJson(
+    enums.TelematicsVehicleUsageLockStatus? telematicsVehicleUsageLockStatus) {
+  return telematicsVehicleUsageLockStatus?.value;
+}
+
+String? telematicsVehicleUsageLockStatusToJson(
+    enums.TelematicsVehicleUsageLockStatus telematicsVehicleUsageLockStatus) {
+  return telematicsVehicleUsageLockStatus.value;
+}
+
+enums.TelematicsVehicleUsageLockStatus telematicsVehicleUsageLockStatusFromJson(
+  Object? telematicsVehicleUsageLockStatus, [
+  enums.TelematicsVehicleUsageLockStatus? defaultValue,
+]) {
+  return enums.TelematicsVehicleUsageLockStatus.values.firstWhereOrNull(
+          (e) => e.value == telematicsVehicleUsageLockStatus) ??
+      defaultValue ??
+      enums.TelematicsVehicleUsageLockStatus.swaggerGeneratedUnknown;
+}
+
+enums.TelematicsVehicleUsageLockStatus?
+    telematicsVehicleUsageLockStatusNullableFromJson(
+  Object? telematicsVehicleUsageLockStatus, [
+  enums.TelematicsVehicleUsageLockStatus? defaultValue,
+]) {
+  if (telematicsVehicleUsageLockStatus == null) {
+    return null;
+  }
+  return enums.TelematicsVehicleUsageLockStatus.values.firstWhereOrNull(
+          (e) => e.value == telematicsVehicleUsageLockStatus) ??
+      defaultValue;
+}
+
+String telematicsVehicleUsageLockStatusExplodedListToJson(
+    List<enums.TelematicsVehicleUsageLockStatus>?
+        telematicsVehicleUsageLockStatus) {
+  return telematicsVehicleUsageLockStatus?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> telematicsVehicleUsageLockStatusListToJson(
+    List<enums.TelematicsVehicleUsageLockStatus>?
+        telematicsVehicleUsageLockStatus) {
+  if (telematicsVehicleUsageLockStatus == null) {
+    return [];
+  }
+
+  return telematicsVehicleUsageLockStatus.map((e) => e.value!).toList();
+}
+
+List<enums.TelematicsVehicleUsageLockStatus>
+    telematicsVehicleUsageLockStatusListFromJson(
+  List? telematicsVehicleUsageLockStatus, [
+  List<enums.TelematicsVehicleUsageLockStatus>? defaultValue,
+]) {
+  if (telematicsVehicleUsageLockStatus == null) {
+    return defaultValue ?? [];
+  }
+
+  return telematicsVehicleUsageLockStatus
+      .map((e) => telematicsVehicleUsageLockStatusFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.TelematicsVehicleUsageLockStatus>?
+    telematicsVehicleUsageLockStatusNullableListFromJson(
+  List? telematicsVehicleUsageLockStatus, [
+  List<enums.TelematicsVehicleUsageLockStatus>? defaultValue,
+]) {
+  if (telematicsVehicleUsageLockStatus == null) {
+    return defaultValue;
+  }
+
+  return telematicsVehicleUsageLockStatus
+      .map((e) => telematicsVehicleUsageLockStatusFromJson(e.toString()))
       .toList();
 }
 

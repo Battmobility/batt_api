@@ -1919,17 +1919,10 @@ Map<String, dynamic> _$PeriodToJson(Period instance) => <String, dynamic>{
       'start': instance.start?.toIso8601String(),
     };
 
-Provider _$ProviderFromJson(Map<String, dynamic> json) => Provider(
-      id: json['id'] as String?,
-    );
-
-Map<String, dynamic> _$ProviderToJson(Provider instance) => <String, dynamic>{
-      'id': instance.id,
-    };
-
 ProviderPage _$ProviderPageFromJson(Map<String, dynamic> json) => ProviderPage(
       providers: (json['providers'] as List<dynamic>?)
-              ?.map((e) => Provider.fromJson(e as Map<String, dynamic>))
+              ?.map(
+                  (e) => TelematicsProvider.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
     );
@@ -2260,6 +2253,16 @@ Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
       'vehicles': instance.vehicles,
     };
 
+TelematicsProvider _$TelematicsProviderFromJson(Map<String, dynamic> json) =>
+    TelematicsProvider(
+      id: json['id'] as String?,
+    );
+
+Map<String, dynamic> _$TelematicsProviderToJson(TelematicsProvider instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+    };
+
 TelematicsTracking _$TelematicsTrackingFromJson(Map<String, dynamic> json) =>
     TelematicsTracking(
       address: json['address'] as String?,
@@ -2291,6 +2294,29 @@ Map<String, dynamic> _$TelematicsTrackingToJson(TelematicsTracking instance) =>
       'mileage': instance.mileage,
       'telematicsId': instance.telematicsId,
       'vehicleId': instance.vehicleId,
+    };
+
+TelematicsVehicleUsage _$TelematicsVehicleUsageFromJson(
+        Map<String, dynamic> json) =>
+    TelematicsVehicleUsage(
+      inversBluetoothToken: json['inversBluetoothToken'] == null
+          ? null
+          : BluetoothToken.fromJson(
+              json['inversBluetoothToken'] as Map<String, dynamic>),
+      lockStatus:
+          telematicsVehicleUsageLockStatusNullableFromJson(json['lockStatus']),
+      mileageInfo: json['mileageInfo'] == null
+          ? null
+          : Mileage.fromJson(json['mileageInfo'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$TelematicsVehicleUsageToJson(
+        TelematicsVehicleUsage instance) =>
+    <String, dynamic>{
+      'inversBluetoothToken': instance.inversBluetoothToken?.toJson(),
+      'lockStatus':
+          telematicsVehicleUsageLockStatusNullableToJson(instance.lockStatus),
+      'mileageInfo': instance.mileageInfo?.toJson(),
     };
 
 TerminateContractHints _$TerminateContractHintsFromJson(
