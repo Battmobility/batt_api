@@ -325,6 +325,7 @@ class BatteryStatus {
     this.charging,
     this.cruisingRange,
     this.errorMessage,
+    this.fetchStatus,
   });
 
   factory BatteryStatus.fromJson(Map<String, dynamic> json) =>
@@ -347,6 +348,12 @@ class BatteryStatus {
   final int? cruisingRange;
   @JsonKey(name: 'errorMessage')
   final String? errorMessage;
+  @JsonKey(
+    name: 'fetchStatus',
+    toJson: batteryStatusFetchStatusNullableToJson,
+    fromJson: batteryStatusFetchStatusNullableFromJson,
+  )
+  final enums.BatteryStatusFetchStatus? fetchStatus;
   static const fromJsonFactory = _$BatteryStatusFromJson;
 
   @override
@@ -367,7 +374,10 @@ class BatteryStatus {
                     .equals(other.cruisingRange, cruisingRange)) &&
             (identical(other.errorMessage, errorMessage) ||
                 const DeepCollectionEquality()
-                    .equals(other.errorMessage, errorMessage)));
+                    .equals(other.errorMessage, errorMessage)) &&
+            (identical(other.fetchStatus, fetchStatus) ||
+                const DeepCollectionEquality()
+                    .equals(other.fetchStatus, fetchStatus)));
   }
 
   @override
@@ -380,6 +390,7 @@ class BatteryStatus {
       const DeepCollectionEquality().hash(charging) ^
       const DeepCollectionEquality().hash(cruisingRange) ^
       const DeepCollectionEquality().hash(errorMessage) ^
+      const DeepCollectionEquality().hash(fetchStatus) ^
       runtimeType.hashCode;
 }
 
@@ -389,13 +400,15 @@ extension $BatteryStatusExtension on BatteryStatus {
       int? batteryPercentage,
       enums.BatteryStatusCharging? charging,
       int? cruisingRange,
-      String? errorMessage}) {
+      String? errorMessage,
+      enums.BatteryStatusFetchStatus? fetchStatus}) {
     return BatteryStatus(
         ageInSeconds: ageInSeconds ?? this.ageInSeconds,
         batteryPercentage: batteryPercentage ?? this.batteryPercentage,
         charging: charging ?? this.charging,
         cruisingRange: cruisingRange ?? this.cruisingRange,
-        errorMessage: errorMessage ?? this.errorMessage);
+        errorMessage: errorMessage ?? this.errorMessage,
+        fetchStatus: fetchStatus ?? this.fetchStatus);
   }
 
   BatteryStatus copyWithWrapped(
@@ -403,7 +416,8 @@ extension $BatteryStatusExtension on BatteryStatus {
       Wrapped<int?>? batteryPercentage,
       Wrapped<enums.BatteryStatusCharging?>? charging,
       Wrapped<int?>? cruisingRange,
-      Wrapped<String?>? errorMessage}) {
+      Wrapped<String?>? errorMessage,
+      Wrapped<enums.BatteryStatusFetchStatus?>? fetchStatus}) {
     return BatteryStatus(
         ageInSeconds:
             (ageInSeconds != null ? ageInSeconds.value : this.ageInSeconds),
@@ -414,7 +428,9 @@ extension $BatteryStatusExtension on BatteryStatus {
         cruisingRange:
             (cruisingRange != null ? cruisingRange.value : this.cruisingRange),
         errorMessage:
-            (errorMessage != null ? errorMessage.value : this.errorMessage));
+            (errorMessage != null ? errorMessage.value : this.errorMessage),
+        fetchStatus:
+            (fetchStatus != null ? fetchStatus.value : this.fetchStatus));
   }
 }
 
@@ -2461,10 +2477,12 @@ class Client {
     this.city,
     this.country,
     this.id,
+    this.isSuspended,
     this.name,
     this.nr,
     this.postalCode,
     this.street,
+    this.suspensionReason,
     this.users,
     this.vat,
   });
@@ -2482,6 +2500,8 @@ class Client {
   final String? country;
   @JsonKey(name: 'id')
   final int? id;
+  @JsonKey(name: 'isSuspended')
+  final bool? isSuspended;
   @JsonKey(name: 'name')
   final String? name;
   @JsonKey(name: 'nr')
@@ -2490,6 +2510,8 @@ class Client {
   final String? postalCode;
   @JsonKey(name: 'street')
   final String? street;
+  @JsonKey(name: 'suspensionReason')
+  final String? suspensionReason;
   @JsonKey(name: 'users', defaultValue: <ContractUser>[])
   final List<ContractUser>? users;
   @JsonKey(name: 'vat')
@@ -2510,6 +2532,9 @@ class Client {
                     .equals(other.country, country)) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.isSuspended, isSuspended) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSuspended, isSuspended)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.nr, nr) ||
@@ -2519,6 +2544,9 @@ class Client {
                     .equals(other.postalCode, postalCode)) &&
             (identical(other.street, street) ||
                 const DeepCollectionEquality().equals(other.street, street)) &&
+            (identical(other.suspensionReason, suspensionReason) ||
+                const DeepCollectionEquality()
+                    .equals(other.suspensionReason, suspensionReason)) &&
             (identical(other.users, users) ||
                 const DeepCollectionEquality().equals(other.users, users)) &&
             (identical(other.vat, vat) ||
@@ -2534,10 +2562,12 @@ class Client {
       const DeepCollectionEquality().hash(city) ^
       const DeepCollectionEquality().hash(country) ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(isSuspended) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(nr) ^
       const DeepCollectionEquality().hash(postalCode) ^
       const DeepCollectionEquality().hash(street) ^
+      const DeepCollectionEquality().hash(suspensionReason) ^
       const DeepCollectionEquality().hash(users) ^
       const DeepCollectionEquality().hash(vat) ^
       runtimeType.hashCode;
@@ -2549,10 +2579,12 @@ extension $ClientExtension on Client {
       String? city,
       String? country,
       int? id,
+      bool? isSuspended,
       String? name,
       String? nr,
       String? postalCode,
       String? street,
+      String? suspensionReason,
       List<ContractUser>? users,
       String? vat}) {
     return Client(
@@ -2560,10 +2592,12 @@ extension $ClientExtension on Client {
         city: city ?? this.city,
         country: country ?? this.country,
         id: id ?? this.id,
+        isSuspended: isSuspended ?? this.isSuspended,
         name: name ?? this.name,
         nr: nr ?? this.nr,
         postalCode: postalCode ?? this.postalCode,
         street: street ?? this.street,
+        suspensionReason: suspensionReason ?? this.suspensionReason,
         users: users ?? this.users,
         vat: vat ?? this.vat);
   }
@@ -2573,10 +2607,12 @@ extension $ClientExtension on Client {
       Wrapped<String?>? city,
       Wrapped<String?>? country,
       Wrapped<int?>? id,
+      Wrapped<bool?>? isSuspended,
       Wrapped<String?>? name,
       Wrapped<String?>? nr,
       Wrapped<String?>? postalCode,
       Wrapped<String?>? street,
+      Wrapped<String?>? suspensionReason,
       Wrapped<List<ContractUser>?>? users,
       Wrapped<String?>? vat}) {
     return Client(
@@ -2585,10 +2621,15 @@ extension $ClientExtension on Client {
         city: (city != null ? city.value : this.city),
         country: (country != null ? country.value : this.country),
         id: (id != null ? id.value : this.id),
+        isSuspended:
+            (isSuspended != null ? isSuspended.value : this.isSuspended),
         name: (name != null ? name.value : this.name),
         nr: (nr != null ? nr.value : this.nr),
         postalCode: (postalCode != null ? postalCode.value : this.postalCode),
         street: (street != null ? street.value : this.street),
+        suspensionReason: (suspensionReason != null
+            ? suspensionReason.value
+            : this.suspensionReason),
         users: (users != null ? users.value : this.users),
         vat: (vat != null ? vat.value : this.vat));
   }
@@ -3889,6 +3930,82 @@ extension $ClientReferenceDtoExtension on ClientReferenceDto {
 }
 
 @JsonSerializable(explicitToJson: true)
+class ConfigValue {
+  const ConfigValue({
+    this.id,
+    this.key,
+    this.lastUpdated,
+    this.$value,
+  });
+
+  factory ConfigValue.fromJson(Map<String, dynamic> json) =>
+      _$ConfigValueFromJson(json);
+
+  static const toJsonFactory = _$ConfigValueToJson;
+  Map<String, dynamic> toJson() => _$ConfigValueToJson(this);
+
+  @JsonKey(name: 'id')
+  final String? id;
+  @JsonKey(name: 'key')
+  final String? key;
+  @JsonKey(name: 'lastUpdated')
+  final DateTime? lastUpdated;
+  @JsonKey(name: 'value')
+  final String? $value;
+  static const fromJsonFactory = _$ConfigValueFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is ConfigValue &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.key, key) ||
+                const DeepCollectionEquality().equals(other.key, key)) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastUpdated, lastUpdated)) &&
+            (identical(other.$value, $value) ||
+                const DeepCollectionEquality().equals(other.$value, $value)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(key) ^
+      const DeepCollectionEquality().hash(lastUpdated) ^
+      const DeepCollectionEquality().hash($value) ^
+      runtimeType.hashCode;
+}
+
+extension $ConfigValueExtension on ConfigValue {
+  ConfigValue copyWith(
+      {String? id, String? key, DateTime? lastUpdated, String? $value}) {
+    return ConfigValue(
+        id: id ?? this.id,
+        key: key ?? this.key,
+        lastUpdated: lastUpdated ?? this.lastUpdated,
+        $value: $value ?? this.$value);
+  }
+
+  ConfigValue copyWithWrapped(
+      {Wrapped<String?>? id,
+      Wrapped<String?>? key,
+      Wrapped<DateTime?>? lastUpdated,
+      Wrapped<String?>? $value}) {
+    return ConfigValue(
+        id: (id != null ? id.value : this.id),
+        key: (key != null ? key.value : this.key),
+        lastUpdated:
+            (lastUpdated != null ? lastUpdated.value : this.lastUpdated),
+        $value: ($value != null ? $value.value : this.$value));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class ContractUser {
   const ContractUser({
     this.boxNumber,
@@ -4744,138 +4861,6 @@ extension $CreateNonAvailabilityRequestExtension
       {Wrapped<Period>? period, Wrapped<String>? vehicleId}) {
     return CreateNonAvailabilityRequest(
         period: (period != null ? period.value : this.period),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class CreateTelematicsRequest {
-  const CreateTelematicsRequest({
-    this.alwaysUseBluetooth,
-    this.ignitionCheck,
-    this.keyfobCheck,
-    this.maxRange,
-    this.phoneNumber,
-    required this.providerDeviceId,
-    required this.providerId,
-    required this.vehicleId,
-  });
-
-  factory CreateTelematicsRequest.fromJson(Map<String, dynamic> json) =>
-      _$CreateTelematicsRequestFromJson(json);
-
-  static const toJsonFactory = _$CreateTelematicsRequestToJson;
-  Map<String, dynamic> toJson() => _$CreateTelematicsRequestToJson(this);
-
-  @JsonKey(name: 'alwaysUseBluetooth')
-  final bool? alwaysUseBluetooth;
-  @JsonKey(name: 'ignitionCheck')
-  final bool? ignitionCheck;
-  @JsonKey(name: 'keyfobCheck')
-  final bool? keyfobCheck;
-  @JsonKey(name: 'maxRange')
-  final int? maxRange;
-  @JsonKey(name: 'phoneNumber')
-  final String? phoneNumber;
-  @JsonKey(name: 'providerDeviceId')
-  final String providerDeviceId;
-  @JsonKey(name: 'providerId')
-  final String providerId;
-  @JsonKey(name: 'vehicleId')
-  final String vehicleId;
-  static const fromJsonFactory = _$CreateTelematicsRequestFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is CreateTelematicsRequest &&
-            (identical(other.alwaysUseBluetooth, alwaysUseBluetooth) ||
-                const DeepCollectionEquality()
-                    .equals(other.alwaysUseBluetooth, alwaysUseBluetooth)) &&
-            (identical(other.ignitionCheck, ignitionCheck) ||
-                const DeepCollectionEquality()
-                    .equals(other.ignitionCheck, ignitionCheck)) &&
-            (identical(other.keyfobCheck, keyfobCheck) ||
-                const DeepCollectionEquality()
-                    .equals(other.keyfobCheck, keyfobCheck)) &&
-            (identical(other.maxRange, maxRange) ||
-                const DeepCollectionEquality()
-                    .equals(other.maxRange, maxRange)) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.phoneNumber, phoneNumber)) &&
-            (identical(other.providerDeviceId, providerDeviceId) ||
-                const DeepCollectionEquality()
-                    .equals(other.providerDeviceId, providerDeviceId)) &&
-            (identical(other.providerId, providerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.providerId, providerId)) &&
-            (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(alwaysUseBluetooth) ^
-      const DeepCollectionEquality().hash(ignitionCheck) ^
-      const DeepCollectionEquality().hash(keyfobCheck) ^
-      const DeepCollectionEquality().hash(maxRange) ^
-      const DeepCollectionEquality().hash(phoneNumber) ^
-      const DeepCollectionEquality().hash(providerDeviceId) ^
-      const DeepCollectionEquality().hash(providerId) ^
-      const DeepCollectionEquality().hash(vehicleId) ^
-      runtimeType.hashCode;
-}
-
-extension $CreateTelematicsRequestExtension on CreateTelematicsRequest {
-  CreateTelematicsRequest copyWith(
-      {bool? alwaysUseBluetooth,
-      bool? ignitionCheck,
-      bool? keyfobCheck,
-      int? maxRange,
-      String? phoneNumber,
-      String? providerDeviceId,
-      String? providerId,
-      String? vehicleId}) {
-    return CreateTelematicsRequest(
-        alwaysUseBluetooth: alwaysUseBluetooth ?? this.alwaysUseBluetooth,
-        ignitionCheck: ignitionCheck ?? this.ignitionCheck,
-        keyfobCheck: keyfobCheck ?? this.keyfobCheck,
-        maxRange: maxRange ?? this.maxRange,
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        providerDeviceId: providerDeviceId ?? this.providerDeviceId,
-        providerId: providerId ?? this.providerId,
-        vehicleId: vehicleId ?? this.vehicleId);
-  }
-
-  CreateTelematicsRequest copyWithWrapped(
-      {Wrapped<bool?>? alwaysUseBluetooth,
-      Wrapped<bool?>? ignitionCheck,
-      Wrapped<bool?>? keyfobCheck,
-      Wrapped<int?>? maxRange,
-      Wrapped<String?>? phoneNumber,
-      Wrapped<String>? providerDeviceId,
-      Wrapped<String>? providerId,
-      Wrapped<String>? vehicleId}) {
-    return CreateTelematicsRequest(
-        alwaysUseBluetooth: (alwaysUseBluetooth != null
-            ? alwaysUseBluetooth.value
-            : this.alwaysUseBluetooth),
-        ignitionCheck:
-            (ignitionCheck != null ? ignitionCheck.value : this.ignitionCheck),
-        keyfobCheck:
-            (keyfobCheck != null ? keyfobCheck.value : this.keyfobCheck),
-        maxRange: (maxRange != null ? maxRange.value : this.maxRange),
-        phoneNumber:
-            (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
-        providerDeviceId: (providerDeviceId != null
-            ? providerDeviceId.value
-            : this.providerDeviceId),
-        providerId: (providerId != null ? providerId.value : this.providerId),
         vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
   }
 }
@@ -8136,51 +8121,6 @@ extension $PeriodExtension on Period {
 }
 
 @JsonSerializable(explicitToJson: true)
-class ProviderPage {
-  const ProviderPage({
-    this.providers,
-  });
-
-  factory ProviderPage.fromJson(Map<String, dynamic> json) =>
-      _$ProviderPageFromJson(json);
-
-  static const toJsonFactory = _$ProviderPageToJson;
-  Map<String, dynamic> toJson() => _$ProviderPageToJson(this);
-
-  @JsonKey(name: 'providers', defaultValue: <TelematicsProvider>[])
-  final List<TelematicsProvider>? providers;
-  static const fromJsonFactory = _$ProviderPageFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is ProviderPage &&
-            (identical(other.providers, providers) ||
-                const DeepCollectionEquality()
-                    .equals(other.providers, providers)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(providers) ^ runtimeType.hashCode;
-}
-
-extension $ProviderPageExtension on ProviderPage {
-  ProviderPage copyWith({List<TelematicsProvider>? providers}) {
-    return ProviderPage(providers: providers ?? this.providers);
-  }
-
-  ProviderPage copyWithWrapped(
-      {Wrapped<List<TelematicsProvider>?>? providers}) {
-    return ProviderPage(
-        providers: (providers != null ? providers.value : this.providers));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
 class ProviderTelematics {
   const ProviderTelematics({
     this.providerDeviceId,
@@ -8514,6 +8454,7 @@ class SearchBookingsRequest {
     this.statuses,
     this.userId,
     this.vehicleId,
+    this.vehicleIds,
   });
 
   factory SearchBookingsRequest.fromJson(Map<String, dynamic> json) =>
@@ -8550,6 +8491,8 @@ class SearchBookingsRequest {
   final String? userId;
   @JsonKey(name: 'vehicleId')
   final String? vehicleId;
+  @JsonKey(name: 'vehicleIds', defaultValue: <String>[])
+  final List<String>? vehicleIds;
   static const fromJsonFactory = _$SearchBookingsRequestFromJson;
 
   @override
@@ -8584,7 +8527,10 @@ class SearchBookingsRequest {
                 const DeepCollectionEquality().equals(other.userId, userId)) &&
             (identical(other.vehicleId, vehicleId) ||
                 const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                    .equals(other.vehicleId, vehicleId)) &&
+            (identical(other.vehicleIds, vehicleIds) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicleIds, vehicleIds)));
   }
 
   @override
@@ -8602,6 +8548,7 @@ class SearchBookingsRequest {
       const DeepCollectionEquality().hash(statuses) ^
       const DeepCollectionEquality().hash(userId) ^
       const DeepCollectionEquality().hash(vehicleId) ^
+      const DeepCollectionEquality().hash(vehicleIds) ^
       runtimeType.hashCode;
 }
 
@@ -8616,7 +8563,8 @@ extension $SearchBookingsRequestExtension on SearchBookingsRequest {
       Period? startPeriod,
       List<enums.SearchBookingsRequestStatuses>? statuses,
       String? userId,
-      String? vehicleId}) {
+      String? vehicleId,
+      List<String>? vehicleIds}) {
     return SearchBookingsRequest(
         adminComments: adminComments ?? this.adminComments,
         clientId: clientId ?? this.clientId,
@@ -8627,7 +8575,8 @@ extension $SearchBookingsRequestExtension on SearchBookingsRequest {
         startPeriod: startPeriod ?? this.startPeriod,
         statuses: statuses ?? this.statuses,
         userId: userId ?? this.userId,
-        vehicleId: vehicleId ?? this.vehicleId);
+        vehicleId: vehicleId ?? this.vehicleId,
+        vehicleIds: vehicleIds ?? this.vehicleIds);
   }
 
   SearchBookingsRequest copyWithWrapped(
@@ -8641,7 +8590,8 @@ extension $SearchBookingsRequestExtension on SearchBookingsRequest {
       Wrapped<Period?>? startPeriod,
       Wrapped<List<enums.SearchBookingsRequestStatuses>?>? statuses,
       Wrapped<String?>? userId,
-      Wrapped<String?>? vehicleId}) {
+      Wrapped<String?>? vehicleId,
+      Wrapped<List<String>?>? vehicleIds}) {
     return SearchBookingsRequest(
         adminComments:
             (adminComments != null ? adminComments.value : this.adminComments),
@@ -8657,7 +8607,8 @@ extension $SearchBookingsRequestExtension on SearchBookingsRequest {
             (startPeriod != null ? startPeriod.value : this.startPeriod),
         statuses: (statuses != null ? statuses.value : this.statuses),
         userId: (userId != null ? userId.value : this.userId),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+        vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds));
   }
 }
 
@@ -9343,6 +9294,108 @@ extension $StartVehicleUsageRequestExtension on StartVehicleUsageRequest {
 }
 
 @JsonSerializable(explicitToJson: true)
+class StoreConfigValueRequest {
+  const StoreConfigValueRequest({
+    this.$value,
+  });
+
+  factory StoreConfigValueRequest.fromJson(Map<String, dynamic> json) =>
+      _$StoreConfigValueRequestFromJson(json);
+
+  static const toJsonFactory = _$StoreConfigValueRequestToJson;
+  Map<String, dynamic> toJson() => _$StoreConfigValueRequestToJson(this);
+
+  @JsonKey(name: 'value')
+  final String? $value;
+  static const fromJsonFactory = _$StoreConfigValueRequestFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is StoreConfigValueRequest &&
+            (identical(other.$value, $value) ||
+                const DeepCollectionEquality().equals(other.$value, $value)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash($value) ^ runtimeType.hashCode;
+}
+
+extension $StoreConfigValueRequestExtension on StoreConfigValueRequest {
+  StoreConfigValueRequest copyWith({String? $value}) {
+    return StoreConfigValueRequest($value: $value ?? this.$value);
+  }
+
+  StoreConfigValueRequest copyWithWrapped({Wrapped<String?>? $value}) {
+    return StoreConfigValueRequest(
+        $value: ($value != null ? $value.value : this.$value));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class StoreTeslaTokensRequest {
+  const StoreTeslaTokensRequest({
+    this.accessToken,
+    this.refreshToken,
+  });
+
+  factory StoreTeslaTokensRequest.fromJson(Map<String, dynamic> json) =>
+      _$StoreTeslaTokensRequestFromJson(json);
+
+  static const toJsonFactory = _$StoreTeslaTokensRequestToJson;
+  Map<String, dynamic> toJson() => _$StoreTeslaTokensRequestToJson(this);
+
+  @JsonKey(name: 'accessToken')
+  final String? accessToken;
+  @JsonKey(name: 'refreshToken')
+  final String? refreshToken;
+  static const fromJsonFactory = _$StoreTeslaTokensRequestFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is StoreTeslaTokensRequest &&
+            (identical(other.accessToken, accessToken) ||
+                const DeepCollectionEquality()
+                    .equals(other.accessToken, accessToken)) &&
+            (identical(other.refreshToken, refreshToken) ||
+                const DeepCollectionEquality()
+                    .equals(other.refreshToken, refreshToken)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(accessToken) ^
+      const DeepCollectionEquality().hash(refreshToken) ^
+      runtimeType.hashCode;
+}
+
+extension $StoreTeslaTokensRequestExtension on StoreTeslaTokensRequest {
+  StoreTeslaTokensRequest copyWith(
+      {String? accessToken, String? refreshToken}) {
+    return StoreTeslaTokensRequest(
+        accessToken: accessToken ?? this.accessToken,
+        refreshToken: refreshToken ?? this.refreshToken);
+  }
+
+  StoreTeslaTokensRequest copyWithWrapped(
+      {Wrapped<String?>? accessToken, Wrapped<String?>? refreshToken}) {
+    return StoreTeslaTokensRequest(
+        accessToken:
+            (accessToken != null ? accessToken.value : this.accessToken),
+        refreshToken:
+            (refreshToken != null ? refreshToken.value : this.refreshToken));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class Subscription {
   const Subscription({
     this.clientId,
@@ -9496,6 +9549,101 @@ extension $SubscriptionExtension on Subscription {
 }
 
 @JsonSerializable(explicitToJson: true)
+class TelematicsDevice {
+  const TelematicsDevice({
+    this.maxRange,
+    this.phoneNumber,
+    this.providerDeviceId,
+    this.providerId,
+    this.vehicleId,
+  });
+
+  factory TelematicsDevice.fromJson(Map<String, dynamic> json) =>
+      _$TelematicsDeviceFromJson(json);
+
+  static const toJsonFactory = _$TelematicsDeviceToJson;
+  Map<String, dynamic> toJson() => _$TelematicsDeviceToJson(this);
+
+  @JsonKey(name: 'maxRange')
+  final int? maxRange;
+  @JsonKey(name: 'phoneNumber')
+  final String? phoneNumber;
+  @JsonKey(name: 'providerDeviceId')
+  final String? providerDeviceId;
+  @JsonKey(name: 'providerId')
+  final String? providerId;
+  @JsonKey(name: 'vehicleId')
+  final String? vehicleId;
+  static const fromJsonFactory = _$TelematicsDeviceFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is TelematicsDevice &&
+            (identical(other.maxRange, maxRange) ||
+                const DeepCollectionEquality()
+                    .equals(other.maxRange, maxRange)) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                const DeepCollectionEquality()
+                    .equals(other.phoneNumber, phoneNumber)) &&
+            (identical(other.providerDeviceId, providerDeviceId) ||
+                const DeepCollectionEquality()
+                    .equals(other.providerDeviceId, providerDeviceId)) &&
+            (identical(other.providerId, providerId) ||
+                const DeepCollectionEquality()
+                    .equals(other.providerId, providerId)) &&
+            (identical(other.vehicleId, vehicleId) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicleId, vehicleId)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(maxRange) ^
+      const DeepCollectionEquality().hash(phoneNumber) ^
+      const DeepCollectionEquality().hash(providerDeviceId) ^
+      const DeepCollectionEquality().hash(providerId) ^
+      const DeepCollectionEquality().hash(vehicleId) ^
+      runtimeType.hashCode;
+}
+
+extension $TelematicsDeviceExtension on TelematicsDevice {
+  TelematicsDevice copyWith(
+      {int? maxRange,
+      String? phoneNumber,
+      String? providerDeviceId,
+      String? providerId,
+      String? vehicleId}) {
+    return TelematicsDevice(
+        maxRange: maxRange ?? this.maxRange,
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        providerDeviceId: providerDeviceId ?? this.providerDeviceId,
+        providerId: providerId ?? this.providerId,
+        vehicleId: vehicleId ?? this.vehicleId);
+  }
+
+  TelematicsDevice copyWithWrapped(
+      {Wrapped<int?>? maxRange,
+      Wrapped<String?>? phoneNumber,
+      Wrapped<String?>? providerDeviceId,
+      Wrapped<String?>? providerId,
+      Wrapped<String?>? vehicleId}) {
+    return TelematicsDevice(
+        maxRange: (maxRange != null ? maxRange.value : this.maxRange),
+        phoneNumber:
+            (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
+        providerDeviceId: (providerDeviceId != null
+            ? providerDeviceId.value
+            : this.providerDeviceId),
+        providerId: (providerId != null ? providerId.value : this.providerId),
+        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class TelematicsProvider {
   const TelematicsProvider({
     this.id,
@@ -9534,6 +9682,183 @@ extension $TelematicsProviderExtension on TelematicsProvider {
 
   TelematicsProvider copyWithWrapped({Wrapped<String?>? id}) {
     return TelematicsProvider(id: (id != null ? id.value : this.id));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class TelematicsProviderPage {
+  const TelematicsProviderPage({
+    this.providers,
+  });
+
+  factory TelematicsProviderPage.fromJson(Map<String, dynamic> json) =>
+      _$TelematicsProviderPageFromJson(json);
+
+  static const toJsonFactory = _$TelematicsProviderPageToJson;
+  Map<String, dynamic> toJson() => _$TelematicsProviderPageToJson(this);
+
+  @JsonKey(name: 'providers', defaultValue: <TelematicsProvider>[])
+  final List<TelematicsProvider>? providers;
+  static const fromJsonFactory = _$TelematicsProviderPageFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is TelematicsProviderPage &&
+            (identical(other.providers, providers) ||
+                const DeepCollectionEquality()
+                    .equals(other.providers, providers)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(providers) ^ runtimeType.hashCode;
+}
+
+extension $TelematicsProviderPageExtension on TelematicsProviderPage {
+  TelematicsProviderPage copyWith({List<TelematicsProvider>? providers}) {
+    return TelematicsProviderPage(providers: providers ?? this.providers);
+  }
+
+  TelematicsProviderPage copyWithWrapped(
+      {Wrapped<List<TelematicsProvider>?>? providers}) {
+    return TelematicsProviderPage(
+        providers: (providers != null ? providers.value : this.providers));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class TelematicsRequest {
+  const TelematicsRequest({
+    this.alwaysUseBluetooth,
+    this.ignitionCheck,
+    this.keyfobCheck,
+    this.maxRange,
+    this.phoneNumber,
+    required this.providerDeviceId,
+    required this.providerId,
+    required this.vehicleId,
+  });
+
+  factory TelematicsRequest.fromJson(Map<String, dynamic> json) =>
+      _$TelematicsRequestFromJson(json);
+
+  static const toJsonFactory = _$TelematicsRequestToJson;
+  Map<String, dynamic> toJson() => _$TelematicsRequestToJson(this);
+
+  @JsonKey(name: 'alwaysUseBluetooth')
+  final bool? alwaysUseBluetooth;
+  @JsonKey(name: 'ignitionCheck')
+  final bool? ignitionCheck;
+  @JsonKey(name: 'keyfobCheck')
+  final bool? keyfobCheck;
+  @JsonKey(name: 'maxRange')
+  final int? maxRange;
+  @JsonKey(name: 'phoneNumber')
+  final String? phoneNumber;
+  @JsonKey(name: 'providerDeviceId')
+  final String providerDeviceId;
+  @JsonKey(name: 'providerId')
+  final String providerId;
+  @JsonKey(name: 'vehicleId')
+  final String vehicleId;
+  static const fromJsonFactory = _$TelematicsRequestFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is TelematicsRequest &&
+            (identical(other.alwaysUseBluetooth, alwaysUseBluetooth) ||
+                const DeepCollectionEquality()
+                    .equals(other.alwaysUseBluetooth, alwaysUseBluetooth)) &&
+            (identical(other.ignitionCheck, ignitionCheck) ||
+                const DeepCollectionEquality()
+                    .equals(other.ignitionCheck, ignitionCheck)) &&
+            (identical(other.keyfobCheck, keyfobCheck) ||
+                const DeepCollectionEquality()
+                    .equals(other.keyfobCheck, keyfobCheck)) &&
+            (identical(other.maxRange, maxRange) ||
+                const DeepCollectionEquality()
+                    .equals(other.maxRange, maxRange)) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                const DeepCollectionEquality()
+                    .equals(other.phoneNumber, phoneNumber)) &&
+            (identical(other.providerDeviceId, providerDeviceId) ||
+                const DeepCollectionEquality()
+                    .equals(other.providerDeviceId, providerDeviceId)) &&
+            (identical(other.providerId, providerId) ||
+                const DeepCollectionEquality()
+                    .equals(other.providerId, providerId)) &&
+            (identical(other.vehicleId, vehicleId) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicleId, vehicleId)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(alwaysUseBluetooth) ^
+      const DeepCollectionEquality().hash(ignitionCheck) ^
+      const DeepCollectionEquality().hash(keyfobCheck) ^
+      const DeepCollectionEquality().hash(maxRange) ^
+      const DeepCollectionEquality().hash(phoneNumber) ^
+      const DeepCollectionEquality().hash(providerDeviceId) ^
+      const DeepCollectionEquality().hash(providerId) ^
+      const DeepCollectionEquality().hash(vehicleId) ^
+      runtimeType.hashCode;
+}
+
+extension $TelematicsRequestExtension on TelematicsRequest {
+  TelematicsRequest copyWith(
+      {bool? alwaysUseBluetooth,
+      bool? ignitionCheck,
+      bool? keyfobCheck,
+      int? maxRange,
+      String? phoneNumber,
+      String? providerDeviceId,
+      String? providerId,
+      String? vehicleId}) {
+    return TelematicsRequest(
+        alwaysUseBluetooth: alwaysUseBluetooth ?? this.alwaysUseBluetooth,
+        ignitionCheck: ignitionCheck ?? this.ignitionCheck,
+        keyfobCheck: keyfobCheck ?? this.keyfobCheck,
+        maxRange: maxRange ?? this.maxRange,
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        providerDeviceId: providerDeviceId ?? this.providerDeviceId,
+        providerId: providerId ?? this.providerId,
+        vehicleId: vehicleId ?? this.vehicleId);
+  }
+
+  TelematicsRequest copyWithWrapped(
+      {Wrapped<bool?>? alwaysUseBluetooth,
+      Wrapped<bool?>? ignitionCheck,
+      Wrapped<bool?>? keyfobCheck,
+      Wrapped<int?>? maxRange,
+      Wrapped<String?>? phoneNumber,
+      Wrapped<String>? providerDeviceId,
+      Wrapped<String>? providerId,
+      Wrapped<String>? vehicleId}) {
+    return TelematicsRequest(
+        alwaysUseBluetooth: (alwaysUseBluetooth != null
+            ? alwaysUseBluetooth.value
+            : this.alwaysUseBluetooth),
+        ignitionCheck:
+            (ignitionCheck != null ? ignitionCheck.value : this.ignitionCheck),
+        keyfobCheck:
+            (keyfobCheck != null ? keyfobCheck.value : this.keyfobCheck),
+        maxRange: (maxRange != null ? maxRange.value : this.maxRange),
+        phoneNumber:
+            (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
+        providerDeviceId: (providerDeviceId != null
+            ? providerDeviceId.value
+            : this.providerDeviceId),
+        providerId: (providerId != null ? providerId.value : this.providerId),
+        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
   }
 }
 
@@ -10103,6 +10428,64 @@ extension $UpdateBookingRequestExtension on UpdateBookingRequest {
             ? needsCorrectionComments.value
             : this.needsCorrectionComments),
         period: (period != null ? period.value : this.period));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class UpdateClient {
+  const UpdateClient({
+    this.suspended,
+    this.suspendedReason,
+  });
+
+  factory UpdateClient.fromJson(Map<String, dynamic> json) =>
+      _$UpdateClientFromJson(json);
+
+  static const toJsonFactory = _$UpdateClientToJson;
+  Map<String, dynamic> toJson() => _$UpdateClientToJson(this);
+
+  @JsonKey(name: 'suspended')
+  final bool? suspended;
+  @JsonKey(name: 'suspendedReason')
+  final String? suspendedReason;
+  static const fromJsonFactory = _$UpdateClientFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is UpdateClient &&
+            (identical(other.suspended, suspended) ||
+                const DeepCollectionEquality()
+                    .equals(other.suspended, suspended)) &&
+            (identical(other.suspendedReason, suspendedReason) ||
+                const DeepCollectionEquality()
+                    .equals(other.suspendedReason, suspendedReason)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(suspended) ^
+      const DeepCollectionEquality().hash(suspendedReason) ^
+      runtimeType.hashCode;
+}
+
+extension $UpdateClientExtension on UpdateClient {
+  UpdateClient copyWith({bool? suspended, String? suspendedReason}) {
+    return UpdateClient(
+        suspended: suspended ?? this.suspended,
+        suspendedReason: suspendedReason ?? this.suspendedReason);
+  }
+
+  UpdateClient copyWithWrapped(
+      {Wrapped<bool?>? suspended, Wrapped<String?>? suspendedReason}) {
+    return UpdateClient(
+        suspended: (suspended != null ? suspended.value : this.suspended),
+        suspendedReason: (suspendedReason != null
+            ? suspendedReason.value
+            : this.suspendedReason));
   }
 }
 
@@ -11916,6 +12299,77 @@ extension $VehicleGroupPageExtension on VehicleGroupPage {
 }
 
 @JsonSerializable(explicitToJson: true)
+class VehicleLockStatus {
+  const VehicleLockStatus({
+    this.centralLockStatus,
+    this.immobilizerStatus,
+  });
+
+  factory VehicleLockStatus.fromJson(Map<String, dynamic> json) =>
+      _$VehicleLockStatusFromJson(json);
+
+  static const toJsonFactory = _$VehicleLockStatusToJson;
+  Map<String, dynamic> toJson() => _$VehicleLockStatusToJson(this);
+
+  @JsonKey(
+    name: 'centralLockStatus',
+    toJson: vehicleLockStatusCentralLockStatusNullableToJson,
+    fromJson: vehicleLockStatusCentralLockStatusNullableFromJson,
+  )
+  final enums.VehicleLockStatusCentralLockStatus? centralLockStatus;
+  @JsonKey(
+    name: 'immobilizerStatus',
+    toJson: vehicleLockStatusImmobilizerStatusNullableToJson,
+    fromJson: vehicleLockStatusImmobilizerStatusNullableFromJson,
+  )
+  final enums.VehicleLockStatusImmobilizerStatus? immobilizerStatus;
+  static const fromJsonFactory = _$VehicleLockStatusFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is VehicleLockStatus &&
+            (identical(other.centralLockStatus, centralLockStatus) ||
+                const DeepCollectionEquality()
+                    .equals(other.centralLockStatus, centralLockStatus)) &&
+            (identical(other.immobilizerStatus, immobilizerStatus) ||
+                const DeepCollectionEquality()
+                    .equals(other.immobilizerStatus, immobilizerStatus)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(centralLockStatus) ^
+      const DeepCollectionEquality().hash(immobilizerStatus) ^
+      runtimeType.hashCode;
+}
+
+extension $VehicleLockStatusExtension on VehicleLockStatus {
+  VehicleLockStatus copyWith(
+      {enums.VehicleLockStatusCentralLockStatus? centralLockStatus,
+      enums.VehicleLockStatusImmobilizerStatus? immobilizerStatus}) {
+    return VehicleLockStatus(
+        centralLockStatus: centralLockStatus ?? this.centralLockStatus,
+        immobilizerStatus: immobilizerStatus ?? this.immobilizerStatus);
+  }
+
+  VehicleLockStatus copyWithWrapped(
+      {Wrapped<enums.VehicleLockStatusCentralLockStatus?>? centralLockStatus,
+      Wrapped<enums.VehicleLockStatusImmobilizerStatus?>? immobilizerStatus}) {
+    return VehicleLockStatus(
+        centralLockStatus: (centralLockStatus != null
+            ? centralLockStatus.value
+            : this.centralLockStatus),
+        immobilizerStatus: (immobilizerStatus != null
+            ? immobilizerStatus.value
+            : this.immobilizerStatus));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class VehicleModel {
   const VehicleModel({
     this.bodyStyle,
@@ -12322,101 +12776,6 @@ extension $VehicleRateExtension on VehicleRate {
             (lastUpdated != null ? lastUpdated.value : this.lastUpdated),
         validFrom: (validFrom != null ? validFrom.value : this.validFrom),
         validUntil: (validUntil != null ? validUntil.value : this.validUntil),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class VehicleTelematics {
-  const VehicleTelematics({
-    this.maxRange,
-    this.phoneNumber,
-    this.providerDeviceId,
-    this.providerId,
-    this.vehicleId,
-  });
-
-  factory VehicleTelematics.fromJson(Map<String, dynamic> json) =>
-      _$VehicleTelematicsFromJson(json);
-
-  static const toJsonFactory = _$VehicleTelematicsToJson;
-  Map<String, dynamic> toJson() => _$VehicleTelematicsToJson(this);
-
-  @JsonKey(name: 'maxRange')
-  final int? maxRange;
-  @JsonKey(name: 'phoneNumber')
-  final String? phoneNumber;
-  @JsonKey(name: 'providerDeviceId')
-  final String? providerDeviceId;
-  @JsonKey(name: 'providerId')
-  final String? providerId;
-  @JsonKey(name: 'vehicleId')
-  final String? vehicleId;
-  static const fromJsonFactory = _$VehicleTelematicsFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is VehicleTelematics &&
-            (identical(other.maxRange, maxRange) ||
-                const DeepCollectionEquality()
-                    .equals(other.maxRange, maxRange)) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.phoneNumber, phoneNumber)) &&
-            (identical(other.providerDeviceId, providerDeviceId) ||
-                const DeepCollectionEquality()
-                    .equals(other.providerDeviceId, providerDeviceId)) &&
-            (identical(other.providerId, providerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.providerId, providerId)) &&
-            (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(maxRange) ^
-      const DeepCollectionEquality().hash(phoneNumber) ^
-      const DeepCollectionEquality().hash(providerDeviceId) ^
-      const DeepCollectionEquality().hash(providerId) ^
-      const DeepCollectionEquality().hash(vehicleId) ^
-      runtimeType.hashCode;
-}
-
-extension $VehicleTelematicsExtension on VehicleTelematics {
-  VehicleTelematics copyWith(
-      {int? maxRange,
-      String? phoneNumber,
-      String? providerDeviceId,
-      String? providerId,
-      String? vehicleId}) {
-    return VehicleTelematics(
-        maxRange: maxRange ?? this.maxRange,
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        providerDeviceId: providerDeviceId ?? this.providerDeviceId,
-        providerId: providerId ?? this.providerId,
-        vehicleId: vehicleId ?? this.vehicleId);
-  }
-
-  VehicleTelematics copyWithWrapped(
-      {Wrapped<int?>? maxRange,
-      Wrapped<String?>? phoneNumber,
-      Wrapped<String?>? providerDeviceId,
-      Wrapped<String?>? providerId,
-      Wrapped<String?>? vehicleId}) {
-    return VehicleTelematics(
-        maxRange: (maxRange != null ? maxRange.value : this.maxRange),
-        phoneNumber:
-            (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
-        providerDeviceId: (providerDeviceId != null
-            ? providerDeviceId.value
-            : this.providerDeviceId),
-        providerId: (providerId != null ? providerId.value : this.providerId),
         vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
   }
 }
@@ -13152,6 +13511,79 @@ List<enums.BatteryStatusCharging>? batteryStatusChargingNullableListFromJson(
 
   return batteryStatusCharging
       .map((e) => batteryStatusChargingFromJson(e.toString()))
+      .toList();
+}
+
+String? batteryStatusFetchStatusNullableToJson(
+    enums.BatteryStatusFetchStatus? batteryStatusFetchStatus) {
+  return batteryStatusFetchStatus?.value;
+}
+
+String? batteryStatusFetchStatusToJson(
+    enums.BatteryStatusFetchStatus batteryStatusFetchStatus) {
+  return batteryStatusFetchStatus.value;
+}
+
+enums.BatteryStatusFetchStatus batteryStatusFetchStatusFromJson(
+  Object? batteryStatusFetchStatus, [
+  enums.BatteryStatusFetchStatus? defaultValue,
+]) {
+  return enums.BatteryStatusFetchStatus.values
+          .firstWhereOrNull((e) => e.value == batteryStatusFetchStatus) ??
+      defaultValue ??
+      enums.BatteryStatusFetchStatus.swaggerGeneratedUnknown;
+}
+
+enums.BatteryStatusFetchStatus? batteryStatusFetchStatusNullableFromJson(
+  Object? batteryStatusFetchStatus, [
+  enums.BatteryStatusFetchStatus? defaultValue,
+]) {
+  if (batteryStatusFetchStatus == null) {
+    return null;
+  }
+  return enums.BatteryStatusFetchStatus.values
+          .firstWhereOrNull((e) => e.value == batteryStatusFetchStatus) ??
+      defaultValue;
+}
+
+String batteryStatusFetchStatusExplodedListToJson(
+    List<enums.BatteryStatusFetchStatus>? batteryStatusFetchStatus) {
+  return batteryStatusFetchStatus?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> batteryStatusFetchStatusListToJson(
+    List<enums.BatteryStatusFetchStatus>? batteryStatusFetchStatus) {
+  if (batteryStatusFetchStatus == null) {
+    return [];
+  }
+
+  return batteryStatusFetchStatus.map((e) => e.value!).toList();
+}
+
+List<enums.BatteryStatusFetchStatus> batteryStatusFetchStatusListFromJson(
+  List? batteryStatusFetchStatus, [
+  List<enums.BatteryStatusFetchStatus>? defaultValue,
+]) {
+  if (batteryStatusFetchStatus == null) {
+    return defaultValue ?? [];
+  }
+
+  return batteryStatusFetchStatus
+      .map((e) => batteryStatusFetchStatusFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.BatteryStatusFetchStatus>?
+    batteryStatusFetchStatusNullableListFromJson(
+  List? batteryStatusFetchStatus, [
+  List<enums.BatteryStatusFetchStatus>? defaultValue,
+]) {
+  if (batteryStatusFetchStatus == null) {
+    return defaultValue;
+  }
+
+  return batteryStatusFetchStatus
+      .map((e) => batteryStatusFetchStatusFromJson(e.toString()))
       .toList();
 }
 
@@ -15526,6 +15958,168 @@ List<enums.VehicleContractBattMaxType>?
 
   return vehicleContractBattMaxType
       .map((e) => vehicleContractBattMaxTypeFromJson(e.toString()))
+      .toList();
+}
+
+String? vehicleLockStatusCentralLockStatusNullableToJson(
+    enums.VehicleLockStatusCentralLockStatus?
+        vehicleLockStatusCentralLockStatus) {
+  return vehicleLockStatusCentralLockStatus?.value;
+}
+
+String? vehicleLockStatusCentralLockStatusToJson(
+    enums.VehicleLockStatusCentralLockStatus
+        vehicleLockStatusCentralLockStatus) {
+  return vehicleLockStatusCentralLockStatus.value;
+}
+
+enums.VehicleLockStatusCentralLockStatus
+    vehicleLockStatusCentralLockStatusFromJson(
+  Object? vehicleLockStatusCentralLockStatus, [
+  enums.VehicleLockStatusCentralLockStatus? defaultValue,
+]) {
+  return enums.VehicleLockStatusCentralLockStatus.values.firstWhereOrNull(
+          (e) => e.value == vehicleLockStatusCentralLockStatus) ??
+      defaultValue ??
+      enums.VehicleLockStatusCentralLockStatus.swaggerGeneratedUnknown;
+}
+
+enums.VehicleLockStatusCentralLockStatus?
+    vehicleLockStatusCentralLockStatusNullableFromJson(
+  Object? vehicleLockStatusCentralLockStatus, [
+  enums.VehicleLockStatusCentralLockStatus? defaultValue,
+]) {
+  if (vehicleLockStatusCentralLockStatus == null) {
+    return null;
+  }
+  return enums.VehicleLockStatusCentralLockStatus.values.firstWhereOrNull(
+          (e) => e.value == vehicleLockStatusCentralLockStatus) ??
+      defaultValue;
+}
+
+String vehicleLockStatusCentralLockStatusExplodedListToJson(
+    List<enums.VehicleLockStatusCentralLockStatus>?
+        vehicleLockStatusCentralLockStatus) {
+  return vehicleLockStatusCentralLockStatus?.map((e) => e.value!).join(',') ??
+      '';
+}
+
+List<String> vehicleLockStatusCentralLockStatusListToJson(
+    List<enums.VehicleLockStatusCentralLockStatus>?
+        vehicleLockStatusCentralLockStatus) {
+  if (vehicleLockStatusCentralLockStatus == null) {
+    return [];
+  }
+
+  return vehicleLockStatusCentralLockStatus.map((e) => e.value!).toList();
+}
+
+List<enums.VehicleLockStatusCentralLockStatus>
+    vehicleLockStatusCentralLockStatusListFromJson(
+  List? vehicleLockStatusCentralLockStatus, [
+  List<enums.VehicleLockStatusCentralLockStatus>? defaultValue,
+]) {
+  if (vehicleLockStatusCentralLockStatus == null) {
+    return defaultValue ?? [];
+  }
+
+  return vehicleLockStatusCentralLockStatus
+      .map((e) => vehicleLockStatusCentralLockStatusFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.VehicleLockStatusCentralLockStatus>?
+    vehicleLockStatusCentralLockStatusNullableListFromJson(
+  List? vehicleLockStatusCentralLockStatus, [
+  List<enums.VehicleLockStatusCentralLockStatus>? defaultValue,
+]) {
+  if (vehicleLockStatusCentralLockStatus == null) {
+    return defaultValue;
+  }
+
+  return vehicleLockStatusCentralLockStatus
+      .map((e) => vehicleLockStatusCentralLockStatusFromJson(e.toString()))
+      .toList();
+}
+
+String? vehicleLockStatusImmobilizerStatusNullableToJson(
+    enums.VehicleLockStatusImmobilizerStatus?
+        vehicleLockStatusImmobilizerStatus) {
+  return vehicleLockStatusImmobilizerStatus?.value;
+}
+
+String? vehicleLockStatusImmobilizerStatusToJson(
+    enums.VehicleLockStatusImmobilizerStatus
+        vehicleLockStatusImmobilizerStatus) {
+  return vehicleLockStatusImmobilizerStatus.value;
+}
+
+enums.VehicleLockStatusImmobilizerStatus
+    vehicleLockStatusImmobilizerStatusFromJson(
+  Object? vehicleLockStatusImmobilizerStatus, [
+  enums.VehicleLockStatusImmobilizerStatus? defaultValue,
+]) {
+  return enums.VehicleLockStatusImmobilizerStatus.values.firstWhereOrNull(
+          (e) => e.value == vehicleLockStatusImmobilizerStatus) ??
+      defaultValue ??
+      enums.VehicleLockStatusImmobilizerStatus.swaggerGeneratedUnknown;
+}
+
+enums.VehicleLockStatusImmobilizerStatus?
+    vehicleLockStatusImmobilizerStatusNullableFromJson(
+  Object? vehicleLockStatusImmobilizerStatus, [
+  enums.VehicleLockStatusImmobilizerStatus? defaultValue,
+]) {
+  if (vehicleLockStatusImmobilizerStatus == null) {
+    return null;
+  }
+  return enums.VehicleLockStatusImmobilizerStatus.values.firstWhereOrNull(
+          (e) => e.value == vehicleLockStatusImmobilizerStatus) ??
+      defaultValue;
+}
+
+String vehicleLockStatusImmobilizerStatusExplodedListToJson(
+    List<enums.VehicleLockStatusImmobilizerStatus>?
+        vehicleLockStatusImmobilizerStatus) {
+  return vehicleLockStatusImmobilizerStatus?.map((e) => e.value!).join(',') ??
+      '';
+}
+
+List<String> vehicleLockStatusImmobilizerStatusListToJson(
+    List<enums.VehicleLockStatusImmobilizerStatus>?
+        vehicleLockStatusImmobilizerStatus) {
+  if (vehicleLockStatusImmobilizerStatus == null) {
+    return [];
+  }
+
+  return vehicleLockStatusImmobilizerStatus.map((e) => e.value!).toList();
+}
+
+List<enums.VehicleLockStatusImmobilizerStatus>
+    vehicleLockStatusImmobilizerStatusListFromJson(
+  List? vehicleLockStatusImmobilizerStatus, [
+  List<enums.VehicleLockStatusImmobilizerStatus>? defaultValue,
+]) {
+  if (vehicleLockStatusImmobilizerStatus == null) {
+    return defaultValue ?? [];
+  }
+
+  return vehicleLockStatusImmobilizerStatus
+      .map((e) => vehicleLockStatusImmobilizerStatusFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.VehicleLockStatusImmobilizerStatus>?
+    vehicleLockStatusImmobilizerStatusNullableListFromJson(
+  List? vehicleLockStatusImmobilizerStatus, [
+  List<enums.VehicleLockStatusImmobilizerStatus>? defaultValue,
+]) {
+  if (vehicleLockStatusImmobilizerStatus == null) {
+    return defaultValue;
+  }
+
+  return vehicleLockStatusImmobilizerStatus
+      .map((e) => vehicleLockStatusImmobilizerStatusFromJson(e.toString()))
       .toList();
 }
 
