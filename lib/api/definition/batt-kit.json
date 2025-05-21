@@ -2653,6 +2653,18 @@
       },
       "TelematicsDevice": {
         "properties": {
+          "alwaysUseBluetooth": {
+            "type": "boolean"
+          },
+          "bydMobilizeHack": {
+            "type": "boolean"
+          },
+          "ignitionCheck": {
+            "type": "boolean"
+          },
+          "keyfobCheck": {
+            "type": "boolean"
+          },
           "maxRange": {
             "format": "int32",
             "type": "integer"

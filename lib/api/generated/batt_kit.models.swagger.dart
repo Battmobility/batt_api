@@ -9551,6 +9551,10 @@ extension $SubscriptionExtension on Subscription {
 @JsonSerializable(explicitToJson: true)
 class TelematicsDevice {
   const TelematicsDevice({
+    this.alwaysUseBluetooth,
+    this.bydMobilizeHack,
+    this.ignitionCheck,
+    this.keyfobCheck,
     this.maxRange,
     this.phoneNumber,
     this.providerDeviceId,
@@ -9564,6 +9568,14 @@ class TelematicsDevice {
   static const toJsonFactory = _$TelematicsDeviceToJson;
   Map<String, dynamic> toJson() => _$TelematicsDeviceToJson(this);
 
+  @JsonKey(name: 'alwaysUseBluetooth')
+  final bool? alwaysUseBluetooth;
+  @JsonKey(name: 'bydMobilizeHack')
+  final bool? bydMobilizeHack;
+  @JsonKey(name: 'ignitionCheck')
+  final bool? ignitionCheck;
+  @JsonKey(name: 'keyfobCheck')
+  final bool? keyfobCheck;
   @JsonKey(name: 'maxRange')
   final int? maxRange;
   @JsonKey(name: 'phoneNumber')
@@ -9580,6 +9592,18 @@ class TelematicsDevice {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other is TelematicsDevice &&
+            (identical(other.alwaysUseBluetooth, alwaysUseBluetooth) ||
+                const DeepCollectionEquality()
+                    .equals(other.alwaysUseBluetooth, alwaysUseBluetooth)) &&
+            (identical(other.bydMobilizeHack, bydMobilizeHack) ||
+                const DeepCollectionEquality()
+                    .equals(other.bydMobilizeHack, bydMobilizeHack)) &&
+            (identical(other.ignitionCheck, ignitionCheck) ||
+                const DeepCollectionEquality()
+                    .equals(other.ignitionCheck, ignitionCheck)) &&
+            (identical(other.keyfobCheck, keyfobCheck) ||
+                const DeepCollectionEquality()
+                    .equals(other.keyfobCheck, keyfobCheck)) &&
             (identical(other.maxRange, maxRange) ||
                 const DeepCollectionEquality()
                     .equals(other.maxRange, maxRange)) &&
@@ -9602,6 +9626,10 @@ class TelematicsDevice {
 
   @override
   int get hashCode =>
+      const DeepCollectionEquality().hash(alwaysUseBluetooth) ^
+      const DeepCollectionEquality().hash(bydMobilizeHack) ^
+      const DeepCollectionEquality().hash(ignitionCheck) ^
+      const DeepCollectionEquality().hash(keyfobCheck) ^
       const DeepCollectionEquality().hash(maxRange) ^
       const DeepCollectionEquality().hash(phoneNumber) ^
       const DeepCollectionEquality().hash(providerDeviceId) ^
@@ -9612,12 +9640,20 @@ class TelematicsDevice {
 
 extension $TelematicsDeviceExtension on TelematicsDevice {
   TelematicsDevice copyWith(
-      {int? maxRange,
+      {bool? alwaysUseBluetooth,
+      bool? bydMobilizeHack,
+      bool? ignitionCheck,
+      bool? keyfobCheck,
+      int? maxRange,
       String? phoneNumber,
       String? providerDeviceId,
       String? providerId,
       String? vehicleId}) {
     return TelematicsDevice(
+        alwaysUseBluetooth: alwaysUseBluetooth ?? this.alwaysUseBluetooth,
+        bydMobilizeHack: bydMobilizeHack ?? this.bydMobilizeHack,
+        ignitionCheck: ignitionCheck ?? this.ignitionCheck,
+        keyfobCheck: keyfobCheck ?? this.keyfobCheck,
         maxRange: maxRange ?? this.maxRange,
         phoneNumber: phoneNumber ?? this.phoneNumber,
         providerDeviceId: providerDeviceId ?? this.providerDeviceId,
@@ -9626,12 +9662,26 @@ extension $TelematicsDeviceExtension on TelematicsDevice {
   }
 
   TelematicsDevice copyWithWrapped(
-      {Wrapped<int?>? maxRange,
+      {Wrapped<bool?>? alwaysUseBluetooth,
+      Wrapped<bool?>? bydMobilizeHack,
+      Wrapped<bool?>? ignitionCheck,
+      Wrapped<bool?>? keyfobCheck,
+      Wrapped<int?>? maxRange,
       Wrapped<String?>? phoneNumber,
       Wrapped<String?>? providerDeviceId,
       Wrapped<String?>? providerId,
       Wrapped<String?>? vehicleId}) {
     return TelematicsDevice(
+        alwaysUseBluetooth: (alwaysUseBluetooth != null
+            ? alwaysUseBluetooth.value
+            : this.alwaysUseBluetooth),
+        bydMobilizeHack: (bydMobilizeHack != null
+            ? bydMobilizeHack.value
+            : this.bydMobilizeHack),
+        ignitionCheck:
+            (ignitionCheck != null ? ignitionCheck.value : this.ignitionCheck),
+        keyfobCheck:
+            (keyfobCheck != null ? keyfobCheck.value : this.keyfobCheck),
         maxRange: (maxRange != null ? maxRange.value : this.maxRange),
         phoneNumber:
             (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
