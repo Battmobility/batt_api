@@ -60,6 +60,28 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response<String>>
       _wellKnownAppspecificComTesla3pPublicKeyPemGet();
 
+  ///Update a client
+  ///@param clientId Client ID
+  Future<chopper.Response<Client>> adminUserV1ClientsClientIdPut({
+    required int? clientId,
+    required UpdateClient? body,
+  }) {
+    generatedMapping.putIfAbsent(Client, () => Client.fromJsonFactory);
+
+    return _adminUserV1ClientsClientIdPut(clientId: clientId, body: body);
+  }
+
+  ///Update a client
+  ///@param clientId Client ID
+  @Put(
+    path: '/admin/user/v1/clients/{clientId}',
+    optionalBody: true,
+  )
+  Future<chopper.Response<Client>> _adminUserV1ClientsClientIdPut({
+    @Path('clientId') required int? clientId,
+    @Body() required UpdateClient? body,
+  });
+
   ///
   Future<chopper.Response<NonAvailabilityResponse>>
       availabilityV1NonAvailabilitiesPost(
@@ -666,15 +688,22 @@ abstract class BattKit extends ChopperService {
 
   ///
   ///@param code
-  Future<chopper.Response> oauthCallbackGet({required String? code}) {
-    return _oauthCallbackGet(code: code);
+  ///@param state
+  Future<chopper.Response> oauthCallbackGet({
+    required String? code,
+    required String? state,
+  }) {
+    return _oauthCallbackGet(code: code, state: state);
   }
 
   ///
   ///@param code
+  ///@param state
   @Get(path: '/oauth/callback')
-  Future<chopper.Response> _oauthCallbackGet(
-      {@Query('code') required String? code});
+  Future<chopper.Response> _oauthCallbackGet({
+    @Query('code') required String? code,
+    @Query('state') required String? state,
+  });
 
   ///Determines the price rates and billing details based on the booking parameters (vehicle, period)
   ///@param X-Client-Id Client ID
@@ -809,6 +838,23 @@ abstract class BattKit extends ChopperService {
 
   ///
   ///@param vehicleId
+  Future<chopper.Response<BatteryStatus>>
+      telematicsV1BatteryDatabaseVehicleIdGet({required String? vehicleId}) {
+    generatedMapping.putIfAbsent(
+        BatteryStatus, () => BatteryStatus.fromJsonFactory);
+
+    return _telematicsV1BatteryDatabaseVehicleIdGet(vehicleId: vehicleId);
+  }
+
+  ///
+  ///@param vehicleId
+  @Get(path: '/telematics/v1/battery/database/{vehicleId}')
+  Future<chopper.Response<BatteryStatus>>
+      _telematicsV1BatteryDatabaseVehicleIdGet(
+          {@Path('vehicleId') required String? vehicleId});
+
+  ///
+  ///@param vehicleId
   Future<chopper.Response<BatteryStatus>> telematicsV1BatteryVehicleIdGet(
       {required String? vehicleId}) {
     generatedMapping.putIfAbsent(
@@ -824,20 +870,71 @@ abstract class BattKit extends ChopperService {
       {@Path('vehicleId') required String? vehicleId});
 
   ///
-  Future<chopper.Response<List<VehicleTelematics>>> telematicsV1DevicesGet() {
+  ///@param key
+  Future<chopper.Response<ConfigValue>> telematicsV1ConfigValueKeyGet(
+      {required String? key}) {
     generatedMapping.putIfAbsent(
-        VehicleTelematics, () => VehicleTelematics.fromJsonFactory);
+        ConfigValue, () => ConfigValue.fromJsonFactory);
+
+    return _telematicsV1ConfigValueKeyGet(key: key);
+  }
+
+  ///
+  ///@param key
+  @Get(path: '/telematics/v1/configValue/{key}')
+  Future<chopper.Response<ConfigValue>> _telematicsV1ConfigValueKeyGet(
+      {@Path('key') required String? key});
+
+  ///
+  ///@param key
+  Future<chopper.Response<ConfigValue>> telematicsV1ConfigValueKeyPut({
+    required String? key,
+    required StoreConfigValueRequest? body,
+  }) {
+    generatedMapping.putIfAbsent(
+        ConfigValue, () => ConfigValue.fromJsonFactory);
+
+    return _telematicsV1ConfigValueKeyPut(key: key, body: body);
+  }
+
+  ///
+  ///@param key
+  @Put(
+    path: '/telematics/v1/configValue/{key}',
+    optionalBody: true,
+  )
+  Future<chopper.Response<ConfigValue>> _telematicsV1ConfigValueKeyPut({
+    @Path('key') required String? key,
+    @Body() required StoreConfigValueRequest? body,
+  });
+
+  ///
+  Future<chopper.Response> telematicsV1DebugProducerPost() {
+    return _telematicsV1DebugProducerPost();
+  }
+
+  ///
+  @Post(
+    path: '/telematics/v1/debug-producer',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _telematicsV1DebugProducerPost();
+
+  ///
+  Future<chopper.Response<List<TelematicsDevice>>> telematicsV1DevicesGet() {
+    generatedMapping.putIfAbsent(
+        TelematicsDevice, () => TelematicsDevice.fromJsonFactory);
 
     return _telematicsV1DevicesGet();
   }
 
   ///
   @Get(path: '/telematics/v1/devices')
-  Future<chopper.Response<List<VehicleTelematics>>> _telematicsV1DevicesGet();
+  Future<chopper.Response<List<TelematicsDevice>>> _telematicsV1DevicesGet();
 
   ///
   Future<chopper.Response> telematicsV1DevicesPost(
-      {required CreateTelematicsRequest? body}) {
+      {required TelematicsRequest? body}) {
     return _telematicsV1DevicesPost(body: body);
   }
 
@@ -847,7 +944,7 @@ abstract class BattKit extends ChopperService {
     optionalBody: true,
   )
   Future<chopper.Response> _telematicsV1DevicesPost(
-      {@Body() required CreateTelematicsRequest? body});
+      {@Body() required TelematicsRequest? body});
 
   ///
   ///@param vehicleId
@@ -864,10 +961,10 @@ abstract class BattKit extends ChopperService {
 
   ///
   ///@param vehicleId
-  Future<chopper.Response<VehicleTelematics>> telematicsV1DevicesVehicleIdGet(
+  Future<chopper.Response<TelematicsDevice>> telematicsV1DevicesVehicleIdGet(
       {required String? vehicleId}) {
     generatedMapping.putIfAbsent(
-        VehicleTelematics, () => VehicleTelematics.fromJsonFactory);
+        TelematicsDevice, () => TelematicsDevice.fromJsonFactory);
 
     return _telematicsV1DevicesVehicleIdGet(vehicleId: vehicleId);
   }
@@ -875,7 +972,7 @@ abstract class BattKit extends ChopperService {
   ///
   ///@param vehicleId
   @Get(path: '/telematics/v1/devices/{vehicleId}')
-  Future<chopper.Response<VehicleTelematics>> _telematicsV1DevicesVehicleIdGet(
+  Future<chopper.Response<TelematicsDevice>> _telematicsV1DevicesVehicleIdGet(
       {@Path('vehicleId') required String? vehicleId});
 
   ///
@@ -937,6 +1034,23 @@ abstract class BattKit extends ChopperService {
 
   ///
   ///@param vehicleId
+  Future<chopper.Response<VehicleLockStatus>>
+      telematicsV1LockStatusVehicleIdGet({required String? vehicleId}) {
+    generatedMapping.putIfAbsent(
+        VehicleLockStatus, () => VehicleLockStatus.fromJsonFactory);
+
+    return _telematicsV1LockStatusVehicleIdGet(vehicleId: vehicleId);
+  }
+
+  ///
+  ///@param vehicleId
+  @Get(path: '/telematics/v1/lock-status/{vehicleId}')
+  Future<chopper.Response<VehicleLockStatus>>
+      _telematicsV1LockStatusVehicleIdGet(
+          {@Path('vehicleId') required String? vehicleId});
+
+  ///
+  ///@param vehicleId
   Future<chopper.Response> telematicsV1LockVehicleIdPut({
     required String? vehicleId,
     required ChangeLockRequest? body,
@@ -971,16 +1085,16 @@ abstract class BattKit extends ChopperService {
       {@Path('vehicleId') required String? vehicleId});
 
   ///
-  Future<chopper.Response<ProviderPage>> telematicsV1ProvidersGet() {
+  Future<chopper.Response<TelematicsProviderPage>> telematicsV1ProvidersGet() {
     generatedMapping.putIfAbsent(
-        ProviderPage, () => ProviderPage.fromJsonFactory);
+        TelematicsProviderPage, () => TelematicsProviderPage.fromJsonFactory);
 
     return _telematicsV1ProvidersGet();
   }
 
   ///
   @Get(path: '/telematics/v1/providers')
-  Future<chopper.Response<ProviderPage>> _telematicsV1ProvidersGet();
+  Future<chopper.Response<TelematicsProviderPage>> _telematicsV1ProvidersGet();
 
   ///
   ///@param providerId
@@ -998,6 +1112,55 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response<List<ProviderTelematics>>>
       _telematicsV1ProvidersProviderIdDevicesGet(
           {@Path('providerId') required String? providerId});
+
+  ///
+  Future<chopper.Response> telematicsV1RefreshTeslaTokenPost() {
+    return _telematicsV1RefreshTeslaTokenPost();
+  }
+
+  ///
+  @Post(
+    path: '/telematics/v1/refresh-tesla-token',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _telematicsV1RefreshTeslaTokenPost();
+
+  ///
+  ///@param vehicleId
+  Future<chopper.Response> telematicsV1TeslaLocationVehicleIdPost(
+      {required String? vehicleId}) {
+    return _telematicsV1TeslaLocationVehicleIdPost(vehicleId: vehicleId);
+  }
+
+  ///
+  ///@param vehicleId
+  @Post(
+    path: '/telematics/v1/tesla-location/{vehicleId}',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _telematicsV1TeslaLocationVehicleIdPost(
+      {@Path('vehicleId') required String? vehicleId});
+
+  ///
+  ///@param vehicleId
+  Future<chopper.Response> telematicsV1TeslaTokenVehicleIdPut({
+    required String? vehicleId,
+    required StoreTeslaTokensRequest? body,
+  }) {
+    return _telematicsV1TeslaTokenVehicleIdPut(
+        vehicleId: vehicleId, body: body);
+  }
+
+  ///
+  ///@param vehicleId
+  @Put(
+    path: '/telematics/v1/tesla/token/{vehicleId}',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _telematicsV1TeslaTokenVehicleIdPut({
+    @Path('vehicleId') required String? vehicleId,
+    @Body() required StoreTeslaTokensRequest? body,
+  });
 
   ///
   Future<chopper.Response<List<TelematicsTracking>>>
@@ -1632,6 +1795,25 @@ abstract class BattKit extends ChopperService {
     @Path('vehicleGroupId') required String? vehicleGroupId,
     @Path('vehicleId') required String? vehicleId,
   });
+
+  ///
+  ///@param vehicleId
+  Future<chopper.Response<VehicleGroupPage>>
+      vehicleGroupV1VehiclesVehicleIdVehicleGroupsGet(
+          {required String? vehicleId}) {
+    generatedMapping.putIfAbsent(
+        VehicleGroupPage, () => VehicleGroupPage.fromJsonFactory);
+
+    return _vehicleGroupV1VehiclesVehicleIdVehicleGroupsGet(
+        vehicleId: vehicleId);
+  }
+
+  ///
+  ///@param vehicleId
+  @Get(path: '/vehicle-group/v1/vehicles/{vehicleId}/vehicle-groups')
+  Future<chopper.Response<VehicleGroupPage>>
+      _vehicleGroupV1VehiclesVehicleIdVehicleGroupsGet(
+          {@Path('vehicleId') required String? vehicleId});
 
   ///
   ///@param vehicleId

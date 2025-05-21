@@ -33,6 +33,24 @@ enum BatteryStatusCharging {
   const BatteryStatusCharging(this.value);
 }
 
+enum BatteryStatusFetchStatus {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('FROM_TRACKING')
+  fromTracking('FROM_TRACKING'),
+  @JsonValue('OK')
+  ok('OK'),
+  @JsonValue('TIME_OUT')
+  timeOut('TIME_OUT'),
+  @JsonValue('ERROR')
+  error('ERROR');
+
+  final String? value;
+
+  const BatteryStatusFetchStatus(this.value);
+}
+
 enum BillingPriceUnit {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),
@@ -123,10 +141,10 @@ enum ChangeLockRequestLockStatus {
 
   @JsonValue('LOCKED')
   locked('LOCKED'),
-  @JsonValue('BLUETOOTH_UNLOCKING')
-  bluetoothUnlocking('BLUETOOTH_UNLOCKING'),
-  @JsonValue('BLUETOOTH_LOCKING')
-  bluetoothLocking('BLUETOOTH_LOCKING'),
+  @JsonValue('BLUETOOTH_INVERS_UNLOCKING')
+  bluetoothInversUnlocking('BLUETOOTH_INVERS_UNLOCKING'),
+  @JsonValue('BLUETOOTH_INVERS_LOCKING')
+  bluetoothInversLocking('BLUETOOTH_INVERS_LOCKING'),
   @JsonValue('UNLOCKED')
   unlocked('UNLOCKED');
 
@@ -593,10 +611,10 @@ enum TelematicsVehicleUsageLockStatus {
 
   @JsonValue('LOCKED')
   locked('LOCKED'),
-  @JsonValue('BLUETOOTH_UNLOCKING')
-  bluetoothUnlocking('BLUETOOTH_UNLOCKING'),
-  @JsonValue('BLUETOOTH_LOCKING')
-  bluetoothLocking('BLUETOOTH_LOCKING'),
+  @JsonValue('BLUETOOTH_INVERS_UNLOCKING')
+  bluetoothInversUnlocking('BLUETOOTH_INVERS_UNLOCKING'),
+  @JsonValue('BLUETOOTH_INVERS_LOCKING')
+  bluetoothInversLocking('BLUETOOTH_INVERS_LOCKING'),
   @JsonValue('UNLOCKED')
   unlocked('UNLOCKED');
 
@@ -773,6 +791,42 @@ enum VehicleContractBattMaxType {
   final String? value;
 
   const VehicleContractBattMaxType(this.value);
+}
+
+enum VehicleLockStatusCentralLockStatus {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('LOCKED')
+  locked('LOCKED'),
+  @JsonValue('BLUETOOTH_INVERS_UNLOCKING')
+  bluetoothInversUnlocking('BLUETOOTH_INVERS_UNLOCKING'),
+  @JsonValue('BLUETOOTH_INVERS_LOCKING')
+  bluetoothInversLocking('BLUETOOTH_INVERS_LOCKING'),
+  @JsonValue('UNLOCKED')
+  unlocked('UNLOCKED');
+
+  final String? value;
+
+  const VehicleLockStatusCentralLockStatus(this.value);
+}
+
+enum VehicleLockStatusImmobilizerStatus {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('LOCKED')
+  locked('LOCKED'),
+  @JsonValue('BLUETOOTH_INVERS_UNLOCKING')
+  bluetoothInversUnlocking('BLUETOOTH_INVERS_UNLOCKING'),
+  @JsonValue('BLUETOOTH_INVERS_LOCKING')
+  bluetoothInversLocking('BLUETOOTH_INVERS_LOCKING'),
+  @JsonValue('UNLOCKED')
+  unlocked('UNLOCKED');
+
+  final String? value;
+
+  const VehicleLockStatusImmobilizerStatus(this.value);
 }
 
 enum VehicleUsageStatus {

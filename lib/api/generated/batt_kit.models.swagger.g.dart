@@ -94,6 +94,8 @@ BatteryStatus _$BatteryStatusFromJson(Map<String, dynamic> json) =>
       charging: batteryStatusChargingNullableFromJson(json['charging']),
       cruisingRange: (json['cruisingRange'] as num?)?.toInt(),
       errorMessage: json['errorMessage'] as String?,
+      fetchStatus:
+          batteryStatusFetchStatusNullableFromJson(json['fetchStatus']),
     );
 
 Map<String, dynamic> _$BatteryStatusToJson(BatteryStatus instance) =>
@@ -103,6 +105,8 @@ Map<String, dynamic> _$BatteryStatusToJson(BatteryStatus instance) =>
       'charging': batteryStatusChargingNullableToJson(instance.charging),
       'cruisingRange': instance.cruisingRange,
       'errorMessage': instance.errorMessage,
+      'fetchStatus':
+          batteryStatusFetchStatusNullableToJson(instance.fetchStatus),
     };
 
 BillingPrice _$BillingPriceFromJson(Map<String, dynamic> json) => BillingPrice(
@@ -593,10 +597,12 @@ Client _$ClientFromJson(Map<String, dynamic> json) => Client(
       city: json['city'] as String?,
       country: json['country'] as String?,
       id: (json['id'] as num?)?.toInt(),
+      isSuspended: json['isSuspended'] as bool?,
       name: json['name'] as String?,
       nr: json['nr'] as String?,
       postalCode: json['postalCode'] as String?,
       street: json['street'] as String?,
+      suspensionReason: json['suspensionReason'] as String?,
       users: (json['users'] as List<dynamic>?)
               ?.map((e) => ContractUser.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -609,10 +615,12 @@ Map<String, dynamic> _$ClientToJson(Client instance) => <String, dynamic>{
       'city': instance.city,
       'country': instance.country,
       'id': instance.id,
+      'isSuspended': instance.isSuspended,
       'name': instance.name,
       'nr': instance.nr,
       'postalCode': instance.postalCode,
       'street': instance.street,
+      'suspensionReason': instance.suspensionReason,
       'users': instance.users?.map((e) => e.toJson()).toList(),
       'vat': instance.vat,
     };
@@ -928,6 +936,23 @@ Map<String, dynamic> _$ClientReferenceDtoToJson(ClientReferenceDto instance) =>
       'name': instance.name,
     };
 
+ConfigValue _$ConfigValueFromJson(Map<String, dynamic> json) => ConfigValue(
+      id: json['id'] as String?,
+      key: json['key'] as String?,
+      lastUpdated: json['lastUpdated'] == null
+          ? null
+          : DateTime.parse(json['lastUpdated'] as String),
+      $value: json['value'] as String?,
+    );
+
+Map<String, dynamic> _$ConfigValueToJson(ConfigValue instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'key': instance.key,
+      'lastUpdated': instance.lastUpdated?.toIso8601String(),
+      'value': instance.$value,
+    };
+
 ContractUser _$ContractUserFromJson(Map<String, dynamic> json) => ContractUser(
       boxNumber: json['boxNumber'] as String?,
       city: json['city'] as String?,
@@ -1102,32 +1127,6 @@ Map<String, dynamic> _$CreateNonAvailabilityRequestToJson(
         CreateNonAvailabilityRequest instance) =>
     <String, dynamic>{
       'period': instance.period.toJson(),
-      'vehicleId': instance.vehicleId,
-    };
-
-CreateTelematicsRequest _$CreateTelematicsRequestFromJson(
-        Map<String, dynamic> json) =>
-    CreateTelematicsRequest(
-      alwaysUseBluetooth: json['alwaysUseBluetooth'] as bool?,
-      ignitionCheck: json['ignitionCheck'] as bool?,
-      keyfobCheck: json['keyfobCheck'] as bool?,
-      maxRange: (json['maxRange'] as num?)?.toInt(),
-      phoneNumber: json['phoneNumber'] as String?,
-      providerDeviceId: json['providerDeviceId'] as String,
-      providerId: json['providerId'] as String,
-      vehicleId: json['vehicleId'] as String,
-    );
-
-Map<String, dynamic> _$CreateTelematicsRequestToJson(
-        CreateTelematicsRequest instance) =>
-    <String, dynamic>{
-      'alwaysUseBluetooth': instance.alwaysUseBluetooth,
-      'ignitionCheck': instance.ignitionCheck,
-      'keyfobCheck': instance.keyfobCheck,
-      'maxRange': instance.maxRange,
-      'phoneNumber': instance.phoneNumber,
-      'providerDeviceId': instance.providerDeviceId,
-      'providerId': instance.providerId,
       'vehicleId': instance.vehicleId,
     };
 
@@ -1919,19 +1918,6 @@ Map<String, dynamic> _$PeriodToJson(Period instance) => <String, dynamic>{
       'start': instance.start?.toIso8601String(),
     };
 
-ProviderPage _$ProviderPageFromJson(Map<String, dynamic> json) => ProviderPage(
-      providers: (json['providers'] as List<dynamic>?)
-              ?.map(
-                  (e) => TelematicsProvider.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [],
-    );
-
-Map<String, dynamic> _$ProviderPageToJson(ProviderPage instance) =>
-    <String, dynamic>{
-      'providers': instance.providers?.map((e) => e.toJson()).toList(),
-    };
-
 ProviderTelematics _$ProviderTelematicsFromJson(Map<String, dynamic> json) =>
     ProviderTelematics(
       providerDeviceId: json['providerDeviceId'] as String?,
@@ -2026,6 +2012,10 @@ SearchBookingsRequest _$SearchBookingsRequestFromJson(
           searchBookingsRequestStatusesListFromJson(json['statuses'] as List?),
       userId: json['userId'] as String?,
       vehicleId: json['vehicleId'] as String?,
+      vehicleIds: (json['vehicleIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$SearchBookingsRequestToJson(
@@ -2042,6 +2032,7 @@ Map<String, dynamic> _$SearchBookingsRequestToJson(
       'statuses': searchBookingsRequestStatusesListToJson(instance.statuses),
       'userId': instance.userId,
       'vehicleId': instance.vehicleId,
+      'vehicleIds': instance.vehicleIds,
     };
 
 SearchClientContractsRequest _$SearchClientContractsRequestFromJson(
@@ -2218,6 +2209,32 @@ Map<String, dynamic> _$StartVehicleUsageRequestToJson(
       'vehicleId': instance.vehicleId,
     };
 
+StoreConfigValueRequest _$StoreConfigValueRequestFromJson(
+        Map<String, dynamic> json) =>
+    StoreConfigValueRequest(
+      $value: json['value'] as String?,
+    );
+
+Map<String, dynamic> _$StoreConfigValueRequestToJson(
+        StoreConfigValueRequest instance) =>
+    <String, dynamic>{
+      'value': instance.$value,
+    };
+
+StoreTeslaTokensRequest _$StoreTeslaTokensRequestFromJson(
+        Map<String, dynamic> json) =>
+    StoreTeslaTokensRequest(
+      accessToken: json['accessToken'] as String?,
+      refreshToken: json['refreshToken'] as String?,
+    );
+
+Map<String, dynamic> _$StoreTeslaTokensRequestToJson(
+        StoreTeslaTokensRequest instance) =>
+    <String, dynamic>{
+      'accessToken': instance.accessToken,
+      'refreshToken': instance.refreshToken,
+    };
+
 Subscription _$SubscriptionFromJson(Map<String, dynamic> json) => Subscription(
       clientId: (json['clientId'] as num?)?.toInt(),
       clientName: json['clientName'] as String?,
@@ -2253,6 +2270,24 @@ Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
       'vehicles': instance.vehicles,
     };
 
+TelematicsDevice _$TelematicsDeviceFromJson(Map<String, dynamic> json) =>
+    TelematicsDevice(
+      maxRange: (json['maxRange'] as num?)?.toInt(),
+      phoneNumber: json['phoneNumber'] as String?,
+      providerDeviceId: json['providerDeviceId'] as String?,
+      providerId: json['providerId'] as String?,
+      vehicleId: json['vehicleId'] as String?,
+    );
+
+Map<String, dynamic> _$TelematicsDeviceToJson(TelematicsDevice instance) =>
+    <String, dynamic>{
+      'maxRange': instance.maxRange,
+      'phoneNumber': instance.phoneNumber,
+      'providerDeviceId': instance.providerDeviceId,
+      'providerId': instance.providerId,
+      'vehicleId': instance.vehicleId,
+    };
+
 TelematicsProvider _$TelematicsProviderFromJson(Map<String, dynamic> json) =>
     TelematicsProvider(
       id: json['id'] as String?,
@@ -2261,6 +2296,46 @@ TelematicsProvider _$TelematicsProviderFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$TelematicsProviderToJson(TelematicsProvider instance) =>
     <String, dynamic>{
       'id': instance.id,
+    };
+
+TelematicsProviderPage _$TelematicsProviderPageFromJson(
+        Map<String, dynamic> json) =>
+    TelematicsProviderPage(
+      providers: (json['providers'] as List<dynamic>?)
+              ?.map(
+                  (e) => TelematicsProvider.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$TelematicsProviderPageToJson(
+        TelematicsProviderPage instance) =>
+    <String, dynamic>{
+      'providers': instance.providers?.map((e) => e.toJson()).toList(),
+    };
+
+TelematicsRequest _$TelematicsRequestFromJson(Map<String, dynamic> json) =>
+    TelematicsRequest(
+      alwaysUseBluetooth: json['alwaysUseBluetooth'] as bool?,
+      ignitionCheck: json['ignitionCheck'] as bool?,
+      keyfobCheck: json['keyfobCheck'] as bool?,
+      maxRange: (json['maxRange'] as num?)?.toInt(),
+      phoneNumber: json['phoneNumber'] as String?,
+      providerDeviceId: json['providerDeviceId'] as String,
+      providerId: json['providerId'] as String,
+      vehicleId: json['vehicleId'] as String,
+    );
+
+Map<String, dynamic> _$TelematicsRequestToJson(TelematicsRequest instance) =>
+    <String, dynamic>{
+      'alwaysUseBluetooth': instance.alwaysUseBluetooth,
+      'ignitionCheck': instance.ignitionCheck,
+      'keyfobCheck': instance.keyfobCheck,
+      'maxRange': instance.maxRange,
+      'phoneNumber': instance.phoneNumber,
+      'providerDeviceId': instance.providerDeviceId,
+      'providerId': instance.providerId,
+      'vehicleId': instance.vehicleId,
     };
 
 TelematicsTracking _$TelematicsTrackingFromJson(Map<String, dynamic> json) =>
@@ -2403,6 +2478,17 @@ Map<String, dynamic> _$UpdateBookingRequestToJson(
       'needsCorrection': instance.needsCorrection,
       'needsCorrectionComments': instance.needsCorrectionComments,
       'period': instance.period?.toJson(),
+    };
+
+UpdateClient _$UpdateClientFromJson(Map<String, dynamic> json) => UpdateClient(
+      suspended: json['suspended'] as bool?,
+      suspendedReason: json['suspendedReason'] as String?,
+    );
+
+Map<String, dynamic> _$UpdateClientToJson(UpdateClient instance) =>
+    <String, dynamic>{
+      'suspended': instance.suspended,
+      'suspendedReason': instance.suspendedReason,
     };
 
 UpdateTelematicsRequest _$UpdateTelematicsRequestFromJson(
@@ -2853,6 +2939,22 @@ Map<String, dynamic> _$VehicleGroupPageToJson(VehicleGroupPage instance) =>
       'vehicleGroups': instance.vehicleGroups?.map((e) => e.toJson()).toList(),
     };
 
+VehicleLockStatus _$VehicleLockStatusFromJson(Map<String, dynamic> json) =>
+    VehicleLockStatus(
+      centralLockStatus: vehicleLockStatusCentralLockStatusNullableFromJson(
+          json['centralLockStatus']),
+      immobilizerStatus: vehicleLockStatusImmobilizerStatusNullableFromJson(
+          json['immobilizerStatus']),
+    );
+
+Map<String, dynamic> _$VehicleLockStatusToJson(VehicleLockStatus instance) =>
+    <String, dynamic>{
+      'centralLockStatus': vehicleLockStatusCentralLockStatusNullableToJson(
+          instance.centralLockStatus),
+      'immobilizerStatus': vehicleLockStatusImmobilizerStatusNullableToJson(
+          instance.immobilizerStatus),
+    };
+
 VehicleModel _$VehicleModelFromJson(Map<String, dynamic> json) => VehicleModel(
       bodyStyle: json['bodyStyle'] == null
           ? null
@@ -2937,24 +3039,6 @@ Map<String, dynamic> _$VehicleRateToJson(VehicleRate instance) =>
       'lastUpdated': instance.lastUpdated.toIso8601String(),
       'validFrom': instance.validFrom.toIso8601String(),
       'validUntil': instance.validUntil?.toIso8601String(),
-      'vehicleId': instance.vehicleId,
-    };
-
-VehicleTelematics _$VehicleTelematicsFromJson(Map<String, dynamic> json) =>
-    VehicleTelematics(
-      maxRange: (json['maxRange'] as num?)?.toInt(),
-      phoneNumber: json['phoneNumber'] as String?,
-      providerDeviceId: json['providerDeviceId'] as String?,
-      providerId: json['providerId'] as String?,
-      vehicleId: json['vehicleId'] as String?,
-    );
-
-Map<String, dynamic> _$VehicleTelematicsToJson(VehicleTelematics instance) =>
-    <String, dynamic>{
-      'maxRange': instance.maxRange,
-      'phoneNumber': instance.phoneNumber,
-      'providerDeviceId': instance.providerDeviceId,
-      'providerId': instance.providerId,
       'vehicleId': instance.vehicleId,
     };
 
