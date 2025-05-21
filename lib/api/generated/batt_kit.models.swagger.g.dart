@@ -2317,6 +2317,7 @@ Map<String, dynamic> _$TelematicsProviderPageToJson(
 TelematicsRequest _$TelematicsRequestFromJson(Map<String, dynamic> json) =>
     TelematicsRequest(
       alwaysUseBluetooth: json['alwaysUseBluetooth'] as bool?,
+      bydMobilizeHack: json['bydMobilizeHack'] as bool?,
       ignitionCheck: json['ignitionCheck'] as bool?,
       keyfobCheck: json['keyfobCheck'] as bool?,
       maxRange: (json['maxRange'] as num?)?.toInt(),
@@ -2329,6 +2330,7 @@ TelematicsRequest _$TelematicsRequestFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$TelematicsRequestToJson(TelematicsRequest instance) =>
     <String, dynamic>{
       'alwaysUseBluetooth': instance.alwaysUseBluetooth,
+      'bydMobilizeHack': instance.bydMobilizeHack,
       'ignitionCheck': instance.ignitionCheck,
       'keyfobCheck': instance.keyfobCheck,
       'maxRange': instance.maxRange,
@@ -2495,6 +2497,7 @@ UpdateTelematicsRequest _$UpdateTelematicsRequestFromJson(
         Map<String, dynamic> json) =>
     UpdateTelematicsRequest(
       alwaysUseBluetooth: json['alwaysUseBluetooth'] as bool?,
+      bydMobilizeHack: json['bydMobilizeHack'] as bool?,
       ignitionCheck: json['ignitionCheck'] as bool?,
       keyfobCheck: json['keyfobCheck'] as bool?,
       maxRange: (json['maxRange'] as num?)?.toInt(),
@@ -2507,6 +2510,7 @@ Map<String, dynamic> _$UpdateTelematicsRequestToJson(
         UpdateTelematicsRequest instance) =>
     <String, dynamic>{
       'alwaysUseBluetooth': instance.alwaysUseBluetooth,
+      'bydMobilizeHack': instance.bydMobilizeHack,
       'ignitionCheck': instance.ignitionCheck,
       'keyfobCheck': instance.keyfobCheck,
       'maxRange': instance.maxRange,
