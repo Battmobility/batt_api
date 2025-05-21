@@ -2696,6 +2696,9 @@
           "alwaysUseBluetooth": {
             "type": "boolean"
           },
+          "bydMobilizeHack": {
+            "type": "boolean"
+          },
           "ignitionCheck": {
             "type": "boolean"
           },
@@ -2919,6 +2922,9 @@
       "UpdateTelematicsRequest": {
         "properties": {
           "alwaysUseBluetooth": {
+            "type": "boolean"
+          },
+          "bydMobilizeHack": {
             "type": "boolean"
           },
           "ignitionCheck": {
