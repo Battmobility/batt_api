@@ -4931,7 +4931,6 @@ class CreateVehicleContract {
     this.creditedDayPriceExclVat,
     this.creditedKmPriceExclVat,
     required this.effectiveStartDate,
-    this.endDate,
     this.mainUserId,
     this.mileageKmAtEndOfContract,
     this.mileageKmAtStartOfContract,
@@ -4939,7 +4938,7 @@ class CreateVehicleContract {
     required this.monthlyLeaseAmountExclVat,
     this.monthlyMaxInvoiceAmountExclVat,
     this.monthlyPrefundElectricityExclVat,
-    required this.numberOfMonths,
+    this.numberOfMonths,
     this.paidStartupCost,
     this.startDate,
     required this.vehicleId,
@@ -4978,8 +4977,6 @@ class CreateVehicleContract {
   final double? creditedKmPriceExclVat;
   @JsonKey(name: 'effectiveStartDate')
   final DateTime effectiveStartDate;
-  @JsonKey(name: 'endDate')
-  final DateTime? endDate;
   @JsonKey(name: 'mainUserId')
   final int? mainUserId;
   @JsonKey(name: 'mileageKmAtEndOfContract')
@@ -4995,7 +4992,7 @@ class CreateVehicleContract {
   @JsonKey(name: 'monthlyPrefundElectricityExclVat')
   final double? monthlyPrefundElectricityExclVat;
   @JsonKey(name: 'numberOfMonths')
-  final int numberOfMonths;
+  final int? numberOfMonths;
   @JsonKey(name: 'paidStartupCost')
   final double? paidStartupCost;
   @JsonKey(name: 'startDate')
@@ -5038,9 +5035,6 @@ class CreateVehicleContract {
             (identical(other.effectiveStartDate, effectiveStartDate) ||
                 const DeepCollectionEquality()
                     .equals(other.effectiveStartDate, effectiveStartDate)) &&
-            (identical(other.endDate, endDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDate, endDate)) &&
             (identical(other.mainUserId, mainUserId) ||
                 const DeepCollectionEquality()
                     .equals(other.mainUserId, mainUserId)) &&
@@ -5052,7 +5046,9 @@ class CreateVehicleContract {
                 const DeepCollectionEquality().equals(
                     other.mileageKmAtStartOfContract,
                     mileageKmAtStartOfContract)) &&
-            (identical(other.monthlyInsurance, monthlyInsurance) || const DeepCollectionEquality().equals(other.monthlyInsurance, monthlyInsurance)) &&
+            (identical(other.monthlyInsurance, monthlyInsurance) ||
+                const DeepCollectionEquality()
+                    .equals(other.monthlyInsurance, monthlyInsurance)) &&
             (identical(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat) || const DeepCollectionEquality().equals(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat)) &&
             (identical(other.monthlyMaxInvoiceAmountExclVat, monthlyMaxInvoiceAmountExclVat) || const DeepCollectionEquality().equals(other.monthlyMaxInvoiceAmountExclVat, monthlyMaxInvoiceAmountExclVat)) &&
             (identical(other.monthlyPrefundElectricityExclVat, monthlyPrefundElectricityExclVat) || const DeepCollectionEquality().equals(other.monthlyPrefundElectricityExclVat, monthlyPrefundElectricityExclVat)) &&
@@ -5077,7 +5073,6 @@ class CreateVehicleContract {
       const DeepCollectionEquality().hash(creditedDayPriceExclVat) ^
       const DeepCollectionEquality().hash(creditedKmPriceExclVat) ^
       const DeepCollectionEquality().hash(effectiveStartDate) ^
-      const DeepCollectionEquality().hash(endDate) ^
       const DeepCollectionEquality().hash(mainUserId) ^
       const DeepCollectionEquality().hash(mileageKmAtEndOfContract) ^
       const DeepCollectionEquality().hash(mileageKmAtStartOfContract) ^
@@ -5104,7 +5099,6 @@ extension $CreateVehicleContractExtension on CreateVehicleContract {
       double? creditedDayPriceExclVat,
       double? creditedKmPriceExclVat,
       DateTime? effectiveStartDate,
-      DateTime? endDate,
       int? mainUserId,
       int? mileageKmAtEndOfContract,
       int? mileageKmAtStartOfContract,
@@ -5130,7 +5124,6 @@ extension $CreateVehicleContractExtension on CreateVehicleContract {
         creditedKmPriceExclVat:
             creditedKmPriceExclVat ?? this.creditedKmPriceExclVat,
         effectiveStartDate: effectiveStartDate ?? this.effectiveStartDate,
-        endDate: endDate ?? this.endDate,
         mainUserId: mainUserId ?? this.mainUserId,
         mileageKmAtEndOfContract:
             mileageKmAtEndOfContract ?? this.mileageKmAtEndOfContract,
@@ -5160,7 +5153,6 @@ extension $CreateVehicleContractExtension on CreateVehicleContract {
       Wrapped<double?>? creditedDayPriceExclVat,
       Wrapped<double?>? creditedKmPriceExclVat,
       Wrapped<DateTime>? effectiveStartDate,
-      Wrapped<DateTime?>? endDate,
       Wrapped<int?>? mainUserId,
       Wrapped<int?>? mileageKmAtEndOfContract,
       Wrapped<int?>? mileageKmAtStartOfContract,
@@ -5168,7 +5160,7 @@ extension $CreateVehicleContractExtension on CreateVehicleContract {
       Wrapped<double>? monthlyLeaseAmountExclVat,
       Wrapped<double?>? monthlyMaxInvoiceAmountExclVat,
       Wrapped<double?>? monthlyPrefundElectricityExclVat,
-      Wrapped<int>? numberOfMonths,
+      Wrapped<int?>? numberOfMonths,
       Wrapped<double?>? paidStartupCost,
       Wrapped<DateTime?>? startDate,
       Wrapped<String>? vehicleId,
@@ -5197,7 +5189,6 @@ extension $CreateVehicleContractExtension on CreateVehicleContract {
         effectiveStartDate: (effectiveStartDate != null
             ? effectiveStartDate.value
             : this.effectiveStartDate),
-        endDate: (endDate != null ? endDate.value : this.endDate),
         mainUserId: (mainUserId != null ? mainUserId.value : this.mainUserId),
         mileageKmAtEndOfContract: (mileageKmAtEndOfContract != null
             ? mileageKmAtEndOfContract.value
@@ -11840,6 +11831,7 @@ class VehicleContract {
     this.numberOfMonths,
     this.paidStartupCost,
     this.startDate,
+    this.vehicleDboId,
     this.vehicleId,
     this.yearlyKmsOnContract,
   });
@@ -11878,6 +11870,8 @@ class VehicleContract {
   final double? paidStartupCost;
   @JsonKey(name: 'startDate')
   final DateTime? startDate;
+  @JsonKey(name: 'vehicleDboId')
+  final int? vehicleDboId;
   @JsonKey(name: 'vehicleId')
   final String? vehicleId;
   @JsonKey(name: 'yearlyKmsOnContract')
@@ -11926,12 +11920,13 @@ class VehicleContract {
             (identical(other.startDate, startDate) ||
                 const DeepCollectionEquality()
                     .equals(other.startDate, startDate)) &&
+            (identical(other.vehicleDboId, vehicleDboId) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicleDboId, vehicleDboId)) &&
             (identical(other.vehicleId, vehicleId) ||
                 const DeepCollectionEquality()
                     .equals(other.vehicleId, vehicleId)) &&
-            (identical(other.yearlyKmsOnContract, yearlyKmsOnContract) ||
-                const DeepCollectionEquality()
-                    .equals(other.yearlyKmsOnContract, yearlyKmsOnContract)));
+            (identical(other.yearlyKmsOnContract, yearlyKmsOnContract) || const DeepCollectionEquality().equals(other.yearlyKmsOnContract, yearlyKmsOnContract)));
   }
 
   @override
@@ -11951,6 +11946,7 @@ class VehicleContract {
       const DeepCollectionEquality().hash(numberOfMonths) ^
       const DeepCollectionEquality().hash(paidStartupCost) ^
       const DeepCollectionEquality().hash(startDate) ^
+      const DeepCollectionEquality().hash(vehicleDboId) ^
       const DeepCollectionEquality().hash(vehicleId) ^
       const DeepCollectionEquality().hash(yearlyKmsOnContract) ^
       runtimeType.hashCode;
@@ -11970,6 +11966,7 @@ extension $VehicleContractExtension on VehicleContract {
       int? numberOfMonths,
       double? paidStartupCost,
       DateTime? startDate,
+      int? vehicleDboId,
       String? vehicleId,
       int? yearlyKmsOnContract}) {
     return VehicleContract(
@@ -11988,6 +11985,7 @@ extension $VehicleContractExtension on VehicleContract {
         numberOfMonths: numberOfMonths ?? this.numberOfMonths,
         paidStartupCost: paidStartupCost ?? this.paidStartupCost,
         startDate: startDate ?? this.startDate,
+        vehicleDboId: vehicleDboId ?? this.vehicleDboId,
         vehicleId: vehicleId ?? this.vehicleId,
         yearlyKmsOnContract: yearlyKmsOnContract ?? this.yearlyKmsOnContract);
   }
@@ -12005,6 +12003,7 @@ extension $VehicleContractExtension on VehicleContract {
       Wrapped<int?>? numberOfMonths,
       Wrapped<double?>? paidStartupCost,
       Wrapped<DateTime?>? startDate,
+      Wrapped<int?>? vehicleDboId,
       Wrapped<String?>? vehicleId,
       Wrapped<int?>? yearlyKmsOnContract}) {
     return VehicleContract(
@@ -12034,6 +12033,8 @@ extension $VehicleContractExtension on VehicleContract {
             ? paidStartupCost.value
             : this.paidStartupCost),
         startDate: (startDate != null ? startDate.value : this.startDate),
+        vehicleDboId:
+            (vehicleDboId != null ? vehicleDboId.value : this.vehicleDboId),
         vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
         yearlyKmsOnContract: (yearlyKmsOnContract != null
             ? yearlyKmsOnContract.value

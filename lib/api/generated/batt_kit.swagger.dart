@@ -60,28 +60,6 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response<String>>
       _wellKnownAppspecificComTesla3pPublicKeyPemGet();
 
-  ///Update a client
-  ///@param clientId Client ID
-  Future<chopper.Response<Client>> adminUserV1ClientsClientIdPut({
-    required int? clientId,
-    required UpdateClient? body,
-  }) {
-    generatedMapping.putIfAbsent(Client, () => Client.fromJsonFactory);
-
-    return _adminUserV1ClientsClientIdPut(clientId: clientId, body: body);
-  }
-
-  ///Update a client
-  ///@param clientId Client ID
-  @Put(
-    path: '/admin/user/v1/clients/{clientId}',
-    optionalBody: true,
-  )
-  Future<chopper.Response<Client>> _adminUserV1ClientsClientIdPut({
-    @Path('clientId') required int? clientId,
-    @Body() required UpdateClient? body,
-  });
-
   ///
   Future<chopper.Response<NonAvailabilityResponse>>
       availabilityV1NonAvailabilitiesPost(
@@ -361,6 +339,28 @@ abstract class BattKit extends ChopperService {
   @Get(path: '/client/v1/clients')
   Future<chopper.Response<List<Client>>> _clientV1ClientsGet(
       {@Query('name') String? name});
+
+  ///Update a client
+  ///@param clientId Client ID
+  Future<chopper.Response<Client>> clientV1ClientsClientIdPut({
+    required int? clientId,
+    required UpdateClient? body,
+  }) {
+    generatedMapping.putIfAbsent(Client, () => Client.fromJsonFactory);
+
+    return _clientV1ClientsClientIdPut(clientId: clientId, body: body);
+  }
+
+  ///Update a client
+  ///@param clientId Client ID
+  @Put(
+    path: '/client/v1/clients/{clientId}',
+    optionalBody: true,
+  )
+  Future<chopper.Response<Client>> _clientV1ClientsClientIdPut({
+    @Path('clientId') required int? clientId,
+    @Body() required UpdateClient? body,
+  });
 
   ///
   ///@param page
