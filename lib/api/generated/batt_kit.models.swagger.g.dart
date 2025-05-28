@@ -2806,19 +2806,32 @@ VehicleContract _$VehicleContractFromJson(Map<String, dynamic> json) =>
     VehicleContract(
       battMaxType:
           vehicleContractBattMaxTypeNullableFromJson(json['battMaxType']),
+      battOrderNumber: json['battOrderNumber'] as String?,
       clientContractId: (json['clientContractId'] as num?)?.toInt(),
       clientId: (json['clientId'] as num?)?.toInt(),
       clientName: json['clientName'] as String?,
       clientRoles: json['clientRoles'] as String?,
       costForAdditionalKmsExclVat:
           (json['costForAdditionalKmsExclVat'] as num?)?.toDouble(),
+      creditedDayPriceExclVat:
+          (json['creditedDayPriceExclVat'] as num?)?.toDouble(),
+      creditedKmPriceExclVat:
+          (json['creditedKmPriceExclVat'] as num?)?.toDouble(),
       endDate: json['endDate'] == null
           ? null
           : DateTime.parse(json['endDate'] as String),
+      mainUserId: (json['mainUserId'] as num?)?.toInt(),
       maxInvoiceAmountExclVat:
           (json['maxInvoiceAmountExclVat'] as num?)?.toDouble(),
+      mileageKmAtEndOfContract:
+          (json['mileageKmAtEndOfContract'] as num?)?.toInt(),
+      mileageKmAtStartOfContract:
+          (json['mileageKmAtStartOfContract'] as num?)?.toInt(),
+      monthlyInsurance: (json['monthlyInsurance'] as num?)?.toDouble(),
       monthlyLeaseAmountExclVat:
           (json['monthlyLeaseAmountExclVat'] as num?)?.toDouble(),
+      monthlyPrefundElectricityExVat:
+          (json['monthlyPrefundElectricityExVat'] as num?)?.toDouble(),
       numberOfMonths: (json['numberOfMonths'] as num?)?.toInt(),
       paidStartupCost: (json['paidStartupCost'] as num?)?.toDouble(),
       startDate: json['startDate'] == null
@@ -2833,14 +2846,22 @@ Map<String, dynamic> _$VehicleContractToJson(VehicleContract instance) =>
     <String, dynamic>{
       'battMaxType':
           vehicleContractBattMaxTypeNullableToJson(instance.battMaxType),
+      'battOrderNumber': instance.battOrderNumber,
       'clientContractId': instance.clientContractId,
       'clientId': instance.clientId,
       'clientName': instance.clientName,
       'clientRoles': instance.clientRoles,
       'costForAdditionalKmsExclVat': instance.costForAdditionalKmsExclVat,
+      'creditedDayPriceExclVat': instance.creditedDayPriceExclVat,
+      'creditedKmPriceExclVat': instance.creditedKmPriceExclVat,
       'endDate': instance.endDate?.toIso8601String(),
+      'mainUserId': instance.mainUserId,
       'maxInvoiceAmountExclVat': instance.maxInvoiceAmountExclVat,
+      'mileageKmAtEndOfContract': instance.mileageKmAtEndOfContract,
+      'mileageKmAtStartOfContract': instance.mileageKmAtStartOfContract,
+      'monthlyInsurance': instance.monthlyInsurance,
       'monthlyLeaseAmountExclVat': instance.monthlyLeaseAmountExclVat,
+      'monthlyPrefundElectricityExVat': instance.monthlyPrefundElectricityExVat,
       'numberOfMonths': instance.numberOfMonths,
       'paidStartupCost': instance.paidStartupCost,
       'startDate': instance.startDate?.toIso8601String(),

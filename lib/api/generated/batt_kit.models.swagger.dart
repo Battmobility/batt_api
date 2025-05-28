@@ -11820,14 +11820,22 @@ extension $VehicleBrandPageExtension on VehicleBrandPage {
 class VehicleContract {
   const VehicleContract({
     this.battMaxType,
+    this.battOrderNumber,
     this.clientContractId,
     this.clientId,
     this.clientName,
     this.clientRoles,
     this.costForAdditionalKmsExclVat,
+    this.creditedDayPriceExclVat,
+    this.creditedKmPriceExclVat,
     this.endDate,
+    this.mainUserId,
     this.maxInvoiceAmountExclVat,
+    this.mileageKmAtEndOfContract,
+    this.mileageKmAtStartOfContract,
+    this.monthlyInsurance,
     this.monthlyLeaseAmountExclVat,
+    this.monthlyPrefundElectricityExVat,
     this.numberOfMonths,
     this.paidStartupCost,
     this.startDate,
@@ -11848,6 +11856,8 @@ class VehicleContract {
     fromJson: vehicleContractBattMaxTypeNullableFromJson,
   )
   final enums.VehicleContractBattMaxType? battMaxType;
+  @JsonKey(name: 'battOrderNumber')
+  final String? battOrderNumber;
   @JsonKey(name: 'clientContractId')
   final int? clientContractId;
   @JsonKey(name: 'clientId')
@@ -11858,12 +11868,26 @@ class VehicleContract {
   final String? clientRoles;
   @JsonKey(name: 'costForAdditionalKmsExclVat')
   final double? costForAdditionalKmsExclVat;
+  @JsonKey(name: 'creditedDayPriceExclVat')
+  final double? creditedDayPriceExclVat;
+  @JsonKey(name: 'creditedKmPriceExclVat')
+  final double? creditedKmPriceExclVat;
   @JsonKey(name: 'endDate')
   final DateTime? endDate;
+  @JsonKey(name: 'mainUserId')
+  final int? mainUserId;
   @JsonKey(name: 'maxInvoiceAmountExclVat')
   final double? maxInvoiceAmountExclVat;
+  @JsonKey(name: 'mileageKmAtEndOfContract')
+  final int? mileageKmAtEndOfContract;
+  @JsonKey(name: 'mileageKmAtStartOfContract')
+  final int? mileageKmAtStartOfContract;
+  @JsonKey(name: 'monthlyInsurance')
+  final double? monthlyInsurance;
   @JsonKey(name: 'monthlyLeaseAmountExclVat')
   final double? monthlyLeaseAmountExclVat;
+  @JsonKey(name: 'monthlyPrefundElectricityExVat')
+  final double? monthlyPrefundElectricityExVat;
   @JsonKey(name: 'numberOfMonths')
   final int? numberOfMonths;
   @JsonKey(name: 'paidStartupCost')
@@ -11885,6 +11909,9 @@ class VehicleContract {
             (identical(other.battMaxType, battMaxType) ||
                 const DeepCollectionEquality()
                     .equals(other.battMaxType, battMaxType)) &&
+            (identical(other.battOrderNumber, battOrderNumber) ||
+                const DeepCollectionEquality()
+                    .equals(other.battOrderNumber, battOrderNumber)) &&
             (identical(other.clientContractId, clientContractId) ||
                 const DeepCollectionEquality()
                     .equals(other.clientContractId, clientContractId)) &&
@@ -11901,31 +11928,36 @@ class VehicleContract {
                 const DeepCollectionEquality().equals(
                     other.costForAdditionalKmsExclVat,
                     costForAdditionalKmsExclVat)) &&
+            (identical(other.creditedDayPriceExclVat, creditedDayPriceExclVat) ||
+                const DeepCollectionEquality().equals(
+                    other.creditedDayPriceExclVat, creditedDayPriceExclVat)) &&
+            (identical(other.creditedKmPriceExclVat, creditedKmPriceExclVat) ||
+                const DeepCollectionEquality().equals(
+                    other.creditedKmPriceExclVat, creditedKmPriceExclVat)) &&
             (identical(other.endDate, endDate) ||
                 const DeepCollectionEquality()
                     .equals(other.endDate, endDate)) &&
+            (identical(other.mainUserId, mainUserId) ||
+                const DeepCollectionEquality()
+                    .equals(other.mainUserId, mainUserId)) &&
             (identical(other.maxInvoiceAmountExclVat, maxInvoiceAmountExclVat) ||
                 const DeepCollectionEquality().equals(
                     other.maxInvoiceAmountExclVat, maxInvoiceAmountExclVat)) &&
-            (identical(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat) ||
+            (identical(other.mileageKmAtEndOfContract, mileageKmAtEndOfContract) ||
                 const DeepCollectionEquality().equals(
-                    other.monthlyLeaseAmountExclVat,
-                    monthlyLeaseAmountExclVat)) &&
-            (identical(other.numberOfMonths, numberOfMonths) ||
-                const DeepCollectionEquality()
-                    .equals(other.numberOfMonths, numberOfMonths)) &&
-            (identical(other.paidStartupCost, paidStartupCost) ||
-                const DeepCollectionEquality()
-                    .equals(other.paidStartupCost, paidStartupCost)) &&
-            (identical(other.startDate, startDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDate, startDate)) &&
-            (identical(other.vehicleDboId, vehicleDboId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleDboId, vehicleDboId)) &&
-            (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)) &&
+                    other.mileageKmAtEndOfContract,
+                    mileageKmAtEndOfContract)) &&
+            (identical(other.mileageKmAtStartOfContract, mileageKmAtStartOfContract) ||
+                const DeepCollectionEquality().equals(
+                    other.mileageKmAtStartOfContract, mileageKmAtStartOfContract)) &&
+            (identical(other.monthlyInsurance, monthlyInsurance) || const DeepCollectionEquality().equals(other.monthlyInsurance, monthlyInsurance)) &&
+            (identical(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat) || const DeepCollectionEquality().equals(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat)) &&
+            (identical(other.monthlyPrefundElectricityExVat, monthlyPrefundElectricityExVat) || const DeepCollectionEquality().equals(other.monthlyPrefundElectricityExVat, monthlyPrefundElectricityExVat)) &&
+            (identical(other.numberOfMonths, numberOfMonths) || const DeepCollectionEquality().equals(other.numberOfMonths, numberOfMonths)) &&
+            (identical(other.paidStartupCost, paidStartupCost) || const DeepCollectionEquality().equals(other.paidStartupCost, paidStartupCost)) &&
+            (identical(other.startDate, startDate) || const DeepCollectionEquality().equals(other.startDate, startDate)) &&
+            (identical(other.vehicleDboId, vehicleDboId) || const DeepCollectionEquality().equals(other.vehicleDboId, vehicleDboId)) &&
+            (identical(other.vehicleId, vehicleId) || const DeepCollectionEquality().equals(other.vehicleId, vehicleId)) &&
             (identical(other.yearlyKmsOnContract, yearlyKmsOnContract) || const DeepCollectionEquality().equals(other.yearlyKmsOnContract, yearlyKmsOnContract)));
   }
 
@@ -11935,14 +11967,22 @@ class VehicleContract {
   @override
   int get hashCode =>
       const DeepCollectionEquality().hash(battMaxType) ^
+      const DeepCollectionEquality().hash(battOrderNumber) ^
       const DeepCollectionEquality().hash(clientContractId) ^
       const DeepCollectionEquality().hash(clientId) ^
       const DeepCollectionEquality().hash(clientName) ^
       const DeepCollectionEquality().hash(clientRoles) ^
       const DeepCollectionEquality().hash(costForAdditionalKmsExclVat) ^
+      const DeepCollectionEquality().hash(creditedDayPriceExclVat) ^
+      const DeepCollectionEquality().hash(creditedKmPriceExclVat) ^
       const DeepCollectionEquality().hash(endDate) ^
+      const DeepCollectionEquality().hash(mainUserId) ^
       const DeepCollectionEquality().hash(maxInvoiceAmountExclVat) ^
+      const DeepCollectionEquality().hash(mileageKmAtEndOfContract) ^
+      const DeepCollectionEquality().hash(mileageKmAtStartOfContract) ^
+      const DeepCollectionEquality().hash(monthlyInsurance) ^
       const DeepCollectionEquality().hash(monthlyLeaseAmountExclVat) ^
+      const DeepCollectionEquality().hash(monthlyPrefundElectricityExVat) ^
       const DeepCollectionEquality().hash(numberOfMonths) ^
       const DeepCollectionEquality().hash(paidStartupCost) ^
       const DeepCollectionEquality().hash(startDate) ^
@@ -11955,14 +11995,22 @@ class VehicleContract {
 extension $VehicleContractExtension on VehicleContract {
   VehicleContract copyWith(
       {enums.VehicleContractBattMaxType? battMaxType,
+      String? battOrderNumber,
       int? clientContractId,
       int? clientId,
       String? clientName,
       String? clientRoles,
       double? costForAdditionalKmsExclVat,
+      double? creditedDayPriceExclVat,
+      double? creditedKmPriceExclVat,
       DateTime? endDate,
+      int? mainUserId,
       double? maxInvoiceAmountExclVat,
+      int? mileageKmAtEndOfContract,
+      int? mileageKmAtStartOfContract,
+      double? monthlyInsurance,
       double? monthlyLeaseAmountExclVat,
+      double? monthlyPrefundElectricityExVat,
       int? numberOfMonths,
       double? paidStartupCost,
       DateTime? startDate,
@@ -11971,17 +12019,30 @@ extension $VehicleContractExtension on VehicleContract {
       int? yearlyKmsOnContract}) {
     return VehicleContract(
         battMaxType: battMaxType ?? this.battMaxType,
+        battOrderNumber: battOrderNumber ?? this.battOrderNumber,
         clientContractId: clientContractId ?? this.clientContractId,
         clientId: clientId ?? this.clientId,
         clientName: clientName ?? this.clientName,
         clientRoles: clientRoles ?? this.clientRoles,
         costForAdditionalKmsExclVat:
             costForAdditionalKmsExclVat ?? this.costForAdditionalKmsExclVat,
+        creditedDayPriceExclVat:
+            creditedDayPriceExclVat ?? this.creditedDayPriceExclVat,
+        creditedKmPriceExclVat:
+            creditedKmPriceExclVat ?? this.creditedKmPriceExclVat,
         endDate: endDate ?? this.endDate,
+        mainUserId: mainUserId ?? this.mainUserId,
         maxInvoiceAmountExclVat:
             maxInvoiceAmountExclVat ?? this.maxInvoiceAmountExclVat,
+        mileageKmAtEndOfContract:
+            mileageKmAtEndOfContract ?? this.mileageKmAtEndOfContract,
+        mileageKmAtStartOfContract:
+            mileageKmAtStartOfContract ?? this.mileageKmAtStartOfContract,
+        monthlyInsurance: monthlyInsurance ?? this.monthlyInsurance,
         monthlyLeaseAmountExclVat:
             monthlyLeaseAmountExclVat ?? this.monthlyLeaseAmountExclVat,
+        monthlyPrefundElectricityExVat: monthlyPrefundElectricityExVat ??
+            this.monthlyPrefundElectricityExVat,
         numberOfMonths: numberOfMonths ?? this.numberOfMonths,
         paidStartupCost: paidStartupCost ?? this.paidStartupCost,
         startDate: startDate ?? this.startDate,
@@ -11992,14 +12053,22 @@ extension $VehicleContractExtension on VehicleContract {
 
   VehicleContract copyWithWrapped(
       {Wrapped<enums.VehicleContractBattMaxType?>? battMaxType,
+      Wrapped<String?>? battOrderNumber,
       Wrapped<int?>? clientContractId,
       Wrapped<int?>? clientId,
       Wrapped<String?>? clientName,
       Wrapped<String?>? clientRoles,
       Wrapped<double?>? costForAdditionalKmsExclVat,
+      Wrapped<double?>? creditedDayPriceExclVat,
+      Wrapped<double?>? creditedKmPriceExclVat,
       Wrapped<DateTime?>? endDate,
+      Wrapped<int?>? mainUserId,
       Wrapped<double?>? maxInvoiceAmountExclVat,
+      Wrapped<int?>? mileageKmAtEndOfContract,
+      Wrapped<int?>? mileageKmAtStartOfContract,
+      Wrapped<double?>? monthlyInsurance,
       Wrapped<double?>? monthlyLeaseAmountExclVat,
+      Wrapped<double?>? monthlyPrefundElectricityExVat,
       Wrapped<int?>? numberOfMonths,
       Wrapped<double?>? paidStartupCost,
       Wrapped<DateTime?>? startDate,
@@ -12009,6 +12078,9 @@ extension $VehicleContractExtension on VehicleContract {
     return VehicleContract(
         battMaxType:
             (battMaxType != null ? battMaxType.value : this.battMaxType),
+        battOrderNumber: (battOrderNumber != null
+            ? battOrderNumber.value
+            : this.battOrderNumber),
         clientContractId: (clientContractId != null
             ? clientContractId.value
             : this.clientContractId),
@@ -12019,13 +12091,32 @@ extension $VehicleContractExtension on VehicleContract {
         costForAdditionalKmsExclVat: (costForAdditionalKmsExclVat != null
             ? costForAdditionalKmsExclVat.value
             : this.costForAdditionalKmsExclVat),
+        creditedDayPriceExclVat: (creditedDayPriceExclVat != null
+            ? creditedDayPriceExclVat.value
+            : this.creditedDayPriceExclVat),
+        creditedKmPriceExclVat: (creditedKmPriceExclVat != null
+            ? creditedKmPriceExclVat.value
+            : this.creditedKmPriceExclVat),
         endDate: (endDate != null ? endDate.value : this.endDate),
+        mainUserId: (mainUserId != null ? mainUserId.value : this.mainUserId),
         maxInvoiceAmountExclVat: (maxInvoiceAmountExclVat != null
             ? maxInvoiceAmountExclVat.value
             : this.maxInvoiceAmountExclVat),
+        mileageKmAtEndOfContract: (mileageKmAtEndOfContract != null
+            ? mileageKmAtEndOfContract.value
+            : this.mileageKmAtEndOfContract),
+        mileageKmAtStartOfContract: (mileageKmAtStartOfContract != null
+            ? mileageKmAtStartOfContract.value
+            : this.mileageKmAtStartOfContract),
+        monthlyInsurance: (monthlyInsurance != null
+            ? monthlyInsurance.value
+            : this.monthlyInsurance),
         monthlyLeaseAmountExclVat: (monthlyLeaseAmountExclVat != null
             ? monthlyLeaseAmountExclVat.value
             : this.monthlyLeaseAmountExclVat),
+        monthlyPrefundElectricityExVat: (monthlyPrefundElectricityExVat != null
+            ? monthlyPrefundElectricityExVat.value
+            : this.monthlyPrefundElectricityExVat),
         numberOfMonths: (numberOfMonths != null
             ? numberOfMonths.value
             : this.numberOfMonths),
