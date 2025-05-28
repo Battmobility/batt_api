@@ -2272,6 +2272,10 @@ Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
 
 TelematicsDevice _$TelematicsDeviceFromJson(Map<String, dynamic> json) =>
     TelematicsDevice(
+      alwaysUseBluetooth: json['alwaysUseBluetooth'] as bool?,
+      bydMobilizeHack: json['bydMobilizeHack'] as bool?,
+      ignitionCheck: json['ignitionCheck'] as bool?,
+      keyfobCheck: json['keyfobCheck'] as bool?,
       maxRange: (json['maxRange'] as num?)?.toInt(),
       phoneNumber: json['phoneNumber'] as String?,
       providerDeviceId: json['providerDeviceId'] as String?,
@@ -2281,6 +2285,10 @@ TelematicsDevice _$TelematicsDeviceFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$TelematicsDeviceToJson(TelematicsDevice instance) =>
     <String, dynamic>{
+      'alwaysUseBluetooth': instance.alwaysUseBluetooth,
+      'bydMobilizeHack': instance.bydMobilizeHack,
+      'ignitionCheck': instance.ignitionCheck,
+      'keyfobCheck': instance.keyfobCheck,
       'maxRange': instance.maxRange,
       'phoneNumber': instance.phoneNumber,
       'providerDeviceId': instance.providerDeviceId,
