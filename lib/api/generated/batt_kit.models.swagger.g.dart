@@ -1159,9 +1159,6 @@ CreateVehicleContract _$CreateVehicleContractFromJson(
       creditedKmPriceExclVat:
           (json['creditedKmPriceExclVat'] as num?)?.toDouble(),
       effectiveStartDate: DateTime.parse(json['effectiveStartDate'] as String),
-      endDate: json['endDate'] == null
-          ? null
-          : DateTime.parse(json['endDate'] as String),
       mainUserId: (json['mainUserId'] as num?)?.toInt(),
       mileageKmAtEndOfContract:
           (json['mileageKmAtEndOfContract'] as num?)?.toInt(),
@@ -1174,7 +1171,7 @@ CreateVehicleContract _$CreateVehicleContractFromJson(
           (json['monthlyMaxInvoiceAmountExclVat'] as num?)?.toDouble(),
       monthlyPrefundElectricityExclVat:
           (json['monthlyPrefundElectricityExclVat'] as num?)?.toDouble(),
-      numberOfMonths: (json['numberOfMonths'] as num).toInt(),
+      numberOfMonths: (json['numberOfMonths'] as num?)?.toInt(),
       paidStartupCost: (json['paidStartupCost'] as num?)?.toDouble(),
       startDate: json['startDate'] == null
           ? null
@@ -1197,7 +1194,6 @@ Map<String, dynamic> _$CreateVehicleContractToJson(
       'creditedDayPriceExclVat': instance.creditedDayPriceExclVat,
       'creditedKmPriceExclVat': instance.creditedKmPriceExclVat,
       'effectiveStartDate': instance.effectiveStartDate.toIso8601String(),
-      'endDate': instance.endDate?.toIso8601String(),
       'mainUserId': instance.mainUserId,
       'mileageKmAtEndOfContract': instance.mileageKmAtEndOfContract,
       'mileageKmAtStartOfContract': instance.mileageKmAtStartOfContract,
@@ -2828,6 +2824,7 @@ VehicleContract _$VehicleContractFromJson(Map<String, dynamic> json) =>
       startDate: json['startDate'] == null
           ? null
           : DateTime.parse(json['startDate'] as String),
+      vehicleDboId: (json['vehicleDboId'] as num?)?.toInt(),
       vehicleId: json['vehicleId'] as String?,
       yearlyKmsOnContract: (json['yearlyKmsOnContract'] as num?)?.toInt(),
     );
@@ -2847,6 +2844,7 @@ Map<String, dynamic> _$VehicleContractToJson(VehicleContract instance) =>
       'numberOfMonths': instance.numberOfMonths,
       'paidStartupCost': instance.paidStartupCost,
       'startDate': instance.startDate?.toIso8601String(),
+      'vehicleDboId': instance.vehicleDboId,
       'vehicleId': instance.vehicleId,
       'yearlyKmsOnContract': instance.yearlyKmsOnContract,
     };

@@ -31,22 +31,6 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<Client>> _adminUserV1ClientsClientIdPut({
-    required int? clientId,
-    required UpdateClient? body,
-  }) {
-    final Uri $url = Uri.parse('/admin/user/v1/clients/${clientId}');
-    final $body = body;
-    final Request $request = Request(
-      'PUT',
-      $url,
-      client.baseUrl,
-      body: $body,
-    );
-    return client.send<Client, Client>($request);
-  }
-
-  @override
   Future<Response<NonAvailabilityResponse>>
       _availabilityV1NonAvailabilitiesPost(
           {required CreateNonAvailabilityRequest? body}) {
@@ -282,6 +266,22 @@ final class _$BattKit extends BattKit {
       parameters: $params,
     );
     return client.send<List<Client>, Client>($request);
+  }
+
+  @override
+  Future<Response<Client>> _clientV1ClientsClientIdPut({
+    required int? clientId,
+    required UpdateClient? body,
+  }) {
+    final Uri $url = Uri.parse('/client/v1/clients/${clientId}');
+    final $body = body;
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<Client, Client>($request);
   }
 
   @override
