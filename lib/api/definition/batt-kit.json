@@ -3313,6 +3313,9 @@
             ],
             "type": "string"
           },
+          "battOrderNumber": {
+            "type": "string"
+          },
           "clientContractId": {
             "type": "integer"
           },
@@ -3328,14 +3331,35 @@
           "costForAdditionalKmsExclVat": {
             "type": "number"
           },
+          "creditedDayPriceExclVat": {
+            "type": "number"
+          },
+          "creditedKmPriceExclVat": {
+            "type": "number"
+          },
           "endDate": {
             "format": "date-time",
             "type": "string"
           },
+          "mainUserId": {
+            "type": "integer"
+          },
           "maxInvoiceAmountExclVat": {
             "type": "number"
           },
+          "mileageKmAtEndOfContract": {
+            "type": "integer"
+          },
+          "mileageKmAtStartOfContract": {
+            "type": "integer"
+          },
+          "monthlyInsurance": {
+            "type": "number"
+          },
           "monthlyLeaseAmountExclVat": {
+            "type": "number"
+          },
+          "monthlyPrefundElectricityExVat": {
             "type": "number"
           },
           "numberOfMonths": {
