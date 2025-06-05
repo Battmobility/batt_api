@@ -635,18 +635,6 @@ abstract class BattKit extends ChopperService {
     @Body() required SearchClientContractsRequest? body,
   });
 
-  ///
-  Future<chopper.Response<HomeFeedPage>> homefeedV1BookingsHomefeedGet() {
-    generatedMapping.putIfAbsent(
-        HomeFeedPage, () => HomeFeedPage.fromJsonFactory);
-
-    return _homefeedV1BookingsHomefeedGet();
-  }
-
-  ///
-  @Get(path: '/homefeed/v1/bookings/homefeed')
-  Future<chopper.Response<HomeFeedPage>> _homefeedV1BookingsHomefeedGet();
-
   ///Get invoices
   ///@param clientId Client ID
   Future<chopper.Response<InvoiceResponse>> invoiceV1ClientsClientIdInvoicesGet(
@@ -710,15 +698,15 @@ abstract class BattKit extends ChopperService {
   ///@param vehicleId Vehicle ID
   ///@param start Start Date
   ///@param end End Date
-  Future<chopper.Response<BookingBillingPriceResponse>>
+  Future<chopper.Response<BillingPriceResponse>>
       pricingV1PricesBookingPriceGet({
     String? xClientId,
     required String? vehicleId,
     required DateTime? start,
     required DateTime? end,
   }) {
-    generatedMapping.putIfAbsent(BookingBillingPriceResponse,
-        () => BookingBillingPriceResponse.fromJsonFactory);
+    generatedMapping.putIfAbsent(
+        BillingPriceResponse, () => BillingPriceResponse.fromJsonFactory);
 
     return _pricingV1PricesBookingPriceGet(
         xClientId: xClientId?.toString(),
@@ -733,7 +721,7 @@ abstract class BattKit extends ChopperService {
   ///@param start Start Date
   ///@param end End Date
   @Get(path: '/pricing/v1/prices/booking-price')
-  Future<chopper.Response<BookingBillingPriceResponse>>
+  Future<chopper.Response<BillingPriceResponse>>
       _pricingV1PricesBookingPriceGet({
     @Header('X-Client-Id') String? xClientId,
     @Query('vehicleId') required String? vehicleId,
@@ -2294,6 +2282,76 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response<VehicleContractResponse>>
       _vehiclecontractV1VehiclecontractsClientsClientIdGet(
           {@Path('clientId') required int? clientId});
+
+  ///
+  Future<chopper.Response<Issue>> webApiIssueV1IssuesPost(
+      {required CreateIssueRequest? body}) {
+    generatedMapping.putIfAbsent(Issue, () => Issue.fromJsonFactory);
+
+    return _webApiIssueV1IssuesPost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/web-api/issue/v1/issues',
+    optionalBody: true,
+  )
+  Future<chopper.Response<Issue>> _webApiIssueV1IssuesPost(
+      {@Body() required CreateIssueRequest? body});
+
+  ///
+  Future<chopper.Response<IssuePage>> webApiIssueV1IssuesSearchesPost(
+      {required SearchIssuesRequest? body}) {
+    generatedMapping.putIfAbsent(IssuePage, () => IssuePage.fromJsonFactory);
+
+    return _webApiIssueV1IssuesSearchesPost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/web-api/issue/v1/issues/searches',
+    optionalBody: true,
+  )
+  Future<chopper.Response<IssuePage>> _webApiIssueV1IssuesSearchesPost(
+      {@Body() required SearchIssuesRequest? body});
+
+  ///
+  ///@param issueNumber
+  Future<chopper.Response<Issue>> webApiIssueV1IssuesIssueNumberGet(
+      {required int? issueNumber}) {
+    generatedMapping.putIfAbsent(Issue, () => Issue.fromJsonFactory);
+
+    return _webApiIssueV1IssuesIssueNumberGet(issueNumber: issueNumber);
+  }
+
+  ///
+  ///@param issueNumber
+  @Get(path: '/web-api/issue/v1/issues/{issueNumber}')
+  Future<chopper.Response<Issue>> _webApiIssueV1IssuesIssueNumberGet(
+      {@Path('issueNumber') required int? issueNumber});
+
+  ///
+  ///@param issueNumber
+  Future<chopper.Response<Issue>> webApiIssueV1IssuesIssueNumberPost({
+    required int? issueNumber,
+    required UpdateIssueRequest? body,
+  }) {
+    generatedMapping.putIfAbsent(Issue, () => Issue.fromJsonFactory);
+
+    return _webApiIssueV1IssuesIssueNumberPost(
+        issueNumber: issueNumber, body: body);
+  }
+
+  ///
+  ///@param issueNumber
+  @Post(
+    path: '/web-api/issue/v1/issues/{issueNumber}',
+    optionalBody: true,
+  )
+  Future<chopper.Response<Issue>> _webApiIssueV1IssuesIssueNumberPost({
+    @Path('issueNumber') required int? issueNumber,
+    @Body() required UpdateIssueRequest? body,
+  });
 }
 
 typedef $JsonFactory<T> = T Function(Map<String, dynamic> json);

@@ -245,6 +245,26 @@ enum CommitmentChangeOption {
   const CommitmentChangeOption(this.value);
 }
 
+enum CreateIssueRequestPriority {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('P1_LOW')
+  p1Low('P1_LOW'),
+  @JsonValue('P2_MEDIUM')
+  p2Medium('P2_MEDIUM'),
+  @JsonValue('P3_HIGH')
+  p3High('P3_HIGH'),
+  @JsonValue('P4_CRITICAL')
+  p4Critical('P4_CRITICAL'),
+  @JsonValue('P5_BLOCKER')
+  p5Blocker('P5_BLOCKER');
+
+  final String? value;
+
+  const CreateIssueRequestPriority(this.value);
+}
+
 enum CreateVehicleContractBattMaxType {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),
@@ -287,26 +307,6 @@ enum FormulaChangeOption {
   const FormulaChangeOption(this.value);
 }
 
-enum HomeFeedCardType {
-  @JsonValue(null)
-  swaggerGeneratedUnknown(null),
-
-  @JsonValue('OVERDUE_BOOKING')
-  overdueBooking('OVERDUE_BOOKING'),
-  @JsonValue('ACTIVE_VEHICLE_USAGE')
-  activeVehicleUsage('ACTIVE_VEHICLE_USAGE'),
-  @JsonValue('CANCELED_REMOTE')
-  canceledRemote('CANCELED_REMOTE'),
-  @JsonValue('BOOKING_TO_APPROVE')
-  bookingToApprove('BOOKING_TO_APPROVE'),
-  @JsonValue('UPCOMING_BOOKING')
-  upcomingBooking('UPCOMING_BOOKING');
-
-  final String? value;
-
-  const HomeFeedCardType(this.value);
-}
-
 enum InvoicePaymentStatus {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),
@@ -323,6 +323,90 @@ enum InvoicePaymentStatus {
   final String? value;
 
   const InvoicePaymentStatus(this.value);
+}
+
+enum IssuePriority {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('P1_LOW')
+  p1Low('P1_LOW'),
+  @JsonValue('P2_MEDIUM')
+  p2Medium('P2_MEDIUM'),
+  @JsonValue('P3_HIGH')
+  p3High('P3_HIGH'),
+  @JsonValue('P4_CRITICAL')
+  p4Critical('P4_CRITICAL'),
+  @JsonValue('P5_BLOCKER')
+  p5Blocker('P5_BLOCKER');
+
+  final String? value;
+
+  const IssuePriority(this.value);
+}
+
+enum IssueStatus {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('DRAFT')
+  draft('DRAFT'),
+  @JsonValue('CREATED')
+  created('CREATED'),
+  @JsonValue('IN_PROGRESS')
+  inProgress('IN_PROGRESS'),
+  @JsonValue('RESOLVED')
+  resolved('RESOLVED'),
+  @JsonValue('BLOCKED')
+  blocked('BLOCKED'),
+  @JsonValue('WILL_NOT_FIX')
+  willNotFix('WILL_NOT_FIX');
+
+  final String? value;
+
+  const IssueStatus(this.value);
+}
+
+enum IssueActionPriority {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('P1_LOW')
+  p1Low('P1_LOW'),
+  @JsonValue('P2_MEDIUM')
+  p2Medium('P2_MEDIUM'),
+  @JsonValue('P3_HIGH')
+  p3High('P3_HIGH'),
+  @JsonValue('P4_CRITICAL')
+  p4Critical('P4_CRITICAL'),
+  @JsonValue('P5_BLOCKER')
+  p5Blocker('P5_BLOCKER');
+
+  final String? value;
+
+  const IssueActionPriority(this.value);
+}
+
+enum IssueActionStatus {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('DRAFT')
+  draft('DRAFT'),
+  @JsonValue('CREATED')
+  created('CREATED'),
+  @JsonValue('IN_PROGRESS')
+  inProgress('IN_PROGRESS'),
+  @JsonValue('RESOLVED')
+  resolved('RESOLVED'),
+  @JsonValue('BLOCKED')
+  blocked('BLOCKED'),
+  @JsonValue('WILL_NOT_FIX')
+  willNotFix('WILL_NOT_FIX');
+
+  final String? value;
+
+  const IssueActionStatus(this.value);
 }
 
 enum MyAvailableVehicleType {
@@ -433,6 +517,62 @@ enum SearchBookingsRequestStatuses {
   final String? value;
 
   const SearchBookingsRequestStatuses(this.value);
+}
+
+enum SearchIssuesRequestOrder {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('asc')
+  asc('asc'),
+  @JsonValue('desc')
+  desc('desc');
+
+  final String? value;
+
+  const SearchIssuesRequestOrder(this.value);
+}
+
+enum SearchIssuesRequestPriorities {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('P1_LOW')
+  p1Low('P1_LOW'),
+  @JsonValue('P2_MEDIUM')
+  p2Medium('P2_MEDIUM'),
+  @JsonValue('P3_HIGH')
+  p3High('P3_HIGH'),
+  @JsonValue('P4_CRITICAL')
+  p4Critical('P4_CRITICAL'),
+  @JsonValue('P5_BLOCKER')
+  p5Blocker('P5_BLOCKER');
+
+  final String? value;
+
+  const SearchIssuesRequestPriorities(this.value);
+}
+
+enum SearchIssuesRequestStatuses {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('DRAFT')
+  draft('DRAFT'),
+  @JsonValue('CREATED')
+  created('CREATED'),
+  @JsonValue('IN_PROGRESS')
+  inProgress('IN_PROGRESS'),
+  @JsonValue('RESOLVED')
+  resolved('RESOLVED'),
+  @JsonValue('BLOCKED')
+  blocked('BLOCKED'),
+  @JsonValue('WILL_NOT_FIX')
+  willNotFix('WILL_NOT_FIX');
+
+  final String? value;
+
+  const SearchIssuesRequestStatuses(this.value);
 }
 
 enum SearchTelematicsTrackingRequestEventReason {
@@ -635,6 +775,48 @@ enum TerminateDayOption {
   final String? value;
 
   const TerminateDayOption(this.value);
+}
+
+enum UpdateIssueRequestPriority {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('P1_LOW')
+  p1Low('P1_LOW'),
+  @JsonValue('P2_MEDIUM')
+  p2Medium('P2_MEDIUM'),
+  @JsonValue('P3_HIGH')
+  p3High('P3_HIGH'),
+  @JsonValue('P4_CRITICAL')
+  p4Critical('P4_CRITICAL'),
+  @JsonValue('P5_BLOCKER')
+  p5Blocker('P5_BLOCKER');
+
+  final String? value;
+
+  const UpdateIssueRequestPriority(this.value);
+}
+
+enum UpdateIssueRequestStatus {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('DRAFT')
+  draft('DRAFT'),
+  @JsonValue('CREATED')
+  created('CREATED'),
+  @JsonValue('IN_PROGRESS')
+  inProgress('IN_PROGRESS'),
+  @JsonValue('RESOLVED')
+  resolved('RESOLVED'),
+  @JsonValue('BLOCKED')
+  blocked('BLOCKED'),
+  @JsonValue('WILL_NOT_FIX')
+  willNotFix('WILL_NOT_FIX');
+
+  final String? value;
+
+  const UpdateIssueRequestStatus(this.value);
 }
 
 enum UpdateUserRequestRole {
@@ -853,32 +1035,6 @@ enum VehicleUsageStatus {
   final String? value;
 
   const VehicleUsageStatus(this.value);
-}
-
-enum VehicleUsageReferenceStatus {
-  @JsonValue(null)
-  swaggerGeneratedUnknown(null),
-
-  @JsonValue('UNLOCKING')
-  unlocking('UNLOCKING'),
-  @JsonValue('BLUETOOTH_UNLOCKING')
-  bluetoothUnlocking('BLUETOOTH_UNLOCKING'),
-  @JsonValue('UNLOCK_FAILED')
-  unlockFailed('UNLOCK_FAILED'),
-  @JsonValue('UNLOCKED')
-  unlocked('UNLOCKED'),
-  @JsonValue('LOCKING')
-  locking('LOCKING'),
-  @JsonValue('BLUETOOTH_LOCKING')
-  bluetoothLocking('BLUETOOTH_LOCKING'),
-  @JsonValue('LOCK_FAILED')
-  lockFailed('LOCK_FAILED'),
-  @JsonValue('LOCKED')
-  locked('LOCKED');
-
-  final String? value;
-
-  const VehicleUsageReferenceStatus(this.value);
 }
 
 enum VehicleUsageUpdateStatusRequestStatus {

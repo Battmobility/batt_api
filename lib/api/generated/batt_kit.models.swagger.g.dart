@@ -164,6 +164,25 @@ Map<String, dynamic> _$BillingPriceToJson(BillingPrice instance) =>
       'vatRate': instance.vatRate,
     };
 
+BillingPriceResponse _$BillingPriceResponseFromJson(
+        Map<String, dynamic> json) =>
+    BillingPriceResponse(
+      billingPrice:
+          BillingPrice.fromJson(json['BillingPrice'] as Map<String, dynamic>),
+      dayPrice: (json['dayPrice'] as num).toDouble(),
+      hourPrice: (json['hourPrice'] as num).toDouble(),
+      kmPrice: (json['kmPrice'] as num).toDouble(),
+    );
+
+Map<String, dynamic> _$BillingPriceResponseToJson(
+        BillingPriceResponse instance) =>
+    <String, dynamic>{
+      'BillingPrice': instance.billingPrice.toJson(),
+      'dayPrice': instance.dayPrice,
+      'hourPrice': instance.hourPrice,
+      'kmPrice': instance.kmPrice,
+    };
+
 BluetoothToken _$BluetoothTokenFromJson(Map<String, dynamic> json) =>
     BluetoothToken(
       deviceId: json['deviceId'] as String?,
@@ -273,82 +292,6 @@ Map<String, dynamic> _$BookingToJson(Booking instance) => <String, dynamic>{
       'userId': instance.userId,
       'vehicle': instance.vehicle?.toJson(),
       'vehicleUsage': instance.vehicleUsage?.toJson(),
-    };
-
-BookingBillingPrice _$BookingBillingPriceFromJson(Map<String, dynamic> json) =>
-    BookingBillingPrice(
-      amount: (json['amount'] as num?)?.toInt(),
-      changeFromHourlyToDaily: json['changeFromHourlyToDaily'] as bool?,
-      endDate: json['endDate'] == null
-          ? null
-          : DateTime.parse(json['endDate'] as String),
-      hourlyTotalNotCharged:
-          (json['hourlyTotalNotCharged'] as num?)?.toDouble(),
-      hourlyTotalNotChargedExclVat:
-          (json['hourlyTotalNotChargedExclVat'] as num?)?.toDouble(),
-      km: (json['km'] as num?)?.toInt(),
-      kmPrice: (json['kmPrice'] as num?)?.toDouble(),
-      kmPriceExclVat: (json['kmPriceExclVat'] as num?)?.toDouble(),
-      kmTotal: (json['kmTotal'] as num?)?.toDouble(),
-      kmTotalExclVat: (json['kmTotalExclVat'] as num?)?.toDouble(),
-      startDate: json['startDate'] == null
-          ? null
-          : DateTime.parse(json['startDate'] as String),
-      timeAmount: (json['timeAmount'] as num?)?.toDouble(),
-      timeTotal: (json['timeTotal'] as num?)?.toDouble(),
-      timeTotalExclVat: (json['timeTotalExclVat'] as num?)?.toDouble(),
-      total: (json['total'] as num?)?.toDouble(),
-      totalExclVat: (json['totalExclVat'] as num?)?.toDouble(),
-      totalVat: (json['totalVat'] as num?)?.toDouble(),
-      unit: json['unit'] as String?,
-      unitPrice: (json['unitPrice'] as num?)?.toDouble(),
-      unitPriceExclVat: (json['unitPriceExclVat'] as num?)?.toDouble(),
-      vatRate: (json['vatRate'] as num?)?.toDouble(),
-    );
-
-Map<String, dynamic> _$BookingBillingPriceToJson(
-        BookingBillingPrice instance) =>
-    <String, dynamic>{
-      'amount': instance.amount,
-      'changeFromHourlyToDaily': instance.changeFromHourlyToDaily,
-      'endDate': instance.endDate?.toIso8601String(),
-      'hourlyTotalNotCharged': instance.hourlyTotalNotCharged,
-      'hourlyTotalNotChargedExclVat': instance.hourlyTotalNotChargedExclVat,
-      'km': instance.km,
-      'kmPrice': instance.kmPrice,
-      'kmPriceExclVat': instance.kmPriceExclVat,
-      'kmTotal': instance.kmTotal,
-      'kmTotalExclVat': instance.kmTotalExclVat,
-      'startDate': instance.startDate?.toIso8601String(),
-      'timeAmount': instance.timeAmount,
-      'timeTotal': instance.timeTotal,
-      'timeTotalExclVat': instance.timeTotalExclVat,
-      'total': instance.total,
-      'totalExclVat': instance.totalExclVat,
-      'totalVat': instance.totalVat,
-      'unit': instance.unit,
-      'unitPrice': instance.unitPrice,
-      'unitPriceExclVat': instance.unitPriceExclVat,
-      'vatRate': instance.vatRate,
-    };
-
-BookingBillingPriceResponse _$BookingBillingPriceResponseFromJson(
-        Map<String, dynamic> json) =>
-    BookingBillingPriceResponse(
-      bookingBillingPrice: BookingBillingPrice.fromJson(
-          json['bookingBillingPrice'] as Map<String, dynamic>),
-      dayPrice: (json['dayPrice'] as num).toDouble(),
-      hourPrice: (json['hourPrice'] as num).toDouble(),
-      kmPrice: (json['kmPrice'] as num).toDouble(),
-    );
-
-Map<String, dynamic> _$BookingBillingPriceResponseToJson(
-        BookingBillingPriceResponse instance) =>
-    <String, dynamic>{
-      'bookingBillingPrice': instance.bookingBillingPrice.toJson(),
-      'dayPrice': instance.dayPrice,
-      'hourPrice': instance.hourPrice,
-      'kmPrice': instance.kmPrice,
     };
 
 BookingPrice _$BookingPriceFromJson(Map<String, dynamic> json) => BookingPrice(
@@ -1095,6 +1038,28 @@ Map<String, dynamic> _$CreateClientToJson(CreateClient instance) =>
       'vat': instance.vat,
     };
 
+CreateIssueRequest _$CreateIssueRequestFromJson(Map<String, dynamic> json) =>
+    CreateIssueRequest(
+      assignedToRemoteId: json['assignedToRemoteId'] as String?,
+      bookingId: json['bookingId'] as String?,
+      description: json['description'] as String?,
+      priority: createIssueRequestPriorityNullableFromJson(json['priority']),
+      title: json['title'] as String,
+      userRemoteId: json['userRemoteId'] as String?,
+      vehicleId: json['vehicleId'] as String?,
+    );
+
+Map<String, dynamic> _$CreateIssueRequestToJson(CreateIssueRequest instance) =>
+    <String, dynamic>{
+      'assignedToRemoteId': instance.assignedToRemoteId,
+      'bookingId': instance.bookingId,
+      'description': instance.description,
+      'priority': createIssueRequestPriorityNullableToJson(instance.priority),
+      'title': instance.title,
+      'userRemoteId': instance.userRemoteId,
+      'vehicleId': instance.vehicleId,
+    };
+
 CreateNewUsageContractRequest _$CreateNewUsageContractRequestFromJson(
         Map<String, dynamic> json) =>
     CreateNewUsageContractRequest(
@@ -1539,43 +1504,6 @@ Map<String, dynamic> _$GpsLocationToJson(GpsLocation instance) =>
       'vehicleBaseLocationId': instance.vehicleBaseLocationId,
     };
 
-HomeFeedCard _$HomeFeedCardFromJson(Map<String, dynamic> json) => HomeFeedCard(
-      date:
-          json['date'] == null ? null : DateTime.parse(json['date'] as String),
-      fullBooking: json['fullBooking'] == null
-          ? null
-          : Booking.fromJson(json['fullBooking'] as Map<String, dynamic>),
-      type: homeFeedCardTypeNullableFromJson(json['type']),
-      vehicle: json['vehicle'] == null
-          ? null
-          : Vehicle.fromJson(json['vehicle'] as Map<String, dynamic>),
-      vehicleUsage: json['vehicleUsage'] == null
-          ? null
-          : VehicleUsageReference.fromJson(
-              json['vehicleUsage'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$HomeFeedCardToJson(HomeFeedCard instance) =>
-    <String, dynamic>{
-      'date': instance.date?.toIso8601String(),
-      'fullBooking': instance.fullBooking?.toJson(),
-      'type': homeFeedCardTypeNullableToJson(instance.type),
-      'vehicle': instance.vehicle?.toJson(),
-      'vehicleUsage': instance.vehicleUsage?.toJson(),
-    };
-
-HomeFeedPage _$HomeFeedPageFromJson(Map<String, dynamic> json) => HomeFeedPage(
-      homeFeedCards: (json['homeFeedCards'] as List<dynamic>?)
-              ?.map((e) => HomeFeedCard.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [],
-    );
-
-Map<String, dynamic> _$HomeFeedPageToJson(HomeFeedPage instance) =>
-    <String, dynamic>{
-      'homeFeedCards': instance.homeFeedCards?.map((e) => e.toJson()).toList(),
-    };
-
 Invoice _$InvoiceFromJson(Map<String, dynamic> json) => Invoice(
       amount: (json['amount'] as num?)?.toDouble(),
       customerName: json['customerName'] as String?,
@@ -1617,6 +1545,93 @@ InvoiceResponse _$InvoiceResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$InvoiceResponseToJson(InvoiceResponse instance) =>
     <String, dynamic>{
       'invoices': instance.invoices?.map((e) => e.toJson()).toList(),
+    };
+
+Issue _$IssueFromJson(Map<String, dynamic> json) => Issue(
+      actions: (json['actions'] as List<dynamic>?)
+              ?.map((e) => IssueAction.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      assignedTo: json['assignedTo'] == null
+          ? null
+          : User.fromJson(json['assignedTo'] as Map<String, dynamic>),
+      booking: json['booking'] == null
+          ? null
+          : Booking.fromJson(json['booking'] as Map<String, dynamic>),
+      createdBy: json['createdBy'] == null
+          ? null
+          : User.fromJson(json['createdBy'] as Map<String, dynamic>),
+      dateCreated: json['dateCreated'] == null
+          ? null
+          : DateTime.parse(json['dateCreated'] as String),
+      description: json['description'] as String?,
+      lastUpdated: json['lastUpdated'] == null
+          ? null
+          : DateTime.parse(json['lastUpdated'] as String),
+      number: (json['number'] as num?)?.toInt(),
+      priority: issuePriorityNullableFromJson(json['priority']),
+      status: issueStatusNullableFromJson(json['status']),
+      title: json['title'] as String?,
+      user: json['user'] == null
+          ? null
+          : User.fromJson(json['user'] as Map<String, dynamic>),
+      vehicle: json['vehicle'] == null
+          ? null
+          : Vehicle.fromJson(json['vehicle'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$IssueToJson(Issue instance) => <String, dynamic>{
+      'actions': instance.actions?.map((e) => e.toJson()).toList(),
+      'assignedTo': instance.assignedTo?.toJson(),
+      'booking': instance.booking?.toJson(),
+      'createdBy': instance.createdBy?.toJson(),
+      'dateCreated': instance.dateCreated?.toIso8601String(),
+      'description': instance.description,
+      'lastUpdated': instance.lastUpdated?.toIso8601String(),
+      'number': instance.number,
+      'priority': issuePriorityNullableToJson(instance.priority),
+      'status': issueStatusNullableToJson(instance.status),
+      'title': instance.title,
+      'user': instance.user?.toJson(),
+      'vehicle': instance.vehicle?.toJson(),
+    };
+
+IssueAction _$IssueActionFromJson(Map<String, dynamic> json) => IssueAction(
+      assignedTo: json['assignedTo'] == null
+          ? null
+          : User.fromJson(json['assignedTo'] as Map<String, dynamic>),
+      comment: json['comment'] as String?,
+      dateCreated: json['dateCreated'] == null
+          ? null
+          : DateTime.parse(json['dateCreated'] as String),
+      priority: issueActionPriorityNullableFromJson(json['priority']),
+      status: issueActionStatusNullableFromJson(json['status']),
+      title: json['title'] as String?,
+      user: json['user'] == null
+          ? null
+          : User.fromJson(json['user'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$IssueActionToJson(IssueAction instance) =>
+    <String, dynamic>{
+      'assignedTo': instance.assignedTo?.toJson(),
+      'comment': instance.comment,
+      'dateCreated': instance.dateCreated?.toIso8601String(),
+      'priority': issueActionPriorityNullableToJson(instance.priority),
+      'status': issueActionStatusNullableToJson(instance.status),
+      'title': instance.title,
+      'user': instance.user?.toJson(),
+    };
+
+IssuePage _$IssuePageFromJson(Map<String, dynamic> json) => IssuePage(
+      issues: (json['issues'] as List<dynamic>?)
+              ?.map((e) => Issue.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$IssuePageToJson(IssuePage instance) => <String, dynamic>{
+      'issues': instance.issues?.map((e) => e.toJson()).toList(),
     };
 
 LocationPosition _$LocationPositionFromJson(Map<String, dynamic> json) =>
@@ -2065,6 +2080,50 @@ Map<String, dynamic> _$SearchClientContractsRequestToJson(
       'orderBy': instance.orderBy,
     };
 
+SearchIssuesRequest _$SearchIssuesRequestFromJson(Map<String, dynamic> json) =>
+    SearchIssuesRequest(
+      assignedToRemoteId: json['assignedToRemoteId'] as String?,
+      bookingId: json['bookingId'] as String?,
+      createdAfter: json['createdAfter'] == null
+          ? null
+          : DateTime.parse(json['createdAfter'] as String),
+      max: (json['max'] as num?)?.toInt(),
+      number: (json['number'] as num?)?.toInt(),
+      offset: (json['offset'] as num?)?.toInt(),
+      order: searchIssuesRequestOrderNullableFromJson(json['order']),
+      priorities: searchIssuesRequestPrioritiesListFromJson(
+          json['priorities'] as List?),
+      sort: json['sort'] as String?,
+      statuses:
+          searchIssuesRequestStatusesListFromJson(json['statuses'] as List?),
+      title: json['title'] as String?,
+      updatedAfter: json['updatedAfter'] == null
+          ? null
+          : DateTime.parse(json['updatedAfter'] as String),
+      userRemoteId: json['userRemoteId'] as String?,
+      vehicleId: json['vehicleId'] as String?,
+    );
+
+Map<String, dynamic> _$SearchIssuesRequestToJson(
+        SearchIssuesRequest instance) =>
+    <String, dynamic>{
+      'assignedToRemoteId': instance.assignedToRemoteId,
+      'bookingId': instance.bookingId,
+      'createdAfter': instance.createdAfter?.toIso8601String(),
+      'max': instance.max,
+      'number': instance.number,
+      'offset': instance.offset,
+      'order': searchIssuesRequestOrderNullableToJson(instance.order),
+      'priorities':
+          searchIssuesRequestPrioritiesListToJson(instance.priorities),
+      'sort': instance.sort,
+      'statuses': searchIssuesRequestStatusesListToJson(instance.statuses),
+      'title': instance.title,
+      'updatedAfter': instance.updatedAfter?.toIso8601String(),
+      'userRemoteId': instance.userRemoteId,
+      'vehicleId': instance.vehicleId,
+    };
+
 SearchNonAvailabilityEventsRequest _$SearchNonAvailabilityEventsRequestFromJson(
         Map<String, dynamic> json) =>
     SearchNonAvailabilityEventsRequest(
@@ -2495,6 +2554,32 @@ Map<String, dynamic> _$UpdateClientToJson(UpdateClient instance) =>
     <String, dynamic>{
       'suspended': instance.suspended,
       'suspendedReason': instance.suspendedReason,
+    };
+
+UpdateIssueRequest _$UpdateIssueRequestFromJson(Map<String, dynamic> json) =>
+    UpdateIssueRequest(
+      assignedToRemoteId: json['assignedToRemoteId'] as String?,
+      bookingId: json['bookingId'] as String?,
+      comment: json['comment'] as String?,
+      description: json['description'] as String?,
+      priority: updateIssueRequestPriorityNullableFromJson(json['priority']),
+      status: updateIssueRequestStatusNullableFromJson(json['status']),
+      title: json['title'] as String?,
+      userRemoteId: json['userRemoteId'] as String?,
+      vehicleId: json['vehicleId'] as String?,
+    );
+
+Map<String, dynamic> _$UpdateIssueRequestToJson(UpdateIssueRequest instance) =>
+    <String, dynamic>{
+      'assignedToRemoteId': instance.assignedToRemoteId,
+      'bookingId': instance.bookingId,
+      'comment': instance.comment,
+      'description': instance.description,
+      'priority': updateIssueRequestPriorityNullableToJson(instance.priority),
+      'status': updateIssueRequestStatusNullableToJson(instance.status),
+      'title': instance.title,
+      'userRemoteId': instance.userRemoteId,
+      'vehicleId': instance.vehicleId,
     };
 
 UpdateTelematicsRequest _$UpdateTelematicsRequestFromJson(
@@ -3109,26 +3194,6 @@ VehicleUsagePage _$VehicleUsagePageFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$VehicleUsagePageToJson(VehicleUsagePage instance) =>
     <String, dynamic>{
       'vehicleUsages': instance.vehicleUsages?.map((e) => e.toJson()).toList(),
-    };
-
-VehicleUsageReference _$VehicleUsageReferenceFromJson(
-        Map<String, dynamic> json) =>
-    VehicleUsageReference(
-      id: json['id'] as String?,
-      period: json['period'] == null
-          ? null
-          : Period.fromJson(json['period'] as Map<String, dynamic>),
-      status: vehicleUsageReferenceStatusNullableFromJson(json['status']),
-      statusMessage: json['statusMessage'] as String?,
-    );
-
-Map<String, dynamic> _$VehicleUsageReferenceToJson(
-        VehicleUsageReference instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'period': instance.period?.toJson(),
-      'status': vehicleUsageReferenceStatusNullableToJson(instance.status),
-      'statusMessage': instance.statusMessage,
     };
 
 VehicleUsageUpdateStatusRequest _$VehicleUsageUpdateStatusRequestFromJson(
