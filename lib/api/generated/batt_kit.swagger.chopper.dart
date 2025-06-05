@@ -468,17 +468,6 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<HomeFeedPage>> _homefeedV1BookingsHomefeedGet() {
-    final Uri $url = Uri.parse('/homefeed/v1/bookings/homefeed');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
-    );
-    return client.send<HomeFeedPage, HomeFeedPage>($request);
-  }
-
-  @override
   Future<Response<InvoiceResponse>> _invoiceV1ClientsClientIdInvoicesGet(
       {required int? clientId}) {
     final Uri $url = Uri.parse('/invoice/v1/clients/${clientId}/invoices');
@@ -526,8 +515,7 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<BookingBillingPriceResponse>>
-      _pricingV1PricesBookingPriceGet({
+  Future<Response<BillingPriceResponse>> _pricingV1PricesBookingPriceGet({
     String? xClientId,
     required String? vehicleId,
     required DateTime? start,
@@ -549,8 +537,7 @@ final class _$BattKit extends BattKit {
       parameters: $params,
       headers: $headers,
     );
-    return client.send<BookingBillingPriceResponse,
-        BookingBillingPriceResponse>($request);
+    return client.send<BillingPriceResponse, BillingPriceResponse>($request);
   }
 
   @override
@@ -1847,5 +1834,61 @@ final class _$BattKit extends BattKit {
     );
     return client
         .send<VehicleContractResponse, VehicleContractResponse>($request);
+  }
+
+  @override
+  Future<Response<Issue>> _webApiIssueV1IssuesPost(
+      {required CreateIssueRequest? body}) {
+    final Uri $url = Uri.parse('/web-api/issue/v1/issues');
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<Issue, Issue>($request);
+  }
+
+  @override
+  Future<Response<IssuePage>> _webApiIssueV1IssuesSearchesPost(
+      {required SearchIssuesRequest? body}) {
+    final Uri $url = Uri.parse('/web-api/issue/v1/issues/searches');
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<IssuePage, IssuePage>($request);
+  }
+
+  @override
+  Future<Response<Issue>> _webApiIssueV1IssuesIssueNumberGet(
+      {required int? issueNumber}) {
+    final Uri $url = Uri.parse('/web-api/issue/v1/issues/${issueNumber}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<Issue, Issue>($request);
+  }
+
+  @override
+  Future<Response<Issue>> _webApiIssueV1IssuesIssueNumberPost({
+    required int? issueNumber,
+    required UpdateIssueRequest? body,
+  }) {
+    final Uri $url = Uri.parse('/web-api/issue/v1/issues/${issueNumber}');
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<Issue, Issue>($request);
   }
 }

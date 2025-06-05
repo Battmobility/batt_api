@@ -710,6 +710,87 @@ extension $BillingPriceExtension on BillingPrice {
 }
 
 @JsonSerializable(explicitToJson: true)
+class BillingPriceResponse {
+  const BillingPriceResponse({
+    required this.billingPrice,
+    required this.dayPrice,
+    required this.hourPrice,
+    required this.kmPrice,
+  });
+
+  factory BillingPriceResponse.fromJson(Map<String, dynamic> json) =>
+      _$BillingPriceResponseFromJson(json);
+
+  static const toJsonFactory = _$BillingPriceResponseToJson;
+  Map<String, dynamic> toJson() => _$BillingPriceResponseToJson(this);
+
+  @JsonKey(name: 'BillingPrice')
+  final BillingPrice billingPrice;
+  @JsonKey(name: 'dayPrice')
+  final double dayPrice;
+  @JsonKey(name: 'hourPrice')
+  final double hourPrice;
+  @JsonKey(name: 'kmPrice')
+  final double kmPrice;
+  static const fromJsonFactory = _$BillingPriceResponseFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is BillingPriceResponse &&
+            (identical(other.billingPrice, billingPrice) ||
+                const DeepCollectionEquality()
+                    .equals(other.billingPrice, billingPrice)) &&
+            (identical(other.dayPrice, dayPrice) ||
+                const DeepCollectionEquality()
+                    .equals(other.dayPrice, dayPrice)) &&
+            (identical(other.hourPrice, hourPrice) ||
+                const DeepCollectionEquality()
+                    .equals(other.hourPrice, hourPrice)) &&
+            (identical(other.kmPrice, kmPrice) ||
+                const DeepCollectionEquality().equals(other.kmPrice, kmPrice)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(billingPrice) ^
+      const DeepCollectionEquality().hash(dayPrice) ^
+      const DeepCollectionEquality().hash(hourPrice) ^
+      const DeepCollectionEquality().hash(kmPrice) ^
+      runtimeType.hashCode;
+}
+
+extension $BillingPriceResponseExtension on BillingPriceResponse {
+  BillingPriceResponse copyWith(
+      {BillingPrice? billingPrice,
+      double? dayPrice,
+      double? hourPrice,
+      double? kmPrice}) {
+    return BillingPriceResponse(
+        billingPrice: billingPrice ?? this.billingPrice,
+        dayPrice: dayPrice ?? this.dayPrice,
+        hourPrice: hourPrice ?? this.hourPrice,
+        kmPrice: kmPrice ?? this.kmPrice);
+  }
+
+  BillingPriceResponse copyWithWrapped(
+      {Wrapped<BillingPrice>? billingPrice,
+      Wrapped<double>? dayPrice,
+      Wrapped<double>? hourPrice,
+      Wrapped<double>? kmPrice}) {
+    return BillingPriceResponse(
+        billingPrice:
+            (billingPrice != null ? billingPrice.value : this.billingPrice),
+        dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
+        hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
+        kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class BluetoothToken {
   const BluetoothToken({
     this.deviceId,
@@ -1164,359 +1245,6 @@ extension $BookingExtension on Booking {
         vehicle: (vehicle != null ? vehicle.value : this.vehicle),
         vehicleUsage:
             (vehicleUsage != null ? vehicleUsage.value : this.vehicleUsage));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class BookingBillingPrice {
-  const BookingBillingPrice({
-    this.amount,
-    this.changeFromHourlyToDaily,
-    this.endDate,
-    this.hourlyTotalNotCharged,
-    this.hourlyTotalNotChargedExclVat,
-    this.km,
-    this.kmPrice,
-    this.kmPriceExclVat,
-    this.kmTotal,
-    this.kmTotalExclVat,
-    this.startDate,
-    this.timeAmount,
-    this.timeTotal,
-    this.timeTotalExclVat,
-    this.total,
-    this.totalExclVat,
-    this.totalVat,
-    this.unit,
-    this.unitPrice,
-    this.unitPriceExclVat,
-    this.vatRate,
-  });
-
-  factory BookingBillingPrice.fromJson(Map<String, dynamic> json) =>
-      _$BookingBillingPriceFromJson(json);
-
-  static const toJsonFactory = _$BookingBillingPriceToJson;
-  Map<String, dynamic> toJson() => _$BookingBillingPriceToJson(this);
-
-  @JsonKey(name: 'amount')
-  final int? amount;
-  @JsonKey(name: 'changeFromHourlyToDaily')
-  final bool? changeFromHourlyToDaily;
-  @JsonKey(name: 'endDate')
-  final DateTime? endDate;
-  @JsonKey(name: 'hourlyTotalNotCharged')
-  final double? hourlyTotalNotCharged;
-  @JsonKey(name: 'hourlyTotalNotChargedExclVat')
-  final double? hourlyTotalNotChargedExclVat;
-  @JsonKey(name: 'km')
-  final int? km;
-  @JsonKey(name: 'kmPrice')
-  final double? kmPrice;
-  @JsonKey(name: 'kmPriceExclVat')
-  final double? kmPriceExclVat;
-  @JsonKey(name: 'kmTotal')
-  final double? kmTotal;
-  @JsonKey(name: 'kmTotalExclVat')
-  final double? kmTotalExclVat;
-  @JsonKey(name: 'startDate')
-  final DateTime? startDate;
-  @JsonKey(name: 'timeAmount')
-  final double? timeAmount;
-  @JsonKey(name: 'timeTotal')
-  final double? timeTotal;
-  @JsonKey(name: 'timeTotalExclVat')
-  final double? timeTotalExclVat;
-  @JsonKey(name: 'total')
-  final double? total;
-  @JsonKey(name: 'totalExclVat')
-  final double? totalExclVat;
-  @JsonKey(name: 'totalVat')
-  final double? totalVat;
-  @JsonKey(name: 'unit')
-  final String? unit;
-  @JsonKey(name: 'unitPrice')
-  final double? unitPrice;
-  @JsonKey(name: 'unitPriceExclVat')
-  final double? unitPriceExclVat;
-  @JsonKey(name: 'vatRate')
-  final double? vatRate;
-  static const fromJsonFactory = _$BookingBillingPriceFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is BookingBillingPrice &&
-            (identical(other.amount, amount) ||
-                const DeepCollectionEquality().equals(other.amount, amount)) &&
-            (identical(other.changeFromHourlyToDaily, changeFromHourlyToDaily) ||
-                const DeepCollectionEquality().equals(
-                    other.changeFromHourlyToDaily, changeFromHourlyToDaily)) &&
-            (identical(other.endDate, endDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDate, endDate)) &&
-            (identical(other.hourlyTotalNotCharged, hourlyTotalNotCharged) ||
-                const DeepCollectionEquality().equals(
-                    other.hourlyTotalNotCharged, hourlyTotalNotCharged)) &&
-            (identical(other.hourlyTotalNotChargedExclVat, hourlyTotalNotChargedExclVat) ||
-                const DeepCollectionEquality().equals(
-                    other.hourlyTotalNotChargedExclVat,
-                    hourlyTotalNotChargedExclVat)) &&
-            (identical(other.km, km) ||
-                const DeepCollectionEquality().equals(other.km, km)) &&
-            (identical(other.kmPrice, kmPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmPrice, kmPrice)) &&
-            (identical(other.kmPriceExclVat, kmPriceExclVat) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmPriceExclVat, kmPriceExclVat)) &&
-            (identical(other.kmTotal, kmTotal) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmTotal, kmTotal)) &&
-            (identical(other.kmTotalExclVat, kmTotalExclVat) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmTotalExclVat, kmTotalExclVat)) &&
-            (identical(other.startDate, startDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDate, startDate)) &&
-            (identical(other.timeAmount, timeAmount) ||
-                const DeepCollectionEquality()
-                    .equals(other.timeAmount, timeAmount)) &&
-            (identical(other.timeTotal, timeTotal) ||
-                const DeepCollectionEquality()
-                    .equals(other.timeTotal, timeTotal)) &&
-            (identical(other.timeTotalExclVat, timeTotalExclVat) ||
-                const DeepCollectionEquality()
-                    .equals(other.timeTotalExclVat, timeTotalExclVat)) &&
-            (identical(other.total, total) || const DeepCollectionEquality().equals(other.total, total)) &&
-            (identical(other.totalExclVat, totalExclVat) || const DeepCollectionEquality().equals(other.totalExclVat, totalExclVat)) &&
-            (identical(other.totalVat, totalVat) || const DeepCollectionEquality().equals(other.totalVat, totalVat)) &&
-            (identical(other.unit, unit) || const DeepCollectionEquality().equals(other.unit, unit)) &&
-            (identical(other.unitPrice, unitPrice) || const DeepCollectionEquality().equals(other.unitPrice, unitPrice)) &&
-            (identical(other.unitPriceExclVat, unitPriceExclVat) || const DeepCollectionEquality().equals(other.unitPriceExclVat, unitPriceExclVat)) &&
-            (identical(other.vatRate, vatRate) || const DeepCollectionEquality().equals(other.vatRate, vatRate)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(amount) ^
-      const DeepCollectionEquality().hash(changeFromHourlyToDaily) ^
-      const DeepCollectionEquality().hash(endDate) ^
-      const DeepCollectionEquality().hash(hourlyTotalNotCharged) ^
-      const DeepCollectionEquality().hash(hourlyTotalNotChargedExclVat) ^
-      const DeepCollectionEquality().hash(km) ^
-      const DeepCollectionEquality().hash(kmPrice) ^
-      const DeepCollectionEquality().hash(kmPriceExclVat) ^
-      const DeepCollectionEquality().hash(kmTotal) ^
-      const DeepCollectionEquality().hash(kmTotalExclVat) ^
-      const DeepCollectionEquality().hash(startDate) ^
-      const DeepCollectionEquality().hash(timeAmount) ^
-      const DeepCollectionEquality().hash(timeTotal) ^
-      const DeepCollectionEquality().hash(timeTotalExclVat) ^
-      const DeepCollectionEquality().hash(total) ^
-      const DeepCollectionEquality().hash(totalExclVat) ^
-      const DeepCollectionEquality().hash(totalVat) ^
-      const DeepCollectionEquality().hash(unit) ^
-      const DeepCollectionEquality().hash(unitPrice) ^
-      const DeepCollectionEquality().hash(unitPriceExclVat) ^
-      const DeepCollectionEquality().hash(vatRate) ^
-      runtimeType.hashCode;
-}
-
-extension $BookingBillingPriceExtension on BookingBillingPrice {
-  BookingBillingPrice copyWith(
-      {int? amount,
-      bool? changeFromHourlyToDaily,
-      DateTime? endDate,
-      double? hourlyTotalNotCharged,
-      double? hourlyTotalNotChargedExclVat,
-      int? km,
-      double? kmPrice,
-      double? kmPriceExclVat,
-      double? kmTotal,
-      double? kmTotalExclVat,
-      DateTime? startDate,
-      double? timeAmount,
-      double? timeTotal,
-      double? timeTotalExclVat,
-      double? total,
-      double? totalExclVat,
-      double? totalVat,
-      String? unit,
-      double? unitPrice,
-      double? unitPriceExclVat,
-      double? vatRate}) {
-    return BookingBillingPrice(
-        amount: amount ?? this.amount,
-        changeFromHourlyToDaily:
-            changeFromHourlyToDaily ?? this.changeFromHourlyToDaily,
-        endDate: endDate ?? this.endDate,
-        hourlyTotalNotCharged:
-            hourlyTotalNotCharged ?? this.hourlyTotalNotCharged,
-        hourlyTotalNotChargedExclVat:
-            hourlyTotalNotChargedExclVat ?? this.hourlyTotalNotChargedExclVat,
-        km: km ?? this.km,
-        kmPrice: kmPrice ?? this.kmPrice,
-        kmPriceExclVat: kmPriceExclVat ?? this.kmPriceExclVat,
-        kmTotal: kmTotal ?? this.kmTotal,
-        kmTotalExclVat: kmTotalExclVat ?? this.kmTotalExclVat,
-        startDate: startDate ?? this.startDate,
-        timeAmount: timeAmount ?? this.timeAmount,
-        timeTotal: timeTotal ?? this.timeTotal,
-        timeTotalExclVat: timeTotalExclVat ?? this.timeTotalExclVat,
-        total: total ?? this.total,
-        totalExclVat: totalExclVat ?? this.totalExclVat,
-        totalVat: totalVat ?? this.totalVat,
-        unit: unit ?? this.unit,
-        unitPrice: unitPrice ?? this.unitPrice,
-        unitPriceExclVat: unitPriceExclVat ?? this.unitPriceExclVat,
-        vatRate: vatRate ?? this.vatRate);
-  }
-
-  BookingBillingPrice copyWithWrapped(
-      {Wrapped<int?>? amount,
-      Wrapped<bool?>? changeFromHourlyToDaily,
-      Wrapped<DateTime?>? endDate,
-      Wrapped<double?>? hourlyTotalNotCharged,
-      Wrapped<double?>? hourlyTotalNotChargedExclVat,
-      Wrapped<int?>? km,
-      Wrapped<double?>? kmPrice,
-      Wrapped<double?>? kmPriceExclVat,
-      Wrapped<double?>? kmTotal,
-      Wrapped<double?>? kmTotalExclVat,
-      Wrapped<DateTime?>? startDate,
-      Wrapped<double?>? timeAmount,
-      Wrapped<double?>? timeTotal,
-      Wrapped<double?>? timeTotalExclVat,
-      Wrapped<double?>? total,
-      Wrapped<double?>? totalExclVat,
-      Wrapped<double?>? totalVat,
-      Wrapped<String?>? unit,
-      Wrapped<double?>? unitPrice,
-      Wrapped<double?>? unitPriceExclVat,
-      Wrapped<double?>? vatRate}) {
-    return BookingBillingPrice(
-        amount: (amount != null ? amount.value : this.amount),
-        changeFromHourlyToDaily: (changeFromHourlyToDaily != null
-            ? changeFromHourlyToDaily.value
-            : this.changeFromHourlyToDaily),
-        endDate: (endDate != null ? endDate.value : this.endDate),
-        hourlyTotalNotCharged: (hourlyTotalNotCharged != null
-            ? hourlyTotalNotCharged.value
-            : this.hourlyTotalNotCharged),
-        hourlyTotalNotChargedExclVat: (hourlyTotalNotChargedExclVat != null
-            ? hourlyTotalNotChargedExclVat.value
-            : this.hourlyTotalNotChargedExclVat),
-        km: (km != null ? km.value : this.km),
-        kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
-        kmPriceExclVat: (kmPriceExclVat != null
-            ? kmPriceExclVat.value
-            : this.kmPriceExclVat),
-        kmTotal: (kmTotal != null ? kmTotal.value : this.kmTotal),
-        kmTotalExclVat: (kmTotalExclVat != null
-            ? kmTotalExclVat.value
-            : this.kmTotalExclVat),
-        startDate: (startDate != null ? startDate.value : this.startDate),
-        timeAmount: (timeAmount != null ? timeAmount.value : this.timeAmount),
-        timeTotal: (timeTotal != null ? timeTotal.value : this.timeTotal),
-        timeTotalExclVat: (timeTotalExclVat != null
-            ? timeTotalExclVat.value
-            : this.timeTotalExclVat),
-        total: (total != null ? total.value : this.total),
-        totalExclVat:
-            (totalExclVat != null ? totalExclVat.value : this.totalExclVat),
-        totalVat: (totalVat != null ? totalVat.value : this.totalVat),
-        unit: (unit != null ? unit.value : this.unit),
-        unitPrice: (unitPrice != null ? unitPrice.value : this.unitPrice),
-        unitPriceExclVat: (unitPriceExclVat != null
-            ? unitPriceExclVat.value
-            : this.unitPriceExclVat),
-        vatRate: (vatRate != null ? vatRate.value : this.vatRate));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class BookingBillingPriceResponse {
-  const BookingBillingPriceResponse({
-    required this.bookingBillingPrice,
-    required this.dayPrice,
-    required this.hourPrice,
-    required this.kmPrice,
-  });
-
-  factory BookingBillingPriceResponse.fromJson(Map<String, dynamic> json) =>
-      _$BookingBillingPriceResponseFromJson(json);
-
-  static const toJsonFactory = _$BookingBillingPriceResponseToJson;
-  Map<String, dynamic> toJson() => _$BookingBillingPriceResponseToJson(this);
-
-  @JsonKey(name: 'bookingBillingPrice')
-  final BookingBillingPrice bookingBillingPrice;
-  @JsonKey(name: 'dayPrice')
-  final double dayPrice;
-  @JsonKey(name: 'hourPrice')
-  final double hourPrice;
-  @JsonKey(name: 'kmPrice')
-  final double kmPrice;
-  static const fromJsonFactory = _$BookingBillingPriceResponseFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is BookingBillingPriceResponse &&
-            (identical(other.bookingBillingPrice, bookingBillingPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.bookingBillingPrice, bookingBillingPrice)) &&
-            (identical(other.dayPrice, dayPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.dayPrice, dayPrice)) &&
-            (identical(other.hourPrice, hourPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.hourPrice, hourPrice)) &&
-            (identical(other.kmPrice, kmPrice) ||
-                const DeepCollectionEquality().equals(other.kmPrice, kmPrice)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(bookingBillingPrice) ^
-      const DeepCollectionEquality().hash(dayPrice) ^
-      const DeepCollectionEquality().hash(hourPrice) ^
-      const DeepCollectionEquality().hash(kmPrice) ^
-      runtimeType.hashCode;
-}
-
-extension $BookingBillingPriceResponseExtension on BookingBillingPriceResponse {
-  BookingBillingPriceResponse copyWith(
-      {BookingBillingPrice? bookingBillingPrice,
-      double? dayPrice,
-      double? hourPrice,
-      double? kmPrice}) {
-    return BookingBillingPriceResponse(
-        bookingBillingPrice: bookingBillingPrice ?? this.bookingBillingPrice,
-        dayPrice: dayPrice ?? this.dayPrice,
-        hourPrice: hourPrice ?? this.hourPrice,
-        kmPrice: kmPrice ?? this.kmPrice);
-  }
-
-  BookingBillingPriceResponse copyWithWrapped(
-      {Wrapped<BookingBillingPrice>? bookingBillingPrice,
-      Wrapped<double>? dayPrice,
-      Wrapped<double>? hourPrice,
-      Wrapped<double>? kmPrice}) {
-    return BookingBillingPriceResponse(
-        bookingBillingPrice: (bookingBillingPrice != null
-            ? bookingBillingPrice.value
-            : this.bookingBillingPrice),
-        dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
-        hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
-        kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice));
   }
 }
 
@@ -4722,6 +4450,127 @@ extension $CreateClientExtension on CreateClient {
 }
 
 @JsonSerializable(explicitToJson: true)
+class CreateIssueRequest {
+  const CreateIssueRequest({
+    this.assignedToRemoteId,
+    this.bookingId,
+    this.description,
+    this.priority,
+    required this.title,
+    this.userRemoteId,
+    this.vehicleId,
+  });
+
+  factory CreateIssueRequest.fromJson(Map<String, dynamic> json) =>
+      _$CreateIssueRequestFromJson(json);
+
+  static const toJsonFactory = _$CreateIssueRequestToJson;
+  Map<String, dynamic> toJson() => _$CreateIssueRequestToJson(this);
+
+  @JsonKey(name: 'assignedToRemoteId')
+  final String? assignedToRemoteId;
+  @JsonKey(name: 'bookingId')
+  final String? bookingId;
+  @JsonKey(name: 'description')
+  final String? description;
+  @JsonKey(
+    name: 'priority',
+    toJson: createIssueRequestPriorityNullableToJson,
+    fromJson: createIssueRequestPriorityNullableFromJson,
+  )
+  final enums.CreateIssueRequestPriority? priority;
+  @JsonKey(name: 'title')
+  final String title;
+  @JsonKey(name: 'userRemoteId')
+  final String? userRemoteId;
+  @JsonKey(name: 'vehicleId')
+  final String? vehicleId;
+  static const fromJsonFactory = _$CreateIssueRequestFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is CreateIssueRequest &&
+            (identical(other.assignedToRemoteId, assignedToRemoteId) ||
+                const DeepCollectionEquality()
+                    .equals(other.assignedToRemoteId, assignedToRemoteId)) &&
+            (identical(other.bookingId, bookingId) ||
+                const DeepCollectionEquality()
+                    .equals(other.bookingId, bookingId)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.priority, priority) ||
+                const DeepCollectionEquality()
+                    .equals(other.priority, priority)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.userRemoteId, userRemoteId) ||
+                const DeepCollectionEquality()
+                    .equals(other.userRemoteId, userRemoteId)) &&
+            (identical(other.vehicleId, vehicleId) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicleId, vehicleId)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(assignedToRemoteId) ^
+      const DeepCollectionEquality().hash(bookingId) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(priority) ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(userRemoteId) ^
+      const DeepCollectionEquality().hash(vehicleId) ^
+      runtimeType.hashCode;
+}
+
+extension $CreateIssueRequestExtension on CreateIssueRequest {
+  CreateIssueRequest copyWith(
+      {String? assignedToRemoteId,
+      String? bookingId,
+      String? description,
+      enums.CreateIssueRequestPriority? priority,
+      String? title,
+      String? userRemoteId,
+      String? vehicleId}) {
+    return CreateIssueRequest(
+        assignedToRemoteId: assignedToRemoteId ?? this.assignedToRemoteId,
+        bookingId: bookingId ?? this.bookingId,
+        description: description ?? this.description,
+        priority: priority ?? this.priority,
+        title: title ?? this.title,
+        userRemoteId: userRemoteId ?? this.userRemoteId,
+        vehicleId: vehicleId ?? this.vehicleId);
+  }
+
+  CreateIssueRequest copyWithWrapped(
+      {Wrapped<String?>? assignedToRemoteId,
+      Wrapped<String?>? bookingId,
+      Wrapped<String?>? description,
+      Wrapped<enums.CreateIssueRequestPriority?>? priority,
+      Wrapped<String>? title,
+      Wrapped<String?>? userRemoteId,
+      Wrapped<String?>? vehicleId}) {
+    return CreateIssueRequest(
+        assignedToRemoteId: (assignedToRemoteId != null
+            ? assignedToRemoteId.value
+            : this.assignedToRemoteId),
+        bookingId: (bookingId != null ? bookingId.value : this.bookingId),
+        description:
+            (description != null ? description.value : this.description),
+        priority: (priority != null ? priority.value : this.priority),
+        title: (title != null ? title.value : this.title),
+        userRemoteId:
+            (userRemoteId != null ? userRemoteId.value : this.userRemoteId),
+        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class CreateNewUsageContractRequest {
   const CreateNewUsageContractRequest({
     this.commitmentAmountInclVat,
@@ -6577,147 +6426,6 @@ extension $GpsLocationExtension on GpsLocation {
 }
 
 @JsonSerializable(explicitToJson: true)
-class HomeFeedCard {
-  const HomeFeedCard({
-    this.date,
-    this.fullBooking,
-    this.type,
-    this.vehicle,
-    this.vehicleUsage,
-  });
-
-  factory HomeFeedCard.fromJson(Map<String, dynamic> json) =>
-      _$HomeFeedCardFromJson(json);
-
-  static const toJsonFactory = _$HomeFeedCardToJson;
-  Map<String, dynamic> toJson() => _$HomeFeedCardToJson(this);
-
-  @JsonKey(name: 'date')
-  final DateTime? date;
-  @JsonKey(name: 'fullBooking')
-  final Booking? fullBooking;
-  @JsonKey(
-    name: 'type',
-    toJson: homeFeedCardTypeNullableToJson,
-    fromJson: homeFeedCardTypeNullableFromJson,
-  )
-  final enums.HomeFeedCardType? type;
-  @JsonKey(name: 'vehicle')
-  final Vehicle? vehicle;
-  @JsonKey(name: 'vehicleUsage')
-  final VehicleUsageReference? vehicleUsage;
-  static const fromJsonFactory = _$HomeFeedCardFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is HomeFeedCard &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.fullBooking, fullBooking) ||
-                const DeepCollectionEquality()
-                    .equals(other.fullBooking, fullBooking)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.vehicle, vehicle) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicle, vehicle)) &&
-            (identical(other.vehicleUsage, vehicleUsage) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleUsage, vehicleUsage)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(fullBooking) ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(vehicle) ^
-      const DeepCollectionEquality().hash(vehicleUsage) ^
-      runtimeType.hashCode;
-}
-
-extension $HomeFeedCardExtension on HomeFeedCard {
-  HomeFeedCard copyWith(
-      {DateTime? date,
-      Booking? fullBooking,
-      enums.HomeFeedCardType? type,
-      Vehicle? vehicle,
-      VehicleUsageReference? vehicleUsage}) {
-    return HomeFeedCard(
-        date: date ?? this.date,
-        fullBooking: fullBooking ?? this.fullBooking,
-        type: type ?? this.type,
-        vehicle: vehicle ?? this.vehicle,
-        vehicleUsage: vehicleUsage ?? this.vehicleUsage);
-  }
-
-  HomeFeedCard copyWithWrapped(
-      {Wrapped<DateTime?>? date,
-      Wrapped<Booking?>? fullBooking,
-      Wrapped<enums.HomeFeedCardType?>? type,
-      Wrapped<Vehicle?>? vehicle,
-      Wrapped<VehicleUsageReference?>? vehicleUsage}) {
-    return HomeFeedCard(
-        date: (date != null ? date.value : this.date),
-        fullBooking:
-            (fullBooking != null ? fullBooking.value : this.fullBooking),
-        type: (type != null ? type.value : this.type),
-        vehicle: (vehicle != null ? vehicle.value : this.vehicle),
-        vehicleUsage:
-            (vehicleUsage != null ? vehicleUsage.value : this.vehicleUsage));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class HomeFeedPage {
-  const HomeFeedPage({
-    this.homeFeedCards,
-  });
-
-  factory HomeFeedPage.fromJson(Map<String, dynamic> json) =>
-      _$HomeFeedPageFromJson(json);
-
-  static const toJsonFactory = _$HomeFeedPageToJson;
-  Map<String, dynamic> toJson() => _$HomeFeedPageToJson(this);
-
-  @JsonKey(name: 'homeFeedCards', defaultValue: <HomeFeedCard>[])
-  final List<HomeFeedCard>? homeFeedCards;
-  static const fromJsonFactory = _$HomeFeedPageFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is HomeFeedPage &&
-            (identical(other.homeFeedCards, homeFeedCards) ||
-                const DeepCollectionEquality()
-                    .equals(other.homeFeedCards, homeFeedCards)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(homeFeedCards) ^ runtimeType.hashCode;
-}
-
-extension $HomeFeedPageExtension on HomeFeedPage {
-  HomeFeedPage copyWith({List<HomeFeedCard>? homeFeedCards}) {
-    return HomeFeedPage(homeFeedCards: homeFeedCards ?? this.homeFeedCards);
-  }
-
-  HomeFeedPage copyWithWrapped({Wrapped<List<HomeFeedCard>?>? homeFeedCards}) {
-    return HomeFeedPage(
-        homeFeedCards:
-            (homeFeedCards != null ? homeFeedCards.value : this.homeFeedCards));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
 class Invoice {
   const Invoice({
     this.amount,
@@ -6896,6 +6604,353 @@ extension $InvoiceResponseExtension on InvoiceResponse {
   InvoiceResponse copyWithWrapped({Wrapped<List<Invoice>?>? invoices}) {
     return InvoiceResponse(
         invoices: (invoices != null ? invoices.value : this.invoices));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class Issue {
+  const Issue({
+    this.actions,
+    this.assignedTo,
+    this.booking,
+    this.createdBy,
+    this.dateCreated,
+    this.description,
+    this.lastUpdated,
+    this.number,
+    this.priority,
+    this.status,
+    this.title,
+    this.user,
+    this.vehicle,
+  });
+
+  factory Issue.fromJson(Map<String, dynamic> json) => _$IssueFromJson(json);
+
+  static const toJsonFactory = _$IssueToJson;
+  Map<String, dynamic> toJson() => _$IssueToJson(this);
+
+  @JsonKey(name: 'actions', defaultValue: <IssueAction>[])
+  final List<IssueAction>? actions;
+  @JsonKey(name: 'assignedTo')
+  final User? assignedTo;
+  @JsonKey(name: 'booking')
+  final Booking? booking;
+  @JsonKey(name: 'createdBy')
+  final User? createdBy;
+  @JsonKey(name: 'dateCreated')
+  final DateTime? dateCreated;
+  @JsonKey(name: 'description')
+  final String? description;
+  @JsonKey(name: 'lastUpdated')
+  final DateTime? lastUpdated;
+  @JsonKey(name: 'number')
+  final int? number;
+  @JsonKey(
+    name: 'priority',
+    toJson: issuePriorityNullableToJson,
+    fromJson: issuePriorityNullableFromJson,
+  )
+  final enums.IssuePriority? priority;
+  @JsonKey(
+    name: 'status',
+    toJson: issueStatusNullableToJson,
+    fromJson: issueStatusNullableFromJson,
+  )
+  final enums.IssueStatus? status;
+  @JsonKey(name: 'title')
+  final String? title;
+  @JsonKey(name: 'user')
+  final User? user;
+  @JsonKey(name: 'vehicle')
+  final Vehicle? vehicle;
+  static const fromJsonFactory = _$IssueFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is Issue &&
+            (identical(other.actions, actions) ||
+                const DeepCollectionEquality()
+                    .equals(other.actions, actions)) &&
+            (identical(other.assignedTo, assignedTo) ||
+                const DeepCollectionEquality()
+                    .equals(other.assignedTo, assignedTo)) &&
+            (identical(other.booking, booking) ||
+                const DeepCollectionEquality()
+                    .equals(other.booking, booking)) &&
+            (identical(other.createdBy, createdBy) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdBy, createdBy)) &&
+            (identical(other.dateCreated, dateCreated) ||
+                const DeepCollectionEquality()
+                    .equals(other.dateCreated, dateCreated)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastUpdated, lastUpdated)) &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)) &&
+            (identical(other.priority, priority) ||
+                const DeepCollectionEquality()
+                    .equals(other.priority, priority)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)) &&
+            (identical(other.vehicle, vehicle) ||
+                const DeepCollectionEquality().equals(other.vehicle, vehicle)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(actions) ^
+      const DeepCollectionEquality().hash(assignedTo) ^
+      const DeepCollectionEquality().hash(booking) ^
+      const DeepCollectionEquality().hash(createdBy) ^
+      const DeepCollectionEquality().hash(dateCreated) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(lastUpdated) ^
+      const DeepCollectionEquality().hash(number) ^
+      const DeepCollectionEquality().hash(priority) ^
+      const DeepCollectionEquality().hash(status) ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(user) ^
+      const DeepCollectionEquality().hash(vehicle) ^
+      runtimeType.hashCode;
+}
+
+extension $IssueExtension on Issue {
+  Issue copyWith(
+      {List<IssueAction>? actions,
+      User? assignedTo,
+      Booking? booking,
+      User? createdBy,
+      DateTime? dateCreated,
+      String? description,
+      DateTime? lastUpdated,
+      int? number,
+      enums.IssuePriority? priority,
+      enums.IssueStatus? status,
+      String? title,
+      User? user,
+      Vehicle? vehicle}) {
+    return Issue(
+        actions: actions ?? this.actions,
+        assignedTo: assignedTo ?? this.assignedTo,
+        booking: booking ?? this.booking,
+        createdBy: createdBy ?? this.createdBy,
+        dateCreated: dateCreated ?? this.dateCreated,
+        description: description ?? this.description,
+        lastUpdated: lastUpdated ?? this.lastUpdated,
+        number: number ?? this.number,
+        priority: priority ?? this.priority,
+        status: status ?? this.status,
+        title: title ?? this.title,
+        user: user ?? this.user,
+        vehicle: vehicle ?? this.vehicle);
+  }
+
+  Issue copyWithWrapped(
+      {Wrapped<List<IssueAction>?>? actions,
+      Wrapped<User?>? assignedTo,
+      Wrapped<Booking?>? booking,
+      Wrapped<User?>? createdBy,
+      Wrapped<DateTime?>? dateCreated,
+      Wrapped<String?>? description,
+      Wrapped<DateTime?>? lastUpdated,
+      Wrapped<int?>? number,
+      Wrapped<enums.IssuePriority?>? priority,
+      Wrapped<enums.IssueStatus?>? status,
+      Wrapped<String?>? title,
+      Wrapped<User?>? user,
+      Wrapped<Vehicle?>? vehicle}) {
+    return Issue(
+        actions: (actions != null ? actions.value : this.actions),
+        assignedTo: (assignedTo != null ? assignedTo.value : this.assignedTo),
+        booking: (booking != null ? booking.value : this.booking),
+        createdBy: (createdBy != null ? createdBy.value : this.createdBy),
+        dateCreated:
+            (dateCreated != null ? dateCreated.value : this.dateCreated),
+        description:
+            (description != null ? description.value : this.description),
+        lastUpdated:
+            (lastUpdated != null ? lastUpdated.value : this.lastUpdated),
+        number: (number != null ? number.value : this.number),
+        priority: (priority != null ? priority.value : this.priority),
+        status: (status != null ? status.value : this.status),
+        title: (title != null ? title.value : this.title),
+        user: (user != null ? user.value : this.user),
+        vehicle: (vehicle != null ? vehicle.value : this.vehicle));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class IssueAction {
+  const IssueAction({
+    this.assignedTo,
+    this.comment,
+    this.dateCreated,
+    this.priority,
+    this.status,
+    this.title,
+    this.user,
+  });
+
+  factory IssueAction.fromJson(Map<String, dynamic> json) =>
+      _$IssueActionFromJson(json);
+
+  static const toJsonFactory = _$IssueActionToJson;
+  Map<String, dynamic> toJson() => _$IssueActionToJson(this);
+
+  @JsonKey(name: 'assignedTo')
+  final User? assignedTo;
+  @JsonKey(name: 'comment')
+  final String? comment;
+  @JsonKey(name: 'dateCreated')
+  final DateTime? dateCreated;
+  @JsonKey(
+    name: 'priority',
+    toJson: issueActionPriorityNullableToJson,
+    fromJson: issueActionPriorityNullableFromJson,
+  )
+  final enums.IssueActionPriority? priority;
+  @JsonKey(
+    name: 'status',
+    toJson: issueActionStatusNullableToJson,
+    fromJson: issueActionStatusNullableFromJson,
+  )
+  final enums.IssueActionStatus? status;
+  @JsonKey(name: 'title')
+  final String? title;
+  @JsonKey(name: 'user')
+  final User? user;
+  static const fromJsonFactory = _$IssueActionFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is IssueAction &&
+            (identical(other.assignedTo, assignedTo) ||
+                const DeepCollectionEquality()
+                    .equals(other.assignedTo, assignedTo)) &&
+            (identical(other.comment, comment) ||
+                const DeepCollectionEquality()
+                    .equals(other.comment, comment)) &&
+            (identical(other.dateCreated, dateCreated) ||
+                const DeepCollectionEquality()
+                    .equals(other.dateCreated, dateCreated)) &&
+            (identical(other.priority, priority) ||
+                const DeepCollectionEquality()
+                    .equals(other.priority, priority)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(assignedTo) ^
+      const DeepCollectionEquality().hash(comment) ^
+      const DeepCollectionEquality().hash(dateCreated) ^
+      const DeepCollectionEquality().hash(priority) ^
+      const DeepCollectionEquality().hash(status) ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(user) ^
+      runtimeType.hashCode;
+}
+
+extension $IssueActionExtension on IssueAction {
+  IssueAction copyWith(
+      {User? assignedTo,
+      String? comment,
+      DateTime? dateCreated,
+      enums.IssueActionPriority? priority,
+      enums.IssueActionStatus? status,
+      String? title,
+      User? user}) {
+    return IssueAction(
+        assignedTo: assignedTo ?? this.assignedTo,
+        comment: comment ?? this.comment,
+        dateCreated: dateCreated ?? this.dateCreated,
+        priority: priority ?? this.priority,
+        status: status ?? this.status,
+        title: title ?? this.title,
+        user: user ?? this.user);
+  }
+
+  IssueAction copyWithWrapped(
+      {Wrapped<User?>? assignedTo,
+      Wrapped<String?>? comment,
+      Wrapped<DateTime?>? dateCreated,
+      Wrapped<enums.IssueActionPriority?>? priority,
+      Wrapped<enums.IssueActionStatus?>? status,
+      Wrapped<String?>? title,
+      Wrapped<User?>? user}) {
+    return IssueAction(
+        assignedTo: (assignedTo != null ? assignedTo.value : this.assignedTo),
+        comment: (comment != null ? comment.value : this.comment),
+        dateCreated:
+            (dateCreated != null ? dateCreated.value : this.dateCreated),
+        priority: (priority != null ? priority.value : this.priority),
+        status: (status != null ? status.value : this.status),
+        title: (title != null ? title.value : this.title),
+        user: (user != null ? user.value : this.user));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class IssuePage {
+  const IssuePage({
+    this.issues,
+  });
+
+  factory IssuePage.fromJson(Map<String, dynamic> json) =>
+      _$IssuePageFromJson(json);
+
+  static const toJsonFactory = _$IssuePageToJson;
+  Map<String, dynamic> toJson() => _$IssuePageToJson(this);
+
+  @JsonKey(name: 'issues', defaultValue: <Issue>[])
+  final List<Issue>? issues;
+  static const fromJsonFactory = _$IssuePageFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is IssuePage &&
+            (identical(other.issues, issues) ||
+                const DeepCollectionEquality().equals(other.issues, issues)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(issues) ^ runtimeType.hashCode;
+}
+
+extension $IssuePageExtension on IssuePage {
+  IssuePage copyWith({List<Issue>? issues}) {
+    return IssuePage(issues: issues ?? this.issues);
+  }
+
+  IssuePage copyWithWrapped({Wrapped<List<Issue>?>? issues}) {
+    return IssuePage(issues: (issues != null ? issues.value : this.issues));
   }
 }
 
@@ -8732,6 +8787,208 @@ extension $SearchClientContractsRequestExtension
 }
 
 @JsonSerializable(explicitToJson: true)
+class SearchIssuesRequest {
+  const SearchIssuesRequest({
+    this.assignedToRemoteId,
+    this.bookingId,
+    this.createdAfter,
+    this.max,
+    this.number,
+    this.offset,
+    this.order,
+    this.priorities,
+    this.sort,
+    this.statuses,
+    this.title,
+    this.updatedAfter,
+    this.userRemoteId,
+    this.vehicleId,
+  });
+
+  factory SearchIssuesRequest.fromJson(Map<String, dynamic> json) =>
+      _$SearchIssuesRequestFromJson(json);
+
+  static const toJsonFactory = _$SearchIssuesRequestToJson;
+  Map<String, dynamic> toJson() => _$SearchIssuesRequestToJson(this);
+
+  @JsonKey(name: 'assignedToRemoteId')
+  final String? assignedToRemoteId;
+  @JsonKey(name: 'bookingId')
+  final String? bookingId;
+  @JsonKey(name: 'createdAfter')
+  final DateTime? createdAfter;
+  @JsonKey(name: 'max')
+  final int? max;
+  @JsonKey(name: 'number')
+  final int? number;
+  @JsonKey(name: 'offset')
+  final int? offset;
+  @JsonKey(
+    name: 'order',
+    toJson: searchIssuesRequestOrderNullableToJson,
+    fromJson: searchIssuesRequestOrderNullableFromJson,
+  )
+  final enums.SearchIssuesRequestOrder? order;
+  @JsonKey(
+    name: 'priorities',
+    toJson: searchIssuesRequestPrioritiesListToJson,
+    fromJson: searchIssuesRequestPrioritiesListFromJson,
+  )
+  final List<enums.SearchIssuesRequestPriorities>? priorities;
+  @JsonKey(name: 'sort')
+  final String? sort;
+  @JsonKey(
+    name: 'statuses',
+    toJson: searchIssuesRequestStatusesListToJson,
+    fromJson: searchIssuesRequestStatusesListFromJson,
+  )
+  final List<enums.SearchIssuesRequestStatuses>? statuses;
+  @JsonKey(name: 'title')
+  final String? title;
+  @JsonKey(name: 'updatedAfter')
+  final DateTime? updatedAfter;
+  @JsonKey(name: 'userRemoteId')
+  final String? userRemoteId;
+  @JsonKey(name: 'vehicleId')
+  final String? vehicleId;
+  static const fromJsonFactory = _$SearchIssuesRequestFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is SearchIssuesRequest &&
+            (identical(other.assignedToRemoteId, assignedToRemoteId) ||
+                const DeepCollectionEquality()
+                    .equals(other.assignedToRemoteId, assignedToRemoteId)) &&
+            (identical(other.bookingId, bookingId) ||
+                const DeepCollectionEquality()
+                    .equals(other.bookingId, bookingId)) &&
+            (identical(other.createdAfter, createdAfter) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdAfter, createdAfter)) &&
+            (identical(other.max, max) ||
+                const DeepCollectionEquality().equals(other.max, max)) &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)) &&
+            (identical(other.offset, offset) ||
+                const DeepCollectionEquality().equals(other.offset, offset)) &&
+            (identical(other.order, order) ||
+                const DeepCollectionEquality().equals(other.order, order)) &&
+            (identical(other.priorities, priorities) ||
+                const DeepCollectionEquality()
+                    .equals(other.priorities, priorities)) &&
+            (identical(other.sort, sort) ||
+                const DeepCollectionEquality().equals(other.sort, sort)) &&
+            (identical(other.statuses, statuses) ||
+                const DeepCollectionEquality()
+                    .equals(other.statuses, statuses)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.updatedAfter, updatedAfter) ||
+                const DeepCollectionEquality()
+                    .equals(other.updatedAfter, updatedAfter)) &&
+            (identical(other.userRemoteId, userRemoteId) ||
+                const DeepCollectionEquality()
+                    .equals(other.userRemoteId, userRemoteId)) &&
+            (identical(other.vehicleId, vehicleId) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicleId, vehicleId)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(assignedToRemoteId) ^
+      const DeepCollectionEquality().hash(bookingId) ^
+      const DeepCollectionEquality().hash(createdAfter) ^
+      const DeepCollectionEquality().hash(max) ^
+      const DeepCollectionEquality().hash(number) ^
+      const DeepCollectionEquality().hash(offset) ^
+      const DeepCollectionEquality().hash(order) ^
+      const DeepCollectionEquality().hash(priorities) ^
+      const DeepCollectionEquality().hash(sort) ^
+      const DeepCollectionEquality().hash(statuses) ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(updatedAfter) ^
+      const DeepCollectionEquality().hash(userRemoteId) ^
+      const DeepCollectionEquality().hash(vehicleId) ^
+      runtimeType.hashCode;
+}
+
+extension $SearchIssuesRequestExtension on SearchIssuesRequest {
+  SearchIssuesRequest copyWith(
+      {String? assignedToRemoteId,
+      String? bookingId,
+      DateTime? createdAfter,
+      int? max,
+      int? number,
+      int? offset,
+      enums.SearchIssuesRequestOrder? order,
+      List<enums.SearchIssuesRequestPriorities>? priorities,
+      String? sort,
+      List<enums.SearchIssuesRequestStatuses>? statuses,
+      String? title,
+      DateTime? updatedAfter,
+      String? userRemoteId,
+      String? vehicleId}) {
+    return SearchIssuesRequest(
+        assignedToRemoteId: assignedToRemoteId ?? this.assignedToRemoteId,
+        bookingId: bookingId ?? this.bookingId,
+        createdAfter: createdAfter ?? this.createdAfter,
+        max: max ?? this.max,
+        number: number ?? this.number,
+        offset: offset ?? this.offset,
+        order: order ?? this.order,
+        priorities: priorities ?? this.priorities,
+        sort: sort ?? this.sort,
+        statuses: statuses ?? this.statuses,
+        title: title ?? this.title,
+        updatedAfter: updatedAfter ?? this.updatedAfter,
+        userRemoteId: userRemoteId ?? this.userRemoteId,
+        vehicleId: vehicleId ?? this.vehicleId);
+  }
+
+  SearchIssuesRequest copyWithWrapped(
+      {Wrapped<String?>? assignedToRemoteId,
+      Wrapped<String?>? bookingId,
+      Wrapped<DateTime?>? createdAfter,
+      Wrapped<int?>? max,
+      Wrapped<int?>? number,
+      Wrapped<int?>? offset,
+      Wrapped<enums.SearchIssuesRequestOrder?>? order,
+      Wrapped<List<enums.SearchIssuesRequestPriorities>?>? priorities,
+      Wrapped<String?>? sort,
+      Wrapped<List<enums.SearchIssuesRequestStatuses>?>? statuses,
+      Wrapped<String?>? title,
+      Wrapped<DateTime?>? updatedAfter,
+      Wrapped<String?>? userRemoteId,
+      Wrapped<String?>? vehicleId}) {
+    return SearchIssuesRequest(
+        assignedToRemoteId: (assignedToRemoteId != null
+            ? assignedToRemoteId.value
+            : this.assignedToRemoteId),
+        bookingId: (bookingId != null ? bookingId.value : this.bookingId),
+        createdAfter:
+            (createdAfter != null ? createdAfter.value : this.createdAfter),
+        max: (max != null ? max.value : this.max),
+        number: (number != null ? number.value : this.number),
+        offset: (offset != null ? offset.value : this.offset),
+        order: (order != null ? order.value : this.order),
+        priorities: (priorities != null ? priorities.value : this.priorities),
+        sort: (sort != null ? sort.value : this.sort),
+        statuses: (statuses != null ? statuses.value : this.statuses),
+        title: (title != null ? title.value : this.title),
+        updatedAfter:
+            (updatedAfter != null ? updatedAfter.value : this.updatedAfter),
+        userRemoteId:
+            (userRemoteId != null ? userRemoteId.value : this.userRemoteId),
+        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class SearchNonAvailabilityEventsRequest {
   const SearchNonAvailabilityEventsRequest({
     this.period,
@@ -10540,6 +10797,152 @@ extension $UpdateClientExtension on UpdateClient {
         suspendedReason: (suspendedReason != null
             ? suspendedReason.value
             : this.suspendedReason));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class UpdateIssueRequest {
+  const UpdateIssueRequest({
+    this.assignedToRemoteId,
+    this.bookingId,
+    this.comment,
+    this.description,
+    this.priority,
+    this.status,
+    this.title,
+    this.userRemoteId,
+    this.vehicleId,
+  });
+
+  factory UpdateIssueRequest.fromJson(Map<String, dynamic> json) =>
+      _$UpdateIssueRequestFromJson(json);
+
+  static const toJsonFactory = _$UpdateIssueRequestToJson;
+  Map<String, dynamic> toJson() => _$UpdateIssueRequestToJson(this);
+
+  @JsonKey(name: 'assignedToRemoteId')
+  final String? assignedToRemoteId;
+  @JsonKey(name: 'bookingId')
+  final String? bookingId;
+  @JsonKey(name: 'comment')
+  final String? comment;
+  @JsonKey(name: 'description')
+  final String? description;
+  @JsonKey(
+    name: 'priority',
+    toJson: updateIssueRequestPriorityNullableToJson,
+    fromJson: updateIssueRequestPriorityNullableFromJson,
+  )
+  final enums.UpdateIssueRequestPriority? priority;
+  @JsonKey(
+    name: 'status',
+    toJson: updateIssueRequestStatusNullableToJson,
+    fromJson: updateIssueRequestStatusNullableFromJson,
+  )
+  final enums.UpdateIssueRequestStatus? status;
+  @JsonKey(name: 'title')
+  final String? title;
+  @JsonKey(name: 'userRemoteId')
+  final String? userRemoteId;
+  @JsonKey(name: 'vehicleId')
+  final String? vehicleId;
+  static const fromJsonFactory = _$UpdateIssueRequestFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is UpdateIssueRequest &&
+            (identical(other.assignedToRemoteId, assignedToRemoteId) ||
+                const DeepCollectionEquality()
+                    .equals(other.assignedToRemoteId, assignedToRemoteId)) &&
+            (identical(other.bookingId, bookingId) ||
+                const DeepCollectionEquality()
+                    .equals(other.bookingId, bookingId)) &&
+            (identical(other.comment, comment) ||
+                const DeepCollectionEquality()
+                    .equals(other.comment, comment)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.priority, priority) ||
+                const DeepCollectionEquality()
+                    .equals(other.priority, priority)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.userRemoteId, userRemoteId) ||
+                const DeepCollectionEquality()
+                    .equals(other.userRemoteId, userRemoteId)) &&
+            (identical(other.vehicleId, vehicleId) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicleId, vehicleId)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(assignedToRemoteId) ^
+      const DeepCollectionEquality().hash(bookingId) ^
+      const DeepCollectionEquality().hash(comment) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(priority) ^
+      const DeepCollectionEquality().hash(status) ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(userRemoteId) ^
+      const DeepCollectionEquality().hash(vehicleId) ^
+      runtimeType.hashCode;
+}
+
+extension $UpdateIssueRequestExtension on UpdateIssueRequest {
+  UpdateIssueRequest copyWith(
+      {String? assignedToRemoteId,
+      String? bookingId,
+      String? comment,
+      String? description,
+      enums.UpdateIssueRequestPriority? priority,
+      enums.UpdateIssueRequestStatus? status,
+      String? title,
+      String? userRemoteId,
+      String? vehicleId}) {
+    return UpdateIssueRequest(
+        assignedToRemoteId: assignedToRemoteId ?? this.assignedToRemoteId,
+        bookingId: bookingId ?? this.bookingId,
+        comment: comment ?? this.comment,
+        description: description ?? this.description,
+        priority: priority ?? this.priority,
+        status: status ?? this.status,
+        title: title ?? this.title,
+        userRemoteId: userRemoteId ?? this.userRemoteId,
+        vehicleId: vehicleId ?? this.vehicleId);
+  }
+
+  UpdateIssueRequest copyWithWrapped(
+      {Wrapped<String?>? assignedToRemoteId,
+      Wrapped<String?>? bookingId,
+      Wrapped<String?>? comment,
+      Wrapped<String?>? description,
+      Wrapped<enums.UpdateIssueRequestPriority?>? priority,
+      Wrapped<enums.UpdateIssueRequestStatus?>? status,
+      Wrapped<String?>? title,
+      Wrapped<String?>? userRemoteId,
+      Wrapped<String?>? vehicleId}) {
+    return UpdateIssueRequest(
+        assignedToRemoteId: (assignedToRemoteId != null
+            ? assignedToRemoteId.value
+            : this.assignedToRemoteId),
+        bookingId: (bookingId != null ? bookingId.value : this.bookingId),
+        comment: (comment != null ? comment.value : this.comment),
+        description:
+            (description != null ? description.value : this.description),
+        priority: (priority != null ? priority.value : this.priority),
+        status: (status != null ? status.value : this.status),
+        title: (title != null ? title.value : this.title),
+        userRemoteId:
+            (userRemoteId != null ? userRemoteId.value : this.userRemoteId),
+        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
   }
 }
 
@@ -13127,89 +13530,6 @@ extension $VehicleUsagePageExtension on VehicleUsagePage {
 }
 
 @JsonSerializable(explicitToJson: true)
-class VehicleUsageReference {
-  const VehicleUsageReference({
-    this.id,
-    this.period,
-    this.status,
-    this.statusMessage,
-  });
-
-  factory VehicleUsageReference.fromJson(Map<String, dynamic> json) =>
-      _$VehicleUsageReferenceFromJson(json);
-
-  static const toJsonFactory = _$VehicleUsageReferenceToJson;
-  Map<String, dynamic> toJson() => _$VehicleUsageReferenceToJson(this);
-
-  @JsonKey(name: 'id')
-  final String? id;
-  @JsonKey(name: 'period')
-  final Period? period;
-  @JsonKey(
-    name: 'status',
-    toJson: vehicleUsageReferenceStatusNullableToJson,
-    fromJson: vehicleUsageReferenceStatusNullableFromJson,
-  )
-  final enums.VehicleUsageReferenceStatus? status;
-  @JsonKey(name: 'statusMessage')
-  final String? statusMessage;
-  static const fromJsonFactory = _$VehicleUsageReferenceFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is VehicleUsageReference &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.period, period) ||
-                const DeepCollectionEquality().equals(other.period, period)) &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)) &&
-            (identical(other.statusMessage, statusMessage) ||
-                const DeepCollectionEquality()
-                    .equals(other.statusMessage, statusMessage)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(period) ^
-      const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(statusMessage) ^
-      runtimeType.hashCode;
-}
-
-extension $VehicleUsageReferenceExtension on VehicleUsageReference {
-  VehicleUsageReference copyWith(
-      {String? id,
-      Period? period,
-      enums.VehicleUsageReferenceStatus? status,
-      String? statusMessage}) {
-    return VehicleUsageReference(
-        id: id ?? this.id,
-        period: period ?? this.period,
-        status: status ?? this.status,
-        statusMessage: statusMessage ?? this.statusMessage);
-  }
-
-  VehicleUsageReference copyWithWrapped(
-      {Wrapped<String?>? id,
-      Wrapped<Period?>? period,
-      Wrapped<enums.VehicleUsageReferenceStatus?>? status,
-      Wrapped<String?>? statusMessage}) {
-    return VehicleUsageReference(
-        id: (id != null ? id.value : this.id),
-        period: (period != null ? period.value : this.period),
-        status: (status != null ? status.value : this.status),
-        statusMessage:
-            (statusMessage != null ? statusMessage.value : this.statusMessage));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
 class VehicleUsageUpdateStatusRequest {
   const VehicleUsageUpdateStatusRequest({
     this.mileage,
@@ -14479,6 +14799,79 @@ List<enums.CommitmentChangeOption>? commitmentChangeOptionNullableListFromJson(
       .toList();
 }
 
+String? createIssueRequestPriorityNullableToJson(
+    enums.CreateIssueRequestPriority? createIssueRequestPriority) {
+  return createIssueRequestPriority?.value;
+}
+
+String? createIssueRequestPriorityToJson(
+    enums.CreateIssueRequestPriority createIssueRequestPriority) {
+  return createIssueRequestPriority.value;
+}
+
+enums.CreateIssueRequestPriority createIssueRequestPriorityFromJson(
+  Object? createIssueRequestPriority, [
+  enums.CreateIssueRequestPriority? defaultValue,
+]) {
+  return enums.CreateIssueRequestPriority.values
+          .firstWhereOrNull((e) => e.value == createIssueRequestPriority) ??
+      defaultValue ??
+      enums.CreateIssueRequestPriority.swaggerGeneratedUnknown;
+}
+
+enums.CreateIssueRequestPriority? createIssueRequestPriorityNullableFromJson(
+  Object? createIssueRequestPriority, [
+  enums.CreateIssueRequestPriority? defaultValue,
+]) {
+  if (createIssueRequestPriority == null) {
+    return null;
+  }
+  return enums.CreateIssueRequestPriority.values
+          .firstWhereOrNull((e) => e.value == createIssueRequestPriority) ??
+      defaultValue;
+}
+
+String createIssueRequestPriorityExplodedListToJson(
+    List<enums.CreateIssueRequestPriority>? createIssueRequestPriority) {
+  return createIssueRequestPriority?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> createIssueRequestPriorityListToJson(
+    List<enums.CreateIssueRequestPriority>? createIssueRequestPriority) {
+  if (createIssueRequestPriority == null) {
+    return [];
+  }
+
+  return createIssueRequestPriority.map((e) => e.value!).toList();
+}
+
+List<enums.CreateIssueRequestPriority> createIssueRequestPriorityListFromJson(
+  List? createIssueRequestPriority, [
+  List<enums.CreateIssueRequestPriority>? defaultValue,
+]) {
+  if (createIssueRequestPriority == null) {
+    return defaultValue ?? [];
+  }
+
+  return createIssueRequestPriority
+      .map((e) => createIssueRequestPriorityFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.CreateIssueRequestPriority>?
+    createIssueRequestPriorityNullableListFromJson(
+  List? createIssueRequestPriority, [
+  List<enums.CreateIssueRequestPriority>? defaultValue,
+]) {
+  if (createIssueRequestPriority == null) {
+    return defaultValue;
+  }
+
+  return createIssueRequestPriority
+      .map((e) => createIssueRequestPriorityFromJson(e.toString()))
+      .toList();
+}
+
 String? createVehicleContractBattMaxTypeNullableToJson(
     enums.CreateVehicleContractBattMaxType? createVehicleContractBattMaxType) {
   return createVehicleContractBattMaxType?.value;
@@ -14705,77 +15098,6 @@ List<enums.FormulaChangeOption>? formulaChangeOptionNullableListFromJson(
       .toList();
 }
 
-String? homeFeedCardTypeNullableToJson(
-    enums.HomeFeedCardType? homeFeedCardType) {
-  return homeFeedCardType?.value;
-}
-
-String? homeFeedCardTypeToJson(enums.HomeFeedCardType homeFeedCardType) {
-  return homeFeedCardType.value;
-}
-
-enums.HomeFeedCardType homeFeedCardTypeFromJson(
-  Object? homeFeedCardType, [
-  enums.HomeFeedCardType? defaultValue,
-]) {
-  return enums.HomeFeedCardType.values
-          .firstWhereOrNull((e) => e.value == homeFeedCardType) ??
-      defaultValue ??
-      enums.HomeFeedCardType.swaggerGeneratedUnknown;
-}
-
-enums.HomeFeedCardType? homeFeedCardTypeNullableFromJson(
-  Object? homeFeedCardType, [
-  enums.HomeFeedCardType? defaultValue,
-]) {
-  if (homeFeedCardType == null) {
-    return null;
-  }
-  return enums.HomeFeedCardType.values
-          .firstWhereOrNull((e) => e.value == homeFeedCardType) ??
-      defaultValue;
-}
-
-String homeFeedCardTypeExplodedListToJson(
-    List<enums.HomeFeedCardType>? homeFeedCardType) {
-  return homeFeedCardType?.map((e) => e.value!).join(',') ?? '';
-}
-
-List<String> homeFeedCardTypeListToJson(
-    List<enums.HomeFeedCardType>? homeFeedCardType) {
-  if (homeFeedCardType == null) {
-    return [];
-  }
-
-  return homeFeedCardType.map((e) => e.value!).toList();
-}
-
-List<enums.HomeFeedCardType> homeFeedCardTypeListFromJson(
-  List? homeFeedCardType, [
-  List<enums.HomeFeedCardType>? defaultValue,
-]) {
-  if (homeFeedCardType == null) {
-    return defaultValue ?? [];
-  }
-
-  return homeFeedCardType
-      .map((e) => homeFeedCardTypeFromJson(e.toString()))
-      .toList();
-}
-
-List<enums.HomeFeedCardType>? homeFeedCardTypeNullableListFromJson(
-  List? homeFeedCardType, [
-  List<enums.HomeFeedCardType>? defaultValue,
-]) {
-  if (homeFeedCardType == null) {
-    return defaultValue;
-  }
-
-  return homeFeedCardType
-      .map((e) => homeFeedCardTypeFromJson(e.toString()))
-      .toList();
-}
-
 String? invoicePaymentStatusNullableToJson(
     enums.InvoicePaymentStatus? invoicePaymentStatus) {
   return invoicePaymentStatus?.value;
@@ -14845,6 +15167,278 @@ List<enums.InvoicePaymentStatus>? invoicePaymentStatusNullableListFromJson(
 
   return invoicePaymentStatus
       .map((e) => invoicePaymentStatusFromJson(e.toString()))
+      .toList();
+}
+
+String? issuePriorityNullableToJson(enums.IssuePriority? issuePriority) {
+  return issuePriority?.value;
+}
+
+String? issuePriorityToJson(enums.IssuePriority issuePriority) {
+  return issuePriority.value;
+}
+
+enums.IssuePriority issuePriorityFromJson(
+  Object? issuePriority, [
+  enums.IssuePriority? defaultValue,
+]) {
+  return enums.IssuePriority.values
+          .firstWhereOrNull((e) => e.value == issuePriority) ??
+      defaultValue ??
+      enums.IssuePriority.swaggerGeneratedUnknown;
+}
+
+enums.IssuePriority? issuePriorityNullableFromJson(
+  Object? issuePriority, [
+  enums.IssuePriority? defaultValue,
+]) {
+  if (issuePriority == null) {
+    return null;
+  }
+  return enums.IssuePriority.values
+          .firstWhereOrNull((e) => e.value == issuePriority) ??
+      defaultValue;
+}
+
+String issuePriorityExplodedListToJson(
+    List<enums.IssuePriority>? issuePriority) {
+  return issuePriority?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> issuePriorityListToJson(List<enums.IssuePriority>? issuePriority) {
+  if (issuePriority == null) {
+    return [];
+  }
+
+  return issuePriority.map((e) => e.value!).toList();
+}
+
+List<enums.IssuePriority> issuePriorityListFromJson(
+  List? issuePriority, [
+  List<enums.IssuePriority>? defaultValue,
+]) {
+  if (issuePriority == null) {
+    return defaultValue ?? [];
+  }
+
+  return issuePriority.map((e) => issuePriorityFromJson(e.toString())).toList();
+}
+
+List<enums.IssuePriority>? issuePriorityNullableListFromJson(
+  List? issuePriority, [
+  List<enums.IssuePriority>? defaultValue,
+]) {
+  if (issuePriority == null) {
+    return defaultValue;
+  }
+
+  return issuePriority.map((e) => issuePriorityFromJson(e.toString())).toList();
+}
+
+String? issueStatusNullableToJson(enums.IssueStatus? issueStatus) {
+  return issueStatus?.value;
+}
+
+String? issueStatusToJson(enums.IssueStatus issueStatus) {
+  return issueStatus.value;
+}
+
+enums.IssueStatus issueStatusFromJson(
+  Object? issueStatus, [
+  enums.IssueStatus? defaultValue,
+]) {
+  return enums.IssueStatus.values
+          .firstWhereOrNull((e) => e.value == issueStatus) ??
+      defaultValue ??
+      enums.IssueStatus.swaggerGeneratedUnknown;
+}
+
+enums.IssueStatus? issueStatusNullableFromJson(
+  Object? issueStatus, [
+  enums.IssueStatus? defaultValue,
+]) {
+  if (issueStatus == null) {
+    return null;
+  }
+  return enums.IssueStatus.values
+          .firstWhereOrNull((e) => e.value == issueStatus) ??
+      defaultValue;
+}
+
+String issueStatusExplodedListToJson(List<enums.IssueStatus>? issueStatus) {
+  return issueStatus?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> issueStatusListToJson(List<enums.IssueStatus>? issueStatus) {
+  if (issueStatus == null) {
+    return [];
+  }
+
+  return issueStatus.map((e) => e.value!).toList();
+}
+
+List<enums.IssueStatus> issueStatusListFromJson(
+  List? issueStatus, [
+  List<enums.IssueStatus>? defaultValue,
+]) {
+  if (issueStatus == null) {
+    return defaultValue ?? [];
+  }
+
+  return issueStatus.map((e) => issueStatusFromJson(e.toString())).toList();
+}
+
+List<enums.IssueStatus>? issueStatusNullableListFromJson(
+  List? issueStatus, [
+  List<enums.IssueStatus>? defaultValue,
+]) {
+  if (issueStatus == null) {
+    return defaultValue;
+  }
+
+  return issueStatus.map((e) => issueStatusFromJson(e.toString())).toList();
+}
+
+String? issueActionPriorityNullableToJson(
+    enums.IssueActionPriority? issueActionPriority) {
+  return issueActionPriority?.value;
+}
+
+String? issueActionPriorityToJson(
+    enums.IssueActionPriority issueActionPriority) {
+  return issueActionPriority.value;
+}
+
+enums.IssueActionPriority issueActionPriorityFromJson(
+  Object? issueActionPriority, [
+  enums.IssueActionPriority? defaultValue,
+]) {
+  return enums.IssueActionPriority.values
+          .firstWhereOrNull((e) => e.value == issueActionPriority) ??
+      defaultValue ??
+      enums.IssueActionPriority.swaggerGeneratedUnknown;
+}
+
+enums.IssueActionPriority? issueActionPriorityNullableFromJson(
+  Object? issueActionPriority, [
+  enums.IssueActionPriority? defaultValue,
+]) {
+  if (issueActionPriority == null) {
+    return null;
+  }
+  return enums.IssueActionPriority.values
+          .firstWhereOrNull((e) => e.value == issueActionPriority) ??
+      defaultValue;
+}
+
+String issueActionPriorityExplodedListToJson(
+    List<enums.IssueActionPriority>? issueActionPriority) {
+  return issueActionPriority?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> issueActionPriorityListToJson(
+    List<enums.IssueActionPriority>? issueActionPriority) {
+  if (issueActionPriority == null) {
+    return [];
+  }
+
+  return issueActionPriority.map((e) => e.value!).toList();
+}
+
+List<enums.IssueActionPriority> issueActionPriorityListFromJson(
+  List? issueActionPriority, [
+  List<enums.IssueActionPriority>? defaultValue,
+]) {
+  if (issueActionPriority == null) {
+    return defaultValue ?? [];
+  }
+
+  return issueActionPriority
+      .map((e) => issueActionPriorityFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.IssueActionPriority>? issueActionPriorityNullableListFromJson(
+  List? issueActionPriority, [
+  List<enums.IssueActionPriority>? defaultValue,
+]) {
+  if (issueActionPriority == null) {
+    return defaultValue;
+  }
+
+  return issueActionPriority
+      .map((e) => issueActionPriorityFromJson(e.toString()))
+      .toList();
+}
+
+String? issueActionStatusNullableToJson(
+    enums.IssueActionStatus? issueActionStatus) {
+  return issueActionStatus?.value;
+}
+
+String? issueActionStatusToJson(enums.IssueActionStatus issueActionStatus) {
+  return issueActionStatus.value;
+}
+
+enums.IssueActionStatus issueActionStatusFromJson(
+  Object? issueActionStatus, [
+  enums.IssueActionStatus? defaultValue,
+]) {
+  return enums.IssueActionStatus.values
+          .firstWhereOrNull((e) => e.value == issueActionStatus) ??
+      defaultValue ??
+      enums.IssueActionStatus.swaggerGeneratedUnknown;
+}
+
+enums.IssueActionStatus? issueActionStatusNullableFromJson(
+  Object? issueActionStatus, [
+  enums.IssueActionStatus? defaultValue,
+]) {
+  if (issueActionStatus == null) {
+    return null;
+  }
+  return enums.IssueActionStatus.values
+          .firstWhereOrNull((e) => e.value == issueActionStatus) ??
+      defaultValue;
+}
+
+String issueActionStatusExplodedListToJson(
+    List<enums.IssueActionStatus>? issueActionStatus) {
+  return issueActionStatus?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> issueActionStatusListToJson(
+    List<enums.IssueActionStatus>? issueActionStatus) {
+  if (issueActionStatus == null) {
+    return [];
+  }
+
+  return issueActionStatus.map((e) => e.value!).toList();
+}
+
+List<enums.IssueActionStatus> issueActionStatusListFromJson(
+  List? issueActionStatus, [
+  List<enums.IssueActionStatus>? defaultValue,
+]) {
+  if (issueActionStatus == null) {
+    return defaultValue ?? [];
+  }
+
+  return issueActionStatus
+      .map((e) => issueActionStatusFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.IssueActionStatus>? issueActionStatusNullableListFromJson(
+  List? issueActionStatus, [
+  List<enums.IssueActionStatus>? defaultValue,
+]) {
+  if (issueActionStatus == null) {
+    return defaultValue;
+  }
+
+  return issueActionStatus
+      .map((e) => issueActionStatusFromJson(e.toString()))
       .toList();
 }
 
@@ -15294,6 +15888,227 @@ List<enums.SearchBookingsRequestStatuses>?
       .toList();
 }
 
+String? searchIssuesRequestOrderNullableToJson(
+    enums.SearchIssuesRequestOrder? searchIssuesRequestOrder) {
+  return searchIssuesRequestOrder?.value;
+}
+
+String? searchIssuesRequestOrderToJson(
+    enums.SearchIssuesRequestOrder searchIssuesRequestOrder) {
+  return searchIssuesRequestOrder.value;
+}
+
+enums.SearchIssuesRequestOrder searchIssuesRequestOrderFromJson(
+  Object? searchIssuesRequestOrder, [
+  enums.SearchIssuesRequestOrder? defaultValue,
+]) {
+  return enums.SearchIssuesRequestOrder.values
+          .firstWhereOrNull((e) => e.value == searchIssuesRequestOrder) ??
+      defaultValue ??
+      enums.SearchIssuesRequestOrder.swaggerGeneratedUnknown;
+}
+
+enums.SearchIssuesRequestOrder? searchIssuesRequestOrderNullableFromJson(
+  Object? searchIssuesRequestOrder, [
+  enums.SearchIssuesRequestOrder? defaultValue,
+]) {
+  if (searchIssuesRequestOrder == null) {
+    return null;
+  }
+  return enums.SearchIssuesRequestOrder.values
+          .firstWhereOrNull((e) => e.value == searchIssuesRequestOrder) ??
+      defaultValue;
+}
+
+String searchIssuesRequestOrderExplodedListToJson(
+    List<enums.SearchIssuesRequestOrder>? searchIssuesRequestOrder) {
+  return searchIssuesRequestOrder?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> searchIssuesRequestOrderListToJson(
+    List<enums.SearchIssuesRequestOrder>? searchIssuesRequestOrder) {
+  if (searchIssuesRequestOrder == null) {
+    return [];
+  }
+
+  return searchIssuesRequestOrder.map((e) => e.value!).toList();
+}
+
+List<enums.SearchIssuesRequestOrder> searchIssuesRequestOrderListFromJson(
+  List? searchIssuesRequestOrder, [
+  List<enums.SearchIssuesRequestOrder>? defaultValue,
+]) {
+  if (searchIssuesRequestOrder == null) {
+    return defaultValue ?? [];
+  }
+
+  return searchIssuesRequestOrder
+      .map((e) => searchIssuesRequestOrderFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.SearchIssuesRequestOrder>?
+    searchIssuesRequestOrderNullableListFromJson(
+  List? searchIssuesRequestOrder, [
+  List<enums.SearchIssuesRequestOrder>? defaultValue,
+]) {
+  if (searchIssuesRequestOrder == null) {
+    return defaultValue;
+  }
+
+  return searchIssuesRequestOrder
+      .map((e) => searchIssuesRequestOrderFromJson(e.toString()))
+      .toList();
+}
+
+String? searchIssuesRequestPrioritiesNullableToJson(
+    enums.SearchIssuesRequestPriorities? searchIssuesRequestPriorities) {
+  return searchIssuesRequestPriorities?.value;
+}
+
+String? searchIssuesRequestPrioritiesToJson(
+    enums.SearchIssuesRequestPriorities searchIssuesRequestPriorities) {
+  return searchIssuesRequestPriorities.value;
+}
+
+enums.SearchIssuesRequestPriorities searchIssuesRequestPrioritiesFromJson(
+  Object? searchIssuesRequestPriorities, [
+  enums.SearchIssuesRequestPriorities? defaultValue,
+]) {
+  return enums.SearchIssuesRequestPriorities.values
+          .firstWhereOrNull((e) => e.value == searchIssuesRequestPriorities) ??
+      defaultValue ??
+      enums.SearchIssuesRequestPriorities.swaggerGeneratedUnknown;
+}
+
+enums.SearchIssuesRequestPriorities?
+    searchIssuesRequestPrioritiesNullableFromJson(
+  Object? searchIssuesRequestPriorities, [
+  enums.SearchIssuesRequestPriorities? defaultValue,
+]) {
+  if (searchIssuesRequestPriorities == null) {
+    return null;
+  }
+  return enums.SearchIssuesRequestPriorities.values
+          .firstWhereOrNull((e) => e.value == searchIssuesRequestPriorities) ??
+      defaultValue;
+}
+
+String searchIssuesRequestPrioritiesExplodedListToJson(
+    List<enums.SearchIssuesRequestPriorities>? searchIssuesRequestPriorities) {
+  return searchIssuesRequestPriorities?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> searchIssuesRequestPrioritiesListToJson(
+    List<enums.SearchIssuesRequestPriorities>? searchIssuesRequestPriorities) {
+  if (searchIssuesRequestPriorities == null) {
+    return [];
+  }
+
+  return searchIssuesRequestPriorities.map((e) => e.value!).toList();
+}
+
+List<enums.SearchIssuesRequestPriorities>
+    searchIssuesRequestPrioritiesListFromJson(
+  List? searchIssuesRequestPriorities, [
+  List<enums.SearchIssuesRequestPriorities>? defaultValue,
+]) {
+  if (searchIssuesRequestPriorities == null) {
+    return defaultValue ?? [];
+  }
+
+  return searchIssuesRequestPriorities
+      .map((e) => searchIssuesRequestPrioritiesFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.SearchIssuesRequestPriorities>?
+    searchIssuesRequestPrioritiesNullableListFromJson(
+  List? searchIssuesRequestPriorities, [
+  List<enums.SearchIssuesRequestPriorities>? defaultValue,
+]) {
+  if (searchIssuesRequestPriorities == null) {
+    return defaultValue;
+  }
+
+  return searchIssuesRequestPriorities
+      .map((e) => searchIssuesRequestPrioritiesFromJson(e.toString()))
+      .toList();
+}
+
+String? searchIssuesRequestStatusesNullableToJson(
+    enums.SearchIssuesRequestStatuses? searchIssuesRequestStatuses) {
+  return searchIssuesRequestStatuses?.value;
+}
+
+String? searchIssuesRequestStatusesToJson(
+    enums.SearchIssuesRequestStatuses searchIssuesRequestStatuses) {
+  return searchIssuesRequestStatuses.value;
+}
+
+enums.SearchIssuesRequestStatuses searchIssuesRequestStatusesFromJson(
+  Object? searchIssuesRequestStatuses, [
+  enums.SearchIssuesRequestStatuses? defaultValue,
+]) {
+  return enums.SearchIssuesRequestStatuses.values
+          .firstWhereOrNull((e) => e.value == searchIssuesRequestStatuses) ??
+      defaultValue ??
+      enums.SearchIssuesRequestStatuses.swaggerGeneratedUnknown;
+}
+
+enums.SearchIssuesRequestStatuses? searchIssuesRequestStatusesNullableFromJson(
+  Object? searchIssuesRequestStatuses, [
+  enums.SearchIssuesRequestStatuses? defaultValue,
+]) {
+  if (searchIssuesRequestStatuses == null) {
+    return null;
+  }
+  return enums.SearchIssuesRequestStatuses.values
+          .firstWhereOrNull((e) => e.value == searchIssuesRequestStatuses) ??
+      defaultValue;
+}
+
+String searchIssuesRequestStatusesExplodedListToJson(
+    List<enums.SearchIssuesRequestStatuses>? searchIssuesRequestStatuses) {
+  return searchIssuesRequestStatuses?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> searchIssuesRequestStatusesListToJson(
+    List<enums.SearchIssuesRequestStatuses>? searchIssuesRequestStatuses) {
+  if (searchIssuesRequestStatuses == null) {
+    return [];
+  }
+
+  return searchIssuesRequestStatuses.map((e) => e.value!).toList();
+}
+
+List<enums.SearchIssuesRequestStatuses> searchIssuesRequestStatusesListFromJson(
+  List? searchIssuesRequestStatuses, [
+  List<enums.SearchIssuesRequestStatuses>? defaultValue,
+]) {
+  if (searchIssuesRequestStatuses == null) {
+    return defaultValue ?? [];
+  }
+
+  return searchIssuesRequestStatuses
+      .map((e) => searchIssuesRequestStatusesFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.SearchIssuesRequestStatuses>?
+    searchIssuesRequestStatusesNullableListFromJson(
+  List? searchIssuesRequestStatuses, [
+  List<enums.SearchIssuesRequestStatuses>? defaultValue,
+]) {
+  if (searchIssuesRequestStatuses == null) {
+    return defaultValue;
+  }
+
+  return searchIssuesRequestStatuses
+      .map((e) => searchIssuesRequestStatusesFromJson(e.toString()))
+      .toList();
+}
+
 String? searchTelematicsTrackingRequestEventReasonNullableToJson(
     enums.SearchTelematicsTrackingRequestEventReason?
         searchTelematicsTrackingRequestEventReason) {
@@ -15676,6 +16491,152 @@ List<enums.TerminateDayOption>? terminateDayOptionNullableListFromJson(
 
   return terminateDayOption
       .map((e) => terminateDayOptionFromJson(e.toString()))
+      .toList();
+}
+
+String? updateIssueRequestPriorityNullableToJson(
+    enums.UpdateIssueRequestPriority? updateIssueRequestPriority) {
+  return updateIssueRequestPriority?.value;
+}
+
+String? updateIssueRequestPriorityToJson(
+    enums.UpdateIssueRequestPriority updateIssueRequestPriority) {
+  return updateIssueRequestPriority.value;
+}
+
+enums.UpdateIssueRequestPriority updateIssueRequestPriorityFromJson(
+  Object? updateIssueRequestPriority, [
+  enums.UpdateIssueRequestPriority? defaultValue,
+]) {
+  return enums.UpdateIssueRequestPriority.values
+          .firstWhereOrNull((e) => e.value == updateIssueRequestPriority) ??
+      defaultValue ??
+      enums.UpdateIssueRequestPriority.swaggerGeneratedUnknown;
+}
+
+enums.UpdateIssueRequestPriority? updateIssueRequestPriorityNullableFromJson(
+  Object? updateIssueRequestPriority, [
+  enums.UpdateIssueRequestPriority? defaultValue,
+]) {
+  if (updateIssueRequestPriority == null) {
+    return null;
+  }
+  return enums.UpdateIssueRequestPriority.values
+          .firstWhereOrNull((e) => e.value == updateIssueRequestPriority) ??
+      defaultValue;
+}
+
+String updateIssueRequestPriorityExplodedListToJson(
+    List<enums.UpdateIssueRequestPriority>? updateIssueRequestPriority) {
+  return updateIssueRequestPriority?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> updateIssueRequestPriorityListToJson(
+    List<enums.UpdateIssueRequestPriority>? updateIssueRequestPriority) {
+  if (updateIssueRequestPriority == null) {
+    return [];
+  }
+
+  return updateIssueRequestPriority.map((e) => e.value!).toList();
+}
+
+List<enums.UpdateIssueRequestPriority> updateIssueRequestPriorityListFromJson(
+  List? updateIssueRequestPriority, [
+  List<enums.UpdateIssueRequestPriority>? defaultValue,
+]) {
+  if (updateIssueRequestPriority == null) {
+    return defaultValue ?? [];
+  }
+
+  return updateIssueRequestPriority
+      .map((e) => updateIssueRequestPriorityFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.UpdateIssueRequestPriority>?
+    updateIssueRequestPriorityNullableListFromJson(
+  List? updateIssueRequestPriority, [
+  List<enums.UpdateIssueRequestPriority>? defaultValue,
+]) {
+  if (updateIssueRequestPriority == null) {
+    return defaultValue;
+  }
+
+  return updateIssueRequestPriority
+      .map((e) => updateIssueRequestPriorityFromJson(e.toString()))
+      .toList();
+}
+
+String? updateIssueRequestStatusNullableToJson(
+    enums.UpdateIssueRequestStatus? updateIssueRequestStatus) {
+  return updateIssueRequestStatus?.value;
+}
+
+String? updateIssueRequestStatusToJson(
+    enums.UpdateIssueRequestStatus updateIssueRequestStatus) {
+  return updateIssueRequestStatus.value;
+}
+
+enums.UpdateIssueRequestStatus updateIssueRequestStatusFromJson(
+  Object? updateIssueRequestStatus, [
+  enums.UpdateIssueRequestStatus? defaultValue,
+]) {
+  return enums.UpdateIssueRequestStatus.values
+          .firstWhereOrNull((e) => e.value == updateIssueRequestStatus) ??
+      defaultValue ??
+      enums.UpdateIssueRequestStatus.swaggerGeneratedUnknown;
+}
+
+enums.UpdateIssueRequestStatus? updateIssueRequestStatusNullableFromJson(
+  Object? updateIssueRequestStatus, [
+  enums.UpdateIssueRequestStatus? defaultValue,
+]) {
+  if (updateIssueRequestStatus == null) {
+    return null;
+  }
+  return enums.UpdateIssueRequestStatus.values
+          .firstWhereOrNull((e) => e.value == updateIssueRequestStatus) ??
+      defaultValue;
+}
+
+String updateIssueRequestStatusExplodedListToJson(
+    List<enums.UpdateIssueRequestStatus>? updateIssueRequestStatus) {
+  return updateIssueRequestStatus?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> updateIssueRequestStatusListToJson(
+    List<enums.UpdateIssueRequestStatus>? updateIssueRequestStatus) {
+  if (updateIssueRequestStatus == null) {
+    return [];
+  }
+
+  return updateIssueRequestStatus.map((e) => e.value!).toList();
+}
+
+List<enums.UpdateIssueRequestStatus> updateIssueRequestStatusListFromJson(
+  List? updateIssueRequestStatus, [
+  List<enums.UpdateIssueRequestStatus>? defaultValue,
+]) {
+  if (updateIssueRequestStatus == null) {
+    return defaultValue ?? [];
+  }
+
+  return updateIssueRequestStatus
+      .map((e) => updateIssueRequestStatusFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.UpdateIssueRequestStatus>?
+    updateIssueRequestStatusNullableListFromJson(
+  List? updateIssueRequestStatus, [
+  List<enums.UpdateIssueRequestStatus>? defaultValue,
+]) {
+  if (updateIssueRequestStatus == null) {
+    return defaultValue;
+  }
+
+  return updateIssueRequestStatus
+      .map((e) => updateIssueRequestStatusFromJson(e.toString()))
       .toList();
 }
 
@@ -16359,79 +17320,6 @@ List<enums.VehicleUsageStatus>? vehicleUsageStatusNullableListFromJson(
 
   return vehicleUsageStatus
       .map((e) => vehicleUsageStatusFromJson(e.toString()))
-      .toList();
-}
-
-String? vehicleUsageReferenceStatusNullableToJson(
-    enums.VehicleUsageReferenceStatus? vehicleUsageReferenceStatus) {
-  return vehicleUsageReferenceStatus?.value;
-}
-
-String? vehicleUsageReferenceStatusToJson(
-    enums.VehicleUsageReferenceStatus vehicleUsageReferenceStatus) {
-  return vehicleUsageReferenceStatus.value;
-}
-
-enums.VehicleUsageReferenceStatus vehicleUsageReferenceStatusFromJson(
-  Object? vehicleUsageReferenceStatus, [
-  enums.VehicleUsageReferenceStatus? defaultValue,
-]) {
-  return enums.VehicleUsageReferenceStatus.values
-          .firstWhereOrNull((e) => e.value == vehicleUsageReferenceStatus) ??
-      defaultValue ??
-      enums.VehicleUsageReferenceStatus.swaggerGeneratedUnknown;
-}
-
-enums.VehicleUsageReferenceStatus? vehicleUsageReferenceStatusNullableFromJson(
-  Object? vehicleUsageReferenceStatus, [
-  enums.VehicleUsageReferenceStatus? defaultValue,
-]) {
-  if (vehicleUsageReferenceStatus == null) {
-    return null;
-  }
-  return enums.VehicleUsageReferenceStatus.values
-          .firstWhereOrNull((e) => e.value == vehicleUsageReferenceStatus) ??
-      defaultValue;
-}
-
-String vehicleUsageReferenceStatusExplodedListToJson(
-    List<enums.VehicleUsageReferenceStatus>? vehicleUsageReferenceStatus) {
-  return vehicleUsageReferenceStatus?.map((e) => e.value!).join(',') ?? '';
-}
-
-List<String> vehicleUsageReferenceStatusListToJson(
-    List<enums.VehicleUsageReferenceStatus>? vehicleUsageReferenceStatus) {
-  if (vehicleUsageReferenceStatus == null) {
-    return [];
-  }
-
-  return vehicleUsageReferenceStatus.map((e) => e.value!).toList();
-}
-
-List<enums.VehicleUsageReferenceStatus> vehicleUsageReferenceStatusListFromJson(
-  List? vehicleUsageReferenceStatus, [
-  List<enums.VehicleUsageReferenceStatus>? defaultValue,
-]) {
-  if (vehicleUsageReferenceStatus == null) {
-    return defaultValue ?? [];
-  }
-
-  return vehicleUsageReferenceStatus
-      .map((e) => vehicleUsageReferenceStatusFromJson(e.toString()))
-      .toList();
-}
-
-List<enums.VehicleUsageReferenceStatus>?
-    vehicleUsageReferenceStatusNullableListFromJson(
-  List? vehicleUsageReferenceStatus, [
-  List<enums.VehicleUsageReferenceStatus>? defaultValue,
-]) {
-  if (vehicleUsageReferenceStatus == null) {
-    return defaultValue;
-  }
-
-  return vehicleUsageReferenceStatus
-      .map((e) => vehicleUsageReferenceStatusFromJson(e.toString()))
       .toList();
 }
 
