@@ -168,7 +168,7 @@ BillingPriceResponse _$BillingPriceResponseFromJson(
         Map<String, dynamic> json) =>
     BillingPriceResponse(
       billingPrice:
-          BillingPrice.fromJson(json['BillingPrice'] as Map<String, dynamic>),
+          BillingPrice.fromJson(json['billingPrice'] as Map<String, dynamic>),
       dayPrice: (json['dayPrice'] as num).toDouble(),
       hourPrice: (json['hourPrice'] as num).toDouble(),
       kmPrice: (json['kmPrice'] as num).toDouble(),
@@ -177,7 +177,7 @@ BillingPriceResponse _$BillingPriceResponseFromJson(
 Map<String, dynamic> _$BillingPriceResponseToJson(
         BillingPriceResponse instance) =>
     <String, dynamic>{
-      'BillingPrice': instance.billingPrice.toJson(),
+      'billingPrice': instance.billingPrice.toJson(),
       'dayPrice': instance.dayPrice,
       'hourPrice': instance.hourPrice,
       'kmPrice': instance.kmPrice,
