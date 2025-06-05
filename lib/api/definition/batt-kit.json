@@ -198,6 +198,32 @@
         },
         "type": "object"
       },
+      "BillingPriceResponse": {
+        "properties": {
+          "BillingPrice": {
+            "$ref": "#/components/schemas/BillingPrice"
+          },
+          "dayPrice": {
+            "description": "DayPrice is the price per day (VAT included)",
+            "type": "number"
+          },
+          "hourPrice": {
+            "description": "HourPrice is the price per hour (VAT included)",
+            "type": "number"
+          },
+          "kmPrice": {
+            "description": "KmPrice is the price per kilometer (VAT included)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "BillingPrice",
+          "dayPrice",
+          "hourPrice",
+          "kmPrice"
+        ],
+        "type": "object"
+      },
       "BluetoothToken": {
         "properties": {
           "deviceId": {
@@ -342,121 +368,6 @@
             "$ref": "#/components/schemas/VehicleUsage"
           }
         },
-        "type": "object"
-      },
-      "BookingBillingPrice": {
-        "properties": {
-          "amount": {
-            "description": "Amount is deprecated and should not be used.",
-            "type": "integer"
-          },
-          "changeFromHourlyToDaily": {
-            "description": "ChangeFromHourlyToDaily is set to true if the booking was changed from hourly to daily price",
-            "type": "boolean"
-          },
-          "endDate": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "hourlyTotalNotCharged": {
-            "description": "HourlyTotalNotCharged is set to the total hour price in case the booking was changed to day price",
-            "type": "number"
-          },
-          "hourlyTotalNotChargedExclVat": {
-            "description": "HourlyTotalNotChargedExclVat is set to HourlyTotalNotCharged, but without VAT",
-            "type": "number"
-          },
-          "km": {
-            "description": "Km is the number of driven kilometers",
-            "type": "integer"
-          },
-          "kmPrice": {
-            "description": "KmPrice is the price per kilometer (VAT included)",
-            "type": "number"
-          },
-          "kmPriceExclVat": {
-            "description": "KmPriceExclVat is set to KmPrice, but without VAT",
-            "type": "number"
-          },
-          "kmTotal": {
-            "description": "KmTotal is the total price for kilometers (VAT included)",
-            "type": "number"
-          },
-          "kmTotalExclVat": {
-            "description": "KmTotalExclVat is set to KmTotal, but without VAT",
-            "type": "number"
-          },
-          "startDate": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "timeAmount": {
-            "description": "TimeAmount is the amount of time units (in hours or days, depending on the unit) used to determine the price",
-            "type": "number"
-          },
-          "timeTotal": {
-            "description": "TimeTotal is the total price based on time (VAT included)",
-            "type": "number"
-          },
-          "timeTotalExclVat": {
-            "description": "TimeTotalExclVat is set to TimeTotal, but without VAT",
-            "type": "number"
-          },
-          "total": {
-            "description": "Total is the total price (VAT included)",
-            "type": "number"
-          },
-          "totalExclVat": {
-            "description": "TotalExclVat is set to Total, but without VAT",
-            "type": "number"
-          },
-          "totalVat": {
-            "description": "TotalVat is set to the total VAT amount",
-            "type": "number"
-          },
-          "unit": {
-            "description": "Unit is the used time unit: DAYS or HOURS",
-            "type": "string"
-          },
-          "unitPrice": {
-            "description": "UnitPrice is the price per time unit (VAT included)",
-            "type": "number"
-          },
-          "unitPriceExclVat": {
-            "description": "UnitPriceExclVat is set to UnitPrice, but without VAT",
-            "type": "number"
-          },
-          "vatRate": {
-            "description": "VatRate is set to the VAT rate (1.21)",
-            "type": "number"
-          }
-        },
-        "type": "object"
-      },
-      "BookingBillingPriceResponse": {
-        "properties": {
-          "bookingBillingPrice": {
-            "$ref": "#/components/schemas/BookingBillingPrice"
-          },
-          "dayPrice": {
-            "description": "DayPrice is the price per day (VAT included)",
-            "type": "number"
-          },
-          "hourPrice": {
-            "description": "HourPrice is the price per hour (VAT included)",
-            "type": "number"
-          },
-          "kmPrice": {
-            "description": "KmPrice is the price per kilometer (VAT included)",
-            "type": "number"
-          }
-        },
-        "required": [
-          "bookingBillingPrice",
-          "dayPrice",
-          "hourPrice",
-          "kmPrice"
-        ],
         "type": "object"
       },
       "BookingPrice": {
@@ -1317,6 +1228,43 @@
         ],
         "type": "object"
       },
+      "CreateIssueRequest": {
+        "properties": {
+          "assignedToRemoteId": {
+            "type": "string"
+          },
+          "bookingId": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "priority": {
+            "enum": [
+              "P1_LOW",
+              "P2_MEDIUM",
+              "P3_HIGH",
+              "P4_CRITICAL",
+              "P5_BLOCKER"
+            ],
+            "type": "string"
+          },
+          "title": {
+            "maxLength": 255,
+            "type": "string"
+          },
+          "userRemoteId": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "type": "object"
+      },
       "CreateNewUsageContractRequest": {
         "additionalProperties": false,
         "properties": {
@@ -1831,45 +1779,6 @@
         },
         "type": "object"
       },
-      "HomeFeedCard": {
-        "properties": {
-          "date": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "fullBooking": {
-            "$ref": "#/components/schemas/Booking"
-          },
-          "type": {
-            "enum": [
-              "OVERDUE_BOOKING",
-              "ACTIVE_VEHICLE_USAGE",
-              "CANCELED_REMOTE",
-              "BOOKING_TO_APPROVE",
-              "UPCOMING_BOOKING"
-            ],
-            "type": "string"
-          },
-          "vehicle": {
-            "$ref": "#/components/schemas/Vehicle"
-          },
-          "vehicleUsage": {
-            "$ref": "#/components/schemas/VehicleUsageReference"
-          }
-        },
-        "type": "object"
-      },
-      "HomeFeedPage": {
-        "properties": {
-          "homeFeedCards": {
-            "items": {
-              "$ref": "#/components/schemas/HomeFeedCard"
-            },
-            "type": "array"
-          }
-        },
-        "type": "object"
-      },
       "Invoice": {
         "properties": {
           "amount": {
@@ -1915,6 +1824,124 @@
           "invoices": {
             "items": {
               "$ref": "#/components/schemas/Invoice"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Issue": {
+        "properties": {
+          "actions": {
+            "items": {
+              "$ref": "#/components/schemas/IssueAction"
+            },
+            "type": "array"
+          },
+          "assignedTo": {
+            "$ref": "#/components/schemas/User"
+          },
+          "booking": {
+            "$ref": "#/components/schemas/Booking"
+          },
+          "createdBy": {
+            "$ref": "#/components/schemas/User"
+          },
+          "dateCreated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "lastUpdated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "number": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "priority": {
+            "enum": [
+              "P1_LOW",
+              "P2_MEDIUM",
+              "P3_HIGH",
+              "P4_CRITICAL",
+              "P5_BLOCKER"
+            ],
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "DRAFT",
+              "CREATED",
+              "IN_PROGRESS",
+              "RESOLVED",
+              "BLOCKED",
+              "WILL_NOT_FIX"
+            ],
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "vehicle": {
+            "$ref": "#/components/schemas/Vehicle"
+          }
+        },
+        "type": "object"
+      },
+      "IssueAction": {
+        "properties": {
+          "assignedTo": {
+            "$ref": "#/components/schemas/User"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "dateCreated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "priority": {
+            "enum": [
+              "P1_LOW",
+              "P2_MEDIUM",
+              "P3_HIGH",
+              "P4_CRITICAL",
+              "P5_BLOCKER"
+            ],
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "DRAFT",
+              "CREATED",
+              "IN_PROGRESS",
+              "RESOLVED",
+              "BLOCKED",
+              "WILL_NOT_FIX"
+            ],
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "IssuePage": {
+        "properties": {
+          "issues": {
+            "items": {
+              "$ref": "#/components/schemas/Issue"
             },
             "type": "array"
           }
@@ -2411,6 +2438,83 @@
           "startDateTo": {
             "format": "date",
             "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SearchIssuesRequest": {
+        "properties": {
+          "assignedToRemoteId": {
+            "type": "string"
+          },
+          "bookingId": {
+            "type": "string"
+          },
+          "createdAfter": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "max": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "number": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "offset": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "order": {
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "type": "string"
+          },
+          "priorities": {
+            "items": {
+              "enum": [
+                "P1_LOW",
+                "P2_MEDIUM",
+                "P3_HIGH",
+                "P4_CRITICAL",
+                "P5_BLOCKER"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "sort": {
+            "type": "string"
+          },
+          "statuses": {
+            "items": {
+              "enum": [
+                "DRAFT",
+                "CREATED",
+                "IN_PROGRESS",
+                "RESOLVED",
+                "BLOCKED",
+                "WILL_NOT_FIX"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": {
+            "type": "string"
+          },
+          "updatedAfter": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "userRemoteId": {
+            "type": "string"
+          },
+          "vehicleId": {
             "type": "string"
           }
         },
@@ -2921,6 +3025,54 @@
             "type": "boolean"
           },
           "suspendedReason": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "UpdateIssueRequest": {
+        "properties": {
+          "assignedToRemoteId": {
+            "type": "string"
+          },
+          "bookingId": {
+            "type": "string"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "priority": {
+            "enum": [
+              "P1_LOW",
+              "P2_MEDIUM",
+              "P3_HIGH",
+              "P4_CRITICAL",
+              "P5_BLOCKER"
+            ],
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "DRAFT",
+              "CREATED",
+              "IN_PROGRESS",
+              "RESOLVED",
+              "BLOCKED",
+              "WILL_NOT_FIX"
+            ],
+            "type": "string"
+          },
+          "title": {
+            "maxLength": 255,
+            "type": "string"
+          },
+          "userRemoteId": {
+            "type": "string"
+          },
+          "vehicleId": {
             "type": "string"
           }
         },
@@ -3676,33 +3828,6 @@
               "$ref": "#/components/schemas/VehicleUsage"
             },
             "type": "array"
-          }
-        },
-        "type": "object"
-      },
-      "VehicleUsageReference": {
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "period": {
-            "$ref": "#/components/schemas/Period"
-          },
-          "status": {
-            "enum": [
-              "UNLOCKING",
-              "BLUETOOTH_UNLOCKING",
-              "UNLOCK_FAILED",
-              "UNLOCKED",
-              "LOCKING",
-              "BLUETOOTH_LOCKING",
-              "LOCK_FAILED",
-              "LOCKED"
-            ],
-            "type": "string"
-          },
-          "statusMessage": {
-            "type": "string"
           }
         },
         "type": "object"
@@ -5487,26 +5612,6 @@
         ]
       }
     },
-    "/homefeed/v1/bookings/homefeed": {
-      "get": {
-        "operationId": "getHomeFeed",
-        "responses": {
-          "200": {
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/HomeFeedPage"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "home-feed-facade"
-        ]
-      }
-    },
     "/invoice/v1/clients/{clientId}/invoices": {
       "get": {
         "description": "Get invoices for a client of which the user is a main user",
@@ -5719,7 +5824,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BookingBillingPriceResponse"
+                  "$ref": "#/components/schemas/BillingPriceResponse"
                 }
               }
             },
@@ -8717,6 +8822,136 @@
         "summary": "Get all vehicle contracts for a specific client",
         "tags": [
           "vehiclecontracts"
+        ]
+      }
+    },
+    "/web-api/issue/v1/issues": {
+      "post": {
+        "operationId": "createIssue",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIssueRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Issue"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "issue-facade"
+        ]
+      }
+    },
+    "/web-api/issue/v1/issues/searches": {
+      "post": {
+        "operationId": "searchIssues",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchIssuesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/IssuePage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "issue-facade"
+        ]
+      }
+    },
+    "/web-api/issue/v1/issues/{issueNumber}": {
+      "get": {
+        "operationId": "getIssue",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "issueNumber",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Issue"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "issue-facade"
+        ]
+      },
+      "post": {
+        "operationId": "updateIssue",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "issueNumber",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateIssueRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Issue"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "issue-facade"
         ]
       }
     }
