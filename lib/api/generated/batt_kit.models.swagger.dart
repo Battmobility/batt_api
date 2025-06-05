@@ -724,7 +724,7 @@ class BillingPriceResponse {
   static const toJsonFactory = _$BillingPriceResponseToJson;
   Map<String, dynamic> toJson() => _$BillingPriceResponseToJson(this);
 
-  @JsonKey(name: 'BillingPrice')
+  @JsonKey(name: 'billingPrice')
   final BillingPrice billingPrice;
   @JsonKey(name: 'dayPrice')
   final double dayPrice;

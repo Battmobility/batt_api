@@ -200,7 +200,7 @@
       },
       "BillingPriceResponse": {
         "properties": {
-          "BillingPrice": {
+          "billingPrice": {
             "$ref": "#/components/schemas/BillingPrice"
           },
           "dayPrice": {
@@ -217,7 +217,7 @@
           }
         },
         "required": [
-          "BillingPrice",
+          "billingPrice",
           "dayPrice",
           "hourPrice",
           "kmPrice"
