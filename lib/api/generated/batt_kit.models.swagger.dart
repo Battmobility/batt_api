@@ -4715,6 +4715,72 @@ extension $CreateNonAvailabilityRequestExtension
 }
 
 @JsonSerializable(explicitToJson: true)
+class CreateRecurringNonAvailabilityRequest {
+  const CreateRecurringNonAvailabilityRequest({
+    this.nonAvailabilityRequest,
+    this.schedule,
+  });
+
+  factory CreateRecurringNonAvailabilityRequest.fromJson(
+          Map<String, dynamic> json) =>
+      _$CreateRecurringNonAvailabilityRequestFromJson(json);
+
+  static const toJsonFactory = _$CreateRecurringNonAvailabilityRequestToJson;
+  Map<String, dynamic> toJson() =>
+      _$CreateRecurringNonAvailabilityRequestToJson(this);
+
+  @JsonKey(name: 'nonAvailabilityRequest')
+  final CreateNonAvailabilityRequest? nonAvailabilityRequest;
+  @JsonKey(name: 'schedule')
+  final RecurringSchedule? schedule;
+  static const fromJsonFactory =
+      _$CreateRecurringNonAvailabilityRequestFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is CreateRecurringNonAvailabilityRequest &&
+            (identical(other.nonAvailabilityRequest, nonAvailabilityRequest) ||
+                const DeepCollectionEquality().equals(
+                    other.nonAvailabilityRequest, nonAvailabilityRequest)) &&
+            (identical(other.schedule, schedule) ||
+                const DeepCollectionEquality()
+                    .equals(other.schedule, schedule)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(nonAvailabilityRequest) ^
+      const DeepCollectionEquality().hash(schedule) ^
+      runtimeType.hashCode;
+}
+
+extension $CreateRecurringNonAvailabilityRequestExtension
+    on CreateRecurringNonAvailabilityRequest {
+  CreateRecurringNonAvailabilityRequest copyWith(
+      {CreateNonAvailabilityRequest? nonAvailabilityRequest,
+      RecurringSchedule? schedule}) {
+    return CreateRecurringNonAvailabilityRequest(
+        nonAvailabilityRequest:
+            nonAvailabilityRequest ?? this.nonAvailabilityRequest,
+        schedule: schedule ?? this.schedule);
+  }
+
+  CreateRecurringNonAvailabilityRequest copyWithWrapped(
+      {Wrapped<CreateNonAvailabilityRequest?>? nonAvailabilityRequest,
+      Wrapped<RecurringSchedule?>? schedule}) {
+    return CreateRecurringNonAvailabilityRequest(
+        nonAvailabilityRequest: (nonAvailabilityRequest != null
+            ? nonAvailabilityRequest.value
+            : this.nonAvailabilityRequest),
+        schedule: (schedule != null ? schedule.value : this.schedule));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class CreateUserRequest {
   const CreateUserRequest({
     required this.email,
@@ -4776,6 +4842,7 @@ class CreateVehicleContract {
     this.billingType,
     this.clientContractId,
     required this.clientId,
+    required this.contractDate,
     this.costForAdditionalKmsExclVat,
     this.creditedDayPriceExclVat,
     this.creditedKmPriceExclVat,
@@ -4818,6 +4885,8 @@ class CreateVehicleContract {
   final int? clientContractId;
   @JsonKey(name: 'clientId')
   final int clientId;
+  @JsonKey(name: 'contractDate')
+  final DateTime contractDate;
   @JsonKey(name: 'costForAdditionalKmsExclVat')
   final double? costForAdditionalKmsExclVat;
   @JsonKey(name: 'creditedDayPriceExclVat')
@@ -4871,6 +4940,9 @@ class CreateVehicleContract {
             (identical(other.clientId, clientId) ||
                 const DeepCollectionEquality()
                     .equals(other.clientId, clientId)) &&
+            (identical(other.contractDate, contractDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.contractDate, contractDate)) &&
             (identical(other.costForAdditionalKmsExclVat, costForAdditionalKmsExclVat) ||
                 const DeepCollectionEquality().equals(
                     other.costForAdditionalKmsExclVat,
@@ -4896,8 +4968,7 @@ class CreateVehicleContract {
                     other.mileageKmAtStartOfContract,
                     mileageKmAtStartOfContract)) &&
             (identical(other.monthlyInsurance, monthlyInsurance) ||
-                const DeepCollectionEquality()
-                    .equals(other.monthlyInsurance, monthlyInsurance)) &&
+                const DeepCollectionEquality().equals(other.monthlyInsurance, monthlyInsurance)) &&
             (identical(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat) || const DeepCollectionEquality().equals(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat)) &&
             (identical(other.monthlyMaxInvoiceAmountExclVat, monthlyMaxInvoiceAmountExclVat) || const DeepCollectionEquality().equals(other.monthlyMaxInvoiceAmountExclVat, monthlyMaxInvoiceAmountExclVat)) &&
             (identical(other.monthlyPrefundElectricityExclVat, monthlyPrefundElectricityExclVat) || const DeepCollectionEquality().equals(other.monthlyPrefundElectricityExclVat, monthlyPrefundElectricityExclVat)) &&
@@ -4918,6 +4989,7 @@ class CreateVehicleContract {
       const DeepCollectionEquality().hash(billingType) ^
       const DeepCollectionEquality().hash(clientContractId) ^
       const DeepCollectionEquality().hash(clientId) ^
+      const DeepCollectionEquality().hash(contractDate) ^
       const DeepCollectionEquality().hash(costForAdditionalKmsExclVat) ^
       const DeepCollectionEquality().hash(creditedDayPriceExclVat) ^
       const DeepCollectionEquality().hash(creditedKmPriceExclVat) ^
@@ -4944,6 +5016,7 @@ extension $CreateVehicleContractExtension on CreateVehicleContract {
       enums.CreateVehicleContractBillingType? billingType,
       int? clientContractId,
       int? clientId,
+      DateTime? contractDate,
       double? costForAdditionalKmsExclVat,
       double? creditedDayPriceExclVat,
       double? creditedKmPriceExclVat,
@@ -4966,6 +5039,7 @@ extension $CreateVehicleContractExtension on CreateVehicleContract {
         billingType: billingType ?? this.billingType,
         clientContractId: clientContractId ?? this.clientContractId,
         clientId: clientId ?? this.clientId,
+        contractDate: contractDate ?? this.contractDate,
         costForAdditionalKmsExclVat:
             costForAdditionalKmsExclVat ?? this.costForAdditionalKmsExclVat,
         creditedDayPriceExclVat:
@@ -4998,6 +5072,7 @@ extension $CreateVehicleContractExtension on CreateVehicleContract {
       Wrapped<enums.CreateVehicleContractBillingType?>? billingType,
       Wrapped<int?>? clientContractId,
       Wrapped<int>? clientId,
+      Wrapped<DateTime>? contractDate,
       Wrapped<double?>? costForAdditionalKmsExclVat,
       Wrapped<double?>? creditedDayPriceExclVat,
       Wrapped<double?>? creditedKmPriceExclVat,
@@ -5026,6 +5101,8 @@ extension $CreateVehicleContractExtension on CreateVehicleContract {
             ? clientContractId.value
             : this.clientContractId),
         clientId: (clientId != null ? clientId.value : this.clientId),
+        contractDate:
+            (contractDate != null ? contractDate.value : this.contractDate),
         costForAdditionalKmsExclVat: (costForAdditionalKmsExclVat != null
             ? costForAdditionalKmsExclVat.value
             : this.costForAdditionalKmsExclVat),
@@ -8237,6 +8314,174 @@ extension $ProviderTelematicsExtension on ProviderTelematics {
 }
 
 @JsonSerializable(explicitToJson: true)
+class RecurringNonAvailability {
+  const RecurringNonAvailability({
+    this.id,
+    this.schedule,
+    this.vehicleId,
+  });
+
+  factory RecurringNonAvailability.fromJson(Map<String, dynamic> json) =>
+      _$RecurringNonAvailabilityFromJson(json);
+
+  static const toJsonFactory = _$RecurringNonAvailabilityToJson;
+  Map<String, dynamic> toJson() => _$RecurringNonAvailabilityToJson(this);
+
+  @JsonKey(name: 'id')
+  final String? id;
+  @JsonKey(name: 'schedule')
+  final RecurringSchedule? schedule;
+  @JsonKey(name: 'vehicleId')
+  final String? vehicleId;
+  static const fromJsonFactory = _$RecurringNonAvailabilityFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is RecurringNonAvailability &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.schedule, schedule) ||
+                const DeepCollectionEquality()
+                    .equals(other.schedule, schedule)) &&
+            (identical(other.vehicleId, vehicleId) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicleId, vehicleId)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(schedule) ^
+      const DeepCollectionEquality().hash(vehicleId) ^
+      runtimeType.hashCode;
+}
+
+extension $RecurringNonAvailabilityExtension on RecurringNonAvailability {
+  RecurringNonAvailability copyWith(
+      {String? id, RecurringSchedule? schedule, String? vehicleId}) {
+    return RecurringNonAvailability(
+        id: id ?? this.id,
+        schedule: schedule ?? this.schedule,
+        vehicleId: vehicleId ?? this.vehicleId);
+  }
+
+  RecurringNonAvailability copyWithWrapped(
+      {Wrapped<String?>? id,
+      Wrapped<RecurringSchedule?>? schedule,
+      Wrapped<String?>? vehicleId}) {
+    return RecurringNonAvailability(
+        id: (id != null ? id.value : this.id),
+        schedule: (schedule != null ? schedule.value : this.schedule),
+        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class RecurringSchedule {
+  const RecurringSchedule({
+    this.daysOfWeek,
+    required this.endDate,
+    this.interval,
+    required this.recurringType,
+    this.timeZone,
+  });
+
+  factory RecurringSchedule.fromJson(Map<String, dynamic> json) =>
+      _$RecurringScheduleFromJson(json);
+
+  static const toJsonFactory = _$RecurringScheduleToJson;
+  Map<String, dynamic> toJson() => _$RecurringScheduleToJson(this);
+
+  @JsonKey(name: 'daysOfWeek', defaultValue: <int>[])
+  final List<int>? daysOfWeek;
+  @JsonKey(name: 'endDate')
+  final DateTime endDate;
+  @JsonKey(name: 'interval')
+  final int? interval;
+  @JsonKey(
+    name: 'recurringType',
+    toJson: recurringScheduleRecurringTypeToJson,
+    fromJson: recurringScheduleRecurringTypeFromJson,
+  )
+  final enums.RecurringScheduleRecurringType recurringType;
+  @JsonKey(
+    name: 'timeZone',
+    toJson: recurringScheduleTimeZoneNullableToJson,
+    fromJson: recurringScheduleTimeZoneNullableFromJson,
+  )
+  final enums.RecurringScheduleTimeZone? timeZone;
+  static const fromJsonFactory = _$RecurringScheduleFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is RecurringSchedule &&
+            (identical(other.daysOfWeek, daysOfWeek) ||
+                const DeepCollectionEquality()
+                    .equals(other.daysOfWeek, daysOfWeek)) &&
+            (identical(other.endDate, endDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.endDate, endDate)) &&
+            (identical(other.interval, interval) ||
+                const DeepCollectionEquality()
+                    .equals(other.interval, interval)) &&
+            (identical(other.recurringType, recurringType) ||
+                const DeepCollectionEquality()
+                    .equals(other.recurringType, recurringType)) &&
+            (identical(other.timeZone, timeZone) ||
+                const DeepCollectionEquality()
+                    .equals(other.timeZone, timeZone)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(daysOfWeek) ^
+      const DeepCollectionEquality().hash(endDate) ^
+      const DeepCollectionEquality().hash(interval) ^
+      const DeepCollectionEquality().hash(recurringType) ^
+      const DeepCollectionEquality().hash(timeZone) ^
+      runtimeType.hashCode;
+}
+
+extension $RecurringScheduleExtension on RecurringSchedule {
+  RecurringSchedule copyWith(
+      {List<int>? daysOfWeek,
+      DateTime? endDate,
+      int? interval,
+      enums.RecurringScheduleRecurringType? recurringType,
+      enums.RecurringScheduleTimeZone? timeZone}) {
+    return RecurringSchedule(
+        daysOfWeek: daysOfWeek ?? this.daysOfWeek,
+        endDate: endDate ?? this.endDate,
+        interval: interval ?? this.interval,
+        recurringType: recurringType ?? this.recurringType,
+        timeZone: timeZone ?? this.timeZone);
+  }
+
+  RecurringSchedule copyWithWrapped(
+      {Wrapped<List<int>?>? daysOfWeek,
+      Wrapped<DateTime>? endDate,
+      Wrapped<int?>? interval,
+      Wrapped<enums.RecurringScheduleRecurringType>? recurringType,
+      Wrapped<enums.RecurringScheduleTimeZone?>? timeZone}) {
+    return RecurringSchedule(
+        daysOfWeek: (daysOfWeek != null ? daysOfWeek.value : this.daysOfWeek),
+        endDate: (endDate != null ? endDate.value : this.endDate),
+        interval: (interval != null ? interval.value : this.interval),
+        recurringType:
+            (recurringType != null ? recurringType.value : this.recurringType),
+        timeZone: (timeZone != null ? timeZone.value : this.timeZone));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class RegisterDeviceRequest {
   const RegisterDeviceRequest({
     this.active,
@@ -8494,7 +8739,6 @@ class SearchBookingsRequest {
     this.clientId,
     this.comments,
     this.endPeriod,
-    this.invoiceStatuses,
     this.licensePlate,
     this.startPeriod,
     this.statuses,
@@ -8517,12 +8761,6 @@ class SearchBookingsRequest {
   final String? comments;
   @JsonKey(name: 'endPeriod')
   final Period? endPeriod;
-  @JsonKey(
-    name: 'invoiceStatuses',
-    toJson: searchBookingsRequestInvoiceStatusesListToJson,
-    fromJson: searchBookingsRequestInvoiceStatusesListFromJson,
-  )
-  final List<enums.SearchBookingsRequestInvoiceStatuses>? invoiceStatuses;
   @JsonKey(name: 'licensePlate')
   final String? licensePlate;
   @JsonKey(name: 'startPeriod')
@@ -8557,9 +8795,6 @@ class SearchBookingsRequest {
             (identical(other.endPeriod, endPeriod) ||
                 const DeepCollectionEquality()
                     .equals(other.endPeriod, endPeriod)) &&
-            (identical(other.invoiceStatuses, invoiceStatuses) ||
-                const DeepCollectionEquality()
-                    .equals(other.invoiceStatuses, invoiceStatuses)) &&
             (identical(other.licensePlate, licensePlate) ||
                 const DeepCollectionEquality()
                     .equals(other.licensePlate, licensePlate)) &&
@@ -8588,7 +8823,6 @@ class SearchBookingsRequest {
       const DeepCollectionEquality().hash(clientId) ^
       const DeepCollectionEquality().hash(comments) ^
       const DeepCollectionEquality().hash(endPeriod) ^
-      const DeepCollectionEquality().hash(invoiceStatuses) ^
       const DeepCollectionEquality().hash(licensePlate) ^
       const DeepCollectionEquality().hash(startPeriod) ^
       const DeepCollectionEquality().hash(statuses) ^
@@ -8604,7 +8838,6 @@ extension $SearchBookingsRequestExtension on SearchBookingsRequest {
       String? clientId,
       String? comments,
       Period? endPeriod,
-      List<enums.SearchBookingsRequestInvoiceStatuses>? invoiceStatuses,
       String? licensePlate,
       Period? startPeriod,
       List<enums.SearchBookingsRequestStatuses>? statuses,
@@ -8616,7 +8849,6 @@ extension $SearchBookingsRequestExtension on SearchBookingsRequest {
         clientId: clientId ?? this.clientId,
         comments: comments ?? this.comments,
         endPeriod: endPeriod ?? this.endPeriod,
-        invoiceStatuses: invoiceStatuses ?? this.invoiceStatuses,
         licensePlate: licensePlate ?? this.licensePlate,
         startPeriod: startPeriod ?? this.startPeriod,
         statuses: statuses ?? this.statuses,
@@ -8630,8 +8862,6 @@ extension $SearchBookingsRequestExtension on SearchBookingsRequest {
       Wrapped<String?>? clientId,
       Wrapped<String?>? comments,
       Wrapped<Period?>? endPeriod,
-      Wrapped<List<enums.SearchBookingsRequestInvoiceStatuses>?>?
-          invoiceStatuses,
       Wrapped<String?>? licensePlate,
       Wrapped<Period?>? startPeriod,
       Wrapped<List<enums.SearchBookingsRequestStatuses>?>? statuses,
@@ -8644,9 +8874,6 @@ extension $SearchBookingsRequestExtension on SearchBookingsRequest {
         clientId: (clientId != null ? clientId.value : this.clientId),
         comments: (comments != null ? comments.value : this.comments),
         endPeriod: (endPeriod != null ? endPeriod.value : this.endPeriod),
-        invoiceStatuses: (invoiceStatuses != null
-            ? invoiceStatuses.value
-            : this.invoiceStatuses),
         licensePlate:
             (licensePlate != null ? licensePlate.value : this.licensePlate),
         startPeriod:
@@ -9167,170 +9394,6 @@ extension $SearchTelematicsTrackingRequestExtension
         maxResults: (maxResults != null ? maxResults.value : this.maxResults),
         startDate: (startDate != null ? startDate.value : this.startDate),
         vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class SearchUsersRequest {
-  const SearchUsersRequest({
-    this.defaultMembershipId,
-    this.displayName,
-    this.favoriteLocation,
-    this.favoritelocationDistance,
-    this.homeLocation,
-    this.homelocationDistance,
-    this.remoteId,
-    this.userName,
-    this.workLocation,
-    this.worklocationDistance,
-  });
-
-  factory SearchUsersRequest.fromJson(Map<String, dynamic> json) =>
-      _$SearchUsersRequestFromJson(json);
-
-  static const toJsonFactory = _$SearchUsersRequestToJson;
-  Map<String, dynamic> toJson() => _$SearchUsersRequestToJson(this);
-
-  @JsonKey(name: 'defaultMembershipId')
-  final String? defaultMembershipId;
-  @JsonKey(name: 'displayName')
-  final String? displayName;
-  @JsonKey(name: 'favoriteLocation')
-  final GpsLocation? favoriteLocation;
-  @JsonKey(name: 'favoritelocationDistance')
-  final int? favoritelocationDistance;
-  @JsonKey(name: 'homeLocation')
-  final GpsLocation? homeLocation;
-  @JsonKey(name: 'homelocationDistance')
-  final int? homelocationDistance;
-  @JsonKey(name: 'remoteId')
-  final String? remoteId;
-  @JsonKey(name: 'userName')
-  final String? userName;
-  @JsonKey(name: 'workLocation')
-  final GpsLocation? workLocation;
-  @JsonKey(name: 'worklocationDistance')
-  final int? worklocationDistance;
-  static const fromJsonFactory = _$SearchUsersRequestFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is SearchUsersRequest &&
-            (identical(other.defaultMembershipId, defaultMembershipId) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultMembershipId, defaultMembershipId)) &&
-            (identical(other.displayName, displayName) ||
-                const DeepCollectionEquality()
-                    .equals(other.displayName, displayName)) &&
-            (identical(other.favoriteLocation, favoriteLocation) ||
-                const DeepCollectionEquality()
-                    .equals(other.favoriteLocation, favoriteLocation)) &&
-            (identical(
-                    other.favoritelocationDistance, favoritelocationDistance) ||
-                const DeepCollectionEquality().equals(
-                    other.favoritelocationDistance,
-                    favoritelocationDistance)) &&
-            (identical(other.homeLocation, homeLocation) ||
-                const DeepCollectionEquality()
-                    .equals(other.homeLocation, homeLocation)) &&
-            (identical(other.homelocationDistance, homelocationDistance) ||
-                const DeepCollectionEquality().equals(
-                    other.homelocationDistance, homelocationDistance)) &&
-            (identical(other.remoteId, remoteId) ||
-                const DeepCollectionEquality()
-                    .equals(other.remoteId, remoteId)) &&
-            (identical(other.userName, userName) ||
-                const DeepCollectionEquality()
-                    .equals(other.userName, userName)) &&
-            (identical(other.workLocation, workLocation) ||
-                const DeepCollectionEquality()
-                    .equals(other.workLocation, workLocation)) &&
-            (identical(other.worklocationDistance, worklocationDistance) ||
-                const DeepCollectionEquality()
-                    .equals(other.worklocationDistance, worklocationDistance)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(defaultMembershipId) ^
-      const DeepCollectionEquality().hash(displayName) ^
-      const DeepCollectionEquality().hash(favoriteLocation) ^
-      const DeepCollectionEquality().hash(favoritelocationDistance) ^
-      const DeepCollectionEquality().hash(homeLocation) ^
-      const DeepCollectionEquality().hash(homelocationDistance) ^
-      const DeepCollectionEquality().hash(remoteId) ^
-      const DeepCollectionEquality().hash(userName) ^
-      const DeepCollectionEquality().hash(workLocation) ^
-      const DeepCollectionEquality().hash(worklocationDistance) ^
-      runtimeType.hashCode;
-}
-
-extension $SearchUsersRequestExtension on SearchUsersRequest {
-  SearchUsersRequest copyWith(
-      {String? defaultMembershipId,
-      String? displayName,
-      GpsLocation? favoriteLocation,
-      int? favoritelocationDistance,
-      GpsLocation? homeLocation,
-      int? homelocationDistance,
-      String? remoteId,
-      String? userName,
-      GpsLocation? workLocation,
-      int? worklocationDistance}) {
-    return SearchUsersRequest(
-        defaultMembershipId: defaultMembershipId ?? this.defaultMembershipId,
-        displayName: displayName ?? this.displayName,
-        favoriteLocation: favoriteLocation ?? this.favoriteLocation,
-        favoritelocationDistance:
-            favoritelocationDistance ?? this.favoritelocationDistance,
-        homeLocation: homeLocation ?? this.homeLocation,
-        homelocationDistance: homelocationDistance ?? this.homelocationDistance,
-        remoteId: remoteId ?? this.remoteId,
-        userName: userName ?? this.userName,
-        workLocation: workLocation ?? this.workLocation,
-        worklocationDistance:
-            worklocationDistance ?? this.worklocationDistance);
-  }
-
-  SearchUsersRequest copyWithWrapped(
-      {Wrapped<String?>? defaultMembershipId,
-      Wrapped<String?>? displayName,
-      Wrapped<GpsLocation?>? favoriteLocation,
-      Wrapped<int?>? favoritelocationDistance,
-      Wrapped<GpsLocation?>? homeLocation,
-      Wrapped<int?>? homelocationDistance,
-      Wrapped<String?>? remoteId,
-      Wrapped<String?>? userName,
-      Wrapped<GpsLocation?>? workLocation,
-      Wrapped<int?>? worklocationDistance}) {
-    return SearchUsersRequest(
-        defaultMembershipId: (defaultMembershipId != null
-            ? defaultMembershipId.value
-            : this.defaultMembershipId),
-        displayName:
-            (displayName != null ? displayName.value : this.displayName),
-        favoriteLocation: (favoriteLocation != null
-            ? favoriteLocation.value
-            : this.favoriteLocation),
-        favoritelocationDistance: (favoritelocationDistance != null
-            ? favoritelocationDistance.value
-            : this.favoritelocationDistance),
-        homeLocation:
-            (homeLocation != null ? homeLocation.value : this.homeLocation),
-        homelocationDistance: (homelocationDistance != null
-            ? homelocationDistance.value
-            : this.homelocationDistance),
-        remoteId: (remoteId != null ? remoteId.value : this.remoteId),
-        userName: (userName != null ? userName.value : this.userName),
-        workLocation:
-            (workLocation != null ? workLocation.value : this.workLocation),
-        worklocationDistance: (worklocationDistance != null
-            ? worklocationDistance.value
-            : this.worklocationDistance));
   }
 }
 
@@ -11081,184 +11144,6 @@ extension $UpdateTelematicsRequestExtension on UpdateTelematicsRequest {
 }
 
 @JsonSerializable(explicitToJson: true)
-class UpdateUserRequest {
-  const UpdateUserRequest({
-    this.biography,
-    this.defaultMembershipId,
-    this.displayName,
-    this.favoriteLocation,
-    this.homeLocation,
-    this.joinedSince,
-    this.pushNotificationsEnabled,
-    this.role,
-    this.tripRegistrationEnabled,
-    this.userName,
-    this.workLocation,
-  });
-
-  factory UpdateUserRequest.fromJson(Map<String, dynamic> json) =>
-      _$UpdateUserRequestFromJson(json);
-
-  static const toJsonFactory = _$UpdateUserRequestToJson;
-  Map<String, dynamic> toJson() => _$UpdateUserRequestToJson(this);
-
-  @JsonKey(name: 'biography')
-  final String? biography;
-  @JsonKey(name: 'defaultMembershipId')
-  final String? defaultMembershipId;
-  @JsonKey(name: 'displayName')
-  final String? displayName;
-  @JsonKey(name: 'favoriteLocation')
-  final GpsLocation? favoriteLocation;
-  @JsonKey(name: 'homeLocation')
-  final GpsLocation? homeLocation;
-  @JsonKey(name: 'joinedSince')
-  final DateTime? joinedSince;
-  @JsonKey(name: 'pushNotificationsEnabled')
-  final bool? pushNotificationsEnabled;
-  @JsonKey(
-    name: 'role',
-    toJson: updateUserRequestRoleNullableToJson,
-    fromJson: updateUserRequestRoleNullableFromJson,
-  )
-  final enums.UpdateUserRequestRole? role;
-  @JsonKey(name: 'tripRegistrationEnabled')
-  final bool? tripRegistrationEnabled;
-  @JsonKey(name: 'userName')
-  final String? userName;
-  @JsonKey(name: 'workLocation')
-  final GpsLocation? workLocation;
-  static const fromJsonFactory = _$UpdateUserRequestFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is UpdateUserRequest &&
-            (identical(other.biography, biography) ||
-                const DeepCollectionEquality()
-                    .equals(other.biography, biography)) &&
-            (identical(other.defaultMembershipId, defaultMembershipId) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultMembershipId, defaultMembershipId)) &&
-            (identical(other.displayName, displayName) ||
-                const DeepCollectionEquality()
-                    .equals(other.displayName, displayName)) &&
-            (identical(other.favoriteLocation, favoriteLocation) ||
-                const DeepCollectionEquality()
-                    .equals(other.favoriteLocation, favoriteLocation)) &&
-            (identical(other.homeLocation, homeLocation) ||
-                const DeepCollectionEquality()
-                    .equals(other.homeLocation, homeLocation)) &&
-            (identical(other.joinedSince, joinedSince) ||
-                const DeepCollectionEquality()
-                    .equals(other.joinedSince, joinedSince)) &&
-            (identical(
-                    other.pushNotificationsEnabled, pushNotificationsEnabled) ||
-                const DeepCollectionEquality().equals(
-                    other.pushNotificationsEnabled,
-                    pushNotificationsEnabled)) &&
-            (identical(other.role, role) ||
-                const DeepCollectionEquality().equals(other.role, role)) &&
-            (identical(
-                    other.tripRegistrationEnabled, tripRegistrationEnabled) ||
-                const DeepCollectionEquality().equals(
-                    other.tripRegistrationEnabled, tripRegistrationEnabled)) &&
-            (identical(other.userName, userName) ||
-                const DeepCollectionEquality()
-                    .equals(other.userName, userName)) &&
-            (identical(other.workLocation, workLocation) ||
-                const DeepCollectionEquality()
-                    .equals(other.workLocation, workLocation)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(biography) ^
-      const DeepCollectionEquality().hash(defaultMembershipId) ^
-      const DeepCollectionEquality().hash(displayName) ^
-      const DeepCollectionEquality().hash(favoriteLocation) ^
-      const DeepCollectionEquality().hash(homeLocation) ^
-      const DeepCollectionEquality().hash(joinedSince) ^
-      const DeepCollectionEquality().hash(pushNotificationsEnabled) ^
-      const DeepCollectionEquality().hash(role) ^
-      const DeepCollectionEquality().hash(tripRegistrationEnabled) ^
-      const DeepCollectionEquality().hash(userName) ^
-      const DeepCollectionEquality().hash(workLocation) ^
-      runtimeType.hashCode;
-}
-
-extension $UpdateUserRequestExtension on UpdateUserRequest {
-  UpdateUserRequest copyWith(
-      {String? biography,
-      String? defaultMembershipId,
-      String? displayName,
-      GpsLocation? favoriteLocation,
-      GpsLocation? homeLocation,
-      DateTime? joinedSince,
-      bool? pushNotificationsEnabled,
-      enums.UpdateUserRequestRole? role,
-      bool? tripRegistrationEnabled,
-      String? userName,
-      GpsLocation? workLocation}) {
-    return UpdateUserRequest(
-        biography: biography ?? this.biography,
-        defaultMembershipId: defaultMembershipId ?? this.defaultMembershipId,
-        displayName: displayName ?? this.displayName,
-        favoriteLocation: favoriteLocation ?? this.favoriteLocation,
-        homeLocation: homeLocation ?? this.homeLocation,
-        joinedSince: joinedSince ?? this.joinedSince,
-        pushNotificationsEnabled:
-            pushNotificationsEnabled ?? this.pushNotificationsEnabled,
-        role: role ?? this.role,
-        tripRegistrationEnabled:
-            tripRegistrationEnabled ?? this.tripRegistrationEnabled,
-        userName: userName ?? this.userName,
-        workLocation: workLocation ?? this.workLocation);
-  }
-
-  UpdateUserRequest copyWithWrapped(
-      {Wrapped<String?>? biography,
-      Wrapped<String?>? defaultMembershipId,
-      Wrapped<String?>? displayName,
-      Wrapped<GpsLocation?>? favoriteLocation,
-      Wrapped<GpsLocation?>? homeLocation,
-      Wrapped<DateTime?>? joinedSince,
-      Wrapped<bool?>? pushNotificationsEnabled,
-      Wrapped<enums.UpdateUserRequestRole?>? role,
-      Wrapped<bool?>? tripRegistrationEnabled,
-      Wrapped<String?>? userName,
-      Wrapped<GpsLocation?>? workLocation}) {
-    return UpdateUserRequest(
-        biography: (biography != null ? biography.value : this.biography),
-        defaultMembershipId: (defaultMembershipId != null
-            ? defaultMembershipId.value
-            : this.defaultMembershipId),
-        displayName:
-            (displayName != null ? displayName.value : this.displayName),
-        favoriteLocation: (favoriteLocation != null
-            ? favoriteLocation.value
-            : this.favoriteLocation),
-        homeLocation:
-            (homeLocation != null ? homeLocation.value : this.homeLocation),
-        joinedSince:
-            (joinedSince != null ? joinedSince.value : this.joinedSince),
-        pushNotificationsEnabled: (pushNotificationsEnabled != null
-            ? pushNotificationsEnabled.value
-            : this.pushNotificationsEnabled),
-        role: (role != null ? role.value : this.role),
-        tripRegistrationEnabled: (tripRegistrationEnabled != null
-            ? tripRegistrationEnabled.value
-            : this.tripRegistrationEnabled),
-        userName: (userName != null ? userName.value : this.userName),
-        workLocation:
-            (workLocation != null ? workLocation.value : this.workLocation));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
 class UpdateVehicleRequest {
   const UpdateVehicleRequest({
     this.addVehicleLocationRequest,
@@ -11688,48 +11573,6 @@ extension $UserExtension on User {
             : this.pushNotificationsEnabled),
         workLocation:
             (workLocation != null ? workLocation.value : this.workLocation));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class UserPage {
-  const UserPage({
-    this.users,
-  });
-
-  factory UserPage.fromJson(Map<String, dynamic> json) =>
-      _$UserPageFromJson(json);
-
-  static const toJsonFactory = _$UserPageToJson;
-  Map<String, dynamic> toJson() => _$UserPageToJson(this);
-
-  @JsonKey(name: 'users', defaultValue: <User>[])
-  final List<User>? users;
-  static const fromJsonFactory = _$UserPageFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is UserPage &&
-            (identical(other.users, users) ||
-                const DeepCollectionEquality().equals(other.users, users)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(users) ^ runtimeType.hashCode;
-}
-
-extension $UserPageExtension on UserPage {
-  UserPage copyWith({List<User>? users}) {
-    return UserPage(users: users ?? this.users);
-  }
-
-  UserPage copyWithWrapped({Wrapped<List<User>?>? users}) {
-    return UserPage(users: (users != null ? users.value : this.users));
   }
 }
 
@@ -13650,52 +13493,6 @@ extension $VehiclesPageExtension on VehiclesPage {
 }
 
 @JsonSerializable(explicitToJson: true)
-class UserV1ImageUserIdPost$RequestBody {
-  const UserV1ImageUserIdPost$RequestBody({
-    required this.file,
-  });
-
-  factory UserV1ImageUserIdPost$RequestBody.fromJson(
-          Map<String, dynamic> json) =>
-      _$UserV1ImageUserIdPost$RequestBodyFromJson(json);
-
-  static const toJsonFactory = _$UserV1ImageUserIdPost$RequestBodyToJson;
-  Map<String, dynamic> toJson() =>
-      _$UserV1ImageUserIdPost$RequestBodyToJson(this);
-
-  @JsonKey(name: 'file')
-  final String file;
-  static const fromJsonFactory = _$UserV1ImageUserIdPost$RequestBodyFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is UserV1ImageUserIdPost$RequestBody &&
-            (identical(other.file, file) ||
-                const DeepCollectionEquality().equals(other.file, file)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(file) ^ runtimeType.hashCode;
-}
-
-extension $UserV1ImageUserIdPost$RequestBodyExtension
-    on UserV1ImageUserIdPost$RequestBody {
-  UserV1ImageUserIdPost$RequestBody copyWith({String? file}) {
-    return UserV1ImageUserIdPost$RequestBody(file: file ?? this.file);
-  }
-
-  UserV1ImageUserIdPost$RequestBody copyWithWrapped({Wrapped<String>? file}) {
-    return UserV1ImageUserIdPost$RequestBody(
-        file: (file != null ? file.value : this.file));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
 class UserV1UsersOnboardingDocumentsPut$RequestBody {
   const UserV1UsersOnboardingDocumentsPut$RequestBody({
     this.backDriverLicense,
@@ -13804,56 +13601,6 @@ extension $UserV1UsersOnboardingDocumentsPut$RequestBodyExtension
             : this.frontDriverLicense),
         frontId: (frontId != null ? frontId.value : this.frontId),
         selfie: (selfie != null ? selfie.value : this.selfie));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class VehicleV1VehicleImageVehicleIdPost$RequestBody {
-  const VehicleV1VehicleImageVehicleIdPost$RequestBody({
-    required this.file,
-  });
-
-  factory VehicleV1VehicleImageVehicleIdPost$RequestBody.fromJson(
-          Map<String, dynamic> json) =>
-      _$VehicleV1VehicleImageVehicleIdPost$RequestBodyFromJson(json);
-
-  static const toJsonFactory =
-      _$VehicleV1VehicleImageVehicleIdPost$RequestBodyToJson;
-  Map<String, dynamic> toJson() =>
-      _$VehicleV1VehicleImageVehicleIdPost$RequestBodyToJson(this);
-
-  @JsonKey(name: 'file')
-  final String file;
-  static const fromJsonFactory =
-      _$VehicleV1VehicleImageVehicleIdPost$RequestBodyFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is VehicleV1VehicleImageVehicleIdPost$RequestBody &&
-            (identical(other.file, file) ||
-                const DeepCollectionEquality().equals(other.file, file)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(file) ^ runtimeType.hashCode;
-}
-
-extension $VehicleV1VehicleImageVehicleIdPost$RequestBodyExtension
-    on VehicleV1VehicleImageVehicleIdPost$RequestBody {
-  VehicleV1VehicleImageVehicleIdPost$RequestBody copyWith({String? file}) {
-    return VehicleV1VehicleImageVehicleIdPost$RequestBody(
-        file: file ?? this.file);
-  }
-
-  VehicleV1VehicleImageVehicleIdPost$RequestBody copyWithWrapped(
-      {Wrapped<String>? file}) {
-    return VehicleV1VehicleImageVehicleIdPost$RequestBody(
-        file: (file != null ? file.value : this.file));
   }
 }
 
@@ -15732,84 +15479,153 @@ List<enums.OnboardingPersonalLicenseType>?
       .toList();
 }
 
-String? searchBookingsRequestInvoiceStatusesNullableToJson(
-    enums.SearchBookingsRequestInvoiceStatuses?
-        searchBookingsRequestInvoiceStatuses) {
-  return searchBookingsRequestInvoiceStatuses?.value;
+String? recurringScheduleRecurringTypeNullableToJson(
+    enums.RecurringScheduleRecurringType? recurringScheduleRecurringType) {
+  return recurringScheduleRecurringType?.value;
 }
 
-String? searchBookingsRequestInvoiceStatusesToJson(
-    enums.SearchBookingsRequestInvoiceStatuses
-        searchBookingsRequestInvoiceStatuses) {
-  return searchBookingsRequestInvoiceStatuses.value;
+String? recurringScheduleRecurringTypeToJson(
+    enums.RecurringScheduleRecurringType recurringScheduleRecurringType) {
+  return recurringScheduleRecurringType.value;
 }
 
-enums.SearchBookingsRequestInvoiceStatuses
-    searchBookingsRequestInvoiceStatusesFromJson(
-  Object? searchBookingsRequestInvoiceStatuses, [
-  enums.SearchBookingsRequestInvoiceStatuses? defaultValue,
+enums.RecurringScheduleRecurringType recurringScheduleRecurringTypeFromJson(
+  Object? recurringScheduleRecurringType, [
+  enums.RecurringScheduleRecurringType? defaultValue,
 ]) {
-  return enums.SearchBookingsRequestInvoiceStatuses.values.firstWhereOrNull(
-          (e) => e.value == searchBookingsRequestInvoiceStatuses) ??
+  return enums.RecurringScheduleRecurringType.values
+          .firstWhereOrNull((e) => e.value == recurringScheduleRecurringType) ??
       defaultValue ??
-      enums.SearchBookingsRequestInvoiceStatuses.swaggerGeneratedUnknown;
+      enums.RecurringScheduleRecurringType.swaggerGeneratedUnknown;
 }
 
-enums.SearchBookingsRequestInvoiceStatuses?
-    searchBookingsRequestInvoiceStatusesNullableFromJson(
-  Object? searchBookingsRequestInvoiceStatuses, [
-  enums.SearchBookingsRequestInvoiceStatuses? defaultValue,
+enums.RecurringScheduleRecurringType?
+    recurringScheduleRecurringTypeNullableFromJson(
+  Object? recurringScheduleRecurringType, [
+  enums.RecurringScheduleRecurringType? defaultValue,
 ]) {
-  if (searchBookingsRequestInvoiceStatuses == null) {
+  if (recurringScheduleRecurringType == null) {
     return null;
   }
-  return enums.SearchBookingsRequestInvoiceStatuses.values.firstWhereOrNull(
-          (e) => e.value == searchBookingsRequestInvoiceStatuses) ??
+  return enums.RecurringScheduleRecurringType.values
+          .firstWhereOrNull((e) => e.value == recurringScheduleRecurringType) ??
       defaultValue;
 }
 
-String searchBookingsRequestInvoiceStatusesExplodedListToJson(
-    List<enums.SearchBookingsRequestInvoiceStatuses>?
-        searchBookingsRequestInvoiceStatuses) {
-  return searchBookingsRequestInvoiceStatuses?.map((e) => e.value!).join(',') ??
-      '';
+String recurringScheduleRecurringTypeExplodedListToJson(
+    List<enums.RecurringScheduleRecurringType>?
+        recurringScheduleRecurringType) {
+  return recurringScheduleRecurringType?.map((e) => e.value!).join(',') ?? '';
 }
 
-List<String> searchBookingsRequestInvoiceStatusesListToJson(
-    List<enums.SearchBookingsRequestInvoiceStatuses>?
-        searchBookingsRequestInvoiceStatuses) {
-  if (searchBookingsRequestInvoiceStatuses == null) {
+List<String> recurringScheduleRecurringTypeListToJson(
+    List<enums.RecurringScheduleRecurringType>?
+        recurringScheduleRecurringType) {
+  if (recurringScheduleRecurringType == null) {
     return [];
   }
 
-  return searchBookingsRequestInvoiceStatuses.map((e) => e.value!).toList();
+  return recurringScheduleRecurringType.map((e) => e.value!).toList();
 }
 
-List<enums.SearchBookingsRequestInvoiceStatuses>
-    searchBookingsRequestInvoiceStatusesListFromJson(
-  List? searchBookingsRequestInvoiceStatuses, [
-  List<enums.SearchBookingsRequestInvoiceStatuses>? defaultValue,
+List<enums.RecurringScheduleRecurringType>
+    recurringScheduleRecurringTypeListFromJson(
+  List? recurringScheduleRecurringType, [
+  List<enums.RecurringScheduleRecurringType>? defaultValue,
 ]) {
-  if (searchBookingsRequestInvoiceStatuses == null) {
+  if (recurringScheduleRecurringType == null) {
     return defaultValue ?? [];
   }
 
-  return searchBookingsRequestInvoiceStatuses
-      .map((e) => searchBookingsRequestInvoiceStatusesFromJson(e.toString()))
+  return recurringScheduleRecurringType
+      .map((e) => recurringScheduleRecurringTypeFromJson(e.toString()))
       .toList();
 }
 
-List<enums.SearchBookingsRequestInvoiceStatuses>?
-    searchBookingsRequestInvoiceStatusesNullableListFromJson(
-  List? searchBookingsRequestInvoiceStatuses, [
-  List<enums.SearchBookingsRequestInvoiceStatuses>? defaultValue,
+List<enums.RecurringScheduleRecurringType>?
+    recurringScheduleRecurringTypeNullableListFromJson(
+  List? recurringScheduleRecurringType, [
+  List<enums.RecurringScheduleRecurringType>? defaultValue,
 ]) {
-  if (searchBookingsRequestInvoiceStatuses == null) {
+  if (recurringScheduleRecurringType == null) {
     return defaultValue;
   }
 
-  return searchBookingsRequestInvoiceStatuses
-      .map((e) => searchBookingsRequestInvoiceStatusesFromJson(e.toString()))
+  return recurringScheduleRecurringType
+      .map((e) => recurringScheduleRecurringTypeFromJson(e.toString()))
+      .toList();
+}
+
+String? recurringScheduleTimeZoneNullableToJson(
+    enums.RecurringScheduleTimeZone? recurringScheduleTimeZone) {
+  return recurringScheduleTimeZone?.value;
+}
+
+String? recurringScheduleTimeZoneToJson(
+    enums.RecurringScheduleTimeZone recurringScheduleTimeZone) {
+  return recurringScheduleTimeZone.value;
+}
+
+enums.RecurringScheduleTimeZone recurringScheduleTimeZoneFromJson(
+  Object? recurringScheduleTimeZone, [
+  enums.RecurringScheduleTimeZone? defaultValue,
+]) {
+  return enums.RecurringScheduleTimeZone.values
+          .firstWhereOrNull((e) => e.value == recurringScheduleTimeZone) ??
+      defaultValue ??
+      enums.RecurringScheduleTimeZone.swaggerGeneratedUnknown;
+}
+
+enums.RecurringScheduleTimeZone? recurringScheduleTimeZoneNullableFromJson(
+  Object? recurringScheduleTimeZone, [
+  enums.RecurringScheduleTimeZone? defaultValue,
+]) {
+  if (recurringScheduleTimeZone == null) {
+    return null;
+  }
+  return enums.RecurringScheduleTimeZone.values
+          .firstWhereOrNull((e) => e.value == recurringScheduleTimeZone) ??
+      defaultValue;
+}
+
+String recurringScheduleTimeZoneExplodedListToJson(
+    List<enums.RecurringScheduleTimeZone>? recurringScheduleTimeZone) {
+  return recurringScheduleTimeZone?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> recurringScheduleTimeZoneListToJson(
+    List<enums.RecurringScheduleTimeZone>? recurringScheduleTimeZone) {
+  if (recurringScheduleTimeZone == null) {
+    return [];
+  }
+
+  return recurringScheduleTimeZone.map((e) => e.value!).toList();
+}
+
+List<enums.RecurringScheduleTimeZone> recurringScheduleTimeZoneListFromJson(
+  List? recurringScheduleTimeZone, [
+  List<enums.RecurringScheduleTimeZone>? defaultValue,
+]) {
+  if (recurringScheduleTimeZone == null) {
+    return defaultValue ?? [];
+  }
+
+  return recurringScheduleTimeZone
+      .map((e) => recurringScheduleTimeZoneFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.RecurringScheduleTimeZone>?
+    recurringScheduleTimeZoneNullableListFromJson(
+  List? recurringScheduleTimeZone, [
+  List<enums.RecurringScheduleTimeZone>? defaultValue,
+]) {
+  if (recurringScheduleTimeZone == null) {
+    return defaultValue;
+  }
+
+  return recurringScheduleTimeZone
+      .map((e) => recurringScheduleTimeZoneFromJson(e.toString()))
       .toList();
 }
 
@@ -16640,78 +16456,6 @@ List<enums.UpdateIssueRequestStatus>?
       .toList();
 }
 
-String? updateUserRequestRoleNullableToJson(
-    enums.UpdateUserRequestRole? updateUserRequestRole) {
-  return updateUserRequestRole?.value;
-}
-
-String? updateUserRequestRoleToJson(
-    enums.UpdateUserRequestRole updateUserRequestRole) {
-  return updateUserRequestRole.value;
-}
-
-enums.UpdateUserRequestRole updateUserRequestRoleFromJson(
-  Object? updateUserRequestRole, [
-  enums.UpdateUserRequestRole? defaultValue,
-]) {
-  return enums.UpdateUserRequestRole.values
-          .firstWhereOrNull((e) => e.value == updateUserRequestRole) ??
-      defaultValue ??
-      enums.UpdateUserRequestRole.swaggerGeneratedUnknown;
-}
-
-enums.UpdateUserRequestRole? updateUserRequestRoleNullableFromJson(
-  Object? updateUserRequestRole, [
-  enums.UpdateUserRequestRole? defaultValue,
-]) {
-  if (updateUserRequestRole == null) {
-    return null;
-  }
-  return enums.UpdateUserRequestRole.values
-          .firstWhereOrNull((e) => e.value == updateUserRequestRole) ??
-      defaultValue;
-}
-
-String updateUserRequestRoleExplodedListToJson(
-    List<enums.UpdateUserRequestRole>? updateUserRequestRole) {
-  return updateUserRequestRole?.map((e) => e.value!).join(',') ?? '';
-}
-
-List<String> updateUserRequestRoleListToJson(
-    List<enums.UpdateUserRequestRole>? updateUserRequestRole) {
-  if (updateUserRequestRole == null) {
-    return [];
-  }
-
-  return updateUserRequestRole.map((e) => e.value!).toList();
-}
-
-List<enums.UpdateUserRequestRole> updateUserRequestRoleListFromJson(
-  List? updateUserRequestRole, [
-  List<enums.UpdateUserRequestRole>? defaultValue,
-]) {
-  if (updateUserRequestRole == null) {
-    return defaultValue ?? [];
-  }
-
-  return updateUserRequestRole
-      .map((e) => updateUserRequestRoleFromJson(e.toString()))
-      .toList();
-}
-
-List<enums.UpdateUserRequestRole>? updateUserRequestRoleNullableListFromJson(
-  List? updateUserRequestRole, [
-  List<enums.UpdateUserRequestRole>? defaultValue,
-]) {
-  if (updateUserRequestRole == null) {
-    return defaultValue;
-  }
-
-  return updateUserRequestRole
-      .map((e) => updateUserRequestRoleFromJson(e.toString()))
-      .toList();
-}
-
 String? updateVehicleRequestApprovalTypeNullableToJson(
     enums.UpdateVehicleRequestApprovalType? updateVehicleRequestApprovalType) {
   return updateVehicleRequestApprovalType?.value;
@@ -17403,79 +17147,6 @@ List<enums.VehicleUsageUpdateStatusRequestStatus>?
 
   return vehicleUsageUpdateStatusRequestStatus
       .map((e) => vehicleUsageUpdateStatusRequestStatusFromJson(e.toString()))
-      .toList();
-}
-
-String? userV1UsersRolesRoleGetRoleNullableToJson(
-    enums.UserV1UsersRolesRoleGetRole? userV1UsersRolesRoleGetRole) {
-  return userV1UsersRolesRoleGetRole?.value;
-}
-
-String? userV1UsersRolesRoleGetRoleToJson(
-    enums.UserV1UsersRolesRoleGetRole userV1UsersRolesRoleGetRole) {
-  return userV1UsersRolesRoleGetRole.value;
-}
-
-enums.UserV1UsersRolesRoleGetRole userV1UsersRolesRoleGetRoleFromJson(
-  Object? userV1UsersRolesRoleGetRole, [
-  enums.UserV1UsersRolesRoleGetRole? defaultValue,
-]) {
-  return enums.UserV1UsersRolesRoleGetRole.values
-          .firstWhereOrNull((e) => e.value == userV1UsersRolesRoleGetRole) ??
-      defaultValue ??
-      enums.UserV1UsersRolesRoleGetRole.swaggerGeneratedUnknown;
-}
-
-enums.UserV1UsersRolesRoleGetRole? userV1UsersRolesRoleGetRoleNullableFromJson(
-  Object? userV1UsersRolesRoleGetRole, [
-  enums.UserV1UsersRolesRoleGetRole? defaultValue,
-]) {
-  if (userV1UsersRolesRoleGetRole == null) {
-    return null;
-  }
-  return enums.UserV1UsersRolesRoleGetRole.values
-          .firstWhereOrNull((e) => e.value == userV1UsersRolesRoleGetRole) ??
-      defaultValue;
-}
-
-String userV1UsersRolesRoleGetRoleExplodedListToJson(
-    List<enums.UserV1UsersRolesRoleGetRole>? userV1UsersRolesRoleGetRole) {
-  return userV1UsersRolesRoleGetRole?.map((e) => e.value!).join(',') ?? '';
-}
-
-List<String> userV1UsersRolesRoleGetRoleListToJson(
-    List<enums.UserV1UsersRolesRoleGetRole>? userV1UsersRolesRoleGetRole) {
-  if (userV1UsersRolesRoleGetRole == null) {
-    return [];
-  }
-
-  return userV1UsersRolesRoleGetRole.map((e) => e.value!).toList();
-}
-
-List<enums.UserV1UsersRolesRoleGetRole> userV1UsersRolesRoleGetRoleListFromJson(
-  List? userV1UsersRolesRoleGetRole, [
-  List<enums.UserV1UsersRolesRoleGetRole>? defaultValue,
-]) {
-  if (userV1UsersRolesRoleGetRole == null) {
-    return defaultValue ?? [];
-  }
-
-  return userV1UsersRolesRoleGetRole
-      .map((e) => userV1UsersRolesRoleGetRoleFromJson(e.toString()))
-      .toList();
-}
-
-List<enums.UserV1UsersRolesRoleGetRole>?
-    userV1UsersRolesRoleGetRoleNullableListFromJson(
-  List? userV1UsersRolesRoleGetRole, [
-  List<enums.UserV1UsersRolesRoleGetRole>? defaultValue,
-]) {
-  if (userV1UsersRolesRoleGetRole == null) {
-    return defaultValue;
-  }
-
-  return userV1UsersRolesRoleGetRole
-      .map((e) => userV1UsersRolesRoleGetRoleFromJson(e.toString()))
       .toList();
 }
 

@@ -475,22 +475,38 @@ enum OnboardingPersonalLicenseType {
   const OnboardingPersonalLicenseType(this.value);
 }
 
-enum SearchBookingsRequestInvoiceStatuses {
+enum RecurringScheduleRecurringType {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),
 
-  @JsonValue('TO_BE_INVOICED')
-  toBeInvoiced('TO_BE_INVOICED'),
-  @JsonValue('NEEDS_CORRECTION')
-  needsCorrection('NEEDS_CORRECTION'),
-  @JsonValue('NOT_INVOICED')
-  notInvoiced('NOT_INVOICED'),
-  @JsonValue('INVOICED')
-  invoiced('INVOICED');
+  @JsonValue('DAILY')
+  daily('DAILY'),
+  @JsonValue('WEEKLY')
+  weekly('WEEKLY'),
+  @JsonValue('WEEKDAYS')
+  weekdays('WEEKDAYS'),
+  @JsonValue('MONTHLY')
+  monthly('MONTHLY');
 
   final String? value;
 
-  const SearchBookingsRequestInvoiceStatuses(this.value);
+  const RecurringScheduleRecurringType(this.value);
+}
+
+enum RecurringScheduleTimeZone {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('BRUSSELS')
+  brussels('BRUSSELS'),
+  @JsonValue('LONDON')
+  london('LONDON'),
+  @JsonValue('NEW_YORK')
+  newYork('NEW_YORK');
+
+  final String? value;
+
+  const RecurringScheduleTimeZone(this.value);
 }
 
 enum SearchBookingsRequestStatuses {
@@ -819,24 +835,6 @@ enum UpdateIssueRequestStatus {
   const UpdateIssueRequestStatus(this.value);
 }
 
-enum UpdateUserRequestRole {
-  @JsonValue(null)
-  swaggerGeneratedUnknown(null),
-
-  @JsonValue('BATTFUN')
-  battfun('BATTFUN'),
-  @JsonValue('BATTFAN')
-  battfan('BATTFAN'),
-  @JsonValue('BATTMAX')
-  battmax('BATTMAX'),
-  @JsonValue('BATTADMIN')
-  battadmin('BATTADMIN');
-
-  final String? value;
-
-  const UpdateUserRequestRole(this.value);
-}
-
 enum UpdateVehicleRequestApprovalType {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),
@@ -1061,22 +1059,4 @@ enum VehicleUsageUpdateStatusRequestStatus {
   final String? value;
 
   const VehicleUsageUpdateStatusRequestStatus(this.value);
-}
-
-enum UserV1UsersRolesRoleGetRole {
-  @JsonValue(null)
-  swaggerGeneratedUnknown(null),
-
-  @JsonValue('BATTFUN')
-  battfun('BATTFUN'),
-  @JsonValue('BATTFAN')
-  battfan('BATTFAN'),
-  @JsonValue('BATTMAX')
-  battmax('BATTMAX'),
-  @JsonValue('BATTADMIN')
-  battadmin('BATTADMIN');
-
-  final String? value;
-
-  const UserV1UsersRolesRoleGetRole(this.value);
 }

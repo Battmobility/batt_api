@@ -80,6 +80,25 @@ abstract class BattKit extends ChopperService {
           {@Body() required CreateNonAvailabilityRequest? body});
 
   ///
+  Future<chopper.Response<RecurringNonAvailability>>
+      availabilityV1NonAvailabilitiesRecurringPost(
+          {required CreateRecurringNonAvailabilityRequest? body}) {
+    generatedMapping.putIfAbsent(RecurringNonAvailability,
+        () => RecurringNonAvailability.fromJsonFactory);
+
+    return _availabilityV1NonAvailabilitiesRecurringPost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/availability/v1/non-availabilities/recurring',
+    optionalBody: true,
+  )
+  Future<chopper.Response<RecurringNonAvailability>>
+      _availabilityV1NonAvailabilitiesRecurringPost(
+          {@Body() required CreateRecurringNonAvailabilityRequest? body});
+
+  ///
   Future<chopper.Response<NonAvailabilitiesPerVehiclePage>>
       availabilityV1NonAvailabilitiesSearchesPost(
           {required SearchNonAvailabilityEventsRequest? body}) {
@@ -113,6 +132,38 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response>
       _availabilityV1NonAvailabilitiesNonAvailabilityIdDelete(
           {@Path('nonAvailabilityId') required String? nonAvailabilityId});
+
+  ///
+  ///@param nonAvailabilityId
+  ///@param start
+  ///@param end
+  Future<chopper.Response<NonAvailabilitiesPage>>
+      availabilityV1NonAvailabilitiesNonAvailabilityIdSplitPut({
+    required String? nonAvailabilityId,
+    required DateTime? start,
+    required DateTime? end,
+  }) {
+    generatedMapping.putIfAbsent(
+        NonAvailabilitiesPage, () => NonAvailabilitiesPage.fromJsonFactory);
+
+    return _availabilityV1NonAvailabilitiesNonAvailabilityIdSplitPut(
+        nonAvailabilityId: nonAvailabilityId, start: start, end: end);
+  }
+
+  ///
+  ///@param nonAvailabilityId
+  ///@param start
+  ///@param end
+  @Put(
+    path: '/availability/v1/non-availabilities/{nonAvailabilityId}/split',
+    optionalBody: true,
+  )
+  Future<chopper.Response<NonAvailabilitiesPage>>
+      _availabilityV1NonAvailabilitiesNonAvailabilityIdSplitPut({
+    @Path('nonAvailabilityId') required String? nonAvailabilityId,
+    @Query('start') required DateTime? start,
+    @Query('end') required DateTime? end,
+  });
 
   ///
   ///@param vehicleId
@@ -1286,54 +1337,6 @@ abstract class BattKit extends ChopperService {
     @Path('userEmail') required String? userEmail,
   });
 
-  ///
-  Future<chopper.Response<GpsLocation>> userV1HomeLocationGet() {
-    generatedMapping.putIfAbsent(
-        GpsLocation, () => GpsLocation.fromJsonFactory);
-
-    return _userV1HomeLocationGet();
-  }
-
-  ///
-  @Get(path: '/user/v1/home-location')
-  Future<chopper.Response<GpsLocation>> _userV1HomeLocationGet();
-
-  ///
-  Future<chopper.Response> userV1HomeLocationPut({required GpsLocation? body}) {
-    return _userV1HomeLocationPut(body: body);
-  }
-
-  ///
-  @Put(
-    path: '/user/v1/home-location',
-    optionalBody: true,
-  )
-  Future<chopper.Response> _userV1HomeLocationPut(
-      {@Body() required GpsLocation? body});
-
-  ///
-  ///@param userId
-  Future<chopper.Response<User>> userV1ImageUserIdPost({
-    required String? userId,
-    required MultipartFile file,
-  }) {
-    generatedMapping.putIfAbsent(User, () => User.fromJsonFactory);
-
-    return _userV1ImageUserIdPost(userId: userId, file: file);
-  }
-
-  ///
-  ///@param userId
-  @Post(
-    path: '/user/v1/image/{userId}',
-    optionalBody: true,
-  )
-  @Multipart()
-  Future<chopper.Response<User>> _userV1ImageUserIdPost({
-    @Path('userId') required String? userId,
-    @PartFile() required MultipartFile file,
-  });
-
   ///Requests a password reset email to be sent
   Future<chopper.Response> userV1PasswordResetsPost(
       {required PasswordReset? body}) {
@@ -1387,19 +1390,6 @@ abstract class BattKit extends ChopperService {
   @Get(path: '/user/v1/users/documents/{filename}')
   Future<chopper.Response<String>> _userV1UsersDocumentsFilenameGet(
       {@Path('filename') required String? filename});
-
-  ///
-  ///@param userImageId
-  Future<chopper.Response<List<String>>> userV1UsersImagesUserImageIdGet(
-      {required String? userImageId}) {
-    return _userV1UsersImagesUserImageIdGet(userImageId: userImageId);
-  }
-
-  ///
-  ///@param userImageId
-  @Get(path: '/user/v1/users/images/{userImageId}')
-  Future<chopper.Response<List<String>>> _userV1UsersImagesUserImageIdGet(
-      {@Path('userImageId') required String? userImageId});
 
   ///Get information about your own user
   Future<chopper.Response<ContractUser>> userV1UsersMeGet() {
@@ -1507,21 +1497,6 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response<Onboarding>> _userV1UsersOnboardingPhonePut(
       {@Body() required OnboardingPhone? body});
 
-  ///
-  ///@param role
-  Future<chopper.Response<UserPage>> userV1UsersRolesRoleGet(
-      {required enums.UserV1UsersRolesRoleGetRole? role}) {
-    generatedMapping.putIfAbsent(UserPage, () => UserPage.fromJsonFactory);
-
-    return _userV1UsersRolesRoleGet(role: role?.value?.toString());
-  }
-
-  ///
-  ///@param role
-  @Get(path: '/user/v1/users/roles/{role}')
-  Future<chopper.Response<UserPage>> _userV1UsersRolesRoleGet(
-      {@Path('role') required String? role});
-
   ///Search users based on first and last name
   ///@param firstNameHint First name
   ///@param lastNameHint Last name
@@ -1546,44 +1521,6 @@ abstract class BattKit extends ChopperService {
   });
 
   ///
-  Future<chopper.Response<UserPage>> userV1UsersSearchesPut(
-      {required SearchUsersRequest? body}) {
-    generatedMapping.putIfAbsent(UserPage, () => UserPage.fromJsonFactory);
-
-    return _userV1UsersSearchesPut(body: body);
-  }
-
-  ///
-  @Put(
-    path: '/user/v1/users/searches',
-    optionalBody: true,
-  )
-  Future<chopper.Response<UserPage>> _userV1UsersSearchesPut(
-      {@Body() required SearchUsersRequest? body});
-
-  ///
-  ///@param id
-  Future<chopper.Response<User>> userV1UsersIdPut({
-    required String? id,
-    required UpdateUserRequest? body,
-  }) {
-    generatedMapping.putIfAbsent(User, () => User.fromJsonFactory);
-
-    return _userV1UsersIdPut(id: id, body: body);
-  }
-
-  ///
-  ///@param id
-  @Put(
-    path: '/user/v1/users/{id}',
-    optionalBody: true,
-  )
-  Future<chopper.Response<User>> _userV1UsersIdPut({
-    @Path('id') required String? id,
-    @Body() required UpdateUserRequest? body,
-  });
-
-  ///
   ///@param userId
   Future<chopper.Response> userV1UsersUserIdDelete({required String? userId}) {
     return _userV1UsersUserIdDelete(userId: userId);
@@ -1593,21 +1530,6 @@ abstract class BattKit extends ChopperService {
   ///@param userId
   @Delete(path: '/user/v1/users/{userId}')
   Future<chopper.Response> _userV1UsersUserIdDelete(
-      {@Path('userId') required String? userId});
-
-  ///
-  ///@param userId
-  Future<chopper.Response<User>> userV1UsersUserIdGet(
-      {required String? userId}) {
-    generatedMapping.putIfAbsent(User, () => User.fromJsonFactory);
-
-    return _userV1UsersUserIdGet(userId: userId);
-  }
-
-  ///
-  ///@param userId
-  @Get(path: '/user/v1/users/{userId}')
-  Future<chopper.Response<User>> _userV1UsersUserIdGet(
       {@Path('userId') required String? userId});
 
   ///Requests a resend of the verification email that is part of the user signup process
@@ -2048,45 +1970,6 @@ abstract class BattKit extends ChopperService {
   )
   Future<chopper.Response<VehiclesPage>> _vehicleV1SearchPost(
       {@Body() required SearchVehiclesRequest? body});
-
-  ///
-  ///@param vehicleId
-  Future<chopper.Response<Vehicle>> vehicleV1VehicleImageVehicleIdPost({
-    required String? vehicleId,
-    required MultipartFile file,
-  }) {
-    generatedMapping.putIfAbsent(Vehicle, () => Vehicle.fromJsonFactory);
-
-    return _vehicleV1VehicleImageVehicleIdPost(
-        vehicleId: vehicleId, file: file);
-  }
-
-  ///
-  ///@param vehicleId
-  @Post(
-    path: '/vehicle/v1/vehicle/image/{vehicleId}',
-    optionalBody: true,
-  )
-  @Multipart()
-  Future<chopper.Response<Vehicle>> _vehicleV1VehicleImageVehicleIdPost({
-    @Path('vehicleId') required String? vehicleId,
-    @PartFile() required MultipartFile file,
-  });
-
-  ///
-  ///@param vehicleImageId
-  Future<chopper.Response<List<String>>> vehicleV1VehicleImageVehicleImageIdGet(
-      {required String? vehicleImageId}) {
-    return _vehicleV1VehicleImageVehicleImageIdGet(
-        vehicleImageId: vehicleImageId);
-  }
-
-  ///
-  ///@param vehicleImageId
-  @Get(path: '/vehicle/v1/vehicle/image/{vehicleImageId}')
-  Future<chopper.Response<List<String>>>
-      _vehicleV1VehicleImageVehicleImageIdGet(
-          {@Path('vehicleImageId') required String? vehicleImageId});
 
   ///
   ///@param activeOnly
