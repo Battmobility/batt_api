@@ -47,6 +47,22 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<RecurringNonAvailability>>
+      _availabilityV1NonAvailabilitiesRecurringPost(
+          {required CreateRecurringNonAvailabilityRequest? body}) {
+    final Uri $url = Uri.parse('/availability/v1/non-availabilities/recurring');
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client
+        .send<RecurringNonAvailability, RecurringNonAvailability>($request);
+  }
+
+  @override
   Future<Response<NonAvailabilitiesPerVehiclePage>>
       _availabilityV1NonAvailabilitiesSearchesPost(
           {required SearchNonAvailabilityEventsRequest? body}) {
@@ -74,6 +90,28 @@ final class _$BattKit extends BattKit {
       client.baseUrl,
     );
     return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<NonAvailabilitiesPage>>
+      _availabilityV1NonAvailabilitiesNonAvailabilityIdSplitPut({
+    required String? nonAvailabilityId,
+    required DateTime? start,
+    required DateTime? end,
+  }) {
+    final Uri $url = Uri.parse(
+        '/availability/v1/non-availabilities/${nonAvailabilityId}/split');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'start': start,
+      'end': end,
+    };
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
+    return client.send<NonAvailabilitiesPage, NonAvailabilitiesPage>($request);
   }
 
   @override
@@ -988,53 +1026,6 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<GpsLocation>> _userV1HomeLocationGet() {
-    final Uri $url = Uri.parse('/user/v1/home-location');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
-    );
-    return client.send<GpsLocation, GpsLocation>($request);
-  }
-
-  @override
-  Future<Response<dynamic>> _userV1HomeLocationPut(
-      {required GpsLocation? body}) {
-    final Uri $url = Uri.parse('/user/v1/home-location');
-    final $body = body;
-    final Request $request = Request(
-      'PUT',
-      $url,
-      client.baseUrl,
-      body: $body,
-    );
-    return client.send<dynamic, dynamic>($request);
-  }
-
-  @override
-  Future<Response<User>> _userV1ImageUserIdPost({
-    required String? userId,
-    required MultipartFile file,
-  }) {
-    final Uri $url = Uri.parse('/user/v1/image/${userId}');
-    final List<PartValue> $parts = <PartValue>[
-      PartValueFile<MultipartFile>(
-        'file',
-        file,
-      )
-    ];
-    final Request $request = Request(
-      'POST',
-      $url,
-      client.baseUrl,
-      parts: $parts,
-      multipart: true,
-    );
-    return client.send<User, User>($request);
-  }
-
-  @override
   Future<Response<dynamic>> _userV1PasswordResetsPost(
       {required PasswordReset? body}) {
     final Uri $url = Uri.parse('/user/v1/password-resets');
@@ -1085,18 +1076,6 @@ final class _$BattKit extends BattKit {
       client.baseUrl,
     );
     return client.send<String, String>($request);
-  }
-
-  @override
-  Future<Response<List<String>>> _userV1UsersImagesUserImageIdGet(
-      {required String? userImageId}) {
-    final Uri $url = Uri.parse('/user/v1/users/images/${userImageId}');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
-    );
-    return client.send<List<String>, String>($request);
   }
 
   @override
@@ -1210,17 +1189,6 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<UserPage>> _userV1UsersRolesRoleGet({required String? role}) {
-    final Uri $url = Uri.parse('/user/v1/users/roles/${role}');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
-    );
-    return client.send<UserPage, UserPage>($request);
-  }
-
-  @override
   Future<Response<List<ContractUser>>> _userV1UsersSearchesGet({
     required String? firstNameHint,
     required String? lastNameHint,
@@ -1240,36 +1208,6 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<UserPage>> _userV1UsersSearchesPut(
-      {required SearchUsersRequest? body}) {
-    final Uri $url = Uri.parse('/user/v1/users/searches');
-    final $body = body;
-    final Request $request = Request(
-      'PUT',
-      $url,
-      client.baseUrl,
-      body: $body,
-    );
-    return client.send<UserPage, UserPage>($request);
-  }
-
-  @override
-  Future<Response<User>> _userV1UsersIdPut({
-    required String? id,
-    required UpdateUserRequest? body,
-  }) {
-    final Uri $url = Uri.parse('/user/v1/users/${id}');
-    final $body = body;
-    final Request $request = Request(
-      'PUT',
-      $url,
-      client.baseUrl,
-      body: $body,
-    );
-    return client.send<User, User>($request);
-  }
-
-  @override
   Future<Response<dynamic>> _userV1UsersUserIdDelete(
       {required String? userId}) {
     final Uri $url = Uri.parse('/user/v1/users/${userId}');
@@ -1279,17 +1217,6 @@ final class _$BattKit extends BattKit {
       client.baseUrl,
     );
     return client.send<dynamic, dynamic>($request);
-  }
-
-  @override
-  Future<Response<User>> _userV1UsersUserIdGet({required String? userId}) {
-    final Uri $url = Uri.parse('/user/v1/users/${userId}');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
-    );
-    return client.send<User, User>($request);
   }
 
   @override
@@ -1640,40 +1567,6 @@ final class _$BattKit extends BattKit {
       body: $body,
     );
     return client.send<VehiclesPage, VehiclesPage>($request);
-  }
-
-  @override
-  Future<Response<Vehicle>> _vehicleV1VehicleImageVehicleIdPost({
-    required String? vehicleId,
-    required MultipartFile file,
-  }) {
-    final Uri $url = Uri.parse('/vehicle/v1/vehicle/image/${vehicleId}');
-    final List<PartValue> $parts = <PartValue>[
-      PartValueFile<MultipartFile>(
-        'file',
-        file,
-      )
-    ];
-    final Request $request = Request(
-      'POST',
-      $url,
-      client.baseUrl,
-      parts: $parts,
-      multipart: true,
-    );
-    return client.send<Vehicle, Vehicle>($request);
-  }
-
-  @override
-  Future<Response<List<String>>> _vehicleV1VehicleImageVehicleImageIdGet(
-      {required String? vehicleImageId}) {
-    final Uri $url = Uri.parse('/vehicle/v1/vehicle/image/${vehicleImageId}');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
-    );
-    return client.send<List<String>, String>($request);
   }
 
   @override

@@ -1302,6 +1302,17 @@
         ],
         "type": "object"
       },
+      "CreateRecurringNonAvailabilityRequest": {
+        "properties": {
+          "nonAvailabilityRequest": {
+            "$ref": "#/components/schemas/CreateNonAvailabilityRequest"
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/RecurringSchedule"
+          }
+        },
+        "type": "object"
+      },
       "CreateUserRequest": {
         "properties": {
           "email": {
@@ -1343,6 +1354,10 @@
           },
           "clientId": {
             "type": "integer"
+          },
+          "contractDate": {
+            "format": "date-time",
+            "type": "string"
           },
           "costForAdditionalKmsExclVat": {
             "type": "number"
@@ -1399,6 +1414,7 @@
         "required": [
           "battMaxType",
           "clientId",
+          "contractDate",
           "effectiveStartDate",
           "monthlyLeaseAmountExclVat",
           "vehicleId"
@@ -2275,6 +2291,62 @@
         },
         "type": "object"
       },
+      "RecurringNonAvailability": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/RecurringSchedule"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "RecurringSchedule": {
+        "properties": {
+          "daysOfWeek": {
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "endDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "interval": {
+            "format": "int32",
+            "minimum": 1,
+            "type": "integer"
+          },
+          "recurringType": {
+            "enum": [
+              "DAILY",
+              "WEEKLY",
+              "WEEKDAYS",
+              "MONTHLY"
+            ],
+            "type": "string"
+          },
+          "timeZone": {
+            "enum": [
+              "BRUSSELS",
+              "LONDON",
+              "NEW_YORK"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "endDate",
+          "recurringType"
+        ],
+        "type": "object"
+      },
       "RegisterDeviceRequest": {
         "properties": {
           "active": {
@@ -2352,18 +2424,6 @@
           },
           "endPeriod": {
             "$ref": "#/components/schemas/Period"
-          },
-          "invoiceStatuses": {
-            "items": {
-              "enum": [
-                "TO_BE_INVOICED",
-                "NEEDS_CORRECTION",
-                "NOT_INVOICED",
-                "INVOICED"
-              ],
-              "type": "string"
-            },
-            "type": "array"
           },
           "licensePlate": {
             "type": "string"
@@ -2598,44 +2658,6 @@
               "type": "string"
             },
             "type": "array"
-          }
-        },
-        "type": "object"
-      },
-      "SearchUsersRequest": {
-        "properties": {
-          "defaultMembershipId": {
-            "type": "string"
-          },
-          "displayName": {
-            "type": "string"
-          },
-          "favoriteLocation": {
-            "$ref": "#/components/schemas/GpsLocation"
-          },
-          "favoritelocationDistance": {
-            "format": "int32",
-            "type": "integer"
-          },
-          "homeLocation": {
-            "$ref": "#/components/schemas/GpsLocation"
-          },
-          "homelocationDistance": {
-            "format": "int32",
-            "type": "integer"
-          },
-          "remoteId": {
-            "type": "string"
-          },
-          "userName": {
-            "type": "string"
-          },
-          "workLocation": {
-            "$ref": "#/components/schemas/GpsLocation"
-          },
-          "worklocationDistance": {
-            "format": "int32",
-            "type": "integer"
           }
         },
         "type": "object"
@@ -3112,52 +3134,6 @@
         ],
         "type": "object"
       },
-      "UpdateUserRequest": {
-        "properties": {
-          "biography": {
-            "maxLength": 512,
-            "type": "string"
-          },
-          "defaultMembershipId": {
-            "type": "string"
-          },
-          "displayName": {
-            "type": "string"
-          },
-          "favoriteLocation": {
-            "$ref": "#/components/schemas/GpsLocation"
-          },
-          "homeLocation": {
-            "$ref": "#/components/schemas/GpsLocation"
-          },
-          "joinedSince": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "pushNotificationsEnabled": {
-            "type": "boolean"
-          },
-          "role": {
-            "enum": [
-              "BATTFUN",
-              "BATTFAN",
-              "BATTMAX",
-              "BATTADMIN"
-            ],
-            "type": "string"
-          },
-          "tripRegistrationEnabled": {
-            "type": "boolean"
-          },
-          "userName": {
-            "type": "string"
-          },
-          "workLocation": {
-            "$ref": "#/components/schemas/GpsLocation"
-          }
-        },
-        "type": "object"
-      },
       "UpdateVehicleRequest": {
         "properties": {
           "addVehicleLocationRequest": {
@@ -3284,17 +3260,6 @@
           },
           "workLocation": {
             "$ref": "#/components/schemas/GpsLocation"
-          }
-        },
-        "type": "object"
-      },
-      "UserPage": {
-        "properties": {
-          "users": {
-            "items": {
-              "$ref": "#/components/schemas/User"
-            },
-            "type": "array"
           }
         },
         "type": "object"
@@ -3929,6 +3894,36 @@
         ]
       }
     },
+    "/availability/v1/non-availabilities/recurring": {
+      "post": {
+        "operationId": "createRecurringNonAvailability",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecurringNonAvailabilityRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecurringNonAvailability"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "availability-facade"
+        ]
+      }
+    },
     "/availability/v1/non-availabilities/searches": {
       "post": {
         "operationId": "searchNonAvailabilitiesForVehicles",
@@ -3974,6 +3969,54 @@
         ],
         "responses": {
           "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "availability-facade"
+        ]
+      }
+    },
+    "/availability/v1/non-availabilities/{nonAvailabilityId}/split": {
+      "put": {
+        "operationId": "splitNonAvailability",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "nonAvailabilityId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "start",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "end",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/NonAvailabilitiesPage"
+                }
+              }
+            },
             "description": "OK"
           }
         },
@@ -6972,95 +7015,6 @@
         ]
       }
     },
-    "/user/v1/home-location": {
-      "get": {
-        "operationId": "getHomeLocation",
-        "responses": {
-          "200": {
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/GpsLocation"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "user-facade"
-        ]
-      },
-      "put": {
-        "operationId": "setHomeLocation",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GpsLocation"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "user-facade"
-        ]
-      }
-    },
-    "/user/v1/image/{userId}": {
-      "post": {
-        "operationId": "uploadUserImage",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "userId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "properties": {
-                  "file": {
-                    "format": "binary",
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "file"
-                ],
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "user-facade"
-        ]
-      }
-    },
     "/user/v1/password-resets": {
       "post": {
         "description": "Requests a password reset email to be sent",
@@ -7232,40 +7186,6 @@
           }
         },
         "summary": "Get an uploaded document from the user",
-        "tags": [
-          "user-facade"
-        ]
-      }
-    },
-    "/user/v1/users/images/{userImageId}": {
-      "get": {
-        "operationId": "getUserImage",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "userImageId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "*/*": {
-                "schema": {
-                  "items": {
-                    "format": "byte",
-                    "type": "string"
-                  },
-                  "type": "array"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
         "tags": [
           "user-facade"
         ]
@@ -7471,42 +7391,6 @@
         ]
       }
     },
-    "/user/v1/users/roles/{role}": {
-      "get": {
-        "operationId": "getUsersByRole",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "role",
-            "required": true,
-            "schema": {
-              "enum": [
-                "BATTFUN",
-                "BATTFAN",
-                "BATTMAX",
-                "BATTADMIN"
-              ],
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserPage"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "user-facade"
-        ]
-      }
-    },
     "/user/v1/users/searches": {
       "get": {
         "description": "Search users based on first and last name and return user details for each found user",
@@ -7549,74 +7433,6 @@
         "tags": [
           "user-facade"
         ]
-      },
-      "put": {
-        "operationId": "searchUsers",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SearchUsersRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserPage"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "user-facade"
-        ]
-      }
-    },
-    "/user/v1/users/{id}": {
-      "put": {
-        "operationId": "updateUser",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUserRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "user-facade"
-        ]
       }
     },
     "/user/v1/users/{userId}": {
@@ -7634,34 +7450,6 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "user-facade"
-        ]
-      },
-      "get": {
-        "operationId": "getUser",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "userId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            },
             "description": "OK"
           }
         },
@@ -8372,88 +8160,6 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/VehiclesPage"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "vehicle-facade"
-        ]
-      }
-    },
-    "/vehicle/v1/vehicle/image/{vehicleId}": {
-      "post": {
-        "operationId": "uploadVehicleImage",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "vehicleId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "properties": {
-                  "file": {
-                    "format": "binary",
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "file"
-                ],
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Vehicle"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "vehicle-facade"
-        ]
-      }
-    },
-    "/vehicle/v1/vehicle/image/{vehicleImageId}": {
-      "get": {
-        "operationId": "getVehicleImage",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "vehicleImageId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "*/*": {
-                "schema": {
-                  "items": {
-                    "format": "byte",
-                    "type": "string"
-                  },
-                  "type": "array"
                 }
               }
             },
