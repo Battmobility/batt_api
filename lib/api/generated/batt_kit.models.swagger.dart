@@ -40,7 +40,9 @@ class AddVehicleLocationRequest {
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.vehicleBaseLocationId, vehicleBaseLocationId) ||
                 const DeepCollectionEquality().equals(
-                    other.vehicleBaseLocationId, vehicleBaseLocationId)));
+                  other.vehicleBaseLocationId,
+                  vehicleBaseLocationId,
+                )));
   }
 
   @override
@@ -55,33 +57,37 @@ class AddVehicleLocationRequest {
 }
 
 extension $AddVehicleLocationRequestExtension on AddVehicleLocationRequest {
-  AddVehicleLocationRequest copyWith(
-      {DateTime? from, String? name, String? vehicleBaseLocationId}) {
+  AddVehicleLocationRequest copyWith({
+    DateTime? from,
+    String? name,
+    String? vehicleBaseLocationId,
+  }) {
     return AddVehicleLocationRequest(
-        from: from ?? this.from,
-        name: name ?? this.name,
-        vehicleBaseLocationId:
-            vehicleBaseLocationId ?? this.vehicleBaseLocationId);
+      from: from ?? this.from,
+      name: name ?? this.name,
+      vehicleBaseLocationId:
+          vehicleBaseLocationId ?? this.vehicleBaseLocationId,
+    );
   }
 
-  AddVehicleLocationRequest copyWithWrapped(
-      {Wrapped<DateTime?>? from,
-      Wrapped<String?>? name,
-      Wrapped<String?>? vehicleBaseLocationId}) {
+  AddVehicleLocationRequest copyWithWrapped({
+    Wrapped<DateTime?>? from,
+    Wrapped<String?>? name,
+    Wrapped<String?>? vehicleBaseLocationId,
+  }) {
     return AddVehicleLocationRequest(
-        from: (from != null ? from.value : this.from),
-        name: (name != null ? name.value : this.name),
-        vehicleBaseLocationId: (vehicleBaseLocationId != null
-            ? vehicleBaseLocationId.value
-            : this.vehicleBaseLocationId));
+      from: (from != null ? from.value : this.from),
+      name: (name != null ? name.value : this.name),
+      vehicleBaseLocationId: (vehicleBaseLocationId != null
+          ? vehicleBaseLocationId.value
+          : this.vehicleBaseLocationId),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class AddVehiclesToGroupRequest {
-  const AddVehiclesToGroupRequest({
-    this.vehicleIds,
-  });
+  const AddVehiclesToGroupRequest({this.vehicleIds});
 
   factory AddVehiclesToGroupRequest.fromJson(Map<String, dynamic> json) =>
       _$AddVehiclesToGroupRequestFromJson(json);
@@ -98,8 +104,10 @@ class AddVehiclesToGroupRequest {
     return identical(this, other) ||
         (other is AddVehiclesToGroupRequest &&
             (identical(other.vehicleIds, vehicleIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleIds, vehicleIds)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleIds,
+                  vehicleIds,
+                )));
   }
 
   @override
@@ -115,10 +123,12 @@ extension $AddVehiclesToGroupRequestExtension on AddVehiclesToGroupRequest {
     return AddVehiclesToGroupRequest(vehicleIds: vehicleIds ?? this.vehicleIds);
   }
 
-  AddVehiclesToGroupRequest copyWithWrapped(
-      {Wrapped<List<String>?>? vehicleIds}) {
+  AddVehiclesToGroupRequest copyWithWrapped({
+    Wrapped<List<String>?>? vehicleIds,
+  }) {
     return AddVehiclesToGroupRequest(
-        vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds));
+      vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds),
+    );
   }
 }
 
@@ -164,8 +174,10 @@ class AdjacentNonAvailability {
             (identical(other.active, active) ||
                 const DeepCollectionEquality().equals(other.active, active)) &&
             (identical(other.bookingId, bookingId) ||
-                const DeepCollectionEquality()
-                    .equals(other.bookingId, bookingId)) &&
+                const DeepCollectionEquality().equals(
+                  other.bookingId,
+                  bookingId,
+                )) &&
             (identical(other.period, period) ||
                 const DeepCollectionEquality().equals(other.period, period)) &&
             (identical(other.type, type) ||
@@ -173,8 +185,10 @@ class AdjacentNonAvailability {
             (identical(other.userId, userId) ||
                 const DeepCollectionEquality().equals(other.userId, userId)) &&
             (identical(other.userName, userName) ||
-                const DeepCollectionEquality()
-                    .equals(other.userName, userName)));
+                const DeepCollectionEquality().equals(
+                  other.userName,
+                  userName,
+                )));
   }
 
   @override
@@ -192,44 +206,46 @@ class AdjacentNonAvailability {
 }
 
 extension $AdjacentNonAvailabilityExtension on AdjacentNonAvailability {
-  AdjacentNonAvailability copyWith(
-      {bool? active,
-      String? bookingId,
-      Period? period,
-      enums.AdjacentNonAvailabilityType? type,
-      String? userId,
-      String? userName}) {
+  AdjacentNonAvailability copyWith({
+    bool? active,
+    String? bookingId,
+    Period? period,
+    enums.AdjacentNonAvailabilityType? type,
+    String? userId,
+    String? userName,
+  }) {
     return AdjacentNonAvailability(
-        active: active ?? this.active,
-        bookingId: bookingId ?? this.bookingId,
-        period: period ?? this.period,
-        type: type ?? this.type,
-        userId: userId ?? this.userId,
-        userName: userName ?? this.userName);
+      active: active ?? this.active,
+      bookingId: bookingId ?? this.bookingId,
+      period: period ?? this.period,
+      type: type ?? this.type,
+      userId: userId ?? this.userId,
+      userName: userName ?? this.userName,
+    );
   }
 
-  AdjacentNonAvailability copyWithWrapped(
-      {Wrapped<bool?>? active,
-      Wrapped<String?>? bookingId,
-      Wrapped<Period?>? period,
-      Wrapped<enums.AdjacentNonAvailabilityType?>? type,
-      Wrapped<String?>? userId,
-      Wrapped<String?>? userName}) {
+  AdjacentNonAvailability copyWithWrapped({
+    Wrapped<bool?>? active,
+    Wrapped<String?>? bookingId,
+    Wrapped<Period?>? period,
+    Wrapped<enums.AdjacentNonAvailabilityType?>? type,
+    Wrapped<String?>? userId,
+    Wrapped<String?>? userName,
+  }) {
     return AdjacentNonAvailability(
-        active: (active != null ? active.value : this.active),
-        bookingId: (bookingId != null ? bookingId.value : this.bookingId),
-        period: (period != null ? period.value : this.period),
-        type: (type != null ? type.value : this.type),
-        userId: (userId != null ? userId.value : this.userId),
-        userName: (userName != null ? userName.value : this.userName));
+      active: (active != null ? active.value : this.active),
+      bookingId: (bookingId != null ? bookingId.value : this.bookingId),
+      period: (period != null ? period.value : this.period),
+      type: (type != null ? type.value : this.type),
+      userId: (userId != null ? userId.value : this.userId),
+      userName: (userName != null ? userName.value : this.userName),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class ApiErrorResponse {
-  const ApiErrorResponse({
-    this.errors,
-  });
+  const ApiErrorResponse({this.errors});
 
   factory ApiErrorResponse.fromJson(Map<String, dynamic> json) =>
       _$ApiErrorResponseFromJson(json);
@@ -264,15 +280,14 @@ extension $ApiErrorResponseExtension on ApiErrorResponse {
 
   ApiErrorResponse copyWithWrapped({Wrapped<List<String>?>? errors}) {
     return ApiErrorResponse(
-        errors: (errors != null ? errors.value : this.errors));
+      errors: (errors != null ? errors.value : this.errors),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class ApiValidationResponse {
-  const ApiValidationResponse({
-    this.validationErrors,
-  });
+  const ApiValidationResponse({this.validationErrors});
 
   factory ApiValidationResponse.fromJson(Map<String, dynamic> json) =>
       _$ApiValidationResponseFromJson(json);
@@ -289,8 +304,10 @@ class ApiValidationResponse {
     return identical(this, other) ||
         (other is ApiValidationResponse &&
             (identical(other.validationErrors, validationErrors) ||
-                const DeepCollectionEquality()
-                    .equals(other.validationErrors, validationErrors)));
+                const DeepCollectionEquality().equals(
+                  other.validationErrors,
+                  validationErrors,
+                )));
   }
 
   @override
@@ -305,15 +322,18 @@ class ApiValidationResponse {
 extension $ApiValidationResponseExtension on ApiValidationResponse {
   ApiValidationResponse copyWith({Map<String, dynamic>? validationErrors}) {
     return ApiValidationResponse(
-        validationErrors: validationErrors ?? this.validationErrors);
+      validationErrors: validationErrors ?? this.validationErrors,
+    );
   }
 
-  ApiValidationResponse copyWithWrapped(
-      {Wrapped<Map<String, dynamic>?>? validationErrors}) {
+  ApiValidationResponse copyWithWrapped({
+    Wrapped<Map<String, dynamic>?>? validationErrors,
+  }) {
     return ApiValidationResponse(
-        validationErrors: (validationErrors != null
-            ? validationErrors.value
-            : this.validationErrors));
+      validationErrors: (validationErrors != null
+          ? validationErrors.value
+          : this.validationErrors),
+    );
   }
 }
 
@@ -361,23 +381,35 @@ class BatteryStatus {
     return identical(this, other) ||
         (other is BatteryStatus &&
             (identical(other.ageInSeconds, ageInSeconds) ||
-                const DeepCollectionEquality()
-                    .equals(other.ageInSeconds, ageInSeconds)) &&
+                const DeepCollectionEquality().equals(
+                  other.ageInSeconds,
+                  ageInSeconds,
+                )) &&
             (identical(other.batteryPercentage, batteryPercentage) ||
-                const DeepCollectionEquality()
-                    .equals(other.batteryPercentage, batteryPercentage)) &&
+                const DeepCollectionEquality().equals(
+                  other.batteryPercentage,
+                  batteryPercentage,
+                )) &&
             (identical(other.charging, charging) ||
-                const DeepCollectionEquality()
-                    .equals(other.charging, charging)) &&
+                const DeepCollectionEquality().equals(
+                  other.charging,
+                  charging,
+                )) &&
             (identical(other.cruisingRange, cruisingRange) ||
-                const DeepCollectionEquality()
-                    .equals(other.cruisingRange, cruisingRange)) &&
+                const DeepCollectionEquality().equals(
+                  other.cruisingRange,
+                  cruisingRange,
+                )) &&
             (identical(other.errorMessage, errorMessage) ||
-                const DeepCollectionEquality()
-                    .equals(other.errorMessage, errorMessage)) &&
+                const DeepCollectionEquality().equals(
+                  other.errorMessage,
+                  errorMessage,
+                )) &&
             (identical(other.fetchStatus, fetchStatus) ||
-                const DeepCollectionEquality()
-                    .equals(other.fetchStatus, fetchStatus)));
+                const DeepCollectionEquality().equals(
+                  other.fetchStatus,
+                  fetchStatus,
+                )));
   }
 
   @override
@@ -395,42 +427,48 @@ class BatteryStatus {
 }
 
 extension $BatteryStatusExtension on BatteryStatus {
-  BatteryStatus copyWith(
-      {int? ageInSeconds,
-      int? batteryPercentage,
-      enums.BatteryStatusCharging? charging,
-      int? cruisingRange,
-      String? errorMessage,
-      enums.BatteryStatusFetchStatus? fetchStatus}) {
+  BatteryStatus copyWith({
+    int? ageInSeconds,
+    int? batteryPercentage,
+    enums.BatteryStatusCharging? charging,
+    int? cruisingRange,
+    String? errorMessage,
+    enums.BatteryStatusFetchStatus? fetchStatus,
+  }) {
     return BatteryStatus(
-        ageInSeconds: ageInSeconds ?? this.ageInSeconds,
-        batteryPercentage: batteryPercentage ?? this.batteryPercentage,
-        charging: charging ?? this.charging,
-        cruisingRange: cruisingRange ?? this.cruisingRange,
-        errorMessage: errorMessage ?? this.errorMessage,
-        fetchStatus: fetchStatus ?? this.fetchStatus);
+      ageInSeconds: ageInSeconds ?? this.ageInSeconds,
+      batteryPercentage: batteryPercentage ?? this.batteryPercentage,
+      charging: charging ?? this.charging,
+      cruisingRange: cruisingRange ?? this.cruisingRange,
+      errorMessage: errorMessage ?? this.errorMessage,
+      fetchStatus: fetchStatus ?? this.fetchStatus,
+    );
   }
 
-  BatteryStatus copyWithWrapped(
-      {Wrapped<int?>? ageInSeconds,
-      Wrapped<int?>? batteryPercentage,
-      Wrapped<enums.BatteryStatusCharging?>? charging,
-      Wrapped<int?>? cruisingRange,
-      Wrapped<String?>? errorMessage,
-      Wrapped<enums.BatteryStatusFetchStatus?>? fetchStatus}) {
+  BatteryStatus copyWithWrapped({
+    Wrapped<int?>? ageInSeconds,
+    Wrapped<int?>? batteryPercentage,
+    Wrapped<enums.BatteryStatusCharging?>? charging,
+    Wrapped<int?>? cruisingRange,
+    Wrapped<String?>? errorMessage,
+    Wrapped<enums.BatteryStatusFetchStatus?>? fetchStatus,
+  }) {
     return BatteryStatus(
-        ageInSeconds:
-            (ageInSeconds != null ? ageInSeconds.value : this.ageInSeconds),
-        batteryPercentage: (batteryPercentage != null
-            ? batteryPercentage.value
-            : this.batteryPercentage),
-        charging: (charging != null ? charging.value : this.charging),
-        cruisingRange:
-            (cruisingRange != null ? cruisingRange.value : this.cruisingRange),
-        errorMessage:
-            (errorMessage != null ? errorMessage.value : this.errorMessage),
-        fetchStatus:
-            (fetchStatus != null ? fetchStatus.value : this.fetchStatus));
+      ageInSeconds: (ageInSeconds != null
+          ? ageInSeconds.value
+          : this.ageInSeconds),
+      batteryPercentage: (batteryPercentage != null
+          ? batteryPercentage.value
+          : this.batteryPercentage),
+      charging: (charging != null ? charging.value : this.charging),
+      cruisingRange: (cruisingRange != null
+          ? cruisingRange.value
+          : this.cruisingRange),
+      errorMessage: (errorMessage != null
+          ? errorMessage.value
+          : this.errorMessage),
+      fetchStatus: (fetchStatus != null ? fetchStatus.value : this.fetchStatus),
+    );
   }
 }
 
@@ -520,52 +558,100 @@ class BillingPrice {
         (other is BillingPrice &&
             (identical(other.amount, amount) ||
                 const DeepCollectionEquality().equals(other.amount, amount)) &&
-            (identical(other.changeFromHourlyToDaily, changeFromHourlyToDaily) ||
+            (identical(
+                  other.changeFromHourlyToDaily,
+                  changeFromHourlyToDaily,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.changeFromHourlyToDaily, changeFromHourlyToDaily)) &&
+                  other.changeFromHourlyToDaily,
+                  changeFromHourlyToDaily,
+                )) &&
             (identical(other.endDate, endDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDate, endDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.endDate,
+                  endDate,
+                )) &&
             (identical(other.hourlyTotalNotCharged, hourlyTotalNotCharged) ||
                 const DeepCollectionEquality().equals(
-                    other.hourlyTotalNotCharged, hourlyTotalNotCharged)) &&
-            (identical(other.hourlyTotalNotChargedExclVat, hourlyTotalNotChargedExclVat) ||
+                  other.hourlyTotalNotCharged,
+                  hourlyTotalNotCharged,
+                )) &&
+            (identical(
+                  other.hourlyTotalNotChargedExclVat,
+                  hourlyTotalNotChargedExclVat,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.hourlyTotalNotChargedExclVat,
-                    hourlyTotalNotChargedExclVat)) &&
+                  other.hourlyTotalNotChargedExclVat,
+                  hourlyTotalNotChargedExclVat,
+                )) &&
             (identical(other.km, km) ||
                 const DeepCollectionEquality().equals(other.km, km)) &&
             (identical(other.kmPrice, kmPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmPrice, kmPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.kmPrice,
+                  kmPrice,
+                )) &&
             (identical(other.kmPriceExclVat, kmPriceExclVat) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmPriceExclVat, kmPriceExclVat)) &&
+                const DeepCollectionEquality().equals(
+                  other.kmPriceExclVat,
+                  kmPriceExclVat,
+                )) &&
             (identical(other.kmTotal, kmTotal) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmTotal, kmTotal)) &&
+                const DeepCollectionEquality().equals(
+                  other.kmTotal,
+                  kmTotal,
+                )) &&
             (identical(other.kmTotalExclVat, kmTotalExclVat) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmTotalExclVat, kmTotalExclVat)) &&
+                const DeepCollectionEquality().equals(
+                  other.kmTotalExclVat,
+                  kmTotalExclVat,
+                )) &&
             (identical(other.startDate, startDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDate, startDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.startDate,
+                  startDate,
+                )) &&
             (identical(other.timeAmount, timeAmount) ||
-                const DeepCollectionEquality()
-                    .equals(other.timeAmount, timeAmount)) &&
+                const DeepCollectionEquality().equals(
+                  other.timeAmount,
+                  timeAmount,
+                )) &&
             (identical(other.timeTotal, timeTotal) ||
-                const DeepCollectionEquality()
-                    .equals(other.timeTotal, timeTotal)) &&
+                const DeepCollectionEquality().equals(
+                  other.timeTotal,
+                  timeTotal,
+                )) &&
             (identical(other.timeTotalExclVat, timeTotalExclVat) ||
-                const DeepCollectionEquality()
-                    .equals(other.timeTotalExclVat, timeTotalExclVat)) &&
-            (identical(other.total, total) || const DeepCollectionEquality().equals(other.total, total)) &&
-            (identical(other.totalExclVat, totalExclVat) || const DeepCollectionEquality().equals(other.totalExclVat, totalExclVat)) &&
-            (identical(other.totalVat, totalVat) || const DeepCollectionEquality().equals(other.totalVat, totalVat)) &&
-            (identical(other.unit, unit) || const DeepCollectionEquality().equals(other.unit, unit)) &&
-            (identical(other.unitPrice, unitPrice) || const DeepCollectionEquality().equals(other.unitPrice, unitPrice)) &&
-            (identical(other.unitPriceExclVat, unitPriceExclVat) || const DeepCollectionEquality().equals(other.unitPriceExclVat, unitPriceExclVat)) &&
-            (identical(other.vatRate, vatRate) || const DeepCollectionEquality().equals(other.vatRate, vatRate)));
+                const DeepCollectionEquality().equals(
+                  other.timeTotalExclVat,
+                  timeTotalExclVat,
+                )) &&
+            (identical(other.total, total) ||
+                const DeepCollectionEquality().equals(other.total, total)) &&
+            (identical(other.totalExclVat, totalExclVat) ||
+                const DeepCollectionEquality().equals(
+                  other.totalExclVat,
+                  totalExclVat,
+                )) &&
+            (identical(other.totalVat, totalVat) ||
+                const DeepCollectionEquality().equals(
+                  other.totalVat,
+                  totalVat,
+                )) &&
+            (identical(other.unit, unit) ||
+                const DeepCollectionEquality().equals(other.unit, unit)) &&
+            (identical(other.unitPrice, unitPrice) ||
+                const DeepCollectionEquality().equals(
+                  other.unitPrice,
+                  unitPrice,
+                )) &&
+            (identical(other.unitPriceExclVat, unitPriceExclVat) ||
+                const DeepCollectionEquality().equals(
+                  other.unitPriceExclVat,
+                  unitPriceExclVat,
+                )) &&
+            (identical(other.vatRate, vatRate) ||
+                const DeepCollectionEquality().equals(other.vatRate, vatRate)));
   }
 
   @override
@@ -598,114 +684,119 @@ class BillingPrice {
 }
 
 extension $BillingPriceExtension on BillingPrice {
-  BillingPrice copyWith(
-      {int? amount,
-      bool? changeFromHourlyToDaily,
-      DateTime? endDate,
-      double? hourlyTotalNotCharged,
-      double? hourlyTotalNotChargedExclVat,
-      int? km,
-      double? kmPrice,
-      double? kmPriceExclVat,
-      double? kmTotal,
-      double? kmTotalExclVat,
-      DateTime? startDate,
-      double? timeAmount,
-      double? timeTotal,
-      double? timeTotalExclVat,
-      double? total,
-      double? totalExclVat,
-      double? totalVat,
-      enums.BillingPriceUnit? unit,
-      double? unitPrice,
-      double? unitPriceExclVat,
-      double? vatRate}) {
+  BillingPrice copyWith({
+    int? amount,
+    bool? changeFromHourlyToDaily,
+    DateTime? endDate,
+    double? hourlyTotalNotCharged,
+    double? hourlyTotalNotChargedExclVat,
+    int? km,
+    double? kmPrice,
+    double? kmPriceExclVat,
+    double? kmTotal,
+    double? kmTotalExclVat,
+    DateTime? startDate,
+    double? timeAmount,
+    double? timeTotal,
+    double? timeTotalExclVat,
+    double? total,
+    double? totalExclVat,
+    double? totalVat,
+    enums.BillingPriceUnit? unit,
+    double? unitPrice,
+    double? unitPriceExclVat,
+    double? vatRate,
+  }) {
     return BillingPrice(
-        amount: amount ?? this.amount,
-        changeFromHourlyToDaily:
-            changeFromHourlyToDaily ?? this.changeFromHourlyToDaily,
-        endDate: endDate ?? this.endDate,
-        hourlyTotalNotCharged:
-            hourlyTotalNotCharged ?? this.hourlyTotalNotCharged,
-        hourlyTotalNotChargedExclVat:
-            hourlyTotalNotChargedExclVat ?? this.hourlyTotalNotChargedExclVat,
-        km: km ?? this.km,
-        kmPrice: kmPrice ?? this.kmPrice,
-        kmPriceExclVat: kmPriceExclVat ?? this.kmPriceExclVat,
-        kmTotal: kmTotal ?? this.kmTotal,
-        kmTotalExclVat: kmTotalExclVat ?? this.kmTotalExclVat,
-        startDate: startDate ?? this.startDate,
-        timeAmount: timeAmount ?? this.timeAmount,
-        timeTotal: timeTotal ?? this.timeTotal,
-        timeTotalExclVat: timeTotalExclVat ?? this.timeTotalExclVat,
-        total: total ?? this.total,
-        totalExclVat: totalExclVat ?? this.totalExclVat,
-        totalVat: totalVat ?? this.totalVat,
-        unit: unit ?? this.unit,
-        unitPrice: unitPrice ?? this.unitPrice,
-        unitPriceExclVat: unitPriceExclVat ?? this.unitPriceExclVat,
-        vatRate: vatRate ?? this.vatRate);
+      amount: amount ?? this.amount,
+      changeFromHourlyToDaily:
+          changeFromHourlyToDaily ?? this.changeFromHourlyToDaily,
+      endDate: endDate ?? this.endDate,
+      hourlyTotalNotCharged:
+          hourlyTotalNotCharged ?? this.hourlyTotalNotCharged,
+      hourlyTotalNotChargedExclVat:
+          hourlyTotalNotChargedExclVat ?? this.hourlyTotalNotChargedExclVat,
+      km: km ?? this.km,
+      kmPrice: kmPrice ?? this.kmPrice,
+      kmPriceExclVat: kmPriceExclVat ?? this.kmPriceExclVat,
+      kmTotal: kmTotal ?? this.kmTotal,
+      kmTotalExclVat: kmTotalExclVat ?? this.kmTotalExclVat,
+      startDate: startDate ?? this.startDate,
+      timeAmount: timeAmount ?? this.timeAmount,
+      timeTotal: timeTotal ?? this.timeTotal,
+      timeTotalExclVat: timeTotalExclVat ?? this.timeTotalExclVat,
+      total: total ?? this.total,
+      totalExclVat: totalExclVat ?? this.totalExclVat,
+      totalVat: totalVat ?? this.totalVat,
+      unit: unit ?? this.unit,
+      unitPrice: unitPrice ?? this.unitPrice,
+      unitPriceExclVat: unitPriceExclVat ?? this.unitPriceExclVat,
+      vatRate: vatRate ?? this.vatRate,
+    );
   }
 
-  BillingPrice copyWithWrapped(
-      {Wrapped<int?>? amount,
-      Wrapped<bool?>? changeFromHourlyToDaily,
-      Wrapped<DateTime?>? endDate,
-      Wrapped<double?>? hourlyTotalNotCharged,
-      Wrapped<double?>? hourlyTotalNotChargedExclVat,
-      Wrapped<int?>? km,
-      Wrapped<double?>? kmPrice,
-      Wrapped<double?>? kmPriceExclVat,
-      Wrapped<double?>? kmTotal,
-      Wrapped<double?>? kmTotalExclVat,
-      Wrapped<DateTime?>? startDate,
-      Wrapped<double?>? timeAmount,
-      Wrapped<double?>? timeTotal,
-      Wrapped<double?>? timeTotalExclVat,
-      Wrapped<double?>? total,
-      Wrapped<double?>? totalExclVat,
-      Wrapped<double?>? totalVat,
-      Wrapped<enums.BillingPriceUnit?>? unit,
-      Wrapped<double?>? unitPrice,
-      Wrapped<double?>? unitPriceExclVat,
-      Wrapped<double?>? vatRate}) {
+  BillingPrice copyWithWrapped({
+    Wrapped<int?>? amount,
+    Wrapped<bool?>? changeFromHourlyToDaily,
+    Wrapped<DateTime?>? endDate,
+    Wrapped<double?>? hourlyTotalNotCharged,
+    Wrapped<double?>? hourlyTotalNotChargedExclVat,
+    Wrapped<int?>? km,
+    Wrapped<double?>? kmPrice,
+    Wrapped<double?>? kmPriceExclVat,
+    Wrapped<double?>? kmTotal,
+    Wrapped<double?>? kmTotalExclVat,
+    Wrapped<DateTime?>? startDate,
+    Wrapped<double?>? timeAmount,
+    Wrapped<double?>? timeTotal,
+    Wrapped<double?>? timeTotalExclVat,
+    Wrapped<double?>? total,
+    Wrapped<double?>? totalExclVat,
+    Wrapped<double?>? totalVat,
+    Wrapped<enums.BillingPriceUnit?>? unit,
+    Wrapped<double?>? unitPrice,
+    Wrapped<double?>? unitPriceExclVat,
+    Wrapped<double?>? vatRate,
+  }) {
     return BillingPrice(
-        amount: (amount != null ? amount.value : this.amount),
-        changeFromHourlyToDaily: (changeFromHourlyToDaily != null
-            ? changeFromHourlyToDaily.value
-            : this.changeFromHourlyToDaily),
-        endDate: (endDate != null ? endDate.value : this.endDate),
-        hourlyTotalNotCharged: (hourlyTotalNotCharged != null
-            ? hourlyTotalNotCharged.value
-            : this.hourlyTotalNotCharged),
-        hourlyTotalNotChargedExclVat: (hourlyTotalNotChargedExclVat != null
-            ? hourlyTotalNotChargedExclVat.value
-            : this.hourlyTotalNotChargedExclVat),
-        km: (km != null ? km.value : this.km),
-        kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
-        kmPriceExclVat: (kmPriceExclVat != null
-            ? kmPriceExclVat.value
-            : this.kmPriceExclVat),
-        kmTotal: (kmTotal != null ? kmTotal.value : this.kmTotal),
-        kmTotalExclVat: (kmTotalExclVat != null
-            ? kmTotalExclVat.value
-            : this.kmTotalExclVat),
-        startDate: (startDate != null ? startDate.value : this.startDate),
-        timeAmount: (timeAmount != null ? timeAmount.value : this.timeAmount),
-        timeTotal: (timeTotal != null ? timeTotal.value : this.timeTotal),
-        timeTotalExclVat: (timeTotalExclVat != null
-            ? timeTotalExclVat.value
-            : this.timeTotalExclVat),
-        total: (total != null ? total.value : this.total),
-        totalExclVat:
-            (totalExclVat != null ? totalExclVat.value : this.totalExclVat),
-        totalVat: (totalVat != null ? totalVat.value : this.totalVat),
-        unit: (unit != null ? unit.value : this.unit),
-        unitPrice: (unitPrice != null ? unitPrice.value : this.unitPrice),
-        unitPriceExclVat: (unitPriceExclVat != null
-            ? unitPriceExclVat.value
-            : this.unitPriceExclVat),
-        vatRate: (vatRate != null ? vatRate.value : this.vatRate));
+      amount: (amount != null ? amount.value : this.amount),
+      changeFromHourlyToDaily: (changeFromHourlyToDaily != null
+          ? changeFromHourlyToDaily.value
+          : this.changeFromHourlyToDaily),
+      endDate: (endDate != null ? endDate.value : this.endDate),
+      hourlyTotalNotCharged: (hourlyTotalNotCharged != null
+          ? hourlyTotalNotCharged.value
+          : this.hourlyTotalNotCharged),
+      hourlyTotalNotChargedExclVat: (hourlyTotalNotChargedExclVat != null
+          ? hourlyTotalNotChargedExclVat.value
+          : this.hourlyTotalNotChargedExclVat),
+      km: (km != null ? km.value : this.km),
+      kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
+      kmPriceExclVat: (kmPriceExclVat != null
+          ? kmPriceExclVat.value
+          : this.kmPriceExclVat),
+      kmTotal: (kmTotal != null ? kmTotal.value : this.kmTotal),
+      kmTotalExclVat: (kmTotalExclVat != null
+          ? kmTotalExclVat.value
+          : this.kmTotalExclVat),
+      startDate: (startDate != null ? startDate.value : this.startDate),
+      timeAmount: (timeAmount != null ? timeAmount.value : this.timeAmount),
+      timeTotal: (timeTotal != null ? timeTotal.value : this.timeTotal),
+      timeTotalExclVat: (timeTotalExclVat != null
+          ? timeTotalExclVat.value
+          : this.timeTotalExclVat),
+      total: (total != null ? total.value : this.total),
+      totalExclVat: (totalExclVat != null
+          ? totalExclVat.value
+          : this.totalExclVat),
+      totalVat: (totalVat != null ? totalVat.value : this.totalVat),
+      unit: (unit != null ? unit.value : this.unit),
+      unitPrice: (unitPrice != null ? unitPrice.value : this.unitPrice),
+      unitPriceExclVat: (unitPriceExclVat != null
+          ? unitPriceExclVat.value
+          : this.unitPriceExclVat),
+      vatRate: (vatRate != null ? vatRate.value : this.vatRate),
+    );
   }
 }
 
@@ -739,14 +830,20 @@ class BillingPriceResponse {
     return identical(this, other) ||
         (other is BillingPriceResponse &&
             (identical(other.billingPrice, billingPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingPrice, billingPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.billingPrice,
+                  billingPrice,
+                )) &&
             (identical(other.dayPrice, dayPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.dayPrice, dayPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.dayPrice,
+                  dayPrice,
+                )) &&
             (identical(other.hourPrice, hourPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.hourPrice, hourPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.hourPrice,
+                  hourPrice,
+                )) &&
             (identical(other.kmPrice, kmPrice) ||
                 const DeepCollectionEquality().equals(other.kmPrice, kmPrice)));
   }
@@ -764,29 +861,34 @@ class BillingPriceResponse {
 }
 
 extension $BillingPriceResponseExtension on BillingPriceResponse {
-  BillingPriceResponse copyWith(
-      {BillingPrice? billingPrice,
-      double? dayPrice,
-      double? hourPrice,
-      double? kmPrice}) {
+  BillingPriceResponse copyWith({
+    BillingPrice? billingPrice,
+    double? dayPrice,
+    double? hourPrice,
+    double? kmPrice,
+  }) {
     return BillingPriceResponse(
-        billingPrice: billingPrice ?? this.billingPrice,
-        dayPrice: dayPrice ?? this.dayPrice,
-        hourPrice: hourPrice ?? this.hourPrice,
-        kmPrice: kmPrice ?? this.kmPrice);
+      billingPrice: billingPrice ?? this.billingPrice,
+      dayPrice: dayPrice ?? this.dayPrice,
+      hourPrice: hourPrice ?? this.hourPrice,
+      kmPrice: kmPrice ?? this.kmPrice,
+    );
   }
 
-  BillingPriceResponse copyWithWrapped(
-      {Wrapped<BillingPrice>? billingPrice,
-      Wrapped<double>? dayPrice,
-      Wrapped<double>? hourPrice,
-      Wrapped<double>? kmPrice}) {
+  BillingPriceResponse copyWithWrapped({
+    Wrapped<BillingPrice>? billingPrice,
+    Wrapped<double>? dayPrice,
+    Wrapped<double>? hourPrice,
+    Wrapped<double>? kmPrice,
+  }) {
     return BillingPriceResponse(
-        billingPrice:
-            (billingPrice != null ? billingPrice.value : this.billingPrice),
-        dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
-        hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
-        kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice));
+      billingPrice: (billingPrice != null
+          ? billingPrice.value
+          : this.billingPrice),
+      dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
+      hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
+      kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
+    );
   }
 }
 
@@ -826,21 +928,29 @@ class BluetoothToken {
     return identical(this, other) ||
         (other is BluetoothToken &&
             (identical(other.deviceId, deviceId) ||
-                const DeepCollectionEquality()
-                    .equals(other.deviceId, deviceId)) &&
+                const DeepCollectionEquality().equals(
+                  other.deviceId,
+                  deviceId,
+                )) &&
             (identical(other.encodedToken, encodedToken) ||
-                const DeepCollectionEquality()
-                    .equals(other.encodedToken, encodedToken)) &&
+                const DeepCollectionEquality().equals(
+                  other.encodedToken,
+                  encodedToken,
+                )) &&
             (identical(other.end, end) ||
                 const DeepCollectionEquality().equals(other.end, end)) &&
             (identical(other.sessionToken, sessionToken) ||
-                const DeepCollectionEquality()
-                    .equals(other.sessionToken, sessionToken)) &&
+                const DeepCollectionEquality().equals(
+                  other.sessionToken,
+                  sessionToken,
+                )) &&
             (identical(other.start, start) ||
                 const DeepCollectionEquality().equals(other.start, start)) &&
             (identical(other.tokenChunks, tokenChunks) ||
-                const DeepCollectionEquality()
-                    .equals(other.tokenChunks, tokenChunks)));
+                const DeepCollectionEquality().equals(
+                  other.tokenChunks,
+                  tokenChunks,
+                )));
   }
 
   @override
@@ -858,48 +968,50 @@ class BluetoothToken {
 }
 
 extension $BluetoothTokenExtension on BluetoothToken {
-  BluetoothToken copyWith(
-      {String? deviceId,
-      String? encodedToken,
-      DateTime? end,
-      String? sessionToken,
-      DateTime? start,
-      List<List<String?>>? tokenChunks}) {
+  BluetoothToken copyWith({
+    String? deviceId,
+    String? encodedToken,
+    DateTime? end,
+    String? sessionToken,
+    DateTime? start,
+    List<List<String?>>? tokenChunks,
+  }) {
     return BluetoothToken(
-        deviceId: deviceId ?? this.deviceId,
-        encodedToken: encodedToken ?? this.encodedToken,
-        end: end ?? this.end,
-        sessionToken: sessionToken ?? this.sessionToken,
-        start: start ?? this.start,
-        tokenChunks: tokenChunks ?? this.tokenChunks);
+      deviceId: deviceId ?? this.deviceId,
+      encodedToken: encodedToken ?? this.encodedToken,
+      end: end ?? this.end,
+      sessionToken: sessionToken ?? this.sessionToken,
+      start: start ?? this.start,
+      tokenChunks: tokenChunks ?? this.tokenChunks,
+    );
   }
 
-  BluetoothToken copyWithWrapped(
-      {Wrapped<String?>? deviceId,
-      Wrapped<String?>? encodedToken,
-      Wrapped<DateTime?>? end,
-      Wrapped<String?>? sessionToken,
-      Wrapped<DateTime?>? start,
-      Wrapped<List<List<String?>>?>? tokenChunks}) {
+  BluetoothToken copyWithWrapped({
+    Wrapped<String?>? deviceId,
+    Wrapped<String?>? encodedToken,
+    Wrapped<DateTime?>? end,
+    Wrapped<String?>? sessionToken,
+    Wrapped<DateTime?>? start,
+    Wrapped<List<List<String?>>?>? tokenChunks,
+  }) {
     return BluetoothToken(
-        deviceId: (deviceId != null ? deviceId.value : this.deviceId),
-        encodedToken:
-            (encodedToken != null ? encodedToken.value : this.encodedToken),
-        end: (end != null ? end.value : this.end),
-        sessionToken:
-            (sessionToken != null ? sessionToken.value : this.sessionToken),
-        start: (start != null ? start.value : this.start),
-        tokenChunks:
-            (tokenChunks != null ? tokenChunks.value : this.tokenChunks));
+      deviceId: (deviceId != null ? deviceId.value : this.deviceId),
+      encodedToken: (encodedToken != null
+          ? encodedToken.value
+          : this.encodedToken),
+      end: (end != null ? end.value : this.end),
+      sessionToken: (sessionToken != null
+          ? sessionToken.value
+          : this.sessionToken),
+      start: (start != null ? start.value : this.start),
+      tokenChunks: (tokenChunks != null ? tokenChunks.value : this.tokenChunks),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class BodyStyle {
-  const BodyStyle({
-    this.description,
-    this.id,
-  });
+  const BodyStyle({this.description, this.id});
 
   factory BodyStyle.fromJson(Map<String, dynamic> json) =>
       _$BodyStyleFromJson(json);
@@ -918,8 +1030,10 @@ class BodyStyle {
     return identical(this, other) ||
         (other is BodyStyle &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
+                const DeepCollectionEquality().equals(
+                  other.description,
+                  description,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)));
   }
@@ -937,23 +1051,25 @@ class BodyStyle {
 extension $BodyStyleExtension on BodyStyle {
   BodyStyle copyWith({String? description, String? id}) {
     return BodyStyle(
-        description: description ?? this.description, id: id ?? this.id);
+      description: description ?? this.description,
+      id: id ?? this.id,
+    );
   }
 
-  BodyStyle copyWithWrapped(
-      {Wrapped<String?>? description, Wrapped<String?>? id}) {
+  BodyStyle copyWithWrapped({
+    Wrapped<String?>? description,
+    Wrapped<String?>? id,
+  }) {
     return BodyStyle(
-        description:
-            (description != null ? description.value : this.description),
-        id: (id != null ? id.value : this.id));
+      description: (description != null ? description.value : this.description),
+      id: (id != null ? id.value : this.id),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class BodyStylePage {
-  const BodyStylePage({
-    this.bodyStyles,
-  });
+  const BodyStylePage({this.bodyStyles});
 
   factory BodyStylePage.fromJson(Map<String, dynamic> json) =>
       _$BodyStylePageFromJson(json);
@@ -970,8 +1086,10 @@ class BodyStylePage {
     return identical(this, other) ||
         (other is BodyStylePage &&
             (identical(other.bodyStyles, bodyStyles) ||
-                const DeepCollectionEquality()
-                    .equals(other.bodyStyles, bodyStyles)));
+                const DeepCollectionEquality().equals(
+                  other.bodyStyles,
+                  bodyStyles,
+                )));
   }
 
   @override
@@ -989,7 +1107,8 @@ extension $BodyStylePageExtension on BodyStylePage {
 
   BodyStylePage copyWithWrapped({Wrapped<List<BodyStyle>?>? bodyStyles}) {
     return BodyStylePage(
-        bodyStyles: (bodyStyles != null ? bodyStyles.value : this.bodyStyles));
+      bodyStyles: (bodyStyles != null ? bodyStyles.value : this.bodyStyles),
+    );
   }
 }
 
@@ -1077,43 +1196,67 @@ class Booking {
     return identical(this, other) ||
         (other is Booking &&
             (identical(other.adminComments, adminComments) ||
-                const DeepCollectionEquality()
-                    .equals(other.adminComments, adminComments)) &&
+                const DeepCollectionEquality().equals(
+                  other.adminComments,
+                  adminComments,
+                )) &&
             (identical(other.billingPrice, billingPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingPrice, billingPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.billingPrice,
+                  billingPrice,
+                )) &&
             (identical(other.canBeStarted, canBeStarted) ||
-                const DeepCollectionEquality()
-                    .equals(other.canBeStarted, canBeStarted)) &&
+                const DeepCollectionEquality().equals(
+                  other.canBeStarted,
+                  canBeStarted,
+                )) &&
             (identical(other.cancelDate, cancelDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.cancelDate, cancelDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.cancelDate,
+                  cancelDate,
+                )) &&
             (identical(other.cancelReason, cancelReason) ||
-                const DeepCollectionEquality()
-                    .equals(other.cancelReason, cancelReason)) &&
+                const DeepCollectionEquality().equals(
+                  other.cancelReason,
+                  cancelReason,
+                )) &&
             (identical(other.clientId, clientId) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientId, clientId)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientId,
+                  clientId,
+                )) &&
             (identical(other.comments, comments) ||
-                const DeepCollectionEquality()
-                    .equals(other.comments, comments)) &&
+                const DeepCollectionEquality().equals(
+                  other.comments,
+                  comments,
+                )) &&
             (identical(other.dateCreated, dateCreated) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateCreated, dateCreated)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateCreated,
+                  dateCreated,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.invoiceStatus, invoiceStatus) ||
-                const DeepCollectionEquality()
-                    .equals(other.invoiceStatus, invoiceStatus)) &&
+                const DeepCollectionEquality().equals(
+                  other.invoiceStatus,
+                  invoiceStatus,
+                )) &&
             (identical(other.lastUpdated, lastUpdated) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastUpdated, lastUpdated)) &&
+                const DeepCollectionEquality().equals(
+                  other.lastUpdated,
+                  lastUpdated,
+                )) &&
             (identical(other.nextPossibleStatuses, nextPossibleStatuses) ||
                 const DeepCollectionEquality().equals(
-                    other.nextPossibleStatuses, nextPossibleStatuses)) &&
+                  other.nextPossibleStatuses,
+                  nextPossibleStatuses,
+                )) &&
             (identical(other.originalEndDate, originalEndDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.originalEndDate, originalEndDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.originalEndDate,
+                  originalEndDate,
+                )) &&
             (identical(other.period, period) ||
                 const DeepCollectionEquality().equals(other.period, period)) &&
             (identical(other.status, status) ||
@@ -1121,11 +1264,15 @@ class Booking {
             (identical(other.userId, userId) ||
                 const DeepCollectionEquality().equals(other.userId, userId)) &&
             (identical(other.vehicle, vehicle) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicle, vehicle)) &&
+                const DeepCollectionEquality().equals(
+                  other.vehicle,
+                  vehicle,
+                )) &&
             (identical(other.vehicleUsage, vehicleUsage) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleUsage, vehicleUsage)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleUsage,
+                  vehicleUsage,
+                )));
   }
 
   @override
@@ -1155,96 +1302,104 @@ class Booking {
 }
 
 extension $BookingExtension on Booking {
-  Booking copyWith(
-      {String? adminComments,
-      BillingPrice? billingPrice,
-      bool? canBeStarted,
-      DateTime? cancelDate,
-      String? cancelReason,
-      String? clientId,
-      String? comments,
-      DateTime? dateCreated,
-      String? id,
-      enums.BookingInvoiceStatus? invoiceStatus,
-      DateTime? lastUpdated,
-      List<enums.BookingNextPossibleStatuses>? nextPossibleStatuses,
-      DateTime? originalEndDate,
-      Period? period,
-      enums.BookingStatus? status,
-      String? userId,
-      Vehicle? vehicle,
-      VehicleUsage? vehicleUsage}) {
+  Booking copyWith({
+    String? adminComments,
+    BillingPrice? billingPrice,
+    bool? canBeStarted,
+    DateTime? cancelDate,
+    String? cancelReason,
+    String? clientId,
+    String? comments,
+    DateTime? dateCreated,
+    String? id,
+    enums.BookingInvoiceStatus? invoiceStatus,
+    DateTime? lastUpdated,
+    List<enums.BookingNextPossibleStatuses>? nextPossibleStatuses,
+    DateTime? originalEndDate,
+    Period? period,
+    enums.BookingStatus? status,
+    String? userId,
+    Vehicle? vehicle,
+    VehicleUsage? vehicleUsage,
+  }) {
     return Booking(
-        adminComments: adminComments ?? this.adminComments,
-        billingPrice: billingPrice ?? this.billingPrice,
-        canBeStarted: canBeStarted ?? this.canBeStarted,
-        cancelDate: cancelDate ?? this.cancelDate,
-        cancelReason: cancelReason ?? this.cancelReason,
-        clientId: clientId ?? this.clientId,
-        comments: comments ?? this.comments,
-        dateCreated: dateCreated ?? this.dateCreated,
-        id: id ?? this.id,
-        invoiceStatus: invoiceStatus ?? this.invoiceStatus,
-        lastUpdated: lastUpdated ?? this.lastUpdated,
-        nextPossibleStatuses: nextPossibleStatuses ?? this.nextPossibleStatuses,
-        originalEndDate: originalEndDate ?? this.originalEndDate,
-        period: period ?? this.period,
-        status: status ?? this.status,
-        userId: userId ?? this.userId,
-        vehicle: vehicle ?? this.vehicle,
-        vehicleUsage: vehicleUsage ?? this.vehicleUsage);
+      adminComments: adminComments ?? this.adminComments,
+      billingPrice: billingPrice ?? this.billingPrice,
+      canBeStarted: canBeStarted ?? this.canBeStarted,
+      cancelDate: cancelDate ?? this.cancelDate,
+      cancelReason: cancelReason ?? this.cancelReason,
+      clientId: clientId ?? this.clientId,
+      comments: comments ?? this.comments,
+      dateCreated: dateCreated ?? this.dateCreated,
+      id: id ?? this.id,
+      invoiceStatus: invoiceStatus ?? this.invoiceStatus,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      nextPossibleStatuses: nextPossibleStatuses ?? this.nextPossibleStatuses,
+      originalEndDate: originalEndDate ?? this.originalEndDate,
+      period: period ?? this.period,
+      status: status ?? this.status,
+      userId: userId ?? this.userId,
+      vehicle: vehicle ?? this.vehicle,
+      vehicleUsage: vehicleUsage ?? this.vehicleUsage,
+    );
   }
 
-  Booking copyWithWrapped(
-      {Wrapped<String?>? adminComments,
-      Wrapped<BillingPrice?>? billingPrice,
-      Wrapped<bool?>? canBeStarted,
-      Wrapped<DateTime?>? cancelDate,
-      Wrapped<String?>? cancelReason,
-      Wrapped<String?>? clientId,
-      Wrapped<String?>? comments,
-      Wrapped<DateTime?>? dateCreated,
-      Wrapped<String?>? id,
-      Wrapped<enums.BookingInvoiceStatus?>? invoiceStatus,
-      Wrapped<DateTime?>? lastUpdated,
-      Wrapped<List<enums.BookingNextPossibleStatuses>?>? nextPossibleStatuses,
-      Wrapped<DateTime?>? originalEndDate,
-      Wrapped<Period?>? period,
-      Wrapped<enums.BookingStatus?>? status,
-      Wrapped<String?>? userId,
-      Wrapped<Vehicle?>? vehicle,
-      Wrapped<VehicleUsage?>? vehicleUsage}) {
+  Booking copyWithWrapped({
+    Wrapped<String?>? adminComments,
+    Wrapped<BillingPrice?>? billingPrice,
+    Wrapped<bool?>? canBeStarted,
+    Wrapped<DateTime?>? cancelDate,
+    Wrapped<String?>? cancelReason,
+    Wrapped<String?>? clientId,
+    Wrapped<String?>? comments,
+    Wrapped<DateTime?>? dateCreated,
+    Wrapped<String?>? id,
+    Wrapped<enums.BookingInvoiceStatus?>? invoiceStatus,
+    Wrapped<DateTime?>? lastUpdated,
+    Wrapped<List<enums.BookingNextPossibleStatuses>?>? nextPossibleStatuses,
+    Wrapped<DateTime?>? originalEndDate,
+    Wrapped<Period?>? period,
+    Wrapped<enums.BookingStatus?>? status,
+    Wrapped<String?>? userId,
+    Wrapped<Vehicle?>? vehicle,
+    Wrapped<VehicleUsage?>? vehicleUsage,
+  }) {
     return Booking(
-        adminComments:
-            (adminComments != null ? adminComments.value : this.adminComments),
-        billingPrice:
-            (billingPrice != null ? billingPrice.value : this.billingPrice),
-        canBeStarted:
-            (canBeStarted != null ? canBeStarted.value : this.canBeStarted),
-        cancelDate: (cancelDate != null ? cancelDate.value : this.cancelDate),
-        cancelReason:
-            (cancelReason != null ? cancelReason.value : this.cancelReason),
-        clientId: (clientId != null ? clientId.value : this.clientId),
-        comments: (comments != null ? comments.value : this.comments),
-        dateCreated:
-            (dateCreated != null ? dateCreated.value : this.dateCreated),
-        id: (id != null ? id.value : this.id),
-        invoiceStatus:
-            (invoiceStatus != null ? invoiceStatus.value : this.invoiceStatus),
-        lastUpdated:
-            (lastUpdated != null ? lastUpdated.value : this.lastUpdated),
-        nextPossibleStatuses: (nextPossibleStatuses != null
-            ? nextPossibleStatuses.value
-            : this.nextPossibleStatuses),
-        originalEndDate: (originalEndDate != null
-            ? originalEndDate.value
-            : this.originalEndDate),
-        period: (period != null ? period.value : this.period),
-        status: (status != null ? status.value : this.status),
-        userId: (userId != null ? userId.value : this.userId),
-        vehicle: (vehicle != null ? vehicle.value : this.vehicle),
-        vehicleUsage:
-            (vehicleUsage != null ? vehicleUsage.value : this.vehicleUsage));
+      adminComments: (adminComments != null
+          ? adminComments.value
+          : this.adminComments),
+      billingPrice: (billingPrice != null
+          ? billingPrice.value
+          : this.billingPrice),
+      canBeStarted: (canBeStarted != null
+          ? canBeStarted.value
+          : this.canBeStarted),
+      cancelDate: (cancelDate != null ? cancelDate.value : this.cancelDate),
+      cancelReason: (cancelReason != null
+          ? cancelReason.value
+          : this.cancelReason),
+      clientId: (clientId != null ? clientId.value : this.clientId),
+      comments: (comments != null ? comments.value : this.comments),
+      dateCreated: (dateCreated != null ? dateCreated.value : this.dateCreated),
+      id: (id != null ? id.value : this.id),
+      invoiceStatus: (invoiceStatus != null
+          ? invoiceStatus.value
+          : this.invoiceStatus),
+      lastUpdated: (lastUpdated != null ? lastUpdated.value : this.lastUpdated),
+      nextPossibleStatuses: (nextPossibleStatuses != null
+          ? nextPossibleStatuses.value
+          : this.nextPossibleStatuses),
+      originalEndDate: (originalEndDate != null
+          ? originalEndDate.value
+          : this.originalEndDate),
+      period: (period != null ? period.value : this.period),
+      status: (status != null ? status.value : this.status),
+      userId: (userId != null ? userId.value : this.userId),
+      vehicle: (vehicle != null ? vehicle.value : this.vehicle),
+      vehicleUsage: (vehicleUsage != null
+          ? vehicleUsage.value
+          : this.vehicleUsage),
+    );
   }
 }
 
@@ -1275,11 +1430,15 @@ class BookingPrice {
     return identical(this, other) ||
         (other is BookingPrice &&
             (identical(other.dayPrice, dayPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.dayPrice, dayPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.dayPrice,
+                  dayPrice,
+                )) &&
             (identical(other.hourPrice, hourPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.hourPrice, hourPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.hourPrice,
+                  hourPrice,
+                )) &&
             (identical(other.kmPrice, kmPrice) ||
                 const DeepCollectionEquality().equals(other.kmPrice, kmPrice)));
   }
@@ -1296,30 +1455,34 @@ class BookingPrice {
 }
 
 extension $BookingPriceExtension on BookingPrice {
-  BookingPrice copyWith(
-      {double? dayPrice, double? hourPrice, double? kmPrice}) {
+  BookingPrice copyWith({
+    double? dayPrice,
+    double? hourPrice,
+    double? kmPrice,
+  }) {
     return BookingPrice(
-        dayPrice: dayPrice ?? this.dayPrice,
-        hourPrice: hourPrice ?? this.hourPrice,
-        kmPrice: kmPrice ?? this.kmPrice);
+      dayPrice: dayPrice ?? this.dayPrice,
+      hourPrice: hourPrice ?? this.hourPrice,
+      kmPrice: kmPrice ?? this.kmPrice,
+    );
   }
 
-  BookingPrice copyWithWrapped(
-      {Wrapped<double>? dayPrice,
-      Wrapped<double>? hourPrice,
-      Wrapped<double>? kmPrice}) {
+  BookingPrice copyWithWrapped({
+    Wrapped<double>? dayPrice,
+    Wrapped<double>? hourPrice,
+    Wrapped<double>? kmPrice,
+  }) {
     return BookingPrice(
-        dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
-        hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
-        kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice));
+      dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
+      hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
+      kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class BookingsPage {
-  const BookingsPage({
-    this.bookings,
-  });
+  const BookingsPage({this.bookings});
 
   factory BookingsPage.fromJson(Map<String, dynamic> json) =>
       _$BookingsPageFromJson(json);
@@ -1336,8 +1499,10 @@ class BookingsPage {
     return identical(this, other) ||
         (other is BookingsPage &&
             (identical(other.bookings, bookings) ||
-                const DeepCollectionEquality()
-                    .equals(other.bookings, bookings)));
+                const DeepCollectionEquality().equals(
+                  other.bookings,
+                  bookings,
+                )));
   }
 
   @override
@@ -1355,16 +1520,14 @@ extension $BookingsPageExtension on BookingsPage {
 
   BookingsPage copyWithWrapped({Wrapped<List<Booking>?>? bookings}) {
     return BookingsPage(
-        bookings: (bookings != null ? bookings.value : this.bookings));
+      bookings: (bookings != null ? bookings.value : this.bookings),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class CancelBookingRequest {
-  const CancelBookingRequest({
-    this.bookingId,
-    this.reason,
-  });
+  const CancelBookingRequest({this.bookingId, this.reason});
 
   factory CancelBookingRequest.fromJson(Map<String, dynamic> json) =>
       _$CancelBookingRequestFromJson(json);
@@ -1383,8 +1546,10 @@ class CancelBookingRequest {
     return identical(this, other) ||
         (other is CancelBookingRequest &&
             (identical(other.bookingId, bookingId) ||
-                const DeepCollectionEquality()
-                    .equals(other.bookingId, bookingId)) &&
+                const DeepCollectionEquality().equals(
+                  other.bookingId,
+                  bookingId,
+                )) &&
             (identical(other.reason, reason) ||
                 const DeepCollectionEquality().equals(other.reason, reason)));
   }
@@ -1402,14 +1567,19 @@ class CancelBookingRequest {
 extension $CancelBookingRequestExtension on CancelBookingRequest {
   CancelBookingRequest copyWith({String? bookingId, String? reason}) {
     return CancelBookingRequest(
-        bookingId: bookingId ?? this.bookingId, reason: reason ?? this.reason);
+      bookingId: bookingId ?? this.bookingId,
+      reason: reason ?? this.reason,
+    );
   }
 
-  CancelBookingRequest copyWithWrapped(
-      {Wrapped<String?>? bookingId, Wrapped<String?>? reason}) {
+  CancelBookingRequest copyWithWrapped({
+    Wrapped<String?>? bookingId,
+    Wrapped<String?>? reason,
+  }) {
     return CancelBookingRequest(
-        bookingId: (bookingId != null ? bookingId.value : this.bookingId),
-        reason: (reason != null ? reason.value : this.reason));
+      bookingId: (bookingId != null ? bookingId.value : this.bookingId),
+      reason: (reason != null ? reason.value : this.reason),
+    );
   }
 }
 
@@ -1470,34 +1640,53 @@ class ChangeContractCommitmentHints {
     return identical(this, other) ||
         (other is ChangeContractCommitmentHints &&
             (identical(other.actionAllowed, actionAllowed) ||
-                const DeepCollectionEquality()
-                    .equals(other.actionAllowed, actionAllowed)) &&
-            (identical(other.canDecrease, canDecrease) ||
-                const DeepCollectionEquality()
-                    .equals(other.canDecrease, canDecrease)) &&
-            (identical(other.canIncrease, canIncrease) ||
-                const DeepCollectionEquality()
-                    .equals(other.canIncrease, canIncrease)) &&
-            (identical(other.changeOption, changeOption) ||
-                const DeepCollectionEquality()
-                    .equals(other.changeOption, changeOption)) &&
-            (identical(other.currentCommitmentAmountInclVat,
-                    currentCommitmentAmountInclVat) ||
                 const DeepCollectionEquality().equals(
-                    other.currentCommitmentAmountInclVat,
-                    currentCommitmentAmountInclVat)) &&
+                  other.actionAllowed,
+                  actionAllowed,
+                )) &&
+            (identical(other.canDecrease, canDecrease) ||
+                const DeepCollectionEquality().equals(
+                  other.canDecrease,
+                  canDecrease,
+                )) &&
+            (identical(other.canIncrease, canIncrease) ||
+                const DeepCollectionEquality().equals(
+                  other.canIncrease,
+                  canIncrease,
+                )) &&
+            (identical(other.changeOption, changeOption) ||
+                const DeepCollectionEquality().equals(
+                  other.changeOption,
+                  changeOption,
+                )) &&
+            (identical(
+                  other.currentCommitmentAmountInclVat,
+                  currentCommitmentAmountInclVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.currentCommitmentAmountInclVat,
+                  currentCommitmentAmountInclVat,
+                )) &&
             (identical(other.decreaseBlockedReason, decreaseBlockedReason) ||
                 const DeepCollectionEquality().equals(
-                    other.decreaseBlockedReason, decreaseBlockedReason)) &&
+                  other.decreaseBlockedReason,
+                  decreaseBlockedReason,
+                )) &&
             (identical(other.earliestDecreaseDate, earliestDecreaseDate) ||
                 const DeepCollectionEquality().equals(
-                    other.earliestDecreaseDate, earliestDecreaseDate)) &&
+                  other.earliestDecreaseDate,
+                  earliestDecreaseDate,
+                )) &&
             (identical(other.earliestIncreaseDate, earliestIncreaseDate) ||
                 const DeepCollectionEquality().equals(
-                    other.earliestIncreaseDate, earliestIncreaseDate)) &&
+                  other.earliestIncreaseDate,
+                  earliestIncreaseDate,
+                )) &&
             (identical(other.increaseBlockedReason, increaseBlockedReason) ||
                 const DeepCollectionEquality().equals(
-                    other.increaseBlockedReason, increaseBlockedReason)));
+                  other.increaseBlockedReason,
+                  increaseBlockedReason,
+                )));
   }
 
   @override
@@ -1519,77 +1708,79 @@ class ChangeContractCommitmentHints {
 
 extension $ChangeContractCommitmentHintsExtension
     on ChangeContractCommitmentHints {
-  ChangeContractCommitmentHints copyWith(
-      {bool? actionAllowed,
-      bool? canDecrease,
-      bool? canIncrease,
-      enums.CommitmentChangeOption? changeOption,
-      double? currentCommitmentAmountInclVat,
-      enums.ValidationErrorCode? decreaseBlockedReason,
-      DateTime? earliestDecreaseDate,
-      DateTime? earliestIncreaseDate,
-      enums.ValidationErrorCode? increaseBlockedReason}) {
+  ChangeContractCommitmentHints copyWith({
+    bool? actionAllowed,
+    bool? canDecrease,
+    bool? canIncrease,
+    enums.CommitmentChangeOption? changeOption,
+    double? currentCommitmentAmountInclVat,
+    enums.ValidationErrorCode? decreaseBlockedReason,
+    DateTime? earliestDecreaseDate,
+    DateTime? earliestIncreaseDate,
+    enums.ValidationErrorCode? increaseBlockedReason,
+  }) {
     return ChangeContractCommitmentHints(
-        actionAllowed: actionAllowed ?? this.actionAllowed,
-        canDecrease: canDecrease ?? this.canDecrease,
-        canIncrease: canIncrease ?? this.canIncrease,
-        changeOption: changeOption ?? this.changeOption,
-        currentCommitmentAmountInclVat: currentCommitmentAmountInclVat ??
-            this.currentCommitmentAmountInclVat,
-        decreaseBlockedReason:
-            decreaseBlockedReason ?? this.decreaseBlockedReason,
-        earliestDecreaseDate: earliestDecreaseDate ?? this.earliestDecreaseDate,
-        earliestIncreaseDate: earliestIncreaseDate ?? this.earliestIncreaseDate,
-        increaseBlockedReason:
-            increaseBlockedReason ?? this.increaseBlockedReason);
+      actionAllowed: actionAllowed ?? this.actionAllowed,
+      canDecrease: canDecrease ?? this.canDecrease,
+      canIncrease: canIncrease ?? this.canIncrease,
+      changeOption: changeOption ?? this.changeOption,
+      currentCommitmentAmountInclVat:
+          currentCommitmentAmountInclVat ?? this.currentCommitmentAmountInclVat,
+      decreaseBlockedReason:
+          decreaseBlockedReason ?? this.decreaseBlockedReason,
+      earliestDecreaseDate: earliestDecreaseDate ?? this.earliestDecreaseDate,
+      earliestIncreaseDate: earliestIncreaseDate ?? this.earliestIncreaseDate,
+      increaseBlockedReason:
+          increaseBlockedReason ?? this.increaseBlockedReason,
+    );
   }
 
-  ChangeContractCommitmentHints copyWithWrapped(
-      {Wrapped<bool?>? actionAllowed,
-      Wrapped<bool?>? canDecrease,
-      Wrapped<bool?>? canIncrease,
-      Wrapped<enums.CommitmentChangeOption?>? changeOption,
-      Wrapped<double?>? currentCommitmentAmountInclVat,
-      Wrapped<enums.ValidationErrorCode?>? decreaseBlockedReason,
-      Wrapped<DateTime?>? earliestDecreaseDate,
-      Wrapped<DateTime?>? earliestIncreaseDate,
-      Wrapped<enums.ValidationErrorCode?>? increaseBlockedReason}) {
+  ChangeContractCommitmentHints copyWithWrapped({
+    Wrapped<bool?>? actionAllowed,
+    Wrapped<bool?>? canDecrease,
+    Wrapped<bool?>? canIncrease,
+    Wrapped<enums.CommitmentChangeOption?>? changeOption,
+    Wrapped<double?>? currentCommitmentAmountInclVat,
+    Wrapped<enums.ValidationErrorCode?>? decreaseBlockedReason,
+    Wrapped<DateTime?>? earliestDecreaseDate,
+    Wrapped<DateTime?>? earliestIncreaseDate,
+    Wrapped<enums.ValidationErrorCode?>? increaseBlockedReason,
+  }) {
     return ChangeContractCommitmentHints(
-        actionAllowed:
-            (actionAllowed != null ? actionAllowed.value : this.actionAllowed),
-        canDecrease:
-            (canDecrease != null ? canDecrease.value : this.canDecrease),
-        canIncrease:
-            (canIncrease != null ? canIncrease.value : this.canIncrease),
-        changeOption:
-            (changeOption != null ? changeOption.value : this.changeOption),
-        currentCommitmentAmountInclVat: (currentCommitmentAmountInclVat != null
-            ? currentCommitmentAmountInclVat.value
-            : this.currentCommitmentAmountInclVat),
-        decreaseBlockedReason: (decreaseBlockedReason != null
-            ? decreaseBlockedReason.value
-            : this.decreaseBlockedReason),
-        earliestDecreaseDate: (earliestDecreaseDate != null
-            ? earliestDecreaseDate.value
-            : this.earliestDecreaseDate),
-        earliestIncreaseDate: (earliestIncreaseDate != null
-            ? earliestIncreaseDate.value
-            : this.earliestIncreaseDate),
-        increaseBlockedReason: (increaseBlockedReason != null
-            ? increaseBlockedReason.value
-            : this.increaseBlockedReason));
+      actionAllowed: (actionAllowed != null
+          ? actionAllowed.value
+          : this.actionAllowed),
+      canDecrease: (canDecrease != null ? canDecrease.value : this.canDecrease),
+      canIncrease: (canIncrease != null ? canIncrease.value : this.canIncrease),
+      changeOption: (changeOption != null
+          ? changeOption.value
+          : this.changeOption),
+      currentCommitmentAmountInclVat: (currentCommitmentAmountInclVat != null
+          ? currentCommitmentAmountInclVat.value
+          : this.currentCommitmentAmountInclVat),
+      decreaseBlockedReason: (decreaseBlockedReason != null
+          ? decreaseBlockedReason.value
+          : this.decreaseBlockedReason),
+      earliestDecreaseDate: (earliestDecreaseDate != null
+          ? earliestDecreaseDate.value
+          : this.earliestDecreaseDate),
+      earliestIncreaseDate: (earliestIncreaseDate != null
+          ? earliestIncreaseDate.value
+          : this.earliestIncreaseDate),
+      increaseBlockedReason: (increaseBlockedReason != null
+          ? increaseBlockedReason.value
+          : this.increaseBlockedReason),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class ChangeContractCommitmentHintsApiDataResponse {
-  const ChangeContractCommitmentHintsApiDataResponse({
-    this.data,
-  });
+  const ChangeContractCommitmentHintsApiDataResponse({this.data});
 
   factory ChangeContractCommitmentHintsApiDataResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$ChangeContractCommitmentHintsApiDataResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$ChangeContractCommitmentHintsApiDataResponseFromJson(json);
 
   static const toJsonFactory =
       _$ChangeContractCommitmentHintsApiDataResponseToJson;
@@ -1619,16 +1810,20 @@ class ChangeContractCommitmentHintsApiDataResponse {
 
 extension $ChangeContractCommitmentHintsApiDataResponseExtension
     on ChangeContractCommitmentHintsApiDataResponse {
-  ChangeContractCommitmentHintsApiDataResponse copyWith(
-      {ChangeContractCommitmentHints? data}) {
+  ChangeContractCommitmentHintsApiDataResponse copyWith({
+    ChangeContractCommitmentHints? data,
+  }) {
     return ChangeContractCommitmentHintsApiDataResponse(
-        data: data ?? this.data);
+      data: data ?? this.data,
+    );
   }
 
-  ChangeContractCommitmentHintsApiDataResponse copyWithWrapped(
-      {Wrapped<ChangeContractCommitmentHints?>? data}) {
+  ChangeContractCommitmentHintsApiDataResponse copyWithWrapped({
+    Wrapped<ChangeContractCommitmentHints?>? data,
+  }) {
     return ChangeContractCommitmentHintsApiDataResponse(
-        data: (data != null ? data.value : this.data));
+      data: (data != null ? data.value : this.data),
+    );
   }
 }
 
@@ -1660,12 +1855,18 @@ class ChangeContractCommitmentRequest {
     return identical(this, other) ||
         (other is ChangeContractCommitmentRequest &&
             (identical(other.changeDate, changeDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.changeDate, changeDate)) &&
-            (identical(
-                    other.commitmentAmountInclVat, commitmentAmountInclVat) ||
                 const DeepCollectionEquality().equals(
-                    other.commitmentAmountInclVat, commitmentAmountInclVat)) &&
+                  other.changeDate,
+                  changeDate,
+                )) &&
+            (identical(
+                  other.commitmentAmountInclVat,
+                  commitmentAmountInclVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.commitmentAmountInclVat,
+                  commitmentAmountInclVat,
+                )) &&
             (identical(other.memo, memo) ||
                 const DeepCollectionEquality().equals(other.memo, memo)));
   }
@@ -1683,25 +1884,31 @@ class ChangeContractCommitmentRequest {
 
 extension $ChangeContractCommitmentRequestExtension
     on ChangeContractCommitmentRequest {
-  ChangeContractCommitmentRequest copyWith(
-      {DateTime? changeDate, double? commitmentAmountInclVat, String? memo}) {
+  ChangeContractCommitmentRequest copyWith({
+    DateTime? changeDate,
+    double? commitmentAmountInclVat,
+    String? memo,
+  }) {
     return ChangeContractCommitmentRequest(
-        changeDate: changeDate ?? this.changeDate,
-        commitmentAmountInclVat:
-            commitmentAmountInclVat ?? this.commitmentAmountInclVat,
-        memo: memo ?? this.memo);
+      changeDate: changeDate ?? this.changeDate,
+      commitmentAmountInclVat:
+          commitmentAmountInclVat ?? this.commitmentAmountInclVat,
+      memo: memo ?? this.memo,
+    );
   }
 
-  ChangeContractCommitmentRequest copyWithWrapped(
-      {Wrapped<DateTime?>? changeDate,
-      Wrapped<double?>? commitmentAmountInclVat,
-      Wrapped<String?>? memo}) {
+  ChangeContractCommitmentRequest copyWithWrapped({
+    Wrapped<DateTime?>? changeDate,
+    Wrapped<double?>? commitmentAmountInclVat,
+    Wrapped<String?>? memo,
+  }) {
     return ChangeContractCommitmentRequest(
-        changeDate: (changeDate != null ? changeDate.value : this.changeDate),
-        commitmentAmountInclVat: (commitmentAmountInclVat != null
-            ? commitmentAmountInclVat.value
-            : this.commitmentAmountInclVat),
-        memo: (memo != null ? memo.value : this.memo));
+      changeDate: (changeDate != null ? changeDate.value : this.changeDate),
+      commitmentAmountInclVat: (commitmentAmountInclVat != null
+          ? commitmentAmountInclVat.value
+          : this.commitmentAmountInclVat),
+      memo: (memo != null ? memo.value : this.memo),
+    );
   }
 }
 
@@ -1748,29 +1955,43 @@ class ChangeContractFormulaHints {
     return identical(this, other) ||
         (other is ChangeContractFormulaHints &&
             (identical(other.actionAllowed, actionAllowed) ||
-                const DeepCollectionEquality()
-                    .equals(other.actionAllowed, actionAllowed)) &&
-            (identical(other.currentCommitmentAmountInclVat,
-                    currentCommitmentAmountInclVat) ||
                 const DeepCollectionEquality().equals(
-                    other.currentCommitmentAmountInclVat,
-                    currentCommitmentAmountInclVat)) &&
+                  other.actionAllowed,
+                  actionAllowed,
+                )) &&
+            (identical(
+                  other.currentCommitmentAmountInclVat,
+                  currentCommitmentAmountInclVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.currentCommitmentAmountInclVat,
+                  currentCommitmentAmountInclVat,
+                )) &&
             (identical(other.currentFormula, currentFormula) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentFormula, currentFormula)) &&
+                const DeepCollectionEquality().equals(
+                  other.currentFormula,
+                  currentFormula,
+                )) &&
             (identical(other.currentFormulaEnd, currentFormulaEnd) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentFormulaEnd, currentFormulaEnd)) &&
+                const DeepCollectionEquality().equals(
+                  other.currentFormulaEnd,
+                  currentFormulaEnd,
+                )) &&
             (identical(other.currentFormulaStart, currentFormulaStart) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentFormulaStart, currentFormulaStart)) &&
+                const DeepCollectionEquality().equals(
+                  other.currentFormulaStart,
+                  currentFormulaStart,
+                )) &&
             (identical(other.hints, hints) ||
                 const DeepCollectionEquality().equals(other.hints, hints)) &&
-            (identical(other.willOverrideFutureFormula,
-                    willOverrideFutureFormula) ||
+            (identical(
+                  other.willOverrideFutureFormula,
+                  willOverrideFutureFormula,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.willOverrideFutureFormula,
-                    willOverrideFutureFormula)));
+                  other.willOverrideFutureFormula,
+                  willOverrideFutureFormula,
+                )));
   }
 
   @override
@@ -1789,65 +2010,68 @@ class ChangeContractFormulaHints {
 }
 
 extension $ChangeContractFormulaHintsExtension on ChangeContractFormulaHints {
-  ChangeContractFormulaHints copyWith(
-      {bool? actionAllowed,
-      double? currentCommitmentAmountInclVat,
-      enums.ClientContractFormula? currentFormula,
-      DateTime? currentFormulaEnd,
-      DateTime? currentFormulaStart,
-      List<ChangeToContractFormulaHint>? hints,
-      bool? willOverrideFutureFormula}) {
+  ChangeContractFormulaHints copyWith({
+    bool? actionAllowed,
+    double? currentCommitmentAmountInclVat,
+    enums.ClientContractFormula? currentFormula,
+    DateTime? currentFormulaEnd,
+    DateTime? currentFormulaStart,
+    List<ChangeToContractFormulaHint>? hints,
+    bool? willOverrideFutureFormula,
+  }) {
     return ChangeContractFormulaHints(
-        actionAllowed: actionAllowed ?? this.actionAllowed,
-        currentCommitmentAmountInclVat: currentCommitmentAmountInclVat ??
-            this.currentCommitmentAmountInclVat,
-        currentFormula: currentFormula ?? this.currentFormula,
-        currentFormulaEnd: currentFormulaEnd ?? this.currentFormulaEnd,
-        currentFormulaStart: currentFormulaStart ?? this.currentFormulaStart,
-        hints: hints ?? this.hints,
-        willOverrideFutureFormula:
-            willOverrideFutureFormula ?? this.willOverrideFutureFormula);
+      actionAllowed: actionAllowed ?? this.actionAllowed,
+      currentCommitmentAmountInclVat:
+          currentCommitmentAmountInclVat ?? this.currentCommitmentAmountInclVat,
+      currentFormula: currentFormula ?? this.currentFormula,
+      currentFormulaEnd: currentFormulaEnd ?? this.currentFormulaEnd,
+      currentFormulaStart: currentFormulaStart ?? this.currentFormulaStart,
+      hints: hints ?? this.hints,
+      willOverrideFutureFormula:
+          willOverrideFutureFormula ?? this.willOverrideFutureFormula,
+    );
   }
 
-  ChangeContractFormulaHints copyWithWrapped(
-      {Wrapped<bool?>? actionAllowed,
-      Wrapped<double?>? currentCommitmentAmountInclVat,
-      Wrapped<enums.ClientContractFormula?>? currentFormula,
-      Wrapped<DateTime?>? currentFormulaEnd,
-      Wrapped<DateTime?>? currentFormulaStart,
-      Wrapped<List<ChangeToContractFormulaHint>?>? hints,
-      Wrapped<bool?>? willOverrideFutureFormula}) {
+  ChangeContractFormulaHints copyWithWrapped({
+    Wrapped<bool?>? actionAllowed,
+    Wrapped<double?>? currentCommitmentAmountInclVat,
+    Wrapped<enums.ClientContractFormula?>? currentFormula,
+    Wrapped<DateTime?>? currentFormulaEnd,
+    Wrapped<DateTime?>? currentFormulaStart,
+    Wrapped<List<ChangeToContractFormulaHint>?>? hints,
+    Wrapped<bool?>? willOverrideFutureFormula,
+  }) {
     return ChangeContractFormulaHints(
-        actionAllowed:
-            (actionAllowed != null ? actionAllowed.value : this.actionAllowed),
-        currentCommitmentAmountInclVat: (currentCommitmentAmountInclVat != null
-            ? currentCommitmentAmountInclVat.value
-            : this.currentCommitmentAmountInclVat),
-        currentFormula: (currentFormula != null
-            ? currentFormula.value
-            : this.currentFormula),
-        currentFormulaEnd: (currentFormulaEnd != null
-            ? currentFormulaEnd.value
-            : this.currentFormulaEnd),
-        currentFormulaStart: (currentFormulaStart != null
-            ? currentFormulaStart.value
-            : this.currentFormulaStart),
-        hints: (hints != null ? hints.value : this.hints),
-        willOverrideFutureFormula: (willOverrideFutureFormula != null
-            ? willOverrideFutureFormula.value
-            : this.willOverrideFutureFormula));
+      actionAllowed: (actionAllowed != null
+          ? actionAllowed.value
+          : this.actionAllowed),
+      currentCommitmentAmountInclVat: (currentCommitmentAmountInclVat != null
+          ? currentCommitmentAmountInclVat.value
+          : this.currentCommitmentAmountInclVat),
+      currentFormula: (currentFormula != null
+          ? currentFormula.value
+          : this.currentFormula),
+      currentFormulaEnd: (currentFormulaEnd != null
+          ? currentFormulaEnd.value
+          : this.currentFormulaEnd),
+      currentFormulaStart: (currentFormulaStart != null
+          ? currentFormulaStart.value
+          : this.currentFormulaStart),
+      hints: (hints != null ? hints.value : this.hints),
+      willOverrideFutureFormula: (willOverrideFutureFormula != null
+          ? willOverrideFutureFormula.value
+          : this.willOverrideFutureFormula),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class ChangeContractFormulaHintsApiDataResponse {
-  const ChangeContractFormulaHintsApiDataResponse({
-    this.data,
-  });
+  const ChangeContractFormulaHintsApiDataResponse({this.data});
 
   factory ChangeContractFormulaHintsApiDataResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$ChangeContractFormulaHintsApiDataResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$ChangeContractFormulaHintsApiDataResponseFromJson(json);
 
   static const toJsonFactory =
       _$ChangeContractFormulaHintsApiDataResponseToJson;
@@ -1877,15 +2101,18 @@ class ChangeContractFormulaHintsApiDataResponse {
 
 extension $ChangeContractFormulaHintsApiDataResponseExtension
     on ChangeContractFormulaHintsApiDataResponse {
-  ChangeContractFormulaHintsApiDataResponse copyWith(
-      {ChangeContractFormulaHints? data}) {
+  ChangeContractFormulaHintsApiDataResponse copyWith({
+    ChangeContractFormulaHints? data,
+  }) {
     return ChangeContractFormulaHintsApiDataResponse(data: data ?? this.data);
   }
 
-  ChangeContractFormulaHintsApiDataResponse copyWithWrapped(
-      {Wrapped<ChangeContractFormulaHints?>? data}) {
+  ChangeContractFormulaHintsApiDataResponse copyWithWrapped({
+    Wrapped<ChangeContractFormulaHints?>? data,
+  }) {
     return ChangeContractFormulaHintsApiDataResponse(
-        data: (data != null ? data.value : this.data));
+      data: (data != null ? data.value : this.data),
+    );
   }
 }
 
@@ -1923,15 +2150,23 @@ class ChangeContractFormulaRequest {
     return identical(this, other) ||
         (other is ChangeContractFormulaRequest &&
             (identical(other.changeDate, changeDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.changeDate, changeDate)) &&
-            (identical(
-                    other.commitmentAmountInclVat, commitmentAmountInclVat) ||
                 const DeepCollectionEquality().equals(
-                    other.commitmentAmountInclVat, commitmentAmountInclVat)) &&
+                  other.changeDate,
+                  changeDate,
+                )) &&
+            (identical(
+                  other.commitmentAmountInclVat,
+                  commitmentAmountInclVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.commitmentAmountInclVat,
+                  commitmentAmountInclVat,
+                )) &&
             (identical(other.formula, formula) ||
-                const DeepCollectionEquality()
-                    .equals(other.formula, formula)) &&
+                const DeepCollectionEquality().equals(
+                  other.formula,
+                  formula,
+                )) &&
             (identical(other.memo, memo) ||
                 const DeepCollectionEquality().equals(other.memo, memo)));
   }
@@ -1950,31 +2185,35 @@ class ChangeContractFormulaRequest {
 
 extension $ChangeContractFormulaRequestExtension
     on ChangeContractFormulaRequest {
-  ChangeContractFormulaRequest copyWith(
-      {DateTime? changeDate,
-      double? commitmentAmountInclVat,
-      enums.ClientContractFormula? formula,
-      String? memo}) {
+  ChangeContractFormulaRequest copyWith({
+    DateTime? changeDate,
+    double? commitmentAmountInclVat,
+    enums.ClientContractFormula? formula,
+    String? memo,
+  }) {
     return ChangeContractFormulaRequest(
-        changeDate: changeDate ?? this.changeDate,
-        commitmentAmountInclVat:
-            commitmentAmountInclVat ?? this.commitmentAmountInclVat,
-        formula: formula ?? this.formula,
-        memo: memo ?? this.memo);
+      changeDate: changeDate ?? this.changeDate,
+      commitmentAmountInclVat:
+          commitmentAmountInclVat ?? this.commitmentAmountInclVat,
+      formula: formula ?? this.formula,
+      memo: memo ?? this.memo,
+    );
   }
 
-  ChangeContractFormulaRequest copyWithWrapped(
-      {Wrapped<DateTime?>? changeDate,
-      Wrapped<double?>? commitmentAmountInclVat,
-      Wrapped<enums.ClientContractFormula?>? formula,
-      Wrapped<String?>? memo}) {
+  ChangeContractFormulaRequest copyWithWrapped({
+    Wrapped<DateTime?>? changeDate,
+    Wrapped<double?>? commitmentAmountInclVat,
+    Wrapped<enums.ClientContractFormula?>? formula,
+    Wrapped<String?>? memo,
+  }) {
     return ChangeContractFormulaRequest(
-        changeDate: (changeDate != null ? changeDate.value : this.changeDate),
-        commitmentAmountInclVat: (commitmentAmountInclVat != null
-            ? commitmentAmountInclVat.value
-            : this.commitmentAmountInclVat),
-        formula: (formula != null ? formula.value : this.formula),
-        memo: (memo != null ? memo.value : this.memo));
+      changeDate: (changeDate != null ? changeDate.value : this.changeDate),
+      commitmentAmountInclVat: (commitmentAmountInclVat != null
+          ? commitmentAmountInclVat.value
+          : this.commitmentAmountInclVat),
+      formula: (formula != null ? formula.value : this.formula),
+      memo: (memo != null ? memo.value : this.memo),
+    );
   }
 }
 
@@ -2012,17 +2251,25 @@ class ChangeLockRequest {
     return identical(this, other) ||
         (other is ChangeLockRequest &&
             (identical(other.keyFobCheck, keyFobCheck) ||
-                const DeepCollectionEquality()
-                    .equals(other.keyFobCheck, keyFobCheck)) &&
+                const DeepCollectionEquality().equals(
+                  other.keyFobCheck,
+                  keyFobCheck,
+                )) &&
             (identical(other.lockStatus, lockStatus) ||
-                const DeepCollectionEquality()
-                    .equals(other.lockStatus, lockStatus)) &&
+                const DeepCollectionEquality().equals(
+                  other.lockStatus,
+                  lockStatus,
+                )) &&
             (identical(other.unlockDistanceCheck, unlockDistanceCheck) ||
-                const DeepCollectionEquality()
-                    .equals(other.unlockDistanceCheck, unlockDistanceCheck)) &&
+                const DeepCollectionEquality().equals(
+                  other.unlockDistanceCheck,
+                  unlockDistanceCheck,
+                )) &&
             (identical(other.userLocation, userLocation) ||
-                const DeepCollectionEquality()
-                    .equals(other.userLocation, userLocation)));
+                const DeepCollectionEquality().equals(
+                  other.userLocation,
+                  userLocation,
+                )));
   }
 
   @override
@@ -2038,32 +2285,36 @@ class ChangeLockRequest {
 }
 
 extension $ChangeLockRequestExtension on ChangeLockRequest {
-  ChangeLockRequest copyWith(
-      {bool? keyFobCheck,
-      enums.ChangeLockRequestLockStatus? lockStatus,
-      bool? unlockDistanceCheck,
-      LocationPosition? userLocation}) {
+  ChangeLockRequest copyWith({
+    bool? keyFobCheck,
+    enums.ChangeLockRequestLockStatus? lockStatus,
+    bool? unlockDistanceCheck,
+    LocationPosition? userLocation,
+  }) {
     return ChangeLockRequest(
-        keyFobCheck: keyFobCheck ?? this.keyFobCheck,
-        lockStatus: lockStatus ?? this.lockStatus,
-        unlockDistanceCheck: unlockDistanceCheck ?? this.unlockDistanceCheck,
-        userLocation: userLocation ?? this.userLocation);
+      keyFobCheck: keyFobCheck ?? this.keyFobCheck,
+      lockStatus: lockStatus ?? this.lockStatus,
+      unlockDistanceCheck: unlockDistanceCheck ?? this.unlockDistanceCheck,
+      userLocation: userLocation ?? this.userLocation,
+    );
   }
 
-  ChangeLockRequest copyWithWrapped(
-      {Wrapped<bool?>? keyFobCheck,
-      Wrapped<enums.ChangeLockRequestLockStatus?>? lockStatus,
-      Wrapped<bool?>? unlockDistanceCheck,
-      Wrapped<LocationPosition?>? userLocation}) {
+  ChangeLockRequest copyWithWrapped({
+    Wrapped<bool?>? keyFobCheck,
+    Wrapped<enums.ChangeLockRequestLockStatus?>? lockStatus,
+    Wrapped<bool?>? unlockDistanceCheck,
+    Wrapped<LocationPosition?>? userLocation,
+  }) {
     return ChangeLockRequest(
-        keyFobCheck:
-            (keyFobCheck != null ? keyFobCheck.value : this.keyFobCheck),
-        lockStatus: (lockStatus != null ? lockStatus.value : this.lockStatus),
-        unlockDistanceCheck: (unlockDistanceCheck != null
-            ? unlockDistanceCheck.value
-            : this.unlockDistanceCheck),
-        userLocation:
-            (userLocation != null ? userLocation.value : this.userLocation));
+      keyFobCheck: (keyFobCheck != null ? keyFobCheck.value : this.keyFobCheck),
+      lockStatus: (lockStatus != null ? lockStatus.value : this.lockStatus),
+      unlockDistanceCheck: (unlockDistanceCheck != null
+          ? unlockDistanceCheck.value
+          : this.unlockDistanceCheck),
+      userLocation: (userLocation != null
+          ? userLocation.value
+          : this.userLocation),
+    );
   }
 }
 
@@ -2102,14 +2353,20 @@ class ChangeToContractFormulaHint {
     return identical(this, other) ||
         (other is ChangeToContractFormulaHint &&
             (identical(other.changeOption, changeOption) ||
-                const DeepCollectionEquality()
-                    .equals(other.changeOption, changeOption)) &&
+                const DeepCollectionEquality().equals(
+                  other.changeOption,
+                  changeOption,
+                )) &&
             (identical(other.earliestChangeDate, earliestChangeDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.earliestChangeDate, earliestChangeDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.earliestChangeDate,
+                  earliestChangeDate,
+                )) &&
             (identical(other.targetFormula, targetFormula) ||
-                const DeepCollectionEquality()
-                    .equals(other.targetFormula, targetFormula)));
+                const DeepCollectionEquality().equals(
+                  other.targetFormula,
+                  targetFormula,
+                )));
   }
 
   @override
@@ -2124,36 +2381,40 @@ class ChangeToContractFormulaHint {
 }
 
 extension $ChangeToContractFormulaHintExtension on ChangeToContractFormulaHint {
-  ChangeToContractFormulaHint copyWith(
-      {enums.FormulaChangeOption? changeOption,
-      DateTime? earliestChangeDate,
-      enums.ClientContractFormula? targetFormula}) {
+  ChangeToContractFormulaHint copyWith({
+    enums.FormulaChangeOption? changeOption,
+    DateTime? earliestChangeDate,
+    enums.ClientContractFormula? targetFormula,
+  }) {
     return ChangeToContractFormulaHint(
-        changeOption: changeOption ?? this.changeOption,
-        earliestChangeDate: earliestChangeDate ?? this.earliestChangeDate,
-        targetFormula: targetFormula ?? this.targetFormula);
+      changeOption: changeOption ?? this.changeOption,
+      earliestChangeDate: earliestChangeDate ?? this.earliestChangeDate,
+      targetFormula: targetFormula ?? this.targetFormula,
+    );
   }
 
-  ChangeToContractFormulaHint copyWithWrapped(
-      {Wrapped<enums.FormulaChangeOption?>? changeOption,
-      Wrapped<DateTime?>? earliestChangeDate,
-      Wrapped<enums.ClientContractFormula?>? targetFormula}) {
+  ChangeToContractFormulaHint copyWithWrapped({
+    Wrapped<enums.FormulaChangeOption?>? changeOption,
+    Wrapped<DateTime?>? earliestChangeDate,
+    Wrapped<enums.ClientContractFormula?>? targetFormula,
+  }) {
     return ChangeToContractFormulaHint(
-        changeOption:
-            (changeOption != null ? changeOption.value : this.changeOption),
-        earliestChangeDate: (earliestChangeDate != null
-            ? earliestChangeDate.value
-            : this.earliestChangeDate),
-        targetFormula:
-            (targetFormula != null ? targetFormula.value : this.targetFormula));
+      changeOption: (changeOption != null
+          ? changeOption.value
+          : this.changeOption),
+      earliestChangeDate: (earliestChangeDate != null
+          ? earliestChangeDate.value
+          : this.earliestChangeDate),
+      targetFormula: (targetFormula != null
+          ? targetFormula.value
+          : this.targetFormula),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class ChangeVehicleUsageRequest {
-  const ChangeVehicleUsageRequest({
-    this.changeLockRequest,
-  });
+  const ChangeVehicleUsageRequest({this.changeLockRequest});
 
   factory ChangeVehicleUsageRequest.fromJson(Map<String, dynamic> json) =>
       _$ChangeVehicleUsageRequestFromJson(json);
@@ -2170,8 +2431,10 @@ class ChangeVehicleUsageRequest {
     return identical(this, other) ||
         (other is ChangeVehicleUsageRequest &&
             (identical(other.changeLockRequest, changeLockRequest) ||
-                const DeepCollectionEquality()
-                    .equals(other.changeLockRequest, changeLockRequest)));
+                const DeepCollectionEquality().equals(
+                  other.changeLockRequest,
+                  changeLockRequest,
+                )));
   }
 
   @override
@@ -2186,15 +2449,18 @@ class ChangeVehicleUsageRequest {
 extension $ChangeVehicleUsageRequestExtension on ChangeVehicleUsageRequest {
   ChangeVehicleUsageRequest copyWith({ChangeLockRequest? changeLockRequest}) {
     return ChangeVehicleUsageRequest(
-        changeLockRequest: changeLockRequest ?? this.changeLockRequest);
+      changeLockRequest: changeLockRequest ?? this.changeLockRequest,
+    );
   }
 
-  ChangeVehicleUsageRequest copyWithWrapped(
-      {Wrapped<ChangeLockRequest?>? changeLockRequest}) {
+  ChangeVehicleUsageRequest copyWithWrapped({
+    Wrapped<ChangeLockRequest?>? changeLockRequest,
+  }) {
     return ChangeVehicleUsageRequest(
-        changeLockRequest: (changeLockRequest != null
-            ? changeLockRequest.value
-            : this.changeLockRequest));
+      changeLockRequest: (changeLockRequest != null
+          ? changeLockRequest.value
+          : this.changeLockRequest),
+    );
   }
 }
 
@@ -2251,30 +2517,40 @@ class Client {
     return identical(this, other) ||
         (other is Client &&
             (identical(other.billingEmail, billingEmail) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingEmail, billingEmail)) &&
+                const DeepCollectionEquality().equals(
+                  other.billingEmail,
+                  billingEmail,
+                )) &&
             (identical(other.city, city) ||
                 const DeepCollectionEquality().equals(other.city, city)) &&
             (identical(other.country, country) ||
-                const DeepCollectionEquality()
-                    .equals(other.country, country)) &&
+                const DeepCollectionEquality().equals(
+                  other.country,
+                  country,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.isSuspended, isSuspended) ||
-                const DeepCollectionEquality()
-                    .equals(other.isSuspended, isSuspended)) &&
+                const DeepCollectionEquality().equals(
+                  other.isSuspended,
+                  isSuspended,
+                )) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.nr, nr) ||
                 const DeepCollectionEquality().equals(other.nr, nr)) &&
             (identical(other.postalCode, postalCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.postalCode, postalCode)) &&
+                const DeepCollectionEquality().equals(
+                  other.postalCode,
+                  postalCode,
+                )) &&
             (identical(other.street, street) ||
                 const DeepCollectionEquality().equals(other.street, street)) &&
             (identical(other.suspensionReason, suspensionReason) ||
-                const DeepCollectionEquality()
-                    .equals(other.suspensionReason, suspensionReason)) &&
+                const DeepCollectionEquality().equals(
+                  other.suspensionReason,
+                  suspensionReason,
+                )) &&
             (identical(other.users, users) ||
                 const DeepCollectionEquality().equals(other.users, users)) &&
             (identical(other.vat, vat) ||
@@ -2302,73 +2578,74 @@ class Client {
 }
 
 extension $ClientExtension on Client {
-  Client copyWith(
-      {String? billingEmail,
-      String? city,
-      String? country,
-      int? id,
-      bool? isSuspended,
-      String? name,
-      String? nr,
-      String? postalCode,
-      String? street,
-      String? suspensionReason,
-      List<ContractUser>? users,
-      String? vat}) {
+  Client copyWith({
+    String? billingEmail,
+    String? city,
+    String? country,
+    int? id,
+    bool? isSuspended,
+    String? name,
+    String? nr,
+    String? postalCode,
+    String? street,
+    String? suspensionReason,
+    List<ContractUser>? users,
+    String? vat,
+  }) {
     return Client(
-        billingEmail: billingEmail ?? this.billingEmail,
-        city: city ?? this.city,
-        country: country ?? this.country,
-        id: id ?? this.id,
-        isSuspended: isSuspended ?? this.isSuspended,
-        name: name ?? this.name,
-        nr: nr ?? this.nr,
-        postalCode: postalCode ?? this.postalCode,
-        street: street ?? this.street,
-        suspensionReason: suspensionReason ?? this.suspensionReason,
-        users: users ?? this.users,
-        vat: vat ?? this.vat);
+      billingEmail: billingEmail ?? this.billingEmail,
+      city: city ?? this.city,
+      country: country ?? this.country,
+      id: id ?? this.id,
+      isSuspended: isSuspended ?? this.isSuspended,
+      name: name ?? this.name,
+      nr: nr ?? this.nr,
+      postalCode: postalCode ?? this.postalCode,
+      street: street ?? this.street,
+      suspensionReason: suspensionReason ?? this.suspensionReason,
+      users: users ?? this.users,
+      vat: vat ?? this.vat,
+    );
   }
 
-  Client copyWithWrapped(
-      {Wrapped<String?>? billingEmail,
-      Wrapped<String?>? city,
-      Wrapped<String?>? country,
-      Wrapped<int?>? id,
-      Wrapped<bool?>? isSuspended,
-      Wrapped<String?>? name,
-      Wrapped<String?>? nr,
-      Wrapped<String?>? postalCode,
-      Wrapped<String?>? street,
-      Wrapped<String?>? suspensionReason,
-      Wrapped<List<ContractUser>?>? users,
-      Wrapped<String?>? vat}) {
+  Client copyWithWrapped({
+    Wrapped<String?>? billingEmail,
+    Wrapped<String?>? city,
+    Wrapped<String?>? country,
+    Wrapped<int?>? id,
+    Wrapped<bool?>? isSuspended,
+    Wrapped<String?>? name,
+    Wrapped<String?>? nr,
+    Wrapped<String?>? postalCode,
+    Wrapped<String?>? street,
+    Wrapped<String?>? suspensionReason,
+    Wrapped<List<ContractUser>?>? users,
+    Wrapped<String?>? vat,
+  }) {
     return Client(
-        billingEmail:
-            (billingEmail != null ? billingEmail.value : this.billingEmail),
-        city: (city != null ? city.value : this.city),
-        country: (country != null ? country.value : this.country),
-        id: (id != null ? id.value : this.id),
-        isSuspended:
-            (isSuspended != null ? isSuspended.value : this.isSuspended),
-        name: (name != null ? name.value : this.name),
-        nr: (nr != null ? nr.value : this.nr),
-        postalCode: (postalCode != null ? postalCode.value : this.postalCode),
-        street: (street != null ? street.value : this.street),
-        suspensionReason: (suspensionReason != null
-            ? suspensionReason.value
-            : this.suspensionReason),
-        users: (users != null ? users.value : this.users),
-        vat: (vat != null ? vat.value : this.vat));
+      billingEmail: (billingEmail != null
+          ? billingEmail.value
+          : this.billingEmail),
+      city: (city != null ? city.value : this.city),
+      country: (country != null ? country.value : this.country),
+      id: (id != null ? id.value : this.id),
+      isSuspended: (isSuspended != null ? isSuspended.value : this.isSuspended),
+      name: (name != null ? name.value : this.name),
+      nr: (nr != null ? nr.value : this.nr),
+      postalCode: (postalCode != null ? postalCode.value : this.postalCode),
+      street: (street != null ? street.value : this.street),
+      suspensionReason: (suspensionReason != null
+          ? suspensionReason.value
+          : this.suspensionReason),
+      users: (users != null ? users.value : this.users),
+      vat: (vat != null ? vat.value : this.vat),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class ClientContractBaseSearchRequest {
-  const ClientContractBaseSearchRequest({
-    this.flexSearch,
-    this.orderBy,
-  });
+  const ClientContractBaseSearchRequest({this.flexSearch, this.orderBy});
 
   factory ClientContractBaseSearchRequest.fromJson(Map<String, dynamic> json) =>
       _$ClientContractBaseSearchRequestFromJson(json);
@@ -2388,8 +2665,10 @@ class ClientContractBaseSearchRequest {
     return identical(this, other) ||
         (other is ClientContractBaseSearchRequest &&
             (identical(other.flexSearch, flexSearch) ||
-                const DeepCollectionEquality()
-                    .equals(other.flexSearch, flexSearch)) &&
+                const DeepCollectionEquality().equals(
+                  other.flexSearch,
+                  flexSearch,
+                )) &&
             (identical(other.orderBy, orderBy) ||
                 const DeepCollectionEquality().equals(other.orderBy, orderBy)));
   }
@@ -2406,18 +2685,24 @@ class ClientContractBaseSearchRequest {
 
 extension $ClientContractBaseSearchRequestExtension
     on ClientContractBaseSearchRequest {
-  ClientContractBaseSearchRequest copyWith(
-      {String? flexSearch, String? orderBy}) {
+  ClientContractBaseSearchRequest copyWith({
+    String? flexSearch,
+    String? orderBy,
+  }) {
     return ClientContractBaseSearchRequest(
-        flexSearch: flexSearch ?? this.flexSearch,
-        orderBy: orderBy ?? this.orderBy);
+      flexSearch: flexSearch ?? this.flexSearch,
+      orderBy: orderBy ?? this.orderBy,
+    );
   }
 
-  ClientContractBaseSearchRequest copyWithWrapped(
-      {Wrapped<String?>? flexSearch, Wrapped<String?>? orderBy}) {
+  ClientContractBaseSearchRequest copyWithWrapped({
+    Wrapped<String?>? flexSearch,
+    Wrapped<String?>? orderBy,
+  }) {
     return ClientContractBaseSearchRequest(
-        flexSearch: (flexSearch != null ? flexSearch.value : this.flexSearch),
-        orderBy: (orderBy != null ? orderBy.value : this.orderBy));
+      flexSearch: (flexSearch != null ? flexSearch.value : this.flexSearch),
+      orderBy: (orderBy != null ? orderBy.value : this.orderBy),
+    );
   }
 }
 
@@ -2511,60 +2796,94 @@ class ClientContractDto {
     return identical(this, other) ||
         (other is ClientContractDto &&
             (identical(other.billingInstructions, billingInstructions) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingInstructions, billingInstructions)) &&
+                const DeepCollectionEquality().equals(
+                  other.billingInstructions,
+                  billingInstructions,
+                )) &&
             (identical(other.billingType, billingType) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingType, billingType)) &&
+                const DeepCollectionEquality().equals(
+                  other.billingType,
+                  billingType,
+                )) &&
             (identical(other.$client, $client) ||
-                const DeepCollectionEquality()
-                    .equals(other.$client, $client)) &&
+                const DeepCollectionEquality().equals(
+                  other.$client,
+                  $client,
+                )) &&
             (identical(other.clientContractType, clientContractType) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientContractType, clientContractType)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientContractType,
+                  clientContractType,
+                )) &&
             (identical(other.contractDate, contractDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.contractDate, contractDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.contractDate,
+                  contractDate,
+                )) &&
             (identical(other.contractFileName, contractFileName) ||
-                const DeepCollectionEquality()
-                    .equals(other.contractFileName, contractFileName)) &&
+                const DeepCollectionEquality().equals(
+                  other.contractFileName,
+                  contractFileName,
+                )) &&
             (identical(other.currentFormula, currentFormula) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentFormula, currentFormula)) &&
+                const DeepCollectionEquality().equals(
+                  other.currentFormula,
+                  currentFormula,
+                )) &&
             (identical(other.dateOfCancellation, dateOfCancellation) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateOfCancellation, dateOfCancellation)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateOfCancellation,
+                  dateOfCancellation,
+                )) &&
             (identical(other.endDate, endDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDate, endDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.endDate,
+                  endDate,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.isCompletelySettled, isCompletelySettled) ||
-                const DeepCollectionEquality()
-                    .equals(other.isCompletelySettled, isCompletelySettled)) &&
+                const DeepCollectionEquality().equals(
+                  other.isCompletelySettled,
+                  isCompletelySettled,
+                )) &&
             (identical(other.isSuspended, isSuspended) ||
-                const DeepCollectionEquality()
-                    .equals(other.isSuspended, isSuspended)) &&
+                const DeepCollectionEquality().equals(
+                  other.isSuspended,
+                  isSuspended,
+                )) &&
             (identical(other.memo, memo) ||
                 const DeepCollectionEquality().equals(other.memo, memo)) &&
             (identical(
-                    other.overrideAutoDescription, overrideAutoDescription) ||
+                  other.overrideAutoDescription,
+                  overrideAutoDescription,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.overrideAutoDescription, overrideAutoDescription)) &&
+                  other.overrideAutoDescription,
+                  overrideAutoDescription,
+                )) &&
             (identical(other.reasonOfCancellation, reasonOfCancellation) ||
                 const DeepCollectionEquality().equals(
-                    other.reasonOfCancellation, reasonOfCancellation)) &&
+                  other.reasonOfCancellation,
+                  reasonOfCancellation,
+                )) &&
             (identical(other.settings, settings) ||
-                const DeepCollectionEquality()
-                    .equals(other.settings, settings)) &&
+                const DeepCollectionEquality().equals(
+                  other.settings,
+                  settings,
+                )) &&
             (identical(other.startDate, startDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDate, startDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.startDate,
+                  startDate,
+                )) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.suspensionReason, suspensionReason) ||
-                const DeepCollectionEquality()
-                    .equals(other.suspensionReason, suspensionReason)) &&
+                const DeepCollectionEquality().equals(
+                  other.suspensionReason,
+                  suspensionReason,
+                )) &&
             (identical(other.usage, usage) ||
                 const DeepCollectionEquality().equals(other.usage, usage)));
   }
@@ -2598,126 +2917,127 @@ class ClientContractDto {
 }
 
 extension $ClientContractDtoExtension on ClientContractDto {
-  ClientContractDto copyWith(
-      {String? billingInstructions,
-      String? billingType,
-      ClientReferenceDto? $client,
-      enums.ClientContractType? clientContractType,
-      DateTime? contractDate,
-      String? contractFileName,
-      enums.ClientContractFormula? currentFormula,
-      DateTime? dateOfCancellation,
-      DateTime? endDate,
-      int? id,
-      bool? isCompletelySettled,
-      bool? isSuspended,
-      String? memo,
-      String? overrideAutoDescription,
-      String? reasonOfCancellation,
-      String? settings,
-      DateTime? startDate,
-      enums.ClientContractStatus? status,
-      String? suspensionReason,
-      ClientContractUsageDto? usage}) {
+  ClientContractDto copyWith({
+    String? billingInstructions,
+    String? billingType,
+    ClientReferenceDto? $client,
+    enums.ClientContractType? clientContractType,
+    DateTime? contractDate,
+    String? contractFileName,
+    enums.ClientContractFormula? currentFormula,
+    DateTime? dateOfCancellation,
+    DateTime? endDate,
+    int? id,
+    bool? isCompletelySettled,
+    bool? isSuspended,
+    String? memo,
+    String? overrideAutoDescription,
+    String? reasonOfCancellation,
+    String? settings,
+    DateTime? startDate,
+    enums.ClientContractStatus? status,
+    String? suspensionReason,
+    ClientContractUsageDto? usage,
+  }) {
     return ClientContractDto(
-        billingInstructions: billingInstructions ?? this.billingInstructions,
-        billingType: billingType ?? this.billingType,
-        $client: $client ?? this.$client,
-        clientContractType: clientContractType ?? this.clientContractType,
-        contractDate: contractDate ?? this.contractDate,
-        contractFileName: contractFileName ?? this.contractFileName,
-        currentFormula: currentFormula ?? this.currentFormula,
-        dateOfCancellation: dateOfCancellation ?? this.dateOfCancellation,
-        endDate: endDate ?? this.endDate,
-        id: id ?? this.id,
-        isCompletelySettled: isCompletelySettled ?? this.isCompletelySettled,
-        isSuspended: isSuspended ?? this.isSuspended,
-        memo: memo ?? this.memo,
-        overrideAutoDescription:
-            overrideAutoDescription ?? this.overrideAutoDescription,
-        reasonOfCancellation: reasonOfCancellation ?? this.reasonOfCancellation,
-        settings: settings ?? this.settings,
-        startDate: startDate ?? this.startDate,
-        status: status ?? this.status,
-        suspensionReason: suspensionReason ?? this.suspensionReason,
-        usage: usage ?? this.usage);
+      billingInstructions: billingInstructions ?? this.billingInstructions,
+      billingType: billingType ?? this.billingType,
+      $client: $client ?? this.$client,
+      clientContractType: clientContractType ?? this.clientContractType,
+      contractDate: contractDate ?? this.contractDate,
+      contractFileName: contractFileName ?? this.contractFileName,
+      currentFormula: currentFormula ?? this.currentFormula,
+      dateOfCancellation: dateOfCancellation ?? this.dateOfCancellation,
+      endDate: endDate ?? this.endDate,
+      id: id ?? this.id,
+      isCompletelySettled: isCompletelySettled ?? this.isCompletelySettled,
+      isSuspended: isSuspended ?? this.isSuspended,
+      memo: memo ?? this.memo,
+      overrideAutoDescription:
+          overrideAutoDescription ?? this.overrideAutoDescription,
+      reasonOfCancellation: reasonOfCancellation ?? this.reasonOfCancellation,
+      settings: settings ?? this.settings,
+      startDate: startDate ?? this.startDate,
+      status: status ?? this.status,
+      suspensionReason: suspensionReason ?? this.suspensionReason,
+      usage: usage ?? this.usage,
+    );
   }
 
-  ClientContractDto copyWithWrapped(
-      {Wrapped<String?>? billingInstructions,
-      Wrapped<String?>? billingType,
-      Wrapped<ClientReferenceDto?>? $client,
-      Wrapped<enums.ClientContractType?>? clientContractType,
-      Wrapped<DateTime?>? contractDate,
-      Wrapped<String?>? contractFileName,
-      Wrapped<enums.ClientContractFormula?>? currentFormula,
-      Wrapped<DateTime?>? dateOfCancellation,
-      Wrapped<DateTime?>? endDate,
-      Wrapped<int?>? id,
-      Wrapped<bool?>? isCompletelySettled,
-      Wrapped<bool?>? isSuspended,
-      Wrapped<String?>? memo,
-      Wrapped<String?>? overrideAutoDescription,
-      Wrapped<String?>? reasonOfCancellation,
-      Wrapped<String?>? settings,
-      Wrapped<DateTime?>? startDate,
-      Wrapped<enums.ClientContractStatus?>? status,
-      Wrapped<String?>? suspensionReason,
-      Wrapped<ClientContractUsageDto?>? usage}) {
+  ClientContractDto copyWithWrapped({
+    Wrapped<String?>? billingInstructions,
+    Wrapped<String?>? billingType,
+    Wrapped<ClientReferenceDto?>? $client,
+    Wrapped<enums.ClientContractType?>? clientContractType,
+    Wrapped<DateTime?>? contractDate,
+    Wrapped<String?>? contractFileName,
+    Wrapped<enums.ClientContractFormula?>? currentFormula,
+    Wrapped<DateTime?>? dateOfCancellation,
+    Wrapped<DateTime?>? endDate,
+    Wrapped<int?>? id,
+    Wrapped<bool?>? isCompletelySettled,
+    Wrapped<bool?>? isSuspended,
+    Wrapped<String?>? memo,
+    Wrapped<String?>? overrideAutoDescription,
+    Wrapped<String?>? reasonOfCancellation,
+    Wrapped<String?>? settings,
+    Wrapped<DateTime?>? startDate,
+    Wrapped<enums.ClientContractStatus?>? status,
+    Wrapped<String?>? suspensionReason,
+    Wrapped<ClientContractUsageDto?>? usage,
+  }) {
     return ClientContractDto(
-        billingInstructions: (billingInstructions != null
-            ? billingInstructions.value
-            : this.billingInstructions),
-        billingType:
-            (billingType != null ? billingType.value : this.billingType),
-        $client: ($client != null ? $client.value : this.$client),
-        clientContractType: (clientContractType != null
-            ? clientContractType.value
-            : this.clientContractType),
-        contractDate:
-            (contractDate != null ? contractDate.value : this.contractDate),
-        contractFileName: (contractFileName != null
-            ? contractFileName.value
-            : this.contractFileName),
-        currentFormula: (currentFormula != null
-            ? currentFormula.value
-            : this.currentFormula),
-        dateOfCancellation: (dateOfCancellation != null
-            ? dateOfCancellation.value
-            : this.dateOfCancellation),
-        endDate: (endDate != null ? endDate.value : this.endDate),
-        id: (id != null ? id.value : this.id),
-        isCompletelySettled: (isCompletelySettled != null
-            ? isCompletelySettled.value
-            : this.isCompletelySettled),
-        isSuspended:
-            (isSuspended != null ? isSuspended.value : this.isSuspended),
-        memo: (memo != null ? memo.value : this.memo),
-        overrideAutoDescription: (overrideAutoDescription != null
-            ? overrideAutoDescription.value
-            : this.overrideAutoDescription),
-        reasonOfCancellation: (reasonOfCancellation != null
-            ? reasonOfCancellation.value
-            : this.reasonOfCancellation),
-        settings: (settings != null ? settings.value : this.settings),
-        startDate: (startDate != null ? startDate.value : this.startDate),
-        status: (status != null ? status.value : this.status),
-        suspensionReason: (suspensionReason != null
-            ? suspensionReason.value
-            : this.suspensionReason),
-        usage: (usage != null ? usage.value : this.usage));
+      billingInstructions: (billingInstructions != null
+          ? billingInstructions.value
+          : this.billingInstructions),
+      billingType: (billingType != null ? billingType.value : this.billingType),
+      $client: ($client != null ? $client.value : this.$client),
+      clientContractType: (clientContractType != null
+          ? clientContractType.value
+          : this.clientContractType),
+      contractDate: (contractDate != null
+          ? contractDate.value
+          : this.contractDate),
+      contractFileName: (contractFileName != null
+          ? contractFileName.value
+          : this.contractFileName),
+      currentFormula: (currentFormula != null
+          ? currentFormula.value
+          : this.currentFormula),
+      dateOfCancellation: (dateOfCancellation != null
+          ? dateOfCancellation.value
+          : this.dateOfCancellation),
+      endDate: (endDate != null ? endDate.value : this.endDate),
+      id: (id != null ? id.value : this.id),
+      isCompletelySettled: (isCompletelySettled != null
+          ? isCompletelySettled.value
+          : this.isCompletelySettled),
+      isSuspended: (isSuspended != null ? isSuspended.value : this.isSuspended),
+      memo: (memo != null ? memo.value : this.memo),
+      overrideAutoDescription: (overrideAutoDescription != null
+          ? overrideAutoDescription.value
+          : this.overrideAutoDescription),
+      reasonOfCancellation: (reasonOfCancellation != null
+          ? reasonOfCancellation.value
+          : this.reasonOfCancellation),
+      settings: (settings != null ? settings.value : this.settings),
+      startDate: (startDate != null ? startDate.value : this.startDate),
+      status: (status != null ? status.value : this.status),
+      suspensionReason: (suspensionReason != null
+          ? suspensionReason.value
+          : this.suspensionReason),
+      usage: (usage != null ? usage.value : this.usage),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class ClientContractDtoApiDataResponse {
-  const ClientContractDtoApiDataResponse({
-    this.data,
-  });
+  const ClientContractDtoApiDataResponse({this.data});
 
   factory ClientContractDtoApiDataResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$ClientContractDtoApiDataResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$ClientContractDtoApiDataResponseFromJson(json);
 
   static const toJsonFactory = _$ClientContractDtoApiDataResponseToJson;
   Map<String, dynamic> toJson() =>
@@ -2749,19 +3069,18 @@ extension $ClientContractDtoApiDataResponseExtension
     return ClientContractDtoApiDataResponse(data: data ?? this.data);
   }
 
-  ClientContractDtoApiDataResponse copyWithWrapped(
-      {Wrapped<ClientContractDto?>? data}) {
+  ClientContractDtoApiDataResponse copyWithWrapped({
+    Wrapped<ClientContractDto?>? data,
+  }) {
     return ClientContractDtoApiDataResponse(
-        data: (data != null ? data.value : this.data));
+      data: (data != null ? data.value : this.data),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class ClientContractResponse {
-  const ClientContractResponse({
-    this.id,
-    this.vehicleContracts,
-  });
+  const ClientContractResponse({this.id, this.vehicleContracts});
 
   factory ClientContractResponse.fromJson(Map<String, dynamic> json) =>
       _$ClientContractResponseFromJson(json);
@@ -2782,8 +3101,10 @@ class ClientContractResponse {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.vehicleContracts, vehicleContracts) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleContracts, vehicleContracts)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleContracts,
+                  vehicleContracts,
+                )));
   }
 
   @override
@@ -2797,20 +3118,26 @@ class ClientContractResponse {
 }
 
 extension $ClientContractResponseExtension on ClientContractResponse {
-  ClientContractResponse copyWith(
-      {int? id, List<VehicleContract>? vehicleContracts}) {
+  ClientContractResponse copyWith({
+    int? id,
+    List<VehicleContract>? vehicleContracts,
+  }) {
     return ClientContractResponse(
-        id: id ?? this.id,
-        vehicleContracts: vehicleContracts ?? this.vehicleContracts);
+      id: id ?? this.id,
+      vehicleContracts: vehicleContracts ?? this.vehicleContracts,
+    );
   }
 
-  ClientContractResponse copyWithWrapped(
-      {Wrapped<int?>? id, Wrapped<List<VehicleContract>?>? vehicleContracts}) {
+  ClientContractResponse copyWithWrapped({
+    Wrapped<int?>? id,
+    Wrapped<List<VehicleContract>?>? vehicleContracts,
+  }) {
     return ClientContractResponse(
-        id: (id != null ? id.value : this.id),
-        vehicleContracts: (vehicleContracts != null
-            ? vehicleContracts.value
-            : this.vehicleContracts));
+      id: (id != null ? id.value : this.id),
+      vehicleContracts: (vehicleContracts != null
+          ? vehicleContracts.value
+          : this.vehicleContracts),
+    );
   }
 }
 
@@ -2883,43 +3210,67 @@ class ClientContractSummaryDto {
     return identical(this, other) ||
         (other is ClientContractSummaryDto &&
             (identical(other.$client, $client) ||
-                const DeepCollectionEquality()
-                    .equals(other.$client, $client)) &&
+                const DeepCollectionEquality().equals(
+                  other.$client,
+                  $client,
+                )) &&
             (identical(other.clientContractType, clientContractType) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientContractType, clientContractType)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientContractType,
+                  clientContractType,
+                )) &&
             (identical(other.contractDate, contractDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.contractDate, contractDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.contractDate,
+                  contractDate,
+                )) &&
             (identical(other.currentFormula, currentFormula) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentFormula, currentFormula)) &&
+                const DeepCollectionEquality().equals(
+                  other.currentFormula,
+                  currentFormula,
+                )) &&
             (identical(other.dateOfCancellation, dateOfCancellation) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateOfCancellation, dateOfCancellation)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateOfCancellation,
+                  dateOfCancellation,
+                )) &&
             (identical(other.endDate, endDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDate, endDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.endDate,
+                  endDate,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.isSuspended, isSuspended) ||
-                const DeepCollectionEquality()
-                    .equals(other.isSuspended, isSuspended)) &&
-            (identical(
-                    other.overrideAutoDescription, overrideAutoDescription) ||
                 const DeepCollectionEquality().equals(
-                    other.overrideAutoDescription, overrideAutoDescription)) &&
+                  other.isSuspended,
+                  isSuspended,
+                )) &&
+            (identical(
+                  other.overrideAutoDescription,
+                  overrideAutoDescription,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.overrideAutoDescription,
+                  overrideAutoDescription,
+                )) &&
             (identical(other.reasonOfCancellation, reasonOfCancellation) ||
                 const DeepCollectionEquality().equals(
-                    other.reasonOfCancellation, reasonOfCancellation)) &&
+                  other.reasonOfCancellation,
+                  reasonOfCancellation,
+                )) &&
             (identical(other.startDate, startDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDate, startDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.startDate,
+                  startDate,
+                )) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.suspensionReason, suspensionReason) ||
-                const DeepCollectionEquality()
-                    .equals(other.suspensionReason, suspensionReason)));
+                const DeepCollectionEquality().equals(
+                  other.suspensionReason,
+                  suspensionReason,
+                )));
   }
 
   @override
@@ -2944,79 +3295,83 @@ class ClientContractSummaryDto {
 }
 
 extension $ClientContractSummaryDtoExtension on ClientContractSummaryDto {
-  ClientContractSummaryDto copyWith(
-      {ClientReferenceDto? $client,
-      enums.ClientContractType? clientContractType,
-      DateTime? contractDate,
-      enums.ClientContractFormula? currentFormula,
-      DateTime? dateOfCancellation,
-      DateTime? endDate,
-      int? id,
-      bool? isSuspended,
-      String? overrideAutoDescription,
-      String? reasonOfCancellation,
-      DateTime? startDate,
-      enums.ClientContractStatus? status,
-      String? suspensionReason}) {
+  ClientContractSummaryDto copyWith({
+    ClientReferenceDto? $client,
+    enums.ClientContractType? clientContractType,
+    DateTime? contractDate,
+    enums.ClientContractFormula? currentFormula,
+    DateTime? dateOfCancellation,
+    DateTime? endDate,
+    int? id,
+    bool? isSuspended,
+    String? overrideAutoDescription,
+    String? reasonOfCancellation,
+    DateTime? startDate,
+    enums.ClientContractStatus? status,
+    String? suspensionReason,
+  }) {
     return ClientContractSummaryDto(
-        $client: $client ?? this.$client,
-        clientContractType: clientContractType ?? this.clientContractType,
-        contractDate: contractDate ?? this.contractDate,
-        currentFormula: currentFormula ?? this.currentFormula,
-        dateOfCancellation: dateOfCancellation ?? this.dateOfCancellation,
-        endDate: endDate ?? this.endDate,
-        id: id ?? this.id,
-        isSuspended: isSuspended ?? this.isSuspended,
-        overrideAutoDescription:
-            overrideAutoDescription ?? this.overrideAutoDescription,
-        reasonOfCancellation: reasonOfCancellation ?? this.reasonOfCancellation,
-        startDate: startDate ?? this.startDate,
-        status: status ?? this.status,
-        suspensionReason: suspensionReason ?? this.suspensionReason);
+      $client: $client ?? this.$client,
+      clientContractType: clientContractType ?? this.clientContractType,
+      contractDate: contractDate ?? this.contractDate,
+      currentFormula: currentFormula ?? this.currentFormula,
+      dateOfCancellation: dateOfCancellation ?? this.dateOfCancellation,
+      endDate: endDate ?? this.endDate,
+      id: id ?? this.id,
+      isSuspended: isSuspended ?? this.isSuspended,
+      overrideAutoDescription:
+          overrideAutoDescription ?? this.overrideAutoDescription,
+      reasonOfCancellation: reasonOfCancellation ?? this.reasonOfCancellation,
+      startDate: startDate ?? this.startDate,
+      status: status ?? this.status,
+      suspensionReason: suspensionReason ?? this.suspensionReason,
+    );
   }
 
-  ClientContractSummaryDto copyWithWrapped(
-      {Wrapped<ClientReferenceDto?>? $client,
-      Wrapped<enums.ClientContractType?>? clientContractType,
-      Wrapped<DateTime?>? contractDate,
-      Wrapped<enums.ClientContractFormula?>? currentFormula,
-      Wrapped<DateTime?>? dateOfCancellation,
-      Wrapped<DateTime?>? endDate,
-      Wrapped<int?>? id,
-      Wrapped<bool?>? isSuspended,
-      Wrapped<String?>? overrideAutoDescription,
-      Wrapped<String?>? reasonOfCancellation,
-      Wrapped<DateTime?>? startDate,
-      Wrapped<enums.ClientContractStatus?>? status,
-      Wrapped<String?>? suspensionReason}) {
+  ClientContractSummaryDto copyWithWrapped({
+    Wrapped<ClientReferenceDto?>? $client,
+    Wrapped<enums.ClientContractType?>? clientContractType,
+    Wrapped<DateTime?>? contractDate,
+    Wrapped<enums.ClientContractFormula?>? currentFormula,
+    Wrapped<DateTime?>? dateOfCancellation,
+    Wrapped<DateTime?>? endDate,
+    Wrapped<int?>? id,
+    Wrapped<bool?>? isSuspended,
+    Wrapped<String?>? overrideAutoDescription,
+    Wrapped<String?>? reasonOfCancellation,
+    Wrapped<DateTime?>? startDate,
+    Wrapped<enums.ClientContractStatus?>? status,
+    Wrapped<String?>? suspensionReason,
+  }) {
     return ClientContractSummaryDto(
-        $client: ($client != null ? $client.value : this.$client),
-        clientContractType: (clientContractType != null
-            ? clientContractType.value
-            : this.clientContractType),
-        contractDate:
-            (contractDate != null ? contractDate.value : this.contractDate),
-        currentFormula: (currentFormula != null
-            ? currentFormula.value
-            : this.currentFormula),
-        dateOfCancellation: (dateOfCancellation != null
-            ? dateOfCancellation.value
-            : this.dateOfCancellation),
-        endDate: (endDate != null ? endDate.value : this.endDate),
-        id: (id != null ? id.value : this.id),
-        isSuspended:
-            (isSuspended != null ? isSuspended.value : this.isSuspended),
-        overrideAutoDescription: (overrideAutoDescription != null
-            ? overrideAutoDescription.value
-            : this.overrideAutoDescription),
-        reasonOfCancellation: (reasonOfCancellation != null
-            ? reasonOfCancellation.value
-            : this.reasonOfCancellation),
-        startDate: (startDate != null ? startDate.value : this.startDate),
-        status: (status != null ? status.value : this.status),
-        suspensionReason: (suspensionReason != null
-            ? suspensionReason.value
-            : this.suspensionReason));
+      $client: ($client != null ? $client.value : this.$client),
+      clientContractType: (clientContractType != null
+          ? clientContractType.value
+          : this.clientContractType),
+      contractDate: (contractDate != null
+          ? contractDate.value
+          : this.contractDate),
+      currentFormula: (currentFormula != null
+          ? currentFormula.value
+          : this.currentFormula),
+      dateOfCancellation: (dateOfCancellation != null
+          ? dateOfCancellation.value
+          : this.dateOfCancellation),
+      endDate: (endDate != null ? endDate.value : this.endDate),
+      id: (id != null ? id.value : this.id),
+      isSuspended: (isSuspended != null ? isSuspended.value : this.isSuspended),
+      overrideAutoDescription: (overrideAutoDescription != null
+          ? overrideAutoDescription.value
+          : this.overrideAutoDescription),
+      reasonOfCancellation: (reasonOfCancellation != null
+          ? reasonOfCancellation.value
+          : this.reasonOfCancellation),
+      startDate: (startDate != null ? startDate.value : this.startDate),
+      status: (status != null ? status.value : this.status),
+      suspensionReason: (suspensionReason != null
+          ? suspensionReason.value
+          : this.suspensionReason),
+    );
   }
 }
 
@@ -3029,8 +3384,8 @@ class ClientContractSummaryDtoApiPagedResponse {
   });
 
   factory ClientContractSummaryDtoApiPagedResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$ClientContractSummaryDtoApiPagedResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$ClientContractSummaryDtoApiPagedResponseFromJson(json);
 
   static const toJsonFactory = _$ClientContractSummaryDtoApiPagedResponseToJson;
   Map<String, dynamic> toJson() =>
@@ -3050,14 +3405,20 @@ class ClientContractSummaryDtoApiPagedResponse {
     return identical(this, other) ||
         (other is ClientContractSummaryDtoApiPagedResponse &&
             (identical(other.nextPage, nextPage) ||
-                const DeepCollectionEquality()
-                    .equals(other.nextPage, nextPage)) &&
+                const DeepCollectionEquality().equals(
+                  other.nextPage,
+                  nextPage,
+                )) &&
             (identical(other.results, results) ||
-                const DeepCollectionEquality()
-                    .equals(other.results, results)) &&
+                const DeepCollectionEquality().equals(
+                  other.results,
+                  results,
+                )) &&
             (identical(other.totalCount, totalCount) ||
-                const DeepCollectionEquality()
-                    .equals(other.totalCount, totalCount)));
+                const DeepCollectionEquality().equals(
+                  other.totalCount,
+                  totalCount,
+                )));
   }
 
   @override
@@ -3073,24 +3434,28 @@ class ClientContractSummaryDtoApiPagedResponse {
 
 extension $ClientContractSummaryDtoApiPagedResponseExtension
     on ClientContractSummaryDtoApiPagedResponse {
-  ClientContractSummaryDtoApiPagedResponse copyWith(
-      {String? nextPage,
-      List<ClientContractSummaryDto>? results,
-      int? totalCount}) {
+  ClientContractSummaryDtoApiPagedResponse copyWith({
+    String? nextPage,
+    List<ClientContractSummaryDto>? results,
+    int? totalCount,
+  }) {
     return ClientContractSummaryDtoApiPagedResponse(
-        nextPage: nextPage ?? this.nextPage,
-        results: results ?? this.results,
-        totalCount: totalCount ?? this.totalCount);
+      nextPage: nextPage ?? this.nextPage,
+      results: results ?? this.results,
+      totalCount: totalCount ?? this.totalCount,
+    );
   }
 
-  ClientContractSummaryDtoApiPagedResponse copyWithWrapped(
-      {Wrapped<String?>? nextPage,
-      Wrapped<List<ClientContractSummaryDto>?>? results,
-      Wrapped<int?>? totalCount}) {
+  ClientContractSummaryDtoApiPagedResponse copyWithWrapped({
+    Wrapped<String?>? nextPage,
+    Wrapped<List<ClientContractSummaryDto>?>? results,
+    Wrapped<int?>? totalCount,
+  }) {
     return ClientContractSummaryDtoApiPagedResponse(
-        nextPage: (nextPage != null ? nextPage.value : this.nextPage),
-        results: (results != null ? results.value : this.results),
-        totalCount: (totalCount != null ? totalCount.value : this.totalCount));
+      nextPage: (nextPage != null ? nextPage.value : this.nextPage),
+      results: (results != null ? results.value : this.results),
+      totalCount: (totalCount != null ? totalCount.value : this.totalCount),
+    );
   }
 }
 
@@ -3143,32 +3508,50 @@ class ClientContractUsageDataDto {
     return identical(this, other) ||
         (other is ClientContractUsageDataDto &&
             (identical(other.commentOnInvoice, commentOnInvoice) ||
-                const DeepCollectionEquality()
-                    .equals(other.commentOnInvoice, commentOnInvoice)) &&
-            (identical(
-                    other.commitmentAmountInclVat, commitmentAmountInclVat) ||
                 const DeepCollectionEquality().equals(
-                    other.commitmentAmountInclVat, commitmentAmountInclVat)) &&
+                  other.commentOnInvoice,
+                  commentOnInvoice,
+                )) &&
+            (identical(
+                  other.commitmentAmountInclVat,
+                  commitmentAmountInclVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.commitmentAmountInclVat,
+                  commitmentAmountInclVat,
+                )) &&
             (identical(other.endDate, endDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDate, endDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.endDate,
+                  endDate,
+                )) &&
             (identical(other.formula, formula) ||
-                const DeepCollectionEquality()
-                    .equals(other.formula, formula)) &&
+                const DeepCollectionEquality().equals(
+                  other.formula,
+                  formula,
+                )) &&
             (identical(other.memo, memo) ||
                 const DeepCollectionEquality().equals(other.memo, memo)) &&
             (identical(other.minimalEndDate, minimalEndDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.minimalEndDate, minimalEndDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.minimalEndDate,
+                  minimalEndDate,
+                )) &&
             (identical(other.overrideRateCardId, overrideRateCardId) ||
-                const DeepCollectionEquality()
-                    .equals(other.overrideRateCardId, overrideRateCardId)) &&
+                const DeepCollectionEquality().equals(
+                  other.overrideRateCardId,
+                  overrideRateCardId,
+                )) &&
             (identical(other.requestDate, requestDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.requestDate, requestDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.requestDate,
+                  requestDate,
+                )) &&
             (identical(other.startDate, startDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDate, startDate)));
+                const DeepCollectionEquality().equals(
+                  other.startDate,
+                  startDate,
+                )));
   }
 
   @override
@@ -3189,58 +3572,61 @@ class ClientContractUsageDataDto {
 }
 
 extension $ClientContractUsageDataDtoExtension on ClientContractUsageDataDto {
-  ClientContractUsageDataDto copyWith(
-      {String? commentOnInvoice,
-      double? commitmentAmountInclVat,
-      DateTime? endDate,
-      enums.ClientContractFormula? formula,
-      String? memo,
-      DateTime? minimalEndDate,
-      int? overrideRateCardId,
-      DateTime? requestDate,
-      DateTime? startDate}) {
+  ClientContractUsageDataDto copyWith({
+    String? commentOnInvoice,
+    double? commitmentAmountInclVat,
+    DateTime? endDate,
+    enums.ClientContractFormula? formula,
+    String? memo,
+    DateTime? minimalEndDate,
+    int? overrideRateCardId,
+    DateTime? requestDate,
+    DateTime? startDate,
+  }) {
     return ClientContractUsageDataDto(
-        commentOnInvoice: commentOnInvoice ?? this.commentOnInvoice,
-        commitmentAmountInclVat:
-            commitmentAmountInclVat ?? this.commitmentAmountInclVat,
-        endDate: endDate ?? this.endDate,
-        formula: formula ?? this.formula,
-        memo: memo ?? this.memo,
-        minimalEndDate: minimalEndDate ?? this.minimalEndDate,
-        overrideRateCardId: overrideRateCardId ?? this.overrideRateCardId,
-        requestDate: requestDate ?? this.requestDate,
-        startDate: startDate ?? this.startDate);
+      commentOnInvoice: commentOnInvoice ?? this.commentOnInvoice,
+      commitmentAmountInclVat:
+          commitmentAmountInclVat ?? this.commitmentAmountInclVat,
+      endDate: endDate ?? this.endDate,
+      formula: formula ?? this.formula,
+      memo: memo ?? this.memo,
+      minimalEndDate: minimalEndDate ?? this.minimalEndDate,
+      overrideRateCardId: overrideRateCardId ?? this.overrideRateCardId,
+      requestDate: requestDate ?? this.requestDate,
+      startDate: startDate ?? this.startDate,
+    );
   }
 
-  ClientContractUsageDataDto copyWithWrapped(
-      {Wrapped<String?>? commentOnInvoice,
-      Wrapped<double?>? commitmentAmountInclVat,
-      Wrapped<DateTime?>? endDate,
-      Wrapped<enums.ClientContractFormula?>? formula,
-      Wrapped<String?>? memo,
-      Wrapped<DateTime?>? minimalEndDate,
-      Wrapped<int?>? overrideRateCardId,
-      Wrapped<DateTime?>? requestDate,
-      Wrapped<DateTime?>? startDate}) {
+  ClientContractUsageDataDto copyWithWrapped({
+    Wrapped<String?>? commentOnInvoice,
+    Wrapped<double?>? commitmentAmountInclVat,
+    Wrapped<DateTime?>? endDate,
+    Wrapped<enums.ClientContractFormula?>? formula,
+    Wrapped<String?>? memo,
+    Wrapped<DateTime?>? minimalEndDate,
+    Wrapped<int?>? overrideRateCardId,
+    Wrapped<DateTime?>? requestDate,
+    Wrapped<DateTime?>? startDate,
+  }) {
     return ClientContractUsageDataDto(
-        commentOnInvoice: (commentOnInvoice != null
-            ? commentOnInvoice.value
-            : this.commentOnInvoice),
-        commitmentAmountInclVat: (commitmentAmountInclVat != null
-            ? commitmentAmountInclVat.value
-            : this.commitmentAmountInclVat),
-        endDate: (endDate != null ? endDate.value : this.endDate),
-        formula: (formula != null ? formula.value : this.formula),
-        memo: (memo != null ? memo.value : this.memo),
-        minimalEndDate: (minimalEndDate != null
-            ? minimalEndDate.value
-            : this.minimalEndDate),
-        overrideRateCardId: (overrideRateCardId != null
-            ? overrideRateCardId.value
-            : this.overrideRateCardId),
-        requestDate:
-            (requestDate != null ? requestDate.value : this.requestDate),
-        startDate: (startDate != null ? startDate.value : this.startDate));
+      commentOnInvoice: (commentOnInvoice != null
+          ? commentOnInvoice.value
+          : this.commentOnInvoice),
+      commitmentAmountInclVat: (commitmentAmountInclVat != null
+          ? commitmentAmountInclVat.value
+          : this.commitmentAmountInclVat),
+      endDate: (endDate != null ? endDate.value : this.endDate),
+      formula: (formula != null ? formula.value : this.formula),
+      memo: (memo != null ? memo.value : this.memo),
+      minimalEndDate: (minimalEndDate != null
+          ? minimalEndDate.value
+          : this.minimalEndDate),
+      overrideRateCardId: (overrideRateCardId != null
+          ? overrideRateCardId.value
+          : this.overrideRateCardId),
+      requestDate: (requestDate != null ? requestDate.value : this.requestDate),
+      startDate: (startDate != null ? startDate.value : this.startDate),
+    );
   }
 }
 
@@ -3277,21 +3663,30 @@ class ClientContractUsageDto {
     return identical(this, other) ||
         (other is ClientContractUsageDto &&
             (identical(other.finalInvoiceId, finalInvoiceId) ||
-                const DeepCollectionEquality()
-                    .equals(other.finalInvoiceId, finalInvoiceId)) &&
+                const DeepCollectionEquality().equals(
+                  other.finalInvoiceId,
+                  finalInvoiceId,
+                )) &&
             (identical(other.firstInvoiceId, firstInvoiceId) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstInvoiceId, firstInvoiceId)) &&
+                const DeepCollectionEquality().equals(
+                  other.firstInvoiceId,
+                  firstInvoiceId,
+                )) &&
             (identical(other.memo, memo) ||
                 const DeepCollectionEquality().equals(other.memo, memo)) &&
-            (identical(other.trustedByClientContractId,
-                    trustedByClientContractId) ||
+            (identical(
+                  other.trustedByClientContractId,
+                  trustedByClientContractId,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.trustedByClientContractId,
-                    trustedByClientContractId)) &&
+                  other.trustedByClientContractId,
+                  trustedByClientContractId,
+                )) &&
             (identical(other.usageData, usageData) ||
-                const DeepCollectionEquality()
-                    .equals(other.usageData, usageData)));
+                const DeepCollectionEquality().equals(
+                  other.usageData,
+                  usageData,
+                )));
   }
 
   @override
@@ -3308,39 +3703,43 @@ class ClientContractUsageDto {
 }
 
 extension $ClientContractUsageDtoExtension on ClientContractUsageDto {
-  ClientContractUsageDto copyWith(
-      {int? finalInvoiceId,
-      int? firstInvoiceId,
-      String? memo,
-      int? trustedByClientContractId,
-      List<ClientContractUsageDataDto>? usageData}) {
+  ClientContractUsageDto copyWith({
+    int? finalInvoiceId,
+    int? firstInvoiceId,
+    String? memo,
+    int? trustedByClientContractId,
+    List<ClientContractUsageDataDto>? usageData,
+  }) {
     return ClientContractUsageDto(
-        finalInvoiceId: finalInvoiceId ?? this.finalInvoiceId,
-        firstInvoiceId: firstInvoiceId ?? this.firstInvoiceId,
-        memo: memo ?? this.memo,
-        trustedByClientContractId:
-            trustedByClientContractId ?? this.trustedByClientContractId,
-        usageData: usageData ?? this.usageData);
+      finalInvoiceId: finalInvoiceId ?? this.finalInvoiceId,
+      firstInvoiceId: firstInvoiceId ?? this.firstInvoiceId,
+      memo: memo ?? this.memo,
+      trustedByClientContractId:
+          trustedByClientContractId ?? this.trustedByClientContractId,
+      usageData: usageData ?? this.usageData,
+    );
   }
 
-  ClientContractUsageDto copyWithWrapped(
-      {Wrapped<int?>? finalInvoiceId,
-      Wrapped<int?>? firstInvoiceId,
-      Wrapped<String?>? memo,
-      Wrapped<int?>? trustedByClientContractId,
-      Wrapped<List<ClientContractUsageDataDto>?>? usageData}) {
+  ClientContractUsageDto copyWithWrapped({
+    Wrapped<int?>? finalInvoiceId,
+    Wrapped<int?>? firstInvoiceId,
+    Wrapped<String?>? memo,
+    Wrapped<int?>? trustedByClientContractId,
+    Wrapped<List<ClientContractUsageDataDto>?>? usageData,
+  }) {
     return ClientContractUsageDto(
-        finalInvoiceId: (finalInvoiceId != null
-            ? finalInvoiceId.value
-            : this.finalInvoiceId),
-        firstInvoiceId: (firstInvoiceId != null
-            ? firstInvoiceId.value
-            : this.firstInvoiceId),
-        memo: (memo != null ? memo.value : this.memo),
-        trustedByClientContractId: (trustedByClientContractId != null
-            ? trustedByClientContractId.value
-            : this.trustedByClientContractId),
-        usageData: (usageData != null ? usageData.value : this.usageData));
+      finalInvoiceId: (finalInvoiceId != null
+          ? finalInvoiceId.value
+          : this.finalInvoiceId),
+      firstInvoiceId: (firstInvoiceId != null
+          ? firstInvoiceId.value
+          : this.firstInvoiceId),
+      memo: (memo != null ? memo.value : this.memo),
+      trustedByClientContractId: (trustedByClientContractId != null
+          ? trustedByClientContractId.value
+          : this.trustedByClientContractId),
+      usageData: (usageData != null ? usageData.value : this.usageData),
+    );
   }
 }
 
@@ -3417,51 +3816,108 @@ class ClientContractVehicleRecord {
     return identical(this, other) ||
         (other is ClientContractVehicleRecord &&
             (identical(other.battMaxType, battMaxType) ||
-                const DeepCollectionEquality()
-                    .equals(other.battMaxType, battMaxType)) &&
-            (identical(other.battOrderNumber, battOrderNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.battOrderNumber, battOrderNumber)) &&
-            (identical(other.clientContractId, clientContractId) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientContractId, clientContractId)) &&
-            (identical(other.costForAdditionalKmsExclVat, costForAdditionalKmsExclVat) ||
                 const DeepCollectionEquality().equals(
-                    other.costForAdditionalKmsExclVat,
-                    costForAdditionalKmsExclVat)) &&
+                  other.battMaxType,
+                  battMaxType,
+                )) &&
+            (identical(other.battOrderNumber, battOrderNumber) ||
+                const DeepCollectionEquality().equals(
+                  other.battOrderNumber,
+                  battOrderNumber,
+                )) &&
+            (identical(other.clientContractId, clientContractId) ||
+                const DeepCollectionEquality().equals(
+                  other.clientContractId,
+                  clientContractId,
+                )) &&
+            (identical(
+                  other.costForAdditionalKmsExclVat,
+                  costForAdditionalKmsExclVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.costForAdditionalKmsExclVat,
+                  costForAdditionalKmsExclVat,
+                )) &&
             (identical(other.creditedDayPriceExVat, creditedDayPriceExVat) ||
                 const DeepCollectionEquality().equals(
-                    other.creditedDayPriceExVat, creditedDayPriceExVat)) &&
+                  other.creditedDayPriceExVat,
+                  creditedDayPriceExVat,
+                )) &&
             (identical(other.creditedKmPriceExVat, creditedKmPriceExVat) ||
                 const DeepCollectionEquality().equals(
-                    other.creditedKmPriceExVat, creditedKmPriceExVat)) &&
+                  other.creditedKmPriceExVat,
+                  creditedKmPriceExVat,
+                )) &&
             (identical(other.effectiveStartDate, effectiveStartDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.effectiveStartDate, effectiveStartDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.effectiveStartDate,
+                  effectiveStartDate,
+                )) &&
             (identical(other.mainUserId, mainUserId) ||
-                const DeepCollectionEquality()
-                    .equals(other.mainUserId, mainUserId)) &&
-            (identical(other.maxInvoiceAmountExclVat, maxInvoiceAmountExclVat) ||
                 const DeepCollectionEquality().equals(
-                    other.maxInvoiceAmountExclVat, maxInvoiceAmountExclVat)) &&
-            (identical(other.mileageKmAtEndOfContract, mileageKmAtEndOfContract) ||
+                  other.mainUserId,
+                  mainUserId,
+                )) &&
+            (identical(
+                  other.maxInvoiceAmountExclVat,
+                  maxInvoiceAmountExclVat,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.mileageKmAtEndOfContract,
-                    mileageKmAtEndOfContract)) &&
-            (identical(other.mileageKmAtStartOfContract, mileageKmAtStartOfContract) ||
+                  other.maxInvoiceAmountExclVat,
+                  maxInvoiceAmountExclVat,
+                )) &&
+            (identical(
+                  other.mileageKmAtEndOfContract,
+                  mileageKmAtEndOfContract,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.mileageKmAtStartOfContract,
-                    mileageKmAtStartOfContract)) &&
+                  other.mileageKmAtEndOfContract,
+                  mileageKmAtEndOfContract,
+                )) &&
+            (identical(
+                  other.mileageKmAtStartOfContract,
+                  mileageKmAtStartOfContract,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.mileageKmAtStartOfContract,
+                  mileageKmAtStartOfContract,
+                )) &&
             (identical(other.monthlyInsurance, monthlyInsurance) ||
-                const DeepCollectionEquality()
-                    .equals(other.monthlyInsurance, monthlyInsurance)) &&
-            (identical(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat) ||
                 const DeepCollectionEquality().equals(
-                    other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat)) &&
-            (identical(other.monthlyPrefundElectricityExVat, monthlyPrefundElectricityExVat) || const DeepCollectionEquality().equals(other.monthlyPrefundElectricityExVat, monthlyPrefundElectricityExVat)) &&
-            (identical(other.numberOfMonths, numberOfMonths) || const DeepCollectionEquality().equals(other.numberOfMonths, numberOfMonths)) &&
-            (identical(other.paidStartupCost, paidStartupCost) || const DeepCollectionEquality().equals(other.paidStartupCost, paidStartupCost)) &&
-            (identical(other.yearlyKmsOnContract, yearlyKmsOnContract) || const DeepCollectionEquality().equals(other.yearlyKmsOnContract, yearlyKmsOnContract)));
+                  other.monthlyInsurance,
+                  monthlyInsurance,
+                )) &&
+            (identical(
+                  other.monthlyLeaseAmountExclVat,
+                  monthlyLeaseAmountExclVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.monthlyLeaseAmountExclVat,
+                  monthlyLeaseAmountExclVat,
+                )) &&
+            (identical(
+                  other.monthlyPrefundElectricityExVat,
+                  monthlyPrefundElectricityExVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.monthlyPrefundElectricityExVat,
+                  monthlyPrefundElectricityExVat,
+                )) &&
+            (identical(other.numberOfMonths, numberOfMonths) ||
+                const DeepCollectionEquality().equals(
+                  other.numberOfMonths,
+                  numberOfMonths,
+                )) &&
+            (identical(other.paidStartupCost, paidStartupCost) ||
+                const DeepCollectionEquality().equals(
+                  other.paidStartupCost,
+                  paidStartupCost,
+                )) &&
+            (identical(other.yearlyKmsOnContract, yearlyKmsOnContract) ||
+                const DeepCollectionEquality().equals(
+                  other.yearlyKmsOnContract,
+                  yearlyKmsOnContract,
+                )));
   }
 
   @override
@@ -3490,127 +3946,127 @@ class ClientContractVehicleRecord {
 }
 
 extension $ClientContractVehicleRecordExtension on ClientContractVehicleRecord {
-  ClientContractVehicleRecord copyWith(
-      {enums.ClientContractVehicleRecordBattMaxType? battMaxType,
-      String? battOrderNumber,
-      int? clientContractId,
-      double? costForAdditionalKmsExclVat,
-      double? creditedDayPriceExVat,
-      double? creditedKmPriceExVat,
-      DateTime? effectiveStartDate,
-      int? mainUserId,
-      double? maxInvoiceAmountExclVat,
-      int? mileageKmAtEndOfContract,
-      int? mileageKmAtStartOfContract,
-      double? monthlyInsurance,
-      double? monthlyLeaseAmountExclVat,
-      double? monthlyPrefundElectricityExVat,
-      int? numberOfMonths,
-      double? paidStartupCost,
-      int? yearlyKmsOnContract}) {
+  ClientContractVehicleRecord copyWith({
+    enums.ClientContractVehicleRecordBattMaxType? battMaxType,
+    String? battOrderNumber,
+    int? clientContractId,
+    double? costForAdditionalKmsExclVat,
+    double? creditedDayPriceExVat,
+    double? creditedKmPriceExVat,
+    DateTime? effectiveStartDate,
+    int? mainUserId,
+    double? maxInvoiceAmountExclVat,
+    int? mileageKmAtEndOfContract,
+    int? mileageKmAtStartOfContract,
+    double? monthlyInsurance,
+    double? monthlyLeaseAmountExclVat,
+    double? monthlyPrefundElectricityExVat,
+    int? numberOfMonths,
+    double? paidStartupCost,
+    int? yearlyKmsOnContract,
+  }) {
     return ClientContractVehicleRecord(
-        battMaxType: battMaxType ?? this.battMaxType,
-        battOrderNumber: battOrderNumber ?? this.battOrderNumber,
-        clientContractId: clientContractId ?? this.clientContractId,
-        costForAdditionalKmsExclVat:
-            costForAdditionalKmsExclVat ?? this.costForAdditionalKmsExclVat,
-        creditedDayPriceExVat:
-            creditedDayPriceExVat ?? this.creditedDayPriceExVat,
-        creditedKmPriceExVat: creditedKmPriceExVat ?? this.creditedKmPriceExVat,
-        effectiveStartDate: effectiveStartDate ?? this.effectiveStartDate,
-        mainUserId: mainUserId ?? this.mainUserId,
-        maxInvoiceAmountExclVat:
-            maxInvoiceAmountExclVat ?? this.maxInvoiceAmountExclVat,
-        mileageKmAtEndOfContract:
-            mileageKmAtEndOfContract ?? this.mileageKmAtEndOfContract,
-        mileageKmAtStartOfContract:
-            mileageKmAtStartOfContract ?? this.mileageKmAtStartOfContract,
-        monthlyInsurance: monthlyInsurance ?? this.monthlyInsurance,
-        monthlyLeaseAmountExclVat:
-            monthlyLeaseAmountExclVat ?? this.monthlyLeaseAmountExclVat,
-        monthlyPrefundElectricityExVat: monthlyPrefundElectricityExVat ??
-            this.monthlyPrefundElectricityExVat,
-        numberOfMonths: numberOfMonths ?? this.numberOfMonths,
-        paidStartupCost: paidStartupCost ?? this.paidStartupCost,
-        yearlyKmsOnContract: yearlyKmsOnContract ?? this.yearlyKmsOnContract);
+      battMaxType: battMaxType ?? this.battMaxType,
+      battOrderNumber: battOrderNumber ?? this.battOrderNumber,
+      clientContractId: clientContractId ?? this.clientContractId,
+      costForAdditionalKmsExclVat:
+          costForAdditionalKmsExclVat ?? this.costForAdditionalKmsExclVat,
+      creditedDayPriceExVat:
+          creditedDayPriceExVat ?? this.creditedDayPriceExVat,
+      creditedKmPriceExVat: creditedKmPriceExVat ?? this.creditedKmPriceExVat,
+      effectiveStartDate: effectiveStartDate ?? this.effectiveStartDate,
+      mainUserId: mainUserId ?? this.mainUserId,
+      maxInvoiceAmountExclVat:
+          maxInvoiceAmountExclVat ?? this.maxInvoiceAmountExclVat,
+      mileageKmAtEndOfContract:
+          mileageKmAtEndOfContract ?? this.mileageKmAtEndOfContract,
+      mileageKmAtStartOfContract:
+          mileageKmAtStartOfContract ?? this.mileageKmAtStartOfContract,
+      monthlyInsurance: monthlyInsurance ?? this.monthlyInsurance,
+      monthlyLeaseAmountExclVat:
+          monthlyLeaseAmountExclVat ?? this.monthlyLeaseAmountExclVat,
+      monthlyPrefundElectricityExVat:
+          monthlyPrefundElectricityExVat ?? this.monthlyPrefundElectricityExVat,
+      numberOfMonths: numberOfMonths ?? this.numberOfMonths,
+      paidStartupCost: paidStartupCost ?? this.paidStartupCost,
+      yearlyKmsOnContract: yearlyKmsOnContract ?? this.yearlyKmsOnContract,
+    );
   }
 
-  ClientContractVehicleRecord copyWithWrapped(
-      {Wrapped<enums.ClientContractVehicleRecordBattMaxType?>? battMaxType,
-      Wrapped<String?>? battOrderNumber,
-      Wrapped<int?>? clientContractId,
-      Wrapped<double?>? costForAdditionalKmsExclVat,
-      Wrapped<double?>? creditedDayPriceExVat,
-      Wrapped<double?>? creditedKmPriceExVat,
-      Wrapped<DateTime?>? effectiveStartDate,
-      Wrapped<int?>? mainUserId,
-      Wrapped<double?>? maxInvoiceAmountExclVat,
-      Wrapped<int?>? mileageKmAtEndOfContract,
-      Wrapped<int?>? mileageKmAtStartOfContract,
-      Wrapped<double?>? monthlyInsurance,
-      Wrapped<double?>? monthlyLeaseAmountExclVat,
-      Wrapped<double?>? monthlyPrefundElectricityExVat,
-      Wrapped<int?>? numberOfMonths,
-      Wrapped<double?>? paidStartupCost,
-      Wrapped<int?>? yearlyKmsOnContract}) {
+  ClientContractVehicleRecord copyWithWrapped({
+    Wrapped<enums.ClientContractVehicleRecordBattMaxType?>? battMaxType,
+    Wrapped<String?>? battOrderNumber,
+    Wrapped<int?>? clientContractId,
+    Wrapped<double?>? costForAdditionalKmsExclVat,
+    Wrapped<double?>? creditedDayPriceExVat,
+    Wrapped<double?>? creditedKmPriceExVat,
+    Wrapped<DateTime?>? effectiveStartDate,
+    Wrapped<int?>? mainUserId,
+    Wrapped<double?>? maxInvoiceAmountExclVat,
+    Wrapped<int?>? mileageKmAtEndOfContract,
+    Wrapped<int?>? mileageKmAtStartOfContract,
+    Wrapped<double?>? monthlyInsurance,
+    Wrapped<double?>? monthlyLeaseAmountExclVat,
+    Wrapped<double?>? monthlyPrefundElectricityExVat,
+    Wrapped<int?>? numberOfMonths,
+    Wrapped<double?>? paidStartupCost,
+    Wrapped<int?>? yearlyKmsOnContract,
+  }) {
     return ClientContractVehicleRecord(
-        battMaxType:
-            (battMaxType != null ? battMaxType.value : this.battMaxType),
-        battOrderNumber: (battOrderNumber != null
-            ? battOrderNumber.value
-            : this.battOrderNumber),
-        clientContractId: (clientContractId != null
-            ? clientContractId.value
-            : this.clientContractId),
-        costForAdditionalKmsExclVat: (costForAdditionalKmsExclVat != null
-            ? costForAdditionalKmsExclVat.value
-            : this.costForAdditionalKmsExclVat),
-        creditedDayPriceExVat: (creditedDayPriceExVat != null
-            ? creditedDayPriceExVat.value
-            : this.creditedDayPriceExVat),
-        creditedKmPriceExVat: (creditedKmPriceExVat != null
-            ? creditedKmPriceExVat.value
-            : this.creditedKmPriceExVat),
-        effectiveStartDate: (effectiveStartDate != null
-            ? effectiveStartDate.value
-            : this.effectiveStartDate),
-        mainUserId: (mainUserId != null ? mainUserId.value : this.mainUserId),
-        maxInvoiceAmountExclVat: (maxInvoiceAmountExclVat != null
-            ? maxInvoiceAmountExclVat.value
-            : this.maxInvoiceAmountExclVat),
-        mileageKmAtEndOfContract: (mileageKmAtEndOfContract != null
-            ? mileageKmAtEndOfContract.value
-            : this.mileageKmAtEndOfContract),
-        mileageKmAtStartOfContract: (mileageKmAtStartOfContract != null
-            ? mileageKmAtStartOfContract.value
-            : this.mileageKmAtStartOfContract),
-        monthlyInsurance: (monthlyInsurance != null
-            ? monthlyInsurance.value
-            : this.monthlyInsurance),
-        monthlyLeaseAmountExclVat: (monthlyLeaseAmountExclVat != null
-            ? monthlyLeaseAmountExclVat.value
-            : this.monthlyLeaseAmountExclVat),
-        monthlyPrefundElectricityExVat: (monthlyPrefundElectricityExVat != null
-            ? monthlyPrefundElectricityExVat.value
-            : this.monthlyPrefundElectricityExVat),
-        numberOfMonths: (numberOfMonths != null
-            ? numberOfMonths.value
-            : this.numberOfMonths),
-        paidStartupCost: (paidStartupCost != null
-            ? paidStartupCost.value
-            : this.paidStartupCost),
-        yearlyKmsOnContract: (yearlyKmsOnContract != null
-            ? yearlyKmsOnContract.value
-            : this.yearlyKmsOnContract));
+      battMaxType: (battMaxType != null ? battMaxType.value : this.battMaxType),
+      battOrderNumber: (battOrderNumber != null
+          ? battOrderNumber.value
+          : this.battOrderNumber),
+      clientContractId: (clientContractId != null
+          ? clientContractId.value
+          : this.clientContractId),
+      costForAdditionalKmsExclVat: (costForAdditionalKmsExclVat != null
+          ? costForAdditionalKmsExclVat.value
+          : this.costForAdditionalKmsExclVat),
+      creditedDayPriceExVat: (creditedDayPriceExVat != null
+          ? creditedDayPriceExVat.value
+          : this.creditedDayPriceExVat),
+      creditedKmPriceExVat: (creditedKmPriceExVat != null
+          ? creditedKmPriceExVat.value
+          : this.creditedKmPriceExVat),
+      effectiveStartDate: (effectiveStartDate != null
+          ? effectiveStartDate.value
+          : this.effectiveStartDate),
+      mainUserId: (mainUserId != null ? mainUserId.value : this.mainUserId),
+      maxInvoiceAmountExclVat: (maxInvoiceAmountExclVat != null
+          ? maxInvoiceAmountExclVat.value
+          : this.maxInvoiceAmountExclVat),
+      mileageKmAtEndOfContract: (mileageKmAtEndOfContract != null
+          ? mileageKmAtEndOfContract.value
+          : this.mileageKmAtEndOfContract),
+      mileageKmAtStartOfContract: (mileageKmAtStartOfContract != null
+          ? mileageKmAtStartOfContract.value
+          : this.mileageKmAtStartOfContract),
+      monthlyInsurance: (monthlyInsurance != null
+          ? monthlyInsurance.value
+          : this.monthlyInsurance),
+      monthlyLeaseAmountExclVat: (monthlyLeaseAmountExclVat != null
+          ? monthlyLeaseAmountExclVat.value
+          : this.monthlyLeaseAmountExclVat),
+      monthlyPrefundElectricityExVat: (monthlyPrefundElectricityExVat != null
+          ? monthlyPrefundElectricityExVat.value
+          : this.monthlyPrefundElectricityExVat),
+      numberOfMonths: (numberOfMonths != null
+          ? numberOfMonths.value
+          : this.numberOfMonths),
+      paidStartupCost: (paidStartupCost != null
+          ? paidStartupCost.value
+          : this.paidStartupCost),
+      yearlyKmsOnContract: (yearlyKmsOnContract != null
+          ? yearlyKmsOnContract.value
+          : this.yearlyKmsOnContract),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class ClientReferenceDto {
-  const ClientReferenceDto({
-    this.id,
-    this.name,
-  });
+  const ClientReferenceDto({this.id, this.name});
 
   factory ClientReferenceDto.fromJson(Map<String, dynamic> json) =>
       _$ClientReferenceDtoFromJson(json);
@@ -3649,22 +4105,20 @@ extension $ClientReferenceDtoExtension on ClientReferenceDto {
     return ClientReferenceDto(id: id ?? this.id, name: name ?? this.name);
   }
 
-  ClientReferenceDto copyWithWrapped(
-      {Wrapped<int?>? id, Wrapped<String?>? name}) {
+  ClientReferenceDto copyWithWrapped({
+    Wrapped<int?>? id,
+    Wrapped<String?>? name,
+  }) {
     return ClientReferenceDto(
-        id: (id != null ? id.value : this.id),
-        name: (name != null ? name.value : this.name));
+      id: (id != null ? id.value : this.id),
+      name: (name != null ? name.value : this.name),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class ConfigValue {
-  const ConfigValue({
-    this.id,
-    this.key,
-    this.lastUpdated,
-    this.$value,
-  });
+  const ConfigValue({this.id, this.key, this.lastUpdated, this.$value});
 
   factory ConfigValue.fromJson(Map<String, dynamic> json) =>
       _$ConfigValueFromJson(json);
@@ -3691,8 +4145,10 @@ class ConfigValue {
             (identical(other.key, key) ||
                 const DeepCollectionEquality().equals(other.key, key)) &&
             (identical(other.lastUpdated, lastUpdated) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastUpdated, lastUpdated)) &&
+                const DeepCollectionEquality().equals(
+                  other.lastUpdated,
+                  lastUpdated,
+                )) &&
             (identical(other.$value, $value) ||
                 const DeepCollectionEquality().equals(other.$value, $value)));
   }
@@ -3710,26 +4166,32 @@ class ConfigValue {
 }
 
 extension $ConfigValueExtension on ConfigValue {
-  ConfigValue copyWith(
-      {String? id, String? key, DateTime? lastUpdated, String? $value}) {
+  ConfigValue copyWith({
+    String? id,
+    String? key,
+    DateTime? lastUpdated,
+    String? $value,
+  }) {
     return ConfigValue(
-        id: id ?? this.id,
-        key: key ?? this.key,
-        lastUpdated: lastUpdated ?? this.lastUpdated,
-        $value: $value ?? this.$value);
+      id: id ?? this.id,
+      key: key ?? this.key,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      $value: $value ?? this.$value,
+    );
   }
 
-  ConfigValue copyWithWrapped(
-      {Wrapped<String?>? id,
-      Wrapped<String?>? key,
-      Wrapped<DateTime?>? lastUpdated,
-      Wrapped<String?>? $value}) {
+  ConfigValue copyWithWrapped({
+    Wrapped<String?>? id,
+    Wrapped<String?>? key,
+    Wrapped<DateTime?>? lastUpdated,
+    Wrapped<String?>? $value,
+  }) {
     return ConfigValue(
-        id: (id != null ? id.value : this.id),
-        key: (key != null ? key.value : this.key),
-        lastUpdated:
-            (lastUpdated != null ? lastUpdated.value : this.lastUpdated),
-        $value: ($value != null ? $value.value : this.$value));
+      id: (id != null ? id.value : this.id),
+      key: (key != null ? key.value : this.key),
+      lastUpdated: (lastUpdated != null ? lastUpdated.value : this.lastUpdated),
+      $value: ($value != null ? $value.value : this.$value),
+    );
   }
 }
 
@@ -3814,66 +4276,104 @@ class ContractUser {
     return identical(this, other) ||
         (other is ContractUser &&
             (identical(other.boxNumber, boxNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.boxNumber, boxNumber)) &&
+                const DeepCollectionEquality().equals(
+                  other.boxNumber,
+                  boxNumber,
+                )) &&
             (identical(other.city, city) ||
                 const DeepCollectionEquality().equals(other.city, city)) &&
             (identical(other.dateCurrentLicense, dateCurrentLicense) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateCurrentLicense, dateCurrentLicense)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateCurrentLicense,
+                  dateCurrentLicense,
+                )) &&
             (identical(other.dateLicenseUntil, dateLicenseUntil) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateLicenseUntil, dateLicenseUntil)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateLicenseUntil,
+                  dateLicenseUntil,
+                )) &&
             (identical(other.dateOfBirth, dateOfBirth) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateOfBirth, dateOfBirth)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateOfBirth,
+                  dateOfBirth,
+                )) &&
             (identical(other.documentLinks, documentLinks) ||
-                const DeepCollectionEquality()
-                    .equals(other.documentLinks, documentLinks)) &&
+                const DeepCollectionEquality().equals(
+                  other.documentLinks,
+                  documentLinks,
+                )) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.firstName, firstName) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstName, firstName)) &&
+                const DeepCollectionEquality().equals(
+                  other.firstName,
+                  firstName,
+                )) &&
             (identical(other.houseNumber, houseNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.houseNumber, houseNumber)) &&
+                const DeepCollectionEquality().equals(
+                  other.houseNumber,
+                  houseNumber,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.lastName, lastName) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastName, lastName)) &&
-            (identical(other.licenseNum, licenseNum) ||
-                const DeepCollectionEquality()
-                    .equals(other.licenseNum, licenseNum)) &&
-            (identical(other.licenseType, licenseType) ||
-                const DeepCollectionEquality()
-                    .equals(other.licenseType, licenseType)) &&
-            (identical(other.nationality, nationality) ||
-                const DeepCollectionEquality()
-                    .equals(other.nationality, nationality)) &&
-            (identical(other.nrOfAccidents, nrOfAccidents) ||
-                const DeepCollectionEquality()
-                    .equals(other.nrOfAccidents, nrOfAccidents)) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.phoneNumber, phoneNumber)) &&
-            (identical(other.postalCode, postalCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.postalCode, postalCode)) &&
-            (identical(other.sofBattRemoteId, sofBattRemoteId) ||
-                const DeepCollectionEquality()
-                    .equals(other.sofBattRemoteId, sofBattRemoteId)) &&
-            (identical(other.streetname, streetname) ||
-                const DeepCollectionEquality()
-                    .equals(other.streetname, streetname)) &&
-            (identical(other.subscriptions, subscriptions) ||
-                const DeepCollectionEquality()
-                    .equals(other.subscriptions, subscriptions)) &&
-            (identical(
-                    other.verifiedCellPhoneNumber, verifiedCellPhoneNumber) ||
                 const DeepCollectionEquality().equals(
-                    other.verifiedCellPhoneNumber, verifiedCellPhoneNumber)));
+                  other.lastName,
+                  lastName,
+                )) &&
+            (identical(other.licenseNum, licenseNum) ||
+                const DeepCollectionEquality().equals(
+                  other.licenseNum,
+                  licenseNum,
+                )) &&
+            (identical(other.licenseType, licenseType) ||
+                const DeepCollectionEquality().equals(
+                  other.licenseType,
+                  licenseType,
+                )) &&
+            (identical(other.nationality, nationality) ||
+                const DeepCollectionEquality().equals(
+                  other.nationality,
+                  nationality,
+                )) &&
+            (identical(other.nrOfAccidents, nrOfAccidents) ||
+                const DeepCollectionEquality().equals(
+                  other.nrOfAccidents,
+                  nrOfAccidents,
+                )) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                const DeepCollectionEquality().equals(
+                  other.phoneNumber,
+                  phoneNumber,
+                )) &&
+            (identical(other.postalCode, postalCode) ||
+                const DeepCollectionEquality().equals(
+                  other.postalCode,
+                  postalCode,
+                )) &&
+            (identical(other.sofBattRemoteId, sofBattRemoteId) ||
+                const DeepCollectionEquality().equals(
+                  other.sofBattRemoteId,
+                  sofBattRemoteId,
+                )) &&
+            (identical(other.streetname, streetname) ||
+                const DeepCollectionEquality().equals(
+                  other.streetname,
+                  streetname,
+                )) &&
+            (identical(other.subscriptions, subscriptions) ||
+                const DeepCollectionEquality().equals(
+                  other.subscriptions,
+                  subscriptions,
+                )) &&
+            (identical(
+                  other.verifiedCellPhoneNumber,
+                  verifiedCellPhoneNumber,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.verifiedCellPhoneNumber,
+                  verifiedCellPhoneNumber,
+                )));
   }
 
   @override
@@ -3906,113 +4406,115 @@ class ContractUser {
 }
 
 extension $ContractUserExtension on ContractUser {
-  ContractUser copyWith(
-      {String? boxNumber,
-      String? city,
-      String? dateCurrentLicense,
-      String? dateLicenseUntil,
-      String? dateOfBirth,
-      List<String>? documentLinks,
-      String? email,
-      String? firstName,
-      String? houseNumber,
-      int? id,
-      String? lastName,
-      String? licenseNum,
-      int? licenseType,
-      String? nationality,
-      int? nrOfAccidents,
-      String? phoneNumber,
-      String? postalCode,
-      String? sofBattRemoteId,
-      String? streetname,
-      List<Subscription>? subscriptions,
-      bool? verifiedCellPhoneNumber}) {
+  ContractUser copyWith({
+    String? boxNumber,
+    String? city,
+    String? dateCurrentLicense,
+    String? dateLicenseUntil,
+    String? dateOfBirth,
+    List<String>? documentLinks,
+    String? email,
+    String? firstName,
+    String? houseNumber,
+    int? id,
+    String? lastName,
+    String? licenseNum,
+    int? licenseType,
+    String? nationality,
+    int? nrOfAccidents,
+    String? phoneNumber,
+    String? postalCode,
+    String? sofBattRemoteId,
+    String? streetname,
+    List<Subscription>? subscriptions,
+    bool? verifiedCellPhoneNumber,
+  }) {
     return ContractUser(
-        boxNumber: boxNumber ?? this.boxNumber,
-        city: city ?? this.city,
-        dateCurrentLicense: dateCurrentLicense ?? this.dateCurrentLicense,
-        dateLicenseUntil: dateLicenseUntil ?? this.dateLicenseUntil,
-        dateOfBirth: dateOfBirth ?? this.dateOfBirth,
-        documentLinks: documentLinks ?? this.documentLinks,
-        email: email ?? this.email,
-        firstName: firstName ?? this.firstName,
-        houseNumber: houseNumber ?? this.houseNumber,
-        id: id ?? this.id,
-        lastName: lastName ?? this.lastName,
-        licenseNum: licenseNum ?? this.licenseNum,
-        licenseType: licenseType ?? this.licenseType,
-        nationality: nationality ?? this.nationality,
-        nrOfAccidents: nrOfAccidents ?? this.nrOfAccidents,
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        postalCode: postalCode ?? this.postalCode,
-        sofBattRemoteId: sofBattRemoteId ?? this.sofBattRemoteId,
-        streetname: streetname ?? this.streetname,
-        subscriptions: subscriptions ?? this.subscriptions,
-        verifiedCellPhoneNumber:
-            verifiedCellPhoneNumber ?? this.verifiedCellPhoneNumber);
+      boxNumber: boxNumber ?? this.boxNumber,
+      city: city ?? this.city,
+      dateCurrentLicense: dateCurrentLicense ?? this.dateCurrentLicense,
+      dateLicenseUntil: dateLicenseUntil ?? this.dateLicenseUntil,
+      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      documentLinks: documentLinks ?? this.documentLinks,
+      email: email ?? this.email,
+      firstName: firstName ?? this.firstName,
+      houseNumber: houseNumber ?? this.houseNumber,
+      id: id ?? this.id,
+      lastName: lastName ?? this.lastName,
+      licenseNum: licenseNum ?? this.licenseNum,
+      licenseType: licenseType ?? this.licenseType,
+      nationality: nationality ?? this.nationality,
+      nrOfAccidents: nrOfAccidents ?? this.nrOfAccidents,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      postalCode: postalCode ?? this.postalCode,
+      sofBattRemoteId: sofBattRemoteId ?? this.sofBattRemoteId,
+      streetname: streetname ?? this.streetname,
+      subscriptions: subscriptions ?? this.subscriptions,
+      verifiedCellPhoneNumber:
+          verifiedCellPhoneNumber ?? this.verifiedCellPhoneNumber,
+    );
   }
 
-  ContractUser copyWithWrapped(
-      {Wrapped<String?>? boxNumber,
-      Wrapped<String?>? city,
-      Wrapped<String?>? dateCurrentLicense,
-      Wrapped<String?>? dateLicenseUntil,
-      Wrapped<String?>? dateOfBirth,
-      Wrapped<List<String>?>? documentLinks,
-      Wrapped<String?>? email,
-      Wrapped<String?>? firstName,
-      Wrapped<String?>? houseNumber,
-      Wrapped<int?>? id,
-      Wrapped<String?>? lastName,
-      Wrapped<String?>? licenseNum,
-      Wrapped<int?>? licenseType,
-      Wrapped<String?>? nationality,
-      Wrapped<int?>? nrOfAccidents,
-      Wrapped<String?>? phoneNumber,
-      Wrapped<String?>? postalCode,
-      Wrapped<String?>? sofBattRemoteId,
-      Wrapped<String?>? streetname,
-      Wrapped<List<Subscription>?>? subscriptions,
-      Wrapped<bool?>? verifiedCellPhoneNumber}) {
+  ContractUser copyWithWrapped({
+    Wrapped<String?>? boxNumber,
+    Wrapped<String?>? city,
+    Wrapped<String?>? dateCurrentLicense,
+    Wrapped<String?>? dateLicenseUntil,
+    Wrapped<String?>? dateOfBirth,
+    Wrapped<List<String>?>? documentLinks,
+    Wrapped<String?>? email,
+    Wrapped<String?>? firstName,
+    Wrapped<String?>? houseNumber,
+    Wrapped<int?>? id,
+    Wrapped<String?>? lastName,
+    Wrapped<String?>? licenseNum,
+    Wrapped<int?>? licenseType,
+    Wrapped<String?>? nationality,
+    Wrapped<int?>? nrOfAccidents,
+    Wrapped<String?>? phoneNumber,
+    Wrapped<String?>? postalCode,
+    Wrapped<String?>? sofBattRemoteId,
+    Wrapped<String?>? streetname,
+    Wrapped<List<Subscription>?>? subscriptions,
+    Wrapped<bool?>? verifiedCellPhoneNumber,
+  }) {
     return ContractUser(
-        boxNumber: (boxNumber != null ? boxNumber.value : this.boxNumber),
-        city: (city != null ? city.value : this.city),
-        dateCurrentLicense: (dateCurrentLicense != null
-            ? dateCurrentLicense.value
-            : this.dateCurrentLicense),
-        dateLicenseUntil: (dateLicenseUntil != null
-            ? dateLicenseUntil.value
-            : this.dateLicenseUntil),
-        dateOfBirth:
-            (dateOfBirth != null ? dateOfBirth.value : this.dateOfBirth),
-        documentLinks:
-            (documentLinks != null ? documentLinks.value : this.documentLinks),
-        email: (email != null ? email.value : this.email),
-        firstName: (firstName != null ? firstName.value : this.firstName),
-        houseNumber:
-            (houseNumber != null ? houseNumber.value : this.houseNumber),
-        id: (id != null ? id.value : this.id),
-        lastName: (lastName != null ? lastName.value : this.lastName),
-        licenseNum: (licenseNum != null ? licenseNum.value : this.licenseNum),
-        licenseType:
-            (licenseType != null ? licenseType.value : this.licenseType),
-        nationality:
-            (nationality != null ? nationality.value : this.nationality),
-        nrOfAccidents:
-            (nrOfAccidents != null ? nrOfAccidents.value : this.nrOfAccidents),
-        phoneNumber:
-            (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
-        postalCode: (postalCode != null ? postalCode.value : this.postalCode),
-        sofBattRemoteId: (sofBattRemoteId != null
-            ? sofBattRemoteId.value
-            : this.sofBattRemoteId),
-        streetname: (streetname != null ? streetname.value : this.streetname),
-        subscriptions:
-            (subscriptions != null ? subscriptions.value : this.subscriptions),
-        verifiedCellPhoneNumber: (verifiedCellPhoneNumber != null
-            ? verifiedCellPhoneNumber.value
-            : this.verifiedCellPhoneNumber));
+      boxNumber: (boxNumber != null ? boxNumber.value : this.boxNumber),
+      city: (city != null ? city.value : this.city),
+      dateCurrentLicense: (dateCurrentLicense != null
+          ? dateCurrentLicense.value
+          : this.dateCurrentLicense),
+      dateLicenseUntil: (dateLicenseUntil != null
+          ? dateLicenseUntil.value
+          : this.dateLicenseUntil),
+      dateOfBirth: (dateOfBirth != null ? dateOfBirth.value : this.dateOfBirth),
+      documentLinks: (documentLinks != null
+          ? documentLinks.value
+          : this.documentLinks),
+      email: (email != null ? email.value : this.email),
+      firstName: (firstName != null ? firstName.value : this.firstName),
+      houseNumber: (houseNumber != null ? houseNumber.value : this.houseNumber),
+      id: (id != null ? id.value : this.id),
+      lastName: (lastName != null ? lastName.value : this.lastName),
+      licenseNum: (licenseNum != null ? licenseNum.value : this.licenseNum),
+      licenseType: (licenseType != null ? licenseType.value : this.licenseType),
+      nationality: (nationality != null ? nationality.value : this.nationality),
+      nrOfAccidents: (nrOfAccidents != null
+          ? nrOfAccidents.value
+          : this.nrOfAccidents),
+      phoneNumber: (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
+      postalCode: (postalCode != null ? postalCode.value : this.postalCode),
+      sofBattRemoteId: (sofBattRemoteId != null
+          ? sofBattRemoteId.value
+          : this.sofBattRemoteId),
+      streetname: (streetname != null ? streetname.value : this.streetname),
+      subscriptions: (subscriptions != null
+          ? subscriptions.value
+          : this.subscriptions),
+      verifiedCellPhoneNumber: (verifiedCellPhoneNumber != null
+          ? verifiedCellPhoneNumber.value
+          : this.verifiedCellPhoneNumber),
+    );
   }
 }
 
@@ -4048,25 +4550,37 @@ class Convictions {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other is Convictions &&
-            (identical(other.convictionBloodTestRefusal,
-                    convictionBloodTestRefusal) ||
+            (identical(
+                  other.convictionBloodTestRefusal,
+                  convictionBloodTestRefusal,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.convictionBloodTestRefusal,
-                    convictionBloodTestRefusal)) &&
+                  other.convictionBloodTestRefusal,
+                  convictionBloodTestRefusal,
+                )) &&
             (identical(other.convictionDrunk, convictionDrunk) ||
-                const DeepCollectionEquality()
-                    .equals(other.convictionDrunk, convictionDrunk)) &&
+                const DeepCollectionEquality().equals(
+                  other.convictionDrunk,
+                  convictionDrunk,
+                )) &&
             (identical(other.convictionHitAndRun, convictionHitAndRun) ||
-                const DeepCollectionEquality()
-                    .equals(other.convictionHitAndRun, convictionHitAndRun)) &&
+                const DeepCollectionEquality().equals(
+                  other.convictionHitAndRun,
+                  convictionHitAndRun,
+                )) &&
             (identical(other.convictionIntoxicated, convictionIntoxicated) ||
                 const DeepCollectionEquality().equals(
-                    other.convictionIntoxicated, convictionIntoxicated)) &&
-            (identical(other.convictionLicenseRevocation,
-                    convictionLicenseRevocation) ||
+                  other.convictionIntoxicated,
+                  convictionIntoxicated,
+                )) &&
+            (identical(
+                  other.convictionLicenseRevocation,
+                  convictionLicenseRevocation,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.convictionLicenseRevocation,
-                    convictionLicenseRevocation)));
+                  other.convictionLicenseRevocation,
+                  convictionLicenseRevocation,
+                )));
   }
 
   @override
@@ -4083,54 +4597,55 @@ class Convictions {
 }
 
 extension $ConvictionsExtension on Convictions {
-  Convictions copyWith(
-      {bool? convictionBloodTestRefusal,
-      bool? convictionDrunk,
-      bool? convictionHitAndRun,
-      bool? convictionIntoxicated,
-      bool? convictionLicenseRevocation}) {
+  Convictions copyWith({
+    bool? convictionBloodTestRefusal,
+    bool? convictionDrunk,
+    bool? convictionHitAndRun,
+    bool? convictionIntoxicated,
+    bool? convictionLicenseRevocation,
+  }) {
     return Convictions(
-        convictionBloodTestRefusal:
-            convictionBloodTestRefusal ?? this.convictionBloodTestRefusal,
-        convictionDrunk: convictionDrunk ?? this.convictionDrunk,
-        convictionHitAndRun: convictionHitAndRun ?? this.convictionHitAndRun,
-        convictionIntoxicated:
-            convictionIntoxicated ?? this.convictionIntoxicated,
-        convictionLicenseRevocation:
-            convictionLicenseRevocation ?? this.convictionLicenseRevocation);
+      convictionBloodTestRefusal:
+          convictionBloodTestRefusal ?? this.convictionBloodTestRefusal,
+      convictionDrunk: convictionDrunk ?? this.convictionDrunk,
+      convictionHitAndRun: convictionHitAndRun ?? this.convictionHitAndRun,
+      convictionIntoxicated:
+          convictionIntoxicated ?? this.convictionIntoxicated,
+      convictionLicenseRevocation:
+          convictionLicenseRevocation ?? this.convictionLicenseRevocation,
+    );
   }
 
-  Convictions copyWithWrapped(
-      {Wrapped<bool?>? convictionBloodTestRefusal,
-      Wrapped<bool?>? convictionDrunk,
-      Wrapped<bool?>? convictionHitAndRun,
-      Wrapped<bool?>? convictionIntoxicated,
-      Wrapped<bool?>? convictionLicenseRevocation}) {
+  Convictions copyWithWrapped({
+    Wrapped<bool?>? convictionBloodTestRefusal,
+    Wrapped<bool?>? convictionDrunk,
+    Wrapped<bool?>? convictionHitAndRun,
+    Wrapped<bool?>? convictionIntoxicated,
+    Wrapped<bool?>? convictionLicenseRevocation,
+  }) {
     return Convictions(
-        convictionBloodTestRefusal: (convictionBloodTestRefusal != null
-            ? convictionBloodTestRefusal.value
-            : this.convictionBloodTestRefusal),
-        convictionDrunk: (convictionDrunk != null
-            ? convictionDrunk.value
-            : this.convictionDrunk),
-        convictionHitAndRun: (convictionHitAndRun != null
-            ? convictionHitAndRun.value
-            : this.convictionHitAndRun),
-        convictionIntoxicated: (convictionIntoxicated != null
-            ? convictionIntoxicated.value
-            : this.convictionIntoxicated),
-        convictionLicenseRevocation: (convictionLicenseRevocation != null
-            ? convictionLicenseRevocation.value
-            : this.convictionLicenseRevocation));
+      convictionBloodTestRefusal: (convictionBloodTestRefusal != null
+          ? convictionBloodTestRefusal.value
+          : this.convictionBloodTestRefusal),
+      convictionDrunk: (convictionDrunk != null
+          ? convictionDrunk.value
+          : this.convictionDrunk),
+      convictionHitAndRun: (convictionHitAndRun != null
+          ? convictionHitAndRun.value
+          : this.convictionHitAndRun),
+      convictionIntoxicated: (convictionIntoxicated != null
+          ? convictionIntoxicated.value
+          : this.convictionIntoxicated),
+      convictionLicenseRevocation: (convictionLicenseRevocation != null
+          ? convictionLicenseRevocation.value
+          : this.convictionLicenseRevocation),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class CreateBodyStyleRequest {
-  const CreateBodyStyleRequest({
-    this.description,
-    this.id,
-  });
+  const CreateBodyStyleRequest({this.description, this.id});
 
   factory CreateBodyStyleRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateBodyStyleRequestFromJson(json);
@@ -4149,8 +4664,10 @@ class CreateBodyStyleRequest {
     return identical(this, other) ||
         (other is CreateBodyStyleRequest &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
+                const DeepCollectionEquality().equals(
+                  other.description,
+                  description,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)));
   }
@@ -4168,15 +4685,19 @@ class CreateBodyStyleRequest {
 extension $CreateBodyStyleRequestExtension on CreateBodyStyleRequest {
   CreateBodyStyleRequest copyWith({String? description, String? id}) {
     return CreateBodyStyleRequest(
-        description: description ?? this.description, id: id ?? this.id);
+      description: description ?? this.description,
+      id: id ?? this.id,
+    );
   }
 
-  CreateBodyStyleRequest copyWithWrapped(
-      {Wrapped<String?>? description, Wrapped<String?>? id}) {
+  CreateBodyStyleRequest copyWithWrapped({
+    Wrapped<String?>? description,
+    Wrapped<String?>? id,
+  }) {
     return CreateBodyStyleRequest(
-        description:
-            (description != null ? description.value : this.description),
-        id: (id != null ? id.value : this.id));
+      description: (description != null ? description.value : this.description),
+      id: (id != null ? id.value : this.id),
+    );
   }
 }
 
@@ -4207,13 +4728,17 @@ class CreateBooking {
     return identical(this, other) ||
         (other is CreateBooking &&
             (identical(other.comments, comments) ||
-                const DeepCollectionEquality()
-                    .equals(other.comments, comments)) &&
+                const DeepCollectionEquality().equals(
+                  other.comments,
+                  comments,
+                )) &&
             (identical(other.period, period) ||
                 const DeepCollectionEquality().equals(other.period, period)) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -4228,22 +4753,28 @@ class CreateBooking {
 }
 
 extension $CreateBookingExtension on CreateBooking {
-  CreateBooking copyWith(
-      {String? comments, Period? period, String? vehicleId}) {
+  CreateBooking copyWith({
+    String? comments,
+    Period? period,
+    String? vehicleId,
+  }) {
     return CreateBooking(
-        comments: comments ?? this.comments,
-        period: period ?? this.period,
-        vehicleId: vehicleId ?? this.vehicleId);
+      comments: comments ?? this.comments,
+      period: period ?? this.period,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  CreateBooking copyWithWrapped(
-      {Wrapped<String?>? comments,
-      Wrapped<Period>? period,
-      Wrapped<String>? vehicleId}) {
+  CreateBooking copyWithWrapped({
+    Wrapped<String?>? comments,
+    Wrapped<Period>? period,
+    Wrapped<String>? vehicleId,
+  }) {
     return CreateBooking(
-        comments: (comments != null ? comments.value : this.comments),
-        period: (period != null ? period.value : this.period),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      comments: (comments != null ? comments.value : this.comments),
+      period: (period != null ? period.value : this.period),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
@@ -4277,16 +4808,22 @@ class CreateBookingRequest {
     return identical(this, other) ||
         (other is CreateBookingRequest &&
             (identical(other.bookingPrice, bookingPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.bookingPrice, bookingPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.bookingPrice,
+                  bookingPrice,
+                )) &&
             (identical(other.comments, comments) ||
-                const DeepCollectionEquality()
-                    .equals(other.comments, comments)) &&
+                const DeepCollectionEquality().equals(
+                  other.comments,
+                  comments,
+                )) &&
             (identical(other.period, period) ||
                 const DeepCollectionEquality().equals(other.period, period)) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -4302,29 +4839,34 @@ class CreateBookingRequest {
 }
 
 extension $CreateBookingRequestExtension on CreateBookingRequest {
-  CreateBookingRequest copyWith(
-      {BookingPrice? bookingPrice,
-      String? comments,
-      Period? period,
-      String? vehicleId}) {
+  CreateBookingRequest copyWith({
+    BookingPrice? bookingPrice,
+    String? comments,
+    Period? period,
+    String? vehicleId,
+  }) {
     return CreateBookingRequest(
-        bookingPrice: bookingPrice ?? this.bookingPrice,
-        comments: comments ?? this.comments,
-        period: period ?? this.period,
-        vehicleId: vehicleId ?? this.vehicleId);
+      bookingPrice: bookingPrice ?? this.bookingPrice,
+      comments: comments ?? this.comments,
+      period: period ?? this.period,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  CreateBookingRequest copyWithWrapped(
-      {Wrapped<BookingPrice>? bookingPrice,
-      Wrapped<String?>? comments,
-      Wrapped<Period>? period,
-      Wrapped<String>? vehicleId}) {
+  CreateBookingRequest copyWithWrapped({
+    Wrapped<BookingPrice>? bookingPrice,
+    Wrapped<String?>? comments,
+    Wrapped<Period>? period,
+    Wrapped<String>? vehicleId,
+  }) {
     return CreateBookingRequest(
-        bookingPrice:
-            (bookingPrice != null ? bookingPrice.value : this.bookingPrice),
-        comments: (comments != null ? comments.value : this.comments),
-        period: (period != null ? period.value : this.period),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      bookingPrice: (bookingPrice != null
+          ? bookingPrice.value
+          : this.bookingPrice),
+      comments: (comments != null ? comments.value : this.comments),
+      period: (period != null ? period.value : this.period),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
@@ -4372,18 +4914,24 @@ class CreateClient {
             (identical(other.city, city) ||
                 const DeepCollectionEquality().equals(other.city, city)) &&
             (identical(other.country, country) ||
-                const DeepCollectionEquality()
-                    .equals(other.country, country)) &&
+                const DeepCollectionEquality().equals(
+                  other.country,
+                  country,
+                )) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.houseNumber, houseNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.houseNumber, houseNumber)) &&
+                const DeepCollectionEquality().equals(
+                  other.houseNumber,
+                  houseNumber,
+                )) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.postalCode, postalCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.postalCode, postalCode)) &&
+                const DeepCollectionEquality().equals(
+                  other.postalCode,
+                  postalCode,
+                )) &&
             (identical(other.street, street) ||
                 const DeepCollectionEquality().equals(other.street, street)) &&
             (identical(other.vat, vat) ||
@@ -4407,45 +4955,48 @@ class CreateClient {
 }
 
 extension $CreateClientExtension on CreateClient {
-  CreateClient copyWith(
-      {String? city,
-      String? country,
-      String? email,
-      String? houseNumber,
-      String? name,
-      String? postalCode,
-      String? street,
-      String? vat}) {
+  CreateClient copyWith({
+    String? city,
+    String? country,
+    String? email,
+    String? houseNumber,
+    String? name,
+    String? postalCode,
+    String? street,
+    String? vat,
+  }) {
     return CreateClient(
-        city: city ?? this.city,
-        country: country ?? this.country,
-        email: email ?? this.email,
-        houseNumber: houseNumber ?? this.houseNumber,
-        name: name ?? this.name,
-        postalCode: postalCode ?? this.postalCode,
-        street: street ?? this.street,
-        vat: vat ?? this.vat);
+      city: city ?? this.city,
+      country: country ?? this.country,
+      email: email ?? this.email,
+      houseNumber: houseNumber ?? this.houseNumber,
+      name: name ?? this.name,
+      postalCode: postalCode ?? this.postalCode,
+      street: street ?? this.street,
+      vat: vat ?? this.vat,
+    );
   }
 
-  CreateClient copyWithWrapped(
-      {Wrapped<String>? city,
-      Wrapped<String>? country,
-      Wrapped<String>? email,
-      Wrapped<String>? houseNumber,
-      Wrapped<String>? name,
-      Wrapped<String>? postalCode,
-      Wrapped<String>? street,
-      Wrapped<String?>? vat}) {
+  CreateClient copyWithWrapped({
+    Wrapped<String>? city,
+    Wrapped<String>? country,
+    Wrapped<String>? email,
+    Wrapped<String>? houseNumber,
+    Wrapped<String>? name,
+    Wrapped<String>? postalCode,
+    Wrapped<String>? street,
+    Wrapped<String?>? vat,
+  }) {
     return CreateClient(
-        city: (city != null ? city.value : this.city),
-        country: (country != null ? country.value : this.country),
-        email: (email != null ? email.value : this.email),
-        houseNumber:
-            (houseNumber != null ? houseNumber.value : this.houseNumber),
-        name: (name != null ? name.value : this.name),
-        postalCode: (postalCode != null ? postalCode.value : this.postalCode),
-        street: (street != null ? street.value : this.street),
-        vat: (vat != null ? vat.value : this.vat));
+      city: (city != null ? city.value : this.city),
+      country: (country != null ? country.value : this.country),
+      email: (email != null ? email.value : this.email),
+      houseNumber: (houseNumber != null ? houseNumber.value : this.houseNumber),
+      name: (name != null ? name.value : this.name),
+      postalCode: (postalCode != null ? postalCode.value : this.postalCode),
+      street: (street != null ? street.value : this.street),
+      vat: (vat != null ? vat.value : this.vat),
+    );
   }
 }
 
@@ -4492,25 +5043,37 @@ class CreateIssueRequest {
     return identical(this, other) ||
         (other is CreateIssueRequest &&
             (identical(other.assignedToRemoteId, assignedToRemoteId) ||
-                const DeepCollectionEquality()
-                    .equals(other.assignedToRemoteId, assignedToRemoteId)) &&
+                const DeepCollectionEquality().equals(
+                  other.assignedToRemoteId,
+                  assignedToRemoteId,
+                )) &&
             (identical(other.bookingId, bookingId) ||
-                const DeepCollectionEquality()
-                    .equals(other.bookingId, bookingId)) &&
+                const DeepCollectionEquality().equals(
+                  other.bookingId,
+                  bookingId,
+                )) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
+                const DeepCollectionEquality().equals(
+                  other.description,
+                  description,
+                )) &&
             (identical(other.priority, priority) ||
-                const DeepCollectionEquality()
-                    .equals(other.priority, priority)) &&
+                const DeepCollectionEquality().equals(
+                  other.priority,
+                  priority,
+                )) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.userRemoteId, userRemoteId) ||
-                const DeepCollectionEquality()
-                    .equals(other.userRemoteId, userRemoteId)) &&
+                const DeepCollectionEquality().equals(
+                  other.userRemoteId,
+                  userRemoteId,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -4529,44 +5092,48 @@ class CreateIssueRequest {
 }
 
 extension $CreateIssueRequestExtension on CreateIssueRequest {
-  CreateIssueRequest copyWith(
-      {String? assignedToRemoteId,
-      String? bookingId,
-      String? description,
-      enums.CreateIssueRequestPriority? priority,
-      String? title,
-      String? userRemoteId,
-      String? vehicleId}) {
+  CreateIssueRequest copyWith({
+    String? assignedToRemoteId,
+    String? bookingId,
+    String? description,
+    enums.CreateIssueRequestPriority? priority,
+    String? title,
+    String? userRemoteId,
+    String? vehicleId,
+  }) {
     return CreateIssueRequest(
-        assignedToRemoteId: assignedToRemoteId ?? this.assignedToRemoteId,
-        bookingId: bookingId ?? this.bookingId,
-        description: description ?? this.description,
-        priority: priority ?? this.priority,
-        title: title ?? this.title,
-        userRemoteId: userRemoteId ?? this.userRemoteId,
-        vehicleId: vehicleId ?? this.vehicleId);
+      assignedToRemoteId: assignedToRemoteId ?? this.assignedToRemoteId,
+      bookingId: bookingId ?? this.bookingId,
+      description: description ?? this.description,
+      priority: priority ?? this.priority,
+      title: title ?? this.title,
+      userRemoteId: userRemoteId ?? this.userRemoteId,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  CreateIssueRequest copyWithWrapped(
-      {Wrapped<String?>? assignedToRemoteId,
-      Wrapped<String?>? bookingId,
-      Wrapped<String?>? description,
-      Wrapped<enums.CreateIssueRequestPriority?>? priority,
-      Wrapped<String>? title,
-      Wrapped<String?>? userRemoteId,
-      Wrapped<String?>? vehicleId}) {
+  CreateIssueRequest copyWithWrapped({
+    Wrapped<String?>? assignedToRemoteId,
+    Wrapped<String?>? bookingId,
+    Wrapped<String?>? description,
+    Wrapped<enums.CreateIssueRequestPriority?>? priority,
+    Wrapped<String>? title,
+    Wrapped<String?>? userRemoteId,
+    Wrapped<String?>? vehicleId,
+  }) {
     return CreateIssueRequest(
-        assignedToRemoteId: (assignedToRemoteId != null
-            ? assignedToRemoteId.value
-            : this.assignedToRemoteId),
-        bookingId: (bookingId != null ? bookingId.value : this.bookingId),
-        description:
-            (description != null ? description.value : this.description),
-        priority: (priority != null ? priority.value : this.priority),
-        title: (title != null ? title.value : this.title),
-        userRemoteId:
-            (userRemoteId != null ? userRemoteId.value : this.userRemoteId),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      assignedToRemoteId: (assignedToRemoteId != null
+          ? assignedToRemoteId.value
+          : this.assignedToRemoteId),
+      bookingId: (bookingId != null ? bookingId.value : this.bookingId),
+      description: (description != null ? description.value : this.description),
+      priority: (priority != null ? priority.value : this.priority),
+      title: (title != null ? title.value : this.title),
+      userRemoteId: (userRemoteId != null
+          ? userRemoteId.value
+          : this.userRemoteId),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
@@ -4604,17 +5171,25 @@ class CreateNewUsageContractRequest {
     return identical(this, other) ||
         (other is CreateNewUsageContractRequest &&
             (identical(
-                    other.commitmentAmountInclVat, commitmentAmountInclVat) ||
+                  other.commitmentAmountInclVat,
+                  commitmentAmountInclVat,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.commitmentAmountInclVat, commitmentAmountInclVat)) &&
+                  other.commitmentAmountInclVat,
+                  commitmentAmountInclVat,
+                )) &&
             (identical(other.formula, formula) ||
-                const DeepCollectionEquality()
-                    .equals(other.formula, formula)) &&
+                const DeepCollectionEquality().equals(
+                  other.formula,
+                  formula,
+                )) &&
             (identical(other.memo, memo) ||
                 const DeepCollectionEquality().equals(other.memo, memo)) &&
             (identical(other.startDate, startDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDate, startDate)));
+                const DeepCollectionEquality().equals(
+                  other.startDate,
+                  startDate,
+                )));
   }
 
   @override
@@ -4631,31 +5206,35 @@ class CreateNewUsageContractRequest {
 
 extension $CreateNewUsageContractRequestExtension
     on CreateNewUsageContractRequest {
-  CreateNewUsageContractRequest copyWith(
-      {double? commitmentAmountInclVat,
-      enums.ClientContractFormula? formula,
-      String? memo,
-      DateTime? startDate}) {
+  CreateNewUsageContractRequest copyWith({
+    double? commitmentAmountInclVat,
+    enums.ClientContractFormula? formula,
+    String? memo,
+    DateTime? startDate,
+  }) {
     return CreateNewUsageContractRequest(
-        commitmentAmountInclVat:
-            commitmentAmountInclVat ?? this.commitmentAmountInclVat,
-        formula: formula ?? this.formula,
-        memo: memo ?? this.memo,
-        startDate: startDate ?? this.startDate);
+      commitmentAmountInclVat:
+          commitmentAmountInclVat ?? this.commitmentAmountInclVat,
+      formula: formula ?? this.formula,
+      memo: memo ?? this.memo,
+      startDate: startDate ?? this.startDate,
+    );
   }
 
-  CreateNewUsageContractRequest copyWithWrapped(
-      {Wrapped<double?>? commitmentAmountInclVat,
-      Wrapped<enums.ClientContractFormula?>? formula,
-      Wrapped<String?>? memo,
-      Wrapped<DateTime?>? startDate}) {
+  CreateNewUsageContractRequest copyWithWrapped({
+    Wrapped<double?>? commitmentAmountInclVat,
+    Wrapped<enums.ClientContractFormula?>? formula,
+    Wrapped<String?>? memo,
+    Wrapped<DateTime?>? startDate,
+  }) {
     return CreateNewUsageContractRequest(
-        commitmentAmountInclVat: (commitmentAmountInclVat != null
-            ? commitmentAmountInclVat.value
-            : this.commitmentAmountInclVat),
-        formula: (formula != null ? formula.value : this.formula),
-        memo: (memo != null ? memo.value : this.memo),
-        startDate: (startDate != null ? startDate.value : this.startDate));
+      commitmentAmountInclVat: (commitmentAmountInclVat != null
+          ? commitmentAmountInclVat.value
+          : this.commitmentAmountInclVat),
+      formula: (formula != null ? formula.value : this.formula),
+      memo: (memo != null ? memo.value : this.memo),
+      startDate: (startDate != null ? startDate.value : this.startDate),
+    );
   }
 }
 
@@ -4685,8 +5264,10 @@ class CreateNonAvailabilityRequest {
             (identical(other.period, period) ||
                 const DeepCollectionEquality().equals(other.period, period)) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -4703,14 +5284,19 @@ extension $CreateNonAvailabilityRequestExtension
     on CreateNonAvailabilityRequest {
   CreateNonAvailabilityRequest copyWith({Period? period, String? vehicleId}) {
     return CreateNonAvailabilityRequest(
-        period: period ?? this.period, vehicleId: vehicleId ?? this.vehicleId);
+      period: period ?? this.period,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  CreateNonAvailabilityRequest copyWithWrapped(
-      {Wrapped<Period>? period, Wrapped<String>? vehicleId}) {
+  CreateNonAvailabilityRequest copyWithWrapped({
+    Wrapped<Period>? period,
+    Wrapped<String>? vehicleId,
+  }) {
     return CreateNonAvailabilityRequest(
-        period: (period != null ? period.value : this.period),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      period: (period != null ? period.value : this.period),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
@@ -4722,8 +5308,8 @@ class CreateRecurringNonAvailabilityRequest {
   });
 
   factory CreateRecurringNonAvailabilityRequest.fromJson(
-          Map<String, dynamic> json) =>
-      _$CreateRecurringNonAvailabilityRequestFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$CreateRecurringNonAvailabilityRequestFromJson(json);
 
   static const toJsonFactory = _$CreateRecurringNonAvailabilityRequestToJson;
   Map<String, dynamic> toJson() =>
@@ -4742,10 +5328,14 @@ class CreateRecurringNonAvailabilityRequest {
         (other is CreateRecurringNonAvailabilityRequest &&
             (identical(other.nonAvailabilityRequest, nonAvailabilityRequest) ||
                 const DeepCollectionEquality().equals(
-                    other.nonAvailabilityRequest, nonAvailabilityRequest)) &&
+                  other.nonAvailabilityRequest,
+                  nonAvailabilityRequest,
+                )) &&
             (identical(other.schedule, schedule) ||
-                const DeepCollectionEquality()
-                    .equals(other.schedule, schedule)));
+                const DeepCollectionEquality().equals(
+                  other.schedule,
+                  schedule,
+                )));
   }
 
   @override
@@ -4760,32 +5350,33 @@ class CreateRecurringNonAvailabilityRequest {
 
 extension $CreateRecurringNonAvailabilityRequestExtension
     on CreateRecurringNonAvailabilityRequest {
-  CreateRecurringNonAvailabilityRequest copyWith(
-      {CreateNonAvailabilityRequest? nonAvailabilityRequest,
-      RecurringSchedule? schedule}) {
+  CreateRecurringNonAvailabilityRequest copyWith({
+    CreateNonAvailabilityRequest? nonAvailabilityRequest,
+    RecurringSchedule? schedule,
+  }) {
     return CreateRecurringNonAvailabilityRequest(
-        nonAvailabilityRequest:
-            nonAvailabilityRequest ?? this.nonAvailabilityRequest,
-        schedule: schedule ?? this.schedule);
+      nonAvailabilityRequest:
+          nonAvailabilityRequest ?? this.nonAvailabilityRequest,
+      schedule: schedule ?? this.schedule,
+    );
   }
 
-  CreateRecurringNonAvailabilityRequest copyWithWrapped(
-      {Wrapped<CreateNonAvailabilityRequest?>? nonAvailabilityRequest,
-      Wrapped<RecurringSchedule?>? schedule}) {
+  CreateRecurringNonAvailabilityRequest copyWithWrapped({
+    Wrapped<CreateNonAvailabilityRequest?>? nonAvailabilityRequest,
+    Wrapped<RecurringSchedule?>? schedule,
+  }) {
     return CreateRecurringNonAvailabilityRequest(
-        nonAvailabilityRequest: (nonAvailabilityRequest != null
-            ? nonAvailabilityRequest.value
-            : this.nonAvailabilityRequest),
-        schedule: (schedule != null ? schedule.value : this.schedule));
+      nonAvailabilityRequest: (nonAvailabilityRequest != null
+          ? nonAvailabilityRequest.value
+          : this.nonAvailabilityRequest),
+      schedule: (schedule != null ? schedule.value : this.schedule),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class CreateUserRequest {
-  const CreateUserRequest({
-    required this.email,
-    required this.remoteId,
-  });
+  const CreateUserRequest({required this.email, required this.remoteId});
 
   factory CreateUserRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateUserRequestFromJson(json);
@@ -4806,8 +5397,10 @@ class CreateUserRequest {
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.remoteId, remoteId) ||
-                const DeepCollectionEquality()
-                    .equals(other.remoteId, remoteId)));
+                const DeepCollectionEquality().equals(
+                  other.remoteId,
+                  remoteId,
+                )));
   }
 
   @override
@@ -4823,14 +5416,19 @@ class CreateUserRequest {
 extension $CreateUserRequestExtension on CreateUserRequest {
   CreateUserRequest copyWith({String? email, String? remoteId}) {
     return CreateUserRequest(
-        email: email ?? this.email, remoteId: remoteId ?? this.remoteId);
+      email: email ?? this.email,
+      remoteId: remoteId ?? this.remoteId,
+    );
   }
 
-  CreateUserRequest copyWithWrapped(
-      {Wrapped<String>? email, Wrapped<String>? remoteId}) {
+  CreateUserRequest copyWithWrapped({
+    Wrapped<String>? email,
+    Wrapped<String>? remoteId,
+  }) {
     return CreateUserRequest(
-        email: (email != null ? email.value : this.email),
-        remoteId: (remoteId != null ? remoteId.value : this.remoteId));
+      email: (email != null ? email.value : this.email),
+      remoteId: (remoteId != null ? remoteId.value : this.remoteId),
+    );
   }
 }
 
@@ -4926,57 +5524,136 @@ class CreateVehicleContract {
     return identical(this, other) ||
         (other is CreateVehicleContract &&
             (identical(other.battMaxType, battMaxType) ||
-                const DeepCollectionEquality()
-                    .equals(other.battMaxType, battMaxType)) &&
+                const DeepCollectionEquality().equals(
+                  other.battMaxType,
+                  battMaxType,
+                )) &&
             (identical(other.battOrderNumber, battOrderNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.battOrderNumber, battOrderNumber)) &&
+                const DeepCollectionEquality().equals(
+                  other.battOrderNumber,
+                  battOrderNumber,
+                )) &&
             (identical(other.billingType, billingType) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingType, billingType)) &&
+                const DeepCollectionEquality().equals(
+                  other.billingType,
+                  billingType,
+                )) &&
             (identical(other.clientContractId, clientContractId) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientContractId, clientContractId)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientContractId,
+                  clientContractId,
+                )) &&
             (identical(other.clientId, clientId) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientId, clientId)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientId,
+                  clientId,
+                )) &&
             (identical(other.contractDate, contractDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.contractDate, contractDate)) &&
-            (identical(other.costForAdditionalKmsExclVat, costForAdditionalKmsExclVat) ||
                 const DeepCollectionEquality().equals(
-                    other.costForAdditionalKmsExclVat,
-                    costForAdditionalKmsExclVat)) &&
-            (identical(other.creditedDayPriceExclVat, creditedDayPriceExclVat) ||
+                  other.contractDate,
+                  contractDate,
+                )) &&
+            (identical(
+                  other.costForAdditionalKmsExclVat,
+                  costForAdditionalKmsExclVat,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.creditedDayPriceExclVat, creditedDayPriceExclVat)) &&
+                  other.costForAdditionalKmsExclVat,
+                  costForAdditionalKmsExclVat,
+                )) &&
+            (identical(
+                  other.creditedDayPriceExclVat,
+                  creditedDayPriceExclVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.creditedDayPriceExclVat,
+                  creditedDayPriceExclVat,
+                )) &&
             (identical(other.creditedKmPriceExclVat, creditedKmPriceExclVat) ||
                 const DeepCollectionEquality().equals(
-                    other.creditedKmPriceExclVat, creditedKmPriceExclVat)) &&
+                  other.creditedKmPriceExclVat,
+                  creditedKmPriceExclVat,
+                )) &&
             (identical(other.effectiveStartDate, effectiveStartDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.effectiveStartDate, effectiveStartDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.effectiveStartDate,
+                  effectiveStartDate,
+                )) &&
             (identical(other.mainUserId, mainUserId) ||
-                const DeepCollectionEquality()
-                    .equals(other.mainUserId, mainUserId)) &&
-            (identical(other.mileageKmAtEndOfContract, mileageKmAtEndOfContract) ||
                 const DeepCollectionEquality().equals(
-                    other.mileageKmAtEndOfContract,
-                    mileageKmAtEndOfContract)) &&
-            (identical(other.mileageKmAtStartOfContract, mileageKmAtStartOfContract) ||
+                  other.mainUserId,
+                  mainUserId,
+                )) &&
+            (identical(
+                  other.mileageKmAtEndOfContract,
+                  mileageKmAtEndOfContract,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.mileageKmAtStartOfContract,
-                    mileageKmAtStartOfContract)) &&
+                  other.mileageKmAtEndOfContract,
+                  mileageKmAtEndOfContract,
+                )) &&
+            (identical(
+                  other.mileageKmAtStartOfContract,
+                  mileageKmAtStartOfContract,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.mileageKmAtStartOfContract,
+                  mileageKmAtStartOfContract,
+                )) &&
             (identical(other.monthlyInsurance, monthlyInsurance) ||
-                const DeepCollectionEquality().equals(other.monthlyInsurance, monthlyInsurance)) &&
-            (identical(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat) || const DeepCollectionEquality().equals(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat)) &&
-            (identical(other.monthlyMaxInvoiceAmountExclVat, monthlyMaxInvoiceAmountExclVat) || const DeepCollectionEquality().equals(other.monthlyMaxInvoiceAmountExclVat, monthlyMaxInvoiceAmountExclVat)) &&
-            (identical(other.monthlyPrefundElectricityExclVat, monthlyPrefundElectricityExclVat) || const DeepCollectionEquality().equals(other.monthlyPrefundElectricityExclVat, monthlyPrefundElectricityExclVat)) &&
-            (identical(other.numberOfMonths, numberOfMonths) || const DeepCollectionEquality().equals(other.numberOfMonths, numberOfMonths)) &&
-            (identical(other.paidStartupCost, paidStartupCost) || const DeepCollectionEquality().equals(other.paidStartupCost, paidStartupCost)) &&
-            (identical(other.startDate, startDate) || const DeepCollectionEquality().equals(other.startDate, startDate)) &&
-            (identical(other.vehicleId, vehicleId) || const DeepCollectionEquality().equals(other.vehicleId, vehicleId)) &&
-            (identical(other.yearlyKmsOnContract, yearlyKmsOnContract) || const DeepCollectionEquality().equals(other.yearlyKmsOnContract, yearlyKmsOnContract)));
+                const DeepCollectionEquality().equals(
+                  other.monthlyInsurance,
+                  monthlyInsurance,
+                )) &&
+            (identical(
+                  other.monthlyLeaseAmountExclVat,
+                  monthlyLeaseAmountExclVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.monthlyLeaseAmountExclVat,
+                  monthlyLeaseAmountExclVat,
+                )) &&
+            (identical(
+                  other.monthlyMaxInvoiceAmountExclVat,
+                  monthlyMaxInvoiceAmountExclVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.monthlyMaxInvoiceAmountExclVat,
+                  monthlyMaxInvoiceAmountExclVat,
+                )) &&
+            (identical(
+                  other.monthlyPrefundElectricityExclVat,
+                  monthlyPrefundElectricityExclVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.monthlyPrefundElectricityExclVat,
+                  monthlyPrefundElectricityExclVat,
+                )) &&
+            (identical(other.numberOfMonths, numberOfMonths) ||
+                const DeepCollectionEquality().equals(
+                  other.numberOfMonths,
+                  numberOfMonths,
+                )) &&
+            (identical(other.paidStartupCost, paidStartupCost) ||
+                const DeepCollectionEquality().equals(
+                  other.paidStartupCost,
+                  paidStartupCost,
+                )) &&
+            (identical(other.startDate, startDate) ||
+                const DeepCollectionEquality().equals(
+                  other.startDate,
+                  startDate,
+                )) &&
+            (identical(other.vehicleId, vehicleId) ||
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )) &&
+            (identical(other.yearlyKmsOnContract, yearlyKmsOnContract) ||
+                const DeepCollectionEquality().equals(
+                  other.yearlyKmsOnContract,
+                  yearlyKmsOnContract,
+                )));
   }
 
   @override
@@ -5010,151 +5687,152 @@ class CreateVehicleContract {
 }
 
 extension $CreateVehicleContractExtension on CreateVehicleContract {
-  CreateVehicleContract copyWith(
-      {enums.CreateVehicleContractBattMaxType? battMaxType,
-      String? battOrderNumber,
-      enums.CreateVehicleContractBillingType? billingType,
-      int? clientContractId,
-      int? clientId,
-      DateTime? contractDate,
-      double? costForAdditionalKmsExclVat,
-      double? creditedDayPriceExclVat,
-      double? creditedKmPriceExclVat,
-      DateTime? effectiveStartDate,
-      int? mainUserId,
-      int? mileageKmAtEndOfContract,
-      int? mileageKmAtStartOfContract,
-      double? monthlyInsurance,
-      double? monthlyLeaseAmountExclVat,
-      double? monthlyMaxInvoiceAmountExclVat,
-      double? monthlyPrefundElectricityExclVat,
-      int? numberOfMonths,
-      double? paidStartupCost,
-      DateTime? startDate,
-      String? vehicleId,
-      int? yearlyKmsOnContract}) {
+  CreateVehicleContract copyWith({
+    enums.CreateVehicleContractBattMaxType? battMaxType,
+    String? battOrderNumber,
+    enums.CreateVehicleContractBillingType? billingType,
+    int? clientContractId,
+    int? clientId,
+    DateTime? contractDate,
+    double? costForAdditionalKmsExclVat,
+    double? creditedDayPriceExclVat,
+    double? creditedKmPriceExclVat,
+    DateTime? effectiveStartDate,
+    int? mainUserId,
+    int? mileageKmAtEndOfContract,
+    int? mileageKmAtStartOfContract,
+    double? monthlyInsurance,
+    double? monthlyLeaseAmountExclVat,
+    double? monthlyMaxInvoiceAmountExclVat,
+    double? monthlyPrefundElectricityExclVat,
+    int? numberOfMonths,
+    double? paidStartupCost,
+    DateTime? startDate,
+    String? vehicleId,
+    int? yearlyKmsOnContract,
+  }) {
     return CreateVehicleContract(
-        battMaxType: battMaxType ?? this.battMaxType,
-        battOrderNumber: battOrderNumber ?? this.battOrderNumber,
-        billingType: billingType ?? this.billingType,
-        clientContractId: clientContractId ?? this.clientContractId,
-        clientId: clientId ?? this.clientId,
-        contractDate: contractDate ?? this.contractDate,
-        costForAdditionalKmsExclVat:
-            costForAdditionalKmsExclVat ?? this.costForAdditionalKmsExclVat,
-        creditedDayPriceExclVat:
-            creditedDayPriceExclVat ?? this.creditedDayPriceExclVat,
-        creditedKmPriceExclVat:
-            creditedKmPriceExclVat ?? this.creditedKmPriceExclVat,
-        effectiveStartDate: effectiveStartDate ?? this.effectiveStartDate,
-        mainUserId: mainUserId ?? this.mainUserId,
-        mileageKmAtEndOfContract:
-            mileageKmAtEndOfContract ?? this.mileageKmAtEndOfContract,
-        mileageKmAtStartOfContract:
-            mileageKmAtStartOfContract ?? this.mileageKmAtStartOfContract,
-        monthlyInsurance: monthlyInsurance ?? this.monthlyInsurance,
-        monthlyLeaseAmountExclVat:
-            monthlyLeaseAmountExclVat ?? this.monthlyLeaseAmountExclVat,
-        monthlyMaxInvoiceAmountExclVat: monthlyMaxInvoiceAmountExclVat ??
-            this.monthlyMaxInvoiceAmountExclVat,
-        monthlyPrefundElectricityExclVat: monthlyPrefundElectricityExclVat ??
-            this.monthlyPrefundElectricityExclVat,
-        numberOfMonths: numberOfMonths ?? this.numberOfMonths,
-        paidStartupCost: paidStartupCost ?? this.paidStartupCost,
-        startDate: startDate ?? this.startDate,
-        vehicleId: vehicleId ?? this.vehicleId,
-        yearlyKmsOnContract: yearlyKmsOnContract ?? this.yearlyKmsOnContract);
+      battMaxType: battMaxType ?? this.battMaxType,
+      battOrderNumber: battOrderNumber ?? this.battOrderNumber,
+      billingType: billingType ?? this.billingType,
+      clientContractId: clientContractId ?? this.clientContractId,
+      clientId: clientId ?? this.clientId,
+      contractDate: contractDate ?? this.contractDate,
+      costForAdditionalKmsExclVat:
+          costForAdditionalKmsExclVat ?? this.costForAdditionalKmsExclVat,
+      creditedDayPriceExclVat:
+          creditedDayPriceExclVat ?? this.creditedDayPriceExclVat,
+      creditedKmPriceExclVat:
+          creditedKmPriceExclVat ?? this.creditedKmPriceExclVat,
+      effectiveStartDate: effectiveStartDate ?? this.effectiveStartDate,
+      mainUserId: mainUserId ?? this.mainUserId,
+      mileageKmAtEndOfContract:
+          mileageKmAtEndOfContract ?? this.mileageKmAtEndOfContract,
+      mileageKmAtStartOfContract:
+          mileageKmAtStartOfContract ?? this.mileageKmAtStartOfContract,
+      monthlyInsurance: monthlyInsurance ?? this.monthlyInsurance,
+      monthlyLeaseAmountExclVat:
+          monthlyLeaseAmountExclVat ?? this.monthlyLeaseAmountExclVat,
+      monthlyMaxInvoiceAmountExclVat:
+          monthlyMaxInvoiceAmountExclVat ?? this.monthlyMaxInvoiceAmountExclVat,
+      monthlyPrefundElectricityExclVat:
+          monthlyPrefundElectricityExclVat ??
+          this.monthlyPrefundElectricityExclVat,
+      numberOfMonths: numberOfMonths ?? this.numberOfMonths,
+      paidStartupCost: paidStartupCost ?? this.paidStartupCost,
+      startDate: startDate ?? this.startDate,
+      vehicleId: vehicleId ?? this.vehicleId,
+      yearlyKmsOnContract: yearlyKmsOnContract ?? this.yearlyKmsOnContract,
+    );
   }
 
-  CreateVehicleContract copyWithWrapped(
-      {Wrapped<enums.CreateVehicleContractBattMaxType>? battMaxType,
-      Wrapped<String?>? battOrderNumber,
-      Wrapped<enums.CreateVehicleContractBillingType?>? billingType,
-      Wrapped<int?>? clientContractId,
-      Wrapped<int>? clientId,
-      Wrapped<DateTime>? contractDate,
-      Wrapped<double?>? costForAdditionalKmsExclVat,
-      Wrapped<double?>? creditedDayPriceExclVat,
-      Wrapped<double?>? creditedKmPriceExclVat,
-      Wrapped<DateTime>? effectiveStartDate,
-      Wrapped<int?>? mainUserId,
-      Wrapped<int?>? mileageKmAtEndOfContract,
-      Wrapped<int?>? mileageKmAtStartOfContract,
-      Wrapped<double?>? monthlyInsurance,
-      Wrapped<double>? monthlyLeaseAmountExclVat,
-      Wrapped<double?>? monthlyMaxInvoiceAmountExclVat,
-      Wrapped<double?>? monthlyPrefundElectricityExclVat,
-      Wrapped<int?>? numberOfMonths,
-      Wrapped<double?>? paidStartupCost,
-      Wrapped<DateTime?>? startDate,
-      Wrapped<String>? vehicleId,
-      Wrapped<int?>? yearlyKmsOnContract}) {
+  CreateVehicleContract copyWithWrapped({
+    Wrapped<enums.CreateVehicleContractBattMaxType>? battMaxType,
+    Wrapped<String?>? battOrderNumber,
+    Wrapped<enums.CreateVehicleContractBillingType?>? billingType,
+    Wrapped<int?>? clientContractId,
+    Wrapped<int>? clientId,
+    Wrapped<DateTime>? contractDate,
+    Wrapped<double?>? costForAdditionalKmsExclVat,
+    Wrapped<double?>? creditedDayPriceExclVat,
+    Wrapped<double?>? creditedKmPriceExclVat,
+    Wrapped<DateTime>? effectiveStartDate,
+    Wrapped<int?>? mainUserId,
+    Wrapped<int?>? mileageKmAtEndOfContract,
+    Wrapped<int?>? mileageKmAtStartOfContract,
+    Wrapped<double?>? monthlyInsurance,
+    Wrapped<double>? monthlyLeaseAmountExclVat,
+    Wrapped<double?>? monthlyMaxInvoiceAmountExclVat,
+    Wrapped<double?>? monthlyPrefundElectricityExclVat,
+    Wrapped<int?>? numberOfMonths,
+    Wrapped<double?>? paidStartupCost,
+    Wrapped<DateTime?>? startDate,
+    Wrapped<String>? vehicleId,
+    Wrapped<int?>? yearlyKmsOnContract,
+  }) {
     return CreateVehicleContract(
-        battMaxType:
-            (battMaxType != null ? battMaxType.value : this.battMaxType),
-        battOrderNumber: (battOrderNumber != null
-            ? battOrderNumber.value
-            : this.battOrderNumber),
-        billingType:
-            (billingType != null ? billingType.value : this.billingType),
-        clientContractId: (clientContractId != null
-            ? clientContractId.value
-            : this.clientContractId),
-        clientId: (clientId != null ? clientId.value : this.clientId),
-        contractDate:
-            (contractDate != null ? contractDate.value : this.contractDate),
-        costForAdditionalKmsExclVat: (costForAdditionalKmsExclVat != null
-            ? costForAdditionalKmsExclVat.value
-            : this.costForAdditionalKmsExclVat),
-        creditedDayPriceExclVat: (creditedDayPriceExclVat != null
-            ? creditedDayPriceExclVat.value
-            : this.creditedDayPriceExclVat),
-        creditedKmPriceExclVat: (creditedKmPriceExclVat != null
-            ? creditedKmPriceExclVat.value
-            : this.creditedKmPriceExclVat),
-        effectiveStartDate: (effectiveStartDate != null
-            ? effectiveStartDate.value
-            : this.effectiveStartDate),
-        mainUserId: (mainUserId != null ? mainUserId.value : this.mainUserId),
-        mileageKmAtEndOfContract: (mileageKmAtEndOfContract != null
-            ? mileageKmAtEndOfContract.value
-            : this.mileageKmAtEndOfContract),
-        mileageKmAtStartOfContract: (mileageKmAtStartOfContract != null
-            ? mileageKmAtStartOfContract.value
-            : this.mileageKmAtStartOfContract),
-        monthlyInsurance: (monthlyInsurance != null
-            ? monthlyInsurance.value
-            : this.monthlyInsurance),
-        monthlyLeaseAmountExclVat: (monthlyLeaseAmountExclVat != null
-            ? monthlyLeaseAmountExclVat.value
-            : this.monthlyLeaseAmountExclVat),
-        monthlyMaxInvoiceAmountExclVat: (monthlyMaxInvoiceAmountExclVat != null
-            ? monthlyMaxInvoiceAmountExclVat.value
-            : this.monthlyMaxInvoiceAmountExclVat),
-        monthlyPrefundElectricityExclVat:
-            (monthlyPrefundElectricityExclVat != null
-                ? monthlyPrefundElectricityExclVat.value
-                : this.monthlyPrefundElectricityExclVat),
-        numberOfMonths: (numberOfMonths != null
-            ? numberOfMonths.value
-            : this.numberOfMonths),
-        paidStartupCost: (paidStartupCost != null
-            ? paidStartupCost.value
-            : this.paidStartupCost),
-        startDate: (startDate != null ? startDate.value : this.startDate),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
-        yearlyKmsOnContract: (yearlyKmsOnContract != null
-            ? yearlyKmsOnContract.value
-            : this.yearlyKmsOnContract));
+      battMaxType: (battMaxType != null ? battMaxType.value : this.battMaxType),
+      battOrderNumber: (battOrderNumber != null
+          ? battOrderNumber.value
+          : this.battOrderNumber),
+      billingType: (billingType != null ? billingType.value : this.billingType),
+      clientContractId: (clientContractId != null
+          ? clientContractId.value
+          : this.clientContractId),
+      clientId: (clientId != null ? clientId.value : this.clientId),
+      contractDate: (contractDate != null
+          ? contractDate.value
+          : this.contractDate),
+      costForAdditionalKmsExclVat: (costForAdditionalKmsExclVat != null
+          ? costForAdditionalKmsExclVat.value
+          : this.costForAdditionalKmsExclVat),
+      creditedDayPriceExclVat: (creditedDayPriceExclVat != null
+          ? creditedDayPriceExclVat.value
+          : this.creditedDayPriceExclVat),
+      creditedKmPriceExclVat: (creditedKmPriceExclVat != null
+          ? creditedKmPriceExclVat.value
+          : this.creditedKmPriceExclVat),
+      effectiveStartDate: (effectiveStartDate != null
+          ? effectiveStartDate.value
+          : this.effectiveStartDate),
+      mainUserId: (mainUserId != null ? mainUserId.value : this.mainUserId),
+      mileageKmAtEndOfContract: (mileageKmAtEndOfContract != null
+          ? mileageKmAtEndOfContract.value
+          : this.mileageKmAtEndOfContract),
+      mileageKmAtStartOfContract: (mileageKmAtStartOfContract != null
+          ? mileageKmAtStartOfContract.value
+          : this.mileageKmAtStartOfContract),
+      monthlyInsurance: (monthlyInsurance != null
+          ? monthlyInsurance.value
+          : this.monthlyInsurance),
+      monthlyLeaseAmountExclVat: (monthlyLeaseAmountExclVat != null
+          ? monthlyLeaseAmountExclVat.value
+          : this.monthlyLeaseAmountExclVat),
+      monthlyMaxInvoiceAmountExclVat: (monthlyMaxInvoiceAmountExclVat != null
+          ? monthlyMaxInvoiceAmountExclVat.value
+          : this.monthlyMaxInvoiceAmountExclVat),
+      monthlyPrefundElectricityExclVat:
+          (monthlyPrefundElectricityExclVat != null
+          ? monthlyPrefundElectricityExclVat.value
+          : this.monthlyPrefundElectricityExclVat),
+      numberOfMonths: (numberOfMonths != null
+          ? numberOfMonths.value
+          : this.numberOfMonths),
+      paidStartupCost: (paidStartupCost != null
+          ? paidStartupCost.value
+          : this.paidStartupCost),
+      startDate: (startDate != null ? startDate.value : this.startDate),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+      yearlyKmsOnContract: (yearlyKmsOnContract != null
+          ? yearlyKmsOnContract.value
+          : this.yearlyKmsOnContract),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class CreateVehicleGroupRequest {
-  const CreateVehicleGroupRequest({
-    this.id,
-    this.name,
-  });
+  const CreateVehicleGroupRequest({this.id, this.name});
 
   factory CreateVehicleGroupRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateVehicleGroupRequestFromJson(json);
@@ -5191,24 +5869,25 @@ class CreateVehicleGroupRequest {
 extension $CreateVehicleGroupRequestExtension on CreateVehicleGroupRequest {
   CreateVehicleGroupRequest copyWith({String? id, String? name}) {
     return CreateVehicleGroupRequest(
-        id: id ?? this.id, name: name ?? this.name);
+      id: id ?? this.id,
+      name: name ?? this.name,
+    );
   }
 
-  CreateVehicleGroupRequest copyWithWrapped(
-      {Wrapped<String?>? id, Wrapped<String?>? name}) {
+  CreateVehicleGroupRequest copyWithWrapped({
+    Wrapped<String?>? id,
+    Wrapped<String?>? name,
+  }) {
     return CreateVehicleGroupRequest(
-        id: (id != null ? id.value : this.id),
-        name: (name != null ? name.value : this.name));
+      id: (id != null ? id.value : this.id),
+      name: (name != null ? name.value : this.name),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class CreateVehicleModelRequest {
-  const CreateVehicleModelRequest({
-    this.bodyStyleId,
-    this.brandId,
-    this.name,
-  });
+  const CreateVehicleModelRequest({this.bodyStyleId, this.brandId, this.name});
 
   factory CreateVehicleModelRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateVehicleModelRequestFromJson(json);
@@ -5229,11 +5908,15 @@ class CreateVehicleModelRequest {
     return identical(this, other) ||
         (other is CreateVehicleModelRequest &&
             (identical(other.bodyStyleId, bodyStyleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.bodyStyleId, bodyStyleId)) &&
+                const DeepCollectionEquality().equals(
+                  other.bodyStyleId,
+                  bodyStyleId,
+                )) &&
             (identical(other.brandId, brandId) ||
-                const DeepCollectionEquality()
-                    .equals(other.brandId, brandId)) &&
+                const DeepCollectionEquality().equals(
+                  other.brandId,
+                  brandId,
+                )) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)));
   }
@@ -5250,23 +5933,28 @@ class CreateVehicleModelRequest {
 }
 
 extension $CreateVehicleModelRequestExtension on CreateVehicleModelRequest {
-  CreateVehicleModelRequest copyWith(
-      {String? bodyStyleId, String? brandId, String? name}) {
+  CreateVehicleModelRequest copyWith({
+    String? bodyStyleId,
+    String? brandId,
+    String? name,
+  }) {
     return CreateVehicleModelRequest(
-        bodyStyleId: bodyStyleId ?? this.bodyStyleId,
-        brandId: brandId ?? this.brandId,
-        name: name ?? this.name);
+      bodyStyleId: bodyStyleId ?? this.bodyStyleId,
+      brandId: brandId ?? this.brandId,
+      name: name ?? this.name,
+    );
   }
 
-  CreateVehicleModelRequest copyWithWrapped(
-      {Wrapped<String?>? bodyStyleId,
-      Wrapped<String?>? brandId,
-      Wrapped<String?>? name}) {
+  CreateVehicleModelRequest copyWithWrapped({
+    Wrapped<String?>? bodyStyleId,
+    Wrapped<String?>? brandId,
+    Wrapped<String?>? name,
+  }) {
     return CreateVehicleModelRequest(
-        bodyStyleId:
-            (bodyStyleId != null ? bodyStyleId.value : this.bodyStyleId),
-        brandId: (brandId != null ? brandId.value : this.brandId),
-        name: (name != null ? name.value : this.name));
+      bodyStyleId: (bodyStyleId != null ? bodyStyleId.value : this.bodyStyleId),
+      brandId: (brandId != null ? brandId.value : this.brandId),
+      name: (name != null ? name.value : this.name),
+    );
   }
 }
 
@@ -5310,26 +5998,40 @@ class CreateVehicleModelsRatesRequest {
     return identical(this, other) ||
         (other is CreateVehicleModelsRatesRequest &&
             (identical(other.dayPrice, dayPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.dayPrice, dayPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.dayPrice,
+                  dayPrice,
+                )) &&
             (identical(other.hourPrice, hourPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.hourPrice, hourPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.hourPrice,
+                  hourPrice,
+                )) &&
             (identical(other.kmPrice, kmPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmPrice, kmPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.kmPrice,
+                  kmPrice,
+                )) &&
             (identical(other.modelIds, modelIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.modelIds, modelIds)) &&
+                const DeepCollectionEquality().equals(
+                  other.modelIds,
+                  modelIds,
+                )) &&
             (identical(other.overrideDefaultPeriod, overrideDefaultPeriod) ||
                 const DeepCollectionEquality().equals(
-                    other.overrideDefaultPeriod, overrideDefaultPeriod)) &&
+                  other.overrideDefaultPeriod,
+                  overrideDefaultPeriod,
+                )) &&
             (identical(other.validFrom, validFrom) ||
-                const DeepCollectionEquality()
-                    .equals(other.validFrom, validFrom)) &&
+                const DeepCollectionEquality().equals(
+                  other.validFrom,
+                  validFrom,
+                )) &&
             (identical(other.validUntil, validUntil) ||
-                const DeepCollectionEquality()
-                    .equals(other.validUntil, validUntil)));
+                const DeepCollectionEquality().equals(
+                  other.validUntil,
+                  validUntil,
+                )));
   }
 
   @override
@@ -5349,55 +6051,57 @@ class CreateVehicleModelsRatesRequest {
 
 extension $CreateVehicleModelsRatesRequestExtension
     on CreateVehicleModelsRatesRequest {
-  CreateVehicleModelsRatesRequest copyWith(
-      {double? dayPrice,
-      double? hourPrice,
-      double? kmPrice,
-      List<String>? modelIds,
-      bool? overrideDefaultPeriod,
-      DateTime? validFrom,
-      DateTime? validUntil}) {
+  CreateVehicleModelsRatesRequest copyWith({
+    double? dayPrice,
+    double? hourPrice,
+    double? kmPrice,
+    List<String>? modelIds,
+    bool? overrideDefaultPeriod,
+    DateTime? validFrom,
+    DateTime? validUntil,
+  }) {
     return CreateVehicleModelsRatesRequest(
-        dayPrice: dayPrice ?? this.dayPrice,
-        hourPrice: hourPrice ?? this.hourPrice,
-        kmPrice: kmPrice ?? this.kmPrice,
-        modelIds: modelIds ?? this.modelIds,
-        overrideDefaultPeriod:
-            overrideDefaultPeriod ?? this.overrideDefaultPeriod,
-        validFrom: validFrom ?? this.validFrom,
-        validUntil: validUntil ?? this.validUntil);
+      dayPrice: dayPrice ?? this.dayPrice,
+      hourPrice: hourPrice ?? this.hourPrice,
+      kmPrice: kmPrice ?? this.kmPrice,
+      modelIds: modelIds ?? this.modelIds,
+      overrideDefaultPeriod:
+          overrideDefaultPeriod ?? this.overrideDefaultPeriod,
+      validFrom: validFrom ?? this.validFrom,
+      validUntil: validUntil ?? this.validUntil,
+    );
   }
 
-  CreateVehicleModelsRatesRequest copyWithWrapped(
-      {Wrapped<double?>? dayPrice,
-      Wrapped<double>? hourPrice,
-      Wrapped<double>? kmPrice,
-      Wrapped<List<String>>? modelIds,
-      Wrapped<bool?>? overrideDefaultPeriod,
-      Wrapped<DateTime>? validFrom,
-      Wrapped<DateTime?>? validUntil}) {
+  CreateVehicleModelsRatesRequest copyWithWrapped({
+    Wrapped<double?>? dayPrice,
+    Wrapped<double>? hourPrice,
+    Wrapped<double>? kmPrice,
+    Wrapped<List<String>>? modelIds,
+    Wrapped<bool?>? overrideDefaultPeriod,
+    Wrapped<DateTime>? validFrom,
+    Wrapped<DateTime?>? validUntil,
+  }) {
     return CreateVehicleModelsRatesRequest(
-        dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
-        hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
-        kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
-        modelIds: (modelIds != null ? modelIds.value : this.modelIds),
-        overrideDefaultPeriod: (overrideDefaultPeriod != null
-            ? overrideDefaultPeriod.value
-            : this.overrideDefaultPeriod),
-        validFrom: (validFrom != null ? validFrom.value : this.validFrom),
-        validUntil: (validUntil != null ? validUntil.value : this.validUntil));
+      dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
+      hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
+      kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
+      modelIds: (modelIds != null ? modelIds.value : this.modelIds),
+      overrideDefaultPeriod: (overrideDefaultPeriod != null
+          ? overrideDefaultPeriod.value
+          : this.overrideDefaultPeriod),
+      validFrom: (validFrom != null ? validFrom.value : this.validFrom),
+      validUntil: (validUntil != null ? validUntil.value : this.validUntil),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class CreateVehicleModelsRatesResponse {
-  const CreateVehicleModelsRatesResponse({
-    required this.rates,
-  });
+  const CreateVehicleModelsRatesResponse({required this.rates});
 
   factory CreateVehicleModelsRatesResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$CreateVehicleModelsRatesResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$CreateVehicleModelsRatesResponseFromJson(json);
 
   static const toJsonFactory = _$CreateVehicleModelsRatesResponseToJson;
   Map<String, dynamic> toJson() =>
@@ -5429,10 +6133,12 @@ extension $CreateVehicleModelsRatesResponseExtension
     return CreateVehicleModelsRatesResponse(rates: rates ?? this.rates);
   }
 
-  CreateVehicleModelsRatesResponse copyWithWrapped(
-      {Wrapped<List<VehicleModelRate>>? rates}) {
+  CreateVehicleModelsRatesResponse copyWithWrapped({
+    Wrapped<List<VehicleModelRate>>? rates,
+  }) {
     return CreateVehicleModelsRatesResponse(
-        rates: (rates != null ? rates.value : this.rates));
+      rates: (rates != null ? rates.value : this.rates),
+    );
   }
 }
 
@@ -5460,11 +6166,15 @@ class CreateVehicleRequest {
     return identical(this, other) ||
         (other is CreateVehicleRequest &&
             (identical(other.licensePlate, licensePlate) ||
-                const DeepCollectionEquality()
-                    .equals(other.licensePlate, licensePlate)) &&
+                const DeepCollectionEquality().equals(
+                  other.licensePlate,
+                  licensePlate,
+                )) &&
             (identical(other.vehicleModelId, vehicleModelId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleModelId, vehicleModelId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleModelId,
+                  vehicleModelId,
+                )));
   }
 
   @override
@@ -5478,21 +6188,28 @@ class CreateVehicleRequest {
 }
 
 extension $CreateVehicleRequestExtension on CreateVehicleRequest {
-  CreateVehicleRequest copyWith(
-      {String? licensePlate, String? vehicleModelId}) {
+  CreateVehicleRequest copyWith({
+    String? licensePlate,
+    String? vehicleModelId,
+  }) {
     return CreateVehicleRequest(
-        licensePlate: licensePlate ?? this.licensePlate,
-        vehicleModelId: vehicleModelId ?? this.vehicleModelId);
+      licensePlate: licensePlate ?? this.licensePlate,
+      vehicleModelId: vehicleModelId ?? this.vehicleModelId,
+    );
   }
 
-  CreateVehicleRequest copyWithWrapped(
-      {Wrapped<String>? licensePlate, Wrapped<String>? vehicleModelId}) {
+  CreateVehicleRequest copyWithWrapped({
+    Wrapped<String>? licensePlate,
+    Wrapped<String>? vehicleModelId,
+  }) {
     return CreateVehicleRequest(
-        licensePlate:
-            (licensePlate != null ? licensePlate.value : this.licensePlate),
-        vehicleModelId: (vehicleModelId != null
-            ? vehicleModelId.value
-            : this.vehicleModelId));
+      licensePlate: (licensePlate != null
+          ? licensePlate.value
+          : this.licensePlate),
+      vehicleModelId: (vehicleModelId != null
+          ? vehicleModelId.value
+          : this.vehicleModelId),
+    );
   }
 }
 
@@ -5538,29 +6255,45 @@ class CreateVehiclesRatesRequest {
     return identical(this, other) ||
         (other is CreateVehiclesRatesRequest &&
             (identical(other.dayPrice, dayPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.dayPrice, dayPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.dayPrice,
+                  dayPrice,
+                )) &&
             (identical(other.discountPercent, discountPercent) ||
-                const DeepCollectionEquality()
-                    .equals(other.discountPercent, discountPercent)) &&
+                const DeepCollectionEquality().equals(
+                  other.discountPercent,
+                  discountPercent,
+                )) &&
             (identical(other.hourPrice, hourPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.hourPrice, hourPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.hourPrice,
+                  hourPrice,
+                )) &&
             (identical(other.kmPrice, kmPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmPrice, kmPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.kmPrice,
+                  kmPrice,
+                )) &&
             (identical(other.overrideDefaultPeriod, overrideDefaultPeriod) ||
                 const DeepCollectionEquality().equals(
-                    other.overrideDefaultPeriod, overrideDefaultPeriod)) &&
+                  other.overrideDefaultPeriod,
+                  overrideDefaultPeriod,
+                )) &&
             (identical(other.validFrom, validFrom) ||
-                const DeepCollectionEquality()
-                    .equals(other.validFrom, validFrom)) &&
+                const DeepCollectionEquality().equals(
+                  other.validFrom,
+                  validFrom,
+                )) &&
             (identical(other.validUntil, validUntil) ||
-                const DeepCollectionEquality()
-                    .equals(other.validUntil, validUntil)) &&
+                const DeepCollectionEquality().equals(
+                  other.validUntil,
+                  validUntil,
+                )) &&
             (identical(other.vehicleIds, vehicleIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleIds, vehicleIds)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleIds,
+                  vehicleIds,
+                )));
   }
 
   @override
@@ -5580,57 +6313,59 @@ class CreateVehiclesRatesRequest {
 }
 
 extension $CreateVehiclesRatesRequestExtension on CreateVehiclesRatesRequest {
-  CreateVehiclesRatesRequest copyWith(
-      {double? dayPrice,
-      int? discountPercent,
-      double? hourPrice,
-      double? kmPrice,
-      bool? overrideDefaultPeriod,
-      DateTime? validFrom,
-      DateTime? validUntil,
-      List<String>? vehicleIds}) {
+  CreateVehiclesRatesRequest copyWith({
+    double? dayPrice,
+    int? discountPercent,
+    double? hourPrice,
+    double? kmPrice,
+    bool? overrideDefaultPeriod,
+    DateTime? validFrom,
+    DateTime? validUntil,
+    List<String>? vehicleIds,
+  }) {
     return CreateVehiclesRatesRequest(
-        dayPrice: dayPrice ?? this.dayPrice,
-        discountPercent: discountPercent ?? this.discountPercent,
-        hourPrice: hourPrice ?? this.hourPrice,
-        kmPrice: kmPrice ?? this.kmPrice,
-        overrideDefaultPeriod:
-            overrideDefaultPeriod ?? this.overrideDefaultPeriod,
-        validFrom: validFrom ?? this.validFrom,
-        validUntil: validUntil ?? this.validUntil,
-        vehicleIds: vehicleIds ?? this.vehicleIds);
+      dayPrice: dayPrice ?? this.dayPrice,
+      discountPercent: discountPercent ?? this.discountPercent,
+      hourPrice: hourPrice ?? this.hourPrice,
+      kmPrice: kmPrice ?? this.kmPrice,
+      overrideDefaultPeriod:
+          overrideDefaultPeriod ?? this.overrideDefaultPeriod,
+      validFrom: validFrom ?? this.validFrom,
+      validUntil: validUntil ?? this.validUntil,
+      vehicleIds: vehicleIds ?? this.vehicleIds,
+    );
   }
 
-  CreateVehiclesRatesRequest copyWithWrapped(
-      {Wrapped<double?>? dayPrice,
-      Wrapped<int?>? discountPercent,
-      Wrapped<double?>? hourPrice,
-      Wrapped<double?>? kmPrice,
-      Wrapped<bool?>? overrideDefaultPeriod,
-      Wrapped<DateTime>? validFrom,
-      Wrapped<DateTime?>? validUntil,
-      Wrapped<List<String>>? vehicleIds}) {
+  CreateVehiclesRatesRequest copyWithWrapped({
+    Wrapped<double?>? dayPrice,
+    Wrapped<int?>? discountPercent,
+    Wrapped<double?>? hourPrice,
+    Wrapped<double?>? kmPrice,
+    Wrapped<bool?>? overrideDefaultPeriod,
+    Wrapped<DateTime>? validFrom,
+    Wrapped<DateTime?>? validUntil,
+    Wrapped<List<String>>? vehicleIds,
+  }) {
     return CreateVehiclesRatesRequest(
-        dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
-        discountPercent: (discountPercent != null
-            ? discountPercent.value
-            : this.discountPercent),
-        hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
-        kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
-        overrideDefaultPeriod: (overrideDefaultPeriod != null
-            ? overrideDefaultPeriod.value
-            : this.overrideDefaultPeriod),
-        validFrom: (validFrom != null ? validFrom.value : this.validFrom),
-        validUntil: (validUntil != null ? validUntil.value : this.validUntil),
-        vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds));
+      dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
+      discountPercent: (discountPercent != null
+          ? discountPercent.value
+          : this.discountPercent),
+      hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
+      kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
+      overrideDefaultPeriod: (overrideDefaultPeriod != null
+          ? overrideDefaultPeriod.value
+          : this.overrideDefaultPeriod),
+      validFrom: (validFrom != null ? validFrom.value : this.validFrom),
+      validUntil: (validUntil != null ? validUntil.value : this.validUntil),
+      vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class CreateVehiclesRatesResponse {
-  const CreateVehiclesRatesResponse({
-    required this.rates,
-  });
+  const CreateVehiclesRatesResponse({required this.rates});
 
   factory CreateVehiclesRatesResponse.fromJson(Map<String, dynamic> json) =>
       _$CreateVehiclesRatesResponseFromJson(json);
@@ -5663,18 +6398,18 @@ extension $CreateVehiclesRatesResponseExtension on CreateVehiclesRatesResponse {
     return CreateVehiclesRatesResponse(rates: rates ?? this.rates);
   }
 
-  CreateVehiclesRatesResponse copyWithWrapped(
-      {Wrapped<List<VehicleRate>>? rates}) {
+  CreateVehiclesRatesResponse copyWithWrapped({
+    Wrapped<List<VehicleRate>>? rates,
+  }) {
     return CreateVehiclesRatesResponse(
-        rates: (rates != null ? rates.value : this.rates));
+      rates: (rates != null ? rates.value : this.rates),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class DeleteVehiclesFromGroupRequest {
-  const DeleteVehiclesFromGroupRequest({
-    this.vehicleIds,
-  });
+  const DeleteVehiclesFromGroupRequest({this.vehicleIds});
 
   factory DeleteVehiclesFromGroupRequest.fromJson(Map<String, dynamic> json) =>
       _$DeleteVehiclesFromGroupRequestFromJson(json);
@@ -5691,8 +6426,10 @@ class DeleteVehiclesFromGroupRequest {
     return identical(this, other) ||
         (other is DeleteVehiclesFromGroupRequest &&
             (identical(other.vehicleIds, vehicleIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleIds, vehicleIds)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleIds,
+                  vehicleIds,
+                )));
   }
 
   @override
@@ -5707,22 +6444,22 @@ extension $DeleteVehiclesFromGroupRequestExtension
     on DeleteVehiclesFromGroupRequest {
   DeleteVehiclesFromGroupRequest copyWith({List<String>? vehicleIds}) {
     return DeleteVehiclesFromGroupRequest(
-        vehicleIds: vehicleIds ?? this.vehicleIds);
+      vehicleIds: vehicleIds ?? this.vehicleIds,
+    );
   }
 
-  DeleteVehiclesFromGroupRequest copyWithWrapped(
-      {Wrapped<List<String>?>? vehicleIds}) {
+  DeleteVehiclesFromGroupRequest copyWithWrapped({
+    Wrapped<List<String>?>? vehicleIds,
+  }) {
     return DeleteVehiclesFromGroupRequest(
-        vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds));
+      vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class EndVehicleUsageRequest {
-  const EndVehicleUsageRequest({
-    this.mileageValue,
-    this.vehicleUsageId,
-  });
+  const EndVehicleUsageRequest({this.mileageValue, this.vehicleUsageId});
 
   factory EndVehicleUsageRequest.fromJson(Map<String, dynamic> json) =>
       _$EndVehicleUsageRequestFromJson(json);
@@ -5741,11 +6478,15 @@ class EndVehicleUsageRequest {
     return identical(this, other) ||
         (other is EndVehicleUsageRequest &&
             (identical(other.mileageValue, mileageValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.mileageValue, mileageValue)) &&
+                const DeepCollectionEquality().equals(
+                  other.mileageValue,
+                  mileageValue,
+                )) &&
             (identical(other.vehicleUsageId, vehicleUsageId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleUsageId, vehicleUsageId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleUsageId,
+                  vehicleUsageId,
+                )));
   }
 
   @override
@@ -5759,31 +6500,34 @@ class EndVehicleUsageRequest {
 }
 
 extension $EndVehicleUsageRequestExtension on EndVehicleUsageRequest {
-  EndVehicleUsageRequest copyWith(
-      {double? mileageValue, String? vehicleUsageId}) {
+  EndVehicleUsageRequest copyWith({
+    double? mileageValue,
+    String? vehicleUsageId,
+  }) {
     return EndVehicleUsageRequest(
-        mileageValue: mileageValue ?? this.mileageValue,
-        vehicleUsageId: vehicleUsageId ?? this.vehicleUsageId);
+      mileageValue: mileageValue ?? this.mileageValue,
+      vehicleUsageId: vehicleUsageId ?? this.vehicleUsageId,
+    );
   }
 
-  EndVehicleUsageRequest copyWithWrapped(
-      {Wrapped<double?>? mileageValue, Wrapped<String?>? vehicleUsageId}) {
+  EndVehicleUsageRequest copyWithWrapped({
+    Wrapped<double?>? mileageValue,
+    Wrapped<String?>? vehicleUsageId,
+  }) {
     return EndVehicleUsageRequest(
-        mileageValue:
-            (mileageValue != null ? mileageValue.value : this.mileageValue),
-        vehicleUsageId: (vehicleUsageId != null
-            ? vehicleUsageId.value
-            : this.vehicleUsageId));
+      mileageValue: (mileageValue != null
+          ? mileageValue.value
+          : this.mileageValue),
+      vehicleUsageId: (vehicleUsageId != null
+          ? vehicleUsageId.value
+          : this.vehicleUsageId),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class ErrorResponse {
-  const ErrorResponse({
-    this.debugKey,
-    this.debugMsg,
-    this.debugParameters,
-  });
+  const ErrorResponse({this.debugKey, this.debugMsg, this.debugParameters});
 
   factory ErrorResponse.fromJson(Map<String, dynamic> json) =>
       _$ErrorResponseFromJson(json);
@@ -5804,14 +6548,20 @@ class ErrorResponse {
     return identical(this, other) ||
         (other is ErrorResponse &&
             (identical(other.debugKey, debugKey) ||
-                const DeepCollectionEquality()
-                    .equals(other.debugKey, debugKey)) &&
+                const DeepCollectionEquality().equals(
+                  other.debugKey,
+                  debugKey,
+                )) &&
             (identical(other.debugMsg, debugMsg) ||
-                const DeepCollectionEquality()
-                    .equals(other.debugMsg, debugMsg)) &&
+                const DeepCollectionEquality().equals(
+                  other.debugMsg,
+                  debugMsg,
+                )) &&
             (identical(other.debugParameters, debugParameters) ||
-                const DeepCollectionEquality()
-                    .equals(other.debugParameters, debugParameters)));
+                const DeepCollectionEquality().equals(
+                  other.debugParameters,
+                  debugParameters,
+                )));
   }
 
   @override
@@ -5826,33 +6576,36 @@ class ErrorResponse {
 }
 
 extension $ErrorResponseExtension on ErrorResponse {
-  ErrorResponse copyWith(
-      {String? debugKey, String? debugMsg, List<String>? debugParameters}) {
+  ErrorResponse copyWith({
+    String? debugKey,
+    String? debugMsg,
+    List<String>? debugParameters,
+  }) {
     return ErrorResponse(
-        debugKey: debugKey ?? this.debugKey,
-        debugMsg: debugMsg ?? this.debugMsg,
-        debugParameters: debugParameters ?? this.debugParameters);
+      debugKey: debugKey ?? this.debugKey,
+      debugMsg: debugMsg ?? this.debugMsg,
+      debugParameters: debugParameters ?? this.debugParameters,
+    );
   }
 
-  ErrorResponse copyWithWrapped(
-      {Wrapped<String?>? debugKey,
-      Wrapped<String?>? debugMsg,
-      Wrapped<List<String>?>? debugParameters}) {
+  ErrorResponse copyWithWrapped({
+    Wrapped<String?>? debugKey,
+    Wrapped<String?>? debugMsg,
+    Wrapped<List<String>?>? debugParameters,
+  }) {
     return ErrorResponse(
-        debugKey: (debugKey != null ? debugKey.value : this.debugKey),
-        debugMsg: (debugMsg != null ? debugMsg.value : this.debugMsg),
-        debugParameters: (debugParameters != null
-            ? debugParameters.value
-            : this.debugParameters));
+      debugKey: (debugKey != null ? debugKey.value : this.debugKey),
+      debugMsg: (debugMsg != null ? debugMsg.value : this.debugMsg),
+      debugParameters: (debugParameters != null
+          ? debugParameters.value
+          : this.debugParameters),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class FiltersForBooking {
-  const FiltersForBooking({
-    this.gpsLocation,
-    this.vehicleFilterCriteria,
-  });
+  const FiltersForBooking({this.gpsLocation, this.vehicleFilterCriteria});
 
   factory FiltersForBooking.fromJson(Map<String, dynamic> json) =>
       _$FiltersForBookingFromJson(json);
@@ -5871,11 +6624,15 @@ class FiltersForBooking {
     return identical(this, other) ||
         (other is FiltersForBooking &&
             (identical(other.gpsLocation, gpsLocation) ||
-                const DeepCollectionEquality()
-                    .equals(other.gpsLocation, gpsLocation)) &&
+                const DeepCollectionEquality().equals(
+                  other.gpsLocation,
+                  gpsLocation,
+                )) &&
             (identical(other.vehicleFilterCriteria, vehicleFilterCriteria) ||
                 const DeepCollectionEquality().equals(
-                    other.vehicleFilterCriteria, vehicleFilterCriteria)));
+                  other.vehicleFilterCriteria,
+                  vehicleFilterCriteria,
+                )));
   }
 
   @override
@@ -5889,24 +6646,27 @@ class FiltersForBooking {
 }
 
 extension $FiltersForBookingExtension on FiltersForBooking {
-  FiltersForBooking copyWith(
-      {GpsLocation? gpsLocation,
-      VehicleFilterCriteria? vehicleFilterCriteria}) {
+  FiltersForBooking copyWith({
+    GpsLocation? gpsLocation,
+    VehicleFilterCriteria? vehicleFilterCriteria,
+  }) {
     return FiltersForBooking(
-        gpsLocation: gpsLocation ?? this.gpsLocation,
-        vehicleFilterCriteria:
-            vehicleFilterCriteria ?? this.vehicleFilterCriteria);
+      gpsLocation: gpsLocation ?? this.gpsLocation,
+      vehicleFilterCriteria:
+          vehicleFilterCriteria ?? this.vehicleFilterCriteria,
+    );
   }
 
-  FiltersForBooking copyWithWrapped(
-      {Wrapped<GpsLocation?>? gpsLocation,
-      Wrapped<VehicleFilterCriteria?>? vehicleFilterCriteria}) {
+  FiltersForBooking copyWithWrapped({
+    Wrapped<GpsLocation?>? gpsLocation,
+    Wrapped<VehicleFilterCriteria?>? vehicleFilterCriteria,
+  }) {
     return FiltersForBooking(
-        gpsLocation:
-            (gpsLocation != null ? gpsLocation.value : this.gpsLocation),
-        vehicleFilterCriteria: (vehicleFilterCriteria != null
-            ? vehicleFilterCriteria.value
-            : this.vehicleFilterCriteria));
+      gpsLocation: (gpsLocation != null ? gpsLocation.value : this.gpsLocation),
+      vehicleFilterCriteria: (vehicleFilterCriteria != null
+          ? vehicleFilterCriteria.value
+          : this.vehicleFilterCriteria),
+    );
   }
 }
 
@@ -5964,34 +6724,51 @@ class FlespiCallbackRequest {
                 const DeepCollectionEquality().equals(other.begin, begin)) &&
             (identical(other.canVehicleBatteryLevel, canVehicleBatteryLevel) ||
                 const DeepCollectionEquality().equals(
-                    other.canVehicleBatteryLevel, canVehicleBatteryLevel)) &&
+                  other.canVehicleBatteryLevel,
+                  canVehicleBatteryLevel,
+                )) &&
             (identical(other.canVehicleMileage, canVehicleMileage) ||
-                const DeepCollectionEquality()
-                    .equals(other.canVehicleMileage, canVehicleMileage)) &&
+                const DeepCollectionEquality().equals(
+                  other.canVehicleMileage,
+                  canVehicleMileage,
+                )) &&
             (identical(other.deviceId, deviceId) ||
-                const DeepCollectionEquality()
-                    .equals(other.deviceId, deviceId)) &&
+                const DeepCollectionEquality().equals(
+                  other.deviceId,
+                  deviceId,
+                )) &&
             (identical(other.duration, duration) ||
-                const DeepCollectionEquality()
-                    .equals(other.duration, duration)) &&
+                const DeepCollectionEquality().equals(
+                  other.duration,
+                  duration,
+                )) &&
             (identical(other.end, end) ||
                 const DeepCollectionEquality().equals(other.end, end)) &&
-            (identical(other.externalPowersourceVoltage,
-                    externalPowersourceVoltage) ||
+            (identical(
+                  other.externalPowersourceVoltage,
+                  externalPowersourceVoltage,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.externalPowersourceVoltage,
-                    externalPowersourceVoltage)) &&
+                  other.externalPowersourceVoltage,
+                  externalPowersourceVoltage,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.positionLatitude, positionLatitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.positionLatitude, positionLatitude)) &&
+                const DeepCollectionEquality().equals(
+                  other.positionLatitude,
+                  positionLatitude,
+                )) &&
             (identical(other.positionLongitude, positionLongitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.positionLongitude, positionLongitude)) &&
+                const DeepCollectionEquality().equals(
+                  other.positionLongitude,
+                  positionLongitude,
+                )) &&
             (identical(other.timestamp, timestamp) ||
-                const DeepCollectionEquality()
-                    .equals(other.timestamp, timestamp)));
+                const DeepCollectionEquality().equals(
+                  other.timestamp,
+                  timestamp,
+                )));
   }
 
   @override
@@ -6014,68 +6791,72 @@ class FlespiCallbackRequest {
 }
 
 extension $FlespiCallbackRequestExtension on FlespiCallbackRequest {
-  FlespiCallbackRequest copyWith(
-      {int? begin,
-      int? canVehicleBatteryLevel,
-      double? canVehicleMileage,
-      int? deviceId,
-      int? duration,
-      int? end,
-      double? externalPowersourceVoltage,
-      int? id,
-      double? positionLatitude,
-      double? positionLongitude,
-      int? timestamp}) {
+  FlespiCallbackRequest copyWith({
+    int? begin,
+    int? canVehicleBatteryLevel,
+    double? canVehicleMileage,
+    int? deviceId,
+    int? duration,
+    int? end,
+    double? externalPowersourceVoltage,
+    int? id,
+    double? positionLatitude,
+    double? positionLongitude,
+    int? timestamp,
+  }) {
     return FlespiCallbackRequest(
-        begin: begin ?? this.begin,
-        canVehicleBatteryLevel:
-            canVehicleBatteryLevel ?? this.canVehicleBatteryLevel,
-        canVehicleMileage: canVehicleMileage ?? this.canVehicleMileage,
-        deviceId: deviceId ?? this.deviceId,
-        duration: duration ?? this.duration,
-        end: end ?? this.end,
-        externalPowersourceVoltage:
-            externalPowersourceVoltage ?? this.externalPowersourceVoltage,
-        id: id ?? this.id,
-        positionLatitude: positionLatitude ?? this.positionLatitude,
-        positionLongitude: positionLongitude ?? this.positionLongitude,
-        timestamp: timestamp ?? this.timestamp);
+      begin: begin ?? this.begin,
+      canVehicleBatteryLevel:
+          canVehicleBatteryLevel ?? this.canVehicleBatteryLevel,
+      canVehicleMileage: canVehicleMileage ?? this.canVehicleMileage,
+      deviceId: deviceId ?? this.deviceId,
+      duration: duration ?? this.duration,
+      end: end ?? this.end,
+      externalPowersourceVoltage:
+          externalPowersourceVoltage ?? this.externalPowersourceVoltage,
+      id: id ?? this.id,
+      positionLatitude: positionLatitude ?? this.positionLatitude,
+      positionLongitude: positionLongitude ?? this.positionLongitude,
+      timestamp: timestamp ?? this.timestamp,
+    );
   }
 
-  FlespiCallbackRequest copyWithWrapped(
-      {Wrapped<int?>? begin,
-      Wrapped<int?>? canVehicleBatteryLevel,
-      Wrapped<double?>? canVehicleMileage,
-      Wrapped<int?>? deviceId,
-      Wrapped<int?>? duration,
-      Wrapped<int?>? end,
-      Wrapped<double?>? externalPowersourceVoltage,
-      Wrapped<int?>? id,
-      Wrapped<double?>? positionLatitude,
-      Wrapped<double?>? positionLongitude,
-      Wrapped<int?>? timestamp}) {
+  FlespiCallbackRequest copyWithWrapped({
+    Wrapped<int?>? begin,
+    Wrapped<int?>? canVehicleBatteryLevel,
+    Wrapped<double?>? canVehicleMileage,
+    Wrapped<int?>? deviceId,
+    Wrapped<int?>? duration,
+    Wrapped<int?>? end,
+    Wrapped<double?>? externalPowersourceVoltage,
+    Wrapped<int?>? id,
+    Wrapped<double?>? positionLatitude,
+    Wrapped<double?>? positionLongitude,
+    Wrapped<int?>? timestamp,
+  }) {
     return FlespiCallbackRequest(
-        begin: (begin != null ? begin.value : this.begin),
-        canVehicleBatteryLevel: (canVehicleBatteryLevel != null
-            ? canVehicleBatteryLevel.value
-            : this.canVehicleBatteryLevel),
-        canVehicleMileage: (canVehicleMileage != null
-            ? canVehicleMileage.value
-            : this.canVehicleMileage),
-        deviceId: (deviceId != null ? deviceId.value : this.deviceId),
-        duration: (duration != null ? duration.value : this.duration),
-        end: (end != null ? end.value : this.end),
-        externalPowersourceVoltage: (externalPowersourceVoltage != null
-            ? externalPowersourceVoltage.value
-            : this.externalPowersourceVoltage),
-        id: (id != null ? id.value : this.id),
-        positionLatitude: (positionLatitude != null
-            ? positionLatitude.value
-            : this.positionLatitude),
-        positionLongitude: (positionLongitude != null
-            ? positionLongitude.value
-            : this.positionLongitude),
-        timestamp: (timestamp != null ? timestamp.value : this.timestamp));
+      begin: (begin != null ? begin.value : this.begin),
+      canVehicleBatteryLevel: (canVehicleBatteryLevel != null
+          ? canVehicleBatteryLevel.value
+          : this.canVehicleBatteryLevel),
+      canVehicleMileage: (canVehicleMileage != null
+          ? canVehicleMileage.value
+          : this.canVehicleMileage),
+      deviceId: (deviceId != null ? deviceId.value : this.deviceId),
+      duration: (duration != null ? duration.value : this.duration),
+      end: (end != null ? end.value : this.end),
+      externalPowersourceVoltage: (externalPowersourceVoltage != null
+          ? externalPowersourceVoltage.value
+          : this.externalPowersourceVoltage),
+      id: (id != null ? id.value : this.id),
+      positionLatitude: (positionLatitude != null
+          ? positionLatitude.value
+          : this.positionLatitude),
+      positionLongitude: (positionLongitude != null
+          ? positionLongitude.value
+          : this.positionLongitude),
+      timestamp: (timestamp != null ? timestamp.value : this.timestamp),
+    );
   }
 }
 
@@ -6115,22 +6896,32 @@ class GetVehicleModelsRatesEntry {
     return identical(this, other) ||
         (other is GetVehicleModelsRatesEntry &&
             (identical(other.dayPrice, dayPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.dayPrice, dayPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.dayPrice,
+                  dayPrice,
+                )) &&
             (identical(other.hourPrice, hourPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.hourPrice, hourPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.hourPrice,
+                  hourPrice,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.kmPrice, kmPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmPrice, kmPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.kmPrice,
+                  kmPrice,
+                )) &&
             (identical(other.validFrom, validFrom) ||
-                const DeepCollectionEquality()
-                    .equals(other.validFrom, validFrom)) &&
+                const DeepCollectionEquality().equals(
+                  other.validFrom,
+                  validFrom,
+                )) &&
             (identical(other.validUntil, validUntil) ||
-                const DeepCollectionEquality()
-                    .equals(other.validUntil, validUntil)));
+                const DeepCollectionEquality().equals(
+                  other.validUntil,
+                  validUntil,
+                )));
   }
 
   @override
@@ -6148,44 +6939,46 @@ class GetVehicleModelsRatesEntry {
 }
 
 extension $GetVehicleModelsRatesEntryExtension on GetVehicleModelsRatesEntry {
-  GetVehicleModelsRatesEntry copyWith(
-      {double? dayPrice,
-      double? hourPrice,
-      String? id,
-      double? kmPrice,
-      DateTime? validFrom,
-      DateTime? validUntil}) {
+  GetVehicleModelsRatesEntry copyWith({
+    double? dayPrice,
+    double? hourPrice,
+    String? id,
+    double? kmPrice,
+    DateTime? validFrom,
+    DateTime? validUntil,
+  }) {
     return GetVehicleModelsRatesEntry(
-        dayPrice: dayPrice ?? this.dayPrice,
-        hourPrice: hourPrice ?? this.hourPrice,
-        id: id ?? this.id,
-        kmPrice: kmPrice ?? this.kmPrice,
-        validFrom: validFrom ?? this.validFrom,
-        validUntil: validUntil ?? this.validUntil);
+      dayPrice: dayPrice ?? this.dayPrice,
+      hourPrice: hourPrice ?? this.hourPrice,
+      id: id ?? this.id,
+      kmPrice: kmPrice ?? this.kmPrice,
+      validFrom: validFrom ?? this.validFrom,
+      validUntil: validUntil ?? this.validUntil,
+    );
   }
 
-  GetVehicleModelsRatesEntry copyWithWrapped(
-      {Wrapped<double>? dayPrice,
-      Wrapped<double>? hourPrice,
-      Wrapped<String>? id,
-      Wrapped<double>? kmPrice,
-      Wrapped<DateTime>? validFrom,
-      Wrapped<DateTime?>? validUntil}) {
+  GetVehicleModelsRatesEntry copyWithWrapped({
+    Wrapped<double>? dayPrice,
+    Wrapped<double>? hourPrice,
+    Wrapped<String>? id,
+    Wrapped<double>? kmPrice,
+    Wrapped<DateTime>? validFrom,
+    Wrapped<DateTime?>? validUntil,
+  }) {
     return GetVehicleModelsRatesEntry(
-        dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
-        hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
-        id: (id != null ? id.value : this.id),
-        kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
-        validFrom: (validFrom != null ? validFrom.value : this.validFrom),
-        validUntil: (validUntil != null ? validUntil.value : this.validUntil));
+      dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
+      hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
+      id: (id != null ? id.value : this.id),
+      kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
+      validFrom: (validFrom != null ? validFrom.value : this.validFrom),
+      validUntil: (validUntil != null ? validUntil.value : this.validUntil),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class GetVehicleModelsRatesResponse {
-  const GetVehicleModelsRatesResponse({
-    this.rates,
-  });
+  const GetVehicleModelsRatesResponse({this.rates});
 
   factory GetVehicleModelsRatesResponse.fromJson(Map<String, dynamic> json) =>
       _$GetVehicleModelsRatesResponseFromJson(json);
@@ -6219,10 +7012,12 @@ extension $GetVehicleModelsRatesResponseExtension
     return GetVehicleModelsRatesResponse(rates: rates ?? this.rates);
   }
 
-  GetVehicleModelsRatesResponse copyWithWrapped(
-      {Wrapped<Map<String, dynamic>?>? rates}) {
+  GetVehicleModelsRatesResponse copyWithWrapped({
+    Wrapped<Map<String, dynamic>?>? rates,
+  }) {
     return GetVehicleModelsRatesResponse(
-        rates: (rates != null ? rates.value : this.rates));
+      rates: (rates != null ? rates.value : this.rates),
+    );
   }
 }
 
@@ -6262,22 +7057,32 @@ class GetVehiclesRatesEntry {
     return identical(this, other) ||
         (other is GetVehiclesRatesEntry &&
             (identical(other.dayPrice, dayPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.dayPrice, dayPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.dayPrice,
+                  dayPrice,
+                )) &&
             (identical(other.hourPrice, hourPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.hourPrice, hourPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.hourPrice,
+                  hourPrice,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.kmPrice, kmPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmPrice, kmPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.kmPrice,
+                  kmPrice,
+                )) &&
             (identical(other.validFrom, validFrom) ||
-                const DeepCollectionEquality()
-                    .equals(other.validFrom, validFrom)) &&
+                const DeepCollectionEquality().equals(
+                  other.validFrom,
+                  validFrom,
+                )) &&
             (identical(other.validUntil, validUntil) ||
-                const DeepCollectionEquality()
-                    .equals(other.validUntil, validUntil)));
+                const DeepCollectionEquality().equals(
+                  other.validUntil,
+                  validUntil,
+                )));
   }
 
   @override
@@ -6295,44 +7100,46 @@ class GetVehiclesRatesEntry {
 }
 
 extension $GetVehiclesRatesEntryExtension on GetVehiclesRatesEntry {
-  GetVehiclesRatesEntry copyWith(
-      {double? dayPrice,
-      double? hourPrice,
-      String? id,
-      double? kmPrice,
-      DateTime? validFrom,
-      DateTime? validUntil}) {
+  GetVehiclesRatesEntry copyWith({
+    double? dayPrice,
+    double? hourPrice,
+    String? id,
+    double? kmPrice,
+    DateTime? validFrom,
+    DateTime? validUntil,
+  }) {
     return GetVehiclesRatesEntry(
-        dayPrice: dayPrice ?? this.dayPrice,
-        hourPrice: hourPrice ?? this.hourPrice,
-        id: id ?? this.id,
-        kmPrice: kmPrice ?? this.kmPrice,
-        validFrom: validFrom ?? this.validFrom,
-        validUntil: validUntil ?? this.validUntil);
+      dayPrice: dayPrice ?? this.dayPrice,
+      hourPrice: hourPrice ?? this.hourPrice,
+      id: id ?? this.id,
+      kmPrice: kmPrice ?? this.kmPrice,
+      validFrom: validFrom ?? this.validFrom,
+      validUntil: validUntil ?? this.validUntil,
+    );
   }
 
-  GetVehiclesRatesEntry copyWithWrapped(
-      {Wrapped<double?>? dayPrice,
-      Wrapped<double?>? hourPrice,
-      Wrapped<String>? id,
-      Wrapped<double?>? kmPrice,
-      Wrapped<DateTime>? validFrom,
-      Wrapped<DateTime?>? validUntil}) {
+  GetVehiclesRatesEntry copyWithWrapped({
+    Wrapped<double?>? dayPrice,
+    Wrapped<double?>? hourPrice,
+    Wrapped<String>? id,
+    Wrapped<double?>? kmPrice,
+    Wrapped<DateTime>? validFrom,
+    Wrapped<DateTime?>? validUntil,
+  }) {
     return GetVehiclesRatesEntry(
-        dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
-        hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
-        id: (id != null ? id.value : this.id),
-        kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
-        validFrom: (validFrom != null ? validFrom.value : this.validFrom),
-        validUntil: (validUntil != null ? validUntil.value : this.validUntil));
+      dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
+      hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
+      id: (id != null ? id.value : this.id),
+      kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
+      validFrom: (validFrom != null ? validFrom.value : this.validFrom),
+      validUntil: (validUntil != null ? validUntil.value : this.validUntil),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class GetVehiclesRatesResponse {
-  const GetVehiclesRatesResponse({
-    this.rates,
-  });
+  const GetVehiclesRatesResponse({this.rates});
 
   factory GetVehiclesRatesResponse.fromJson(Map<String, dynamic> json) =>
       _$GetVehiclesRatesResponseFromJson(json);
@@ -6365,19 +7172,18 @@ extension $GetVehiclesRatesResponseExtension on GetVehiclesRatesResponse {
     return GetVehiclesRatesResponse(rates: rates ?? this.rates);
   }
 
-  GetVehiclesRatesResponse copyWithWrapped(
-      {Wrapped<Map<String, dynamic>?>? rates}) {
+  GetVehiclesRatesResponse copyWithWrapped({
+    Wrapped<Map<String, dynamic>?>? rates,
+  }) {
     return GetVehiclesRatesResponse(
-        rates: (rates != null ? rates.value : this.rates));
+      rates: (rates != null ? rates.value : this.rates),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class GpsCoordinate {
-  const GpsCoordinate({
-    this.latitude,
-    this.longitude,
-  });
+  const GpsCoordinate({this.latitude, this.longitude});
 
   factory GpsCoordinate.fromJson(Map<String, dynamic> json) =>
       _$GpsCoordinateFromJson(json);
@@ -6396,11 +7202,15 @@ class GpsCoordinate {
     return identical(this, other) ||
         (other is GpsCoordinate &&
             (identical(other.latitude, latitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.latitude, latitude)) &&
+                const DeepCollectionEquality().equals(
+                  other.latitude,
+                  latitude,
+                )) &&
             (identical(other.longitude, longitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.longitude, longitude)));
+                const DeepCollectionEquality().equals(
+                  other.longitude,
+                  longitude,
+                )));
   }
 
   @override
@@ -6416,15 +7226,19 @@ class GpsCoordinate {
 extension $GpsCoordinateExtension on GpsCoordinate {
   GpsCoordinate copyWith({double? latitude, double? longitude}) {
     return GpsCoordinate(
-        latitude: latitude ?? this.latitude,
-        longitude: longitude ?? this.longitude);
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+    );
   }
 
-  GpsCoordinate copyWithWrapped(
-      {Wrapped<double?>? latitude, Wrapped<double?>? longitude}) {
+  GpsCoordinate copyWithWrapped({
+    Wrapped<double?>? latitude,
+    Wrapped<double?>? longitude,
+  }) {
     return GpsCoordinate(
-        latitude: (latitude != null ? latitude.value : this.latitude),
-        longitude: (longitude != null ? longitude.value : this.longitude));
+      latitude: (latitude != null ? latitude.value : this.latitude),
+      longitude: (longitude != null ? longitude.value : this.longitude),
+    );
   }
 }
 
@@ -6455,14 +7269,20 @@ class GpsLocation {
     return identical(this, other) ||
         (other is GpsLocation &&
             (identical(other.address, address) ||
-                const DeepCollectionEquality()
-                    .equals(other.address, address)) &&
+                const DeepCollectionEquality().equals(
+                  other.address,
+                  address,
+                )) &&
             (identical(other.coordinates, coordinates) ||
-                const DeepCollectionEquality()
-                    .equals(other.coordinates, coordinates)) &&
+                const DeepCollectionEquality().equals(
+                  other.coordinates,
+                  coordinates,
+                )) &&
             (identical(other.vehicleBaseLocationId, vehicleBaseLocationId) ||
                 const DeepCollectionEquality().equals(
-                    other.vehicleBaseLocationId, vehicleBaseLocationId)));
+                  other.vehicleBaseLocationId,
+                  vehicleBaseLocationId,
+                )));
   }
 
   @override
@@ -6477,28 +7297,31 @@ class GpsLocation {
 }
 
 extension $GpsLocationExtension on GpsLocation {
-  GpsLocation copyWith(
-      {String? address,
-      GpsCoordinate? coordinates,
-      String? vehicleBaseLocationId}) {
+  GpsLocation copyWith({
+    String? address,
+    GpsCoordinate? coordinates,
+    String? vehicleBaseLocationId,
+  }) {
     return GpsLocation(
-        address: address ?? this.address,
-        coordinates: coordinates ?? this.coordinates,
-        vehicleBaseLocationId:
-            vehicleBaseLocationId ?? this.vehicleBaseLocationId);
+      address: address ?? this.address,
+      coordinates: coordinates ?? this.coordinates,
+      vehicleBaseLocationId:
+          vehicleBaseLocationId ?? this.vehicleBaseLocationId,
+    );
   }
 
-  GpsLocation copyWithWrapped(
-      {Wrapped<String?>? address,
-      Wrapped<GpsCoordinate?>? coordinates,
-      Wrapped<String?>? vehicleBaseLocationId}) {
+  GpsLocation copyWithWrapped({
+    Wrapped<String?>? address,
+    Wrapped<GpsCoordinate?>? coordinates,
+    Wrapped<String?>? vehicleBaseLocationId,
+  }) {
     return GpsLocation(
-        address: (address != null ? address.value : this.address),
-        coordinates:
-            (coordinates != null ? coordinates.value : this.coordinates),
-        vehicleBaseLocationId: (vehicleBaseLocationId != null
-            ? vehicleBaseLocationId.value
-            : this.vehicleBaseLocationId));
+      address: (address != null ? address.value : this.address),
+      coordinates: (coordinates != null ? coordinates.value : this.coordinates),
+      vehicleBaseLocationId: (vehicleBaseLocationId != null
+          ? vehicleBaseLocationId.value
+          : this.vehicleBaseLocationId),
+    );
   }
 }
 
@@ -6553,21 +7376,29 @@ class Invoice {
             (identical(other.amount, amount) ||
                 const DeepCollectionEquality().equals(other.amount, amount)) &&
             (identical(other.customerName, customerName) ||
-                const DeepCollectionEquality()
-                    .equals(other.customerName, customerName)) &&
+                const DeepCollectionEquality().equals(
+                  other.customerName,
+                  customerName,
+                )) &&
             (identical(other.dueDate, dueDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.dueDate, dueDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.dueDate,
+                  dueDate,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.invoiceDate, invoiceDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.invoiceDate, invoiceDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.invoiceDate,
+                  invoiceDate,
+                )) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.paymentStatus, paymentStatus) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentStatus, paymentStatus)) &&
+                const DeepCollectionEquality().equals(
+                  other.paymentStatus,
+                  paymentStatus,
+                )) &&
             (identical(other.pdfUrl, pdfUrl) ||
                 const DeepCollectionEquality().equals(other.pdfUrl, pdfUrl)) &&
             (identical(other.webUrl, webUrl) ||
@@ -6592,59 +7423,62 @@ class Invoice {
 }
 
 extension $InvoiceExtension on Invoice {
-  Invoice copyWith(
-      {double? amount,
-      String? customerName,
-      DateTime? dueDate,
-      int? id,
-      DateTime? invoiceDate,
-      String? name,
-      enums.InvoicePaymentStatus? paymentStatus,
-      String? pdfUrl,
-      String? webUrl}) {
+  Invoice copyWith({
+    double? amount,
+    String? customerName,
+    DateTime? dueDate,
+    int? id,
+    DateTime? invoiceDate,
+    String? name,
+    enums.InvoicePaymentStatus? paymentStatus,
+    String? pdfUrl,
+    String? webUrl,
+  }) {
     return Invoice(
-        amount: amount ?? this.amount,
-        customerName: customerName ?? this.customerName,
-        dueDate: dueDate ?? this.dueDate,
-        id: id ?? this.id,
-        invoiceDate: invoiceDate ?? this.invoiceDate,
-        name: name ?? this.name,
-        paymentStatus: paymentStatus ?? this.paymentStatus,
-        pdfUrl: pdfUrl ?? this.pdfUrl,
-        webUrl: webUrl ?? this.webUrl);
+      amount: amount ?? this.amount,
+      customerName: customerName ?? this.customerName,
+      dueDate: dueDate ?? this.dueDate,
+      id: id ?? this.id,
+      invoiceDate: invoiceDate ?? this.invoiceDate,
+      name: name ?? this.name,
+      paymentStatus: paymentStatus ?? this.paymentStatus,
+      pdfUrl: pdfUrl ?? this.pdfUrl,
+      webUrl: webUrl ?? this.webUrl,
+    );
   }
 
-  Invoice copyWithWrapped(
-      {Wrapped<double?>? amount,
-      Wrapped<String?>? customerName,
-      Wrapped<DateTime?>? dueDate,
-      Wrapped<int?>? id,
-      Wrapped<DateTime?>? invoiceDate,
-      Wrapped<String?>? name,
-      Wrapped<enums.InvoicePaymentStatus?>? paymentStatus,
-      Wrapped<String?>? pdfUrl,
-      Wrapped<String?>? webUrl}) {
+  Invoice copyWithWrapped({
+    Wrapped<double?>? amount,
+    Wrapped<String?>? customerName,
+    Wrapped<DateTime?>? dueDate,
+    Wrapped<int?>? id,
+    Wrapped<DateTime?>? invoiceDate,
+    Wrapped<String?>? name,
+    Wrapped<enums.InvoicePaymentStatus?>? paymentStatus,
+    Wrapped<String?>? pdfUrl,
+    Wrapped<String?>? webUrl,
+  }) {
     return Invoice(
-        amount: (amount != null ? amount.value : this.amount),
-        customerName:
-            (customerName != null ? customerName.value : this.customerName),
-        dueDate: (dueDate != null ? dueDate.value : this.dueDate),
-        id: (id != null ? id.value : this.id),
-        invoiceDate:
-            (invoiceDate != null ? invoiceDate.value : this.invoiceDate),
-        name: (name != null ? name.value : this.name),
-        paymentStatus:
-            (paymentStatus != null ? paymentStatus.value : this.paymentStatus),
-        pdfUrl: (pdfUrl != null ? pdfUrl.value : this.pdfUrl),
-        webUrl: (webUrl != null ? webUrl.value : this.webUrl));
+      amount: (amount != null ? amount.value : this.amount),
+      customerName: (customerName != null
+          ? customerName.value
+          : this.customerName),
+      dueDate: (dueDate != null ? dueDate.value : this.dueDate),
+      id: (id != null ? id.value : this.id),
+      invoiceDate: (invoiceDate != null ? invoiceDate.value : this.invoiceDate),
+      name: (name != null ? name.value : this.name),
+      paymentStatus: (paymentStatus != null
+          ? paymentStatus.value
+          : this.paymentStatus),
+      pdfUrl: (pdfUrl != null ? pdfUrl.value : this.pdfUrl),
+      webUrl: (webUrl != null ? webUrl.value : this.webUrl),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class InvoiceResponse {
-  const InvoiceResponse({
-    this.invoices,
-  });
+  const InvoiceResponse({this.invoices});
 
   factory InvoiceResponse.fromJson(Map<String, dynamic> json) =>
       _$InvoiceResponseFromJson(json);
@@ -6661,8 +7495,10 @@ class InvoiceResponse {
     return identical(this, other) ||
         (other is InvoiceResponse &&
             (identical(other.invoices, invoices) ||
-                const DeepCollectionEquality()
-                    .equals(other.invoices, invoices)));
+                const DeepCollectionEquality().equals(
+                  other.invoices,
+                  invoices,
+                )));
   }
 
   @override
@@ -6680,7 +7516,8 @@ extension $InvoiceResponseExtension on InvoiceResponse {
 
   InvoiceResponse copyWithWrapped({Wrapped<List<Invoice>?>? invoices}) {
     return InvoiceResponse(
-        invoices: (invoices != null ? invoices.value : this.invoices));
+      invoices: (invoices != null ? invoices.value : this.invoices),
+    );
   }
 }
 
@@ -6748,31 +7585,47 @@ class Issue {
     return identical(this, other) ||
         (other is Issue &&
             (identical(other.actions, actions) ||
-                const DeepCollectionEquality()
-                    .equals(other.actions, actions)) &&
+                const DeepCollectionEquality().equals(
+                  other.actions,
+                  actions,
+                )) &&
             (identical(other.assignedTo, assignedTo) ||
-                const DeepCollectionEquality()
-                    .equals(other.assignedTo, assignedTo)) &&
+                const DeepCollectionEquality().equals(
+                  other.assignedTo,
+                  assignedTo,
+                )) &&
             (identical(other.booking, booking) ||
-                const DeepCollectionEquality()
-                    .equals(other.booking, booking)) &&
+                const DeepCollectionEquality().equals(
+                  other.booking,
+                  booking,
+                )) &&
             (identical(other.createdBy, createdBy) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdBy, createdBy)) &&
+                const DeepCollectionEquality().equals(
+                  other.createdBy,
+                  createdBy,
+                )) &&
             (identical(other.dateCreated, dateCreated) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateCreated, dateCreated)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateCreated,
+                  dateCreated,
+                )) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
+                const DeepCollectionEquality().equals(
+                  other.description,
+                  description,
+                )) &&
             (identical(other.lastUpdated, lastUpdated) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastUpdated, lastUpdated)) &&
+                const DeepCollectionEquality().equals(
+                  other.lastUpdated,
+                  lastUpdated,
+                )) &&
             (identical(other.number, number) ||
                 const DeepCollectionEquality().equals(other.number, number)) &&
             (identical(other.priority, priority) ||
-                const DeepCollectionEquality()
-                    .equals(other.priority, priority)) &&
+                const DeepCollectionEquality().equals(
+                  other.priority,
+                  priority,
+                )) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.title, title) ||
@@ -6805,67 +7658,68 @@ class Issue {
 }
 
 extension $IssueExtension on Issue {
-  Issue copyWith(
-      {List<IssueAction>? actions,
-      User? assignedTo,
-      Booking? booking,
-      User? createdBy,
-      DateTime? dateCreated,
-      String? description,
-      DateTime? lastUpdated,
-      int? number,
-      enums.IssuePriority? priority,
-      enums.IssueStatus? status,
-      String? title,
-      User? user,
-      Vehicle? vehicle}) {
+  Issue copyWith({
+    List<IssueAction>? actions,
+    User? assignedTo,
+    Booking? booking,
+    User? createdBy,
+    DateTime? dateCreated,
+    String? description,
+    DateTime? lastUpdated,
+    int? number,
+    enums.IssuePriority? priority,
+    enums.IssueStatus? status,
+    String? title,
+    User? user,
+    Vehicle? vehicle,
+  }) {
     return Issue(
-        actions: actions ?? this.actions,
-        assignedTo: assignedTo ?? this.assignedTo,
-        booking: booking ?? this.booking,
-        createdBy: createdBy ?? this.createdBy,
-        dateCreated: dateCreated ?? this.dateCreated,
-        description: description ?? this.description,
-        lastUpdated: lastUpdated ?? this.lastUpdated,
-        number: number ?? this.number,
-        priority: priority ?? this.priority,
-        status: status ?? this.status,
-        title: title ?? this.title,
-        user: user ?? this.user,
-        vehicle: vehicle ?? this.vehicle);
+      actions: actions ?? this.actions,
+      assignedTo: assignedTo ?? this.assignedTo,
+      booking: booking ?? this.booking,
+      createdBy: createdBy ?? this.createdBy,
+      dateCreated: dateCreated ?? this.dateCreated,
+      description: description ?? this.description,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      number: number ?? this.number,
+      priority: priority ?? this.priority,
+      status: status ?? this.status,
+      title: title ?? this.title,
+      user: user ?? this.user,
+      vehicle: vehicle ?? this.vehicle,
+    );
   }
 
-  Issue copyWithWrapped(
-      {Wrapped<List<IssueAction>?>? actions,
-      Wrapped<User?>? assignedTo,
-      Wrapped<Booking?>? booking,
-      Wrapped<User?>? createdBy,
-      Wrapped<DateTime?>? dateCreated,
-      Wrapped<String?>? description,
-      Wrapped<DateTime?>? lastUpdated,
-      Wrapped<int?>? number,
-      Wrapped<enums.IssuePriority?>? priority,
-      Wrapped<enums.IssueStatus?>? status,
-      Wrapped<String?>? title,
-      Wrapped<User?>? user,
-      Wrapped<Vehicle?>? vehicle}) {
+  Issue copyWithWrapped({
+    Wrapped<List<IssueAction>?>? actions,
+    Wrapped<User?>? assignedTo,
+    Wrapped<Booking?>? booking,
+    Wrapped<User?>? createdBy,
+    Wrapped<DateTime?>? dateCreated,
+    Wrapped<String?>? description,
+    Wrapped<DateTime?>? lastUpdated,
+    Wrapped<int?>? number,
+    Wrapped<enums.IssuePriority?>? priority,
+    Wrapped<enums.IssueStatus?>? status,
+    Wrapped<String?>? title,
+    Wrapped<User?>? user,
+    Wrapped<Vehicle?>? vehicle,
+  }) {
     return Issue(
-        actions: (actions != null ? actions.value : this.actions),
-        assignedTo: (assignedTo != null ? assignedTo.value : this.assignedTo),
-        booking: (booking != null ? booking.value : this.booking),
-        createdBy: (createdBy != null ? createdBy.value : this.createdBy),
-        dateCreated:
-            (dateCreated != null ? dateCreated.value : this.dateCreated),
-        description:
-            (description != null ? description.value : this.description),
-        lastUpdated:
-            (lastUpdated != null ? lastUpdated.value : this.lastUpdated),
-        number: (number != null ? number.value : this.number),
-        priority: (priority != null ? priority.value : this.priority),
-        status: (status != null ? status.value : this.status),
-        title: (title != null ? title.value : this.title),
-        user: (user != null ? user.value : this.user),
-        vehicle: (vehicle != null ? vehicle.value : this.vehicle));
+      actions: (actions != null ? actions.value : this.actions),
+      assignedTo: (assignedTo != null ? assignedTo.value : this.assignedTo),
+      booking: (booking != null ? booking.value : this.booking),
+      createdBy: (createdBy != null ? createdBy.value : this.createdBy),
+      dateCreated: (dateCreated != null ? dateCreated.value : this.dateCreated),
+      description: (description != null ? description.value : this.description),
+      lastUpdated: (lastUpdated != null ? lastUpdated.value : this.lastUpdated),
+      number: (number != null ? number.value : this.number),
+      priority: (priority != null ? priority.value : this.priority),
+      status: (status != null ? status.value : this.status),
+      title: (title != null ? title.value : this.title),
+      user: (user != null ? user.value : this.user),
+      vehicle: (vehicle != null ? vehicle.value : this.vehicle),
+    );
   }
 }
 
@@ -6916,17 +7770,25 @@ class IssueAction {
     return identical(this, other) ||
         (other is IssueAction &&
             (identical(other.assignedTo, assignedTo) ||
-                const DeepCollectionEquality()
-                    .equals(other.assignedTo, assignedTo)) &&
+                const DeepCollectionEquality().equals(
+                  other.assignedTo,
+                  assignedTo,
+                )) &&
             (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
+                const DeepCollectionEquality().equals(
+                  other.comment,
+                  comment,
+                )) &&
             (identical(other.dateCreated, dateCreated) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateCreated, dateCreated)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateCreated,
+                  dateCreated,
+                )) &&
             (identical(other.priority, priority) ||
-                const DeepCollectionEquality()
-                    .equals(other.priority, priority)) &&
+                const DeepCollectionEquality().equals(
+                  other.priority,
+                  priority,
+                )) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.title, title) ||
@@ -6951,49 +7813,50 @@ class IssueAction {
 }
 
 extension $IssueActionExtension on IssueAction {
-  IssueAction copyWith(
-      {User? assignedTo,
-      String? comment,
-      DateTime? dateCreated,
-      enums.IssueActionPriority? priority,
-      enums.IssueActionStatus? status,
-      String? title,
-      User? user}) {
+  IssueAction copyWith({
+    User? assignedTo,
+    String? comment,
+    DateTime? dateCreated,
+    enums.IssueActionPriority? priority,
+    enums.IssueActionStatus? status,
+    String? title,
+    User? user,
+  }) {
     return IssueAction(
-        assignedTo: assignedTo ?? this.assignedTo,
-        comment: comment ?? this.comment,
-        dateCreated: dateCreated ?? this.dateCreated,
-        priority: priority ?? this.priority,
-        status: status ?? this.status,
-        title: title ?? this.title,
-        user: user ?? this.user);
+      assignedTo: assignedTo ?? this.assignedTo,
+      comment: comment ?? this.comment,
+      dateCreated: dateCreated ?? this.dateCreated,
+      priority: priority ?? this.priority,
+      status: status ?? this.status,
+      title: title ?? this.title,
+      user: user ?? this.user,
+    );
   }
 
-  IssueAction copyWithWrapped(
-      {Wrapped<User?>? assignedTo,
-      Wrapped<String?>? comment,
-      Wrapped<DateTime?>? dateCreated,
-      Wrapped<enums.IssueActionPriority?>? priority,
-      Wrapped<enums.IssueActionStatus?>? status,
-      Wrapped<String?>? title,
-      Wrapped<User?>? user}) {
+  IssueAction copyWithWrapped({
+    Wrapped<User?>? assignedTo,
+    Wrapped<String?>? comment,
+    Wrapped<DateTime?>? dateCreated,
+    Wrapped<enums.IssueActionPriority?>? priority,
+    Wrapped<enums.IssueActionStatus?>? status,
+    Wrapped<String?>? title,
+    Wrapped<User?>? user,
+  }) {
     return IssueAction(
-        assignedTo: (assignedTo != null ? assignedTo.value : this.assignedTo),
-        comment: (comment != null ? comment.value : this.comment),
-        dateCreated:
-            (dateCreated != null ? dateCreated.value : this.dateCreated),
-        priority: (priority != null ? priority.value : this.priority),
-        status: (status != null ? status.value : this.status),
-        title: (title != null ? title.value : this.title),
-        user: (user != null ? user.value : this.user));
+      assignedTo: (assignedTo != null ? assignedTo.value : this.assignedTo),
+      comment: (comment != null ? comment.value : this.comment),
+      dateCreated: (dateCreated != null ? dateCreated.value : this.dateCreated),
+      priority: (priority != null ? priority.value : this.priority),
+      status: (status != null ? status.value : this.status),
+      title: (title != null ? title.value : this.title),
+      user: (user != null ? user.value : this.user),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class IssuePage {
-  const IssuePage({
-    this.issues,
-  });
+  const IssuePage({this.issues});
 
   factory IssuePage.fromJson(Map<String, dynamic> json) =>
       _$IssuePageFromJson(json);
@@ -7033,10 +7896,7 @@ extension $IssuePageExtension on IssuePage {
 
 @JsonSerializable(explicitToJson: true)
 class LocationPosition {
-  const LocationPosition({
-    this.lat,
-    this.lng,
-  });
+  const LocationPosition({this.lat, this.lng});
 
   factory LocationPosition.fromJson(Map<String, dynamic> json) =>
       _$LocationPositionFromJson(json);
@@ -7075,20 +7935,20 @@ extension $LocationPositionExtension on LocationPosition {
     return LocationPosition(lat: lat ?? this.lat, lng: lng ?? this.lng);
   }
 
-  LocationPosition copyWithWrapped(
-      {Wrapped<double?>? lat, Wrapped<double?>? lng}) {
+  LocationPosition copyWithWrapped({
+    Wrapped<double?>? lat,
+    Wrapped<double?>? lng,
+  }) {
     return LocationPosition(
-        lat: (lat != null ? lat.value : this.lat),
-        lng: (lng != null ? lng.value : this.lng));
+      lat: (lat != null ? lat.value : this.lat),
+      lng: (lng != null ? lng.value : this.lng),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class LocationValue {
-  const LocationValue({
-    this.address,
-    this.position,
-  });
+  const LocationValue({this.address, this.position});
 
   factory LocationValue.fromJson(Map<String, dynamic> json) =>
       _$LocationValueFromJson(json);
@@ -7107,11 +7967,15 @@ class LocationValue {
     return identical(this, other) ||
         (other is LocationValue &&
             (identical(other.address, address) ||
-                const DeepCollectionEquality()
-                    .equals(other.address, address)) &&
+                const DeepCollectionEquality().equals(
+                  other.address,
+                  address,
+                )) &&
             (identical(other.position, position) ||
-                const DeepCollectionEquality()
-                    .equals(other.position, position)));
+                const DeepCollectionEquality().equals(
+                  other.position,
+                  position,
+                )));
   }
 
   @override
@@ -7127,22 +7991,25 @@ class LocationValue {
 extension $LocationValueExtension on LocationValue {
   LocationValue copyWith({String? address, LocationPosition? position}) {
     return LocationValue(
-        address: address ?? this.address, position: position ?? this.position);
+      address: address ?? this.address,
+      position: position ?? this.position,
+    );
   }
 
-  LocationValue copyWithWrapped(
-      {Wrapped<String?>? address, Wrapped<LocationPosition?>? position}) {
+  LocationValue copyWithWrapped({
+    Wrapped<String?>? address,
+    Wrapped<LocationPosition?>? position,
+  }) {
     return LocationValue(
-        address: (address != null ? address.value : this.address),
-        position: (position != null ? position.value : this.position));
+      address: (address != null ? address.value : this.address),
+      position: (position != null ? position.value : this.position),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class Mileage {
-  const Mileage({
-    this.mileage,
-  });
+  const Mileage({this.mileage});
 
   factory Mileage.fromJson(Map<String, dynamic> json) =>
       _$MileageFromJson(json);
@@ -7220,23 +8087,35 @@ class MyAvailableVehicle {
     return identical(this, other) ||
         (other is MyAvailableVehicle &&
             (identical(other.nextNonAvailability, nextNonAvailability) ||
-                const DeepCollectionEquality()
-                    .equals(other.nextNonAvailability, nextNonAvailability)) &&
-            (identical(other.overdue, overdue) ||
-                const DeepCollectionEquality()
-                    .equals(other.overdue, overdue)) &&
-            (identical(
-                    other.previousNonAvailability, previousNonAvailability) ||
                 const DeepCollectionEquality().equals(
-                    other.previousNonAvailability, previousNonAvailability)) &&
+                  other.nextNonAvailability,
+                  nextNonAvailability,
+                )) &&
+            (identical(other.overdue, overdue) ||
+                const DeepCollectionEquality().equals(
+                  other.overdue,
+                  overdue,
+                )) &&
+            (identical(
+                  other.previousNonAvailability,
+                  previousNonAvailability,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.previousNonAvailability,
+                  previousNonAvailability,
+                )) &&
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.vehicle, vehicle) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicle, vehicle)) &&
+                const DeepCollectionEquality().equals(
+                  other.vehicle,
+                  vehicle,
+                )) &&
             (identical(other.vehicleUsage, vehicleUsage) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleUsage, vehicleUsage)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleUsage,
+                  vehicleUsage,
+                )));
   }
 
   @override
@@ -7254,50 +8133,53 @@ class MyAvailableVehicle {
 }
 
 extension $MyAvailableVehicleExtension on MyAvailableVehicle {
-  MyAvailableVehicle copyWith(
-      {AdjacentNonAvailability? nextNonAvailability,
-      bool? overdue,
-      AdjacentNonAvailability? previousNonAvailability,
-      enums.MyAvailableVehicleType? type,
-      Vehicle? vehicle,
-      VehicleUsage? vehicleUsage}) {
+  MyAvailableVehicle copyWith({
+    AdjacentNonAvailability? nextNonAvailability,
+    bool? overdue,
+    AdjacentNonAvailability? previousNonAvailability,
+    enums.MyAvailableVehicleType? type,
+    Vehicle? vehicle,
+    VehicleUsage? vehicleUsage,
+  }) {
     return MyAvailableVehicle(
-        nextNonAvailability: nextNonAvailability ?? this.nextNonAvailability,
-        overdue: overdue ?? this.overdue,
-        previousNonAvailability:
-            previousNonAvailability ?? this.previousNonAvailability,
-        type: type ?? this.type,
-        vehicle: vehicle ?? this.vehicle,
-        vehicleUsage: vehicleUsage ?? this.vehicleUsage);
+      nextNonAvailability: nextNonAvailability ?? this.nextNonAvailability,
+      overdue: overdue ?? this.overdue,
+      previousNonAvailability:
+          previousNonAvailability ?? this.previousNonAvailability,
+      type: type ?? this.type,
+      vehicle: vehicle ?? this.vehicle,
+      vehicleUsage: vehicleUsage ?? this.vehicleUsage,
+    );
   }
 
-  MyAvailableVehicle copyWithWrapped(
-      {Wrapped<AdjacentNonAvailability?>? nextNonAvailability,
-      Wrapped<bool?>? overdue,
-      Wrapped<AdjacentNonAvailability?>? previousNonAvailability,
-      Wrapped<enums.MyAvailableVehicleType?>? type,
-      Wrapped<Vehicle?>? vehicle,
-      Wrapped<VehicleUsage?>? vehicleUsage}) {
+  MyAvailableVehicle copyWithWrapped({
+    Wrapped<AdjacentNonAvailability?>? nextNonAvailability,
+    Wrapped<bool?>? overdue,
+    Wrapped<AdjacentNonAvailability?>? previousNonAvailability,
+    Wrapped<enums.MyAvailableVehicleType?>? type,
+    Wrapped<Vehicle?>? vehicle,
+    Wrapped<VehicleUsage?>? vehicleUsage,
+  }) {
     return MyAvailableVehicle(
-        nextNonAvailability: (nextNonAvailability != null
-            ? nextNonAvailability.value
-            : this.nextNonAvailability),
-        overdue: (overdue != null ? overdue.value : this.overdue),
-        previousNonAvailability: (previousNonAvailability != null
-            ? previousNonAvailability.value
-            : this.previousNonAvailability),
-        type: (type != null ? type.value : this.type),
-        vehicle: (vehicle != null ? vehicle.value : this.vehicle),
-        vehicleUsage:
-            (vehicleUsage != null ? vehicleUsage.value : this.vehicleUsage));
+      nextNonAvailability: (nextNonAvailability != null
+          ? nextNonAvailability.value
+          : this.nextNonAvailability),
+      overdue: (overdue != null ? overdue.value : this.overdue),
+      previousNonAvailability: (previousNonAvailability != null
+          ? previousNonAvailability.value
+          : this.previousNonAvailability),
+      type: (type != null ? type.value : this.type),
+      vehicle: (vehicle != null ? vehicle.value : this.vehicle),
+      vehicleUsage: (vehicleUsage != null
+          ? vehicleUsage.value
+          : this.vehicleUsage),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class MyAvailableVehiclesPage {
-  const MyAvailableVehiclesPage({
-    this.currentNonAvailablePeriods,
-  });
+  const MyAvailableVehiclesPage({this.currentNonAvailablePeriods});
 
   factory MyAvailableVehiclesPage.fromJson(Map<String, dynamic> json) =>
       _$MyAvailableVehiclesPageFromJson(json);
@@ -7306,7 +8188,9 @@ class MyAvailableVehiclesPage {
   Map<String, dynamic> toJson() => _$MyAvailableVehiclesPageToJson(this);
 
   @JsonKey(
-      name: 'currentNonAvailablePeriods', defaultValue: <MyAvailableVehicle>[])
+    name: 'currentNonAvailablePeriods',
+    defaultValue: <MyAvailableVehicle>[],
+  )
   final List<MyAvailableVehicle>? currentNonAvailablePeriods;
   static const fromJsonFactory = _$MyAvailableVehiclesPageFromJson;
 
@@ -7314,11 +8198,14 @@ class MyAvailableVehiclesPage {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other is MyAvailableVehiclesPage &&
-            (identical(other.currentNonAvailablePeriods,
-                    currentNonAvailablePeriods) ||
+            (identical(
+                  other.currentNonAvailablePeriods,
+                  currentNonAvailablePeriods,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.currentNonAvailablePeriods,
-                    currentNonAvailablePeriods)));
+                  other.currentNonAvailablePeriods,
+                  currentNonAvailablePeriods,
+                )));
   }
 
   @override
@@ -7331,27 +8218,29 @@ class MyAvailableVehiclesPage {
 }
 
 extension $MyAvailableVehiclesPageExtension on MyAvailableVehiclesPage {
-  MyAvailableVehiclesPage copyWith(
-      {List<MyAvailableVehicle>? currentNonAvailablePeriods}) {
+  MyAvailableVehiclesPage copyWith({
+    List<MyAvailableVehicle>? currentNonAvailablePeriods,
+  }) {
     return MyAvailableVehiclesPage(
-        currentNonAvailablePeriods:
-            currentNonAvailablePeriods ?? this.currentNonAvailablePeriods);
+      currentNonAvailablePeriods:
+          currentNonAvailablePeriods ?? this.currentNonAvailablePeriods,
+    );
   }
 
-  MyAvailableVehiclesPage copyWithWrapped(
-      {Wrapped<List<MyAvailableVehicle>?>? currentNonAvailablePeriods}) {
+  MyAvailableVehiclesPage copyWithWrapped({
+    Wrapped<List<MyAvailableVehicle>?>? currentNonAvailablePeriods,
+  }) {
     return MyAvailableVehiclesPage(
-        currentNonAvailablePeriods: (currentNonAvailablePeriods != null
-            ? currentNonAvailablePeriods.value
-            : this.currentNonAvailablePeriods));
+      currentNonAvailablePeriods: (currentNonAvailablePeriods != null
+          ? currentNonAvailablePeriods.value
+          : this.currentNonAvailablePeriods),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class NonAvailabilitiesPage {
-  const NonAvailabilitiesPage({
-    this.nonAvailabilities,
-  });
+  const NonAvailabilitiesPage({this.nonAvailabilities});
 
   factory NonAvailabilitiesPage.fromJson(Map<String, dynamic> json) =>
       _$NonAvailabilitiesPageFromJson(json);
@@ -7368,8 +8257,10 @@ class NonAvailabilitiesPage {
     return identical(this, other) ||
         (other is NonAvailabilitiesPage &&
             (identical(other.nonAvailabilities, nonAvailabilities) ||
-                const DeepCollectionEquality()
-                    .equals(other.nonAvailabilities, nonAvailabilities)));
+                const DeepCollectionEquality().equals(
+                  other.nonAvailabilities,
+                  nonAvailabilities,
+                )));
   }
 
   @override
@@ -7384,15 +8275,18 @@ class NonAvailabilitiesPage {
 extension $NonAvailabilitiesPageExtension on NonAvailabilitiesPage {
   NonAvailabilitiesPage copyWith({List<NonAvailability>? nonAvailabilities}) {
     return NonAvailabilitiesPage(
-        nonAvailabilities: nonAvailabilities ?? this.nonAvailabilities);
+      nonAvailabilities: nonAvailabilities ?? this.nonAvailabilities,
+    );
   }
 
-  NonAvailabilitiesPage copyWithWrapped(
-      {Wrapped<List<NonAvailability>?>? nonAvailabilities}) {
+  NonAvailabilitiesPage copyWithWrapped({
+    Wrapped<List<NonAvailability>?>? nonAvailabilities,
+  }) {
     return NonAvailabilitiesPage(
-        nonAvailabilities: (nonAvailabilities != null
-            ? nonAvailabilities.value
-            : this.nonAvailabilities));
+      nonAvailabilities: (nonAvailabilities != null
+          ? nonAvailabilities.value
+          : this.nonAvailabilities),
+    );
   }
 }
 
@@ -7428,25 +8322,37 @@ class NonAvailabilitiesPerVehicle {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other is NonAvailabilitiesPerVehicle &&
-            (identical(other.currentPrivateUsageOverdue,
-                    currentPrivateUsageOverdue) ||
-                const DeepCollectionEquality().equals(
-                    other.currentPrivateUsageOverdue,
-                    currentPrivateUsageOverdue)) &&
             (identical(
-                    other.currentPrivateUsageStart, currentPrivateUsageStart) ||
+                  other.currentPrivateUsageOverdue,
+                  currentPrivateUsageOverdue,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.currentPrivateUsageStart,
-                    currentPrivateUsageStart)) &&
+                  other.currentPrivateUsageOverdue,
+                  currentPrivateUsageOverdue,
+                )) &&
+            (identical(
+                  other.currentPrivateUsageStart,
+                  currentPrivateUsageStart,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.currentPrivateUsageStart,
+                  currentPrivateUsageStart,
+                )) &&
             (identical(other.nonAvailabilities, nonAvailabilities) ||
-                const DeepCollectionEquality()
-                    .equals(other.nonAvailabilities, nonAvailabilities)) &&
+                const DeepCollectionEquality().equals(
+                  other.nonAvailabilities,
+                  nonAvailabilities,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)) &&
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )) &&
             (identical(other.vehicleName, vehicleName) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleName, vehicleName)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleName,
+                  vehicleName,
+                )));
   }
 
   @override
@@ -7463,49 +8369,50 @@ class NonAvailabilitiesPerVehicle {
 }
 
 extension $NonAvailabilitiesPerVehicleExtension on NonAvailabilitiesPerVehicle {
-  NonAvailabilitiesPerVehicle copyWith(
-      {bool? currentPrivateUsageOverdue,
-      DateTime? currentPrivateUsageStart,
-      List<NonAvailability>? nonAvailabilities,
-      String? vehicleId,
-      String? vehicleName}) {
+  NonAvailabilitiesPerVehicle copyWith({
+    bool? currentPrivateUsageOverdue,
+    DateTime? currentPrivateUsageStart,
+    List<NonAvailability>? nonAvailabilities,
+    String? vehicleId,
+    String? vehicleName,
+  }) {
     return NonAvailabilitiesPerVehicle(
-        currentPrivateUsageOverdue:
-            currentPrivateUsageOverdue ?? this.currentPrivateUsageOverdue,
-        currentPrivateUsageStart:
-            currentPrivateUsageStart ?? this.currentPrivateUsageStart,
-        nonAvailabilities: nonAvailabilities ?? this.nonAvailabilities,
-        vehicleId: vehicleId ?? this.vehicleId,
-        vehicleName: vehicleName ?? this.vehicleName);
+      currentPrivateUsageOverdue:
+          currentPrivateUsageOverdue ?? this.currentPrivateUsageOverdue,
+      currentPrivateUsageStart:
+          currentPrivateUsageStart ?? this.currentPrivateUsageStart,
+      nonAvailabilities: nonAvailabilities ?? this.nonAvailabilities,
+      vehicleId: vehicleId ?? this.vehicleId,
+      vehicleName: vehicleName ?? this.vehicleName,
+    );
   }
 
-  NonAvailabilitiesPerVehicle copyWithWrapped(
-      {Wrapped<bool?>? currentPrivateUsageOverdue,
-      Wrapped<DateTime?>? currentPrivateUsageStart,
-      Wrapped<List<NonAvailability>?>? nonAvailabilities,
-      Wrapped<String?>? vehicleId,
-      Wrapped<String?>? vehicleName}) {
+  NonAvailabilitiesPerVehicle copyWithWrapped({
+    Wrapped<bool?>? currentPrivateUsageOverdue,
+    Wrapped<DateTime?>? currentPrivateUsageStart,
+    Wrapped<List<NonAvailability>?>? nonAvailabilities,
+    Wrapped<String?>? vehicleId,
+    Wrapped<String?>? vehicleName,
+  }) {
     return NonAvailabilitiesPerVehicle(
-        currentPrivateUsageOverdue: (currentPrivateUsageOverdue != null
-            ? currentPrivateUsageOverdue.value
-            : this.currentPrivateUsageOverdue),
-        currentPrivateUsageStart: (currentPrivateUsageStart != null
-            ? currentPrivateUsageStart.value
-            : this.currentPrivateUsageStart),
-        nonAvailabilities: (nonAvailabilities != null
-            ? nonAvailabilities.value
-            : this.nonAvailabilities),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
-        vehicleName:
-            (vehicleName != null ? vehicleName.value : this.vehicleName));
+      currentPrivateUsageOverdue: (currentPrivateUsageOverdue != null
+          ? currentPrivateUsageOverdue.value
+          : this.currentPrivateUsageOverdue),
+      currentPrivateUsageStart: (currentPrivateUsageStart != null
+          ? currentPrivateUsageStart.value
+          : this.currentPrivateUsageStart),
+      nonAvailabilities: (nonAvailabilities != null
+          ? nonAvailabilities.value
+          : this.nonAvailabilities),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+      vehicleName: (vehicleName != null ? vehicleName.value : this.vehicleName),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class NonAvailabilitiesPerVehiclePage {
-  const NonAvailabilitiesPerVehiclePage({
-    this.availabilityEventsPerVehicle,
-  });
+  const NonAvailabilitiesPerVehiclePage({this.availabilityEventsPerVehicle});
 
   factory NonAvailabilitiesPerVehiclePage.fromJson(Map<String, dynamic> json) =>
       _$NonAvailabilitiesPerVehiclePageFromJson(json);
@@ -7522,11 +8429,14 @@ class NonAvailabilitiesPerVehiclePage {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other is NonAvailabilitiesPerVehiclePage &&
-            (identical(other.availabilityEventsPerVehicle,
-                    availabilityEventsPerVehicle) ||
+            (identical(
+                  other.availabilityEventsPerVehicle,
+                  availabilityEventsPerVehicle,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.availabilityEventsPerVehicle,
-                    availabilityEventsPerVehicle)));
+                  other.availabilityEventsPerVehicle,
+                  availabilityEventsPerVehicle,
+                )));
   }
 
   @override
@@ -7540,19 +8450,23 @@ class NonAvailabilitiesPerVehiclePage {
 
 extension $NonAvailabilitiesPerVehiclePageExtension
     on NonAvailabilitiesPerVehiclePage {
-  NonAvailabilitiesPerVehiclePage copyWith(
-      {Map<String, dynamic>? availabilityEventsPerVehicle}) {
+  NonAvailabilitiesPerVehiclePage copyWith({
+    Map<String, dynamic>? availabilityEventsPerVehicle,
+  }) {
     return NonAvailabilitiesPerVehiclePage(
-        availabilityEventsPerVehicle:
-            availabilityEventsPerVehicle ?? this.availabilityEventsPerVehicle);
+      availabilityEventsPerVehicle:
+          availabilityEventsPerVehicle ?? this.availabilityEventsPerVehicle,
+    );
   }
 
-  NonAvailabilitiesPerVehiclePage copyWithWrapped(
-      {Wrapped<Map<String, dynamic>?>? availabilityEventsPerVehicle}) {
+  NonAvailabilitiesPerVehiclePage copyWithWrapped({
+    Wrapped<Map<String, dynamic>?>? availabilityEventsPerVehicle,
+  }) {
     return NonAvailabilitiesPerVehiclePage(
-        availabilityEventsPerVehicle: (availabilityEventsPerVehicle != null
-            ? availabilityEventsPerVehicle.value
-            : this.availabilityEventsPerVehicle));
+      availabilityEventsPerVehicle: (availabilityEventsPerVehicle != null
+          ? availabilityEventsPerVehicle.value
+          : this.availabilityEventsPerVehicle),
+    );
   }
 }
 
@@ -7605,29 +8519,41 @@ class NonAvailability {
     return identical(this, other) ||
         (other is NonAvailability &&
             (identical(other.booking, booking) ||
-                const DeepCollectionEquality()
-                    .equals(other.booking, booking)) &&
+                const DeepCollectionEquality().equals(
+                  other.booking,
+                  booking,
+                )) &&
             (identical(other.fullPeriod, fullPeriod) ||
-                const DeepCollectionEquality()
-                    .equals(other.fullPeriod, fullPeriod)) &&
+                const DeepCollectionEquality().equals(
+                  other.fullPeriod,
+                  fullPeriod,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.overdue, overdue) ||
-                const DeepCollectionEquality()
-                    .equals(other.overdue, overdue)) &&
+                const DeepCollectionEquality().equals(
+                  other.overdue,
+                  overdue,
+                )) &&
             (identical(other.period, period) ||
                 const DeepCollectionEquality().equals(other.period, period)) &&
             (identical(other.plannedPeriod, plannedPeriod) ||
-                const DeepCollectionEquality()
-                    .equals(other.plannedPeriod, plannedPeriod)) &&
+                const DeepCollectionEquality().equals(
+                  other.plannedPeriod,
+                  plannedPeriod,
+                )) &&
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.usagePeriod, usagePeriod) ||
-                const DeepCollectionEquality()
-                    .equals(other.usagePeriod, usagePeriod)) &&
+                const DeepCollectionEquality().equals(
+                  other.usagePeriod,
+                  usagePeriod,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -7648,58 +8574,60 @@ class NonAvailability {
 }
 
 extension $NonAvailabilityExtension on NonAvailability {
-  NonAvailability copyWith(
-      {Booking? booking,
-      Period? fullPeriod,
-      String? id,
-      bool? overdue,
-      Period? period,
-      Period? plannedPeriod,
-      enums.NonAvailabilityType? type,
-      Period? usagePeriod,
-      String? vehicleId}) {
+  NonAvailability copyWith({
+    Booking? booking,
+    Period? fullPeriod,
+    String? id,
+    bool? overdue,
+    Period? period,
+    Period? plannedPeriod,
+    enums.NonAvailabilityType? type,
+    Period? usagePeriod,
+    String? vehicleId,
+  }) {
     return NonAvailability(
-        booking: booking ?? this.booking,
-        fullPeriod: fullPeriod ?? this.fullPeriod,
-        id: id ?? this.id,
-        overdue: overdue ?? this.overdue,
-        period: period ?? this.period,
-        plannedPeriod: plannedPeriod ?? this.plannedPeriod,
-        type: type ?? this.type,
-        usagePeriod: usagePeriod ?? this.usagePeriod,
-        vehicleId: vehicleId ?? this.vehicleId);
+      booking: booking ?? this.booking,
+      fullPeriod: fullPeriod ?? this.fullPeriod,
+      id: id ?? this.id,
+      overdue: overdue ?? this.overdue,
+      period: period ?? this.period,
+      plannedPeriod: plannedPeriod ?? this.plannedPeriod,
+      type: type ?? this.type,
+      usagePeriod: usagePeriod ?? this.usagePeriod,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  NonAvailability copyWithWrapped(
-      {Wrapped<Booking?>? booking,
-      Wrapped<Period?>? fullPeriod,
-      Wrapped<String?>? id,
-      Wrapped<bool?>? overdue,
-      Wrapped<Period?>? period,
-      Wrapped<Period?>? plannedPeriod,
-      Wrapped<enums.NonAvailabilityType?>? type,
-      Wrapped<Period?>? usagePeriod,
-      Wrapped<String?>? vehicleId}) {
+  NonAvailability copyWithWrapped({
+    Wrapped<Booking?>? booking,
+    Wrapped<Period?>? fullPeriod,
+    Wrapped<String?>? id,
+    Wrapped<bool?>? overdue,
+    Wrapped<Period?>? period,
+    Wrapped<Period?>? plannedPeriod,
+    Wrapped<enums.NonAvailabilityType?>? type,
+    Wrapped<Period?>? usagePeriod,
+    Wrapped<String?>? vehicleId,
+  }) {
     return NonAvailability(
-        booking: (booking != null ? booking.value : this.booking),
-        fullPeriod: (fullPeriod != null ? fullPeriod.value : this.fullPeriod),
-        id: (id != null ? id.value : this.id),
-        overdue: (overdue != null ? overdue.value : this.overdue),
-        period: (period != null ? period.value : this.period),
-        plannedPeriod:
-            (plannedPeriod != null ? plannedPeriod.value : this.plannedPeriod),
-        type: (type != null ? type.value : this.type),
-        usagePeriod:
-            (usagePeriod != null ? usagePeriod.value : this.usagePeriod),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      booking: (booking != null ? booking.value : this.booking),
+      fullPeriod: (fullPeriod != null ? fullPeriod.value : this.fullPeriod),
+      id: (id != null ? id.value : this.id),
+      overdue: (overdue != null ? overdue.value : this.overdue),
+      period: (period != null ? period.value : this.period),
+      plannedPeriod: (plannedPeriod != null
+          ? plannedPeriod.value
+          : this.plannedPeriod),
+      type: (type != null ? type.value : this.type),
+      usagePeriod: (usagePeriod != null ? usagePeriod.value : this.usagePeriod),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class NonAvailabilityResponse {
-  const NonAvailabilityResponse({
-    this.nonAvailabilities,
-  });
+  const NonAvailabilityResponse({this.nonAvailabilities});
 
   factory NonAvailabilityResponse.fromJson(Map<String, dynamic> json) =>
       _$NonAvailabilityResponseFromJson(json);
@@ -7716,8 +8644,10 @@ class NonAvailabilityResponse {
     return identical(this, other) ||
         (other is NonAvailabilityResponse &&
             (identical(other.nonAvailabilities, nonAvailabilities) ||
-                const DeepCollectionEquality()
-                    .equals(other.nonAvailabilities, nonAvailabilities)));
+                const DeepCollectionEquality().equals(
+                  other.nonAvailabilities,
+                  nonAvailabilities,
+                )));
   }
 
   @override
@@ -7732,26 +8662,24 @@ class NonAvailabilityResponse {
 extension $NonAvailabilityResponseExtension on NonAvailabilityResponse {
   NonAvailabilityResponse copyWith({List<NonAvailability>? nonAvailabilities}) {
     return NonAvailabilityResponse(
-        nonAvailabilities: nonAvailabilities ?? this.nonAvailabilities);
+      nonAvailabilities: nonAvailabilities ?? this.nonAvailabilities,
+    );
   }
 
-  NonAvailabilityResponse copyWithWrapped(
-      {Wrapped<List<NonAvailability>?>? nonAvailabilities}) {
+  NonAvailabilityResponse copyWithWrapped({
+    Wrapped<List<NonAvailability>?>? nonAvailabilities,
+  }) {
     return NonAvailabilityResponse(
-        nonAvailabilities: (nonAvailabilities != null
-            ? nonAvailabilities.value
-            : this.nonAvailabilities));
+      nonAvailabilities: (nonAvailabilities != null
+          ? nonAvailabilities.value
+          : this.nonAvailabilities),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class Onboarding {
-  const Onboarding({
-    this.legal,
-    this.personal,
-    this.phone,
-    this.status,
-  });
+  const Onboarding({this.legal, this.personal, this.phone, this.status});
 
   factory Onboarding.fromJson(Map<String, dynamic> json) =>
       _$OnboardingFromJson(json);
@@ -7780,8 +8708,10 @@ class Onboarding {
             (identical(other.legal, legal) ||
                 const DeepCollectionEquality().equals(other.legal, legal)) &&
             (identical(other.personal, personal) ||
-                const DeepCollectionEquality()
-                    .equals(other.personal, personal)) &&
+                const DeepCollectionEquality().equals(
+                  other.personal,
+                  personal,
+                )) &&
             (identical(other.phone, phone) ||
                 const DeepCollectionEquality().equals(other.phone, phone)) &&
             (identical(other.status, status) ||
@@ -7801,28 +8731,32 @@ class Onboarding {
 }
 
 extension $OnboardingExtension on Onboarding {
-  Onboarding copyWith(
-      {OnboardingLegal? legal,
-      OnboardingPersonal? personal,
-      OnboardingPhone? phone,
-      enums.OnboardingStatus? status}) {
+  Onboarding copyWith({
+    OnboardingLegal? legal,
+    OnboardingPersonal? personal,
+    OnboardingPhone? phone,
+    enums.OnboardingStatus? status,
+  }) {
     return Onboarding(
-        legal: legal ?? this.legal,
-        personal: personal ?? this.personal,
-        phone: phone ?? this.phone,
-        status: status ?? this.status);
+      legal: legal ?? this.legal,
+      personal: personal ?? this.personal,
+      phone: phone ?? this.phone,
+      status: status ?? this.status,
+    );
   }
 
-  Onboarding copyWithWrapped(
-      {Wrapped<OnboardingLegal?>? legal,
-      Wrapped<OnboardingPersonal?>? personal,
-      Wrapped<OnboardingPhone?>? phone,
-      Wrapped<enums.OnboardingStatus?>? status}) {
+  Onboarding copyWithWrapped({
+    Wrapped<OnboardingLegal?>? legal,
+    Wrapped<OnboardingPersonal?>? personal,
+    Wrapped<OnboardingPhone?>? phone,
+    Wrapped<enums.OnboardingStatus?>? status,
+  }) {
     return Onboarding(
-        legal: (legal != null ? legal.value : this.legal),
-        personal: (personal != null ? personal.value : this.personal),
-        phone: (phone != null ? phone.value : this.phone),
-        status: (status != null ? status.value : this.status));
+      legal: (legal != null ? legal.value : this.legal),
+      personal: (personal != null ? personal.value : this.personal),
+      phone: (phone != null ? phone.value : this.phone),
+      status: (status != null ? status.value : this.status),
+    );
   }
 }
 
@@ -7850,11 +8784,15 @@ class OnboardingLegal {
     return identical(this, other) ||
         (other is OnboardingLegal &&
             (identical(other.convictions, convictions) ||
-                const DeepCollectionEquality()
-                    .equals(other.convictions, convictions)) &&
+                const DeepCollectionEquality().equals(
+                  other.convictions,
+                  convictions,
+                )) &&
             (identical(other.nrOfAccidents, nrOfAccidents) ||
-                const DeepCollectionEquality()
-                    .equals(other.nrOfAccidents, nrOfAccidents)));
+                const DeepCollectionEquality().equals(
+                  other.nrOfAccidents,
+                  nrOfAccidents,
+                )));
   }
 
   @override
@@ -7870,17 +8808,21 @@ class OnboardingLegal {
 extension $OnboardingLegalExtension on OnboardingLegal {
   OnboardingLegal copyWith({Convictions? convictions, int? nrOfAccidents}) {
     return OnboardingLegal(
-        convictions: convictions ?? this.convictions,
-        nrOfAccidents: nrOfAccidents ?? this.nrOfAccidents);
+      convictions: convictions ?? this.convictions,
+      nrOfAccidents: nrOfAccidents ?? this.nrOfAccidents,
+    );
   }
 
-  OnboardingLegal copyWithWrapped(
-      {Wrapped<Convictions>? convictions, Wrapped<int>? nrOfAccidents}) {
+  OnboardingLegal copyWithWrapped({
+    Wrapped<Convictions>? convictions,
+    Wrapped<int>? nrOfAccidents,
+  }) {
     return OnboardingLegal(
-        convictions:
-            (convictions != null ? convictions.value : this.convictions),
-        nrOfAccidents:
-            (nrOfAccidents != null ? nrOfAccidents.value : this.nrOfAccidents));
+      convictions: (convictions != null ? convictions.value : this.convictions),
+      nrOfAccidents: (nrOfAccidents != null
+          ? nrOfAccidents.value
+          : this.nrOfAccidents),
+    );
   }
 }
 
@@ -7952,38 +8894,60 @@ class OnboardingPersonal {
             (identical(other.city, city) ||
                 const DeepCollectionEquality().equals(other.city, city)) &&
             (identical(other.dateCurrentLicense, dateCurrentLicense) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateCurrentLicense, dateCurrentLicense)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateCurrentLicense,
+                  dateCurrentLicense,
+                )) &&
             (identical(other.dateLicenseUntil, dateLicenseUntil) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateLicenseUntil, dateLicenseUntil)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateLicenseUntil,
+                  dateLicenseUntil,
+                )) &&
             (identical(other.dateOfBirth, dateOfBirth) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateOfBirth, dateOfBirth)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateOfBirth,
+                  dateOfBirth,
+                )) &&
             (identical(other.firstName, firstName) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstName, firstName)) &&
+                const DeepCollectionEquality().equals(
+                  other.firstName,
+                  firstName,
+                )) &&
             (identical(other.houseNumber, houseNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.houseNumber, houseNumber)) &&
+                const DeepCollectionEquality().equals(
+                  other.houseNumber,
+                  houseNumber,
+                )) &&
             (identical(other.lastName, lastName) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastName, lastName)) &&
+                const DeepCollectionEquality().equals(
+                  other.lastName,
+                  lastName,
+                )) &&
             (identical(other.licenseNumber, licenseNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.licenseNumber, licenseNumber)) &&
+                const DeepCollectionEquality().equals(
+                  other.licenseNumber,
+                  licenseNumber,
+                )) &&
             (identical(other.licenseType, licenseType) ||
-                const DeepCollectionEquality()
-                    .equals(other.licenseType, licenseType)) &&
+                const DeepCollectionEquality().equals(
+                  other.licenseType,
+                  licenseType,
+                )) &&
             (identical(other.nationality, nationality) ||
-                const DeepCollectionEquality()
-                    .equals(other.nationality, nationality)) &&
+                const DeepCollectionEquality().equals(
+                  other.nationality,
+                  nationality,
+                )) &&
             (identical(other.postalCode, postalCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.postalCode, postalCode)) &&
+                const DeepCollectionEquality().equals(
+                  other.postalCode,
+                  postalCode,
+                )) &&
             (identical(other.socialSecurityNumber, socialSecurityNumber) ||
                 const DeepCollectionEquality().equals(
-                    other.socialSecurityNumber, socialSecurityNumber)) &&
+                  other.socialSecurityNumber,
+                  socialSecurityNumber,
+                )) &&
             (identical(other.street, street) ||
                 const DeepCollectionEquality().equals(other.street, street)));
   }
@@ -8011,79 +8975,80 @@ class OnboardingPersonal {
 }
 
 extension $OnboardingPersonalExtension on OnboardingPersonal {
-  OnboardingPersonal copyWith(
-      {String? box,
-      String? city,
-      DateTime? dateCurrentLicense,
-      DateTime? dateLicenseUntil,
-      DateTime? dateOfBirth,
-      String? firstName,
-      String? houseNumber,
-      String? lastName,
-      String? licenseNumber,
-      enums.OnboardingPersonalLicenseType? licenseType,
-      String? nationality,
-      String? postalCode,
-      String? socialSecurityNumber,
-      String? street}) {
+  OnboardingPersonal copyWith({
+    String? box,
+    String? city,
+    DateTime? dateCurrentLicense,
+    DateTime? dateLicenseUntil,
+    DateTime? dateOfBirth,
+    String? firstName,
+    String? houseNumber,
+    String? lastName,
+    String? licenseNumber,
+    enums.OnboardingPersonalLicenseType? licenseType,
+    String? nationality,
+    String? postalCode,
+    String? socialSecurityNumber,
+    String? street,
+  }) {
     return OnboardingPersonal(
-        box: box ?? this.box,
-        city: city ?? this.city,
-        dateCurrentLicense: dateCurrentLicense ?? this.dateCurrentLicense,
-        dateLicenseUntil: dateLicenseUntil ?? this.dateLicenseUntil,
-        dateOfBirth: dateOfBirth ?? this.dateOfBirth,
-        firstName: firstName ?? this.firstName,
-        houseNumber: houseNumber ?? this.houseNumber,
-        lastName: lastName ?? this.lastName,
-        licenseNumber: licenseNumber ?? this.licenseNumber,
-        licenseType: licenseType ?? this.licenseType,
-        nationality: nationality ?? this.nationality,
-        postalCode: postalCode ?? this.postalCode,
-        socialSecurityNumber: socialSecurityNumber ?? this.socialSecurityNumber,
-        street: street ?? this.street);
+      box: box ?? this.box,
+      city: city ?? this.city,
+      dateCurrentLicense: dateCurrentLicense ?? this.dateCurrentLicense,
+      dateLicenseUntil: dateLicenseUntil ?? this.dateLicenseUntil,
+      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      firstName: firstName ?? this.firstName,
+      houseNumber: houseNumber ?? this.houseNumber,
+      lastName: lastName ?? this.lastName,
+      licenseNumber: licenseNumber ?? this.licenseNumber,
+      licenseType: licenseType ?? this.licenseType,
+      nationality: nationality ?? this.nationality,
+      postalCode: postalCode ?? this.postalCode,
+      socialSecurityNumber: socialSecurityNumber ?? this.socialSecurityNumber,
+      street: street ?? this.street,
+    );
   }
 
-  OnboardingPersonal copyWithWrapped(
-      {Wrapped<String>? box,
-      Wrapped<String>? city,
-      Wrapped<DateTime>? dateCurrentLicense,
-      Wrapped<DateTime>? dateLicenseUntil,
-      Wrapped<DateTime>? dateOfBirth,
-      Wrapped<String>? firstName,
-      Wrapped<String>? houseNumber,
-      Wrapped<String>? lastName,
-      Wrapped<String>? licenseNumber,
-      Wrapped<enums.OnboardingPersonalLicenseType>? licenseType,
-      Wrapped<String>? nationality,
-      Wrapped<String>? postalCode,
-      Wrapped<String>? socialSecurityNumber,
-      Wrapped<String>? street}) {
+  OnboardingPersonal copyWithWrapped({
+    Wrapped<String>? box,
+    Wrapped<String>? city,
+    Wrapped<DateTime>? dateCurrentLicense,
+    Wrapped<DateTime>? dateLicenseUntil,
+    Wrapped<DateTime>? dateOfBirth,
+    Wrapped<String>? firstName,
+    Wrapped<String>? houseNumber,
+    Wrapped<String>? lastName,
+    Wrapped<String>? licenseNumber,
+    Wrapped<enums.OnboardingPersonalLicenseType>? licenseType,
+    Wrapped<String>? nationality,
+    Wrapped<String>? postalCode,
+    Wrapped<String>? socialSecurityNumber,
+    Wrapped<String>? street,
+  }) {
     return OnboardingPersonal(
-        box: (box != null ? box.value : this.box),
-        city: (city != null ? city.value : this.city),
-        dateCurrentLicense: (dateCurrentLicense != null
-            ? dateCurrentLicense.value
-            : this.dateCurrentLicense),
-        dateLicenseUntil: (dateLicenseUntil != null
-            ? dateLicenseUntil.value
-            : this.dateLicenseUntil),
-        dateOfBirth:
-            (dateOfBirth != null ? dateOfBirth.value : this.dateOfBirth),
-        firstName: (firstName != null ? firstName.value : this.firstName),
-        houseNumber:
-            (houseNumber != null ? houseNumber.value : this.houseNumber),
-        lastName: (lastName != null ? lastName.value : this.lastName),
-        licenseNumber:
-            (licenseNumber != null ? licenseNumber.value : this.licenseNumber),
-        licenseType:
-            (licenseType != null ? licenseType.value : this.licenseType),
-        nationality:
-            (nationality != null ? nationality.value : this.nationality),
-        postalCode: (postalCode != null ? postalCode.value : this.postalCode),
-        socialSecurityNumber: (socialSecurityNumber != null
-            ? socialSecurityNumber.value
-            : this.socialSecurityNumber),
-        street: (street != null ? street.value : this.street));
+      box: (box != null ? box.value : this.box),
+      city: (city != null ? city.value : this.city),
+      dateCurrentLicense: (dateCurrentLicense != null
+          ? dateCurrentLicense.value
+          : this.dateCurrentLicense),
+      dateLicenseUntil: (dateLicenseUntil != null
+          ? dateLicenseUntil.value
+          : this.dateLicenseUntil),
+      dateOfBirth: (dateOfBirth != null ? dateOfBirth.value : this.dateOfBirth),
+      firstName: (firstName != null ? firstName.value : this.firstName),
+      houseNumber: (houseNumber != null ? houseNumber.value : this.houseNumber),
+      lastName: (lastName != null ? lastName.value : this.lastName),
+      licenseNumber: (licenseNumber != null
+          ? licenseNumber.value
+          : this.licenseNumber),
+      licenseType: (licenseType != null ? licenseType.value : this.licenseType),
+      nationality: (nationality != null ? nationality.value : this.nationality),
+      postalCode: (postalCode != null ? postalCode.value : this.postalCode),
+      socialSecurityNumber: (socialSecurityNumber != null
+          ? socialSecurityNumber.value
+          : this.socialSecurityNumber),
+      street: (street != null ? street.value : this.street),
+    );
   }
 }
 
@@ -8111,13 +9076,18 @@ class OnboardingPhone {
     return identical(this, other) ||
         (other is OnboardingPhone &&
             (identical(other.phoneNumber, phoneNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.phoneNumber, phoneNumber)) &&
-            (identical(other.phoneNumberValidationCode,
-                    phoneNumberValidationCode) ||
                 const DeepCollectionEquality().equals(
-                    other.phoneNumberValidationCode,
-                    phoneNumberValidationCode)));
+                  other.phoneNumber,
+                  phoneNumber,
+                )) &&
+            (identical(
+                  other.phoneNumberValidationCode,
+                  phoneNumberValidationCode,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.phoneNumberValidationCode,
+                  phoneNumberValidationCode,
+                )));
   }
 
   @override
@@ -8131,31 +9101,33 @@ class OnboardingPhone {
 }
 
 extension $OnboardingPhoneExtension on OnboardingPhone {
-  OnboardingPhone copyWith(
-      {String? phoneNumber, String? phoneNumberValidationCode}) {
+  OnboardingPhone copyWith({
+    String? phoneNumber,
+    String? phoneNumberValidationCode,
+  }) {
     return OnboardingPhone(
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        phoneNumberValidationCode:
-            phoneNumberValidationCode ?? this.phoneNumberValidationCode);
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      phoneNumberValidationCode:
+          phoneNumberValidationCode ?? this.phoneNumberValidationCode,
+    );
   }
 
-  OnboardingPhone copyWithWrapped(
-      {Wrapped<String>? phoneNumber,
-      Wrapped<String?>? phoneNumberValidationCode}) {
+  OnboardingPhone copyWithWrapped({
+    Wrapped<String>? phoneNumber,
+    Wrapped<String?>? phoneNumberValidationCode,
+  }) {
     return OnboardingPhone(
-        phoneNumber:
-            (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
-        phoneNumberValidationCode: (phoneNumberValidationCode != null
-            ? phoneNumberValidationCode.value
-            : this.phoneNumberValidationCode));
+      phoneNumber: (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
+      phoneNumberValidationCode: (phoneNumberValidationCode != null
+          ? phoneNumberValidationCode.value
+          : this.phoneNumberValidationCode),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class PasswordReset {
-  const PasswordReset({
-    required this.email,
-  });
+  const PasswordReset({required this.email});
 
   factory PasswordReset.fromJson(Map<String, dynamic> json) =>
       _$PasswordResetFromJson(json);
@@ -8195,10 +9167,7 @@ extension $PasswordResetExtension on PasswordReset {
 
 @JsonSerializable(explicitToJson: true)
 class Period {
-  const Period({
-    this.end,
-    this.start,
-  });
+  const Period({this.end, this.start});
 
   factory Period.fromJson(Map<String, dynamic> json) => _$PeriodFromJson(json);
 
@@ -8238,8 +9207,9 @@ extension $PeriodExtension on Period {
 
   Period copyWithWrapped({Wrapped<DateTime?>? end, Wrapped<DateTime?>? start}) {
     return Period(
-        end: (end != null ? end.value : this.end),
-        start: (start != null ? start.value : this.start));
+      end: (end != null ? end.value : this.end),
+      start: (start != null ? start.value : this.start),
+    );
   }
 }
 
@@ -8270,14 +9240,20 @@ class ProviderTelematics {
     return identical(this, other) ||
         (other is ProviderTelematics &&
             (identical(other.providerDeviceId, providerDeviceId) ||
-                const DeepCollectionEquality()
-                    .equals(other.providerDeviceId, providerDeviceId)) &&
+                const DeepCollectionEquality().equals(
+                  other.providerDeviceId,
+                  providerDeviceId,
+                )) &&
             (identical(other.providerId, providerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.providerId, providerId)) &&
+                const DeepCollectionEquality().equals(
+                  other.providerId,
+                  providerId,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -8292,34 +9268,36 @@ class ProviderTelematics {
 }
 
 extension $ProviderTelematicsExtension on ProviderTelematics {
-  ProviderTelematics copyWith(
-      {String? providerDeviceId, String? providerId, String? vehicleId}) {
+  ProviderTelematics copyWith({
+    String? providerDeviceId,
+    String? providerId,
+    String? vehicleId,
+  }) {
     return ProviderTelematics(
-        providerDeviceId: providerDeviceId ?? this.providerDeviceId,
-        providerId: providerId ?? this.providerId,
-        vehicleId: vehicleId ?? this.vehicleId);
+      providerDeviceId: providerDeviceId ?? this.providerDeviceId,
+      providerId: providerId ?? this.providerId,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  ProviderTelematics copyWithWrapped(
-      {Wrapped<String?>? providerDeviceId,
-      Wrapped<String?>? providerId,
-      Wrapped<String?>? vehicleId}) {
+  ProviderTelematics copyWithWrapped({
+    Wrapped<String?>? providerDeviceId,
+    Wrapped<String?>? providerId,
+    Wrapped<String?>? vehicleId,
+  }) {
     return ProviderTelematics(
-        providerDeviceId: (providerDeviceId != null
-            ? providerDeviceId.value
-            : this.providerDeviceId),
-        providerId: (providerId != null ? providerId.value : this.providerId),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      providerDeviceId: (providerDeviceId != null
+          ? providerDeviceId.value
+          : this.providerDeviceId),
+      providerId: (providerId != null ? providerId.value : this.providerId),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class RecurringNonAvailability {
-  const RecurringNonAvailability({
-    this.id,
-    this.schedule,
-    this.vehicleId,
-  });
+  const RecurringNonAvailability({this.id, this.schedule, this.vehicleId});
 
   factory RecurringNonAvailability.fromJson(Map<String, dynamic> json) =>
       _$RecurringNonAvailabilityFromJson(json);
@@ -8342,11 +9320,15 @@ class RecurringNonAvailability {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.schedule, schedule) ||
-                const DeepCollectionEquality()
-                    .equals(other.schedule, schedule)) &&
+                const DeepCollectionEquality().equals(
+                  other.schedule,
+                  schedule,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -8361,22 +9343,28 @@ class RecurringNonAvailability {
 }
 
 extension $RecurringNonAvailabilityExtension on RecurringNonAvailability {
-  RecurringNonAvailability copyWith(
-      {String? id, RecurringSchedule? schedule, String? vehicleId}) {
+  RecurringNonAvailability copyWith({
+    String? id,
+    RecurringSchedule? schedule,
+    String? vehicleId,
+  }) {
     return RecurringNonAvailability(
-        id: id ?? this.id,
-        schedule: schedule ?? this.schedule,
-        vehicleId: vehicleId ?? this.vehicleId);
+      id: id ?? this.id,
+      schedule: schedule ?? this.schedule,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  RecurringNonAvailability copyWithWrapped(
-      {Wrapped<String?>? id,
-      Wrapped<RecurringSchedule?>? schedule,
-      Wrapped<String?>? vehicleId}) {
+  RecurringNonAvailability copyWithWrapped({
+    Wrapped<String?>? id,
+    Wrapped<RecurringSchedule?>? schedule,
+    Wrapped<String?>? vehicleId,
+  }) {
     return RecurringNonAvailability(
-        id: (id != null ? id.value : this.id),
-        schedule: (schedule != null ? schedule.value : this.schedule),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      id: (id != null ? id.value : this.id),
+      schedule: (schedule != null ? schedule.value : this.schedule),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
@@ -8421,20 +9409,30 @@ class RecurringSchedule {
     return identical(this, other) ||
         (other is RecurringSchedule &&
             (identical(other.daysOfWeek, daysOfWeek) ||
-                const DeepCollectionEquality()
-                    .equals(other.daysOfWeek, daysOfWeek)) &&
+                const DeepCollectionEquality().equals(
+                  other.daysOfWeek,
+                  daysOfWeek,
+                )) &&
             (identical(other.endDate, endDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDate, endDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.endDate,
+                  endDate,
+                )) &&
             (identical(other.interval, interval) ||
-                const DeepCollectionEquality()
-                    .equals(other.interval, interval)) &&
+                const DeepCollectionEquality().equals(
+                  other.interval,
+                  interval,
+                )) &&
             (identical(other.recurringType, recurringType) ||
-                const DeepCollectionEquality()
-                    .equals(other.recurringType, recurringType)) &&
+                const DeepCollectionEquality().equals(
+                  other.recurringType,
+                  recurringType,
+                )) &&
             (identical(other.timeZone, timeZone) ||
-                const DeepCollectionEquality()
-                    .equals(other.timeZone, timeZone)));
+                const DeepCollectionEquality().equals(
+                  other.timeZone,
+                  timeZone,
+                )));
   }
 
   @override
@@ -8451,42 +9449,44 @@ class RecurringSchedule {
 }
 
 extension $RecurringScheduleExtension on RecurringSchedule {
-  RecurringSchedule copyWith(
-      {List<int>? daysOfWeek,
-      DateTime? endDate,
-      int? interval,
-      enums.RecurringScheduleRecurringType? recurringType,
-      enums.RecurringScheduleTimeZone? timeZone}) {
+  RecurringSchedule copyWith({
+    List<int>? daysOfWeek,
+    DateTime? endDate,
+    int? interval,
+    enums.RecurringScheduleRecurringType? recurringType,
+    enums.RecurringScheduleTimeZone? timeZone,
+  }) {
     return RecurringSchedule(
-        daysOfWeek: daysOfWeek ?? this.daysOfWeek,
-        endDate: endDate ?? this.endDate,
-        interval: interval ?? this.interval,
-        recurringType: recurringType ?? this.recurringType,
-        timeZone: timeZone ?? this.timeZone);
+      daysOfWeek: daysOfWeek ?? this.daysOfWeek,
+      endDate: endDate ?? this.endDate,
+      interval: interval ?? this.interval,
+      recurringType: recurringType ?? this.recurringType,
+      timeZone: timeZone ?? this.timeZone,
+    );
   }
 
-  RecurringSchedule copyWithWrapped(
-      {Wrapped<List<int>?>? daysOfWeek,
-      Wrapped<DateTime>? endDate,
-      Wrapped<int?>? interval,
-      Wrapped<enums.RecurringScheduleRecurringType>? recurringType,
-      Wrapped<enums.RecurringScheduleTimeZone?>? timeZone}) {
+  RecurringSchedule copyWithWrapped({
+    Wrapped<List<int>?>? daysOfWeek,
+    Wrapped<DateTime>? endDate,
+    Wrapped<int?>? interval,
+    Wrapped<enums.RecurringScheduleRecurringType>? recurringType,
+    Wrapped<enums.RecurringScheduleTimeZone?>? timeZone,
+  }) {
     return RecurringSchedule(
-        daysOfWeek: (daysOfWeek != null ? daysOfWeek.value : this.daysOfWeek),
-        endDate: (endDate != null ? endDate.value : this.endDate),
-        interval: (interval != null ? interval.value : this.interval),
-        recurringType:
-            (recurringType != null ? recurringType.value : this.recurringType),
-        timeZone: (timeZone != null ? timeZone.value : this.timeZone));
+      daysOfWeek: (daysOfWeek != null ? daysOfWeek.value : this.daysOfWeek),
+      endDate: (endDate != null ? endDate.value : this.endDate),
+      interval: (interval != null ? interval.value : this.interval),
+      recurringType: (recurringType != null
+          ? recurringType.value
+          : this.recurringType),
+      timeZone: (timeZone != null ? timeZone.value : this.timeZone),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class RegisterDeviceRequest {
-  const RegisterDeviceRequest({
-    this.active,
-    required this.token,
-  });
+  const RegisterDeviceRequest({this.active, required this.token});
 
   factory RegisterDeviceRequest.fromJson(Map<String, dynamic> json) =>
       _$RegisterDeviceRequestFromJson(json);
@@ -8523,14 +9523,19 @@ class RegisterDeviceRequest {
 extension $RegisterDeviceRequestExtension on RegisterDeviceRequest {
   RegisterDeviceRequest copyWith({bool? active, String? token}) {
     return RegisterDeviceRequest(
-        active: active ?? this.active, token: token ?? this.token);
+      active: active ?? this.active,
+      token: token ?? this.token,
+    );
   }
 
-  RegisterDeviceRequest copyWithWrapped(
-      {Wrapped<bool?>? active, Wrapped<String>? token}) {
+  RegisterDeviceRequest copyWithWrapped({
+    Wrapped<bool?>? active,
+    Wrapped<String>? token,
+  }) {
     return RegisterDeviceRequest(
-        active: (active != null ? active.value : this.active),
-        token: (token != null ? token.value : this.token));
+      active: (active != null ? active.value : this.active),
+      token: (token != null ? token.value : this.token),
+    );
   }
 }
 
@@ -8582,33 +9587,49 @@ class ReplaceBookingRequest {
     return identical(this, other) ||
         (other is ReplaceBookingRequest &&
             (identical(other.adminComments, adminComments) ||
-                const DeepCollectionEquality()
-                    .equals(other.adminComments, adminComments)) &&
+                const DeepCollectionEquality().equals(
+                  other.adminComments,
+                  adminComments,
+                )) &&
             (identical(other.authorizationComments, authorizationComments) ||
                 const DeepCollectionEquality().equals(
-                    other.authorizationComments, authorizationComments)) &&
+                  other.authorizationComments,
+                  authorizationComments,
+                )) &&
             (identical(other.clientId, clientId) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientId, clientId)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientId,
+                  clientId,
+                )) &&
             (identical(other.comments, comments) ||
-                const DeepCollectionEquality()
-                    .equals(other.comments, comments)) &&
+                const DeepCollectionEquality().equals(
+                  other.comments,
+                  comments,
+                )) &&
             (identical(other.filtersForBooking, filtersForBooking) ||
-                const DeepCollectionEquality()
-                    .equals(other.filtersForBooking, filtersForBooking)) &&
+                const DeepCollectionEquality().equals(
+                  other.filtersForBooking,
+                  filtersForBooking,
+                )) &&
             (identical(other.invoiceComments, invoiceComments) ||
-                const DeepCollectionEquality()
-                    .equals(other.invoiceComments, invoiceComments)) &&
+                const DeepCollectionEquality().equals(
+                  other.invoiceComments,
+                  invoiceComments,
+                )) &&
             (identical(other.originalBookingId, originalBookingId) ||
-                const DeepCollectionEquality()
-                    .equals(other.originalBookingId, originalBookingId)) &&
+                const DeepCollectionEquality().equals(
+                  other.originalBookingId,
+                  originalBookingId,
+                )) &&
             (identical(other.period, period) ||
                 const DeepCollectionEquality().equals(other.period, period)) &&
             (identical(other.userId, userId) ||
                 const DeepCollectionEquality().equals(other.userId, userId)) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -8630,70 +9651,73 @@ class ReplaceBookingRequest {
 }
 
 extension $ReplaceBookingRequestExtension on ReplaceBookingRequest {
-  ReplaceBookingRequest copyWith(
-      {String? adminComments,
-      String? authorizationComments,
-      String? clientId,
-      String? comments,
-      FiltersForBooking? filtersForBooking,
-      String? invoiceComments,
-      String? originalBookingId,
-      Period? period,
-      String? userId,
-      String? vehicleId}) {
+  ReplaceBookingRequest copyWith({
+    String? adminComments,
+    String? authorizationComments,
+    String? clientId,
+    String? comments,
+    FiltersForBooking? filtersForBooking,
+    String? invoiceComments,
+    String? originalBookingId,
+    Period? period,
+    String? userId,
+    String? vehicleId,
+  }) {
     return ReplaceBookingRequest(
-        adminComments: adminComments ?? this.adminComments,
-        authorizationComments:
-            authorizationComments ?? this.authorizationComments,
-        clientId: clientId ?? this.clientId,
-        comments: comments ?? this.comments,
-        filtersForBooking: filtersForBooking ?? this.filtersForBooking,
-        invoiceComments: invoiceComments ?? this.invoiceComments,
-        originalBookingId: originalBookingId ?? this.originalBookingId,
-        period: period ?? this.period,
-        userId: userId ?? this.userId,
-        vehicleId: vehicleId ?? this.vehicleId);
+      adminComments: adminComments ?? this.adminComments,
+      authorizationComments:
+          authorizationComments ?? this.authorizationComments,
+      clientId: clientId ?? this.clientId,
+      comments: comments ?? this.comments,
+      filtersForBooking: filtersForBooking ?? this.filtersForBooking,
+      invoiceComments: invoiceComments ?? this.invoiceComments,
+      originalBookingId: originalBookingId ?? this.originalBookingId,
+      period: period ?? this.period,
+      userId: userId ?? this.userId,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  ReplaceBookingRequest copyWithWrapped(
-      {Wrapped<String?>? adminComments,
-      Wrapped<String?>? authorizationComments,
-      Wrapped<String?>? clientId,
-      Wrapped<String?>? comments,
-      Wrapped<FiltersForBooking?>? filtersForBooking,
-      Wrapped<String?>? invoiceComments,
-      Wrapped<String?>? originalBookingId,
-      Wrapped<Period?>? period,
-      Wrapped<String?>? userId,
-      Wrapped<String?>? vehicleId}) {
+  ReplaceBookingRequest copyWithWrapped({
+    Wrapped<String?>? adminComments,
+    Wrapped<String?>? authorizationComments,
+    Wrapped<String?>? clientId,
+    Wrapped<String?>? comments,
+    Wrapped<FiltersForBooking?>? filtersForBooking,
+    Wrapped<String?>? invoiceComments,
+    Wrapped<String?>? originalBookingId,
+    Wrapped<Period?>? period,
+    Wrapped<String?>? userId,
+    Wrapped<String?>? vehicleId,
+  }) {
     return ReplaceBookingRequest(
-        adminComments:
-            (adminComments != null ? adminComments.value : this.adminComments),
-        authorizationComments: (authorizationComments != null
-            ? authorizationComments.value
-            : this.authorizationComments),
-        clientId: (clientId != null ? clientId.value : this.clientId),
-        comments: (comments != null ? comments.value : this.comments),
-        filtersForBooking: (filtersForBooking != null
-            ? filtersForBooking.value
-            : this.filtersForBooking),
-        invoiceComments: (invoiceComments != null
-            ? invoiceComments.value
-            : this.invoiceComments),
-        originalBookingId: (originalBookingId != null
-            ? originalBookingId.value
-            : this.originalBookingId),
-        period: (period != null ? period.value : this.period),
-        userId: (userId != null ? userId.value : this.userId),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      adminComments: (adminComments != null
+          ? adminComments.value
+          : this.adminComments),
+      authorizationComments: (authorizationComments != null
+          ? authorizationComments.value
+          : this.authorizationComments),
+      clientId: (clientId != null ? clientId.value : this.clientId),
+      comments: (comments != null ? comments.value : this.comments),
+      filtersForBooking: (filtersForBooking != null
+          ? filtersForBooking.value
+          : this.filtersForBooking),
+      invoiceComments: (invoiceComments != null
+          ? invoiceComments.value
+          : this.invoiceComments),
+      originalBookingId: (originalBookingId != null
+          ? originalBookingId.value
+          : this.originalBookingId),
+      period: (period != null ? period.value : this.period),
+      userId: (userId != null ? userId.value : this.userId),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class ResendVerificationEmail {
-  const ResendVerificationEmail({
-    required this.email,
-  });
+  const ResendVerificationEmail({required this.email});
 
   factory ResendVerificationEmail.fromJson(Map<String, dynamic> json) =>
       _$ResendVerificationEmailFromJson(json);
@@ -8728,7 +9752,8 @@ extension $ResendVerificationEmailExtension on ResendVerificationEmail {
 
   ResendVerificationEmail copyWithWrapped({Wrapped<String>? email}) {
     return ResendVerificationEmail(
-        email: (email != null ? email.value : this.email));
+      email: (email != null ? email.value : this.email),
+    );
   }
 }
 
@@ -8784,34 +9809,52 @@ class SearchBookingsRequest {
     return identical(this, other) ||
         (other is SearchBookingsRequest &&
             (identical(other.adminComments, adminComments) ||
-                const DeepCollectionEquality()
-                    .equals(other.adminComments, adminComments)) &&
+                const DeepCollectionEquality().equals(
+                  other.adminComments,
+                  adminComments,
+                )) &&
             (identical(other.clientId, clientId) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientId, clientId)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientId,
+                  clientId,
+                )) &&
             (identical(other.comments, comments) ||
-                const DeepCollectionEquality()
-                    .equals(other.comments, comments)) &&
+                const DeepCollectionEquality().equals(
+                  other.comments,
+                  comments,
+                )) &&
             (identical(other.endPeriod, endPeriod) ||
-                const DeepCollectionEquality()
-                    .equals(other.endPeriod, endPeriod)) &&
+                const DeepCollectionEquality().equals(
+                  other.endPeriod,
+                  endPeriod,
+                )) &&
             (identical(other.licensePlate, licensePlate) ||
-                const DeepCollectionEquality()
-                    .equals(other.licensePlate, licensePlate)) &&
+                const DeepCollectionEquality().equals(
+                  other.licensePlate,
+                  licensePlate,
+                )) &&
             (identical(other.startPeriod, startPeriod) ||
-                const DeepCollectionEquality()
-                    .equals(other.startPeriod, startPeriod)) &&
+                const DeepCollectionEquality().equals(
+                  other.startPeriod,
+                  startPeriod,
+                )) &&
             (identical(other.statuses, statuses) ||
-                const DeepCollectionEquality()
-                    .equals(other.statuses, statuses)) &&
+                const DeepCollectionEquality().equals(
+                  other.statuses,
+                  statuses,
+                )) &&
             (identical(other.userId, userId) ||
                 const DeepCollectionEquality().equals(other.userId, userId)) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)) &&
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )) &&
             (identical(other.vehicleIds, vehicleIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleIds, vehicleIds)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleIds,
+                  vehicleIds,
+                )));
   }
 
   @override
@@ -8833,55 +9876,60 @@ class SearchBookingsRequest {
 }
 
 extension $SearchBookingsRequestExtension on SearchBookingsRequest {
-  SearchBookingsRequest copyWith(
-      {String? adminComments,
-      String? clientId,
-      String? comments,
-      Period? endPeriod,
-      String? licensePlate,
-      Period? startPeriod,
-      List<enums.SearchBookingsRequestStatuses>? statuses,
-      String? userId,
-      String? vehicleId,
-      List<String>? vehicleIds}) {
+  SearchBookingsRequest copyWith({
+    String? adminComments,
+    String? clientId,
+    String? comments,
+    Period? endPeriod,
+    String? licensePlate,
+    Period? startPeriod,
+    List<enums.SearchBookingsRequestStatuses>? statuses,
+    String? userId,
+    String? vehicleId,
+    List<String>? vehicleIds,
+  }) {
     return SearchBookingsRequest(
-        adminComments: adminComments ?? this.adminComments,
-        clientId: clientId ?? this.clientId,
-        comments: comments ?? this.comments,
-        endPeriod: endPeriod ?? this.endPeriod,
-        licensePlate: licensePlate ?? this.licensePlate,
-        startPeriod: startPeriod ?? this.startPeriod,
-        statuses: statuses ?? this.statuses,
-        userId: userId ?? this.userId,
-        vehicleId: vehicleId ?? this.vehicleId,
-        vehicleIds: vehicleIds ?? this.vehicleIds);
+      adminComments: adminComments ?? this.adminComments,
+      clientId: clientId ?? this.clientId,
+      comments: comments ?? this.comments,
+      endPeriod: endPeriod ?? this.endPeriod,
+      licensePlate: licensePlate ?? this.licensePlate,
+      startPeriod: startPeriod ?? this.startPeriod,
+      statuses: statuses ?? this.statuses,
+      userId: userId ?? this.userId,
+      vehicleId: vehicleId ?? this.vehicleId,
+      vehicleIds: vehicleIds ?? this.vehicleIds,
+    );
   }
 
-  SearchBookingsRequest copyWithWrapped(
-      {Wrapped<String?>? adminComments,
-      Wrapped<String?>? clientId,
-      Wrapped<String?>? comments,
-      Wrapped<Period?>? endPeriod,
-      Wrapped<String?>? licensePlate,
-      Wrapped<Period?>? startPeriod,
-      Wrapped<List<enums.SearchBookingsRequestStatuses>?>? statuses,
-      Wrapped<String?>? userId,
-      Wrapped<String?>? vehicleId,
-      Wrapped<List<String>?>? vehicleIds}) {
+  SearchBookingsRequest copyWithWrapped({
+    Wrapped<String?>? adminComments,
+    Wrapped<String?>? clientId,
+    Wrapped<String?>? comments,
+    Wrapped<Period?>? endPeriod,
+    Wrapped<String?>? licensePlate,
+    Wrapped<Period?>? startPeriod,
+    Wrapped<List<enums.SearchBookingsRequestStatuses>?>? statuses,
+    Wrapped<String?>? userId,
+    Wrapped<String?>? vehicleId,
+    Wrapped<List<String>?>? vehicleIds,
+  }) {
     return SearchBookingsRequest(
-        adminComments:
-            (adminComments != null ? adminComments.value : this.adminComments),
-        clientId: (clientId != null ? clientId.value : this.clientId),
-        comments: (comments != null ? comments.value : this.comments),
-        endPeriod: (endPeriod != null ? endPeriod.value : this.endPeriod),
-        licensePlate:
-            (licensePlate != null ? licensePlate.value : this.licensePlate),
-        startPeriod:
-            (startPeriod != null ? startPeriod.value : this.startPeriod),
-        statuses: (statuses != null ? statuses.value : this.statuses),
-        userId: (userId != null ? userId.value : this.userId),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
-        vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds));
+      adminComments: (adminComments != null
+          ? adminComments.value
+          : this.adminComments),
+      clientId: (clientId != null ? clientId.value : this.clientId),
+      comments: (comments != null ? comments.value : this.comments),
+      endPeriod: (endPeriod != null ? endPeriod.value : this.endPeriod),
+      licensePlate: (licensePlate != null
+          ? licensePlate.value
+          : this.licensePlate),
+      startPeriod: (startPeriod != null ? startPeriod.value : this.startPeriod),
+      statuses: (statuses != null ? statuses.value : this.statuses),
+      userId: (userId != null ? userId.value : this.userId),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+      vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds),
+    );
   }
 }
 
@@ -8927,26 +9975,40 @@ class SearchClientContractsRequest {
     return identical(this, other) ||
         (other is SearchClientContractsRequest &&
             (identical(other.clientId, clientId) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientId, clientId)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientId,
+                  clientId,
+                )) &&
             (identical(other.contractId, contractId) ||
-                const DeepCollectionEquality()
-                    .equals(other.contractId, contractId)) &&
+                const DeepCollectionEquality().equals(
+                  other.contractId,
+                  contractId,
+                )) &&
             (identical(other.endDateFrom, endDateFrom) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDateFrom, endDateFrom)) &&
+                const DeepCollectionEquality().equals(
+                  other.endDateFrom,
+                  endDateFrom,
+                )) &&
             (identical(other.endDateTo, endDateTo) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDateTo, endDateTo)) &&
+                const DeepCollectionEquality().equals(
+                  other.endDateTo,
+                  endDateTo,
+                )) &&
             (identical(other.startDateFrom, startDateFrom) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDateFrom, startDateFrom)) &&
+                const DeepCollectionEquality().equals(
+                  other.startDateFrom,
+                  startDateFrom,
+                )) &&
             (identical(other.startDateTo, startDateTo) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDateTo, startDateTo)) &&
+                const DeepCollectionEquality().equals(
+                  other.startDateTo,
+                  startDateTo,
+                )) &&
             (identical(other.flexSearch, flexSearch) ||
-                const DeepCollectionEquality()
-                    .equals(other.flexSearch, flexSearch)) &&
+                const DeepCollectionEquality().equals(
+                  other.flexSearch,
+                  flexSearch,
+                )) &&
             (identical(other.orderBy, orderBy) ||
                 const DeepCollectionEquality().equals(other.orderBy, orderBy)));
   }
@@ -8969,47 +10031,50 @@ class SearchClientContractsRequest {
 
 extension $SearchClientContractsRequestExtension
     on SearchClientContractsRequest {
-  SearchClientContractsRequest copyWith(
-      {int? clientId,
-      int? contractId,
-      DateTime? endDateFrom,
-      DateTime? endDateTo,
-      DateTime? startDateFrom,
-      DateTime? startDateTo,
-      String? flexSearch,
-      String? orderBy}) {
+  SearchClientContractsRequest copyWith({
+    int? clientId,
+    int? contractId,
+    DateTime? endDateFrom,
+    DateTime? endDateTo,
+    DateTime? startDateFrom,
+    DateTime? startDateTo,
+    String? flexSearch,
+    String? orderBy,
+  }) {
     return SearchClientContractsRequest(
-        clientId: clientId ?? this.clientId,
-        contractId: contractId ?? this.contractId,
-        endDateFrom: endDateFrom ?? this.endDateFrom,
-        endDateTo: endDateTo ?? this.endDateTo,
-        startDateFrom: startDateFrom ?? this.startDateFrom,
-        startDateTo: startDateTo ?? this.startDateTo,
-        flexSearch: flexSearch ?? this.flexSearch,
-        orderBy: orderBy ?? this.orderBy);
+      clientId: clientId ?? this.clientId,
+      contractId: contractId ?? this.contractId,
+      endDateFrom: endDateFrom ?? this.endDateFrom,
+      endDateTo: endDateTo ?? this.endDateTo,
+      startDateFrom: startDateFrom ?? this.startDateFrom,
+      startDateTo: startDateTo ?? this.startDateTo,
+      flexSearch: flexSearch ?? this.flexSearch,
+      orderBy: orderBy ?? this.orderBy,
+    );
   }
 
-  SearchClientContractsRequest copyWithWrapped(
-      {Wrapped<int?>? clientId,
-      Wrapped<int?>? contractId,
-      Wrapped<DateTime?>? endDateFrom,
-      Wrapped<DateTime?>? endDateTo,
-      Wrapped<DateTime?>? startDateFrom,
-      Wrapped<DateTime?>? startDateTo,
-      Wrapped<String?>? flexSearch,
-      Wrapped<String?>? orderBy}) {
+  SearchClientContractsRequest copyWithWrapped({
+    Wrapped<int?>? clientId,
+    Wrapped<int?>? contractId,
+    Wrapped<DateTime?>? endDateFrom,
+    Wrapped<DateTime?>? endDateTo,
+    Wrapped<DateTime?>? startDateFrom,
+    Wrapped<DateTime?>? startDateTo,
+    Wrapped<String?>? flexSearch,
+    Wrapped<String?>? orderBy,
+  }) {
     return SearchClientContractsRequest(
-        clientId: (clientId != null ? clientId.value : this.clientId),
-        contractId: (contractId != null ? contractId.value : this.contractId),
-        endDateFrom:
-            (endDateFrom != null ? endDateFrom.value : this.endDateFrom),
-        endDateTo: (endDateTo != null ? endDateTo.value : this.endDateTo),
-        startDateFrom:
-            (startDateFrom != null ? startDateFrom.value : this.startDateFrom),
-        startDateTo:
-            (startDateTo != null ? startDateTo.value : this.startDateTo),
-        flexSearch: (flexSearch != null ? flexSearch.value : this.flexSearch),
-        orderBy: (orderBy != null ? orderBy.value : this.orderBy));
+      clientId: (clientId != null ? clientId.value : this.clientId),
+      contractId: (contractId != null ? contractId.value : this.contractId),
+      endDateFrom: (endDateFrom != null ? endDateFrom.value : this.endDateFrom),
+      endDateTo: (endDateTo != null ? endDateTo.value : this.endDateTo),
+      startDateFrom: (startDateFrom != null
+          ? startDateFrom.value
+          : this.startDateFrom),
+      startDateTo: (startDateTo != null ? startDateTo.value : this.startDateTo),
+      flexSearch: (flexSearch != null ? flexSearch.value : this.flexSearch),
+      orderBy: (orderBy != null ? orderBy.value : this.orderBy),
+    );
   }
 }
 
@@ -9085,14 +10150,20 @@ class SearchIssuesRequest {
     return identical(this, other) ||
         (other is SearchIssuesRequest &&
             (identical(other.assignedToRemoteId, assignedToRemoteId) ||
-                const DeepCollectionEquality()
-                    .equals(other.assignedToRemoteId, assignedToRemoteId)) &&
+                const DeepCollectionEquality().equals(
+                  other.assignedToRemoteId,
+                  assignedToRemoteId,
+                )) &&
             (identical(other.bookingId, bookingId) ||
-                const DeepCollectionEquality()
-                    .equals(other.bookingId, bookingId)) &&
+                const DeepCollectionEquality().equals(
+                  other.bookingId,
+                  bookingId,
+                )) &&
             (identical(other.createdAfter, createdAfter) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAfter, createdAfter)) &&
+                const DeepCollectionEquality().equals(
+                  other.createdAfter,
+                  createdAfter,
+                )) &&
             (identical(other.max, max) ||
                 const DeepCollectionEquality().equals(other.max, max)) &&
             (identical(other.number, number) ||
@@ -9102,24 +10173,34 @@ class SearchIssuesRequest {
             (identical(other.order, order) ||
                 const DeepCollectionEquality().equals(other.order, order)) &&
             (identical(other.priorities, priorities) ||
-                const DeepCollectionEquality()
-                    .equals(other.priorities, priorities)) &&
+                const DeepCollectionEquality().equals(
+                  other.priorities,
+                  priorities,
+                )) &&
             (identical(other.sort, sort) ||
                 const DeepCollectionEquality().equals(other.sort, sort)) &&
             (identical(other.statuses, statuses) ||
-                const DeepCollectionEquality()
-                    .equals(other.statuses, statuses)) &&
+                const DeepCollectionEquality().equals(
+                  other.statuses,
+                  statuses,
+                )) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.updatedAfter, updatedAfter) ||
-                const DeepCollectionEquality()
-                    .equals(other.updatedAfter, updatedAfter)) &&
+                const DeepCollectionEquality().equals(
+                  other.updatedAfter,
+                  updatedAfter,
+                )) &&
             (identical(other.userRemoteId, userRemoteId) ||
-                const DeepCollectionEquality()
-                    .equals(other.userRemoteId, userRemoteId)) &&
+                const DeepCollectionEquality().equals(
+                  other.userRemoteId,
+                  userRemoteId,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -9145,86 +10226,90 @@ class SearchIssuesRequest {
 }
 
 extension $SearchIssuesRequestExtension on SearchIssuesRequest {
-  SearchIssuesRequest copyWith(
-      {String? assignedToRemoteId,
-      String? bookingId,
-      DateTime? createdAfter,
-      int? max,
-      int? number,
-      int? offset,
-      enums.SearchIssuesRequestOrder? order,
-      List<enums.SearchIssuesRequestPriorities>? priorities,
-      String? sort,
-      List<enums.SearchIssuesRequestStatuses>? statuses,
-      String? title,
-      DateTime? updatedAfter,
-      String? userRemoteId,
-      String? vehicleId}) {
+  SearchIssuesRequest copyWith({
+    String? assignedToRemoteId,
+    String? bookingId,
+    DateTime? createdAfter,
+    int? max,
+    int? number,
+    int? offset,
+    enums.SearchIssuesRequestOrder? order,
+    List<enums.SearchIssuesRequestPriorities>? priorities,
+    String? sort,
+    List<enums.SearchIssuesRequestStatuses>? statuses,
+    String? title,
+    DateTime? updatedAfter,
+    String? userRemoteId,
+    String? vehicleId,
+  }) {
     return SearchIssuesRequest(
-        assignedToRemoteId: assignedToRemoteId ?? this.assignedToRemoteId,
-        bookingId: bookingId ?? this.bookingId,
-        createdAfter: createdAfter ?? this.createdAfter,
-        max: max ?? this.max,
-        number: number ?? this.number,
-        offset: offset ?? this.offset,
-        order: order ?? this.order,
-        priorities: priorities ?? this.priorities,
-        sort: sort ?? this.sort,
-        statuses: statuses ?? this.statuses,
-        title: title ?? this.title,
-        updatedAfter: updatedAfter ?? this.updatedAfter,
-        userRemoteId: userRemoteId ?? this.userRemoteId,
-        vehicleId: vehicleId ?? this.vehicleId);
+      assignedToRemoteId: assignedToRemoteId ?? this.assignedToRemoteId,
+      bookingId: bookingId ?? this.bookingId,
+      createdAfter: createdAfter ?? this.createdAfter,
+      max: max ?? this.max,
+      number: number ?? this.number,
+      offset: offset ?? this.offset,
+      order: order ?? this.order,
+      priorities: priorities ?? this.priorities,
+      sort: sort ?? this.sort,
+      statuses: statuses ?? this.statuses,
+      title: title ?? this.title,
+      updatedAfter: updatedAfter ?? this.updatedAfter,
+      userRemoteId: userRemoteId ?? this.userRemoteId,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  SearchIssuesRequest copyWithWrapped(
-      {Wrapped<String?>? assignedToRemoteId,
-      Wrapped<String?>? bookingId,
-      Wrapped<DateTime?>? createdAfter,
-      Wrapped<int?>? max,
-      Wrapped<int?>? number,
-      Wrapped<int?>? offset,
-      Wrapped<enums.SearchIssuesRequestOrder?>? order,
-      Wrapped<List<enums.SearchIssuesRequestPriorities>?>? priorities,
-      Wrapped<String?>? sort,
-      Wrapped<List<enums.SearchIssuesRequestStatuses>?>? statuses,
-      Wrapped<String?>? title,
-      Wrapped<DateTime?>? updatedAfter,
-      Wrapped<String?>? userRemoteId,
-      Wrapped<String?>? vehicleId}) {
+  SearchIssuesRequest copyWithWrapped({
+    Wrapped<String?>? assignedToRemoteId,
+    Wrapped<String?>? bookingId,
+    Wrapped<DateTime?>? createdAfter,
+    Wrapped<int?>? max,
+    Wrapped<int?>? number,
+    Wrapped<int?>? offset,
+    Wrapped<enums.SearchIssuesRequestOrder?>? order,
+    Wrapped<List<enums.SearchIssuesRequestPriorities>?>? priorities,
+    Wrapped<String?>? sort,
+    Wrapped<List<enums.SearchIssuesRequestStatuses>?>? statuses,
+    Wrapped<String?>? title,
+    Wrapped<DateTime?>? updatedAfter,
+    Wrapped<String?>? userRemoteId,
+    Wrapped<String?>? vehicleId,
+  }) {
     return SearchIssuesRequest(
-        assignedToRemoteId: (assignedToRemoteId != null
-            ? assignedToRemoteId.value
-            : this.assignedToRemoteId),
-        bookingId: (bookingId != null ? bookingId.value : this.bookingId),
-        createdAfter:
-            (createdAfter != null ? createdAfter.value : this.createdAfter),
-        max: (max != null ? max.value : this.max),
-        number: (number != null ? number.value : this.number),
-        offset: (offset != null ? offset.value : this.offset),
-        order: (order != null ? order.value : this.order),
-        priorities: (priorities != null ? priorities.value : this.priorities),
-        sort: (sort != null ? sort.value : this.sort),
-        statuses: (statuses != null ? statuses.value : this.statuses),
-        title: (title != null ? title.value : this.title),
-        updatedAfter:
-            (updatedAfter != null ? updatedAfter.value : this.updatedAfter),
-        userRemoteId:
-            (userRemoteId != null ? userRemoteId.value : this.userRemoteId),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      assignedToRemoteId: (assignedToRemoteId != null
+          ? assignedToRemoteId.value
+          : this.assignedToRemoteId),
+      bookingId: (bookingId != null ? bookingId.value : this.bookingId),
+      createdAfter: (createdAfter != null
+          ? createdAfter.value
+          : this.createdAfter),
+      max: (max != null ? max.value : this.max),
+      number: (number != null ? number.value : this.number),
+      offset: (offset != null ? offset.value : this.offset),
+      order: (order != null ? order.value : this.order),
+      priorities: (priorities != null ? priorities.value : this.priorities),
+      sort: (sort != null ? sort.value : this.sort),
+      statuses: (statuses != null ? statuses.value : this.statuses),
+      title: (title != null ? title.value : this.title),
+      updatedAfter: (updatedAfter != null
+          ? updatedAfter.value
+          : this.updatedAfter),
+      userRemoteId: (userRemoteId != null
+          ? userRemoteId.value
+          : this.userRemoteId),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class SearchNonAvailabilityEventsRequest {
-  const SearchNonAvailabilityEventsRequest({
-    this.period,
-    this.vehicleIds,
-  });
+  const SearchNonAvailabilityEventsRequest({this.period, this.vehicleIds});
 
   factory SearchNonAvailabilityEventsRequest.fromJson(
-          Map<String, dynamic> json) =>
-      _$SearchNonAvailabilityEventsRequestFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$SearchNonAvailabilityEventsRequestFromJson(json);
 
   static const toJsonFactory = _$SearchNonAvailabilityEventsRequestToJson;
   Map<String, dynamic> toJson() =>
@@ -9243,8 +10328,10 @@ class SearchNonAvailabilityEventsRequest {
             (identical(other.period, period) ||
                 const DeepCollectionEquality().equals(other.period, period)) &&
             (identical(other.vehicleIds, vehicleIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleIds, vehicleIds)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleIds,
+                  vehicleIds,
+                )));
   }
 
   @override
@@ -9259,18 +10346,24 @@ class SearchNonAvailabilityEventsRequest {
 
 extension $SearchNonAvailabilityEventsRequestExtension
     on SearchNonAvailabilityEventsRequest {
-  SearchNonAvailabilityEventsRequest copyWith(
-      {Period? period, List<String>? vehicleIds}) {
+  SearchNonAvailabilityEventsRequest copyWith({
+    Period? period,
+    List<String>? vehicleIds,
+  }) {
     return SearchNonAvailabilityEventsRequest(
-        period: period ?? this.period,
-        vehicleIds: vehicleIds ?? this.vehicleIds);
+      period: period ?? this.period,
+      vehicleIds: vehicleIds ?? this.vehicleIds,
+    );
   }
 
-  SearchNonAvailabilityEventsRequest copyWithWrapped(
-      {Wrapped<Period?>? period, Wrapped<List<String>?>? vehicleIds}) {
+  SearchNonAvailabilityEventsRequest copyWithWrapped({
+    Wrapped<Period?>? period,
+    Wrapped<List<String>?>? vehicleIds,
+  }) {
     return SearchNonAvailabilityEventsRequest(
-        period: (period != null ? period.value : this.period),
-        vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds));
+      period: (period != null ? period.value : this.period),
+      vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds),
+    );
   }
 }
 
@@ -9318,26 +10411,40 @@ class SearchTelematicsTrackingRequest {
     return identical(this, other) ||
         (other is SearchTelematicsTrackingRequest &&
             (identical(other.charging, charging) ||
-                const DeepCollectionEquality()
-                    .equals(other.charging, charging)) &&
+                const DeepCollectionEquality().equals(
+                  other.charging,
+                  charging,
+                )) &&
             (identical(other.endDate, endDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDate, endDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.endDate,
+                  endDate,
+                )) &&
             (identical(other.eventReason, eventReason) ||
-                const DeepCollectionEquality()
-                    .equals(other.eventReason, eventReason)) &&
+                const DeepCollectionEquality().equals(
+                  other.eventReason,
+                  eventReason,
+                )) &&
             (identical(other.latestPerVehicle, latestPerVehicle) ||
-                const DeepCollectionEquality()
-                    .equals(other.latestPerVehicle, latestPerVehicle)) &&
+                const DeepCollectionEquality().equals(
+                  other.latestPerVehicle,
+                  latestPerVehicle,
+                )) &&
             (identical(other.maxResults, maxResults) ||
-                const DeepCollectionEquality()
-                    .equals(other.maxResults, maxResults)) &&
+                const DeepCollectionEquality().equals(
+                  other.maxResults,
+                  maxResults,
+                )) &&
             (identical(other.startDate, startDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDate, startDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.startDate,
+                  startDate,
+                )) &&
             (identical(other.vehicleIds, vehicleIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleIds, vehicleIds)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleIds,
+                  vehicleIds,
+                )));
   }
 
   @override
@@ -9357,43 +10464,46 @@ class SearchTelematicsTrackingRequest {
 
 extension $SearchTelematicsTrackingRequestExtension
     on SearchTelematicsTrackingRequest {
-  SearchTelematicsTrackingRequest copyWith(
-      {bool? charging,
-      DateTime? endDate,
-      enums.SearchTelematicsTrackingRequestEventReason? eventReason,
-      bool? latestPerVehicle,
-      int? maxResults,
-      DateTime? startDate,
-      List<String>? vehicleIds}) {
+  SearchTelematicsTrackingRequest copyWith({
+    bool? charging,
+    DateTime? endDate,
+    enums.SearchTelematicsTrackingRequestEventReason? eventReason,
+    bool? latestPerVehicle,
+    int? maxResults,
+    DateTime? startDate,
+    List<String>? vehicleIds,
+  }) {
     return SearchTelematicsTrackingRequest(
-        charging: charging ?? this.charging,
-        endDate: endDate ?? this.endDate,
-        eventReason: eventReason ?? this.eventReason,
-        latestPerVehicle: latestPerVehicle ?? this.latestPerVehicle,
-        maxResults: maxResults ?? this.maxResults,
-        startDate: startDate ?? this.startDate,
-        vehicleIds: vehicleIds ?? this.vehicleIds);
+      charging: charging ?? this.charging,
+      endDate: endDate ?? this.endDate,
+      eventReason: eventReason ?? this.eventReason,
+      latestPerVehicle: latestPerVehicle ?? this.latestPerVehicle,
+      maxResults: maxResults ?? this.maxResults,
+      startDate: startDate ?? this.startDate,
+      vehicleIds: vehicleIds ?? this.vehicleIds,
+    );
   }
 
-  SearchTelematicsTrackingRequest copyWithWrapped(
-      {Wrapped<bool?>? charging,
-      Wrapped<DateTime?>? endDate,
-      Wrapped<enums.SearchTelematicsTrackingRequestEventReason?>? eventReason,
-      Wrapped<bool?>? latestPerVehicle,
-      Wrapped<int?>? maxResults,
-      Wrapped<DateTime?>? startDate,
-      Wrapped<List<String>?>? vehicleIds}) {
+  SearchTelematicsTrackingRequest copyWithWrapped({
+    Wrapped<bool?>? charging,
+    Wrapped<DateTime?>? endDate,
+    Wrapped<enums.SearchTelematicsTrackingRequestEventReason?>? eventReason,
+    Wrapped<bool?>? latestPerVehicle,
+    Wrapped<int?>? maxResults,
+    Wrapped<DateTime?>? startDate,
+    Wrapped<List<String>?>? vehicleIds,
+  }) {
     return SearchTelematicsTrackingRequest(
-        charging: (charging != null ? charging.value : this.charging),
-        endDate: (endDate != null ? endDate.value : this.endDate),
-        eventReason:
-            (eventReason != null ? eventReason.value : this.eventReason),
-        latestPerVehicle: (latestPerVehicle != null
-            ? latestPerVehicle.value
-            : this.latestPerVehicle),
-        maxResults: (maxResults != null ? maxResults.value : this.maxResults),
-        startDate: (startDate != null ? startDate.value : this.startDate),
-        vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds));
+      charging: (charging != null ? charging.value : this.charging),
+      endDate: (endDate != null ? endDate.value : this.endDate),
+      eventReason: (eventReason != null ? eventReason.value : this.eventReason),
+      latestPerVehicle: (latestPerVehicle != null
+          ? latestPerVehicle.value
+          : this.latestPerVehicle),
+      maxResults: (maxResults != null ? maxResults.value : this.maxResults),
+      startDate: (startDate != null ? startDate.value : this.startDate),
+      vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds),
+    );
   }
 }
 
@@ -9430,19 +10540,27 @@ class SearchVehiclesRequest {
     return identical(this, other) ||
         (other is SearchVehiclesRequest &&
             (identical(other.location, location) ||
-                const DeepCollectionEquality()
-                    .equals(other.location, location)) &&
+                const DeepCollectionEquality().equals(
+                  other.location,
+                  location,
+                )) &&
             (identical(other.maxDistance, maxDistance) ||
-                const DeepCollectionEquality()
-                    .equals(other.maxDistance, maxDistance)) &&
+                const DeepCollectionEquality().equals(
+                  other.maxDistance,
+                  maxDistance,
+                )) &&
             (identical(other.period, period) ||
                 const DeepCollectionEquality().equals(other.period, period)) &&
             (identical(other.subscriptionId, subscriptionId) ||
-                const DeepCollectionEquality()
-                    .equals(other.subscriptionId, subscriptionId)) &&
+                const DeepCollectionEquality().equals(
+                  other.subscriptionId,
+                  subscriptionId,
+                )) &&
             (identical(other.vehicleFilterCriteria, vehicleFilterCriteria) ||
                 const DeepCollectionEquality().equals(
-                    other.vehicleFilterCriteria, vehicleFilterCriteria)));
+                  other.vehicleFilterCriteria,
+                  vehicleFilterCriteria,
+                )));
   }
 
   @override
@@ -9459,47 +10577,47 @@ class SearchVehiclesRequest {
 }
 
 extension $SearchVehiclesRequestExtension on SearchVehiclesRequest {
-  SearchVehiclesRequest copyWith(
-      {GpsCoordinate? location,
-      double? maxDistance,
-      Period? period,
-      String? subscriptionId,
-      VehicleFilterCriteria? vehicleFilterCriteria}) {
+  SearchVehiclesRequest copyWith({
+    GpsCoordinate? location,
+    double? maxDistance,
+    Period? period,
+    String? subscriptionId,
+    VehicleFilterCriteria? vehicleFilterCriteria,
+  }) {
     return SearchVehiclesRequest(
-        location: location ?? this.location,
-        maxDistance: maxDistance ?? this.maxDistance,
-        period: period ?? this.period,
-        subscriptionId: subscriptionId ?? this.subscriptionId,
-        vehicleFilterCriteria:
-            vehicleFilterCriteria ?? this.vehicleFilterCriteria);
+      location: location ?? this.location,
+      maxDistance: maxDistance ?? this.maxDistance,
+      period: period ?? this.period,
+      subscriptionId: subscriptionId ?? this.subscriptionId,
+      vehicleFilterCriteria:
+          vehicleFilterCriteria ?? this.vehicleFilterCriteria,
+    );
   }
 
-  SearchVehiclesRequest copyWithWrapped(
-      {Wrapped<GpsCoordinate?>? location,
-      Wrapped<double?>? maxDistance,
-      Wrapped<Period?>? period,
-      Wrapped<String?>? subscriptionId,
-      Wrapped<VehicleFilterCriteria?>? vehicleFilterCriteria}) {
+  SearchVehiclesRequest copyWithWrapped({
+    Wrapped<GpsCoordinate?>? location,
+    Wrapped<double?>? maxDistance,
+    Wrapped<Period?>? period,
+    Wrapped<String?>? subscriptionId,
+    Wrapped<VehicleFilterCriteria?>? vehicleFilterCriteria,
+  }) {
     return SearchVehiclesRequest(
-        location: (location != null ? location.value : this.location),
-        maxDistance:
-            (maxDistance != null ? maxDistance.value : this.maxDistance),
-        period: (period != null ? period.value : this.period),
-        subscriptionId: (subscriptionId != null
-            ? subscriptionId.value
-            : this.subscriptionId),
-        vehicleFilterCriteria: (vehicleFilterCriteria != null
-            ? vehicleFilterCriteria.value
-            : this.vehicleFilterCriteria));
+      location: (location != null ? location.value : this.location),
+      maxDistance: (maxDistance != null ? maxDistance.value : this.maxDistance),
+      period: (period != null ? period.value : this.period),
+      subscriptionId: (subscriptionId != null
+          ? subscriptionId.value
+          : this.subscriptionId),
+      vehicleFilterCriteria: (vehicleFilterCriteria != null
+          ? vehicleFilterCriteria.value
+          : this.vehicleFilterCriteria),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class SignupUser {
-  const SignupUser({
-    required this.email,
-    required this.password,
-  });
+  const SignupUser({required this.email, required this.password});
 
   factory SignupUser.fromJson(Map<String, dynamic> json) =>
       _$SignupUserFromJson(json);
@@ -9520,8 +10638,10 @@ class SignupUser {
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)));
+                const DeepCollectionEquality().equals(
+                  other.password,
+                  password,
+                )));
   }
 
   @override
@@ -9537,23 +10657,25 @@ class SignupUser {
 extension $SignupUserExtension on SignupUser {
   SignupUser copyWith({String? email, String? password}) {
     return SignupUser(
-        email: email ?? this.email, password: password ?? this.password);
+      email: email ?? this.email,
+      password: password ?? this.password,
+    );
   }
 
-  SignupUser copyWithWrapped(
-      {Wrapped<String>? email, Wrapped<String>? password}) {
+  SignupUser copyWithWrapped({
+    Wrapped<String>? email,
+    Wrapped<String>? password,
+  }) {
     return SignupUser(
-        email: (email != null ? email.value : this.email),
-        password: (password != null ? password.value : this.password));
+      email: (email != null ? email.value : this.email),
+      password: (password != null ? password.value : this.password),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class StartVehicleUsageRequest {
-  const StartVehicleUsageRequest({
-    this.bookingId,
-    this.vehicleId,
-  });
+  const StartVehicleUsageRequest({this.bookingId, this.vehicleId});
 
   factory StartVehicleUsageRequest.fromJson(Map<String, dynamic> json) =>
       _$StartVehicleUsageRequestFromJson(json);
@@ -9572,11 +10694,15 @@ class StartVehicleUsageRequest {
     return identical(this, other) ||
         (other is StartVehicleUsageRequest &&
             (identical(other.bookingId, bookingId) ||
-                const DeepCollectionEquality()
-                    .equals(other.bookingId, bookingId)) &&
+                const DeepCollectionEquality().equals(
+                  other.bookingId,
+                  bookingId,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -9592,23 +10718,25 @@ class StartVehicleUsageRequest {
 extension $StartVehicleUsageRequestExtension on StartVehicleUsageRequest {
   StartVehicleUsageRequest copyWith({String? bookingId, String? vehicleId}) {
     return StartVehicleUsageRequest(
-        bookingId: bookingId ?? this.bookingId,
-        vehicleId: vehicleId ?? this.vehicleId);
+      bookingId: bookingId ?? this.bookingId,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  StartVehicleUsageRequest copyWithWrapped(
-      {Wrapped<String?>? bookingId, Wrapped<String?>? vehicleId}) {
+  StartVehicleUsageRequest copyWithWrapped({
+    Wrapped<String?>? bookingId,
+    Wrapped<String?>? vehicleId,
+  }) {
     return StartVehicleUsageRequest(
-        bookingId: (bookingId != null ? bookingId.value : this.bookingId),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      bookingId: (bookingId != null ? bookingId.value : this.bookingId),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class StoreConfigValueRequest {
-  const StoreConfigValueRequest({
-    this.$value,
-  });
+  const StoreConfigValueRequest({this.$value});
 
   factory StoreConfigValueRequest.fromJson(Map<String, dynamic> json) =>
       _$StoreConfigValueRequestFromJson(json);
@@ -9643,16 +10771,14 @@ extension $StoreConfigValueRequestExtension on StoreConfigValueRequest {
 
   StoreConfigValueRequest copyWithWrapped({Wrapped<String?>? $value}) {
     return StoreConfigValueRequest(
-        $value: ($value != null ? $value.value : this.$value));
+      $value: ($value != null ? $value.value : this.$value),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class StoreTeslaTokensRequest {
-  const StoreTeslaTokensRequest({
-    this.accessToken,
-    this.refreshToken,
-  });
+  const StoreTeslaTokensRequest({this.accessToken, this.refreshToken});
 
   factory StoreTeslaTokensRequest.fromJson(Map<String, dynamic> json) =>
       _$StoreTeslaTokensRequestFromJson(json);
@@ -9671,11 +10797,15 @@ class StoreTeslaTokensRequest {
     return identical(this, other) ||
         (other is StoreTeslaTokensRequest &&
             (identical(other.accessToken, accessToken) ||
-                const DeepCollectionEquality()
-                    .equals(other.accessToken, accessToken)) &&
+                const DeepCollectionEquality().equals(
+                  other.accessToken,
+                  accessToken,
+                )) &&
             (identical(other.refreshToken, refreshToken) ||
-                const DeepCollectionEquality()
-                    .equals(other.refreshToken, refreshToken)));
+                const DeepCollectionEquality().equals(
+                  other.refreshToken,
+                  refreshToken,
+                )));
   }
 
   @override
@@ -9689,20 +10819,26 @@ class StoreTeslaTokensRequest {
 }
 
 extension $StoreTeslaTokensRequestExtension on StoreTeslaTokensRequest {
-  StoreTeslaTokensRequest copyWith(
-      {String? accessToken, String? refreshToken}) {
+  StoreTeslaTokensRequest copyWith({
+    String? accessToken,
+    String? refreshToken,
+  }) {
     return StoreTeslaTokensRequest(
-        accessToken: accessToken ?? this.accessToken,
-        refreshToken: refreshToken ?? this.refreshToken);
+      accessToken: accessToken ?? this.accessToken,
+      refreshToken: refreshToken ?? this.refreshToken,
+    );
   }
 
-  StoreTeslaTokensRequest copyWithWrapped(
-      {Wrapped<String?>? accessToken, Wrapped<String?>? refreshToken}) {
+  StoreTeslaTokensRequest copyWithWrapped({
+    Wrapped<String?>? accessToken,
+    Wrapped<String?>? refreshToken,
+  }) {
     return StoreTeslaTokensRequest(
-        accessToken:
-            (accessToken != null ? accessToken.value : this.accessToken),
-        refreshToken:
-            (refreshToken != null ? refreshToken.value : this.refreshToken));
+      accessToken: (accessToken != null ? accessToken.value : this.accessToken),
+      refreshToken: (refreshToken != null
+          ? refreshToken.value
+          : this.refreshToken),
+    );
   }
 }
 
@@ -9758,34 +10894,52 @@ class Subscription {
     return identical(this, other) ||
         (other is Subscription &&
             (identical(other.clientId, clientId) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientId, clientId)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientId,
+                  clientId,
+                )) &&
             (identical(other.clientName, clientName) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientName, clientName)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientName,
+                  clientName,
+                )) &&
             (identical(other.clientRoles, clientRoles) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientRoles, clientRoles)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientRoles,
+                  clientRoles,
+                )) &&
             (identical(other.commitment, commitment) ||
-                const DeepCollectionEquality()
-                    .equals(other.commitment, commitment)) &&
+                const DeepCollectionEquality().equals(
+                  other.commitment,
+                  commitment,
+                )) &&
             (identical(other.endDate, endDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDate, endDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.endDate,
+                  endDate,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.startDate, startDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDate, startDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.startDate,
+                  startDate,
+                )) &&
             (identical(other.subscriptionType, subscriptionType) ||
-                const DeepCollectionEquality()
-                    .equals(other.subscriptionType, subscriptionType)) &&
+                const DeepCollectionEquality().equals(
+                  other.subscriptionType,
+                  subscriptionType,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)) &&
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )) &&
             (identical(other.vehicles, vehicles) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicles, vehicles)));
+                const DeepCollectionEquality().equals(
+                  other.vehicles,
+                  vehicles,
+                )));
   }
 
   @override
@@ -9807,55 +10961,58 @@ class Subscription {
 }
 
 extension $SubscriptionExtension on Subscription {
-  Subscription copyWith(
-      {int? clientId,
-      String? clientName,
-      enums.SubscriptionClientRoles? clientRoles,
-      int? commitment,
-      DateTime? endDate,
-      int? id,
-      DateTime? startDate,
-      String? subscriptionType,
-      String? vehicleId,
-      List<String>? vehicles}) {
+  Subscription copyWith({
+    int? clientId,
+    String? clientName,
+    enums.SubscriptionClientRoles? clientRoles,
+    int? commitment,
+    DateTime? endDate,
+    int? id,
+    DateTime? startDate,
+    String? subscriptionType,
+    String? vehicleId,
+    List<String>? vehicles,
+  }) {
     return Subscription(
-        clientId: clientId ?? this.clientId,
-        clientName: clientName ?? this.clientName,
-        clientRoles: clientRoles ?? this.clientRoles,
-        commitment: commitment ?? this.commitment,
-        endDate: endDate ?? this.endDate,
-        id: id ?? this.id,
-        startDate: startDate ?? this.startDate,
-        subscriptionType: subscriptionType ?? this.subscriptionType,
-        vehicleId: vehicleId ?? this.vehicleId,
-        vehicles: vehicles ?? this.vehicles);
+      clientId: clientId ?? this.clientId,
+      clientName: clientName ?? this.clientName,
+      clientRoles: clientRoles ?? this.clientRoles,
+      commitment: commitment ?? this.commitment,
+      endDate: endDate ?? this.endDate,
+      id: id ?? this.id,
+      startDate: startDate ?? this.startDate,
+      subscriptionType: subscriptionType ?? this.subscriptionType,
+      vehicleId: vehicleId ?? this.vehicleId,
+      vehicles: vehicles ?? this.vehicles,
+    );
   }
 
-  Subscription copyWithWrapped(
-      {Wrapped<int?>? clientId,
-      Wrapped<String?>? clientName,
-      Wrapped<enums.SubscriptionClientRoles?>? clientRoles,
-      Wrapped<int?>? commitment,
-      Wrapped<DateTime?>? endDate,
-      Wrapped<int?>? id,
-      Wrapped<DateTime?>? startDate,
-      Wrapped<String?>? subscriptionType,
-      Wrapped<String?>? vehicleId,
-      Wrapped<List<String>?>? vehicles}) {
+  Subscription copyWithWrapped({
+    Wrapped<int?>? clientId,
+    Wrapped<String?>? clientName,
+    Wrapped<enums.SubscriptionClientRoles?>? clientRoles,
+    Wrapped<int?>? commitment,
+    Wrapped<DateTime?>? endDate,
+    Wrapped<int?>? id,
+    Wrapped<DateTime?>? startDate,
+    Wrapped<String?>? subscriptionType,
+    Wrapped<String?>? vehicleId,
+    Wrapped<List<String>?>? vehicles,
+  }) {
     return Subscription(
-        clientId: (clientId != null ? clientId.value : this.clientId),
-        clientName: (clientName != null ? clientName.value : this.clientName),
-        clientRoles:
-            (clientRoles != null ? clientRoles.value : this.clientRoles),
-        commitment: (commitment != null ? commitment.value : this.commitment),
-        endDate: (endDate != null ? endDate.value : this.endDate),
-        id: (id != null ? id.value : this.id),
-        startDate: (startDate != null ? startDate.value : this.startDate),
-        subscriptionType: (subscriptionType != null
-            ? subscriptionType.value
-            : this.subscriptionType),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
-        vehicles: (vehicles != null ? vehicles.value : this.vehicles));
+      clientId: (clientId != null ? clientId.value : this.clientId),
+      clientName: (clientName != null ? clientName.value : this.clientName),
+      clientRoles: (clientRoles != null ? clientRoles.value : this.clientRoles),
+      commitment: (commitment != null ? commitment.value : this.commitment),
+      endDate: (endDate != null ? endDate.value : this.endDate),
+      id: (id != null ? id.value : this.id),
+      startDate: (startDate != null ? startDate.value : this.startDate),
+      subscriptionType: (subscriptionType != null
+          ? subscriptionType.value
+          : this.subscriptionType),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+      vehicles: (vehicles != null ? vehicles.value : this.vehicles),
+    );
   }
 }
 
@@ -9904,32 +11061,50 @@ class TelematicsDevice {
     return identical(this, other) ||
         (other is TelematicsDevice &&
             (identical(other.alwaysUseBluetooth, alwaysUseBluetooth) ||
-                const DeepCollectionEquality()
-                    .equals(other.alwaysUseBluetooth, alwaysUseBluetooth)) &&
+                const DeepCollectionEquality().equals(
+                  other.alwaysUseBluetooth,
+                  alwaysUseBluetooth,
+                )) &&
             (identical(other.bydMobilizeHack, bydMobilizeHack) ||
-                const DeepCollectionEquality()
-                    .equals(other.bydMobilizeHack, bydMobilizeHack)) &&
+                const DeepCollectionEquality().equals(
+                  other.bydMobilizeHack,
+                  bydMobilizeHack,
+                )) &&
             (identical(other.ignitionCheck, ignitionCheck) ||
-                const DeepCollectionEquality()
-                    .equals(other.ignitionCheck, ignitionCheck)) &&
+                const DeepCollectionEquality().equals(
+                  other.ignitionCheck,
+                  ignitionCheck,
+                )) &&
             (identical(other.keyfobCheck, keyfobCheck) ||
-                const DeepCollectionEquality()
-                    .equals(other.keyfobCheck, keyfobCheck)) &&
+                const DeepCollectionEquality().equals(
+                  other.keyfobCheck,
+                  keyfobCheck,
+                )) &&
             (identical(other.maxRange, maxRange) ||
-                const DeepCollectionEquality()
-                    .equals(other.maxRange, maxRange)) &&
+                const DeepCollectionEquality().equals(
+                  other.maxRange,
+                  maxRange,
+                )) &&
             (identical(other.phoneNumber, phoneNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.phoneNumber, phoneNumber)) &&
+                const DeepCollectionEquality().equals(
+                  other.phoneNumber,
+                  phoneNumber,
+                )) &&
             (identical(other.providerDeviceId, providerDeviceId) ||
-                const DeepCollectionEquality()
-                    .equals(other.providerDeviceId, providerDeviceId)) &&
+                const DeepCollectionEquality().equals(
+                  other.providerDeviceId,
+                  providerDeviceId,
+                )) &&
             (identical(other.providerId, providerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.providerId, providerId)) &&
+                const DeepCollectionEquality().equals(
+                  other.providerId,
+                  providerId,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -9950,65 +11125,66 @@ class TelematicsDevice {
 }
 
 extension $TelematicsDeviceExtension on TelematicsDevice {
-  TelematicsDevice copyWith(
-      {bool? alwaysUseBluetooth,
-      bool? bydMobilizeHack,
-      bool? ignitionCheck,
-      bool? keyfobCheck,
-      int? maxRange,
-      String? phoneNumber,
-      String? providerDeviceId,
-      String? providerId,
-      String? vehicleId}) {
+  TelematicsDevice copyWith({
+    bool? alwaysUseBluetooth,
+    bool? bydMobilizeHack,
+    bool? ignitionCheck,
+    bool? keyfobCheck,
+    int? maxRange,
+    String? phoneNumber,
+    String? providerDeviceId,
+    String? providerId,
+    String? vehicleId,
+  }) {
     return TelematicsDevice(
-        alwaysUseBluetooth: alwaysUseBluetooth ?? this.alwaysUseBluetooth,
-        bydMobilizeHack: bydMobilizeHack ?? this.bydMobilizeHack,
-        ignitionCheck: ignitionCheck ?? this.ignitionCheck,
-        keyfobCheck: keyfobCheck ?? this.keyfobCheck,
-        maxRange: maxRange ?? this.maxRange,
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        providerDeviceId: providerDeviceId ?? this.providerDeviceId,
-        providerId: providerId ?? this.providerId,
-        vehicleId: vehicleId ?? this.vehicleId);
+      alwaysUseBluetooth: alwaysUseBluetooth ?? this.alwaysUseBluetooth,
+      bydMobilizeHack: bydMobilizeHack ?? this.bydMobilizeHack,
+      ignitionCheck: ignitionCheck ?? this.ignitionCheck,
+      keyfobCheck: keyfobCheck ?? this.keyfobCheck,
+      maxRange: maxRange ?? this.maxRange,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      providerDeviceId: providerDeviceId ?? this.providerDeviceId,
+      providerId: providerId ?? this.providerId,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  TelematicsDevice copyWithWrapped(
-      {Wrapped<bool?>? alwaysUseBluetooth,
-      Wrapped<bool?>? bydMobilizeHack,
-      Wrapped<bool?>? ignitionCheck,
-      Wrapped<bool?>? keyfobCheck,
-      Wrapped<int?>? maxRange,
-      Wrapped<String?>? phoneNumber,
-      Wrapped<String?>? providerDeviceId,
-      Wrapped<String?>? providerId,
-      Wrapped<String?>? vehicleId}) {
+  TelematicsDevice copyWithWrapped({
+    Wrapped<bool?>? alwaysUseBluetooth,
+    Wrapped<bool?>? bydMobilizeHack,
+    Wrapped<bool?>? ignitionCheck,
+    Wrapped<bool?>? keyfobCheck,
+    Wrapped<int?>? maxRange,
+    Wrapped<String?>? phoneNumber,
+    Wrapped<String?>? providerDeviceId,
+    Wrapped<String?>? providerId,
+    Wrapped<String?>? vehicleId,
+  }) {
     return TelematicsDevice(
-        alwaysUseBluetooth: (alwaysUseBluetooth != null
-            ? alwaysUseBluetooth.value
-            : this.alwaysUseBluetooth),
-        bydMobilizeHack: (bydMobilizeHack != null
-            ? bydMobilizeHack.value
-            : this.bydMobilizeHack),
-        ignitionCheck:
-            (ignitionCheck != null ? ignitionCheck.value : this.ignitionCheck),
-        keyfobCheck:
-            (keyfobCheck != null ? keyfobCheck.value : this.keyfobCheck),
-        maxRange: (maxRange != null ? maxRange.value : this.maxRange),
-        phoneNumber:
-            (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
-        providerDeviceId: (providerDeviceId != null
-            ? providerDeviceId.value
-            : this.providerDeviceId),
-        providerId: (providerId != null ? providerId.value : this.providerId),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      alwaysUseBluetooth: (alwaysUseBluetooth != null
+          ? alwaysUseBluetooth.value
+          : this.alwaysUseBluetooth),
+      bydMobilizeHack: (bydMobilizeHack != null
+          ? bydMobilizeHack.value
+          : this.bydMobilizeHack),
+      ignitionCheck: (ignitionCheck != null
+          ? ignitionCheck.value
+          : this.ignitionCheck),
+      keyfobCheck: (keyfobCheck != null ? keyfobCheck.value : this.keyfobCheck),
+      maxRange: (maxRange != null ? maxRange.value : this.maxRange),
+      phoneNumber: (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
+      providerDeviceId: (providerDeviceId != null
+          ? providerDeviceId.value
+          : this.providerDeviceId),
+      providerId: (providerId != null ? providerId.value : this.providerId),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class TelematicsProvider {
-  const TelematicsProvider({
-    this.id,
-  });
+  const TelematicsProvider({this.id});
 
   factory TelematicsProvider.fromJson(Map<String, dynamic> json) =>
       _$TelematicsProviderFromJson(json);
@@ -10048,9 +11224,7 @@ extension $TelematicsProviderExtension on TelematicsProvider {
 
 @JsonSerializable(explicitToJson: true)
 class TelematicsProviderPage {
-  const TelematicsProviderPage({
-    this.providers,
-  });
+  const TelematicsProviderPage({this.providers});
 
   factory TelematicsProviderPage.fromJson(Map<String, dynamic> json) =>
       _$TelematicsProviderPageFromJson(json);
@@ -10067,8 +11241,10 @@ class TelematicsProviderPage {
     return identical(this, other) ||
         (other is TelematicsProviderPage &&
             (identical(other.providers, providers) ||
-                const DeepCollectionEquality()
-                    .equals(other.providers, providers)));
+                const DeepCollectionEquality().equals(
+                  other.providers,
+                  providers,
+                )));
   }
 
   @override
@@ -10084,10 +11260,12 @@ extension $TelematicsProviderPageExtension on TelematicsProviderPage {
     return TelematicsProviderPage(providers: providers ?? this.providers);
   }
 
-  TelematicsProviderPage copyWithWrapped(
-      {Wrapped<List<TelematicsProvider>?>? providers}) {
+  TelematicsProviderPage copyWithWrapped({
+    Wrapped<List<TelematicsProvider>?>? providers,
+  }) {
     return TelematicsProviderPage(
-        providers: (providers != null ? providers.value : this.providers));
+      providers: (providers != null ? providers.value : this.providers),
+    );
   }
 }
 
@@ -10136,32 +11314,50 @@ class TelematicsRequest {
     return identical(this, other) ||
         (other is TelematicsRequest &&
             (identical(other.alwaysUseBluetooth, alwaysUseBluetooth) ||
-                const DeepCollectionEquality()
-                    .equals(other.alwaysUseBluetooth, alwaysUseBluetooth)) &&
+                const DeepCollectionEquality().equals(
+                  other.alwaysUseBluetooth,
+                  alwaysUseBluetooth,
+                )) &&
             (identical(other.bydMobilizeHack, bydMobilizeHack) ||
-                const DeepCollectionEquality()
-                    .equals(other.bydMobilizeHack, bydMobilizeHack)) &&
+                const DeepCollectionEquality().equals(
+                  other.bydMobilizeHack,
+                  bydMobilizeHack,
+                )) &&
             (identical(other.ignitionCheck, ignitionCheck) ||
-                const DeepCollectionEquality()
-                    .equals(other.ignitionCheck, ignitionCheck)) &&
+                const DeepCollectionEquality().equals(
+                  other.ignitionCheck,
+                  ignitionCheck,
+                )) &&
             (identical(other.keyfobCheck, keyfobCheck) ||
-                const DeepCollectionEquality()
-                    .equals(other.keyfobCheck, keyfobCheck)) &&
+                const DeepCollectionEquality().equals(
+                  other.keyfobCheck,
+                  keyfobCheck,
+                )) &&
             (identical(other.maxRange, maxRange) ||
-                const DeepCollectionEquality()
-                    .equals(other.maxRange, maxRange)) &&
+                const DeepCollectionEquality().equals(
+                  other.maxRange,
+                  maxRange,
+                )) &&
             (identical(other.phoneNumber, phoneNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.phoneNumber, phoneNumber)) &&
+                const DeepCollectionEquality().equals(
+                  other.phoneNumber,
+                  phoneNumber,
+                )) &&
             (identical(other.providerDeviceId, providerDeviceId) ||
-                const DeepCollectionEquality()
-                    .equals(other.providerDeviceId, providerDeviceId)) &&
+                const DeepCollectionEquality().equals(
+                  other.providerDeviceId,
+                  providerDeviceId,
+                )) &&
             (identical(other.providerId, providerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.providerId, providerId)) &&
+                const DeepCollectionEquality().equals(
+                  other.providerId,
+                  providerId,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -10182,57 +11378,60 @@ class TelematicsRequest {
 }
 
 extension $TelematicsRequestExtension on TelematicsRequest {
-  TelematicsRequest copyWith(
-      {bool? alwaysUseBluetooth,
-      bool? bydMobilizeHack,
-      bool? ignitionCheck,
-      bool? keyfobCheck,
-      int? maxRange,
-      String? phoneNumber,
-      String? providerDeviceId,
-      String? providerId,
-      String? vehicleId}) {
+  TelematicsRequest copyWith({
+    bool? alwaysUseBluetooth,
+    bool? bydMobilizeHack,
+    bool? ignitionCheck,
+    bool? keyfobCheck,
+    int? maxRange,
+    String? phoneNumber,
+    String? providerDeviceId,
+    String? providerId,
+    String? vehicleId,
+  }) {
     return TelematicsRequest(
-        alwaysUseBluetooth: alwaysUseBluetooth ?? this.alwaysUseBluetooth,
-        bydMobilizeHack: bydMobilizeHack ?? this.bydMobilizeHack,
-        ignitionCheck: ignitionCheck ?? this.ignitionCheck,
-        keyfobCheck: keyfobCheck ?? this.keyfobCheck,
-        maxRange: maxRange ?? this.maxRange,
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        providerDeviceId: providerDeviceId ?? this.providerDeviceId,
-        providerId: providerId ?? this.providerId,
-        vehicleId: vehicleId ?? this.vehicleId);
+      alwaysUseBluetooth: alwaysUseBluetooth ?? this.alwaysUseBluetooth,
+      bydMobilizeHack: bydMobilizeHack ?? this.bydMobilizeHack,
+      ignitionCheck: ignitionCheck ?? this.ignitionCheck,
+      keyfobCheck: keyfobCheck ?? this.keyfobCheck,
+      maxRange: maxRange ?? this.maxRange,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      providerDeviceId: providerDeviceId ?? this.providerDeviceId,
+      providerId: providerId ?? this.providerId,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  TelematicsRequest copyWithWrapped(
-      {Wrapped<bool?>? alwaysUseBluetooth,
-      Wrapped<bool?>? bydMobilizeHack,
-      Wrapped<bool?>? ignitionCheck,
-      Wrapped<bool?>? keyfobCheck,
-      Wrapped<int?>? maxRange,
-      Wrapped<String?>? phoneNumber,
-      Wrapped<String>? providerDeviceId,
-      Wrapped<String>? providerId,
-      Wrapped<String>? vehicleId}) {
+  TelematicsRequest copyWithWrapped({
+    Wrapped<bool?>? alwaysUseBluetooth,
+    Wrapped<bool?>? bydMobilizeHack,
+    Wrapped<bool?>? ignitionCheck,
+    Wrapped<bool?>? keyfobCheck,
+    Wrapped<int?>? maxRange,
+    Wrapped<String?>? phoneNumber,
+    Wrapped<String>? providerDeviceId,
+    Wrapped<String>? providerId,
+    Wrapped<String>? vehicleId,
+  }) {
     return TelematicsRequest(
-        alwaysUseBluetooth: (alwaysUseBluetooth != null
-            ? alwaysUseBluetooth.value
-            : this.alwaysUseBluetooth),
-        bydMobilizeHack: (bydMobilizeHack != null
-            ? bydMobilizeHack.value
-            : this.bydMobilizeHack),
-        ignitionCheck:
-            (ignitionCheck != null ? ignitionCheck.value : this.ignitionCheck),
-        keyfobCheck:
-            (keyfobCheck != null ? keyfobCheck.value : this.keyfobCheck),
-        maxRange: (maxRange != null ? maxRange.value : this.maxRange),
-        phoneNumber:
-            (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
-        providerDeviceId: (providerDeviceId != null
-            ? providerDeviceId.value
-            : this.providerDeviceId),
-        providerId: (providerId != null ? providerId.value : this.providerId),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      alwaysUseBluetooth: (alwaysUseBluetooth != null
+          ? alwaysUseBluetooth.value
+          : this.alwaysUseBluetooth),
+      bydMobilizeHack: (bydMobilizeHack != null
+          ? bydMobilizeHack.value
+          : this.bydMobilizeHack),
+      ignitionCheck: (ignitionCheck != null
+          ? ignitionCheck.value
+          : this.ignitionCheck),
+      keyfobCheck: (keyfobCheck != null ? keyfobCheck.value : this.keyfobCheck),
+      maxRange: (maxRange != null ? maxRange.value : this.maxRange),
+      phoneNumber: (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
+      providerDeviceId: (providerDeviceId != null
+          ? providerDeviceId.value
+          : this.providerDeviceId),
+      providerId: (providerId != null ? providerId.value : this.providerId),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
@@ -10285,32 +11484,50 @@ class TelematicsTracking {
     return identical(this, other) ||
         (other is TelematicsTracking &&
             (identical(other.address, address) ||
-                const DeepCollectionEquality()
-                    .equals(other.address, address)) &&
+                const DeepCollectionEquality().equals(
+                  other.address,
+                  address,
+                )) &&
             (identical(other.batteryPercentage, batteryPercentage) ||
-                const DeepCollectionEquality()
-                    .equals(other.batteryPercentage, batteryPercentage)) &&
+                const DeepCollectionEquality().equals(
+                  other.batteryPercentage,
+                  batteryPercentage,
+                )) &&
             (identical(other.charging, charging) ||
-                const DeepCollectionEquality()
-                    .equals(other.charging, charging)) &&
+                const DeepCollectionEquality().equals(
+                  other.charging,
+                  charging,
+                )) &&
             (identical(other.dateCreated, dateCreated) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateCreated, dateCreated)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateCreated,
+                  dateCreated,
+                )) &&
             (identical(other.eventReason, eventReason) ||
-                const DeepCollectionEquality()
-                    .equals(other.eventReason, eventReason)) &&
+                const DeepCollectionEquality().equals(
+                  other.eventReason,
+                  eventReason,
+                )) &&
             (identical(other.locationPosition, locationPosition) ||
-                const DeepCollectionEquality()
-                    .equals(other.locationPosition, locationPosition)) &&
+                const DeepCollectionEquality().equals(
+                  other.locationPosition,
+                  locationPosition,
+                )) &&
             (identical(other.mileage, mileage) ||
-                const DeepCollectionEquality()
-                    .equals(other.mileage, mileage)) &&
+                const DeepCollectionEquality().equals(
+                  other.mileage,
+                  mileage,
+                )) &&
             (identical(other.telematicsId, telematicsId) ||
-                const DeepCollectionEquality()
-                    .equals(other.telematicsId, telematicsId)) &&
+                const DeepCollectionEquality().equals(
+                  other.telematicsId,
+                  telematicsId,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -10331,55 +11548,58 @@ class TelematicsTracking {
 }
 
 extension $TelematicsTrackingExtension on TelematicsTracking {
-  TelematicsTracking copyWith(
-      {String? address,
-      int? batteryPercentage,
-      bool? charging,
-      DateTime? dateCreated,
-      enums.TelematicsTrackingEventReason? eventReason,
-      LocationPosition? locationPosition,
-      double? mileage,
-      String? telematicsId,
-      String? vehicleId}) {
+  TelematicsTracking copyWith({
+    String? address,
+    int? batteryPercentage,
+    bool? charging,
+    DateTime? dateCreated,
+    enums.TelematicsTrackingEventReason? eventReason,
+    LocationPosition? locationPosition,
+    double? mileage,
+    String? telematicsId,
+    String? vehicleId,
+  }) {
     return TelematicsTracking(
-        address: address ?? this.address,
-        batteryPercentage: batteryPercentage ?? this.batteryPercentage,
-        charging: charging ?? this.charging,
-        dateCreated: dateCreated ?? this.dateCreated,
-        eventReason: eventReason ?? this.eventReason,
-        locationPosition: locationPosition ?? this.locationPosition,
-        mileage: mileage ?? this.mileage,
-        telematicsId: telematicsId ?? this.telematicsId,
-        vehicleId: vehicleId ?? this.vehicleId);
+      address: address ?? this.address,
+      batteryPercentage: batteryPercentage ?? this.batteryPercentage,
+      charging: charging ?? this.charging,
+      dateCreated: dateCreated ?? this.dateCreated,
+      eventReason: eventReason ?? this.eventReason,
+      locationPosition: locationPosition ?? this.locationPosition,
+      mileage: mileage ?? this.mileage,
+      telematicsId: telematicsId ?? this.telematicsId,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  TelematicsTracking copyWithWrapped(
-      {Wrapped<String?>? address,
-      Wrapped<int?>? batteryPercentage,
-      Wrapped<bool?>? charging,
-      Wrapped<DateTime?>? dateCreated,
-      Wrapped<enums.TelematicsTrackingEventReason?>? eventReason,
-      Wrapped<LocationPosition?>? locationPosition,
-      Wrapped<double?>? mileage,
-      Wrapped<String?>? telematicsId,
-      Wrapped<String?>? vehicleId}) {
+  TelematicsTracking copyWithWrapped({
+    Wrapped<String?>? address,
+    Wrapped<int?>? batteryPercentage,
+    Wrapped<bool?>? charging,
+    Wrapped<DateTime?>? dateCreated,
+    Wrapped<enums.TelematicsTrackingEventReason?>? eventReason,
+    Wrapped<LocationPosition?>? locationPosition,
+    Wrapped<double?>? mileage,
+    Wrapped<String?>? telematicsId,
+    Wrapped<String?>? vehicleId,
+  }) {
     return TelematicsTracking(
-        address: (address != null ? address.value : this.address),
-        batteryPercentage: (batteryPercentage != null
-            ? batteryPercentage.value
-            : this.batteryPercentage),
-        charging: (charging != null ? charging.value : this.charging),
-        dateCreated:
-            (dateCreated != null ? dateCreated.value : this.dateCreated),
-        eventReason:
-            (eventReason != null ? eventReason.value : this.eventReason),
-        locationPosition: (locationPosition != null
-            ? locationPosition.value
-            : this.locationPosition),
-        mileage: (mileage != null ? mileage.value : this.mileage),
-        telematicsId:
-            (telematicsId != null ? telematicsId.value : this.telematicsId),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      address: (address != null ? address.value : this.address),
+      batteryPercentage: (batteryPercentage != null
+          ? batteryPercentage.value
+          : this.batteryPercentage),
+      charging: (charging != null ? charging.value : this.charging),
+      dateCreated: (dateCreated != null ? dateCreated.value : this.dateCreated),
+      eventReason: (eventReason != null ? eventReason.value : this.eventReason),
+      locationPosition: (locationPosition != null
+          ? locationPosition.value
+          : this.locationPosition),
+      mileage: (mileage != null ? mileage.value : this.mileage),
+      telematicsId: (telematicsId != null
+          ? telematicsId.value
+          : this.telematicsId),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
@@ -10415,13 +11635,19 @@ class TelematicsVehicleUsage {
         (other is TelematicsVehicleUsage &&
             (identical(other.inversBluetoothToken, inversBluetoothToken) ||
                 const DeepCollectionEquality().equals(
-                    other.inversBluetoothToken, inversBluetoothToken)) &&
+                  other.inversBluetoothToken,
+                  inversBluetoothToken,
+                )) &&
             (identical(other.lockStatus, lockStatus) ||
-                const DeepCollectionEquality()
-                    .equals(other.lockStatus, lockStatus)) &&
+                const DeepCollectionEquality().equals(
+                  other.lockStatus,
+                  lockStatus,
+                )) &&
             (identical(other.mileageInfo, mileageInfo) ||
-                const DeepCollectionEquality()
-                    .equals(other.mileageInfo, mileageInfo)));
+                const DeepCollectionEquality().equals(
+                  other.mileageInfo,
+                  mileageInfo,
+                )));
   }
 
   @override
@@ -10436,27 +11662,30 @@ class TelematicsVehicleUsage {
 }
 
 extension $TelematicsVehicleUsageExtension on TelematicsVehicleUsage {
-  TelematicsVehicleUsage copyWith(
-      {BluetoothToken? inversBluetoothToken,
-      enums.TelematicsVehicleUsageLockStatus? lockStatus,
-      Mileage? mileageInfo}) {
+  TelematicsVehicleUsage copyWith({
+    BluetoothToken? inversBluetoothToken,
+    enums.TelematicsVehicleUsageLockStatus? lockStatus,
+    Mileage? mileageInfo,
+  }) {
     return TelematicsVehicleUsage(
-        inversBluetoothToken: inversBluetoothToken ?? this.inversBluetoothToken,
-        lockStatus: lockStatus ?? this.lockStatus,
-        mileageInfo: mileageInfo ?? this.mileageInfo);
+      inversBluetoothToken: inversBluetoothToken ?? this.inversBluetoothToken,
+      lockStatus: lockStatus ?? this.lockStatus,
+      mileageInfo: mileageInfo ?? this.mileageInfo,
+    );
   }
 
-  TelematicsVehicleUsage copyWithWrapped(
-      {Wrapped<BluetoothToken?>? inversBluetoothToken,
-      Wrapped<enums.TelematicsVehicleUsageLockStatus?>? lockStatus,
-      Wrapped<Mileage?>? mileageInfo}) {
+  TelematicsVehicleUsage copyWithWrapped({
+    Wrapped<BluetoothToken?>? inversBluetoothToken,
+    Wrapped<enums.TelematicsVehicleUsageLockStatus?>? lockStatus,
+    Wrapped<Mileage?>? mileageInfo,
+  }) {
     return TelematicsVehicleUsage(
-        inversBluetoothToken: (inversBluetoothToken != null
-            ? inversBluetoothToken.value
-            : this.inversBluetoothToken),
-        lockStatus: (lockStatus != null ? lockStatus.value : this.lockStatus),
-        mileageInfo:
-            (mileageInfo != null ? mileageInfo.value : this.mileageInfo));
+      inversBluetoothToken: (inversBluetoothToken != null
+          ? inversBluetoothToken.value
+          : this.inversBluetoothToken),
+      lockStatus: (lockStatus != null ? lockStatus.value : this.lockStatus),
+      mileageInfo: (mileageInfo != null ? mileageInfo.value : this.mileageInfo),
+    );
   }
 }
 
@@ -10494,17 +11723,25 @@ class TerminateContractHints {
     return identical(this, other) ||
         (other is TerminateContractHints &&
             (identical(other.actionAllowed, actionAllowed) ||
-                const DeepCollectionEquality()
-                    .equals(other.actionAllowed, actionAllowed)) &&
+                const DeepCollectionEquality().equals(
+                  other.actionAllowed,
+                  actionAllowed,
+                )) &&
             (identical(other.maximalDate, maximalDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.maximalDate, maximalDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.maximalDate,
+                  maximalDate,
+                )) &&
             (identical(other.minimalDate, minimalDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.minimalDate, minimalDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.minimalDate,
+                  minimalDate,
+                )) &&
             (identical(other.terminateOption, terminateOption) ||
-                const DeepCollectionEquality()
-                    .equals(other.terminateOption, terminateOption)));
+                const DeepCollectionEquality().equals(
+                  other.terminateOption,
+                  terminateOption,
+                )));
   }
 
   @override
@@ -10520,45 +11757,46 @@ class TerminateContractHints {
 }
 
 extension $TerminateContractHintsExtension on TerminateContractHints {
-  TerminateContractHints copyWith(
-      {bool? actionAllowed,
-      DateTime? maximalDate,
-      DateTime? minimalDate,
-      enums.TerminateDayOption? terminateOption}) {
+  TerminateContractHints copyWith({
+    bool? actionAllowed,
+    DateTime? maximalDate,
+    DateTime? minimalDate,
+    enums.TerminateDayOption? terminateOption,
+  }) {
     return TerminateContractHints(
-        actionAllowed: actionAllowed ?? this.actionAllowed,
-        maximalDate: maximalDate ?? this.maximalDate,
-        minimalDate: minimalDate ?? this.minimalDate,
-        terminateOption: terminateOption ?? this.terminateOption);
+      actionAllowed: actionAllowed ?? this.actionAllowed,
+      maximalDate: maximalDate ?? this.maximalDate,
+      minimalDate: minimalDate ?? this.minimalDate,
+      terminateOption: terminateOption ?? this.terminateOption,
+    );
   }
 
-  TerminateContractHints copyWithWrapped(
-      {Wrapped<bool?>? actionAllowed,
-      Wrapped<DateTime?>? maximalDate,
-      Wrapped<DateTime?>? minimalDate,
-      Wrapped<enums.TerminateDayOption?>? terminateOption}) {
+  TerminateContractHints copyWithWrapped({
+    Wrapped<bool?>? actionAllowed,
+    Wrapped<DateTime?>? maximalDate,
+    Wrapped<DateTime?>? minimalDate,
+    Wrapped<enums.TerminateDayOption?>? terminateOption,
+  }) {
     return TerminateContractHints(
-        actionAllowed:
-            (actionAllowed != null ? actionAllowed.value : this.actionAllowed),
-        maximalDate:
-            (maximalDate != null ? maximalDate.value : this.maximalDate),
-        minimalDate:
-            (minimalDate != null ? minimalDate.value : this.minimalDate),
-        terminateOption: (terminateOption != null
-            ? terminateOption.value
-            : this.terminateOption));
+      actionAllowed: (actionAllowed != null
+          ? actionAllowed.value
+          : this.actionAllowed),
+      maximalDate: (maximalDate != null ? maximalDate.value : this.maximalDate),
+      minimalDate: (minimalDate != null ? minimalDate.value : this.minimalDate),
+      terminateOption: (terminateOption != null
+          ? terminateOption.value
+          : this.terminateOption),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class TerminateContractHintsApiDataResponse {
-  const TerminateContractHintsApiDataResponse({
-    this.data,
-  });
+  const TerminateContractHintsApiDataResponse({this.data});
 
   factory TerminateContractHintsApiDataResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$TerminateContractHintsApiDataResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$TerminateContractHintsApiDataResponseFromJson(json);
 
   static const toJsonFactory = _$TerminateContractHintsApiDataResponseToJson;
   Map<String, dynamic> toJson() =>
@@ -10587,24 +11825,24 @@ class TerminateContractHintsApiDataResponse {
 
 extension $TerminateContractHintsApiDataResponseExtension
     on TerminateContractHintsApiDataResponse {
-  TerminateContractHintsApiDataResponse copyWith(
-      {TerminateContractHints? data}) {
+  TerminateContractHintsApiDataResponse copyWith({
+    TerminateContractHints? data,
+  }) {
     return TerminateContractHintsApiDataResponse(data: data ?? this.data);
   }
 
-  TerminateContractHintsApiDataResponse copyWithWrapped(
-      {Wrapped<TerminateContractHints?>? data}) {
+  TerminateContractHintsApiDataResponse copyWithWrapped({
+    Wrapped<TerminateContractHints?>? data,
+  }) {
     return TerminateContractHintsApiDataResponse(
-        data: (data != null ? data.value : this.data));
+      data: (data != null ? data.value : this.data),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class TerminateContractRequest {
-  const TerminateContractRequest({
-    this.reason,
-    this.terminationDate,
-  });
+  const TerminateContractRequest({this.reason, this.terminationDate});
 
   factory TerminateContractRequest.fromJson(Map<String, dynamic> json) =>
       _$TerminateContractRequestFromJson(json);
@@ -10625,8 +11863,10 @@ class TerminateContractRequest {
             (identical(other.reason, reason) ||
                 const DeepCollectionEquality().equals(other.reason, reason)) &&
             (identical(other.terminationDate, terminationDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.terminationDate, terminationDate)));
+                const DeepCollectionEquality().equals(
+                  other.terminationDate,
+                  terminationDate,
+                )));
   }
 
   @override
@@ -10640,20 +11880,26 @@ class TerminateContractRequest {
 }
 
 extension $TerminateContractRequestExtension on TerminateContractRequest {
-  TerminateContractRequest copyWith(
-      {String? reason, DateTime? terminationDate}) {
+  TerminateContractRequest copyWith({
+    String? reason,
+    DateTime? terminationDate,
+  }) {
     return TerminateContractRequest(
-        reason: reason ?? this.reason,
-        terminationDate: terminationDate ?? this.terminationDate);
+      reason: reason ?? this.reason,
+      terminationDate: terminationDate ?? this.terminationDate,
+    );
   }
 
-  TerminateContractRequest copyWithWrapped(
-      {Wrapped<String?>? reason, Wrapped<DateTime?>? terminationDate}) {
+  TerminateContractRequest copyWithWrapped({
+    Wrapped<String?>? reason,
+    Wrapped<DateTime?>? terminationDate,
+  }) {
     return TerminateContractRequest(
-        reason: (reason != null ? reason.value : this.reason),
-        terminationDate: (terminationDate != null
-            ? terminationDate.value
-            : this.terminationDate));
+      reason: (reason != null ? reason.value : this.reason),
+      terminationDate: (terminationDate != null
+          ? terminationDate.value
+          : this.terminationDate),
+    );
   }
 }
 
@@ -10702,30 +11948,48 @@ class UpdateBookingRequest {
     return identical(this, other) ||
         (other is UpdateBookingRequest &&
             (identical(other.adminComments, adminComments) ||
-                const DeepCollectionEquality()
-                    .equals(other.adminComments, adminComments)) &&
+                const DeepCollectionEquality().equals(
+                  other.adminComments,
+                  adminComments,
+                )) &&
             (identical(other.authorizationComments, authorizationComments) ||
                 const DeepCollectionEquality().equals(
-                    other.authorizationComments, authorizationComments)) &&
+                  other.authorizationComments,
+                  authorizationComments,
+                )) &&
             (identical(other.comments, comments) ||
-                const DeepCollectionEquality()
-                    .equals(other.comments, comments)) &&
-            (identical(other.doNotInvoice, doNotInvoice) ||
-                const DeepCollectionEquality()
-                    .equals(other.doNotInvoice, doNotInvoice)) &&
-            (identical(other.invoiceComments, invoiceComments) ||
-                const DeepCollectionEquality()
-                    .equals(other.invoiceComments, invoiceComments)) &&
-            (identical(other.invoiced, invoiced) ||
-                const DeepCollectionEquality()
-                    .equals(other.invoiced, invoiced)) &&
-            (identical(other.needsCorrection, needsCorrection) ||
-                const DeepCollectionEquality()
-                    .equals(other.needsCorrection, needsCorrection)) &&
-            (identical(
-                    other.needsCorrectionComments, needsCorrectionComments) ||
                 const DeepCollectionEquality().equals(
-                    other.needsCorrectionComments, needsCorrectionComments)) &&
+                  other.comments,
+                  comments,
+                )) &&
+            (identical(other.doNotInvoice, doNotInvoice) ||
+                const DeepCollectionEquality().equals(
+                  other.doNotInvoice,
+                  doNotInvoice,
+                )) &&
+            (identical(other.invoiceComments, invoiceComments) ||
+                const DeepCollectionEquality().equals(
+                  other.invoiceComments,
+                  invoiceComments,
+                )) &&
+            (identical(other.invoiced, invoiced) ||
+                const DeepCollectionEquality().equals(
+                  other.invoiced,
+                  invoiced,
+                )) &&
+            (identical(other.needsCorrection, needsCorrection) ||
+                const DeepCollectionEquality().equals(
+                  other.needsCorrection,
+                  needsCorrection,
+                )) &&
+            (identical(
+                  other.needsCorrectionComments,
+                  needsCorrectionComments,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.needsCorrectionComments,
+                  needsCorrectionComments,
+                )) &&
             (identical(other.period, period) ||
                 const DeepCollectionEquality().equals(other.period, period)));
   }
@@ -10748,69 +12012,72 @@ class UpdateBookingRequest {
 }
 
 extension $UpdateBookingRequestExtension on UpdateBookingRequest {
-  UpdateBookingRequest copyWith(
-      {String? adminComments,
-      String? authorizationComments,
-      String? comments,
-      bool? doNotInvoice,
-      String? invoiceComments,
-      bool? invoiced,
-      bool? needsCorrection,
-      String? needsCorrectionComments,
-      Period? period}) {
+  UpdateBookingRequest copyWith({
+    String? adminComments,
+    String? authorizationComments,
+    String? comments,
+    bool? doNotInvoice,
+    String? invoiceComments,
+    bool? invoiced,
+    bool? needsCorrection,
+    String? needsCorrectionComments,
+    Period? period,
+  }) {
     return UpdateBookingRequest(
-        adminComments: adminComments ?? this.adminComments,
-        authorizationComments:
-            authorizationComments ?? this.authorizationComments,
-        comments: comments ?? this.comments,
-        doNotInvoice: doNotInvoice ?? this.doNotInvoice,
-        invoiceComments: invoiceComments ?? this.invoiceComments,
-        invoiced: invoiced ?? this.invoiced,
-        needsCorrection: needsCorrection ?? this.needsCorrection,
-        needsCorrectionComments:
-            needsCorrectionComments ?? this.needsCorrectionComments,
-        period: period ?? this.period);
+      adminComments: adminComments ?? this.adminComments,
+      authorizationComments:
+          authorizationComments ?? this.authorizationComments,
+      comments: comments ?? this.comments,
+      doNotInvoice: doNotInvoice ?? this.doNotInvoice,
+      invoiceComments: invoiceComments ?? this.invoiceComments,
+      invoiced: invoiced ?? this.invoiced,
+      needsCorrection: needsCorrection ?? this.needsCorrection,
+      needsCorrectionComments:
+          needsCorrectionComments ?? this.needsCorrectionComments,
+      period: period ?? this.period,
+    );
   }
 
-  UpdateBookingRequest copyWithWrapped(
-      {Wrapped<String?>? adminComments,
-      Wrapped<String?>? authorizationComments,
-      Wrapped<String?>? comments,
-      Wrapped<bool?>? doNotInvoice,
-      Wrapped<String?>? invoiceComments,
-      Wrapped<bool?>? invoiced,
-      Wrapped<bool?>? needsCorrection,
-      Wrapped<String?>? needsCorrectionComments,
-      Wrapped<Period?>? period}) {
+  UpdateBookingRequest copyWithWrapped({
+    Wrapped<String?>? adminComments,
+    Wrapped<String?>? authorizationComments,
+    Wrapped<String?>? comments,
+    Wrapped<bool?>? doNotInvoice,
+    Wrapped<String?>? invoiceComments,
+    Wrapped<bool?>? invoiced,
+    Wrapped<bool?>? needsCorrection,
+    Wrapped<String?>? needsCorrectionComments,
+    Wrapped<Period?>? period,
+  }) {
     return UpdateBookingRequest(
-        adminComments:
-            (adminComments != null ? adminComments.value : this.adminComments),
-        authorizationComments: (authorizationComments != null
-            ? authorizationComments.value
-            : this.authorizationComments),
-        comments: (comments != null ? comments.value : this.comments),
-        doNotInvoice:
-            (doNotInvoice != null ? doNotInvoice.value : this.doNotInvoice),
-        invoiceComments: (invoiceComments != null
-            ? invoiceComments.value
-            : this.invoiceComments),
-        invoiced: (invoiced != null ? invoiced.value : this.invoiced),
-        needsCorrection: (needsCorrection != null
-            ? needsCorrection.value
-            : this.needsCorrection),
-        needsCorrectionComments: (needsCorrectionComments != null
-            ? needsCorrectionComments.value
-            : this.needsCorrectionComments),
-        period: (period != null ? period.value : this.period));
+      adminComments: (adminComments != null
+          ? adminComments.value
+          : this.adminComments),
+      authorizationComments: (authorizationComments != null
+          ? authorizationComments.value
+          : this.authorizationComments),
+      comments: (comments != null ? comments.value : this.comments),
+      doNotInvoice: (doNotInvoice != null
+          ? doNotInvoice.value
+          : this.doNotInvoice),
+      invoiceComments: (invoiceComments != null
+          ? invoiceComments.value
+          : this.invoiceComments),
+      invoiced: (invoiced != null ? invoiced.value : this.invoiced),
+      needsCorrection: (needsCorrection != null
+          ? needsCorrection.value
+          : this.needsCorrection),
+      needsCorrectionComments: (needsCorrectionComments != null
+          ? needsCorrectionComments.value
+          : this.needsCorrectionComments),
+      period: (period != null ? period.value : this.period),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class UpdateClient {
-  const UpdateClient({
-    this.suspended,
-    this.suspendedReason,
-  });
+  const UpdateClient({this.suspended, this.suspendedReason});
 
   factory UpdateClient.fromJson(Map<String, dynamic> json) =>
       _$UpdateClientFromJson(json);
@@ -10829,11 +12096,15 @@ class UpdateClient {
     return identical(this, other) ||
         (other is UpdateClient &&
             (identical(other.suspended, suspended) ||
-                const DeepCollectionEquality()
-                    .equals(other.suspended, suspended)) &&
+                const DeepCollectionEquality().equals(
+                  other.suspended,
+                  suspended,
+                )) &&
             (identical(other.suspendedReason, suspendedReason) ||
-                const DeepCollectionEquality()
-                    .equals(other.suspendedReason, suspendedReason)));
+                const DeepCollectionEquality().equals(
+                  other.suspendedReason,
+                  suspendedReason,
+                )));
   }
 
   @override
@@ -10849,17 +12120,21 @@ class UpdateClient {
 extension $UpdateClientExtension on UpdateClient {
   UpdateClient copyWith({bool? suspended, String? suspendedReason}) {
     return UpdateClient(
-        suspended: suspended ?? this.suspended,
-        suspendedReason: suspendedReason ?? this.suspendedReason);
+      suspended: suspended ?? this.suspended,
+      suspendedReason: suspendedReason ?? this.suspendedReason,
+    );
   }
 
-  UpdateClient copyWithWrapped(
-      {Wrapped<bool?>? suspended, Wrapped<String?>? suspendedReason}) {
+  UpdateClient copyWithWrapped({
+    Wrapped<bool?>? suspended,
+    Wrapped<String?>? suspendedReason,
+  }) {
     return UpdateClient(
-        suspended: (suspended != null ? suspended.value : this.suspended),
-        suspendedReason: (suspendedReason != null
-            ? suspendedReason.value
-            : this.suspendedReason));
+      suspended: (suspended != null ? suspended.value : this.suspended),
+      suspendedReason: (suspendedReason != null
+          ? suspendedReason.value
+          : this.suspendedReason),
+    );
   }
 }
 
@@ -10916,30 +12191,44 @@ class UpdateIssueRequest {
     return identical(this, other) ||
         (other is UpdateIssueRequest &&
             (identical(other.assignedToRemoteId, assignedToRemoteId) ||
-                const DeepCollectionEquality()
-                    .equals(other.assignedToRemoteId, assignedToRemoteId)) &&
+                const DeepCollectionEquality().equals(
+                  other.assignedToRemoteId,
+                  assignedToRemoteId,
+                )) &&
             (identical(other.bookingId, bookingId) ||
-                const DeepCollectionEquality()
-                    .equals(other.bookingId, bookingId)) &&
+                const DeepCollectionEquality().equals(
+                  other.bookingId,
+                  bookingId,
+                )) &&
             (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
+                const DeepCollectionEquality().equals(
+                  other.comment,
+                  comment,
+                )) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
+                const DeepCollectionEquality().equals(
+                  other.description,
+                  description,
+                )) &&
             (identical(other.priority, priority) ||
-                const DeepCollectionEquality()
-                    .equals(other.priority, priority)) &&
+                const DeepCollectionEquality().equals(
+                  other.priority,
+                  priority,
+                )) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.userRemoteId, userRemoteId) ||
-                const DeepCollectionEquality()
-                    .equals(other.userRemoteId, userRemoteId)) &&
+                const DeepCollectionEquality().equals(
+                  other.userRemoteId,
+                  userRemoteId,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -10960,52 +12249,56 @@ class UpdateIssueRequest {
 }
 
 extension $UpdateIssueRequestExtension on UpdateIssueRequest {
-  UpdateIssueRequest copyWith(
-      {String? assignedToRemoteId,
-      String? bookingId,
-      String? comment,
-      String? description,
-      enums.UpdateIssueRequestPriority? priority,
-      enums.UpdateIssueRequestStatus? status,
-      String? title,
-      String? userRemoteId,
-      String? vehicleId}) {
+  UpdateIssueRequest copyWith({
+    String? assignedToRemoteId,
+    String? bookingId,
+    String? comment,
+    String? description,
+    enums.UpdateIssueRequestPriority? priority,
+    enums.UpdateIssueRequestStatus? status,
+    String? title,
+    String? userRemoteId,
+    String? vehicleId,
+  }) {
     return UpdateIssueRequest(
-        assignedToRemoteId: assignedToRemoteId ?? this.assignedToRemoteId,
-        bookingId: bookingId ?? this.bookingId,
-        comment: comment ?? this.comment,
-        description: description ?? this.description,
-        priority: priority ?? this.priority,
-        status: status ?? this.status,
-        title: title ?? this.title,
-        userRemoteId: userRemoteId ?? this.userRemoteId,
-        vehicleId: vehicleId ?? this.vehicleId);
+      assignedToRemoteId: assignedToRemoteId ?? this.assignedToRemoteId,
+      bookingId: bookingId ?? this.bookingId,
+      comment: comment ?? this.comment,
+      description: description ?? this.description,
+      priority: priority ?? this.priority,
+      status: status ?? this.status,
+      title: title ?? this.title,
+      userRemoteId: userRemoteId ?? this.userRemoteId,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  UpdateIssueRequest copyWithWrapped(
-      {Wrapped<String?>? assignedToRemoteId,
-      Wrapped<String?>? bookingId,
-      Wrapped<String?>? comment,
-      Wrapped<String?>? description,
-      Wrapped<enums.UpdateIssueRequestPriority?>? priority,
-      Wrapped<enums.UpdateIssueRequestStatus?>? status,
-      Wrapped<String?>? title,
-      Wrapped<String?>? userRemoteId,
-      Wrapped<String?>? vehicleId}) {
+  UpdateIssueRequest copyWithWrapped({
+    Wrapped<String?>? assignedToRemoteId,
+    Wrapped<String?>? bookingId,
+    Wrapped<String?>? comment,
+    Wrapped<String?>? description,
+    Wrapped<enums.UpdateIssueRequestPriority?>? priority,
+    Wrapped<enums.UpdateIssueRequestStatus?>? status,
+    Wrapped<String?>? title,
+    Wrapped<String?>? userRemoteId,
+    Wrapped<String?>? vehicleId,
+  }) {
     return UpdateIssueRequest(
-        assignedToRemoteId: (assignedToRemoteId != null
-            ? assignedToRemoteId.value
-            : this.assignedToRemoteId),
-        bookingId: (bookingId != null ? bookingId.value : this.bookingId),
-        comment: (comment != null ? comment.value : this.comment),
-        description:
-            (description != null ? description.value : this.description),
-        priority: (priority != null ? priority.value : this.priority),
-        status: (status != null ? status.value : this.status),
-        title: (title != null ? title.value : this.title),
-        userRemoteId:
-            (userRemoteId != null ? userRemoteId.value : this.userRemoteId),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      assignedToRemoteId: (assignedToRemoteId != null
+          ? assignedToRemoteId.value
+          : this.assignedToRemoteId),
+      bookingId: (bookingId != null ? bookingId.value : this.bookingId),
+      comment: (comment != null ? comment.value : this.comment),
+      description: (description != null ? description.value : this.description),
+      priority: (priority != null ? priority.value : this.priority),
+      status: (status != null ? status.value : this.status),
+      title: (title != null ? title.value : this.title),
+      userRemoteId: (userRemoteId != null
+          ? userRemoteId.value
+          : this.userRemoteId),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
@@ -11051,29 +12344,45 @@ class UpdateTelematicsRequest {
     return identical(this, other) ||
         (other is UpdateTelematicsRequest &&
             (identical(other.alwaysUseBluetooth, alwaysUseBluetooth) ||
-                const DeepCollectionEquality()
-                    .equals(other.alwaysUseBluetooth, alwaysUseBluetooth)) &&
+                const DeepCollectionEquality().equals(
+                  other.alwaysUseBluetooth,
+                  alwaysUseBluetooth,
+                )) &&
             (identical(other.bydMobilizeHack, bydMobilizeHack) ||
-                const DeepCollectionEquality()
-                    .equals(other.bydMobilizeHack, bydMobilizeHack)) &&
+                const DeepCollectionEquality().equals(
+                  other.bydMobilizeHack,
+                  bydMobilizeHack,
+                )) &&
             (identical(other.ignitionCheck, ignitionCheck) ||
-                const DeepCollectionEquality()
-                    .equals(other.ignitionCheck, ignitionCheck)) &&
+                const DeepCollectionEquality().equals(
+                  other.ignitionCheck,
+                  ignitionCheck,
+                )) &&
             (identical(other.keyfobCheck, keyfobCheck) ||
-                const DeepCollectionEquality()
-                    .equals(other.keyfobCheck, keyfobCheck)) &&
+                const DeepCollectionEquality().equals(
+                  other.keyfobCheck,
+                  keyfobCheck,
+                )) &&
             (identical(other.maxRange, maxRange) ||
-                const DeepCollectionEquality()
-                    .equals(other.maxRange, maxRange)) &&
+                const DeepCollectionEquality().equals(
+                  other.maxRange,
+                  maxRange,
+                )) &&
             (identical(other.phoneNumber, phoneNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.phoneNumber, phoneNumber)) &&
+                const DeepCollectionEquality().equals(
+                  other.phoneNumber,
+                  phoneNumber,
+                )) &&
             (identical(other.providerDeviceId, providerDeviceId) ||
-                const DeepCollectionEquality()
-                    .equals(other.providerDeviceId, providerDeviceId)) &&
+                const DeepCollectionEquality().equals(
+                  other.providerDeviceId,
+                  providerDeviceId,
+                )) &&
             (identical(other.providerId, providerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.providerId, providerId)));
+                const DeepCollectionEquality().equals(
+                  other.providerId,
+                  providerId,
+                )));
   }
 
   @override
@@ -11093,53 +12402,56 @@ class UpdateTelematicsRequest {
 }
 
 extension $UpdateTelematicsRequestExtension on UpdateTelematicsRequest {
-  UpdateTelematicsRequest copyWith(
-      {bool? alwaysUseBluetooth,
-      bool? bydMobilizeHack,
-      bool? ignitionCheck,
-      bool? keyfobCheck,
-      int? maxRange,
-      String? phoneNumber,
-      String? providerDeviceId,
-      String? providerId}) {
+  UpdateTelematicsRequest copyWith({
+    bool? alwaysUseBluetooth,
+    bool? bydMobilizeHack,
+    bool? ignitionCheck,
+    bool? keyfobCheck,
+    int? maxRange,
+    String? phoneNumber,
+    String? providerDeviceId,
+    String? providerId,
+  }) {
     return UpdateTelematicsRequest(
-        alwaysUseBluetooth: alwaysUseBluetooth ?? this.alwaysUseBluetooth,
-        bydMobilizeHack: bydMobilizeHack ?? this.bydMobilizeHack,
-        ignitionCheck: ignitionCheck ?? this.ignitionCheck,
-        keyfobCheck: keyfobCheck ?? this.keyfobCheck,
-        maxRange: maxRange ?? this.maxRange,
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        providerDeviceId: providerDeviceId ?? this.providerDeviceId,
-        providerId: providerId ?? this.providerId);
+      alwaysUseBluetooth: alwaysUseBluetooth ?? this.alwaysUseBluetooth,
+      bydMobilizeHack: bydMobilizeHack ?? this.bydMobilizeHack,
+      ignitionCheck: ignitionCheck ?? this.ignitionCheck,
+      keyfobCheck: keyfobCheck ?? this.keyfobCheck,
+      maxRange: maxRange ?? this.maxRange,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      providerDeviceId: providerDeviceId ?? this.providerDeviceId,
+      providerId: providerId ?? this.providerId,
+    );
   }
 
-  UpdateTelematicsRequest copyWithWrapped(
-      {Wrapped<bool?>? alwaysUseBluetooth,
-      Wrapped<bool?>? bydMobilizeHack,
-      Wrapped<bool?>? ignitionCheck,
-      Wrapped<bool?>? keyfobCheck,
-      Wrapped<int?>? maxRange,
-      Wrapped<String?>? phoneNumber,
-      Wrapped<String>? providerDeviceId,
-      Wrapped<String>? providerId}) {
+  UpdateTelematicsRequest copyWithWrapped({
+    Wrapped<bool?>? alwaysUseBluetooth,
+    Wrapped<bool?>? bydMobilizeHack,
+    Wrapped<bool?>? ignitionCheck,
+    Wrapped<bool?>? keyfobCheck,
+    Wrapped<int?>? maxRange,
+    Wrapped<String?>? phoneNumber,
+    Wrapped<String>? providerDeviceId,
+    Wrapped<String>? providerId,
+  }) {
     return UpdateTelematicsRequest(
-        alwaysUseBluetooth: (alwaysUseBluetooth != null
-            ? alwaysUseBluetooth.value
-            : this.alwaysUseBluetooth),
-        bydMobilizeHack: (bydMobilizeHack != null
-            ? bydMobilizeHack.value
-            : this.bydMobilizeHack),
-        ignitionCheck:
-            (ignitionCheck != null ? ignitionCheck.value : this.ignitionCheck),
-        keyfobCheck:
-            (keyfobCheck != null ? keyfobCheck.value : this.keyfobCheck),
-        maxRange: (maxRange != null ? maxRange.value : this.maxRange),
-        phoneNumber:
-            (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
-        providerDeviceId: (providerDeviceId != null
-            ? providerDeviceId.value
-            : this.providerDeviceId),
-        providerId: (providerId != null ? providerId.value : this.providerId));
+      alwaysUseBluetooth: (alwaysUseBluetooth != null
+          ? alwaysUseBluetooth.value
+          : this.alwaysUseBluetooth),
+      bydMobilizeHack: (bydMobilizeHack != null
+          ? bydMobilizeHack.value
+          : this.bydMobilizeHack),
+      ignitionCheck: (ignitionCheck != null
+          ? ignitionCheck.value
+          : this.ignitionCheck),
+      keyfobCheck: (keyfobCheck != null ? keyfobCheck.value : this.keyfobCheck),
+      maxRange: (maxRange != null ? maxRange.value : this.maxRange),
+      phoneNumber: (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
+      providerDeviceId: (providerDeviceId != null
+          ? providerDeviceId.value
+          : this.providerDeviceId),
+      providerId: (providerId != null ? providerId.value : this.providerId),
+    );
   }
 }
 
@@ -11234,61 +12546,110 @@ class UpdateVehicleRequest {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other is UpdateVehicleRequest &&
-            (identical(other.addVehicleLocationRequest, addVehicleLocationRequest) ||
+            (identical(
+                  other.addVehicleLocationRequest,
+                  addVehicleLocationRequest,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.addVehicleLocationRequest,
-                    addVehicleLocationRequest)) &&
+                  other.addVehicleLocationRequest,
+                  addVehicleLocationRequest,
+                )) &&
             (identical(other.approvalType, approvalType) ||
-                const DeepCollectionEquality()
-                    .equals(other.approvalType, approvalType)) &&
+                const DeepCollectionEquality().equals(
+                  other.approvalType,
+                  approvalType,
+                )) &&
             (identical(other.clientId, clientId) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientId, clientId)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientId,
+                  clientId,
+                )) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
+                const DeepCollectionEquality().equals(
+                  other.description,
+                  description,
+                )) &&
             (identical(other.electricRange, electricRange) ||
-                const DeepCollectionEquality()
-                    .equals(other.electricRange, electricRange)) &&
+                const DeepCollectionEquality().equals(
+                  other.electricRange,
+                  electricRange,
+                )) &&
             (identical(other.equipmentIds, equipmentIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.equipmentIds, equipmentIds)) &&
+                const DeepCollectionEquality().equals(
+                  other.equipmentIds,
+                  equipmentIds,
+                )) &&
             (identical(other.expectedInFleetDate, expectedInFleetDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.expectedInFleetDate, expectedInFleetDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.expectedInFleetDate,
+                  expectedInFleetDate,
+                )) &&
             (identical(other.expectedOutOfFleetDate, expectedOutOfFleetDate) ||
                 const DeepCollectionEquality().equals(
-                    other.expectedOutOfFleetDate, expectedOutOfFleetDate)) &&
+                  other.expectedOutOfFleetDate,
+                  expectedOutOfFleetDate,
+                )) &&
             (identical(other.imageUrl, imageUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageUrl, imageUrl)) &&
+                const DeepCollectionEquality().equals(
+                  other.imageUrl,
+                  imageUrl,
+                )) &&
             (identical(other.intentIds, intentIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.intentIds, intentIds)) &&
+                const DeepCollectionEquality().equals(
+                  other.intentIds,
+                  intentIds,
+                )) &&
             (identical(other.lastPosition, lastPosition) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastPosition, lastPosition)) &&
+                const DeepCollectionEquality().equals(
+                  other.lastPosition,
+                  lastPosition,
+                )) &&
             (identical(other.lastPositionTimestamp, lastPositionTimestamp) ||
                 const DeepCollectionEquality().equals(
-                    other.lastPositionTimestamp, lastPositionTimestamp)) &&
+                  other.lastPositionTimestamp,
+                  lastPositionTimestamp,
+                )) &&
             (identical(other.licensePlate, licensePlate) ||
-                const DeepCollectionEquality()
-                    .equals(other.licensePlate, licensePlate)) &&
+                const DeepCollectionEquality().equals(
+                  other.licensePlate,
+                  licensePlate,
+                )) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.operationalStatus, operationalStatus) ||
-                const DeepCollectionEquality()
-                    .equals(other.operationalStatus, operationalStatus)) &&
+                const DeepCollectionEquality().equals(
+                  other.operationalStatus,
+                  operationalStatus,
+                )) &&
             (identical(other.seats, seats) ||
                 const DeepCollectionEquality().equals(other.seats, seats)) &&
             (identical(other.typeId, typeId) ||
                 const DeepCollectionEquality().equals(other.typeId, typeId)) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality().equals(other.vehicleId, vehicleId)) &&
-            (identical(other.vehicleInfo, vehicleInfo) || const DeepCollectionEquality().equals(other.vehicleInfo, vehicleInfo)) &&
-            (identical(other.vehicleInfoPreBooking, vehicleInfoPreBooking) || const DeepCollectionEquality().equals(other.vehicleInfoPreBooking, vehicleInfoPreBooking)) &&
-            (identical(other.vehicleModelId, vehicleModelId) || const DeepCollectionEquality().equals(other.vehicleModelId, vehicleModelId)) &&
-            (identical(other.vehicleTypeId, vehicleTypeId) || const DeepCollectionEquality().equals(other.vehicleTypeId, vehicleTypeId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )) &&
+            (identical(other.vehicleInfo, vehicleInfo) ||
+                const DeepCollectionEquality().equals(
+                  other.vehicleInfo,
+                  vehicleInfo,
+                )) &&
+            (identical(other.vehicleInfoPreBooking, vehicleInfoPreBooking) ||
+                const DeepCollectionEquality().equals(
+                  other.vehicleInfoPreBooking,
+                  vehicleInfoPreBooking,
+                )) &&
+            (identical(other.vehicleModelId, vehicleModelId) ||
+                const DeepCollectionEquality().equals(
+                  other.vehicleModelId,
+                  vehicleModelId,
+                )) &&
+            (identical(other.vehicleTypeId, vehicleTypeId) ||
+                const DeepCollectionEquality().equals(
+                  other.vehicleTypeId,
+                  vehicleTypeId,
+                )));
   }
 
   @override
@@ -11322,126 +12683,134 @@ class UpdateVehicleRequest {
 }
 
 extension $UpdateVehicleRequestExtension on UpdateVehicleRequest {
-  UpdateVehicleRequest copyWith(
-      {AddVehicleLocationRequest? addVehicleLocationRequest,
-      enums.UpdateVehicleRequestApprovalType? approvalType,
-      String? clientId,
-      String? description,
-      int? electricRange,
-      List<String>? equipmentIds,
-      DateTime? expectedInFleetDate,
-      DateTime? expectedOutOfFleetDate,
-      String? imageUrl,
-      List<String>? intentIds,
-      GpsLocation? lastPosition,
-      DateTime? lastPositionTimestamp,
-      String? licensePlate,
-      String? name,
-      enums.UpdateVehicleRequestOperationalStatus? operationalStatus,
-      int? seats,
-      String? typeId,
-      String? vehicleId,
-      String? vehicleInfo,
-      String? vehicleInfoPreBooking,
-      String? vehicleModelId,
-      String? vehicleTypeId}) {
+  UpdateVehicleRequest copyWith({
+    AddVehicleLocationRequest? addVehicleLocationRequest,
+    enums.UpdateVehicleRequestApprovalType? approvalType,
+    String? clientId,
+    String? description,
+    int? electricRange,
+    List<String>? equipmentIds,
+    DateTime? expectedInFleetDate,
+    DateTime? expectedOutOfFleetDate,
+    String? imageUrl,
+    List<String>? intentIds,
+    GpsLocation? lastPosition,
+    DateTime? lastPositionTimestamp,
+    String? licensePlate,
+    String? name,
+    enums.UpdateVehicleRequestOperationalStatus? operationalStatus,
+    int? seats,
+    String? typeId,
+    String? vehicleId,
+    String? vehicleInfo,
+    String? vehicleInfoPreBooking,
+    String? vehicleModelId,
+    String? vehicleTypeId,
+  }) {
     return UpdateVehicleRequest(
-        addVehicleLocationRequest:
-            addVehicleLocationRequest ?? this.addVehicleLocationRequest,
-        approvalType: approvalType ?? this.approvalType,
-        clientId: clientId ?? this.clientId,
-        description: description ?? this.description,
-        electricRange: electricRange ?? this.electricRange,
-        equipmentIds: equipmentIds ?? this.equipmentIds,
-        expectedInFleetDate: expectedInFleetDate ?? this.expectedInFleetDate,
-        expectedOutOfFleetDate:
-            expectedOutOfFleetDate ?? this.expectedOutOfFleetDate,
-        imageUrl: imageUrl ?? this.imageUrl,
-        intentIds: intentIds ?? this.intentIds,
-        lastPosition: lastPosition ?? this.lastPosition,
-        lastPositionTimestamp:
-            lastPositionTimestamp ?? this.lastPositionTimestamp,
-        licensePlate: licensePlate ?? this.licensePlate,
-        name: name ?? this.name,
-        operationalStatus: operationalStatus ?? this.operationalStatus,
-        seats: seats ?? this.seats,
-        typeId: typeId ?? this.typeId,
-        vehicleId: vehicleId ?? this.vehicleId,
-        vehicleInfo: vehicleInfo ?? this.vehicleInfo,
-        vehicleInfoPreBooking:
-            vehicleInfoPreBooking ?? this.vehicleInfoPreBooking,
-        vehicleModelId: vehicleModelId ?? this.vehicleModelId,
-        vehicleTypeId: vehicleTypeId ?? this.vehicleTypeId);
+      addVehicleLocationRequest:
+          addVehicleLocationRequest ?? this.addVehicleLocationRequest,
+      approvalType: approvalType ?? this.approvalType,
+      clientId: clientId ?? this.clientId,
+      description: description ?? this.description,
+      electricRange: electricRange ?? this.electricRange,
+      equipmentIds: equipmentIds ?? this.equipmentIds,
+      expectedInFleetDate: expectedInFleetDate ?? this.expectedInFleetDate,
+      expectedOutOfFleetDate:
+          expectedOutOfFleetDate ?? this.expectedOutOfFleetDate,
+      imageUrl: imageUrl ?? this.imageUrl,
+      intentIds: intentIds ?? this.intentIds,
+      lastPosition: lastPosition ?? this.lastPosition,
+      lastPositionTimestamp:
+          lastPositionTimestamp ?? this.lastPositionTimestamp,
+      licensePlate: licensePlate ?? this.licensePlate,
+      name: name ?? this.name,
+      operationalStatus: operationalStatus ?? this.operationalStatus,
+      seats: seats ?? this.seats,
+      typeId: typeId ?? this.typeId,
+      vehicleId: vehicleId ?? this.vehicleId,
+      vehicleInfo: vehicleInfo ?? this.vehicleInfo,
+      vehicleInfoPreBooking:
+          vehicleInfoPreBooking ?? this.vehicleInfoPreBooking,
+      vehicleModelId: vehicleModelId ?? this.vehicleModelId,
+      vehicleTypeId: vehicleTypeId ?? this.vehicleTypeId,
+    );
   }
 
-  UpdateVehicleRequest copyWithWrapped(
-      {Wrapped<AddVehicleLocationRequest?>? addVehicleLocationRequest,
-      Wrapped<enums.UpdateVehicleRequestApprovalType?>? approvalType,
-      Wrapped<String?>? clientId,
-      Wrapped<String?>? description,
-      Wrapped<int?>? electricRange,
-      Wrapped<List<String>?>? equipmentIds,
-      Wrapped<DateTime?>? expectedInFleetDate,
-      Wrapped<DateTime?>? expectedOutOfFleetDate,
-      Wrapped<String?>? imageUrl,
-      Wrapped<List<String>?>? intentIds,
-      Wrapped<GpsLocation?>? lastPosition,
-      Wrapped<DateTime?>? lastPositionTimestamp,
-      Wrapped<String?>? licensePlate,
-      Wrapped<String?>? name,
-      Wrapped<enums.UpdateVehicleRequestOperationalStatus?>? operationalStatus,
-      Wrapped<int?>? seats,
-      Wrapped<String?>? typeId,
-      Wrapped<String>? vehicleId,
-      Wrapped<String?>? vehicleInfo,
-      Wrapped<String?>? vehicleInfoPreBooking,
-      Wrapped<String?>? vehicleModelId,
-      Wrapped<String?>? vehicleTypeId}) {
+  UpdateVehicleRequest copyWithWrapped({
+    Wrapped<AddVehicleLocationRequest?>? addVehicleLocationRequest,
+    Wrapped<enums.UpdateVehicleRequestApprovalType?>? approvalType,
+    Wrapped<String?>? clientId,
+    Wrapped<String?>? description,
+    Wrapped<int?>? electricRange,
+    Wrapped<List<String>?>? equipmentIds,
+    Wrapped<DateTime?>? expectedInFleetDate,
+    Wrapped<DateTime?>? expectedOutOfFleetDate,
+    Wrapped<String?>? imageUrl,
+    Wrapped<List<String>?>? intentIds,
+    Wrapped<GpsLocation?>? lastPosition,
+    Wrapped<DateTime?>? lastPositionTimestamp,
+    Wrapped<String?>? licensePlate,
+    Wrapped<String?>? name,
+    Wrapped<enums.UpdateVehicleRequestOperationalStatus?>? operationalStatus,
+    Wrapped<int?>? seats,
+    Wrapped<String?>? typeId,
+    Wrapped<String>? vehicleId,
+    Wrapped<String?>? vehicleInfo,
+    Wrapped<String?>? vehicleInfoPreBooking,
+    Wrapped<String?>? vehicleModelId,
+    Wrapped<String?>? vehicleTypeId,
+  }) {
     return UpdateVehicleRequest(
-        addVehicleLocationRequest: (addVehicleLocationRequest != null
-            ? addVehicleLocationRequest.value
-            : this.addVehicleLocationRequest),
-        approvalType:
-            (approvalType != null ? approvalType.value : this.approvalType),
-        clientId: (clientId != null ? clientId.value : this.clientId),
-        description:
-            (description != null ? description.value : this.description),
-        electricRange:
-            (electricRange != null ? electricRange.value : this.electricRange),
-        equipmentIds:
-            (equipmentIds != null ? equipmentIds.value : this.equipmentIds),
-        expectedInFleetDate: (expectedInFleetDate != null
-            ? expectedInFleetDate.value
-            : this.expectedInFleetDate),
-        expectedOutOfFleetDate: (expectedOutOfFleetDate != null
-            ? expectedOutOfFleetDate.value
-            : this.expectedOutOfFleetDate),
-        imageUrl: (imageUrl != null ? imageUrl.value : this.imageUrl),
-        intentIds: (intentIds != null ? intentIds.value : this.intentIds),
-        lastPosition:
-            (lastPosition != null ? lastPosition.value : this.lastPosition),
-        lastPositionTimestamp: (lastPositionTimestamp != null
-            ? lastPositionTimestamp.value
-            : this.lastPositionTimestamp),
-        licensePlate:
-            (licensePlate != null ? licensePlate.value : this.licensePlate),
-        name: (name != null ? name.value : this.name),
-        operationalStatus: (operationalStatus != null
-            ? operationalStatus.value
-            : this.operationalStatus),
-        seats: (seats != null ? seats.value : this.seats),
-        typeId: (typeId != null ? typeId.value : this.typeId),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
-        vehicleInfo:
-            (vehicleInfo != null ? vehicleInfo.value : this.vehicleInfo),
-        vehicleInfoPreBooking: (vehicleInfoPreBooking != null
-            ? vehicleInfoPreBooking.value
-            : this.vehicleInfoPreBooking),
-        vehicleModelId: (vehicleModelId != null
-            ? vehicleModelId.value
-            : this.vehicleModelId),
-        vehicleTypeId:
-            (vehicleTypeId != null ? vehicleTypeId.value : this.vehicleTypeId));
+      addVehicleLocationRequest: (addVehicleLocationRequest != null
+          ? addVehicleLocationRequest.value
+          : this.addVehicleLocationRequest),
+      approvalType: (approvalType != null
+          ? approvalType.value
+          : this.approvalType),
+      clientId: (clientId != null ? clientId.value : this.clientId),
+      description: (description != null ? description.value : this.description),
+      electricRange: (electricRange != null
+          ? electricRange.value
+          : this.electricRange),
+      equipmentIds: (equipmentIds != null
+          ? equipmentIds.value
+          : this.equipmentIds),
+      expectedInFleetDate: (expectedInFleetDate != null
+          ? expectedInFleetDate.value
+          : this.expectedInFleetDate),
+      expectedOutOfFleetDate: (expectedOutOfFleetDate != null
+          ? expectedOutOfFleetDate.value
+          : this.expectedOutOfFleetDate),
+      imageUrl: (imageUrl != null ? imageUrl.value : this.imageUrl),
+      intentIds: (intentIds != null ? intentIds.value : this.intentIds),
+      lastPosition: (lastPosition != null
+          ? lastPosition.value
+          : this.lastPosition),
+      lastPositionTimestamp: (lastPositionTimestamp != null
+          ? lastPositionTimestamp.value
+          : this.lastPositionTimestamp),
+      licensePlate: (licensePlate != null
+          ? licensePlate.value
+          : this.licensePlate),
+      name: (name != null ? name.value : this.name),
+      operationalStatus: (operationalStatus != null
+          ? operationalStatus.value
+          : this.operationalStatus),
+      seats: (seats != null ? seats.value : this.seats),
+      typeId: (typeId != null ? typeId.value : this.typeId),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+      vehicleInfo: (vehicleInfo != null ? vehicleInfo.value : this.vehicleInfo),
+      vehicleInfoPreBooking: (vehicleInfoPreBooking != null
+          ? vehicleInfoPreBooking.value
+          : this.vehicleInfoPreBooking),
+      vehicleModelId: (vehicleModelId != null
+          ? vehicleModelId.value
+          : this.vehicleModelId),
+      vehicleTypeId: (vehicleTypeId != null
+          ? vehicleTypeId.value
+          : this.vehicleTypeId),
+    );
   }
 }
 
@@ -11486,29 +12855,42 @@ class User {
     return identical(this, other) ||
         (other is User &&
             (identical(other.displayName, displayName) ||
-                const DeepCollectionEquality()
-                    .equals(other.displayName, displayName)) &&
+                const DeepCollectionEquality().equals(
+                  other.displayName,
+                  displayName,
+                )) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.homeLocation, homeLocation) ||
-                const DeepCollectionEquality()
-                    .equals(other.homeLocation, homeLocation)) &&
+                const DeepCollectionEquality().equals(
+                  other.homeLocation,
+                  homeLocation,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.imageUrl, imageUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageUrl, imageUrl)) &&
-            (identical(other.joinedSince, joinedSince) ||
-                const DeepCollectionEquality()
-                    .equals(other.joinedSince, joinedSince)) &&
-            (identical(
-                    other.pushNotificationsEnabled, pushNotificationsEnabled) ||
                 const DeepCollectionEquality().equals(
-                    other.pushNotificationsEnabled,
-                    pushNotificationsEnabled)) &&
+                  other.imageUrl,
+                  imageUrl,
+                )) &&
+            (identical(other.joinedSince, joinedSince) ||
+                const DeepCollectionEquality().equals(
+                  other.joinedSince,
+                  joinedSince,
+                )) &&
+            (identical(
+                  other.pushNotificationsEnabled,
+                  pushNotificationsEnabled,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.pushNotificationsEnabled,
+                  pushNotificationsEnabled,
+                )) &&
             (identical(other.workLocation, workLocation) ||
-                const DeepCollectionEquality()
-                    .equals(other.workLocation, workLocation)));
+                const DeepCollectionEquality().equals(
+                  other.workLocation,
+                  workLocation,
+                )));
   }
 
   @override
@@ -11528,51 +12910,55 @@ class User {
 }
 
 extension $UserExtension on User {
-  User copyWith(
-      {String? displayName,
-      String? email,
-      GpsLocation? homeLocation,
-      String? id,
-      String? imageUrl,
-      DateTime? joinedSince,
-      bool? pushNotificationsEnabled,
-      GpsLocation? workLocation}) {
+  User copyWith({
+    String? displayName,
+    String? email,
+    GpsLocation? homeLocation,
+    String? id,
+    String? imageUrl,
+    DateTime? joinedSince,
+    bool? pushNotificationsEnabled,
+    GpsLocation? workLocation,
+  }) {
     return User(
-        displayName: displayName ?? this.displayName,
-        email: email ?? this.email,
-        homeLocation: homeLocation ?? this.homeLocation,
-        id: id ?? this.id,
-        imageUrl: imageUrl ?? this.imageUrl,
-        joinedSince: joinedSince ?? this.joinedSince,
-        pushNotificationsEnabled:
-            pushNotificationsEnabled ?? this.pushNotificationsEnabled,
-        workLocation: workLocation ?? this.workLocation);
+      displayName: displayName ?? this.displayName,
+      email: email ?? this.email,
+      homeLocation: homeLocation ?? this.homeLocation,
+      id: id ?? this.id,
+      imageUrl: imageUrl ?? this.imageUrl,
+      joinedSince: joinedSince ?? this.joinedSince,
+      pushNotificationsEnabled:
+          pushNotificationsEnabled ?? this.pushNotificationsEnabled,
+      workLocation: workLocation ?? this.workLocation,
+    );
   }
 
-  User copyWithWrapped(
-      {Wrapped<String?>? displayName,
-      Wrapped<String?>? email,
-      Wrapped<GpsLocation?>? homeLocation,
-      Wrapped<String?>? id,
-      Wrapped<String?>? imageUrl,
-      Wrapped<DateTime?>? joinedSince,
-      Wrapped<bool?>? pushNotificationsEnabled,
-      Wrapped<GpsLocation?>? workLocation}) {
+  User copyWithWrapped({
+    Wrapped<String?>? displayName,
+    Wrapped<String?>? email,
+    Wrapped<GpsLocation?>? homeLocation,
+    Wrapped<String?>? id,
+    Wrapped<String?>? imageUrl,
+    Wrapped<DateTime?>? joinedSince,
+    Wrapped<bool?>? pushNotificationsEnabled,
+    Wrapped<GpsLocation?>? workLocation,
+  }) {
     return User(
-        displayName:
-            (displayName != null ? displayName.value : this.displayName),
-        email: (email != null ? email.value : this.email),
-        homeLocation:
-            (homeLocation != null ? homeLocation.value : this.homeLocation),
-        id: (id != null ? id.value : this.id),
-        imageUrl: (imageUrl != null ? imageUrl.value : this.imageUrl),
-        joinedSince:
-            (joinedSince != null ? joinedSince.value : this.joinedSince),
-        pushNotificationsEnabled: (pushNotificationsEnabled != null
-            ? pushNotificationsEnabled.value
-            : this.pushNotificationsEnabled),
-        workLocation:
-            (workLocation != null ? workLocation.value : this.workLocation));
+      displayName: (displayName != null ? displayName.value : this.displayName),
+      email: (email != null ? email.value : this.email),
+      homeLocation: (homeLocation != null
+          ? homeLocation.value
+          : this.homeLocation),
+      id: (id != null ? id.value : this.id),
+      imageUrl: (imageUrl != null ? imageUrl.value : this.imageUrl),
+      joinedSince: (joinedSince != null ? joinedSince.value : this.joinedSince),
+      pushNotificationsEnabled: (pushNotificationsEnabled != null
+          ? pushNotificationsEnabled.value
+          : this.pushNotificationsEnabled),
+      workLocation: (workLocation != null
+          ? workLocation.value
+          : this.workLocation),
+    );
   }
 }
 
@@ -11646,51 +13032,79 @@ class Vehicle {
     return identical(this, other) ||
         (other is Vehicle &&
             (identical(other.distance, distance) ||
-                const DeepCollectionEquality()
-                    .equals(other.distance, distance)) &&
+                const DeepCollectionEquality().equals(
+                  other.distance,
+                  distance,
+                )) &&
             (identical(other.electricRange, electricRange) ||
-                const DeepCollectionEquality()
-                    .equals(other.electricRange, electricRange)) &&
+                const DeepCollectionEquality().equals(
+                  other.electricRange,
+                  electricRange,
+                )) &&
             (identical(other.fanPrice, fanPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.fanPrice, fanPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.fanPrice,
+                  fanPrice,
+                )) &&
             (identical(other.favorite, favorite) ||
-                const DeepCollectionEquality()
-                    .equals(other.favorite, favorite)) &&
+                const DeepCollectionEquality().equals(
+                  other.favorite,
+                  favorite,
+                )) &&
             (identical(other.funPrice, funPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.funPrice, funPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.funPrice,
+                  funPrice,
+                )) &&
             (identical(other.homePosition, homePosition) ||
-                const DeepCollectionEquality()
-                    .equals(other.homePosition, homePosition)) &&
+                const DeepCollectionEquality().equals(
+                  other.homePosition,
+                  homePosition,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.imageUrl, imageUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageUrl, imageUrl)) &&
+                const DeepCollectionEquality().equals(
+                  other.imageUrl,
+                  imageUrl,
+                )) &&
             (identical(other.lastPosition, lastPosition) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastPosition, lastPosition)) &&
+                const DeepCollectionEquality().equals(
+                  other.lastPosition,
+                  lastPosition,
+                )) &&
             (identical(other.lastPositionTimestamp, lastPositionTimestamp) ||
                 const DeepCollectionEquality().equals(
-                    other.lastPositionTimestamp, lastPositionTimestamp)) &&
+                  other.lastPositionTimestamp,
+                  lastPositionTimestamp,
+                )) &&
             (identical(other.licensePlate, licensePlate) ||
-                const DeepCollectionEquality()
-                    .equals(other.licensePlate, licensePlate)) &&
+                const DeepCollectionEquality().equals(
+                  other.licensePlate,
+                  licensePlate,
+                )) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.operationalStatus, operationalStatus) ||
-                const DeepCollectionEquality()
-                    .equals(other.operationalStatus, operationalStatus)) &&
+                const DeepCollectionEquality().equals(
+                  other.operationalStatus,
+                  operationalStatus,
+                )) &&
             (identical(other.vehicleBodyStyle, vehicleBodyStyle) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleBodyStyle, vehicleBodyStyle)) &&
+                const DeepCollectionEquality().equals(
+                  other.vehicleBodyStyle,
+                  vehicleBodyStyle,
+                )) &&
             (identical(other.vehicleBrand, vehicleBrand) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleBrand, vehicleBrand)) &&
+                const DeepCollectionEquality().equals(
+                  other.vehicleBrand,
+                  vehicleBrand,
+                )) &&
             (identical(other.vehicleModel, vehicleModel) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleModel, vehicleModel)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleModel,
+                  vehicleModel,
+                )));
   }
 
   @override
@@ -11718,89 +13132,99 @@ class Vehicle {
 }
 
 extension $VehicleExtension on Vehicle {
-  Vehicle copyWith(
-      {double? distance,
-      int? electricRange,
-      BookingPrice? fanPrice,
-      bool? favorite,
-      BookingPrice? funPrice,
-      GpsLocation? homePosition,
-      String? id,
-      String? imageUrl,
-      GpsLocation? lastPosition,
-      DateTime? lastPositionTimestamp,
-      String? licensePlate,
-      String? name,
-      enums.VehicleOperationalStatus? operationalStatus,
-      BodyStyle? vehicleBodyStyle,
-      VehicleBrand? vehicleBrand,
-      VehicleModel? vehicleModel}) {
+  Vehicle copyWith({
+    double? distance,
+    int? electricRange,
+    BookingPrice? fanPrice,
+    bool? favorite,
+    BookingPrice? funPrice,
+    GpsLocation? homePosition,
+    String? id,
+    String? imageUrl,
+    GpsLocation? lastPosition,
+    DateTime? lastPositionTimestamp,
+    String? licensePlate,
+    String? name,
+    enums.VehicleOperationalStatus? operationalStatus,
+    BodyStyle? vehicleBodyStyle,
+    VehicleBrand? vehicleBrand,
+    VehicleModel? vehicleModel,
+  }) {
     return Vehicle(
-        distance: distance ?? this.distance,
-        electricRange: electricRange ?? this.electricRange,
-        fanPrice: fanPrice ?? this.fanPrice,
-        favorite: favorite ?? this.favorite,
-        funPrice: funPrice ?? this.funPrice,
-        homePosition: homePosition ?? this.homePosition,
-        id: id ?? this.id,
-        imageUrl: imageUrl ?? this.imageUrl,
-        lastPosition: lastPosition ?? this.lastPosition,
-        lastPositionTimestamp:
-            lastPositionTimestamp ?? this.lastPositionTimestamp,
-        licensePlate: licensePlate ?? this.licensePlate,
-        name: name ?? this.name,
-        operationalStatus: operationalStatus ?? this.operationalStatus,
-        vehicleBodyStyle: vehicleBodyStyle ?? this.vehicleBodyStyle,
-        vehicleBrand: vehicleBrand ?? this.vehicleBrand,
-        vehicleModel: vehicleModel ?? this.vehicleModel);
+      distance: distance ?? this.distance,
+      electricRange: electricRange ?? this.electricRange,
+      fanPrice: fanPrice ?? this.fanPrice,
+      favorite: favorite ?? this.favorite,
+      funPrice: funPrice ?? this.funPrice,
+      homePosition: homePosition ?? this.homePosition,
+      id: id ?? this.id,
+      imageUrl: imageUrl ?? this.imageUrl,
+      lastPosition: lastPosition ?? this.lastPosition,
+      lastPositionTimestamp:
+          lastPositionTimestamp ?? this.lastPositionTimestamp,
+      licensePlate: licensePlate ?? this.licensePlate,
+      name: name ?? this.name,
+      operationalStatus: operationalStatus ?? this.operationalStatus,
+      vehicleBodyStyle: vehicleBodyStyle ?? this.vehicleBodyStyle,
+      vehicleBrand: vehicleBrand ?? this.vehicleBrand,
+      vehicleModel: vehicleModel ?? this.vehicleModel,
+    );
   }
 
-  Vehicle copyWithWrapped(
-      {Wrapped<double?>? distance,
-      Wrapped<int?>? electricRange,
-      Wrapped<BookingPrice?>? fanPrice,
-      Wrapped<bool?>? favorite,
-      Wrapped<BookingPrice?>? funPrice,
-      Wrapped<GpsLocation?>? homePosition,
-      Wrapped<String?>? id,
-      Wrapped<String?>? imageUrl,
-      Wrapped<GpsLocation?>? lastPosition,
-      Wrapped<DateTime?>? lastPositionTimestamp,
-      Wrapped<String?>? licensePlate,
-      Wrapped<String?>? name,
-      Wrapped<enums.VehicleOperationalStatus?>? operationalStatus,
-      Wrapped<BodyStyle?>? vehicleBodyStyle,
-      Wrapped<VehicleBrand?>? vehicleBrand,
-      Wrapped<VehicleModel?>? vehicleModel}) {
+  Vehicle copyWithWrapped({
+    Wrapped<double?>? distance,
+    Wrapped<int?>? electricRange,
+    Wrapped<BookingPrice?>? fanPrice,
+    Wrapped<bool?>? favorite,
+    Wrapped<BookingPrice?>? funPrice,
+    Wrapped<GpsLocation?>? homePosition,
+    Wrapped<String?>? id,
+    Wrapped<String?>? imageUrl,
+    Wrapped<GpsLocation?>? lastPosition,
+    Wrapped<DateTime?>? lastPositionTimestamp,
+    Wrapped<String?>? licensePlate,
+    Wrapped<String?>? name,
+    Wrapped<enums.VehicleOperationalStatus?>? operationalStatus,
+    Wrapped<BodyStyle?>? vehicleBodyStyle,
+    Wrapped<VehicleBrand?>? vehicleBrand,
+    Wrapped<VehicleModel?>? vehicleModel,
+  }) {
     return Vehicle(
-        distance: (distance != null ? distance.value : this.distance),
-        electricRange:
-            (electricRange != null ? electricRange.value : this.electricRange),
-        fanPrice: (fanPrice != null ? fanPrice.value : this.fanPrice),
-        favorite: (favorite != null ? favorite.value : this.favorite),
-        funPrice: (funPrice != null ? funPrice.value : this.funPrice),
-        homePosition:
-            (homePosition != null ? homePosition.value : this.homePosition),
-        id: (id != null ? id.value : this.id),
-        imageUrl: (imageUrl != null ? imageUrl.value : this.imageUrl),
-        lastPosition:
-            (lastPosition != null ? lastPosition.value : this.lastPosition),
-        lastPositionTimestamp: (lastPositionTimestamp != null
-            ? lastPositionTimestamp.value
-            : this.lastPositionTimestamp),
-        licensePlate:
-            (licensePlate != null ? licensePlate.value : this.licensePlate),
-        name: (name != null ? name.value : this.name),
-        operationalStatus: (operationalStatus != null
-            ? operationalStatus.value
-            : this.operationalStatus),
-        vehicleBodyStyle: (vehicleBodyStyle != null
-            ? vehicleBodyStyle.value
-            : this.vehicleBodyStyle),
-        vehicleBrand:
-            (vehicleBrand != null ? vehicleBrand.value : this.vehicleBrand),
-        vehicleModel:
-            (vehicleModel != null ? vehicleModel.value : this.vehicleModel));
+      distance: (distance != null ? distance.value : this.distance),
+      electricRange: (electricRange != null
+          ? electricRange.value
+          : this.electricRange),
+      fanPrice: (fanPrice != null ? fanPrice.value : this.fanPrice),
+      favorite: (favorite != null ? favorite.value : this.favorite),
+      funPrice: (funPrice != null ? funPrice.value : this.funPrice),
+      homePosition: (homePosition != null
+          ? homePosition.value
+          : this.homePosition),
+      id: (id != null ? id.value : this.id),
+      imageUrl: (imageUrl != null ? imageUrl.value : this.imageUrl),
+      lastPosition: (lastPosition != null
+          ? lastPosition.value
+          : this.lastPosition),
+      lastPositionTimestamp: (lastPositionTimestamp != null
+          ? lastPositionTimestamp.value
+          : this.lastPositionTimestamp),
+      licensePlate: (licensePlate != null
+          ? licensePlate.value
+          : this.licensePlate),
+      name: (name != null ? name.value : this.name),
+      operationalStatus: (operationalStatus != null
+          ? operationalStatus.value
+          : this.operationalStatus),
+      vehicleBodyStyle: (vehicleBodyStyle != null
+          ? vehicleBodyStyle.value
+          : this.vehicleBodyStyle),
+      vehicleBrand: (vehicleBrand != null
+          ? vehicleBrand.value
+          : this.vehicleBrand),
+      vehicleModel: (vehicleModel != null
+          ? vehicleModel.value
+          : this.vehicleModel),
+    );
   }
 }
 
@@ -11845,11 +13269,15 @@ class VehicleBaseLocation {
             (identical(other.adType, adType) ||
                 const DeepCollectionEquality().equals(other.adType, adType)) &&
             (identical(other.borough, borough) ||
-                const DeepCollectionEquality()
-                    .equals(other.borough, borough)) &&
+                const DeepCollectionEquality().equals(
+                  other.borough,
+                  borough,
+                )) &&
             (identical(other.homePosition, homePosition) ||
-                const DeepCollectionEquality()
-                    .equals(other.homePosition, homePosition)) &&
+                const DeepCollectionEquality().equals(
+                  other.homePosition,
+                  homePosition,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.memo, memo) ||
@@ -11876,49 +13304,52 @@ class VehicleBaseLocation {
 }
 
 extension $VehicleBaseLocationExtension on VehicleBaseLocation {
-  VehicleBaseLocation copyWith(
-      {String? adType,
-      String? borough,
-      GpsLocation? homePosition,
-      String? id,
-      String? memo,
-      String? name,
-      String? status}) {
+  VehicleBaseLocation copyWith({
+    String? adType,
+    String? borough,
+    GpsLocation? homePosition,
+    String? id,
+    String? memo,
+    String? name,
+    String? status,
+  }) {
     return VehicleBaseLocation(
-        adType: adType ?? this.adType,
-        borough: borough ?? this.borough,
-        homePosition: homePosition ?? this.homePosition,
-        id: id ?? this.id,
-        memo: memo ?? this.memo,
-        name: name ?? this.name,
-        status: status ?? this.status);
+      adType: adType ?? this.adType,
+      borough: borough ?? this.borough,
+      homePosition: homePosition ?? this.homePosition,
+      id: id ?? this.id,
+      memo: memo ?? this.memo,
+      name: name ?? this.name,
+      status: status ?? this.status,
+    );
   }
 
-  VehicleBaseLocation copyWithWrapped(
-      {Wrapped<String?>? adType,
-      Wrapped<String?>? borough,
-      Wrapped<GpsLocation?>? homePosition,
-      Wrapped<String?>? id,
-      Wrapped<String?>? memo,
-      Wrapped<String?>? name,
-      Wrapped<String?>? status}) {
+  VehicleBaseLocation copyWithWrapped({
+    Wrapped<String?>? adType,
+    Wrapped<String?>? borough,
+    Wrapped<GpsLocation?>? homePosition,
+    Wrapped<String?>? id,
+    Wrapped<String?>? memo,
+    Wrapped<String?>? name,
+    Wrapped<String?>? status,
+  }) {
     return VehicleBaseLocation(
-        adType: (adType != null ? adType.value : this.adType),
-        borough: (borough != null ? borough.value : this.borough),
-        homePosition:
-            (homePosition != null ? homePosition.value : this.homePosition),
-        id: (id != null ? id.value : this.id),
-        memo: (memo != null ? memo.value : this.memo),
-        name: (name != null ? name.value : this.name),
-        status: (status != null ? status.value : this.status));
+      adType: (adType != null ? adType.value : this.adType),
+      borough: (borough != null ? borough.value : this.borough),
+      homePosition: (homePosition != null
+          ? homePosition.value
+          : this.homePosition),
+      id: (id != null ? id.value : this.id),
+      memo: (memo != null ? memo.value : this.memo),
+      name: (name != null ? name.value : this.name),
+      status: (status != null ? status.value : this.status),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class VehicleBaseLocationPage {
-  const VehicleBaseLocationPage({
-    this.vehicleBaseLocations,
-  });
+  const VehicleBaseLocationPage({this.vehicleBaseLocations});
 
   factory VehicleBaseLocationPage.fromJson(Map<String, dynamic> json) =>
       _$VehicleBaseLocationPageFromJson(json);
@@ -11935,8 +13366,10 @@ class VehicleBaseLocationPage {
     return identical(this, other) ||
         (other is VehicleBaseLocationPage &&
             (identical(other.vehicleBaseLocations, vehicleBaseLocations) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleBaseLocations, vehicleBaseLocations)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleBaseLocations,
+                  vehicleBaseLocations,
+                )));
   }
 
   @override
@@ -11949,28 +13382,28 @@ class VehicleBaseLocationPage {
 }
 
 extension $VehicleBaseLocationPageExtension on VehicleBaseLocationPage {
-  VehicleBaseLocationPage copyWith(
-      {List<VehicleBaseLocation>? vehicleBaseLocations}) {
+  VehicleBaseLocationPage copyWith({
+    List<VehicleBaseLocation>? vehicleBaseLocations,
+  }) {
     return VehicleBaseLocationPage(
-        vehicleBaseLocations:
-            vehicleBaseLocations ?? this.vehicleBaseLocations);
+      vehicleBaseLocations: vehicleBaseLocations ?? this.vehicleBaseLocations,
+    );
   }
 
-  VehicleBaseLocationPage copyWithWrapped(
-      {Wrapped<List<VehicleBaseLocation>?>? vehicleBaseLocations}) {
+  VehicleBaseLocationPage copyWithWrapped({
+    Wrapped<List<VehicleBaseLocation>?>? vehicleBaseLocations,
+  }) {
     return VehicleBaseLocationPage(
-        vehicleBaseLocations: (vehicleBaseLocations != null
-            ? vehicleBaseLocations.value
-            : this.vehicleBaseLocations));
+      vehicleBaseLocations: (vehicleBaseLocations != null
+          ? vehicleBaseLocations.value
+          : this.vehicleBaseLocations),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class VehicleBrand {
-  const VehicleBrand({
-    this.id,
-    this.name,
-  });
+  const VehicleBrand({this.id, this.name});
 
   factory VehicleBrand.fromJson(Map<String, dynamic> json) =>
       _$VehicleBrandFromJson(json);
@@ -12011,16 +13444,15 @@ extension $VehicleBrandExtension on VehicleBrand {
 
   VehicleBrand copyWithWrapped({Wrapped<String?>? id, Wrapped<String?>? name}) {
     return VehicleBrand(
-        id: (id != null ? id.value : this.id),
-        name: (name != null ? name.value : this.name));
+      id: (id != null ? id.value : this.id),
+      name: (name != null ? name.value : this.name),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class VehicleBrandPage {
-  const VehicleBrandPage({
-    this.vehicleBrands,
-  });
+  const VehicleBrandPage({this.vehicleBrands});
 
   factory VehicleBrandPage.fromJson(Map<String, dynamic> json) =>
       _$VehicleBrandPageFromJson(json);
@@ -12037,8 +13469,10 @@ class VehicleBrandPage {
     return identical(this, other) ||
         (other is VehicleBrandPage &&
             (identical(other.vehicleBrands, vehicleBrands) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleBrands, vehicleBrands)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleBrands,
+                  vehicleBrands,
+                )));
   }
 
   @override
@@ -12054,11 +13488,14 @@ extension $VehicleBrandPageExtension on VehicleBrandPage {
     return VehicleBrandPage(vehicleBrands: vehicleBrands ?? this.vehicleBrands);
   }
 
-  VehicleBrandPage copyWithWrapped(
-      {Wrapped<List<VehicleBrand>?>? vehicleBrands}) {
+  VehicleBrandPage copyWithWrapped({
+    Wrapped<List<VehicleBrand>?>? vehicleBrands,
+  }) {
     return VehicleBrandPage(
-        vehicleBrands:
-            (vehicleBrands != null ? vehicleBrands.value : this.vehicleBrands));
+      vehicleBrands: (vehicleBrands != null
+          ? vehicleBrands.value
+          : this.vehicleBrands),
+    );
   }
 }
 
@@ -12153,58 +13590,141 @@ class VehicleContract {
     return identical(this, other) ||
         (other is VehicleContract &&
             (identical(other.battMaxType, battMaxType) ||
-                const DeepCollectionEquality()
-                    .equals(other.battMaxType, battMaxType)) &&
+                const DeepCollectionEquality().equals(
+                  other.battMaxType,
+                  battMaxType,
+                )) &&
             (identical(other.battOrderNumber, battOrderNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.battOrderNumber, battOrderNumber)) &&
+                const DeepCollectionEquality().equals(
+                  other.battOrderNumber,
+                  battOrderNumber,
+                )) &&
             (identical(other.clientContractId, clientContractId) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientContractId, clientContractId)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientContractId,
+                  clientContractId,
+                )) &&
             (identical(other.clientId, clientId) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientId, clientId)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientId,
+                  clientId,
+                )) &&
             (identical(other.clientName, clientName) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientName, clientName)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientName,
+                  clientName,
+                )) &&
             (identical(other.clientRoles, clientRoles) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientRoles, clientRoles)) &&
-            (identical(other.costForAdditionalKmsExclVat, costForAdditionalKmsExclVat) ||
                 const DeepCollectionEquality().equals(
-                    other.costForAdditionalKmsExclVat,
-                    costForAdditionalKmsExclVat)) &&
-            (identical(other.creditedDayPriceExclVat, creditedDayPriceExclVat) ||
+                  other.clientRoles,
+                  clientRoles,
+                )) &&
+            (identical(
+                  other.costForAdditionalKmsExclVat,
+                  costForAdditionalKmsExclVat,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.creditedDayPriceExclVat, creditedDayPriceExclVat)) &&
+                  other.costForAdditionalKmsExclVat,
+                  costForAdditionalKmsExclVat,
+                )) &&
+            (identical(
+                  other.creditedDayPriceExclVat,
+                  creditedDayPriceExclVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.creditedDayPriceExclVat,
+                  creditedDayPriceExclVat,
+                )) &&
             (identical(other.creditedKmPriceExclVat, creditedKmPriceExclVat) ||
                 const DeepCollectionEquality().equals(
-                    other.creditedKmPriceExclVat, creditedKmPriceExclVat)) &&
+                  other.creditedKmPriceExclVat,
+                  creditedKmPriceExclVat,
+                )) &&
             (identical(other.endDate, endDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDate, endDate)) &&
+                const DeepCollectionEquality().equals(
+                  other.endDate,
+                  endDate,
+                )) &&
             (identical(other.mainUserId, mainUserId) ||
-                const DeepCollectionEquality()
-                    .equals(other.mainUserId, mainUserId)) &&
-            (identical(other.maxInvoiceAmountExclVat, maxInvoiceAmountExclVat) ||
                 const DeepCollectionEquality().equals(
-                    other.maxInvoiceAmountExclVat, maxInvoiceAmountExclVat)) &&
-            (identical(other.mileageKmAtEndOfContract, mileageKmAtEndOfContract) ||
+                  other.mainUserId,
+                  mainUserId,
+                )) &&
+            (identical(
+                  other.maxInvoiceAmountExclVat,
+                  maxInvoiceAmountExclVat,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.mileageKmAtEndOfContract,
-                    mileageKmAtEndOfContract)) &&
-            (identical(other.mileageKmAtStartOfContract, mileageKmAtStartOfContract) ||
+                  other.maxInvoiceAmountExclVat,
+                  maxInvoiceAmountExclVat,
+                )) &&
+            (identical(
+                  other.mileageKmAtEndOfContract,
+                  mileageKmAtEndOfContract,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.mileageKmAtStartOfContract, mileageKmAtStartOfContract)) &&
-            (identical(other.monthlyInsurance, monthlyInsurance) || const DeepCollectionEquality().equals(other.monthlyInsurance, monthlyInsurance)) &&
-            (identical(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat) || const DeepCollectionEquality().equals(other.monthlyLeaseAmountExclVat, monthlyLeaseAmountExclVat)) &&
-            (identical(other.monthlyPrefundElectricityExVat, monthlyPrefundElectricityExVat) || const DeepCollectionEquality().equals(other.monthlyPrefundElectricityExVat, monthlyPrefundElectricityExVat)) &&
-            (identical(other.numberOfMonths, numberOfMonths) || const DeepCollectionEquality().equals(other.numberOfMonths, numberOfMonths)) &&
-            (identical(other.paidStartupCost, paidStartupCost) || const DeepCollectionEquality().equals(other.paidStartupCost, paidStartupCost)) &&
-            (identical(other.startDate, startDate) || const DeepCollectionEquality().equals(other.startDate, startDate)) &&
-            (identical(other.vehicleDboId, vehicleDboId) || const DeepCollectionEquality().equals(other.vehicleDboId, vehicleDboId)) &&
-            (identical(other.vehicleId, vehicleId) || const DeepCollectionEquality().equals(other.vehicleId, vehicleId)) &&
-            (identical(other.yearlyKmsOnContract, yearlyKmsOnContract) || const DeepCollectionEquality().equals(other.yearlyKmsOnContract, yearlyKmsOnContract)));
+                  other.mileageKmAtEndOfContract,
+                  mileageKmAtEndOfContract,
+                )) &&
+            (identical(
+                  other.mileageKmAtStartOfContract,
+                  mileageKmAtStartOfContract,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.mileageKmAtStartOfContract,
+                  mileageKmAtStartOfContract,
+                )) &&
+            (identical(other.monthlyInsurance, monthlyInsurance) ||
+                const DeepCollectionEquality().equals(
+                  other.monthlyInsurance,
+                  monthlyInsurance,
+                )) &&
+            (identical(
+                  other.monthlyLeaseAmountExclVat,
+                  monthlyLeaseAmountExclVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.monthlyLeaseAmountExclVat,
+                  monthlyLeaseAmountExclVat,
+                )) &&
+            (identical(
+                  other.monthlyPrefundElectricityExVat,
+                  monthlyPrefundElectricityExVat,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.monthlyPrefundElectricityExVat,
+                  monthlyPrefundElectricityExVat,
+                )) &&
+            (identical(other.numberOfMonths, numberOfMonths) ||
+                const DeepCollectionEquality().equals(
+                  other.numberOfMonths,
+                  numberOfMonths,
+                )) &&
+            (identical(other.paidStartupCost, paidStartupCost) ||
+                const DeepCollectionEquality().equals(
+                  other.paidStartupCost,
+                  paidStartupCost,
+                )) &&
+            (identical(other.startDate, startDate) ||
+                const DeepCollectionEquality().equals(
+                  other.startDate,
+                  startDate,
+                )) &&
+            (identical(other.vehicleDboId, vehicleDboId) ||
+                const DeepCollectionEquality().equals(
+                  other.vehicleDboId,
+                  vehicleDboId,
+                )) &&
+            (identical(other.vehicleId, vehicleId) ||
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )) &&
+            (identical(other.yearlyKmsOnContract, yearlyKmsOnContract) ||
+                const DeepCollectionEquality().equals(
+                  other.yearlyKmsOnContract,
+                  yearlyKmsOnContract,
+                )));
   }
 
   @override
@@ -12239,151 +13759,152 @@ class VehicleContract {
 }
 
 extension $VehicleContractExtension on VehicleContract {
-  VehicleContract copyWith(
-      {enums.VehicleContractBattMaxType? battMaxType,
-      String? battOrderNumber,
-      int? clientContractId,
-      int? clientId,
-      String? clientName,
-      String? clientRoles,
-      double? costForAdditionalKmsExclVat,
-      double? creditedDayPriceExclVat,
-      double? creditedKmPriceExclVat,
-      DateTime? endDate,
-      int? mainUserId,
-      double? maxInvoiceAmountExclVat,
-      int? mileageKmAtEndOfContract,
-      int? mileageKmAtStartOfContract,
-      double? monthlyInsurance,
-      double? monthlyLeaseAmountExclVat,
-      double? monthlyPrefundElectricityExVat,
-      int? numberOfMonths,
-      double? paidStartupCost,
-      DateTime? startDate,
-      int? vehicleDboId,
-      String? vehicleId,
-      int? yearlyKmsOnContract}) {
+  VehicleContract copyWith({
+    enums.VehicleContractBattMaxType? battMaxType,
+    String? battOrderNumber,
+    int? clientContractId,
+    int? clientId,
+    String? clientName,
+    String? clientRoles,
+    double? costForAdditionalKmsExclVat,
+    double? creditedDayPriceExclVat,
+    double? creditedKmPriceExclVat,
+    DateTime? endDate,
+    int? mainUserId,
+    double? maxInvoiceAmountExclVat,
+    int? mileageKmAtEndOfContract,
+    int? mileageKmAtStartOfContract,
+    double? monthlyInsurance,
+    double? monthlyLeaseAmountExclVat,
+    double? monthlyPrefundElectricityExVat,
+    int? numberOfMonths,
+    double? paidStartupCost,
+    DateTime? startDate,
+    int? vehicleDboId,
+    String? vehicleId,
+    int? yearlyKmsOnContract,
+  }) {
     return VehicleContract(
-        battMaxType: battMaxType ?? this.battMaxType,
-        battOrderNumber: battOrderNumber ?? this.battOrderNumber,
-        clientContractId: clientContractId ?? this.clientContractId,
-        clientId: clientId ?? this.clientId,
-        clientName: clientName ?? this.clientName,
-        clientRoles: clientRoles ?? this.clientRoles,
-        costForAdditionalKmsExclVat:
-            costForAdditionalKmsExclVat ?? this.costForAdditionalKmsExclVat,
-        creditedDayPriceExclVat:
-            creditedDayPriceExclVat ?? this.creditedDayPriceExclVat,
-        creditedKmPriceExclVat:
-            creditedKmPriceExclVat ?? this.creditedKmPriceExclVat,
-        endDate: endDate ?? this.endDate,
-        mainUserId: mainUserId ?? this.mainUserId,
-        maxInvoiceAmountExclVat:
-            maxInvoiceAmountExclVat ?? this.maxInvoiceAmountExclVat,
-        mileageKmAtEndOfContract:
-            mileageKmAtEndOfContract ?? this.mileageKmAtEndOfContract,
-        mileageKmAtStartOfContract:
-            mileageKmAtStartOfContract ?? this.mileageKmAtStartOfContract,
-        monthlyInsurance: monthlyInsurance ?? this.monthlyInsurance,
-        monthlyLeaseAmountExclVat:
-            monthlyLeaseAmountExclVat ?? this.monthlyLeaseAmountExclVat,
-        monthlyPrefundElectricityExVat: monthlyPrefundElectricityExVat ??
-            this.monthlyPrefundElectricityExVat,
-        numberOfMonths: numberOfMonths ?? this.numberOfMonths,
-        paidStartupCost: paidStartupCost ?? this.paidStartupCost,
-        startDate: startDate ?? this.startDate,
-        vehicleDboId: vehicleDboId ?? this.vehicleDboId,
-        vehicleId: vehicleId ?? this.vehicleId,
-        yearlyKmsOnContract: yearlyKmsOnContract ?? this.yearlyKmsOnContract);
+      battMaxType: battMaxType ?? this.battMaxType,
+      battOrderNumber: battOrderNumber ?? this.battOrderNumber,
+      clientContractId: clientContractId ?? this.clientContractId,
+      clientId: clientId ?? this.clientId,
+      clientName: clientName ?? this.clientName,
+      clientRoles: clientRoles ?? this.clientRoles,
+      costForAdditionalKmsExclVat:
+          costForAdditionalKmsExclVat ?? this.costForAdditionalKmsExclVat,
+      creditedDayPriceExclVat:
+          creditedDayPriceExclVat ?? this.creditedDayPriceExclVat,
+      creditedKmPriceExclVat:
+          creditedKmPriceExclVat ?? this.creditedKmPriceExclVat,
+      endDate: endDate ?? this.endDate,
+      mainUserId: mainUserId ?? this.mainUserId,
+      maxInvoiceAmountExclVat:
+          maxInvoiceAmountExclVat ?? this.maxInvoiceAmountExclVat,
+      mileageKmAtEndOfContract:
+          mileageKmAtEndOfContract ?? this.mileageKmAtEndOfContract,
+      mileageKmAtStartOfContract:
+          mileageKmAtStartOfContract ?? this.mileageKmAtStartOfContract,
+      monthlyInsurance: monthlyInsurance ?? this.monthlyInsurance,
+      monthlyLeaseAmountExclVat:
+          monthlyLeaseAmountExclVat ?? this.monthlyLeaseAmountExclVat,
+      monthlyPrefundElectricityExVat:
+          monthlyPrefundElectricityExVat ?? this.monthlyPrefundElectricityExVat,
+      numberOfMonths: numberOfMonths ?? this.numberOfMonths,
+      paidStartupCost: paidStartupCost ?? this.paidStartupCost,
+      startDate: startDate ?? this.startDate,
+      vehicleDboId: vehicleDboId ?? this.vehicleDboId,
+      vehicleId: vehicleId ?? this.vehicleId,
+      yearlyKmsOnContract: yearlyKmsOnContract ?? this.yearlyKmsOnContract,
+    );
   }
 
-  VehicleContract copyWithWrapped(
-      {Wrapped<enums.VehicleContractBattMaxType?>? battMaxType,
-      Wrapped<String?>? battOrderNumber,
-      Wrapped<int?>? clientContractId,
-      Wrapped<int?>? clientId,
-      Wrapped<String?>? clientName,
-      Wrapped<String?>? clientRoles,
-      Wrapped<double?>? costForAdditionalKmsExclVat,
-      Wrapped<double?>? creditedDayPriceExclVat,
-      Wrapped<double?>? creditedKmPriceExclVat,
-      Wrapped<DateTime?>? endDate,
-      Wrapped<int?>? mainUserId,
-      Wrapped<double?>? maxInvoiceAmountExclVat,
-      Wrapped<int?>? mileageKmAtEndOfContract,
-      Wrapped<int?>? mileageKmAtStartOfContract,
-      Wrapped<double?>? monthlyInsurance,
-      Wrapped<double?>? monthlyLeaseAmountExclVat,
-      Wrapped<double?>? monthlyPrefundElectricityExVat,
-      Wrapped<int?>? numberOfMonths,
-      Wrapped<double?>? paidStartupCost,
-      Wrapped<DateTime?>? startDate,
-      Wrapped<int?>? vehicleDboId,
-      Wrapped<String?>? vehicleId,
-      Wrapped<int?>? yearlyKmsOnContract}) {
+  VehicleContract copyWithWrapped({
+    Wrapped<enums.VehicleContractBattMaxType?>? battMaxType,
+    Wrapped<String?>? battOrderNumber,
+    Wrapped<int?>? clientContractId,
+    Wrapped<int?>? clientId,
+    Wrapped<String?>? clientName,
+    Wrapped<String?>? clientRoles,
+    Wrapped<double?>? costForAdditionalKmsExclVat,
+    Wrapped<double?>? creditedDayPriceExclVat,
+    Wrapped<double?>? creditedKmPriceExclVat,
+    Wrapped<DateTime?>? endDate,
+    Wrapped<int?>? mainUserId,
+    Wrapped<double?>? maxInvoiceAmountExclVat,
+    Wrapped<int?>? mileageKmAtEndOfContract,
+    Wrapped<int?>? mileageKmAtStartOfContract,
+    Wrapped<double?>? monthlyInsurance,
+    Wrapped<double?>? monthlyLeaseAmountExclVat,
+    Wrapped<double?>? monthlyPrefundElectricityExVat,
+    Wrapped<int?>? numberOfMonths,
+    Wrapped<double?>? paidStartupCost,
+    Wrapped<DateTime?>? startDate,
+    Wrapped<int?>? vehicleDboId,
+    Wrapped<String?>? vehicleId,
+    Wrapped<int?>? yearlyKmsOnContract,
+  }) {
     return VehicleContract(
-        battMaxType:
-            (battMaxType != null ? battMaxType.value : this.battMaxType),
-        battOrderNumber: (battOrderNumber != null
-            ? battOrderNumber.value
-            : this.battOrderNumber),
-        clientContractId: (clientContractId != null
-            ? clientContractId.value
-            : this.clientContractId),
-        clientId: (clientId != null ? clientId.value : this.clientId),
-        clientName: (clientName != null ? clientName.value : this.clientName),
-        clientRoles:
-            (clientRoles != null ? clientRoles.value : this.clientRoles),
-        costForAdditionalKmsExclVat: (costForAdditionalKmsExclVat != null
-            ? costForAdditionalKmsExclVat.value
-            : this.costForAdditionalKmsExclVat),
-        creditedDayPriceExclVat: (creditedDayPriceExclVat != null
-            ? creditedDayPriceExclVat.value
-            : this.creditedDayPriceExclVat),
-        creditedKmPriceExclVat: (creditedKmPriceExclVat != null
-            ? creditedKmPriceExclVat.value
-            : this.creditedKmPriceExclVat),
-        endDate: (endDate != null ? endDate.value : this.endDate),
-        mainUserId: (mainUserId != null ? mainUserId.value : this.mainUserId),
-        maxInvoiceAmountExclVat: (maxInvoiceAmountExclVat != null
-            ? maxInvoiceAmountExclVat.value
-            : this.maxInvoiceAmountExclVat),
-        mileageKmAtEndOfContract: (mileageKmAtEndOfContract != null
-            ? mileageKmAtEndOfContract.value
-            : this.mileageKmAtEndOfContract),
-        mileageKmAtStartOfContract: (mileageKmAtStartOfContract != null
-            ? mileageKmAtStartOfContract.value
-            : this.mileageKmAtStartOfContract),
-        monthlyInsurance: (monthlyInsurance != null
-            ? monthlyInsurance.value
-            : this.monthlyInsurance),
-        monthlyLeaseAmountExclVat: (monthlyLeaseAmountExclVat != null
-            ? monthlyLeaseAmountExclVat.value
-            : this.monthlyLeaseAmountExclVat),
-        monthlyPrefundElectricityExVat: (monthlyPrefundElectricityExVat != null
-            ? monthlyPrefundElectricityExVat.value
-            : this.monthlyPrefundElectricityExVat),
-        numberOfMonths: (numberOfMonths != null
-            ? numberOfMonths.value
-            : this.numberOfMonths),
-        paidStartupCost: (paidStartupCost != null
-            ? paidStartupCost.value
-            : this.paidStartupCost),
-        startDate: (startDate != null ? startDate.value : this.startDate),
-        vehicleDboId:
-            (vehicleDboId != null ? vehicleDboId.value : this.vehicleDboId),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
-        yearlyKmsOnContract: (yearlyKmsOnContract != null
-            ? yearlyKmsOnContract.value
-            : this.yearlyKmsOnContract));
+      battMaxType: (battMaxType != null ? battMaxType.value : this.battMaxType),
+      battOrderNumber: (battOrderNumber != null
+          ? battOrderNumber.value
+          : this.battOrderNumber),
+      clientContractId: (clientContractId != null
+          ? clientContractId.value
+          : this.clientContractId),
+      clientId: (clientId != null ? clientId.value : this.clientId),
+      clientName: (clientName != null ? clientName.value : this.clientName),
+      clientRoles: (clientRoles != null ? clientRoles.value : this.clientRoles),
+      costForAdditionalKmsExclVat: (costForAdditionalKmsExclVat != null
+          ? costForAdditionalKmsExclVat.value
+          : this.costForAdditionalKmsExclVat),
+      creditedDayPriceExclVat: (creditedDayPriceExclVat != null
+          ? creditedDayPriceExclVat.value
+          : this.creditedDayPriceExclVat),
+      creditedKmPriceExclVat: (creditedKmPriceExclVat != null
+          ? creditedKmPriceExclVat.value
+          : this.creditedKmPriceExclVat),
+      endDate: (endDate != null ? endDate.value : this.endDate),
+      mainUserId: (mainUserId != null ? mainUserId.value : this.mainUserId),
+      maxInvoiceAmountExclVat: (maxInvoiceAmountExclVat != null
+          ? maxInvoiceAmountExclVat.value
+          : this.maxInvoiceAmountExclVat),
+      mileageKmAtEndOfContract: (mileageKmAtEndOfContract != null
+          ? mileageKmAtEndOfContract.value
+          : this.mileageKmAtEndOfContract),
+      mileageKmAtStartOfContract: (mileageKmAtStartOfContract != null
+          ? mileageKmAtStartOfContract.value
+          : this.mileageKmAtStartOfContract),
+      monthlyInsurance: (monthlyInsurance != null
+          ? monthlyInsurance.value
+          : this.monthlyInsurance),
+      monthlyLeaseAmountExclVat: (monthlyLeaseAmountExclVat != null
+          ? monthlyLeaseAmountExclVat.value
+          : this.monthlyLeaseAmountExclVat),
+      monthlyPrefundElectricityExVat: (monthlyPrefundElectricityExVat != null
+          ? monthlyPrefundElectricityExVat.value
+          : this.monthlyPrefundElectricityExVat),
+      numberOfMonths: (numberOfMonths != null
+          ? numberOfMonths.value
+          : this.numberOfMonths),
+      paidStartupCost: (paidStartupCost != null
+          ? paidStartupCost.value
+          : this.paidStartupCost),
+      startDate: (startDate != null ? startDate.value : this.startDate),
+      vehicleDboId: (vehicleDboId != null
+          ? vehicleDboId.value
+          : this.vehicleDboId),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+      yearlyKmsOnContract: (yearlyKmsOnContract != null
+          ? yearlyKmsOnContract.value
+          : this.yearlyKmsOnContract),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class VehicleContractResponse {
-  const VehicleContractResponse({
-    this.clientContracts,
-  });
+  const VehicleContractResponse({this.clientContracts});
 
   factory VehicleContractResponse.fromJson(Map<String, dynamic> json) =>
       _$VehicleContractResponseFromJson(json);
@@ -12400,8 +13921,10 @@ class VehicleContractResponse {
     return identical(this, other) ||
         (other is VehicleContractResponse &&
             (identical(other.clientContracts, clientContracts) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientContracts, clientContracts)));
+                const DeepCollectionEquality().equals(
+                  other.clientContracts,
+                  clientContracts,
+                )));
   }
 
   @override
@@ -12414,18 +13937,22 @@ class VehicleContractResponse {
 }
 
 extension $VehicleContractResponseExtension on VehicleContractResponse {
-  VehicleContractResponse copyWith(
-      {List<ClientContractResponse>? clientContracts}) {
+  VehicleContractResponse copyWith({
+    List<ClientContractResponse>? clientContracts,
+  }) {
     return VehicleContractResponse(
-        clientContracts: clientContracts ?? this.clientContracts);
+      clientContracts: clientContracts ?? this.clientContracts,
+    );
   }
 
-  VehicleContractResponse copyWithWrapped(
-      {Wrapped<List<ClientContractResponse>?>? clientContracts}) {
+  VehicleContractResponse copyWithWrapped({
+    Wrapped<List<ClientContractResponse>?>? clientContracts,
+  }) {
     return VehicleContractResponse(
-        clientContracts: (clientContracts != null
-            ? clientContracts.value
-            : this.clientContracts));
+      clientContracts: (clientContracts != null
+          ? clientContracts.value
+          : this.clientContracts),
+    );
   }
 }
 
@@ -12465,20 +13992,30 @@ class VehicleFilterCriteria {
     return identical(this, other) ||
         (other is VehicleFilterCriteria &&
             (identical(other.bodyStyleIds, bodyStyleIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.bodyStyleIds, bodyStyleIds)) &&
+                const DeepCollectionEquality().equals(
+                  other.bodyStyleIds,
+                  bodyStyleIds,
+                )) &&
             (identical(other.brandIds, brandIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.brandIds, brandIds)) &&
+                const DeepCollectionEquality().equals(
+                  other.brandIds,
+                  brandIds,
+                )) &&
             (identical(other.licensePlate, licensePlate) ||
-                const DeepCollectionEquality()
-                    .equals(other.licensePlate, licensePlate)) &&
+                const DeepCollectionEquality().equals(
+                  other.licensePlate,
+                  licensePlate,
+                )) &&
             (identical(other.minRange, minRange) ||
-                const DeepCollectionEquality()
-                    .equals(other.minRange, minRange)) &&
+                const DeepCollectionEquality().equals(
+                  other.minRange,
+                  minRange,
+                )) &&
             (identical(other.modelIds, modelIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.modelIds, modelIds)) &&
+                const DeepCollectionEquality().equals(
+                  other.modelIds,
+                  modelIds,
+                )) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)));
   }
@@ -12498,48 +14035,50 @@ class VehicleFilterCriteria {
 }
 
 extension $VehicleFilterCriteriaExtension on VehicleFilterCriteria {
-  VehicleFilterCriteria copyWith(
-      {List<String>? bodyStyleIds,
-      List<String>? brandIds,
-      String? licensePlate,
-      int? minRange,
-      List<String>? modelIds,
-      String? name}) {
+  VehicleFilterCriteria copyWith({
+    List<String>? bodyStyleIds,
+    List<String>? brandIds,
+    String? licensePlate,
+    int? minRange,
+    List<String>? modelIds,
+    String? name,
+  }) {
     return VehicleFilterCriteria(
-        bodyStyleIds: bodyStyleIds ?? this.bodyStyleIds,
-        brandIds: brandIds ?? this.brandIds,
-        licensePlate: licensePlate ?? this.licensePlate,
-        minRange: minRange ?? this.minRange,
-        modelIds: modelIds ?? this.modelIds,
-        name: name ?? this.name);
+      bodyStyleIds: bodyStyleIds ?? this.bodyStyleIds,
+      brandIds: brandIds ?? this.brandIds,
+      licensePlate: licensePlate ?? this.licensePlate,
+      minRange: minRange ?? this.minRange,
+      modelIds: modelIds ?? this.modelIds,
+      name: name ?? this.name,
+    );
   }
 
-  VehicleFilterCriteria copyWithWrapped(
-      {Wrapped<List<String>?>? bodyStyleIds,
-      Wrapped<List<String>?>? brandIds,
-      Wrapped<String?>? licensePlate,
-      Wrapped<int?>? minRange,
-      Wrapped<List<String>?>? modelIds,
-      Wrapped<String?>? name}) {
+  VehicleFilterCriteria copyWithWrapped({
+    Wrapped<List<String>?>? bodyStyleIds,
+    Wrapped<List<String>?>? brandIds,
+    Wrapped<String?>? licensePlate,
+    Wrapped<int?>? minRange,
+    Wrapped<List<String>?>? modelIds,
+    Wrapped<String?>? name,
+  }) {
     return VehicleFilterCriteria(
-        bodyStyleIds:
-            (bodyStyleIds != null ? bodyStyleIds.value : this.bodyStyleIds),
-        brandIds: (brandIds != null ? brandIds.value : this.brandIds),
-        licensePlate:
-            (licensePlate != null ? licensePlate.value : this.licensePlate),
-        minRange: (minRange != null ? minRange.value : this.minRange),
-        modelIds: (modelIds != null ? modelIds.value : this.modelIds),
-        name: (name != null ? name.value : this.name));
+      bodyStyleIds: (bodyStyleIds != null
+          ? bodyStyleIds.value
+          : this.bodyStyleIds),
+      brandIds: (brandIds != null ? brandIds.value : this.brandIds),
+      licensePlate: (licensePlate != null
+          ? licensePlate.value
+          : this.licensePlate),
+      minRange: (minRange != null ? minRange.value : this.minRange),
+      modelIds: (modelIds != null ? modelIds.value : this.modelIds),
+      name: (name != null ? name.value : this.name),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class VehicleFilterEnums {
-  const VehicleFilterEnums({
-    this.bodyStyles,
-    this.brands,
-    this.models,
-  });
+  const VehicleFilterEnums({this.bodyStyles, this.brands, this.models});
 
   factory VehicleFilterEnums.fromJson(Map<String, dynamic> json) =>
       _$VehicleFilterEnumsFromJson(json);
@@ -12560,8 +14099,10 @@ class VehicleFilterEnums {
     return identical(this, other) ||
         (other is VehicleFilterEnums &&
             (identical(other.bodyStyles, bodyStyles) ||
-                const DeepCollectionEquality()
-                    .equals(other.bodyStyles, bodyStyles)) &&
+                const DeepCollectionEquality().equals(
+                  other.bodyStyles,
+                  bodyStyles,
+                )) &&
             (identical(other.brands, brands) ||
                 const DeepCollectionEquality().equals(other.brands, brands)) &&
             (identical(other.models, models) ||
@@ -12580,34 +14121,34 @@ class VehicleFilterEnums {
 }
 
 extension $VehicleFilterEnumsExtension on VehicleFilterEnums {
-  VehicleFilterEnums copyWith(
-      {List<BodyStyle>? bodyStyles,
-      List<VehicleBrand>? brands,
-      List<VehicleModel>? models}) {
+  VehicleFilterEnums copyWith({
+    List<BodyStyle>? bodyStyles,
+    List<VehicleBrand>? brands,
+    List<VehicleModel>? models,
+  }) {
     return VehicleFilterEnums(
-        bodyStyles: bodyStyles ?? this.bodyStyles,
-        brands: brands ?? this.brands,
-        models: models ?? this.models);
+      bodyStyles: bodyStyles ?? this.bodyStyles,
+      brands: brands ?? this.brands,
+      models: models ?? this.models,
+    );
   }
 
-  VehicleFilterEnums copyWithWrapped(
-      {Wrapped<List<BodyStyle>?>? bodyStyles,
-      Wrapped<List<VehicleBrand>?>? brands,
-      Wrapped<List<VehicleModel>?>? models}) {
+  VehicleFilterEnums copyWithWrapped({
+    Wrapped<List<BodyStyle>?>? bodyStyles,
+    Wrapped<List<VehicleBrand>?>? brands,
+    Wrapped<List<VehicleModel>?>? models,
+  }) {
     return VehicleFilterEnums(
-        bodyStyles: (bodyStyles != null ? bodyStyles.value : this.bodyStyles),
-        brands: (brands != null ? brands.value : this.brands),
-        models: (models != null ? models.value : this.models));
+      bodyStyles: (bodyStyles != null ? bodyStyles.value : this.bodyStyles),
+      brands: (brands != null ? brands.value : this.brands),
+      models: (models != null ? models.value : this.models),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class VehicleGroup {
-  const VehicleGroup({
-    this.id,
-    this.name,
-    this.vehicles,
-  });
+  const VehicleGroup({this.id, this.name, this.vehicles});
 
   factory VehicleGroup.fromJson(Map<String, dynamic> json) =>
       _$VehicleGroupFromJson(json);
@@ -12632,8 +14173,10 @@ class VehicleGroup {
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.vehicles, vehicles) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicles, vehicles)));
+                const DeepCollectionEquality().equals(
+                  other.vehicles,
+                  vehicles,
+                )));
   }
 
   @override
@@ -12650,27 +14193,28 @@ class VehicleGroup {
 extension $VehicleGroupExtension on VehicleGroup {
   VehicleGroup copyWith({String? id, String? name, List<Vehicle>? vehicles}) {
     return VehicleGroup(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        vehicles: vehicles ?? this.vehicles);
+      id: id ?? this.id,
+      name: name ?? this.name,
+      vehicles: vehicles ?? this.vehicles,
+    );
   }
 
-  VehicleGroup copyWithWrapped(
-      {Wrapped<String?>? id,
-      Wrapped<String?>? name,
-      Wrapped<List<Vehicle>?>? vehicles}) {
+  VehicleGroup copyWithWrapped({
+    Wrapped<String?>? id,
+    Wrapped<String?>? name,
+    Wrapped<List<Vehicle>?>? vehicles,
+  }) {
     return VehicleGroup(
-        id: (id != null ? id.value : this.id),
-        name: (name != null ? name.value : this.name),
-        vehicles: (vehicles != null ? vehicles.value : this.vehicles));
+      id: (id != null ? id.value : this.id),
+      name: (name != null ? name.value : this.name),
+      vehicles: (vehicles != null ? vehicles.value : this.vehicles),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class VehicleGroupPage {
-  const VehicleGroupPage({
-    this.vehicleGroups,
-  });
+  const VehicleGroupPage({this.vehicleGroups});
 
   factory VehicleGroupPage.fromJson(Map<String, dynamic> json) =>
       _$VehicleGroupPageFromJson(json);
@@ -12687,8 +14231,10 @@ class VehicleGroupPage {
     return identical(this, other) ||
         (other is VehicleGroupPage &&
             (identical(other.vehicleGroups, vehicleGroups) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleGroups, vehicleGroups)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleGroups,
+                  vehicleGroups,
+                )));
   }
 
   @override
@@ -12704,20 +14250,20 @@ extension $VehicleGroupPageExtension on VehicleGroupPage {
     return VehicleGroupPage(vehicleGroups: vehicleGroups ?? this.vehicleGroups);
   }
 
-  VehicleGroupPage copyWithWrapped(
-      {Wrapped<List<VehicleGroup>?>? vehicleGroups}) {
+  VehicleGroupPage copyWithWrapped({
+    Wrapped<List<VehicleGroup>?>? vehicleGroups,
+  }) {
     return VehicleGroupPage(
-        vehicleGroups:
-            (vehicleGroups != null ? vehicleGroups.value : this.vehicleGroups));
+      vehicleGroups: (vehicleGroups != null
+          ? vehicleGroups.value
+          : this.vehicleGroups),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class VehicleLockStatus {
-  const VehicleLockStatus({
-    this.centralLockStatus,
-    this.immobilizerStatus,
-  });
+  const VehicleLockStatus({this.centralLockStatus, this.immobilizerStatus});
 
   factory VehicleLockStatus.fromJson(Map<String, dynamic> json) =>
       _$VehicleLockStatusFromJson(json);
@@ -12744,11 +14290,15 @@ class VehicleLockStatus {
     return identical(this, other) ||
         (other is VehicleLockStatus &&
             (identical(other.centralLockStatus, centralLockStatus) ||
-                const DeepCollectionEquality()
-                    .equals(other.centralLockStatus, centralLockStatus)) &&
+                const DeepCollectionEquality().equals(
+                  other.centralLockStatus,
+                  centralLockStatus,
+                )) &&
             (identical(other.immobilizerStatus, immobilizerStatus) ||
-                const DeepCollectionEquality()
-                    .equals(other.immobilizerStatus, immobilizerStatus)));
+                const DeepCollectionEquality().equals(
+                  other.immobilizerStatus,
+                  immobilizerStatus,
+                )));
   }
 
   @override
@@ -12762,35 +14312,34 @@ class VehicleLockStatus {
 }
 
 extension $VehicleLockStatusExtension on VehicleLockStatus {
-  VehicleLockStatus copyWith(
-      {enums.VehicleLockStatusCentralLockStatus? centralLockStatus,
-      enums.VehicleLockStatusImmobilizerStatus? immobilizerStatus}) {
+  VehicleLockStatus copyWith({
+    enums.VehicleLockStatusCentralLockStatus? centralLockStatus,
+    enums.VehicleLockStatusImmobilizerStatus? immobilizerStatus,
+  }) {
     return VehicleLockStatus(
-        centralLockStatus: centralLockStatus ?? this.centralLockStatus,
-        immobilizerStatus: immobilizerStatus ?? this.immobilizerStatus);
+      centralLockStatus: centralLockStatus ?? this.centralLockStatus,
+      immobilizerStatus: immobilizerStatus ?? this.immobilizerStatus,
+    );
   }
 
-  VehicleLockStatus copyWithWrapped(
-      {Wrapped<enums.VehicleLockStatusCentralLockStatus?>? centralLockStatus,
-      Wrapped<enums.VehicleLockStatusImmobilizerStatus?>? immobilizerStatus}) {
+  VehicleLockStatus copyWithWrapped({
+    Wrapped<enums.VehicleLockStatusCentralLockStatus?>? centralLockStatus,
+    Wrapped<enums.VehicleLockStatusImmobilizerStatus?>? immobilizerStatus,
+  }) {
     return VehicleLockStatus(
-        centralLockStatus: (centralLockStatus != null
-            ? centralLockStatus.value
-            : this.centralLockStatus),
-        immobilizerStatus: (immobilizerStatus != null
-            ? immobilizerStatus.value
-            : this.immobilizerStatus));
+      centralLockStatus: (centralLockStatus != null
+          ? centralLockStatus.value
+          : this.centralLockStatus),
+      immobilizerStatus: (immobilizerStatus != null
+          ? immobilizerStatus.value
+          : this.immobilizerStatus),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class VehicleModel {
-  const VehicleModel({
-    this.bodyStyle,
-    this.brandId,
-    this.id,
-    this.name,
-  });
+  const VehicleModel({this.bodyStyle, this.brandId, this.id, this.name});
 
   factory VehicleModel.fromJson(Map<String, dynamic> json) =>
       _$VehicleModelFromJson(json);
@@ -12813,11 +14362,15 @@ class VehicleModel {
     return identical(this, other) ||
         (other is VehicleModel &&
             (identical(other.bodyStyle, bodyStyle) ||
-                const DeepCollectionEquality()
-                    .equals(other.bodyStyle, bodyStyle)) &&
+                const DeepCollectionEquality().equals(
+                  other.bodyStyle,
+                  bodyStyle,
+                )) &&
             (identical(other.brandId, brandId) ||
-                const DeepCollectionEquality()
-                    .equals(other.brandId, brandId)) &&
+                const DeepCollectionEquality().equals(
+                  other.brandId,
+                  brandId,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
@@ -12837,33 +14390,38 @@ class VehicleModel {
 }
 
 extension $VehicleModelExtension on VehicleModel {
-  VehicleModel copyWith(
-      {BodyStyle? bodyStyle, String? brandId, String? id, String? name}) {
+  VehicleModel copyWith({
+    BodyStyle? bodyStyle,
+    String? brandId,
+    String? id,
+    String? name,
+  }) {
     return VehicleModel(
-        bodyStyle: bodyStyle ?? this.bodyStyle,
-        brandId: brandId ?? this.brandId,
-        id: id ?? this.id,
-        name: name ?? this.name);
+      bodyStyle: bodyStyle ?? this.bodyStyle,
+      brandId: brandId ?? this.brandId,
+      id: id ?? this.id,
+      name: name ?? this.name,
+    );
   }
 
-  VehicleModel copyWithWrapped(
-      {Wrapped<BodyStyle?>? bodyStyle,
-      Wrapped<String?>? brandId,
-      Wrapped<String?>? id,
-      Wrapped<String?>? name}) {
+  VehicleModel copyWithWrapped({
+    Wrapped<BodyStyle?>? bodyStyle,
+    Wrapped<String?>? brandId,
+    Wrapped<String?>? id,
+    Wrapped<String?>? name,
+  }) {
     return VehicleModel(
-        bodyStyle: (bodyStyle != null ? bodyStyle.value : this.bodyStyle),
-        brandId: (brandId != null ? brandId.value : this.brandId),
-        id: (id != null ? id.value : this.id),
-        name: (name != null ? name.value : this.name));
+      bodyStyle: (bodyStyle != null ? bodyStyle.value : this.bodyStyle),
+      brandId: (brandId != null ? brandId.value : this.brandId),
+      id: (id != null ? id.value : this.id),
+      name: (name != null ? name.value : this.name),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class VehicleModelPage {
-  const VehicleModelPage({
-    this.vehicleModels,
-  });
+  const VehicleModelPage({this.vehicleModels});
 
   factory VehicleModelPage.fromJson(Map<String, dynamic> json) =>
       _$VehicleModelPageFromJson(json);
@@ -12880,8 +14438,10 @@ class VehicleModelPage {
     return identical(this, other) ||
         (other is VehicleModelPage &&
             (identical(other.vehicleModels, vehicleModels) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleModels, vehicleModels)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleModels,
+                  vehicleModels,
+                )));
   }
 
   @override
@@ -12897,11 +14457,14 @@ extension $VehicleModelPageExtension on VehicleModelPage {
     return VehicleModelPage(vehicleModels: vehicleModels ?? this.vehicleModels);
   }
 
-  VehicleModelPage copyWithWrapped(
-      {Wrapped<List<VehicleModel>?>? vehicleModels}) {
+  VehicleModelPage copyWithWrapped({
+    Wrapped<List<VehicleModel>?>? vehicleModels,
+  }) {
     return VehicleModelPage(
-        vehicleModels:
-            (vehicleModels != null ? vehicleModels.value : this.vehicleModels));
+      vehicleModels: (vehicleModels != null
+          ? vehicleModels.value
+          : this.vehicleModels),
+    );
   }
 }
 
@@ -12950,31 +14513,47 @@ class VehicleModelRate {
     return identical(this, other) ||
         (other is VehicleModelRate &&
             (identical(other.dateCreated, dateCreated) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateCreated, dateCreated)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateCreated,
+                  dateCreated,
+                )) &&
             (identical(other.dayPrice, dayPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.dayPrice, dayPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.dayPrice,
+                  dayPrice,
+                )) &&
             (identical(other.hourPrice, hourPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.hourPrice, hourPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.hourPrice,
+                  hourPrice,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.kmPrice, kmPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmPrice, kmPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.kmPrice,
+                  kmPrice,
+                )) &&
             (identical(other.lastUpdated, lastUpdated) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastUpdated, lastUpdated)) &&
+                const DeepCollectionEquality().equals(
+                  other.lastUpdated,
+                  lastUpdated,
+                )) &&
             (identical(other.validFrom, validFrom) ||
-                const DeepCollectionEquality()
-                    .equals(other.validFrom, validFrom)) &&
+                const DeepCollectionEquality().equals(
+                  other.validFrom,
+                  validFrom,
+                )) &&
             (identical(other.validUntil, validUntil) ||
-                const DeepCollectionEquality()
-                    .equals(other.validUntil, validUntil)) &&
+                const DeepCollectionEquality().equals(
+                  other.validUntil,
+                  validUntil,
+                )) &&
             (identical(other.vehicleModelId, vehicleModelId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleModelId, vehicleModelId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleModelId,
+                  vehicleModelId,
+                )));
   }
 
   @override
@@ -12995,52 +14574,54 @@ class VehicleModelRate {
 }
 
 extension $VehicleModelRateExtension on VehicleModelRate {
-  VehicleModelRate copyWith(
-      {DateTime? dateCreated,
-      double? dayPrice,
-      double? hourPrice,
-      String? id,
-      double? kmPrice,
-      DateTime? lastUpdated,
-      DateTime? validFrom,
-      DateTime? validUntil,
-      String? vehicleModelId}) {
+  VehicleModelRate copyWith({
+    DateTime? dateCreated,
+    double? dayPrice,
+    double? hourPrice,
+    String? id,
+    double? kmPrice,
+    DateTime? lastUpdated,
+    DateTime? validFrom,
+    DateTime? validUntil,
+    String? vehicleModelId,
+  }) {
     return VehicleModelRate(
-        dateCreated: dateCreated ?? this.dateCreated,
-        dayPrice: dayPrice ?? this.dayPrice,
-        hourPrice: hourPrice ?? this.hourPrice,
-        id: id ?? this.id,
-        kmPrice: kmPrice ?? this.kmPrice,
-        lastUpdated: lastUpdated ?? this.lastUpdated,
-        validFrom: validFrom ?? this.validFrom,
-        validUntil: validUntil ?? this.validUntil,
-        vehicleModelId: vehicleModelId ?? this.vehicleModelId);
+      dateCreated: dateCreated ?? this.dateCreated,
+      dayPrice: dayPrice ?? this.dayPrice,
+      hourPrice: hourPrice ?? this.hourPrice,
+      id: id ?? this.id,
+      kmPrice: kmPrice ?? this.kmPrice,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      validFrom: validFrom ?? this.validFrom,
+      validUntil: validUntil ?? this.validUntil,
+      vehicleModelId: vehicleModelId ?? this.vehicleModelId,
+    );
   }
 
-  VehicleModelRate copyWithWrapped(
-      {Wrapped<DateTime>? dateCreated,
-      Wrapped<double>? dayPrice,
-      Wrapped<double>? hourPrice,
-      Wrapped<String>? id,
-      Wrapped<double>? kmPrice,
-      Wrapped<DateTime>? lastUpdated,
-      Wrapped<DateTime>? validFrom,
-      Wrapped<DateTime?>? validUntil,
-      Wrapped<String>? vehicleModelId}) {
+  VehicleModelRate copyWithWrapped({
+    Wrapped<DateTime>? dateCreated,
+    Wrapped<double>? dayPrice,
+    Wrapped<double>? hourPrice,
+    Wrapped<String>? id,
+    Wrapped<double>? kmPrice,
+    Wrapped<DateTime>? lastUpdated,
+    Wrapped<DateTime>? validFrom,
+    Wrapped<DateTime?>? validUntil,
+    Wrapped<String>? vehicleModelId,
+  }) {
     return VehicleModelRate(
-        dateCreated:
-            (dateCreated != null ? dateCreated.value : this.dateCreated),
-        dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
-        hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
-        id: (id != null ? id.value : this.id),
-        kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
-        lastUpdated:
-            (lastUpdated != null ? lastUpdated.value : this.lastUpdated),
-        validFrom: (validFrom != null ? validFrom.value : this.validFrom),
-        validUntil: (validUntil != null ? validUntil.value : this.validUntil),
-        vehicleModelId: (vehicleModelId != null
-            ? vehicleModelId.value
-            : this.vehicleModelId));
+      dateCreated: (dateCreated != null ? dateCreated.value : this.dateCreated),
+      dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
+      hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
+      id: (id != null ? id.value : this.id),
+      kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
+      lastUpdated: (lastUpdated != null ? lastUpdated.value : this.lastUpdated),
+      validFrom: (validFrom != null ? validFrom.value : this.validFrom),
+      validUntil: (validUntil != null ? validUntil.value : this.validUntil),
+      vehicleModelId: (vehicleModelId != null
+          ? vehicleModelId.value
+          : this.vehicleModelId),
+    );
   }
 }
 
@@ -13092,34 +14673,52 @@ class VehicleRate {
     return identical(this, other) ||
         (other is VehicleRate &&
             (identical(other.dateCreated, dateCreated) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateCreated, dateCreated)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateCreated,
+                  dateCreated,
+                )) &&
             (identical(other.dayPrice, dayPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.dayPrice, dayPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.dayPrice,
+                  dayPrice,
+                )) &&
             (identical(other.discountPercent, discountPercent) ||
-                const DeepCollectionEquality()
-                    .equals(other.discountPercent, discountPercent)) &&
+                const DeepCollectionEquality().equals(
+                  other.discountPercent,
+                  discountPercent,
+                )) &&
             (identical(other.hourPrice, hourPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.hourPrice, hourPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.hourPrice,
+                  hourPrice,
+                )) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.kmPrice, kmPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.kmPrice, kmPrice)) &&
+                const DeepCollectionEquality().equals(
+                  other.kmPrice,
+                  kmPrice,
+                )) &&
             (identical(other.lastUpdated, lastUpdated) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastUpdated, lastUpdated)) &&
+                const DeepCollectionEquality().equals(
+                  other.lastUpdated,
+                  lastUpdated,
+                )) &&
             (identical(other.validFrom, validFrom) ||
-                const DeepCollectionEquality()
-                    .equals(other.validFrom, validFrom)) &&
+                const DeepCollectionEquality().equals(
+                  other.validFrom,
+                  validFrom,
+                )) &&
             (identical(other.validUntil, validUntil) ||
-                const DeepCollectionEquality()
-                    .equals(other.validUntil, validUntil)) &&
+                const DeepCollectionEquality().equals(
+                  other.validUntil,
+                  validUntil,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -13141,56 +14740,58 @@ class VehicleRate {
 }
 
 extension $VehicleRateExtension on VehicleRate {
-  VehicleRate copyWith(
-      {DateTime? dateCreated,
-      double? dayPrice,
-      double? discountPercent,
-      double? hourPrice,
-      String? id,
-      double? kmPrice,
-      DateTime? lastUpdated,
-      DateTime? validFrom,
-      DateTime? validUntil,
-      String? vehicleId}) {
+  VehicleRate copyWith({
+    DateTime? dateCreated,
+    double? dayPrice,
+    double? discountPercent,
+    double? hourPrice,
+    String? id,
+    double? kmPrice,
+    DateTime? lastUpdated,
+    DateTime? validFrom,
+    DateTime? validUntil,
+    String? vehicleId,
+  }) {
     return VehicleRate(
-        dateCreated: dateCreated ?? this.dateCreated,
-        dayPrice: dayPrice ?? this.dayPrice,
-        discountPercent: discountPercent ?? this.discountPercent,
-        hourPrice: hourPrice ?? this.hourPrice,
-        id: id ?? this.id,
-        kmPrice: kmPrice ?? this.kmPrice,
-        lastUpdated: lastUpdated ?? this.lastUpdated,
-        validFrom: validFrom ?? this.validFrom,
-        validUntil: validUntil ?? this.validUntil,
-        vehicleId: vehicleId ?? this.vehicleId);
+      dateCreated: dateCreated ?? this.dateCreated,
+      dayPrice: dayPrice ?? this.dayPrice,
+      discountPercent: discountPercent ?? this.discountPercent,
+      hourPrice: hourPrice ?? this.hourPrice,
+      id: id ?? this.id,
+      kmPrice: kmPrice ?? this.kmPrice,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      validFrom: validFrom ?? this.validFrom,
+      validUntil: validUntil ?? this.validUntil,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  VehicleRate copyWithWrapped(
-      {Wrapped<DateTime>? dateCreated,
-      Wrapped<double?>? dayPrice,
-      Wrapped<double?>? discountPercent,
-      Wrapped<double?>? hourPrice,
-      Wrapped<String>? id,
-      Wrapped<double?>? kmPrice,
-      Wrapped<DateTime>? lastUpdated,
-      Wrapped<DateTime>? validFrom,
-      Wrapped<DateTime?>? validUntil,
-      Wrapped<String>? vehicleId}) {
+  VehicleRate copyWithWrapped({
+    Wrapped<DateTime>? dateCreated,
+    Wrapped<double?>? dayPrice,
+    Wrapped<double?>? discountPercent,
+    Wrapped<double?>? hourPrice,
+    Wrapped<String>? id,
+    Wrapped<double?>? kmPrice,
+    Wrapped<DateTime>? lastUpdated,
+    Wrapped<DateTime>? validFrom,
+    Wrapped<DateTime?>? validUntil,
+    Wrapped<String>? vehicleId,
+  }) {
     return VehicleRate(
-        dateCreated:
-            (dateCreated != null ? dateCreated.value : this.dateCreated),
-        dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
-        discountPercent: (discountPercent != null
-            ? discountPercent.value
-            : this.discountPercent),
-        hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
-        id: (id != null ? id.value : this.id),
-        kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
-        lastUpdated:
-            (lastUpdated != null ? lastUpdated.value : this.lastUpdated),
-        validFrom: (validFrom != null ? validFrom.value : this.validFrom),
-        validUntil: (validUntil != null ? validUntil.value : this.validUntil),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      dateCreated: (dateCreated != null ? dateCreated.value : this.dateCreated),
+      dayPrice: (dayPrice != null ? dayPrice.value : this.dayPrice),
+      discountPercent: (discountPercent != null
+          ? discountPercent.value
+          : this.discountPercent),
+      hourPrice: (hourPrice != null ? hourPrice.value : this.hourPrice),
+      id: (id != null ? id.value : this.id),
+      kmPrice: (kmPrice != null ? kmPrice.value : this.kmPrice),
+      lastUpdated: (lastUpdated != null ? lastUpdated.value : this.lastUpdated),
+      validFrom: (validFrom != null ? validFrom.value : this.validFrom),
+      validUntil: (validUntil != null ? validUntil.value : this.validUntil),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
@@ -13242,24 +14843,34 @@ class VehicleUsage {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.mileageDelta, mileageDelta) ||
-                const DeepCollectionEquality()
-                    .equals(other.mileageDelta, mileageDelta)) &&
+                const DeepCollectionEquality().equals(
+                  other.mileageDelta,
+                  mileageDelta,
+                )) &&
             (identical(other.mileageEndValue, mileageEndValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.mileageEndValue, mileageEndValue)) &&
+                const DeepCollectionEquality().equals(
+                  other.mileageEndValue,
+                  mileageEndValue,
+                )) &&
             (identical(other.mileageStartValue, mileageStartValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.mileageStartValue, mileageStartValue)) &&
+                const DeepCollectionEquality().equals(
+                  other.mileageStartValue,
+                  mileageStartValue,
+                )) &&
             (identical(other.period, period) ||
                 const DeepCollectionEquality().equals(other.period, period)) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.statusMessage, statusMessage) ||
-                const DeepCollectionEquality()
-                    .equals(other.statusMessage, statusMessage)) &&
+                const DeepCollectionEquality().equals(
+                  other.statusMessage,
+                  statusMessage,
+                )) &&
             (identical(other.vehicleId, vehicleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleId, vehicleId)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleId,
+                  vehicleId,
+                )));
   }
 
   @override
@@ -13279,58 +14890,62 @@ class VehicleUsage {
 }
 
 extension $VehicleUsageExtension on VehicleUsage {
-  VehicleUsage copyWith(
-      {String? id,
-      double? mileageDelta,
-      double? mileageEndValue,
-      double? mileageStartValue,
-      Period? period,
-      enums.VehicleUsageStatus? status,
-      String? statusMessage,
-      String? vehicleId}) {
+  VehicleUsage copyWith({
+    String? id,
+    double? mileageDelta,
+    double? mileageEndValue,
+    double? mileageStartValue,
+    Period? period,
+    enums.VehicleUsageStatus? status,
+    String? statusMessage,
+    String? vehicleId,
+  }) {
     return VehicleUsage(
-        id: id ?? this.id,
-        mileageDelta: mileageDelta ?? this.mileageDelta,
-        mileageEndValue: mileageEndValue ?? this.mileageEndValue,
-        mileageStartValue: mileageStartValue ?? this.mileageStartValue,
-        period: period ?? this.period,
-        status: status ?? this.status,
-        statusMessage: statusMessage ?? this.statusMessage,
-        vehicleId: vehicleId ?? this.vehicleId);
+      id: id ?? this.id,
+      mileageDelta: mileageDelta ?? this.mileageDelta,
+      mileageEndValue: mileageEndValue ?? this.mileageEndValue,
+      mileageStartValue: mileageStartValue ?? this.mileageStartValue,
+      period: period ?? this.period,
+      status: status ?? this.status,
+      statusMessage: statusMessage ?? this.statusMessage,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
   }
 
-  VehicleUsage copyWithWrapped(
-      {Wrapped<String?>? id,
-      Wrapped<double?>? mileageDelta,
-      Wrapped<double?>? mileageEndValue,
-      Wrapped<double?>? mileageStartValue,
-      Wrapped<Period?>? period,
-      Wrapped<enums.VehicleUsageStatus?>? status,
-      Wrapped<String?>? statusMessage,
-      Wrapped<String?>? vehicleId}) {
+  VehicleUsage copyWithWrapped({
+    Wrapped<String?>? id,
+    Wrapped<double?>? mileageDelta,
+    Wrapped<double?>? mileageEndValue,
+    Wrapped<double?>? mileageStartValue,
+    Wrapped<Period?>? period,
+    Wrapped<enums.VehicleUsageStatus?>? status,
+    Wrapped<String?>? statusMessage,
+    Wrapped<String?>? vehicleId,
+  }) {
     return VehicleUsage(
-        id: (id != null ? id.value : this.id),
-        mileageDelta:
-            (mileageDelta != null ? mileageDelta.value : this.mileageDelta),
-        mileageEndValue: (mileageEndValue != null
-            ? mileageEndValue.value
-            : this.mileageEndValue),
-        mileageStartValue: (mileageStartValue != null
-            ? mileageStartValue.value
-            : this.mileageStartValue),
-        period: (period != null ? period.value : this.period),
-        status: (status != null ? status.value : this.status),
-        statusMessage:
-            (statusMessage != null ? statusMessage.value : this.statusMessage),
-        vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId));
+      id: (id != null ? id.value : this.id),
+      mileageDelta: (mileageDelta != null
+          ? mileageDelta.value
+          : this.mileageDelta),
+      mileageEndValue: (mileageEndValue != null
+          ? mileageEndValue.value
+          : this.mileageEndValue),
+      mileageStartValue: (mileageStartValue != null
+          ? mileageStartValue.value
+          : this.mileageStartValue),
+      period: (period != null ? period.value : this.period),
+      status: (status != null ? status.value : this.status),
+      statusMessage: (statusMessage != null
+          ? statusMessage.value
+          : this.statusMessage),
+      vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class VehicleUsagePage {
-  const VehicleUsagePage({
-    this.vehicleUsages,
-  });
+  const VehicleUsagePage({this.vehicleUsages});
 
   factory VehicleUsagePage.fromJson(Map<String, dynamic> json) =>
       _$VehicleUsagePageFromJson(json);
@@ -13347,8 +14962,10 @@ class VehicleUsagePage {
     return identical(this, other) ||
         (other is VehicleUsagePage &&
             (identical(other.vehicleUsages, vehicleUsages) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleUsages, vehicleUsages)));
+                const DeepCollectionEquality().equals(
+                  other.vehicleUsages,
+                  vehicleUsages,
+                )));
   }
 
   @override
@@ -13364,11 +14981,14 @@ extension $VehicleUsagePageExtension on VehicleUsagePage {
     return VehicleUsagePage(vehicleUsages: vehicleUsages ?? this.vehicleUsages);
   }
 
-  VehicleUsagePage copyWithWrapped(
-      {Wrapped<List<VehicleUsage>?>? vehicleUsages}) {
+  VehicleUsagePage copyWithWrapped({
+    Wrapped<List<VehicleUsage>?>? vehicleUsages,
+  }) {
     return VehicleUsagePage(
-        vehicleUsages:
-            (vehicleUsages != null ? vehicleUsages.value : this.vehicleUsages));
+      vehicleUsages: (vehicleUsages != null
+          ? vehicleUsages.value
+          : this.vehicleUsages),
+    );
   }
 }
 
@@ -13404,13 +15024,17 @@ class VehicleUsageUpdateStatusRequest {
     return identical(this, other) ||
         (other is VehicleUsageUpdateStatusRequest &&
             (identical(other.mileage, mileage) ||
-                const DeepCollectionEquality()
-                    .equals(other.mileage, mileage)) &&
+                const DeepCollectionEquality().equals(
+                  other.mileage,
+                  mileage,
+                )) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.statusMessage, statusMessage) ||
-                const DeepCollectionEquality()
-                    .equals(other.statusMessage, statusMessage)));
+                const DeepCollectionEquality().equals(
+                  other.statusMessage,
+                  statusMessage,
+                )));
   }
 
   @override
@@ -13426,33 +15050,36 @@ class VehicleUsageUpdateStatusRequest {
 
 extension $VehicleUsageUpdateStatusRequestExtension
     on VehicleUsageUpdateStatusRequest {
-  VehicleUsageUpdateStatusRequest copyWith(
-      {double? mileage,
-      enums.VehicleUsageUpdateStatusRequestStatus? status,
-      String? statusMessage}) {
+  VehicleUsageUpdateStatusRequest copyWith({
+    double? mileage,
+    enums.VehicleUsageUpdateStatusRequestStatus? status,
+    String? statusMessage,
+  }) {
     return VehicleUsageUpdateStatusRequest(
-        mileage: mileage ?? this.mileage,
-        status: status ?? this.status,
-        statusMessage: statusMessage ?? this.statusMessage);
+      mileage: mileage ?? this.mileage,
+      status: status ?? this.status,
+      statusMessage: statusMessage ?? this.statusMessage,
+    );
   }
 
-  VehicleUsageUpdateStatusRequest copyWithWrapped(
-      {Wrapped<double?>? mileage,
-      Wrapped<enums.VehicleUsageUpdateStatusRequestStatus>? status,
-      Wrapped<String?>? statusMessage}) {
+  VehicleUsageUpdateStatusRequest copyWithWrapped({
+    Wrapped<double?>? mileage,
+    Wrapped<enums.VehicleUsageUpdateStatusRequestStatus>? status,
+    Wrapped<String?>? statusMessage,
+  }) {
     return VehicleUsageUpdateStatusRequest(
-        mileage: (mileage != null ? mileage.value : this.mileage),
-        status: (status != null ? status.value : this.status),
-        statusMessage:
-            (statusMessage != null ? statusMessage.value : this.statusMessage));
+      mileage: (mileage != null ? mileage.value : this.mileage),
+      status: (status != null ? status.value : this.status),
+      statusMessage: (statusMessage != null
+          ? statusMessage.value
+          : this.statusMessage),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class VehiclesPage {
-  const VehiclesPage({
-    this.vehicles,
-  });
+  const VehiclesPage({this.vehicles});
 
   factory VehiclesPage.fromJson(Map<String, dynamic> json) =>
       _$VehiclesPageFromJson(json);
@@ -13469,8 +15096,10 @@ class VehiclesPage {
     return identical(this, other) ||
         (other is VehiclesPage &&
             (identical(other.vehicles, vehicles) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicles, vehicles)));
+                const DeepCollectionEquality().equals(
+                  other.vehicles,
+                  vehicles,
+                )));
   }
 
   @override
@@ -13488,7 +15117,8 @@ extension $VehiclesPageExtension on VehiclesPage {
 
   VehiclesPage copyWithWrapped({Wrapped<List<Vehicle>?>? vehicles}) {
     return VehiclesPage(
-        vehicles: (vehicles != null ? vehicles.value : this.vehicles));
+      vehicles: (vehicles != null ? vehicles.value : this.vehicles),
+    );
   }
 }
 
@@ -13504,8 +15134,8 @@ class UserV1UsersOnboardingDocumentsPut$RequestBody {
   });
 
   factory UserV1UsersOnboardingDocumentsPut$RequestBody.fromJson(
-          Map<String, dynamic> json) =>
-      _$UserV1UsersOnboardingDocumentsPut$RequestBodyFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$UserV1UsersOnboardingDocumentsPut$RequestBodyFromJson(json);
 
   static const toJsonFactory =
       _$UserV1UsersOnboardingDocumentsPut$RequestBodyToJson;
@@ -13532,19 +15162,27 @@ class UserV1UsersOnboardingDocumentsPut$RequestBody {
     return identical(this, other) ||
         (other is UserV1UsersOnboardingDocumentsPut$RequestBody &&
             (identical(other.backDriverLicense, backDriverLicense) ||
-                const DeepCollectionEquality()
-                    .equals(other.backDriverLicense, backDriverLicense)) &&
+                const DeepCollectionEquality().equals(
+                  other.backDriverLicense,
+                  backDriverLicense,
+                )) &&
             (identical(other.backId, backId) ||
                 const DeepCollectionEquality().equals(other.backId, backId)) &&
             (identical(other.damageStatistic, damageStatistic) ||
-                const DeepCollectionEquality()
-                    .equals(other.damageStatistic, damageStatistic)) &&
+                const DeepCollectionEquality().equals(
+                  other.damageStatistic,
+                  damageStatistic,
+                )) &&
             (identical(other.frontDriverLicense, frontDriverLicense) ||
-                const DeepCollectionEquality()
-                    .equals(other.frontDriverLicense, frontDriverLicense)) &&
+                const DeepCollectionEquality().equals(
+                  other.frontDriverLicense,
+                  frontDriverLicense,
+                )) &&
             (identical(other.frontId, frontId) ||
-                const DeepCollectionEquality()
-                    .equals(other.frontId, frontId)) &&
+                const DeepCollectionEquality().equals(
+                  other.frontId,
+                  frontId,
+                )) &&
             (identical(other.selfie, selfie) ||
                 const DeepCollectionEquality().equals(other.selfie, selfie)));
   }
@@ -13565,52 +15203,58 @@ class UserV1UsersOnboardingDocumentsPut$RequestBody {
 
 extension $UserV1UsersOnboardingDocumentsPut$RequestBodyExtension
     on UserV1UsersOnboardingDocumentsPut$RequestBody {
-  UserV1UsersOnboardingDocumentsPut$RequestBody copyWith(
-      {String? backDriverLicense,
-      String? backId,
-      String? damageStatistic,
-      String? frontDriverLicense,
-      String? frontId,
-      String? selfie}) {
+  UserV1UsersOnboardingDocumentsPut$RequestBody copyWith({
+    String? backDriverLicense,
+    String? backId,
+    String? damageStatistic,
+    String? frontDriverLicense,
+    String? frontId,
+    String? selfie,
+  }) {
     return UserV1UsersOnboardingDocumentsPut$RequestBody(
-        backDriverLicense: backDriverLicense ?? this.backDriverLicense,
-        backId: backId ?? this.backId,
-        damageStatistic: damageStatistic ?? this.damageStatistic,
-        frontDriverLicense: frontDriverLicense ?? this.frontDriverLicense,
-        frontId: frontId ?? this.frontId,
-        selfie: selfie ?? this.selfie);
+      backDriverLicense: backDriverLicense ?? this.backDriverLicense,
+      backId: backId ?? this.backId,
+      damageStatistic: damageStatistic ?? this.damageStatistic,
+      frontDriverLicense: frontDriverLicense ?? this.frontDriverLicense,
+      frontId: frontId ?? this.frontId,
+      selfie: selfie ?? this.selfie,
+    );
   }
 
-  UserV1UsersOnboardingDocumentsPut$RequestBody copyWithWrapped(
-      {Wrapped<String?>? backDriverLicense,
-      Wrapped<String?>? backId,
-      Wrapped<String?>? damageStatistic,
-      Wrapped<String?>? frontDriverLicense,
-      Wrapped<String?>? frontId,
-      Wrapped<String?>? selfie}) {
+  UserV1UsersOnboardingDocumentsPut$RequestBody copyWithWrapped({
+    Wrapped<String?>? backDriverLicense,
+    Wrapped<String?>? backId,
+    Wrapped<String?>? damageStatistic,
+    Wrapped<String?>? frontDriverLicense,
+    Wrapped<String?>? frontId,
+    Wrapped<String?>? selfie,
+  }) {
     return UserV1UsersOnboardingDocumentsPut$RequestBody(
-        backDriverLicense: (backDriverLicense != null
-            ? backDriverLicense.value
-            : this.backDriverLicense),
-        backId: (backId != null ? backId.value : this.backId),
-        damageStatistic: (damageStatistic != null
-            ? damageStatistic.value
-            : this.damageStatistic),
-        frontDriverLicense: (frontDriverLicense != null
-            ? frontDriverLicense.value
-            : this.frontDriverLicense),
-        frontId: (frontId != null ? frontId.value : this.frontId),
-        selfie: (selfie != null ? selfie.value : this.selfie));
+      backDriverLicense: (backDriverLicense != null
+          ? backDriverLicense.value
+          : this.backDriverLicense),
+      backId: (backId != null ? backId.value : this.backId),
+      damageStatistic: (damageStatistic != null
+          ? damageStatistic.value
+          : this.damageStatistic),
+      frontDriverLicense: (frontDriverLicense != null
+          ? frontDriverLicense.value
+          : this.frontDriverLicense),
+      frontId: (frontId != null ? frontId.value : this.frontId),
+      selfie: (selfie != null ? selfie.value : this.selfie),
+    );
   }
 }
 
 String? adjacentNonAvailabilityTypeNullableToJson(
-    enums.AdjacentNonAvailabilityType? adjacentNonAvailabilityType) {
+  enums.AdjacentNonAvailabilityType? adjacentNonAvailabilityType,
+) {
   return adjacentNonAvailabilityType?.value;
 }
 
 String? adjacentNonAvailabilityTypeToJson(
-    enums.AdjacentNonAvailabilityType adjacentNonAvailabilityType) {
+  enums.AdjacentNonAvailabilityType adjacentNonAvailabilityType,
+) {
   return adjacentNonAvailabilityType.value;
 }
 
@@ -13618,8 +15262,9 @@ enums.AdjacentNonAvailabilityType adjacentNonAvailabilityTypeFromJson(
   Object? adjacentNonAvailabilityType, [
   enums.AdjacentNonAvailabilityType? defaultValue,
 ]) {
-  return enums.AdjacentNonAvailabilityType.values
-          .firstWhereOrNull((e) => e.value == adjacentNonAvailabilityType) ??
+  return enums.AdjacentNonAvailabilityType.values.firstWhereOrNull(
+        (e) => e.value == adjacentNonAvailabilityType,
+      ) ??
       defaultValue ??
       enums.AdjacentNonAvailabilityType.swaggerGeneratedUnknown;
 }
@@ -13631,18 +15276,21 @@ enums.AdjacentNonAvailabilityType? adjacentNonAvailabilityTypeNullableFromJson(
   if (adjacentNonAvailabilityType == null) {
     return null;
   }
-  return enums.AdjacentNonAvailabilityType.values
-          .firstWhereOrNull((e) => e.value == adjacentNonAvailabilityType) ??
+  return enums.AdjacentNonAvailabilityType.values.firstWhereOrNull(
+        (e) => e.value == adjacentNonAvailabilityType,
+      ) ??
       defaultValue;
 }
 
 String adjacentNonAvailabilityTypeExplodedListToJson(
-    List<enums.AdjacentNonAvailabilityType>? adjacentNonAvailabilityType) {
+  List<enums.AdjacentNonAvailabilityType>? adjacentNonAvailabilityType,
+) {
   return adjacentNonAvailabilityType?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> adjacentNonAvailabilityTypeListToJson(
-    List<enums.AdjacentNonAvailabilityType>? adjacentNonAvailabilityType) {
+  List<enums.AdjacentNonAvailabilityType>? adjacentNonAvailabilityType,
+) {
   if (adjacentNonAvailabilityType == null) {
     return [];
   }
@@ -13664,7 +15312,7 @@ List<enums.AdjacentNonAvailabilityType> adjacentNonAvailabilityTypeListFromJson(
 }
 
 List<enums.AdjacentNonAvailabilityType>?
-    adjacentNonAvailabilityTypeNullableListFromJson(
+adjacentNonAvailabilityTypeNullableListFromJson(
   List? adjacentNonAvailabilityType, [
   List<enums.AdjacentNonAvailabilityType>? defaultValue,
 ]) {
@@ -13678,12 +15326,14 @@ List<enums.AdjacentNonAvailabilityType>?
 }
 
 String? batteryStatusChargingNullableToJson(
-    enums.BatteryStatusCharging? batteryStatusCharging) {
+  enums.BatteryStatusCharging? batteryStatusCharging,
+) {
   return batteryStatusCharging?.value;
 }
 
 String? batteryStatusChargingToJson(
-    enums.BatteryStatusCharging batteryStatusCharging) {
+  enums.BatteryStatusCharging batteryStatusCharging,
+) {
   return batteryStatusCharging.value;
 }
 
@@ -13691,8 +15341,9 @@ enums.BatteryStatusCharging batteryStatusChargingFromJson(
   Object? batteryStatusCharging, [
   enums.BatteryStatusCharging? defaultValue,
 ]) {
-  return enums.BatteryStatusCharging.values
-          .firstWhereOrNull((e) => e.value == batteryStatusCharging) ??
+  return enums.BatteryStatusCharging.values.firstWhereOrNull(
+        (e) => e.value == batteryStatusCharging,
+      ) ??
       defaultValue ??
       enums.BatteryStatusCharging.swaggerGeneratedUnknown;
 }
@@ -13704,18 +15355,21 @@ enums.BatteryStatusCharging? batteryStatusChargingNullableFromJson(
   if (batteryStatusCharging == null) {
     return null;
   }
-  return enums.BatteryStatusCharging.values
-          .firstWhereOrNull((e) => e.value == batteryStatusCharging) ??
+  return enums.BatteryStatusCharging.values.firstWhereOrNull(
+        (e) => e.value == batteryStatusCharging,
+      ) ??
       defaultValue;
 }
 
 String batteryStatusChargingExplodedListToJson(
-    List<enums.BatteryStatusCharging>? batteryStatusCharging) {
+  List<enums.BatteryStatusCharging>? batteryStatusCharging,
+) {
   return batteryStatusCharging?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> batteryStatusChargingListToJson(
-    List<enums.BatteryStatusCharging>? batteryStatusCharging) {
+  List<enums.BatteryStatusCharging>? batteryStatusCharging,
+) {
   if (batteryStatusCharging == null) {
     return [];
   }
@@ -13750,12 +15404,14 @@ List<enums.BatteryStatusCharging>? batteryStatusChargingNullableListFromJson(
 }
 
 String? batteryStatusFetchStatusNullableToJson(
-    enums.BatteryStatusFetchStatus? batteryStatusFetchStatus) {
+  enums.BatteryStatusFetchStatus? batteryStatusFetchStatus,
+) {
   return batteryStatusFetchStatus?.value;
 }
 
 String? batteryStatusFetchStatusToJson(
-    enums.BatteryStatusFetchStatus batteryStatusFetchStatus) {
+  enums.BatteryStatusFetchStatus batteryStatusFetchStatus,
+) {
   return batteryStatusFetchStatus.value;
 }
 
@@ -13763,8 +15419,9 @@ enums.BatteryStatusFetchStatus batteryStatusFetchStatusFromJson(
   Object? batteryStatusFetchStatus, [
   enums.BatteryStatusFetchStatus? defaultValue,
 ]) {
-  return enums.BatteryStatusFetchStatus.values
-          .firstWhereOrNull((e) => e.value == batteryStatusFetchStatus) ??
+  return enums.BatteryStatusFetchStatus.values.firstWhereOrNull(
+        (e) => e.value == batteryStatusFetchStatus,
+      ) ??
       defaultValue ??
       enums.BatteryStatusFetchStatus.swaggerGeneratedUnknown;
 }
@@ -13776,18 +15433,21 @@ enums.BatteryStatusFetchStatus? batteryStatusFetchStatusNullableFromJson(
   if (batteryStatusFetchStatus == null) {
     return null;
   }
-  return enums.BatteryStatusFetchStatus.values
-          .firstWhereOrNull((e) => e.value == batteryStatusFetchStatus) ??
+  return enums.BatteryStatusFetchStatus.values.firstWhereOrNull(
+        (e) => e.value == batteryStatusFetchStatus,
+      ) ??
       defaultValue;
 }
 
 String batteryStatusFetchStatusExplodedListToJson(
-    List<enums.BatteryStatusFetchStatus>? batteryStatusFetchStatus) {
+  List<enums.BatteryStatusFetchStatus>? batteryStatusFetchStatus,
+) {
   return batteryStatusFetchStatus?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> batteryStatusFetchStatusListToJson(
-    List<enums.BatteryStatusFetchStatus>? batteryStatusFetchStatus) {
+  List<enums.BatteryStatusFetchStatus>? batteryStatusFetchStatus,
+) {
   if (batteryStatusFetchStatus == null) {
     return [];
   }
@@ -13809,7 +15469,7 @@ List<enums.BatteryStatusFetchStatus> batteryStatusFetchStatusListFromJson(
 }
 
 List<enums.BatteryStatusFetchStatus>?
-    batteryStatusFetchStatusNullableListFromJson(
+batteryStatusFetchStatusNullableListFromJson(
   List? batteryStatusFetchStatus, [
   List<enums.BatteryStatusFetchStatus>? defaultValue,
 ]) {
@@ -13823,7 +15483,8 @@ List<enums.BatteryStatusFetchStatus>?
 }
 
 String? billingPriceUnitNullableToJson(
-    enums.BillingPriceUnit? billingPriceUnit) {
+  enums.BillingPriceUnit? billingPriceUnit,
+) {
   return billingPriceUnit?.value;
 }
 
@@ -13835,8 +15496,9 @@ enums.BillingPriceUnit billingPriceUnitFromJson(
   Object? billingPriceUnit, [
   enums.BillingPriceUnit? defaultValue,
 ]) {
-  return enums.BillingPriceUnit.values
-          .firstWhereOrNull((e) => e.value == billingPriceUnit) ??
+  return enums.BillingPriceUnit.values.firstWhereOrNull(
+        (e) => e.value == billingPriceUnit,
+      ) ??
       defaultValue ??
       enums.BillingPriceUnit.swaggerGeneratedUnknown;
 }
@@ -13848,18 +15510,21 @@ enums.BillingPriceUnit? billingPriceUnitNullableFromJson(
   if (billingPriceUnit == null) {
     return null;
   }
-  return enums.BillingPriceUnit.values
-          .firstWhereOrNull((e) => e.value == billingPriceUnit) ??
+  return enums.BillingPriceUnit.values.firstWhereOrNull(
+        (e) => e.value == billingPriceUnit,
+      ) ??
       defaultValue;
 }
 
 String billingPriceUnitExplodedListToJson(
-    List<enums.BillingPriceUnit>? billingPriceUnit) {
+  List<enums.BillingPriceUnit>? billingPriceUnit,
+) {
   return billingPriceUnit?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> billingPriceUnitListToJson(
-    List<enums.BillingPriceUnit>? billingPriceUnit) {
+  List<enums.BillingPriceUnit>? billingPriceUnit,
+) {
   if (billingPriceUnit == null) {
     return [];
   }
@@ -13894,12 +15559,14 @@ List<enums.BillingPriceUnit>? billingPriceUnitNullableListFromJson(
 }
 
 String? bookingInvoiceStatusNullableToJson(
-    enums.BookingInvoiceStatus? bookingInvoiceStatus) {
+  enums.BookingInvoiceStatus? bookingInvoiceStatus,
+) {
   return bookingInvoiceStatus?.value;
 }
 
 String? bookingInvoiceStatusToJson(
-    enums.BookingInvoiceStatus bookingInvoiceStatus) {
+  enums.BookingInvoiceStatus bookingInvoiceStatus,
+) {
   return bookingInvoiceStatus.value;
 }
 
@@ -13907,8 +15574,9 @@ enums.BookingInvoiceStatus bookingInvoiceStatusFromJson(
   Object? bookingInvoiceStatus, [
   enums.BookingInvoiceStatus? defaultValue,
 ]) {
-  return enums.BookingInvoiceStatus.values
-          .firstWhereOrNull((e) => e.value == bookingInvoiceStatus) ??
+  return enums.BookingInvoiceStatus.values.firstWhereOrNull(
+        (e) => e.value == bookingInvoiceStatus,
+      ) ??
       defaultValue ??
       enums.BookingInvoiceStatus.swaggerGeneratedUnknown;
 }
@@ -13920,18 +15588,21 @@ enums.BookingInvoiceStatus? bookingInvoiceStatusNullableFromJson(
   if (bookingInvoiceStatus == null) {
     return null;
   }
-  return enums.BookingInvoiceStatus.values
-          .firstWhereOrNull((e) => e.value == bookingInvoiceStatus) ??
+  return enums.BookingInvoiceStatus.values.firstWhereOrNull(
+        (e) => e.value == bookingInvoiceStatus,
+      ) ??
       defaultValue;
 }
 
 String bookingInvoiceStatusExplodedListToJson(
-    List<enums.BookingInvoiceStatus>? bookingInvoiceStatus) {
+  List<enums.BookingInvoiceStatus>? bookingInvoiceStatus,
+) {
   return bookingInvoiceStatus?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> bookingInvoiceStatusListToJson(
-    List<enums.BookingInvoiceStatus>? bookingInvoiceStatus) {
+  List<enums.BookingInvoiceStatus>? bookingInvoiceStatus,
+) {
   if (bookingInvoiceStatus == null) {
     return [];
   }
@@ -13966,12 +15637,14 @@ List<enums.BookingInvoiceStatus>? bookingInvoiceStatusNullableListFromJson(
 }
 
 String? bookingNextPossibleStatusesNullableToJson(
-    enums.BookingNextPossibleStatuses? bookingNextPossibleStatuses) {
+  enums.BookingNextPossibleStatuses? bookingNextPossibleStatuses,
+) {
   return bookingNextPossibleStatuses?.value;
 }
 
 String? bookingNextPossibleStatusesToJson(
-    enums.BookingNextPossibleStatuses bookingNextPossibleStatuses) {
+  enums.BookingNextPossibleStatuses bookingNextPossibleStatuses,
+) {
   return bookingNextPossibleStatuses.value;
 }
 
@@ -13979,8 +15652,9 @@ enums.BookingNextPossibleStatuses bookingNextPossibleStatusesFromJson(
   Object? bookingNextPossibleStatuses, [
   enums.BookingNextPossibleStatuses? defaultValue,
 ]) {
-  return enums.BookingNextPossibleStatuses.values
-          .firstWhereOrNull((e) => e.value == bookingNextPossibleStatuses) ??
+  return enums.BookingNextPossibleStatuses.values.firstWhereOrNull(
+        (e) => e.value == bookingNextPossibleStatuses,
+      ) ??
       defaultValue ??
       enums.BookingNextPossibleStatuses.swaggerGeneratedUnknown;
 }
@@ -13992,18 +15666,21 @@ enums.BookingNextPossibleStatuses? bookingNextPossibleStatusesNullableFromJson(
   if (bookingNextPossibleStatuses == null) {
     return null;
   }
-  return enums.BookingNextPossibleStatuses.values
-          .firstWhereOrNull((e) => e.value == bookingNextPossibleStatuses) ??
+  return enums.BookingNextPossibleStatuses.values.firstWhereOrNull(
+        (e) => e.value == bookingNextPossibleStatuses,
+      ) ??
       defaultValue;
 }
 
 String bookingNextPossibleStatusesExplodedListToJson(
-    List<enums.BookingNextPossibleStatuses>? bookingNextPossibleStatuses) {
+  List<enums.BookingNextPossibleStatuses>? bookingNextPossibleStatuses,
+) {
   return bookingNextPossibleStatuses?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> bookingNextPossibleStatusesListToJson(
-    List<enums.BookingNextPossibleStatuses>? bookingNextPossibleStatuses) {
+  List<enums.BookingNextPossibleStatuses>? bookingNextPossibleStatuses,
+) {
   if (bookingNextPossibleStatuses == null) {
     return [];
   }
@@ -14025,7 +15702,7 @@ List<enums.BookingNextPossibleStatuses> bookingNextPossibleStatusesListFromJson(
 }
 
 List<enums.BookingNextPossibleStatuses>?
-    bookingNextPossibleStatusesNullableListFromJson(
+bookingNextPossibleStatusesNullableListFromJson(
   List? bookingNextPossibleStatuses, [
   List<enums.BookingNextPossibleStatuses>? defaultValue,
 ]) {
@@ -14050,8 +15727,9 @@ enums.BookingStatus bookingStatusFromJson(
   Object? bookingStatus, [
   enums.BookingStatus? defaultValue,
 ]) {
-  return enums.BookingStatus.values
-          .firstWhereOrNull((e) => e.value == bookingStatus) ??
+  return enums.BookingStatus.values.firstWhereOrNull(
+        (e) => e.value == bookingStatus,
+      ) ??
       defaultValue ??
       enums.BookingStatus.swaggerGeneratedUnknown;
 }
@@ -14063,13 +15741,15 @@ enums.BookingStatus? bookingStatusNullableFromJson(
   if (bookingStatus == null) {
     return null;
   }
-  return enums.BookingStatus.values
-          .firstWhereOrNull((e) => e.value == bookingStatus) ??
+  return enums.BookingStatus.values.firstWhereOrNull(
+        (e) => e.value == bookingStatus,
+      ) ??
       defaultValue;
 }
 
 String bookingStatusExplodedListToJson(
-    List<enums.BookingStatus>? bookingStatus) {
+  List<enums.BookingStatus>? bookingStatus,
+) {
   return bookingStatus?.map((e) => e.value!).join(',') ?? '';
 }
 
@@ -14104,12 +15784,14 @@ List<enums.BookingStatus>? bookingStatusNullableListFromJson(
 }
 
 String? changeLockRequestLockStatusNullableToJson(
-    enums.ChangeLockRequestLockStatus? changeLockRequestLockStatus) {
+  enums.ChangeLockRequestLockStatus? changeLockRequestLockStatus,
+) {
   return changeLockRequestLockStatus?.value;
 }
 
 String? changeLockRequestLockStatusToJson(
-    enums.ChangeLockRequestLockStatus changeLockRequestLockStatus) {
+  enums.ChangeLockRequestLockStatus changeLockRequestLockStatus,
+) {
   return changeLockRequestLockStatus.value;
 }
 
@@ -14117,8 +15799,9 @@ enums.ChangeLockRequestLockStatus changeLockRequestLockStatusFromJson(
   Object? changeLockRequestLockStatus, [
   enums.ChangeLockRequestLockStatus? defaultValue,
 ]) {
-  return enums.ChangeLockRequestLockStatus.values
-          .firstWhereOrNull((e) => e.value == changeLockRequestLockStatus) ??
+  return enums.ChangeLockRequestLockStatus.values.firstWhereOrNull(
+        (e) => e.value == changeLockRequestLockStatus,
+      ) ??
       defaultValue ??
       enums.ChangeLockRequestLockStatus.swaggerGeneratedUnknown;
 }
@@ -14130,18 +15813,21 @@ enums.ChangeLockRequestLockStatus? changeLockRequestLockStatusNullableFromJson(
   if (changeLockRequestLockStatus == null) {
     return null;
   }
-  return enums.ChangeLockRequestLockStatus.values
-          .firstWhereOrNull((e) => e.value == changeLockRequestLockStatus) ??
+  return enums.ChangeLockRequestLockStatus.values.firstWhereOrNull(
+        (e) => e.value == changeLockRequestLockStatus,
+      ) ??
       defaultValue;
 }
 
 String changeLockRequestLockStatusExplodedListToJson(
-    List<enums.ChangeLockRequestLockStatus>? changeLockRequestLockStatus) {
+  List<enums.ChangeLockRequestLockStatus>? changeLockRequestLockStatus,
+) {
   return changeLockRequestLockStatus?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> changeLockRequestLockStatusListToJson(
-    List<enums.ChangeLockRequestLockStatus>? changeLockRequestLockStatus) {
+  List<enums.ChangeLockRequestLockStatus>? changeLockRequestLockStatus,
+) {
   if (changeLockRequestLockStatus == null) {
     return [];
   }
@@ -14163,7 +15849,7 @@ List<enums.ChangeLockRequestLockStatus> changeLockRequestLockStatusListFromJson(
 }
 
 List<enums.ChangeLockRequestLockStatus>?
-    changeLockRequestLockStatusNullableListFromJson(
+changeLockRequestLockStatusNullableListFromJson(
   List? changeLockRequestLockStatus, [
   List<enums.ChangeLockRequestLockStatus>? defaultValue,
 ]) {
@@ -14177,12 +15863,14 @@ List<enums.ChangeLockRequestLockStatus>?
 }
 
 String? clientContractFormulaNullableToJson(
-    enums.ClientContractFormula? clientContractFormula) {
+  enums.ClientContractFormula? clientContractFormula,
+) {
   return clientContractFormula?.value;
 }
 
 String? clientContractFormulaToJson(
-    enums.ClientContractFormula clientContractFormula) {
+  enums.ClientContractFormula clientContractFormula,
+) {
   return clientContractFormula.value;
 }
 
@@ -14190,8 +15878,9 @@ enums.ClientContractFormula clientContractFormulaFromJson(
   Object? clientContractFormula, [
   enums.ClientContractFormula? defaultValue,
 ]) {
-  return enums.ClientContractFormula.values
-          .firstWhereOrNull((e) => e.value == clientContractFormula) ??
+  return enums.ClientContractFormula.values.firstWhereOrNull(
+        (e) => e.value == clientContractFormula,
+      ) ??
       defaultValue ??
       enums.ClientContractFormula.swaggerGeneratedUnknown;
 }
@@ -14203,18 +15892,21 @@ enums.ClientContractFormula? clientContractFormulaNullableFromJson(
   if (clientContractFormula == null) {
     return null;
   }
-  return enums.ClientContractFormula.values
-          .firstWhereOrNull((e) => e.value == clientContractFormula) ??
+  return enums.ClientContractFormula.values.firstWhereOrNull(
+        (e) => e.value == clientContractFormula,
+      ) ??
       defaultValue;
 }
 
 String clientContractFormulaExplodedListToJson(
-    List<enums.ClientContractFormula>? clientContractFormula) {
+  List<enums.ClientContractFormula>? clientContractFormula,
+) {
   return clientContractFormula?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> clientContractFormulaListToJson(
-    List<enums.ClientContractFormula>? clientContractFormula) {
+  List<enums.ClientContractFormula>? clientContractFormula,
+) {
   if (clientContractFormula == null) {
     return [];
   }
@@ -14249,12 +15941,14 @@ List<enums.ClientContractFormula>? clientContractFormulaNullableListFromJson(
 }
 
 String? clientContractStatusNullableToJson(
-    enums.ClientContractStatus? clientContractStatus) {
+  enums.ClientContractStatus? clientContractStatus,
+) {
   return clientContractStatus?.value;
 }
 
 String? clientContractStatusToJson(
-    enums.ClientContractStatus clientContractStatus) {
+  enums.ClientContractStatus clientContractStatus,
+) {
   return clientContractStatus.value;
 }
 
@@ -14262,8 +15956,9 @@ enums.ClientContractStatus clientContractStatusFromJson(
   Object? clientContractStatus, [
   enums.ClientContractStatus? defaultValue,
 ]) {
-  return enums.ClientContractStatus.values
-          .firstWhereOrNull((e) => e.value == clientContractStatus) ??
+  return enums.ClientContractStatus.values.firstWhereOrNull(
+        (e) => e.value == clientContractStatus,
+      ) ??
       defaultValue ??
       enums.ClientContractStatus.swaggerGeneratedUnknown;
 }
@@ -14275,18 +15970,21 @@ enums.ClientContractStatus? clientContractStatusNullableFromJson(
   if (clientContractStatus == null) {
     return null;
   }
-  return enums.ClientContractStatus.values
-          .firstWhereOrNull((e) => e.value == clientContractStatus) ??
+  return enums.ClientContractStatus.values.firstWhereOrNull(
+        (e) => e.value == clientContractStatus,
+      ) ??
       defaultValue;
 }
 
 String clientContractStatusExplodedListToJson(
-    List<enums.ClientContractStatus>? clientContractStatus) {
+  List<enums.ClientContractStatus>? clientContractStatus,
+) {
   return clientContractStatus?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> clientContractStatusListToJson(
-    List<enums.ClientContractStatus>? clientContractStatus) {
+  List<enums.ClientContractStatus>? clientContractStatus,
+) {
   if (clientContractStatus == null) {
     return [];
   }
@@ -14321,7 +16019,8 @@ List<enums.ClientContractStatus>? clientContractStatusNullableListFromJson(
 }
 
 String? clientContractTypeNullableToJson(
-    enums.ClientContractType? clientContractType) {
+  enums.ClientContractType? clientContractType,
+) {
   return clientContractType?.value;
 }
 
@@ -14333,8 +16032,9 @@ enums.ClientContractType clientContractTypeFromJson(
   Object? clientContractType, [
   enums.ClientContractType? defaultValue,
 ]) {
-  return enums.ClientContractType.values
-          .firstWhereOrNull((e) => e.value == clientContractType) ??
+  return enums.ClientContractType.values.firstWhereOrNull(
+        (e) => e.value == clientContractType,
+      ) ??
       defaultValue ??
       enums.ClientContractType.swaggerGeneratedUnknown;
 }
@@ -14346,18 +16046,21 @@ enums.ClientContractType? clientContractTypeNullableFromJson(
   if (clientContractType == null) {
     return null;
   }
-  return enums.ClientContractType.values
-          .firstWhereOrNull((e) => e.value == clientContractType) ??
+  return enums.ClientContractType.values.firstWhereOrNull(
+        (e) => e.value == clientContractType,
+      ) ??
       defaultValue;
 }
 
 String clientContractTypeExplodedListToJson(
-    List<enums.ClientContractType>? clientContractType) {
+  List<enums.ClientContractType>? clientContractType,
+) {
   return clientContractType?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> clientContractTypeListToJson(
-    List<enums.ClientContractType>? clientContractType) {
+  List<enums.ClientContractType>? clientContractType,
+) {
   if (clientContractType == null) {
     return [];
   }
@@ -14392,30 +16095,33 @@ List<enums.ClientContractType>? clientContractTypeNullableListFromJson(
 }
 
 String? clientContractVehicleRecordBattMaxTypeNullableToJson(
-    enums.ClientContractVehicleRecordBattMaxType?
-        clientContractVehicleRecordBattMaxType) {
+  enums.ClientContractVehicleRecordBattMaxType?
+  clientContractVehicleRecordBattMaxType,
+) {
   return clientContractVehicleRecordBattMaxType?.value;
 }
 
 String? clientContractVehicleRecordBattMaxTypeToJson(
-    enums.ClientContractVehicleRecordBattMaxType
-        clientContractVehicleRecordBattMaxType) {
+  enums.ClientContractVehicleRecordBattMaxType
+  clientContractVehicleRecordBattMaxType,
+) {
   return clientContractVehicleRecordBattMaxType.value;
 }
 
 enums.ClientContractVehicleRecordBattMaxType
-    clientContractVehicleRecordBattMaxTypeFromJson(
+clientContractVehicleRecordBattMaxTypeFromJson(
   Object? clientContractVehicleRecordBattMaxType, [
   enums.ClientContractVehicleRecordBattMaxType? defaultValue,
 ]) {
   return enums.ClientContractVehicleRecordBattMaxType.values.firstWhereOrNull(
-          (e) => e.value == clientContractVehicleRecordBattMaxType) ??
+        (e) => e.value == clientContractVehicleRecordBattMaxType,
+      ) ??
       defaultValue ??
       enums.ClientContractVehicleRecordBattMaxType.swaggerGeneratedUnknown;
 }
 
 enums.ClientContractVehicleRecordBattMaxType?
-    clientContractVehicleRecordBattMaxTypeNullableFromJson(
+clientContractVehicleRecordBattMaxTypeNullableFromJson(
   Object? clientContractVehicleRecordBattMaxType, [
   enums.ClientContractVehicleRecordBattMaxType? defaultValue,
 ]) {
@@ -14423,13 +16129,15 @@ enums.ClientContractVehicleRecordBattMaxType?
     return null;
   }
   return enums.ClientContractVehicleRecordBattMaxType.values.firstWhereOrNull(
-          (e) => e.value == clientContractVehicleRecordBattMaxType) ??
+        (e) => e.value == clientContractVehicleRecordBattMaxType,
+      ) ??
       defaultValue;
 }
 
 String clientContractVehicleRecordBattMaxTypeExplodedListToJson(
-    List<enums.ClientContractVehicleRecordBattMaxType>?
-        clientContractVehicleRecordBattMaxType) {
+  List<enums.ClientContractVehicleRecordBattMaxType>?
+  clientContractVehicleRecordBattMaxType,
+) {
   return clientContractVehicleRecordBattMaxType
           ?.map((e) => e.value!)
           .join(',') ??
@@ -14437,8 +16145,9 @@ String clientContractVehicleRecordBattMaxTypeExplodedListToJson(
 }
 
 List<String> clientContractVehicleRecordBattMaxTypeListToJson(
-    List<enums.ClientContractVehicleRecordBattMaxType>?
-        clientContractVehicleRecordBattMaxType) {
+  List<enums.ClientContractVehicleRecordBattMaxType>?
+  clientContractVehicleRecordBattMaxType,
+) {
   if (clientContractVehicleRecordBattMaxType == null) {
     return [];
   }
@@ -14447,7 +16156,7 @@ List<String> clientContractVehicleRecordBattMaxTypeListToJson(
 }
 
 List<enums.ClientContractVehicleRecordBattMaxType>
-    clientContractVehicleRecordBattMaxTypeListFromJson(
+clientContractVehicleRecordBattMaxTypeListFromJson(
   List? clientContractVehicleRecordBattMaxType, [
   List<enums.ClientContractVehicleRecordBattMaxType>? defaultValue,
 ]) {
@@ -14461,7 +16170,7 @@ List<enums.ClientContractVehicleRecordBattMaxType>
 }
 
 List<enums.ClientContractVehicleRecordBattMaxType>?
-    clientContractVehicleRecordBattMaxTypeNullableListFromJson(
+clientContractVehicleRecordBattMaxTypeNullableListFromJson(
   List? clientContractVehicleRecordBattMaxType, [
   List<enums.ClientContractVehicleRecordBattMaxType>? defaultValue,
 ]) {
@@ -14475,12 +16184,14 @@ List<enums.ClientContractVehicleRecordBattMaxType>?
 }
 
 String? commitmentChangeOptionNullableToJson(
-    enums.CommitmentChangeOption? commitmentChangeOption) {
+  enums.CommitmentChangeOption? commitmentChangeOption,
+) {
   return commitmentChangeOption?.value;
 }
 
 String? commitmentChangeOptionToJson(
-    enums.CommitmentChangeOption commitmentChangeOption) {
+  enums.CommitmentChangeOption commitmentChangeOption,
+) {
   return commitmentChangeOption.value;
 }
 
@@ -14488,8 +16199,9 @@ enums.CommitmentChangeOption commitmentChangeOptionFromJson(
   Object? commitmentChangeOption, [
   enums.CommitmentChangeOption? defaultValue,
 ]) {
-  return enums.CommitmentChangeOption.values
-          .firstWhereOrNull((e) => e.value == commitmentChangeOption) ??
+  return enums.CommitmentChangeOption.values.firstWhereOrNull(
+        (e) => e.value == commitmentChangeOption,
+      ) ??
       defaultValue ??
       enums.CommitmentChangeOption.swaggerGeneratedUnknown;
 }
@@ -14501,18 +16213,21 @@ enums.CommitmentChangeOption? commitmentChangeOptionNullableFromJson(
   if (commitmentChangeOption == null) {
     return null;
   }
-  return enums.CommitmentChangeOption.values
-          .firstWhereOrNull((e) => e.value == commitmentChangeOption) ??
+  return enums.CommitmentChangeOption.values.firstWhereOrNull(
+        (e) => e.value == commitmentChangeOption,
+      ) ??
       defaultValue;
 }
 
 String commitmentChangeOptionExplodedListToJson(
-    List<enums.CommitmentChangeOption>? commitmentChangeOption) {
+  List<enums.CommitmentChangeOption>? commitmentChangeOption,
+) {
   return commitmentChangeOption?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> commitmentChangeOptionListToJson(
-    List<enums.CommitmentChangeOption>? commitmentChangeOption) {
+  List<enums.CommitmentChangeOption>? commitmentChangeOption,
+) {
   if (commitmentChangeOption == null) {
     return [];
   }
@@ -14547,12 +16262,14 @@ List<enums.CommitmentChangeOption>? commitmentChangeOptionNullableListFromJson(
 }
 
 String? createIssueRequestPriorityNullableToJson(
-    enums.CreateIssueRequestPriority? createIssueRequestPriority) {
+  enums.CreateIssueRequestPriority? createIssueRequestPriority,
+) {
   return createIssueRequestPriority?.value;
 }
 
 String? createIssueRequestPriorityToJson(
-    enums.CreateIssueRequestPriority createIssueRequestPriority) {
+  enums.CreateIssueRequestPriority createIssueRequestPriority,
+) {
   return createIssueRequestPriority.value;
 }
 
@@ -14560,8 +16277,9 @@ enums.CreateIssueRequestPriority createIssueRequestPriorityFromJson(
   Object? createIssueRequestPriority, [
   enums.CreateIssueRequestPriority? defaultValue,
 ]) {
-  return enums.CreateIssueRequestPriority.values
-          .firstWhereOrNull((e) => e.value == createIssueRequestPriority) ??
+  return enums.CreateIssueRequestPriority.values.firstWhereOrNull(
+        (e) => e.value == createIssueRequestPriority,
+      ) ??
       defaultValue ??
       enums.CreateIssueRequestPriority.swaggerGeneratedUnknown;
 }
@@ -14573,18 +16291,21 @@ enums.CreateIssueRequestPriority? createIssueRequestPriorityNullableFromJson(
   if (createIssueRequestPriority == null) {
     return null;
   }
-  return enums.CreateIssueRequestPriority.values
-          .firstWhereOrNull((e) => e.value == createIssueRequestPriority) ??
+  return enums.CreateIssueRequestPriority.values.firstWhereOrNull(
+        (e) => e.value == createIssueRequestPriority,
+      ) ??
       defaultValue;
 }
 
 String createIssueRequestPriorityExplodedListToJson(
-    List<enums.CreateIssueRequestPriority>? createIssueRequestPriority) {
+  List<enums.CreateIssueRequestPriority>? createIssueRequestPriority,
+) {
   return createIssueRequestPriority?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> createIssueRequestPriorityListToJson(
-    List<enums.CreateIssueRequestPriority>? createIssueRequestPriority) {
+  List<enums.CreateIssueRequestPriority>? createIssueRequestPriority,
+) {
   if (createIssueRequestPriority == null) {
     return [];
   }
@@ -14606,7 +16327,7 @@ List<enums.CreateIssueRequestPriority> createIssueRequestPriorityListFromJson(
 }
 
 List<enums.CreateIssueRequestPriority>?
-    createIssueRequestPriorityNullableListFromJson(
+createIssueRequestPriorityNullableListFromJson(
   List? createIssueRequestPriority, [
   List<enums.CreateIssueRequestPriority>? defaultValue,
 ]) {
@@ -14620,12 +16341,14 @@ List<enums.CreateIssueRequestPriority>?
 }
 
 String? createVehicleContractBattMaxTypeNullableToJson(
-    enums.CreateVehicleContractBattMaxType? createVehicleContractBattMaxType) {
+  enums.CreateVehicleContractBattMaxType? createVehicleContractBattMaxType,
+) {
   return createVehicleContractBattMaxType?.value;
 }
 
 String? createVehicleContractBattMaxTypeToJson(
-    enums.CreateVehicleContractBattMaxType createVehicleContractBattMaxType) {
+  enums.CreateVehicleContractBattMaxType createVehicleContractBattMaxType,
+) {
   return createVehicleContractBattMaxType.value;
 }
 
@@ -14634,13 +16357,14 @@ enums.CreateVehicleContractBattMaxType createVehicleContractBattMaxTypeFromJson(
   enums.CreateVehicleContractBattMaxType? defaultValue,
 ]) {
   return enums.CreateVehicleContractBattMaxType.values.firstWhereOrNull(
-          (e) => e.value == createVehicleContractBattMaxType) ??
+        (e) => e.value == createVehicleContractBattMaxType,
+      ) ??
       defaultValue ??
       enums.CreateVehicleContractBattMaxType.swaggerGeneratedUnknown;
 }
 
 enums.CreateVehicleContractBattMaxType?
-    createVehicleContractBattMaxTypeNullableFromJson(
+createVehicleContractBattMaxTypeNullableFromJson(
   Object? createVehicleContractBattMaxType, [
   enums.CreateVehicleContractBattMaxType? defaultValue,
 ]) {
@@ -14648,19 +16372,22 @@ enums.CreateVehicleContractBattMaxType?
     return null;
   }
   return enums.CreateVehicleContractBattMaxType.values.firstWhereOrNull(
-          (e) => e.value == createVehicleContractBattMaxType) ??
+        (e) => e.value == createVehicleContractBattMaxType,
+      ) ??
       defaultValue;
 }
 
 String createVehicleContractBattMaxTypeExplodedListToJson(
-    List<enums.CreateVehicleContractBattMaxType>?
-        createVehicleContractBattMaxType) {
+  List<enums.CreateVehicleContractBattMaxType>?
+  createVehicleContractBattMaxType,
+) {
   return createVehicleContractBattMaxType?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> createVehicleContractBattMaxTypeListToJson(
-    List<enums.CreateVehicleContractBattMaxType>?
-        createVehicleContractBattMaxType) {
+  List<enums.CreateVehicleContractBattMaxType>?
+  createVehicleContractBattMaxType,
+) {
   if (createVehicleContractBattMaxType == null) {
     return [];
   }
@@ -14669,7 +16396,7 @@ List<String> createVehicleContractBattMaxTypeListToJson(
 }
 
 List<enums.CreateVehicleContractBattMaxType>
-    createVehicleContractBattMaxTypeListFromJson(
+createVehicleContractBattMaxTypeListFromJson(
   List? createVehicleContractBattMaxType, [
   List<enums.CreateVehicleContractBattMaxType>? defaultValue,
 ]) {
@@ -14683,7 +16410,7 @@ List<enums.CreateVehicleContractBattMaxType>
 }
 
 List<enums.CreateVehicleContractBattMaxType>?
-    createVehicleContractBattMaxTypeNullableListFromJson(
+createVehicleContractBattMaxTypeNullableListFromJson(
   List? createVehicleContractBattMaxType, [
   List<enums.CreateVehicleContractBattMaxType>? defaultValue,
 ]) {
@@ -14697,12 +16424,14 @@ List<enums.CreateVehicleContractBattMaxType>?
 }
 
 String? createVehicleContractBillingTypeNullableToJson(
-    enums.CreateVehicleContractBillingType? createVehicleContractBillingType) {
+  enums.CreateVehicleContractBillingType? createVehicleContractBillingType,
+) {
   return createVehicleContractBillingType?.value;
 }
 
 String? createVehicleContractBillingTypeToJson(
-    enums.CreateVehicleContractBillingType createVehicleContractBillingType) {
+  enums.CreateVehicleContractBillingType createVehicleContractBillingType,
+) {
   return createVehicleContractBillingType.value;
 }
 
@@ -14711,13 +16440,14 @@ enums.CreateVehicleContractBillingType createVehicleContractBillingTypeFromJson(
   enums.CreateVehicleContractBillingType? defaultValue,
 ]) {
   return enums.CreateVehicleContractBillingType.values.firstWhereOrNull(
-          (e) => e.value == createVehicleContractBillingType) ??
+        (e) => e.value == createVehicleContractBillingType,
+      ) ??
       defaultValue ??
       enums.CreateVehicleContractBillingType.swaggerGeneratedUnknown;
 }
 
 enums.CreateVehicleContractBillingType?
-    createVehicleContractBillingTypeNullableFromJson(
+createVehicleContractBillingTypeNullableFromJson(
   Object? createVehicleContractBillingType, [
   enums.CreateVehicleContractBillingType? defaultValue,
 ]) {
@@ -14725,19 +16455,22 @@ enums.CreateVehicleContractBillingType?
     return null;
   }
   return enums.CreateVehicleContractBillingType.values.firstWhereOrNull(
-          (e) => e.value == createVehicleContractBillingType) ??
+        (e) => e.value == createVehicleContractBillingType,
+      ) ??
       defaultValue;
 }
 
 String createVehicleContractBillingTypeExplodedListToJson(
-    List<enums.CreateVehicleContractBillingType>?
-        createVehicleContractBillingType) {
+  List<enums.CreateVehicleContractBillingType>?
+  createVehicleContractBillingType,
+) {
   return createVehicleContractBillingType?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> createVehicleContractBillingTypeListToJson(
-    List<enums.CreateVehicleContractBillingType>?
-        createVehicleContractBillingType) {
+  List<enums.CreateVehicleContractBillingType>?
+  createVehicleContractBillingType,
+) {
   if (createVehicleContractBillingType == null) {
     return [];
   }
@@ -14746,7 +16479,7 @@ List<String> createVehicleContractBillingTypeListToJson(
 }
 
 List<enums.CreateVehicleContractBillingType>
-    createVehicleContractBillingTypeListFromJson(
+createVehicleContractBillingTypeListFromJson(
   List? createVehicleContractBillingType, [
   List<enums.CreateVehicleContractBillingType>? defaultValue,
 ]) {
@@ -14760,7 +16493,7 @@ List<enums.CreateVehicleContractBillingType>
 }
 
 List<enums.CreateVehicleContractBillingType>?
-    createVehicleContractBillingTypeNullableListFromJson(
+createVehicleContractBillingTypeNullableListFromJson(
   List? createVehicleContractBillingType, [
   List<enums.CreateVehicleContractBillingType>? defaultValue,
 ]) {
@@ -14774,12 +16507,14 @@ List<enums.CreateVehicleContractBillingType>?
 }
 
 String? formulaChangeOptionNullableToJson(
-    enums.FormulaChangeOption? formulaChangeOption) {
+  enums.FormulaChangeOption? formulaChangeOption,
+) {
   return formulaChangeOption?.value;
 }
 
 String? formulaChangeOptionToJson(
-    enums.FormulaChangeOption formulaChangeOption) {
+  enums.FormulaChangeOption formulaChangeOption,
+) {
   return formulaChangeOption.value;
 }
 
@@ -14787,8 +16522,9 @@ enums.FormulaChangeOption formulaChangeOptionFromJson(
   Object? formulaChangeOption, [
   enums.FormulaChangeOption? defaultValue,
 ]) {
-  return enums.FormulaChangeOption.values
-          .firstWhereOrNull((e) => e.value == formulaChangeOption) ??
+  return enums.FormulaChangeOption.values.firstWhereOrNull(
+        (e) => e.value == formulaChangeOption,
+      ) ??
       defaultValue ??
       enums.FormulaChangeOption.swaggerGeneratedUnknown;
 }
@@ -14800,18 +16536,21 @@ enums.FormulaChangeOption? formulaChangeOptionNullableFromJson(
   if (formulaChangeOption == null) {
     return null;
   }
-  return enums.FormulaChangeOption.values
-          .firstWhereOrNull((e) => e.value == formulaChangeOption) ??
+  return enums.FormulaChangeOption.values.firstWhereOrNull(
+        (e) => e.value == formulaChangeOption,
+      ) ??
       defaultValue;
 }
 
 String formulaChangeOptionExplodedListToJson(
-    List<enums.FormulaChangeOption>? formulaChangeOption) {
+  List<enums.FormulaChangeOption>? formulaChangeOption,
+) {
   return formulaChangeOption?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> formulaChangeOptionListToJson(
-    List<enums.FormulaChangeOption>? formulaChangeOption) {
+  List<enums.FormulaChangeOption>? formulaChangeOption,
+) {
   if (formulaChangeOption == null) {
     return [];
   }
@@ -14846,12 +16585,14 @@ List<enums.FormulaChangeOption>? formulaChangeOptionNullableListFromJson(
 }
 
 String? invoicePaymentStatusNullableToJson(
-    enums.InvoicePaymentStatus? invoicePaymentStatus) {
+  enums.InvoicePaymentStatus? invoicePaymentStatus,
+) {
   return invoicePaymentStatus?.value;
 }
 
 String? invoicePaymentStatusToJson(
-    enums.InvoicePaymentStatus invoicePaymentStatus) {
+  enums.InvoicePaymentStatus invoicePaymentStatus,
+) {
   return invoicePaymentStatus.value;
 }
 
@@ -14859,8 +16600,9 @@ enums.InvoicePaymentStatus invoicePaymentStatusFromJson(
   Object? invoicePaymentStatus, [
   enums.InvoicePaymentStatus? defaultValue,
 ]) {
-  return enums.InvoicePaymentStatus.values
-          .firstWhereOrNull((e) => e.value == invoicePaymentStatus) ??
+  return enums.InvoicePaymentStatus.values.firstWhereOrNull(
+        (e) => e.value == invoicePaymentStatus,
+      ) ??
       defaultValue ??
       enums.InvoicePaymentStatus.swaggerGeneratedUnknown;
 }
@@ -14872,18 +16614,21 @@ enums.InvoicePaymentStatus? invoicePaymentStatusNullableFromJson(
   if (invoicePaymentStatus == null) {
     return null;
   }
-  return enums.InvoicePaymentStatus.values
-          .firstWhereOrNull((e) => e.value == invoicePaymentStatus) ??
+  return enums.InvoicePaymentStatus.values.firstWhereOrNull(
+        (e) => e.value == invoicePaymentStatus,
+      ) ??
       defaultValue;
 }
 
 String invoicePaymentStatusExplodedListToJson(
-    List<enums.InvoicePaymentStatus>? invoicePaymentStatus) {
+  List<enums.InvoicePaymentStatus>? invoicePaymentStatus,
+) {
   return invoicePaymentStatus?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> invoicePaymentStatusListToJson(
-    List<enums.InvoicePaymentStatus>? invoicePaymentStatus) {
+  List<enums.InvoicePaymentStatus>? invoicePaymentStatus,
+) {
   if (invoicePaymentStatus == null) {
     return [];
   }
@@ -14929,8 +16674,9 @@ enums.IssuePriority issuePriorityFromJson(
   Object? issuePriority, [
   enums.IssuePriority? defaultValue,
 ]) {
-  return enums.IssuePriority.values
-          .firstWhereOrNull((e) => e.value == issuePriority) ??
+  return enums.IssuePriority.values.firstWhereOrNull(
+        (e) => e.value == issuePriority,
+      ) ??
       defaultValue ??
       enums.IssuePriority.swaggerGeneratedUnknown;
 }
@@ -14942,13 +16688,15 @@ enums.IssuePriority? issuePriorityNullableFromJson(
   if (issuePriority == null) {
     return null;
   }
-  return enums.IssuePriority.values
-          .firstWhereOrNull((e) => e.value == issuePriority) ??
+  return enums.IssuePriority.values.firstWhereOrNull(
+        (e) => e.value == issuePriority,
+      ) ??
       defaultValue;
 }
 
 String issuePriorityExplodedListToJson(
-    List<enums.IssuePriority>? issuePriority) {
+  List<enums.IssuePriority>? issuePriority,
+) {
   return issuePriority?.map((e) => e.value!).join(',') ?? '';
 }
 
@@ -14994,8 +16742,9 @@ enums.IssueStatus issueStatusFromJson(
   Object? issueStatus, [
   enums.IssueStatus? defaultValue,
 ]) {
-  return enums.IssueStatus.values
-          .firstWhereOrNull((e) => e.value == issueStatus) ??
+  return enums.IssueStatus.values.firstWhereOrNull(
+        (e) => e.value == issueStatus,
+      ) ??
       defaultValue ??
       enums.IssueStatus.swaggerGeneratedUnknown;
 }
@@ -15007,8 +16756,9 @@ enums.IssueStatus? issueStatusNullableFromJson(
   if (issueStatus == null) {
     return null;
   }
-  return enums.IssueStatus.values
-          .firstWhereOrNull((e) => e.value == issueStatus) ??
+  return enums.IssueStatus.values.firstWhereOrNull(
+        (e) => e.value == issueStatus,
+      ) ??
       defaultValue;
 }
 
@@ -15047,12 +16797,14 @@ List<enums.IssueStatus>? issueStatusNullableListFromJson(
 }
 
 String? issueActionPriorityNullableToJson(
-    enums.IssueActionPriority? issueActionPriority) {
+  enums.IssueActionPriority? issueActionPriority,
+) {
   return issueActionPriority?.value;
 }
 
 String? issueActionPriorityToJson(
-    enums.IssueActionPriority issueActionPriority) {
+  enums.IssueActionPriority issueActionPriority,
+) {
   return issueActionPriority.value;
 }
 
@@ -15060,8 +16812,9 @@ enums.IssueActionPriority issueActionPriorityFromJson(
   Object? issueActionPriority, [
   enums.IssueActionPriority? defaultValue,
 ]) {
-  return enums.IssueActionPriority.values
-          .firstWhereOrNull((e) => e.value == issueActionPriority) ??
+  return enums.IssueActionPriority.values.firstWhereOrNull(
+        (e) => e.value == issueActionPriority,
+      ) ??
       defaultValue ??
       enums.IssueActionPriority.swaggerGeneratedUnknown;
 }
@@ -15073,18 +16826,21 @@ enums.IssueActionPriority? issueActionPriorityNullableFromJson(
   if (issueActionPriority == null) {
     return null;
   }
-  return enums.IssueActionPriority.values
-          .firstWhereOrNull((e) => e.value == issueActionPriority) ??
+  return enums.IssueActionPriority.values.firstWhereOrNull(
+        (e) => e.value == issueActionPriority,
+      ) ??
       defaultValue;
 }
 
 String issueActionPriorityExplodedListToJson(
-    List<enums.IssueActionPriority>? issueActionPriority) {
+  List<enums.IssueActionPriority>? issueActionPriority,
+) {
   return issueActionPriority?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> issueActionPriorityListToJson(
-    List<enums.IssueActionPriority>? issueActionPriority) {
+  List<enums.IssueActionPriority>? issueActionPriority,
+) {
   if (issueActionPriority == null) {
     return [];
   }
@@ -15119,7 +16875,8 @@ List<enums.IssueActionPriority>? issueActionPriorityNullableListFromJson(
 }
 
 String? issueActionStatusNullableToJson(
-    enums.IssueActionStatus? issueActionStatus) {
+  enums.IssueActionStatus? issueActionStatus,
+) {
   return issueActionStatus?.value;
 }
 
@@ -15131,8 +16888,9 @@ enums.IssueActionStatus issueActionStatusFromJson(
   Object? issueActionStatus, [
   enums.IssueActionStatus? defaultValue,
 ]) {
-  return enums.IssueActionStatus.values
-          .firstWhereOrNull((e) => e.value == issueActionStatus) ??
+  return enums.IssueActionStatus.values.firstWhereOrNull(
+        (e) => e.value == issueActionStatus,
+      ) ??
       defaultValue ??
       enums.IssueActionStatus.swaggerGeneratedUnknown;
 }
@@ -15144,18 +16902,21 @@ enums.IssueActionStatus? issueActionStatusNullableFromJson(
   if (issueActionStatus == null) {
     return null;
   }
-  return enums.IssueActionStatus.values
-          .firstWhereOrNull((e) => e.value == issueActionStatus) ??
+  return enums.IssueActionStatus.values.firstWhereOrNull(
+        (e) => e.value == issueActionStatus,
+      ) ??
       defaultValue;
 }
 
 String issueActionStatusExplodedListToJson(
-    List<enums.IssueActionStatus>? issueActionStatus) {
+  List<enums.IssueActionStatus>? issueActionStatus,
+) {
   return issueActionStatus?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> issueActionStatusListToJson(
-    List<enums.IssueActionStatus>? issueActionStatus) {
+  List<enums.IssueActionStatus>? issueActionStatus,
+) {
   if (issueActionStatus == null) {
     return [];
   }
@@ -15190,12 +16951,14 @@ List<enums.IssueActionStatus>? issueActionStatusNullableListFromJson(
 }
 
 String? myAvailableVehicleTypeNullableToJson(
-    enums.MyAvailableVehicleType? myAvailableVehicleType) {
+  enums.MyAvailableVehicleType? myAvailableVehicleType,
+) {
   return myAvailableVehicleType?.value;
 }
 
 String? myAvailableVehicleTypeToJson(
-    enums.MyAvailableVehicleType myAvailableVehicleType) {
+  enums.MyAvailableVehicleType myAvailableVehicleType,
+) {
   return myAvailableVehicleType.value;
 }
 
@@ -15203,8 +16966,9 @@ enums.MyAvailableVehicleType myAvailableVehicleTypeFromJson(
   Object? myAvailableVehicleType, [
   enums.MyAvailableVehicleType? defaultValue,
 ]) {
-  return enums.MyAvailableVehicleType.values
-          .firstWhereOrNull((e) => e.value == myAvailableVehicleType) ??
+  return enums.MyAvailableVehicleType.values.firstWhereOrNull(
+        (e) => e.value == myAvailableVehicleType,
+      ) ??
       defaultValue ??
       enums.MyAvailableVehicleType.swaggerGeneratedUnknown;
 }
@@ -15216,18 +16980,21 @@ enums.MyAvailableVehicleType? myAvailableVehicleTypeNullableFromJson(
   if (myAvailableVehicleType == null) {
     return null;
   }
-  return enums.MyAvailableVehicleType.values
-          .firstWhereOrNull((e) => e.value == myAvailableVehicleType) ??
+  return enums.MyAvailableVehicleType.values.firstWhereOrNull(
+        (e) => e.value == myAvailableVehicleType,
+      ) ??
       defaultValue;
 }
 
 String myAvailableVehicleTypeExplodedListToJson(
-    List<enums.MyAvailableVehicleType>? myAvailableVehicleType) {
+  List<enums.MyAvailableVehicleType>? myAvailableVehicleType,
+) {
   return myAvailableVehicleType?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> myAvailableVehicleTypeListToJson(
-    List<enums.MyAvailableVehicleType>? myAvailableVehicleType) {
+  List<enums.MyAvailableVehicleType>? myAvailableVehicleType,
+) {
   if (myAvailableVehicleType == null) {
     return [];
   }
@@ -15262,12 +17029,14 @@ List<enums.MyAvailableVehicleType>? myAvailableVehicleTypeNullableListFromJson(
 }
 
 String? nonAvailabilityTypeNullableToJson(
-    enums.NonAvailabilityType? nonAvailabilityType) {
+  enums.NonAvailabilityType? nonAvailabilityType,
+) {
   return nonAvailabilityType?.value;
 }
 
 String? nonAvailabilityTypeToJson(
-    enums.NonAvailabilityType nonAvailabilityType) {
+  enums.NonAvailabilityType nonAvailabilityType,
+) {
   return nonAvailabilityType.value;
 }
 
@@ -15275,8 +17044,9 @@ enums.NonAvailabilityType nonAvailabilityTypeFromJson(
   Object? nonAvailabilityType, [
   enums.NonAvailabilityType? defaultValue,
 ]) {
-  return enums.NonAvailabilityType.values
-          .firstWhereOrNull((e) => e.value == nonAvailabilityType) ??
+  return enums.NonAvailabilityType.values.firstWhereOrNull(
+        (e) => e.value == nonAvailabilityType,
+      ) ??
       defaultValue ??
       enums.NonAvailabilityType.swaggerGeneratedUnknown;
 }
@@ -15288,18 +17058,21 @@ enums.NonAvailabilityType? nonAvailabilityTypeNullableFromJson(
   if (nonAvailabilityType == null) {
     return null;
   }
-  return enums.NonAvailabilityType.values
-          .firstWhereOrNull((e) => e.value == nonAvailabilityType) ??
+  return enums.NonAvailabilityType.values.firstWhereOrNull(
+        (e) => e.value == nonAvailabilityType,
+      ) ??
       defaultValue;
 }
 
 String nonAvailabilityTypeExplodedListToJson(
-    List<enums.NonAvailabilityType>? nonAvailabilityType) {
+  List<enums.NonAvailabilityType>? nonAvailabilityType,
+) {
   return nonAvailabilityType?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> nonAvailabilityTypeListToJson(
-    List<enums.NonAvailabilityType>? nonAvailabilityType) {
+  List<enums.NonAvailabilityType>? nonAvailabilityType,
+) {
   if (nonAvailabilityType == null) {
     return [];
   }
@@ -15334,7 +17107,8 @@ List<enums.NonAvailabilityType>? nonAvailabilityTypeNullableListFromJson(
 }
 
 String? onboardingStatusNullableToJson(
-    enums.OnboardingStatus? onboardingStatus) {
+  enums.OnboardingStatus? onboardingStatus,
+) {
   return onboardingStatus?.value;
 }
 
@@ -15346,8 +17120,9 @@ enums.OnboardingStatus onboardingStatusFromJson(
   Object? onboardingStatus, [
   enums.OnboardingStatus? defaultValue,
 ]) {
-  return enums.OnboardingStatus.values
-          .firstWhereOrNull((e) => e.value == onboardingStatus) ??
+  return enums.OnboardingStatus.values.firstWhereOrNull(
+        (e) => e.value == onboardingStatus,
+      ) ??
       defaultValue ??
       enums.OnboardingStatus.swaggerGeneratedUnknown;
 }
@@ -15359,18 +17134,21 @@ enums.OnboardingStatus? onboardingStatusNullableFromJson(
   if (onboardingStatus == null) {
     return null;
   }
-  return enums.OnboardingStatus.values
-          .firstWhereOrNull((e) => e.value == onboardingStatus) ??
+  return enums.OnboardingStatus.values.firstWhereOrNull(
+        (e) => e.value == onboardingStatus,
+      ) ??
       defaultValue;
 }
 
 String onboardingStatusExplodedListToJson(
-    List<enums.OnboardingStatus>? onboardingStatus) {
+  List<enums.OnboardingStatus>? onboardingStatus,
+) {
   return onboardingStatus?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> onboardingStatusListToJson(
-    List<enums.OnboardingStatus>? onboardingStatus) {
+  List<enums.OnboardingStatus>? onboardingStatus,
+) {
   if (onboardingStatus == null) {
     return [];
   }
@@ -15405,12 +17183,14 @@ List<enums.OnboardingStatus>? onboardingStatusNullableListFromJson(
 }
 
 String? onboardingPersonalLicenseTypeNullableToJson(
-    enums.OnboardingPersonalLicenseType? onboardingPersonalLicenseType) {
+  enums.OnboardingPersonalLicenseType? onboardingPersonalLicenseType,
+) {
   return onboardingPersonalLicenseType?.value;
 }
 
 String? onboardingPersonalLicenseTypeToJson(
-    enums.OnboardingPersonalLicenseType onboardingPersonalLicenseType) {
+  enums.OnboardingPersonalLicenseType onboardingPersonalLicenseType,
+) {
   return onboardingPersonalLicenseType.value;
 }
 
@@ -15418,32 +17198,36 @@ enums.OnboardingPersonalLicenseType onboardingPersonalLicenseTypeFromJson(
   Object? onboardingPersonalLicenseType, [
   enums.OnboardingPersonalLicenseType? defaultValue,
 ]) {
-  return enums.OnboardingPersonalLicenseType.values
-          .firstWhereOrNull((e) => e.value == onboardingPersonalLicenseType) ??
+  return enums.OnboardingPersonalLicenseType.values.firstWhereOrNull(
+        (e) => e.value == onboardingPersonalLicenseType,
+      ) ??
       defaultValue ??
       enums.OnboardingPersonalLicenseType.swaggerGeneratedUnknown;
 }
 
 enums.OnboardingPersonalLicenseType?
-    onboardingPersonalLicenseTypeNullableFromJson(
+onboardingPersonalLicenseTypeNullableFromJson(
   Object? onboardingPersonalLicenseType, [
   enums.OnboardingPersonalLicenseType? defaultValue,
 ]) {
   if (onboardingPersonalLicenseType == null) {
     return null;
   }
-  return enums.OnboardingPersonalLicenseType.values
-          .firstWhereOrNull((e) => e.value == onboardingPersonalLicenseType) ??
+  return enums.OnboardingPersonalLicenseType.values.firstWhereOrNull(
+        (e) => e.value == onboardingPersonalLicenseType,
+      ) ??
       defaultValue;
 }
 
 String onboardingPersonalLicenseTypeExplodedListToJson(
-    List<enums.OnboardingPersonalLicenseType>? onboardingPersonalLicenseType) {
+  List<enums.OnboardingPersonalLicenseType>? onboardingPersonalLicenseType,
+) {
   return onboardingPersonalLicenseType?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> onboardingPersonalLicenseTypeListToJson(
-    List<enums.OnboardingPersonalLicenseType>? onboardingPersonalLicenseType) {
+  List<enums.OnboardingPersonalLicenseType>? onboardingPersonalLicenseType,
+) {
   if (onboardingPersonalLicenseType == null) {
     return [];
   }
@@ -15452,7 +17236,7 @@ List<String> onboardingPersonalLicenseTypeListToJson(
 }
 
 List<enums.OnboardingPersonalLicenseType>
-    onboardingPersonalLicenseTypeListFromJson(
+onboardingPersonalLicenseTypeListFromJson(
   List? onboardingPersonalLicenseType, [
   List<enums.OnboardingPersonalLicenseType>? defaultValue,
 ]) {
@@ -15466,7 +17250,7 @@ List<enums.OnboardingPersonalLicenseType>
 }
 
 List<enums.OnboardingPersonalLicenseType>?
-    onboardingPersonalLicenseTypeNullableListFromJson(
+onboardingPersonalLicenseTypeNullableListFromJson(
   List? onboardingPersonalLicenseType, [
   List<enums.OnboardingPersonalLicenseType>? defaultValue,
 ]) {
@@ -15480,12 +17264,14 @@ List<enums.OnboardingPersonalLicenseType>?
 }
 
 String? recurringScheduleRecurringTypeNullableToJson(
-    enums.RecurringScheduleRecurringType? recurringScheduleRecurringType) {
+  enums.RecurringScheduleRecurringType? recurringScheduleRecurringType,
+) {
   return recurringScheduleRecurringType?.value;
 }
 
 String? recurringScheduleRecurringTypeToJson(
-    enums.RecurringScheduleRecurringType recurringScheduleRecurringType) {
+  enums.RecurringScheduleRecurringType recurringScheduleRecurringType,
+) {
   return recurringScheduleRecurringType.value;
 }
 
@@ -15493,34 +17279,36 @@ enums.RecurringScheduleRecurringType recurringScheduleRecurringTypeFromJson(
   Object? recurringScheduleRecurringType, [
   enums.RecurringScheduleRecurringType? defaultValue,
 ]) {
-  return enums.RecurringScheduleRecurringType.values
-          .firstWhereOrNull((e) => e.value == recurringScheduleRecurringType) ??
+  return enums.RecurringScheduleRecurringType.values.firstWhereOrNull(
+        (e) => e.value == recurringScheduleRecurringType,
+      ) ??
       defaultValue ??
       enums.RecurringScheduleRecurringType.swaggerGeneratedUnknown;
 }
 
 enums.RecurringScheduleRecurringType?
-    recurringScheduleRecurringTypeNullableFromJson(
+recurringScheduleRecurringTypeNullableFromJson(
   Object? recurringScheduleRecurringType, [
   enums.RecurringScheduleRecurringType? defaultValue,
 ]) {
   if (recurringScheduleRecurringType == null) {
     return null;
   }
-  return enums.RecurringScheduleRecurringType.values
-          .firstWhereOrNull((e) => e.value == recurringScheduleRecurringType) ??
+  return enums.RecurringScheduleRecurringType.values.firstWhereOrNull(
+        (e) => e.value == recurringScheduleRecurringType,
+      ) ??
       defaultValue;
 }
 
 String recurringScheduleRecurringTypeExplodedListToJson(
-    List<enums.RecurringScheduleRecurringType>?
-        recurringScheduleRecurringType) {
+  List<enums.RecurringScheduleRecurringType>? recurringScheduleRecurringType,
+) {
   return recurringScheduleRecurringType?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> recurringScheduleRecurringTypeListToJson(
-    List<enums.RecurringScheduleRecurringType>?
-        recurringScheduleRecurringType) {
+  List<enums.RecurringScheduleRecurringType>? recurringScheduleRecurringType,
+) {
   if (recurringScheduleRecurringType == null) {
     return [];
   }
@@ -15529,7 +17317,7 @@ List<String> recurringScheduleRecurringTypeListToJson(
 }
 
 List<enums.RecurringScheduleRecurringType>
-    recurringScheduleRecurringTypeListFromJson(
+recurringScheduleRecurringTypeListFromJson(
   List? recurringScheduleRecurringType, [
   List<enums.RecurringScheduleRecurringType>? defaultValue,
 ]) {
@@ -15543,7 +17331,7 @@ List<enums.RecurringScheduleRecurringType>
 }
 
 List<enums.RecurringScheduleRecurringType>?
-    recurringScheduleRecurringTypeNullableListFromJson(
+recurringScheduleRecurringTypeNullableListFromJson(
   List? recurringScheduleRecurringType, [
   List<enums.RecurringScheduleRecurringType>? defaultValue,
 ]) {
@@ -15557,12 +17345,14 @@ List<enums.RecurringScheduleRecurringType>?
 }
 
 String? recurringScheduleTimeZoneNullableToJson(
-    enums.RecurringScheduleTimeZone? recurringScheduleTimeZone) {
+  enums.RecurringScheduleTimeZone? recurringScheduleTimeZone,
+) {
   return recurringScheduleTimeZone?.value;
 }
 
 String? recurringScheduleTimeZoneToJson(
-    enums.RecurringScheduleTimeZone recurringScheduleTimeZone) {
+  enums.RecurringScheduleTimeZone recurringScheduleTimeZone,
+) {
   return recurringScheduleTimeZone.value;
 }
 
@@ -15570,8 +17360,9 @@ enums.RecurringScheduleTimeZone recurringScheduleTimeZoneFromJson(
   Object? recurringScheduleTimeZone, [
   enums.RecurringScheduleTimeZone? defaultValue,
 ]) {
-  return enums.RecurringScheduleTimeZone.values
-          .firstWhereOrNull((e) => e.value == recurringScheduleTimeZone) ??
+  return enums.RecurringScheduleTimeZone.values.firstWhereOrNull(
+        (e) => e.value == recurringScheduleTimeZone,
+      ) ??
       defaultValue ??
       enums.RecurringScheduleTimeZone.swaggerGeneratedUnknown;
 }
@@ -15583,18 +17374,21 @@ enums.RecurringScheduleTimeZone? recurringScheduleTimeZoneNullableFromJson(
   if (recurringScheduleTimeZone == null) {
     return null;
   }
-  return enums.RecurringScheduleTimeZone.values
-          .firstWhereOrNull((e) => e.value == recurringScheduleTimeZone) ??
+  return enums.RecurringScheduleTimeZone.values.firstWhereOrNull(
+        (e) => e.value == recurringScheduleTimeZone,
+      ) ??
       defaultValue;
 }
 
 String recurringScheduleTimeZoneExplodedListToJson(
-    List<enums.RecurringScheduleTimeZone>? recurringScheduleTimeZone) {
+  List<enums.RecurringScheduleTimeZone>? recurringScheduleTimeZone,
+) {
   return recurringScheduleTimeZone?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> recurringScheduleTimeZoneListToJson(
-    List<enums.RecurringScheduleTimeZone>? recurringScheduleTimeZone) {
+  List<enums.RecurringScheduleTimeZone>? recurringScheduleTimeZone,
+) {
   if (recurringScheduleTimeZone == null) {
     return [];
   }
@@ -15616,7 +17410,7 @@ List<enums.RecurringScheduleTimeZone> recurringScheduleTimeZoneListFromJson(
 }
 
 List<enums.RecurringScheduleTimeZone>?
-    recurringScheduleTimeZoneNullableListFromJson(
+recurringScheduleTimeZoneNullableListFromJson(
   List? recurringScheduleTimeZone, [
   List<enums.RecurringScheduleTimeZone>? defaultValue,
 ]) {
@@ -15630,12 +17424,14 @@ List<enums.RecurringScheduleTimeZone>?
 }
 
 String? searchBookingsRequestStatusesNullableToJson(
-    enums.SearchBookingsRequestStatuses? searchBookingsRequestStatuses) {
+  enums.SearchBookingsRequestStatuses? searchBookingsRequestStatuses,
+) {
   return searchBookingsRequestStatuses?.value;
 }
 
 String? searchBookingsRequestStatusesToJson(
-    enums.SearchBookingsRequestStatuses searchBookingsRequestStatuses) {
+  enums.SearchBookingsRequestStatuses searchBookingsRequestStatuses,
+) {
   return searchBookingsRequestStatuses.value;
 }
 
@@ -15643,32 +17439,36 @@ enums.SearchBookingsRequestStatuses searchBookingsRequestStatusesFromJson(
   Object? searchBookingsRequestStatuses, [
   enums.SearchBookingsRequestStatuses? defaultValue,
 ]) {
-  return enums.SearchBookingsRequestStatuses.values
-          .firstWhereOrNull((e) => e.value == searchBookingsRequestStatuses) ??
+  return enums.SearchBookingsRequestStatuses.values.firstWhereOrNull(
+        (e) => e.value == searchBookingsRequestStatuses,
+      ) ??
       defaultValue ??
       enums.SearchBookingsRequestStatuses.swaggerGeneratedUnknown;
 }
 
 enums.SearchBookingsRequestStatuses?
-    searchBookingsRequestStatusesNullableFromJson(
+searchBookingsRequestStatusesNullableFromJson(
   Object? searchBookingsRequestStatuses, [
   enums.SearchBookingsRequestStatuses? defaultValue,
 ]) {
   if (searchBookingsRequestStatuses == null) {
     return null;
   }
-  return enums.SearchBookingsRequestStatuses.values
-          .firstWhereOrNull((e) => e.value == searchBookingsRequestStatuses) ??
+  return enums.SearchBookingsRequestStatuses.values.firstWhereOrNull(
+        (e) => e.value == searchBookingsRequestStatuses,
+      ) ??
       defaultValue;
 }
 
 String searchBookingsRequestStatusesExplodedListToJson(
-    List<enums.SearchBookingsRequestStatuses>? searchBookingsRequestStatuses) {
+  List<enums.SearchBookingsRequestStatuses>? searchBookingsRequestStatuses,
+) {
   return searchBookingsRequestStatuses?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> searchBookingsRequestStatusesListToJson(
-    List<enums.SearchBookingsRequestStatuses>? searchBookingsRequestStatuses) {
+  List<enums.SearchBookingsRequestStatuses>? searchBookingsRequestStatuses,
+) {
   if (searchBookingsRequestStatuses == null) {
     return [];
   }
@@ -15677,7 +17477,7 @@ List<String> searchBookingsRequestStatusesListToJson(
 }
 
 List<enums.SearchBookingsRequestStatuses>
-    searchBookingsRequestStatusesListFromJson(
+searchBookingsRequestStatusesListFromJson(
   List? searchBookingsRequestStatuses, [
   List<enums.SearchBookingsRequestStatuses>? defaultValue,
 ]) {
@@ -15691,7 +17491,7 @@ List<enums.SearchBookingsRequestStatuses>
 }
 
 List<enums.SearchBookingsRequestStatuses>?
-    searchBookingsRequestStatusesNullableListFromJson(
+searchBookingsRequestStatusesNullableListFromJson(
   List? searchBookingsRequestStatuses, [
   List<enums.SearchBookingsRequestStatuses>? defaultValue,
 ]) {
@@ -15705,12 +17505,14 @@ List<enums.SearchBookingsRequestStatuses>?
 }
 
 String? searchIssuesRequestOrderNullableToJson(
-    enums.SearchIssuesRequestOrder? searchIssuesRequestOrder) {
+  enums.SearchIssuesRequestOrder? searchIssuesRequestOrder,
+) {
   return searchIssuesRequestOrder?.value;
 }
 
 String? searchIssuesRequestOrderToJson(
-    enums.SearchIssuesRequestOrder searchIssuesRequestOrder) {
+  enums.SearchIssuesRequestOrder searchIssuesRequestOrder,
+) {
   return searchIssuesRequestOrder.value;
 }
 
@@ -15718,8 +17520,9 @@ enums.SearchIssuesRequestOrder searchIssuesRequestOrderFromJson(
   Object? searchIssuesRequestOrder, [
   enums.SearchIssuesRequestOrder? defaultValue,
 ]) {
-  return enums.SearchIssuesRequestOrder.values
-          .firstWhereOrNull((e) => e.value == searchIssuesRequestOrder) ??
+  return enums.SearchIssuesRequestOrder.values.firstWhereOrNull(
+        (e) => e.value == searchIssuesRequestOrder,
+      ) ??
       defaultValue ??
       enums.SearchIssuesRequestOrder.swaggerGeneratedUnknown;
 }
@@ -15731,18 +17534,21 @@ enums.SearchIssuesRequestOrder? searchIssuesRequestOrderNullableFromJson(
   if (searchIssuesRequestOrder == null) {
     return null;
   }
-  return enums.SearchIssuesRequestOrder.values
-          .firstWhereOrNull((e) => e.value == searchIssuesRequestOrder) ??
+  return enums.SearchIssuesRequestOrder.values.firstWhereOrNull(
+        (e) => e.value == searchIssuesRequestOrder,
+      ) ??
       defaultValue;
 }
 
 String searchIssuesRequestOrderExplodedListToJson(
-    List<enums.SearchIssuesRequestOrder>? searchIssuesRequestOrder) {
+  List<enums.SearchIssuesRequestOrder>? searchIssuesRequestOrder,
+) {
   return searchIssuesRequestOrder?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> searchIssuesRequestOrderListToJson(
-    List<enums.SearchIssuesRequestOrder>? searchIssuesRequestOrder) {
+  List<enums.SearchIssuesRequestOrder>? searchIssuesRequestOrder,
+) {
   if (searchIssuesRequestOrder == null) {
     return [];
   }
@@ -15764,7 +17570,7 @@ List<enums.SearchIssuesRequestOrder> searchIssuesRequestOrderListFromJson(
 }
 
 List<enums.SearchIssuesRequestOrder>?
-    searchIssuesRequestOrderNullableListFromJson(
+searchIssuesRequestOrderNullableListFromJson(
   List? searchIssuesRequestOrder, [
   List<enums.SearchIssuesRequestOrder>? defaultValue,
 ]) {
@@ -15778,12 +17584,14 @@ List<enums.SearchIssuesRequestOrder>?
 }
 
 String? searchIssuesRequestPrioritiesNullableToJson(
-    enums.SearchIssuesRequestPriorities? searchIssuesRequestPriorities) {
+  enums.SearchIssuesRequestPriorities? searchIssuesRequestPriorities,
+) {
   return searchIssuesRequestPriorities?.value;
 }
 
 String? searchIssuesRequestPrioritiesToJson(
-    enums.SearchIssuesRequestPriorities searchIssuesRequestPriorities) {
+  enums.SearchIssuesRequestPriorities searchIssuesRequestPriorities,
+) {
   return searchIssuesRequestPriorities.value;
 }
 
@@ -15791,32 +17599,36 @@ enums.SearchIssuesRequestPriorities searchIssuesRequestPrioritiesFromJson(
   Object? searchIssuesRequestPriorities, [
   enums.SearchIssuesRequestPriorities? defaultValue,
 ]) {
-  return enums.SearchIssuesRequestPriorities.values
-          .firstWhereOrNull((e) => e.value == searchIssuesRequestPriorities) ??
+  return enums.SearchIssuesRequestPriorities.values.firstWhereOrNull(
+        (e) => e.value == searchIssuesRequestPriorities,
+      ) ??
       defaultValue ??
       enums.SearchIssuesRequestPriorities.swaggerGeneratedUnknown;
 }
 
 enums.SearchIssuesRequestPriorities?
-    searchIssuesRequestPrioritiesNullableFromJson(
+searchIssuesRequestPrioritiesNullableFromJson(
   Object? searchIssuesRequestPriorities, [
   enums.SearchIssuesRequestPriorities? defaultValue,
 ]) {
   if (searchIssuesRequestPriorities == null) {
     return null;
   }
-  return enums.SearchIssuesRequestPriorities.values
-          .firstWhereOrNull((e) => e.value == searchIssuesRequestPriorities) ??
+  return enums.SearchIssuesRequestPriorities.values.firstWhereOrNull(
+        (e) => e.value == searchIssuesRequestPriorities,
+      ) ??
       defaultValue;
 }
 
 String searchIssuesRequestPrioritiesExplodedListToJson(
-    List<enums.SearchIssuesRequestPriorities>? searchIssuesRequestPriorities) {
+  List<enums.SearchIssuesRequestPriorities>? searchIssuesRequestPriorities,
+) {
   return searchIssuesRequestPriorities?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> searchIssuesRequestPrioritiesListToJson(
-    List<enums.SearchIssuesRequestPriorities>? searchIssuesRequestPriorities) {
+  List<enums.SearchIssuesRequestPriorities>? searchIssuesRequestPriorities,
+) {
   if (searchIssuesRequestPriorities == null) {
     return [];
   }
@@ -15825,7 +17637,7 @@ List<String> searchIssuesRequestPrioritiesListToJson(
 }
 
 List<enums.SearchIssuesRequestPriorities>
-    searchIssuesRequestPrioritiesListFromJson(
+searchIssuesRequestPrioritiesListFromJson(
   List? searchIssuesRequestPriorities, [
   List<enums.SearchIssuesRequestPriorities>? defaultValue,
 ]) {
@@ -15839,7 +17651,7 @@ List<enums.SearchIssuesRequestPriorities>
 }
 
 List<enums.SearchIssuesRequestPriorities>?
-    searchIssuesRequestPrioritiesNullableListFromJson(
+searchIssuesRequestPrioritiesNullableListFromJson(
   List? searchIssuesRequestPriorities, [
   List<enums.SearchIssuesRequestPriorities>? defaultValue,
 ]) {
@@ -15853,12 +17665,14 @@ List<enums.SearchIssuesRequestPriorities>?
 }
 
 String? searchIssuesRequestStatusesNullableToJson(
-    enums.SearchIssuesRequestStatuses? searchIssuesRequestStatuses) {
+  enums.SearchIssuesRequestStatuses? searchIssuesRequestStatuses,
+) {
   return searchIssuesRequestStatuses?.value;
 }
 
 String? searchIssuesRequestStatusesToJson(
-    enums.SearchIssuesRequestStatuses searchIssuesRequestStatuses) {
+  enums.SearchIssuesRequestStatuses searchIssuesRequestStatuses,
+) {
   return searchIssuesRequestStatuses.value;
 }
 
@@ -15866,8 +17680,9 @@ enums.SearchIssuesRequestStatuses searchIssuesRequestStatusesFromJson(
   Object? searchIssuesRequestStatuses, [
   enums.SearchIssuesRequestStatuses? defaultValue,
 ]) {
-  return enums.SearchIssuesRequestStatuses.values
-          .firstWhereOrNull((e) => e.value == searchIssuesRequestStatuses) ??
+  return enums.SearchIssuesRequestStatuses.values.firstWhereOrNull(
+        (e) => e.value == searchIssuesRequestStatuses,
+      ) ??
       defaultValue ??
       enums.SearchIssuesRequestStatuses.swaggerGeneratedUnknown;
 }
@@ -15879,18 +17694,21 @@ enums.SearchIssuesRequestStatuses? searchIssuesRequestStatusesNullableFromJson(
   if (searchIssuesRequestStatuses == null) {
     return null;
   }
-  return enums.SearchIssuesRequestStatuses.values
-          .firstWhereOrNull((e) => e.value == searchIssuesRequestStatuses) ??
+  return enums.SearchIssuesRequestStatuses.values.firstWhereOrNull(
+        (e) => e.value == searchIssuesRequestStatuses,
+      ) ??
       defaultValue;
 }
 
 String searchIssuesRequestStatusesExplodedListToJson(
-    List<enums.SearchIssuesRequestStatuses>? searchIssuesRequestStatuses) {
+  List<enums.SearchIssuesRequestStatuses>? searchIssuesRequestStatuses,
+) {
   return searchIssuesRequestStatuses?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> searchIssuesRequestStatusesListToJson(
-    List<enums.SearchIssuesRequestStatuses>? searchIssuesRequestStatuses) {
+  List<enums.SearchIssuesRequestStatuses>? searchIssuesRequestStatuses,
+) {
   if (searchIssuesRequestStatuses == null) {
     return [];
   }
@@ -15912,7 +17730,7 @@ List<enums.SearchIssuesRequestStatuses> searchIssuesRequestStatusesListFromJson(
 }
 
 List<enums.SearchIssuesRequestStatuses>?
-    searchIssuesRequestStatusesNullableListFromJson(
+searchIssuesRequestStatusesNullableListFromJson(
   List? searchIssuesRequestStatuses, [
   List<enums.SearchIssuesRequestStatuses>? defaultValue,
 ]) {
@@ -15926,31 +17744,34 @@ List<enums.SearchIssuesRequestStatuses>?
 }
 
 String? searchTelematicsTrackingRequestEventReasonNullableToJson(
-    enums.SearchTelematicsTrackingRequestEventReason?
-        searchTelematicsTrackingRequestEventReason) {
+  enums.SearchTelematicsTrackingRequestEventReason?
+  searchTelematicsTrackingRequestEventReason,
+) {
   return searchTelematicsTrackingRequestEventReason?.value;
 }
 
 String? searchTelematicsTrackingRequestEventReasonToJson(
-    enums.SearchTelematicsTrackingRequestEventReason
-        searchTelematicsTrackingRequestEventReason) {
+  enums.SearchTelematicsTrackingRequestEventReason
+  searchTelematicsTrackingRequestEventReason,
+) {
   return searchTelematicsTrackingRequestEventReason.value;
 }
 
 enums.SearchTelematicsTrackingRequestEventReason
-    searchTelematicsTrackingRequestEventReasonFromJson(
+searchTelematicsTrackingRequestEventReasonFromJson(
   Object? searchTelematicsTrackingRequestEventReason, [
   enums.SearchTelematicsTrackingRequestEventReason? defaultValue,
 ]) {
   return enums.SearchTelematicsTrackingRequestEventReason.values
           .firstWhereOrNull(
-              (e) => e.value == searchTelematicsTrackingRequestEventReason) ??
+            (e) => e.value == searchTelematicsTrackingRequestEventReason,
+          ) ??
       defaultValue ??
       enums.SearchTelematicsTrackingRequestEventReason.swaggerGeneratedUnknown;
 }
 
 enums.SearchTelematicsTrackingRequestEventReason?
-    searchTelematicsTrackingRequestEventReasonNullableFromJson(
+searchTelematicsTrackingRequestEventReasonNullableFromJson(
   Object? searchTelematicsTrackingRequestEventReason, [
   enums.SearchTelematicsTrackingRequestEventReason? defaultValue,
 ]) {
@@ -15959,13 +17780,15 @@ enums.SearchTelematicsTrackingRequestEventReason?
   }
   return enums.SearchTelematicsTrackingRequestEventReason.values
           .firstWhereOrNull(
-              (e) => e.value == searchTelematicsTrackingRequestEventReason) ??
+            (e) => e.value == searchTelematicsTrackingRequestEventReason,
+          ) ??
       defaultValue;
 }
 
 String searchTelematicsTrackingRequestEventReasonExplodedListToJson(
-    List<enums.SearchTelematicsTrackingRequestEventReason>?
-        searchTelematicsTrackingRequestEventReason) {
+  List<enums.SearchTelematicsTrackingRequestEventReason>?
+  searchTelematicsTrackingRequestEventReason,
+) {
   return searchTelematicsTrackingRequestEventReason
           ?.map((e) => e.value!)
           .join(',') ??
@@ -15973,8 +17796,9 @@ String searchTelematicsTrackingRequestEventReasonExplodedListToJson(
 }
 
 List<String> searchTelematicsTrackingRequestEventReasonListToJson(
-    List<enums.SearchTelematicsTrackingRequestEventReason>?
-        searchTelematicsTrackingRequestEventReason) {
+  List<enums.SearchTelematicsTrackingRequestEventReason>?
+  searchTelematicsTrackingRequestEventReason,
+) {
   if (searchTelematicsTrackingRequestEventReason == null) {
     return [];
   }
@@ -15985,7 +17809,7 @@ List<String> searchTelematicsTrackingRequestEventReasonListToJson(
 }
 
 List<enums.SearchTelematicsTrackingRequestEventReason>
-    searchTelematicsTrackingRequestEventReasonListFromJson(
+searchTelematicsTrackingRequestEventReasonListFromJson(
   List? searchTelematicsTrackingRequestEventReason, [
   List<enums.SearchTelematicsTrackingRequestEventReason>? defaultValue,
 ]) {
@@ -15994,13 +17818,14 @@ List<enums.SearchTelematicsTrackingRequestEventReason>
   }
 
   return searchTelematicsTrackingRequestEventReason
-      .map((e) =>
-          searchTelematicsTrackingRequestEventReasonFromJson(e.toString()))
+      .map(
+        (e) => searchTelematicsTrackingRequestEventReasonFromJson(e.toString()),
+      )
       .toList();
 }
 
 List<enums.SearchTelematicsTrackingRequestEventReason>?
-    searchTelematicsTrackingRequestEventReasonNullableListFromJson(
+searchTelematicsTrackingRequestEventReasonNullableListFromJson(
   List? searchTelematicsTrackingRequestEventReason, [
   List<enums.SearchTelematicsTrackingRequestEventReason>? defaultValue,
 ]) {
@@ -16009,18 +17834,21 @@ List<enums.SearchTelematicsTrackingRequestEventReason>?
   }
 
   return searchTelematicsTrackingRequestEventReason
-      .map((e) =>
-          searchTelematicsTrackingRequestEventReasonFromJson(e.toString()))
+      .map(
+        (e) => searchTelematicsTrackingRequestEventReasonFromJson(e.toString()),
+      )
       .toList();
 }
 
 String? subscriptionClientRolesNullableToJson(
-    enums.SubscriptionClientRoles? subscriptionClientRoles) {
+  enums.SubscriptionClientRoles? subscriptionClientRoles,
+) {
   return subscriptionClientRoles?.value;
 }
 
 String? subscriptionClientRolesToJson(
-    enums.SubscriptionClientRoles subscriptionClientRoles) {
+  enums.SubscriptionClientRoles subscriptionClientRoles,
+) {
   return subscriptionClientRoles.value;
 }
 
@@ -16028,8 +17856,9 @@ enums.SubscriptionClientRoles subscriptionClientRolesFromJson(
   Object? subscriptionClientRoles, [
   enums.SubscriptionClientRoles? defaultValue,
 ]) {
-  return enums.SubscriptionClientRoles.values
-          .firstWhereOrNull((e) => e.value == subscriptionClientRoles) ??
+  return enums.SubscriptionClientRoles.values.firstWhereOrNull(
+        (e) => e.value == subscriptionClientRoles,
+      ) ??
       defaultValue ??
       enums.SubscriptionClientRoles.swaggerGeneratedUnknown;
 }
@@ -16041,18 +17870,21 @@ enums.SubscriptionClientRoles? subscriptionClientRolesNullableFromJson(
   if (subscriptionClientRoles == null) {
     return null;
   }
-  return enums.SubscriptionClientRoles.values
-          .firstWhereOrNull((e) => e.value == subscriptionClientRoles) ??
+  return enums.SubscriptionClientRoles.values.firstWhereOrNull(
+        (e) => e.value == subscriptionClientRoles,
+      ) ??
       defaultValue;
 }
 
 String subscriptionClientRolesExplodedListToJson(
-    List<enums.SubscriptionClientRoles>? subscriptionClientRoles) {
+  List<enums.SubscriptionClientRoles>? subscriptionClientRoles,
+) {
   return subscriptionClientRoles?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> subscriptionClientRolesListToJson(
-    List<enums.SubscriptionClientRoles>? subscriptionClientRoles) {
+  List<enums.SubscriptionClientRoles>? subscriptionClientRoles,
+) {
   if (subscriptionClientRoles == null) {
     return [];
   }
@@ -16074,7 +17906,7 @@ List<enums.SubscriptionClientRoles> subscriptionClientRolesListFromJson(
 }
 
 List<enums.SubscriptionClientRoles>?
-    subscriptionClientRolesNullableListFromJson(
+subscriptionClientRolesNullableListFromJson(
   List? subscriptionClientRoles, [
   List<enums.SubscriptionClientRoles>? defaultValue,
 ]) {
@@ -16088,12 +17920,14 @@ List<enums.SubscriptionClientRoles>?
 }
 
 String? telematicsTrackingEventReasonNullableToJson(
-    enums.TelematicsTrackingEventReason? telematicsTrackingEventReason) {
+  enums.TelematicsTrackingEventReason? telematicsTrackingEventReason,
+) {
   return telematicsTrackingEventReason?.value;
 }
 
 String? telematicsTrackingEventReasonToJson(
-    enums.TelematicsTrackingEventReason telematicsTrackingEventReason) {
+  enums.TelematicsTrackingEventReason telematicsTrackingEventReason,
+) {
   return telematicsTrackingEventReason.value;
 }
 
@@ -16101,32 +17935,36 @@ enums.TelematicsTrackingEventReason telematicsTrackingEventReasonFromJson(
   Object? telematicsTrackingEventReason, [
   enums.TelematicsTrackingEventReason? defaultValue,
 ]) {
-  return enums.TelematicsTrackingEventReason.values
-          .firstWhereOrNull((e) => e.value == telematicsTrackingEventReason) ??
+  return enums.TelematicsTrackingEventReason.values.firstWhereOrNull(
+        (e) => e.value == telematicsTrackingEventReason,
+      ) ??
       defaultValue ??
       enums.TelematicsTrackingEventReason.swaggerGeneratedUnknown;
 }
 
 enums.TelematicsTrackingEventReason?
-    telematicsTrackingEventReasonNullableFromJson(
+telematicsTrackingEventReasonNullableFromJson(
   Object? telematicsTrackingEventReason, [
   enums.TelematicsTrackingEventReason? defaultValue,
 ]) {
   if (telematicsTrackingEventReason == null) {
     return null;
   }
-  return enums.TelematicsTrackingEventReason.values
-          .firstWhereOrNull((e) => e.value == telematicsTrackingEventReason) ??
+  return enums.TelematicsTrackingEventReason.values.firstWhereOrNull(
+        (e) => e.value == telematicsTrackingEventReason,
+      ) ??
       defaultValue;
 }
 
 String telematicsTrackingEventReasonExplodedListToJson(
-    List<enums.TelematicsTrackingEventReason>? telematicsTrackingEventReason) {
+  List<enums.TelematicsTrackingEventReason>? telematicsTrackingEventReason,
+) {
   return telematicsTrackingEventReason?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> telematicsTrackingEventReasonListToJson(
-    List<enums.TelematicsTrackingEventReason>? telematicsTrackingEventReason) {
+  List<enums.TelematicsTrackingEventReason>? telematicsTrackingEventReason,
+) {
   if (telematicsTrackingEventReason == null) {
     return [];
   }
@@ -16135,7 +17973,7 @@ List<String> telematicsTrackingEventReasonListToJson(
 }
 
 List<enums.TelematicsTrackingEventReason>
-    telematicsTrackingEventReasonListFromJson(
+telematicsTrackingEventReasonListFromJson(
   List? telematicsTrackingEventReason, [
   List<enums.TelematicsTrackingEventReason>? defaultValue,
 ]) {
@@ -16149,7 +17987,7 @@ List<enums.TelematicsTrackingEventReason>
 }
 
 List<enums.TelematicsTrackingEventReason>?
-    telematicsTrackingEventReasonNullableListFromJson(
+telematicsTrackingEventReasonNullableListFromJson(
   List? telematicsTrackingEventReason, [
   List<enums.TelematicsTrackingEventReason>? defaultValue,
 ]) {
@@ -16163,12 +18001,14 @@ List<enums.TelematicsTrackingEventReason>?
 }
 
 String? telematicsVehicleUsageLockStatusNullableToJson(
-    enums.TelematicsVehicleUsageLockStatus? telematicsVehicleUsageLockStatus) {
+  enums.TelematicsVehicleUsageLockStatus? telematicsVehicleUsageLockStatus,
+) {
   return telematicsVehicleUsageLockStatus?.value;
 }
 
 String? telematicsVehicleUsageLockStatusToJson(
-    enums.TelematicsVehicleUsageLockStatus telematicsVehicleUsageLockStatus) {
+  enums.TelematicsVehicleUsageLockStatus telematicsVehicleUsageLockStatus,
+) {
   return telematicsVehicleUsageLockStatus.value;
 }
 
@@ -16177,13 +18017,14 @@ enums.TelematicsVehicleUsageLockStatus telematicsVehicleUsageLockStatusFromJson(
   enums.TelematicsVehicleUsageLockStatus? defaultValue,
 ]) {
   return enums.TelematicsVehicleUsageLockStatus.values.firstWhereOrNull(
-          (e) => e.value == telematicsVehicleUsageLockStatus) ??
+        (e) => e.value == telematicsVehicleUsageLockStatus,
+      ) ??
       defaultValue ??
       enums.TelematicsVehicleUsageLockStatus.swaggerGeneratedUnknown;
 }
 
 enums.TelematicsVehicleUsageLockStatus?
-    telematicsVehicleUsageLockStatusNullableFromJson(
+telematicsVehicleUsageLockStatusNullableFromJson(
   Object? telematicsVehicleUsageLockStatus, [
   enums.TelematicsVehicleUsageLockStatus? defaultValue,
 ]) {
@@ -16191,19 +18032,22 @@ enums.TelematicsVehicleUsageLockStatus?
     return null;
   }
   return enums.TelematicsVehicleUsageLockStatus.values.firstWhereOrNull(
-          (e) => e.value == telematicsVehicleUsageLockStatus) ??
+        (e) => e.value == telematicsVehicleUsageLockStatus,
+      ) ??
       defaultValue;
 }
 
 String telematicsVehicleUsageLockStatusExplodedListToJson(
-    List<enums.TelematicsVehicleUsageLockStatus>?
-        telematicsVehicleUsageLockStatus) {
+  List<enums.TelematicsVehicleUsageLockStatus>?
+  telematicsVehicleUsageLockStatus,
+) {
   return telematicsVehicleUsageLockStatus?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> telematicsVehicleUsageLockStatusListToJson(
-    List<enums.TelematicsVehicleUsageLockStatus>?
-        telematicsVehicleUsageLockStatus) {
+  List<enums.TelematicsVehicleUsageLockStatus>?
+  telematicsVehicleUsageLockStatus,
+) {
   if (telematicsVehicleUsageLockStatus == null) {
     return [];
   }
@@ -16212,7 +18056,7 @@ List<String> telematicsVehicleUsageLockStatusListToJson(
 }
 
 List<enums.TelematicsVehicleUsageLockStatus>
-    telematicsVehicleUsageLockStatusListFromJson(
+telematicsVehicleUsageLockStatusListFromJson(
   List? telematicsVehicleUsageLockStatus, [
   List<enums.TelematicsVehicleUsageLockStatus>? defaultValue,
 ]) {
@@ -16226,7 +18070,7 @@ List<enums.TelematicsVehicleUsageLockStatus>
 }
 
 List<enums.TelematicsVehicleUsageLockStatus>?
-    telematicsVehicleUsageLockStatusNullableListFromJson(
+telematicsVehicleUsageLockStatusNullableListFromJson(
   List? telematicsVehicleUsageLockStatus, [
   List<enums.TelematicsVehicleUsageLockStatus>? defaultValue,
 ]) {
@@ -16240,7 +18084,8 @@ List<enums.TelematicsVehicleUsageLockStatus>?
 }
 
 String? terminateDayOptionNullableToJson(
-    enums.TerminateDayOption? terminateDayOption) {
+  enums.TerminateDayOption? terminateDayOption,
+) {
   return terminateDayOption?.value;
 }
 
@@ -16252,8 +18097,9 @@ enums.TerminateDayOption terminateDayOptionFromJson(
   Object? terminateDayOption, [
   enums.TerminateDayOption? defaultValue,
 ]) {
-  return enums.TerminateDayOption.values
-          .firstWhereOrNull((e) => e.value == terminateDayOption) ??
+  return enums.TerminateDayOption.values.firstWhereOrNull(
+        (e) => e.value == terminateDayOption,
+      ) ??
       defaultValue ??
       enums.TerminateDayOption.swaggerGeneratedUnknown;
 }
@@ -16265,18 +18111,21 @@ enums.TerminateDayOption? terminateDayOptionNullableFromJson(
   if (terminateDayOption == null) {
     return null;
   }
-  return enums.TerminateDayOption.values
-          .firstWhereOrNull((e) => e.value == terminateDayOption) ??
+  return enums.TerminateDayOption.values.firstWhereOrNull(
+        (e) => e.value == terminateDayOption,
+      ) ??
       defaultValue;
 }
 
 String terminateDayOptionExplodedListToJson(
-    List<enums.TerminateDayOption>? terminateDayOption) {
+  List<enums.TerminateDayOption>? terminateDayOption,
+) {
   return terminateDayOption?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> terminateDayOptionListToJson(
-    List<enums.TerminateDayOption>? terminateDayOption) {
+  List<enums.TerminateDayOption>? terminateDayOption,
+) {
   if (terminateDayOption == null) {
     return [];
   }
@@ -16311,12 +18160,14 @@ List<enums.TerminateDayOption>? terminateDayOptionNullableListFromJson(
 }
 
 String? updateIssueRequestPriorityNullableToJson(
-    enums.UpdateIssueRequestPriority? updateIssueRequestPriority) {
+  enums.UpdateIssueRequestPriority? updateIssueRequestPriority,
+) {
   return updateIssueRequestPriority?.value;
 }
 
 String? updateIssueRequestPriorityToJson(
-    enums.UpdateIssueRequestPriority updateIssueRequestPriority) {
+  enums.UpdateIssueRequestPriority updateIssueRequestPriority,
+) {
   return updateIssueRequestPriority.value;
 }
 
@@ -16324,8 +18175,9 @@ enums.UpdateIssueRequestPriority updateIssueRequestPriorityFromJson(
   Object? updateIssueRequestPriority, [
   enums.UpdateIssueRequestPriority? defaultValue,
 ]) {
-  return enums.UpdateIssueRequestPriority.values
-          .firstWhereOrNull((e) => e.value == updateIssueRequestPriority) ??
+  return enums.UpdateIssueRequestPriority.values.firstWhereOrNull(
+        (e) => e.value == updateIssueRequestPriority,
+      ) ??
       defaultValue ??
       enums.UpdateIssueRequestPriority.swaggerGeneratedUnknown;
 }
@@ -16337,18 +18189,21 @@ enums.UpdateIssueRequestPriority? updateIssueRequestPriorityNullableFromJson(
   if (updateIssueRequestPriority == null) {
     return null;
   }
-  return enums.UpdateIssueRequestPriority.values
-          .firstWhereOrNull((e) => e.value == updateIssueRequestPriority) ??
+  return enums.UpdateIssueRequestPriority.values.firstWhereOrNull(
+        (e) => e.value == updateIssueRequestPriority,
+      ) ??
       defaultValue;
 }
 
 String updateIssueRequestPriorityExplodedListToJson(
-    List<enums.UpdateIssueRequestPriority>? updateIssueRequestPriority) {
+  List<enums.UpdateIssueRequestPriority>? updateIssueRequestPriority,
+) {
   return updateIssueRequestPriority?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> updateIssueRequestPriorityListToJson(
-    List<enums.UpdateIssueRequestPriority>? updateIssueRequestPriority) {
+  List<enums.UpdateIssueRequestPriority>? updateIssueRequestPriority,
+) {
   if (updateIssueRequestPriority == null) {
     return [];
   }
@@ -16370,7 +18225,7 @@ List<enums.UpdateIssueRequestPriority> updateIssueRequestPriorityListFromJson(
 }
 
 List<enums.UpdateIssueRequestPriority>?
-    updateIssueRequestPriorityNullableListFromJson(
+updateIssueRequestPriorityNullableListFromJson(
   List? updateIssueRequestPriority, [
   List<enums.UpdateIssueRequestPriority>? defaultValue,
 ]) {
@@ -16384,12 +18239,14 @@ List<enums.UpdateIssueRequestPriority>?
 }
 
 String? updateIssueRequestStatusNullableToJson(
-    enums.UpdateIssueRequestStatus? updateIssueRequestStatus) {
+  enums.UpdateIssueRequestStatus? updateIssueRequestStatus,
+) {
   return updateIssueRequestStatus?.value;
 }
 
 String? updateIssueRequestStatusToJson(
-    enums.UpdateIssueRequestStatus updateIssueRequestStatus) {
+  enums.UpdateIssueRequestStatus updateIssueRequestStatus,
+) {
   return updateIssueRequestStatus.value;
 }
 
@@ -16397,8 +18254,9 @@ enums.UpdateIssueRequestStatus updateIssueRequestStatusFromJson(
   Object? updateIssueRequestStatus, [
   enums.UpdateIssueRequestStatus? defaultValue,
 ]) {
-  return enums.UpdateIssueRequestStatus.values
-          .firstWhereOrNull((e) => e.value == updateIssueRequestStatus) ??
+  return enums.UpdateIssueRequestStatus.values.firstWhereOrNull(
+        (e) => e.value == updateIssueRequestStatus,
+      ) ??
       defaultValue ??
       enums.UpdateIssueRequestStatus.swaggerGeneratedUnknown;
 }
@@ -16410,18 +18268,21 @@ enums.UpdateIssueRequestStatus? updateIssueRequestStatusNullableFromJson(
   if (updateIssueRequestStatus == null) {
     return null;
   }
-  return enums.UpdateIssueRequestStatus.values
-          .firstWhereOrNull((e) => e.value == updateIssueRequestStatus) ??
+  return enums.UpdateIssueRequestStatus.values.firstWhereOrNull(
+        (e) => e.value == updateIssueRequestStatus,
+      ) ??
       defaultValue;
 }
 
 String updateIssueRequestStatusExplodedListToJson(
-    List<enums.UpdateIssueRequestStatus>? updateIssueRequestStatus) {
+  List<enums.UpdateIssueRequestStatus>? updateIssueRequestStatus,
+) {
   return updateIssueRequestStatus?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> updateIssueRequestStatusListToJson(
-    List<enums.UpdateIssueRequestStatus>? updateIssueRequestStatus) {
+  List<enums.UpdateIssueRequestStatus>? updateIssueRequestStatus,
+) {
   if (updateIssueRequestStatus == null) {
     return [];
   }
@@ -16443,7 +18304,7 @@ List<enums.UpdateIssueRequestStatus> updateIssueRequestStatusListFromJson(
 }
 
 List<enums.UpdateIssueRequestStatus>?
-    updateIssueRequestStatusNullableListFromJson(
+updateIssueRequestStatusNullableListFromJson(
   List? updateIssueRequestStatus, [
   List<enums.UpdateIssueRequestStatus>? defaultValue,
 ]) {
@@ -16457,12 +18318,14 @@ List<enums.UpdateIssueRequestStatus>?
 }
 
 String? updateVehicleRequestApprovalTypeNullableToJson(
-    enums.UpdateVehicleRequestApprovalType? updateVehicleRequestApprovalType) {
+  enums.UpdateVehicleRequestApprovalType? updateVehicleRequestApprovalType,
+) {
   return updateVehicleRequestApprovalType?.value;
 }
 
 String? updateVehicleRequestApprovalTypeToJson(
-    enums.UpdateVehicleRequestApprovalType updateVehicleRequestApprovalType) {
+  enums.UpdateVehicleRequestApprovalType updateVehicleRequestApprovalType,
+) {
   return updateVehicleRequestApprovalType.value;
 }
 
@@ -16471,13 +18334,14 @@ enums.UpdateVehicleRequestApprovalType updateVehicleRequestApprovalTypeFromJson(
   enums.UpdateVehicleRequestApprovalType? defaultValue,
 ]) {
   return enums.UpdateVehicleRequestApprovalType.values.firstWhereOrNull(
-          (e) => e.value == updateVehicleRequestApprovalType) ??
+        (e) => e.value == updateVehicleRequestApprovalType,
+      ) ??
       defaultValue ??
       enums.UpdateVehicleRequestApprovalType.swaggerGeneratedUnknown;
 }
 
 enums.UpdateVehicleRequestApprovalType?
-    updateVehicleRequestApprovalTypeNullableFromJson(
+updateVehicleRequestApprovalTypeNullableFromJson(
   Object? updateVehicleRequestApprovalType, [
   enums.UpdateVehicleRequestApprovalType? defaultValue,
 ]) {
@@ -16485,19 +18349,22 @@ enums.UpdateVehicleRequestApprovalType?
     return null;
   }
   return enums.UpdateVehicleRequestApprovalType.values.firstWhereOrNull(
-          (e) => e.value == updateVehicleRequestApprovalType) ??
+        (e) => e.value == updateVehicleRequestApprovalType,
+      ) ??
       defaultValue;
 }
 
 String updateVehicleRequestApprovalTypeExplodedListToJson(
-    List<enums.UpdateVehicleRequestApprovalType>?
-        updateVehicleRequestApprovalType) {
+  List<enums.UpdateVehicleRequestApprovalType>?
+  updateVehicleRequestApprovalType,
+) {
   return updateVehicleRequestApprovalType?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> updateVehicleRequestApprovalTypeListToJson(
-    List<enums.UpdateVehicleRequestApprovalType>?
-        updateVehicleRequestApprovalType) {
+  List<enums.UpdateVehicleRequestApprovalType>?
+  updateVehicleRequestApprovalType,
+) {
   if (updateVehicleRequestApprovalType == null) {
     return [];
   }
@@ -16506,7 +18373,7 @@ List<String> updateVehicleRequestApprovalTypeListToJson(
 }
 
 List<enums.UpdateVehicleRequestApprovalType>
-    updateVehicleRequestApprovalTypeListFromJson(
+updateVehicleRequestApprovalTypeListFromJson(
   List? updateVehicleRequestApprovalType, [
   List<enums.UpdateVehicleRequestApprovalType>? defaultValue,
 ]) {
@@ -16520,7 +18387,7 @@ List<enums.UpdateVehicleRequestApprovalType>
 }
 
 List<enums.UpdateVehicleRequestApprovalType>?
-    updateVehicleRequestApprovalTypeNullableListFromJson(
+updateVehicleRequestApprovalTypeNullableListFromJson(
   List? updateVehicleRequestApprovalType, [
   List<enums.UpdateVehicleRequestApprovalType>? defaultValue,
 ]) {
@@ -16534,30 +18401,33 @@ List<enums.UpdateVehicleRequestApprovalType>?
 }
 
 String? updateVehicleRequestOperationalStatusNullableToJson(
-    enums.UpdateVehicleRequestOperationalStatus?
-        updateVehicleRequestOperationalStatus) {
+  enums.UpdateVehicleRequestOperationalStatus?
+  updateVehicleRequestOperationalStatus,
+) {
   return updateVehicleRequestOperationalStatus?.value;
 }
 
 String? updateVehicleRequestOperationalStatusToJson(
-    enums.UpdateVehicleRequestOperationalStatus
-        updateVehicleRequestOperationalStatus) {
+  enums.UpdateVehicleRequestOperationalStatus
+  updateVehicleRequestOperationalStatus,
+) {
   return updateVehicleRequestOperationalStatus.value;
 }
 
 enums.UpdateVehicleRequestOperationalStatus
-    updateVehicleRequestOperationalStatusFromJson(
+updateVehicleRequestOperationalStatusFromJson(
   Object? updateVehicleRequestOperationalStatus, [
   enums.UpdateVehicleRequestOperationalStatus? defaultValue,
 ]) {
   return enums.UpdateVehicleRequestOperationalStatus.values.firstWhereOrNull(
-          (e) => e.value == updateVehicleRequestOperationalStatus) ??
+        (e) => e.value == updateVehicleRequestOperationalStatus,
+      ) ??
       defaultValue ??
       enums.UpdateVehicleRequestOperationalStatus.swaggerGeneratedUnknown;
 }
 
 enums.UpdateVehicleRequestOperationalStatus?
-    updateVehicleRequestOperationalStatusNullableFromJson(
+updateVehicleRequestOperationalStatusNullableFromJson(
   Object? updateVehicleRequestOperationalStatus, [
   enums.UpdateVehicleRequestOperationalStatus? defaultValue,
 ]) {
@@ -16565,13 +18435,15 @@ enums.UpdateVehicleRequestOperationalStatus?
     return null;
   }
   return enums.UpdateVehicleRequestOperationalStatus.values.firstWhereOrNull(
-          (e) => e.value == updateVehicleRequestOperationalStatus) ??
+        (e) => e.value == updateVehicleRequestOperationalStatus,
+      ) ??
       defaultValue;
 }
 
 String updateVehicleRequestOperationalStatusExplodedListToJson(
-    List<enums.UpdateVehicleRequestOperationalStatus>?
-        updateVehicleRequestOperationalStatus) {
+  List<enums.UpdateVehicleRequestOperationalStatus>?
+  updateVehicleRequestOperationalStatus,
+) {
   return updateVehicleRequestOperationalStatus
           ?.map((e) => e.value!)
           .join(',') ??
@@ -16579,8 +18451,9 @@ String updateVehicleRequestOperationalStatusExplodedListToJson(
 }
 
 List<String> updateVehicleRequestOperationalStatusListToJson(
-    List<enums.UpdateVehicleRequestOperationalStatus>?
-        updateVehicleRequestOperationalStatus) {
+  List<enums.UpdateVehicleRequestOperationalStatus>?
+  updateVehicleRequestOperationalStatus,
+) {
   if (updateVehicleRequestOperationalStatus == null) {
     return [];
   }
@@ -16589,7 +18462,7 @@ List<String> updateVehicleRequestOperationalStatusListToJson(
 }
 
 List<enums.UpdateVehicleRequestOperationalStatus>
-    updateVehicleRequestOperationalStatusListFromJson(
+updateVehicleRequestOperationalStatusListFromJson(
   List? updateVehicleRequestOperationalStatus, [
   List<enums.UpdateVehicleRequestOperationalStatus>? defaultValue,
 ]) {
@@ -16603,7 +18476,7 @@ List<enums.UpdateVehicleRequestOperationalStatus>
 }
 
 List<enums.UpdateVehicleRequestOperationalStatus>?
-    updateVehicleRequestOperationalStatusNullableListFromJson(
+updateVehicleRequestOperationalStatusNullableListFromJson(
   List? updateVehicleRequestOperationalStatus, [
   List<enums.UpdateVehicleRequestOperationalStatus>? defaultValue,
 ]) {
@@ -16617,12 +18490,14 @@ List<enums.UpdateVehicleRequestOperationalStatus>?
 }
 
 String? validationErrorCodeNullableToJson(
-    enums.ValidationErrorCode? validationErrorCode) {
+  enums.ValidationErrorCode? validationErrorCode,
+) {
   return validationErrorCode?.value;
 }
 
 String? validationErrorCodeToJson(
-    enums.ValidationErrorCode validationErrorCode) {
+  enums.ValidationErrorCode validationErrorCode,
+) {
   return validationErrorCode.value;
 }
 
@@ -16630,8 +18505,9 @@ enums.ValidationErrorCode validationErrorCodeFromJson(
   Object? validationErrorCode, [
   enums.ValidationErrorCode? defaultValue,
 ]) {
-  return enums.ValidationErrorCode.values
-          .firstWhereOrNull((e) => e.value == validationErrorCode) ??
+  return enums.ValidationErrorCode.values.firstWhereOrNull(
+        (e) => e.value == validationErrorCode,
+      ) ??
       defaultValue ??
       enums.ValidationErrorCode.swaggerGeneratedUnknown;
 }
@@ -16643,18 +18519,21 @@ enums.ValidationErrorCode? validationErrorCodeNullableFromJson(
   if (validationErrorCode == null) {
     return null;
   }
-  return enums.ValidationErrorCode.values
-          .firstWhereOrNull((e) => e.value == validationErrorCode) ??
+  return enums.ValidationErrorCode.values.firstWhereOrNull(
+        (e) => e.value == validationErrorCode,
+      ) ??
       defaultValue;
 }
 
 String validationErrorCodeExplodedListToJson(
-    List<enums.ValidationErrorCode>? validationErrorCode) {
+  List<enums.ValidationErrorCode>? validationErrorCode,
+) {
   return validationErrorCode?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> validationErrorCodeListToJson(
-    List<enums.ValidationErrorCode>? validationErrorCode) {
+  List<enums.ValidationErrorCode>? validationErrorCode,
+) {
   if (validationErrorCode == null) {
     return [];
   }
@@ -16689,12 +18568,14 @@ List<enums.ValidationErrorCode>? validationErrorCodeNullableListFromJson(
 }
 
 String? vehicleOperationalStatusNullableToJson(
-    enums.VehicleOperationalStatus? vehicleOperationalStatus) {
+  enums.VehicleOperationalStatus? vehicleOperationalStatus,
+) {
   return vehicleOperationalStatus?.value;
 }
 
 String? vehicleOperationalStatusToJson(
-    enums.VehicleOperationalStatus vehicleOperationalStatus) {
+  enums.VehicleOperationalStatus vehicleOperationalStatus,
+) {
   return vehicleOperationalStatus.value;
 }
 
@@ -16702,8 +18583,9 @@ enums.VehicleOperationalStatus vehicleOperationalStatusFromJson(
   Object? vehicleOperationalStatus, [
   enums.VehicleOperationalStatus? defaultValue,
 ]) {
-  return enums.VehicleOperationalStatus.values
-          .firstWhereOrNull((e) => e.value == vehicleOperationalStatus) ??
+  return enums.VehicleOperationalStatus.values.firstWhereOrNull(
+        (e) => e.value == vehicleOperationalStatus,
+      ) ??
       defaultValue ??
       enums.VehicleOperationalStatus.swaggerGeneratedUnknown;
 }
@@ -16715,18 +18597,21 @@ enums.VehicleOperationalStatus? vehicleOperationalStatusNullableFromJson(
   if (vehicleOperationalStatus == null) {
     return null;
   }
-  return enums.VehicleOperationalStatus.values
-          .firstWhereOrNull((e) => e.value == vehicleOperationalStatus) ??
+  return enums.VehicleOperationalStatus.values.firstWhereOrNull(
+        (e) => e.value == vehicleOperationalStatus,
+      ) ??
       defaultValue;
 }
 
 String vehicleOperationalStatusExplodedListToJson(
-    List<enums.VehicleOperationalStatus>? vehicleOperationalStatus) {
+  List<enums.VehicleOperationalStatus>? vehicleOperationalStatus,
+) {
   return vehicleOperationalStatus?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> vehicleOperationalStatusListToJson(
-    List<enums.VehicleOperationalStatus>? vehicleOperationalStatus) {
+  List<enums.VehicleOperationalStatus>? vehicleOperationalStatus,
+) {
   if (vehicleOperationalStatus == null) {
     return [];
   }
@@ -16748,7 +18633,7 @@ List<enums.VehicleOperationalStatus> vehicleOperationalStatusListFromJson(
 }
 
 List<enums.VehicleOperationalStatus>?
-    vehicleOperationalStatusNullableListFromJson(
+vehicleOperationalStatusNullableListFromJson(
   List? vehicleOperationalStatus, [
   List<enums.VehicleOperationalStatus>? defaultValue,
 ]) {
@@ -16762,12 +18647,14 @@ List<enums.VehicleOperationalStatus>?
 }
 
 String? vehicleContractBattMaxTypeNullableToJson(
-    enums.VehicleContractBattMaxType? vehicleContractBattMaxType) {
+  enums.VehicleContractBattMaxType? vehicleContractBattMaxType,
+) {
   return vehicleContractBattMaxType?.value;
 }
 
 String? vehicleContractBattMaxTypeToJson(
-    enums.VehicleContractBattMaxType vehicleContractBattMaxType) {
+  enums.VehicleContractBattMaxType vehicleContractBattMaxType,
+) {
   return vehicleContractBattMaxType.value;
 }
 
@@ -16775,8 +18662,9 @@ enums.VehicleContractBattMaxType vehicleContractBattMaxTypeFromJson(
   Object? vehicleContractBattMaxType, [
   enums.VehicleContractBattMaxType? defaultValue,
 ]) {
-  return enums.VehicleContractBattMaxType.values
-          .firstWhereOrNull((e) => e.value == vehicleContractBattMaxType) ??
+  return enums.VehicleContractBattMaxType.values.firstWhereOrNull(
+        (e) => e.value == vehicleContractBattMaxType,
+      ) ??
       defaultValue ??
       enums.VehicleContractBattMaxType.swaggerGeneratedUnknown;
 }
@@ -16788,18 +18676,21 @@ enums.VehicleContractBattMaxType? vehicleContractBattMaxTypeNullableFromJson(
   if (vehicleContractBattMaxType == null) {
     return null;
   }
-  return enums.VehicleContractBattMaxType.values
-          .firstWhereOrNull((e) => e.value == vehicleContractBattMaxType) ??
+  return enums.VehicleContractBattMaxType.values.firstWhereOrNull(
+        (e) => e.value == vehicleContractBattMaxType,
+      ) ??
       defaultValue;
 }
 
 String vehicleContractBattMaxTypeExplodedListToJson(
-    List<enums.VehicleContractBattMaxType>? vehicleContractBattMaxType) {
+  List<enums.VehicleContractBattMaxType>? vehicleContractBattMaxType,
+) {
   return vehicleContractBattMaxType?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> vehicleContractBattMaxTypeListToJson(
-    List<enums.VehicleContractBattMaxType>? vehicleContractBattMaxType) {
+  List<enums.VehicleContractBattMaxType>? vehicleContractBattMaxType,
+) {
   if (vehicleContractBattMaxType == null) {
     return [];
   }
@@ -16821,7 +18712,7 @@ List<enums.VehicleContractBattMaxType> vehicleContractBattMaxTypeListFromJson(
 }
 
 List<enums.VehicleContractBattMaxType>?
-    vehicleContractBattMaxTypeNullableListFromJson(
+vehicleContractBattMaxTypeNullableListFromJson(
   List? vehicleContractBattMaxType, [
   List<enums.VehicleContractBattMaxType>? defaultValue,
 ]) {
@@ -16835,30 +18726,31 @@ List<enums.VehicleContractBattMaxType>?
 }
 
 String? vehicleLockStatusCentralLockStatusNullableToJson(
-    enums.VehicleLockStatusCentralLockStatus?
-        vehicleLockStatusCentralLockStatus) {
+  enums.VehicleLockStatusCentralLockStatus? vehicleLockStatusCentralLockStatus,
+) {
   return vehicleLockStatusCentralLockStatus?.value;
 }
 
 String? vehicleLockStatusCentralLockStatusToJson(
-    enums.VehicleLockStatusCentralLockStatus
-        vehicleLockStatusCentralLockStatus) {
+  enums.VehicleLockStatusCentralLockStatus vehicleLockStatusCentralLockStatus,
+) {
   return vehicleLockStatusCentralLockStatus.value;
 }
 
 enums.VehicleLockStatusCentralLockStatus
-    vehicleLockStatusCentralLockStatusFromJson(
+vehicleLockStatusCentralLockStatusFromJson(
   Object? vehicleLockStatusCentralLockStatus, [
   enums.VehicleLockStatusCentralLockStatus? defaultValue,
 ]) {
   return enums.VehicleLockStatusCentralLockStatus.values.firstWhereOrNull(
-          (e) => e.value == vehicleLockStatusCentralLockStatus) ??
+        (e) => e.value == vehicleLockStatusCentralLockStatus,
+      ) ??
       defaultValue ??
       enums.VehicleLockStatusCentralLockStatus.swaggerGeneratedUnknown;
 }
 
 enums.VehicleLockStatusCentralLockStatus?
-    vehicleLockStatusCentralLockStatusNullableFromJson(
+vehicleLockStatusCentralLockStatusNullableFromJson(
   Object? vehicleLockStatusCentralLockStatus, [
   enums.VehicleLockStatusCentralLockStatus? defaultValue,
 ]) {
@@ -16866,20 +18758,23 @@ enums.VehicleLockStatusCentralLockStatus?
     return null;
   }
   return enums.VehicleLockStatusCentralLockStatus.values.firstWhereOrNull(
-          (e) => e.value == vehicleLockStatusCentralLockStatus) ??
+        (e) => e.value == vehicleLockStatusCentralLockStatus,
+      ) ??
       defaultValue;
 }
 
 String vehicleLockStatusCentralLockStatusExplodedListToJson(
-    List<enums.VehicleLockStatusCentralLockStatus>?
-        vehicleLockStatusCentralLockStatus) {
+  List<enums.VehicleLockStatusCentralLockStatus>?
+  vehicleLockStatusCentralLockStatus,
+) {
   return vehicleLockStatusCentralLockStatus?.map((e) => e.value!).join(',') ??
       '';
 }
 
 List<String> vehicleLockStatusCentralLockStatusListToJson(
-    List<enums.VehicleLockStatusCentralLockStatus>?
-        vehicleLockStatusCentralLockStatus) {
+  List<enums.VehicleLockStatusCentralLockStatus>?
+  vehicleLockStatusCentralLockStatus,
+) {
   if (vehicleLockStatusCentralLockStatus == null) {
     return [];
   }
@@ -16888,7 +18783,7 @@ List<String> vehicleLockStatusCentralLockStatusListToJson(
 }
 
 List<enums.VehicleLockStatusCentralLockStatus>
-    vehicleLockStatusCentralLockStatusListFromJson(
+vehicleLockStatusCentralLockStatusListFromJson(
   List? vehicleLockStatusCentralLockStatus, [
   List<enums.VehicleLockStatusCentralLockStatus>? defaultValue,
 ]) {
@@ -16902,7 +18797,7 @@ List<enums.VehicleLockStatusCentralLockStatus>
 }
 
 List<enums.VehicleLockStatusCentralLockStatus>?
-    vehicleLockStatusCentralLockStatusNullableListFromJson(
+vehicleLockStatusCentralLockStatusNullableListFromJson(
   List? vehicleLockStatusCentralLockStatus, [
   List<enums.VehicleLockStatusCentralLockStatus>? defaultValue,
 ]) {
@@ -16916,30 +18811,31 @@ List<enums.VehicleLockStatusCentralLockStatus>?
 }
 
 String? vehicleLockStatusImmobilizerStatusNullableToJson(
-    enums.VehicleLockStatusImmobilizerStatus?
-        vehicleLockStatusImmobilizerStatus) {
+  enums.VehicleLockStatusImmobilizerStatus? vehicleLockStatusImmobilizerStatus,
+) {
   return vehicleLockStatusImmobilizerStatus?.value;
 }
 
 String? vehicleLockStatusImmobilizerStatusToJson(
-    enums.VehicleLockStatusImmobilizerStatus
-        vehicleLockStatusImmobilizerStatus) {
+  enums.VehicleLockStatusImmobilizerStatus vehicleLockStatusImmobilizerStatus,
+) {
   return vehicleLockStatusImmobilizerStatus.value;
 }
 
 enums.VehicleLockStatusImmobilizerStatus
-    vehicleLockStatusImmobilizerStatusFromJson(
+vehicleLockStatusImmobilizerStatusFromJson(
   Object? vehicleLockStatusImmobilizerStatus, [
   enums.VehicleLockStatusImmobilizerStatus? defaultValue,
 ]) {
   return enums.VehicleLockStatusImmobilizerStatus.values.firstWhereOrNull(
-          (e) => e.value == vehicleLockStatusImmobilizerStatus) ??
+        (e) => e.value == vehicleLockStatusImmobilizerStatus,
+      ) ??
       defaultValue ??
       enums.VehicleLockStatusImmobilizerStatus.swaggerGeneratedUnknown;
 }
 
 enums.VehicleLockStatusImmobilizerStatus?
-    vehicleLockStatusImmobilizerStatusNullableFromJson(
+vehicleLockStatusImmobilizerStatusNullableFromJson(
   Object? vehicleLockStatusImmobilizerStatus, [
   enums.VehicleLockStatusImmobilizerStatus? defaultValue,
 ]) {
@@ -16947,20 +18843,23 @@ enums.VehicleLockStatusImmobilizerStatus?
     return null;
   }
   return enums.VehicleLockStatusImmobilizerStatus.values.firstWhereOrNull(
-          (e) => e.value == vehicleLockStatusImmobilizerStatus) ??
+        (e) => e.value == vehicleLockStatusImmobilizerStatus,
+      ) ??
       defaultValue;
 }
 
 String vehicleLockStatusImmobilizerStatusExplodedListToJson(
-    List<enums.VehicleLockStatusImmobilizerStatus>?
-        vehicleLockStatusImmobilizerStatus) {
+  List<enums.VehicleLockStatusImmobilizerStatus>?
+  vehicleLockStatusImmobilizerStatus,
+) {
   return vehicleLockStatusImmobilizerStatus?.map((e) => e.value!).join(',') ??
       '';
 }
 
 List<String> vehicleLockStatusImmobilizerStatusListToJson(
-    List<enums.VehicleLockStatusImmobilizerStatus>?
-        vehicleLockStatusImmobilizerStatus) {
+  List<enums.VehicleLockStatusImmobilizerStatus>?
+  vehicleLockStatusImmobilizerStatus,
+) {
   if (vehicleLockStatusImmobilizerStatus == null) {
     return [];
   }
@@ -16969,7 +18868,7 @@ List<String> vehicleLockStatusImmobilizerStatusListToJson(
 }
 
 List<enums.VehicleLockStatusImmobilizerStatus>
-    vehicleLockStatusImmobilizerStatusListFromJson(
+vehicleLockStatusImmobilizerStatusListFromJson(
   List? vehicleLockStatusImmobilizerStatus, [
   List<enums.VehicleLockStatusImmobilizerStatus>? defaultValue,
 ]) {
@@ -16983,7 +18882,7 @@ List<enums.VehicleLockStatusImmobilizerStatus>
 }
 
 List<enums.VehicleLockStatusImmobilizerStatus>?
-    vehicleLockStatusImmobilizerStatusNullableListFromJson(
+vehicleLockStatusImmobilizerStatusNullableListFromJson(
   List? vehicleLockStatusImmobilizerStatus, [
   List<enums.VehicleLockStatusImmobilizerStatus>? defaultValue,
 ]) {
@@ -16997,7 +18896,8 @@ List<enums.VehicleLockStatusImmobilizerStatus>?
 }
 
 String? vehicleUsageStatusNullableToJson(
-    enums.VehicleUsageStatus? vehicleUsageStatus) {
+  enums.VehicleUsageStatus? vehicleUsageStatus,
+) {
   return vehicleUsageStatus?.value;
 }
 
@@ -17009,8 +18909,9 @@ enums.VehicleUsageStatus vehicleUsageStatusFromJson(
   Object? vehicleUsageStatus, [
   enums.VehicleUsageStatus? defaultValue,
 ]) {
-  return enums.VehicleUsageStatus.values
-          .firstWhereOrNull((e) => e.value == vehicleUsageStatus) ??
+  return enums.VehicleUsageStatus.values.firstWhereOrNull(
+        (e) => e.value == vehicleUsageStatus,
+      ) ??
       defaultValue ??
       enums.VehicleUsageStatus.swaggerGeneratedUnknown;
 }
@@ -17022,18 +18923,21 @@ enums.VehicleUsageStatus? vehicleUsageStatusNullableFromJson(
   if (vehicleUsageStatus == null) {
     return null;
   }
-  return enums.VehicleUsageStatus.values
-          .firstWhereOrNull((e) => e.value == vehicleUsageStatus) ??
+  return enums.VehicleUsageStatus.values.firstWhereOrNull(
+        (e) => e.value == vehicleUsageStatus,
+      ) ??
       defaultValue;
 }
 
 String vehicleUsageStatusExplodedListToJson(
-    List<enums.VehicleUsageStatus>? vehicleUsageStatus) {
+  List<enums.VehicleUsageStatus>? vehicleUsageStatus,
+) {
   return vehicleUsageStatus?.map((e) => e.value!).join(',') ?? '';
 }
 
 List<String> vehicleUsageStatusListToJson(
-    List<enums.VehicleUsageStatus>? vehicleUsageStatus) {
+  List<enums.VehicleUsageStatus>? vehicleUsageStatus,
+) {
   if (vehicleUsageStatus == null) {
     return [];
   }
@@ -17068,30 +18972,33 @@ List<enums.VehicleUsageStatus>? vehicleUsageStatusNullableListFromJson(
 }
 
 String? vehicleUsageUpdateStatusRequestStatusNullableToJson(
-    enums.VehicleUsageUpdateStatusRequestStatus?
-        vehicleUsageUpdateStatusRequestStatus) {
+  enums.VehicleUsageUpdateStatusRequestStatus?
+  vehicleUsageUpdateStatusRequestStatus,
+) {
   return vehicleUsageUpdateStatusRequestStatus?.value;
 }
 
 String? vehicleUsageUpdateStatusRequestStatusToJson(
-    enums.VehicleUsageUpdateStatusRequestStatus
-        vehicleUsageUpdateStatusRequestStatus) {
+  enums.VehicleUsageUpdateStatusRequestStatus
+  vehicleUsageUpdateStatusRequestStatus,
+) {
   return vehicleUsageUpdateStatusRequestStatus.value;
 }
 
 enums.VehicleUsageUpdateStatusRequestStatus
-    vehicleUsageUpdateStatusRequestStatusFromJson(
+vehicleUsageUpdateStatusRequestStatusFromJson(
   Object? vehicleUsageUpdateStatusRequestStatus, [
   enums.VehicleUsageUpdateStatusRequestStatus? defaultValue,
 ]) {
   return enums.VehicleUsageUpdateStatusRequestStatus.values.firstWhereOrNull(
-          (e) => e.value == vehicleUsageUpdateStatusRequestStatus) ??
+        (e) => e.value == vehicleUsageUpdateStatusRequestStatus,
+      ) ??
       defaultValue ??
       enums.VehicleUsageUpdateStatusRequestStatus.swaggerGeneratedUnknown;
 }
 
 enums.VehicleUsageUpdateStatusRequestStatus?
-    vehicleUsageUpdateStatusRequestStatusNullableFromJson(
+vehicleUsageUpdateStatusRequestStatusNullableFromJson(
   Object? vehicleUsageUpdateStatusRequestStatus, [
   enums.VehicleUsageUpdateStatusRequestStatus? defaultValue,
 ]) {
@@ -17099,13 +19006,15 @@ enums.VehicleUsageUpdateStatusRequestStatus?
     return null;
   }
   return enums.VehicleUsageUpdateStatusRequestStatus.values.firstWhereOrNull(
-          (e) => e.value == vehicleUsageUpdateStatusRequestStatus) ??
+        (e) => e.value == vehicleUsageUpdateStatusRequestStatus,
+      ) ??
       defaultValue;
 }
 
 String vehicleUsageUpdateStatusRequestStatusExplodedListToJson(
-    List<enums.VehicleUsageUpdateStatusRequestStatus>?
-        vehicleUsageUpdateStatusRequestStatus) {
+  List<enums.VehicleUsageUpdateStatusRequestStatus>?
+  vehicleUsageUpdateStatusRequestStatus,
+) {
   return vehicleUsageUpdateStatusRequestStatus
           ?.map((e) => e.value!)
           .join(',') ??
@@ -17113,8 +19022,9 @@ String vehicleUsageUpdateStatusRequestStatusExplodedListToJson(
 }
 
 List<String> vehicleUsageUpdateStatusRequestStatusListToJson(
-    List<enums.VehicleUsageUpdateStatusRequestStatus>?
-        vehicleUsageUpdateStatusRequestStatus) {
+  List<enums.VehicleUsageUpdateStatusRequestStatus>?
+  vehicleUsageUpdateStatusRequestStatus,
+) {
   if (vehicleUsageUpdateStatusRequestStatus == null) {
     return [];
   }
@@ -17123,7 +19033,7 @@ List<String> vehicleUsageUpdateStatusRequestStatusListToJson(
 }
 
 List<enums.VehicleUsageUpdateStatusRequestStatus>
-    vehicleUsageUpdateStatusRequestStatusListFromJson(
+vehicleUsageUpdateStatusRequestStatusListFromJson(
   List? vehicleUsageUpdateStatusRequestStatus, [
   List<enums.VehicleUsageUpdateStatusRequestStatus>? defaultValue,
 ]) {
@@ -17137,7 +19047,7 @@ List<enums.VehicleUsageUpdateStatusRequestStatus>
 }
 
 List<enums.VehicleUsageUpdateStatusRequestStatus>?
-    vehicleUsageUpdateStatusRequestStatusNullableListFromJson(
+vehicleUsageUpdateStatusRequestStatusNullableListFromJson(
   List? vehicleUsageUpdateStatusRequestStatus, [
   List<enums.VehicleUsageUpdateStatusRequestStatus>? defaultValue,
 ]) {

@@ -905,14 +905,16 @@ enum ValidationErrorCode {
   canonlychangeformulaforusagecontract('CanOnlyChangeFormulaForUsageContract'),
   @JsonValue('CanOnlyChangeCommitmentForFanOrBusinessContract')
   canonlychangecommitmentforfanorbusinesscontract(
-      'CanOnlyChangeCommitmentForFanOrBusinessContract'),
+    'CanOnlyChangeCommitmentForFanOrBusinessContract',
+  ),
   @JsonValue('CanOnlyChangeOnInvoiceDay')
   canonlychangeoninvoiceday('CanOnlyChangeOnInvoiceDay'),
   @JsonValue('DelegatedTrustWrongFormula')
   delegatedtrustwrongformula('DelegatedTrustWrongFormula'),
   @JsonValue('InvalidBillingPeriodStatusForInvoicing')
   invalidbillingperiodstatusforinvoicing(
-      'InvalidBillingPeriodStatusForInvoicing'),
+    'InvalidBillingPeriodStatusForInvoicing',
+  ),
   @JsonValue('PeriodAlreadyInvoiced')
   periodalreadyinvoiced('PeriodAlreadyInvoiced'),
   @JsonValue('OldInvoicesNotSupported')
