@@ -350,9 +350,12 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<Client>> _clientV1ClientsClientIdUsersUserIdPut(
-      {required int? userId}) {
-    final Uri $url = Uri.parse('/client/v1/clients/{clientId}/users/${userId}');
+  Future<Response<Client>> _clientV1ClientsClientIdUsersUserIdPut({
+    required int? userId,
+    required int? clientId,
+  }) {
+    final Uri $url =
+        Uri.parse('/client/v1/clients/${clientId}/users/${userId}');
     final Request $request = Request(
       'PUT',
       $url,

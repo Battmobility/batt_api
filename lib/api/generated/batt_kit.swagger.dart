@@ -476,19 +476,26 @@ abstract class BattKit extends ChopperService {
 
   ///Add a user to a client (admin)
   ///@param userId User ID
+  ///@param clientId User ID
   Future<chopper.Response<Client>> clientV1ClientsClientIdUsersUserIdPut({
     required int? userId,
+    required int? clientId,
   }) {
     generatedMapping.putIfAbsent(Client, () => Client.fromJsonFactory);
 
-    return _clientV1ClientsClientIdUsersUserIdPut(userId: userId);
+    return _clientV1ClientsClientIdUsersUserIdPut(
+      userId: userId,
+      clientId: clientId,
+    );
   }
 
   ///Add a user to a client (admin)
   ///@param userId User ID
+  ///@param clientId User ID
   @PUT(path: '/client/v1/clients/{clientId}/users/{userId}', optionalBody: true)
   Future<chopper.Response<Client>> _clientV1ClientsClientIdUsersUserIdPut({
     @Path('userId') required int? userId,
+    @Path('clientId') required int? clientId,
   });
 
   ///
