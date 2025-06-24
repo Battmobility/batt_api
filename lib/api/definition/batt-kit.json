@@ -4659,6 +4659,15 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "description": "User ID",
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "responses": {
