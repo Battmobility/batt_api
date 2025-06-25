@@ -4661,7 +4661,7 @@
             }
           },
           {
-            "description": "User ID",
+            "description": "Client ID",
             "in": "path",
             "name": "clientId",
             "required": true,
@@ -7740,6 +7740,36 @@
           "user-facade"
         ]
       },
+      "get": {
+        "operationId": "getUser",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/{userId}/details": {
       "get": {
         "description": "Get a user by ID, including documents (admin)",
         "parameters": [
