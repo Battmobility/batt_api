@@ -476,7 +476,7 @@ abstract class BattKit extends ChopperService {
 
   ///Add a user to a client (admin)
   ///@param userId User ID
-  ///@param clientId User ID
+  ///@param clientId Client ID
   Future<chopper.Response<Client>> clientV1ClientsClientIdUsersUserIdPut({
     required int? userId,
     required int? clientId,
@@ -491,7 +491,7 @@ abstract class BattKit extends ChopperService {
 
   ///Add a user to a client (admin)
   ///@param userId User ID
-  ///@param clientId User ID
+  ///@param clientId Client ID
   @PUT(path: '/client/v1/clients/{clientId}/users/{userId}', optionalBody: true)
   Future<chopper.Response<Client>> _clientV1ClientsClientIdUsersUserIdPut({
     @Path('userId') required int? userId,
@@ -1729,9 +1729,26 @@ abstract class BattKit extends ChopperService {
     @Path('userId') required String? userId,
   });
 
+  ///
+  ///@param userId
+  Future<chopper.Response<User>> userV1UsersUserIdGet({
+    required String? userId,
+  }) {
+    generatedMapping.putIfAbsent(User, () => User.fromJsonFactory);
+
+    return _userV1UsersUserIdGet(userId: userId);
+  }
+
+  ///
+  ///@param userId
+  @GET(path: '/user/v1/users/{userId}')
+  Future<chopper.Response<User>> _userV1UsersUserIdGet({
+    @Path('userId') required String? userId,
+  });
+
   ///Get a user by ID (admin)
   ///@param userId User ID
-  Future<chopper.Response<ContractUser>> userV1UsersUserIdGet({
+  Future<chopper.Response<ContractUser>> userV1UsersUserIdDetailsGet({
     required int? userId,
   }) {
     generatedMapping.putIfAbsent(
@@ -1739,13 +1756,13 @@ abstract class BattKit extends ChopperService {
       () => ContractUser.fromJsonFactory,
     );
 
-    return _userV1UsersUserIdGet(userId: userId);
+    return _userV1UsersUserIdDetailsGet(userId: userId);
   }
 
   ///Get a user by ID (admin)
   ///@param userId User ID
-  @GET(path: '/user/v1/users/{userId}')
-  Future<chopper.Response<ContractUser>> _userV1UsersUserIdGet({
+  @GET(path: '/user/v1/users/{userId}/details')
+  Future<chopper.Response<ContractUser>> _userV1UsersUserIdDetailsGet({
     @Path('userId') required int? userId,
   });
 

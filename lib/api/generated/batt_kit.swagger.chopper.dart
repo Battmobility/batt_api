@@ -1288,8 +1288,20 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<ContractUser>> _userV1UsersUserIdGet({required int? userId}) {
+  Future<Response<User>> _userV1UsersUserIdGet({required String? userId}) {
     final Uri $url = Uri.parse('/user/v1/users/${userId}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<User, User>($request);
+  }
+
+  @override
+  Future<Response<ContractUser>> _userV1UsersUserIdDetailsGet(
+      {required int? userId}) {
+    final Uri $url = Uri.parse('/user/v1/users/${userId}/details');
     final Request $request = Request(
       'GET',
       $url,
