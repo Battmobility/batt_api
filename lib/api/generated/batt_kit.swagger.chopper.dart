@@ -307,6 +307,18 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<Client>> _clientV1ClientsClientIdGet(
+      {required int? clientId}) {
+    final Uri $url = Uri.parse('/client/v1/clients/${clientId}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<Client, Client>($request);
+  }
+
+  @override
   Future<Response<Client>> _clientV1ClientsClientIdPut({
     required int? clientId,
     required UpdateClient? body,
@@ -318,6 +330,36 @@ final class _$BattKit extends BattKit {
       $url,
       client.baseUrl,
       body: $body,
+    );
+    return client.send<Client, Client>($request);
+  }
+
+  @override
+  Future<Response<Client>> _clientV1ClientsClientIdUsersUserIdDelete({
+    required int? clientId,
+    required int? userId,
+  }) {
+    final Uri $url =
+        Uri.parse('/client/v1/clients/${clientId}/users/${userId}');
+    final Request $request = Request(
+      'DELETE',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<Client, Client>($request);
+  }
+
+  @override
+  Future<Response<Client>> _clientV1ClientsClientIdUsersUserIdPut({
+    required int? userId,
+    required int? clientId,
+  }) {
+    final Uri $url =
+        Uri.parse('/client/v1/clients/${clientId}/users/${userId}');
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
     );
     return client.send<Client, Client>($request);
   }
@@ -1040,6 +1082,17 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<List<ContractUser>>> _userV1UsersGet() {
+    final Uri $url = Uri.parse('/user/v1/users');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<List<ContractUser>, ContractUser>($request);
+  }
+
+  @override
   Future<Response<dynamic>> _userV1UsersPost({required SignupUser? body}) {
     final Uri $url = Uri.parse('/user/v1/users');
     final $body = body;
@@ -1208,6 +1261,21 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<String>> _userV1UsersUserGuidDocumentsFilenameGet({
+    required String? userGuid,
+    required String? filename,
+  }) {
+    final Uri $url =
+        Uri.parse('/user/v1/users/${userGuid}/documents/${filename}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<String, String>($request);
+  }
+
+  @override
   Future<Response<dynamic>> _userV1UsersUserIdDelete(
       {required String? userId}) {
     final Uri $url = Uri.parse('/user/v1/users/${userId}');
@@ -1217,6 +1285,29 @@ final class _$BattKit extends BattKit {
       client.baseUrl,
     );
     return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<User>> _userV1UsersUserIdGet({required String? userId}) {
+    final Uri $url = Uri.parse('/user/v1/users/${userId}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<User, User>($request);
+  }
+
+  @override
+  Future<Response<ContractUser>> _userV1UsersUserIdDetailsGet(
+      {required int? userId}) {
+    final Uri $url = Uri.parse('/user/v1/users/${userId}/details');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<ContractUser, ContractUser>($request);
   }
 
   @override
