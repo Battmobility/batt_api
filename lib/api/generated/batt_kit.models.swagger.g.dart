@@ -87,6 +87,19 @@ Map<String, dynamic> _$ApiValidationResponseToJson(
       'validationErrors': instance.validationErrors,
     };
 
+BattFormula _$BattFormulaFromJson(Map<String, dynamic> json) => BattFormula(
+      minCommitment: (json['minCommitment'] as num?)?.toInt(),
+      type: battFormulaTypeNullableFromJson(json['type']),
+      warrantyAmount: (json['warrantyAmount'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$BattFormulaToJson(BattFormula instance) =>
+    <String, dynamic>{
+      'minCommitment': instance.minCommitment,
+      'type': battFormulaTypeNullableToJson(instance.type),
+      'warrantyAmount': instance.warrantyAmount,
+    };
+
 BatteryStatus _$BatteryStatusFromJson(Map<String, dynamic> json) =>
     BatteryStatus(
       ageInSeconds: (json['ageInSeconds'] as num?)?.toInt(),
@@ -539,7 +552,11 @@ Client _$ClientFromJson(Map<String, dynamic> json) => Client(
       billingEmail: json['billingEmail'] as String?,
       city: json['city'] as String?,
       country: json['country'] as String?,
+      domainNamesForUserOnboarding:
+          json['domainNamesForUserOnboarding'] as String?,
       id: (json['id'] as num?)?.toInt(),
+      isDeliveringTrustForPrivateUse:
+          json['isDeliveringTrustForPrivateUse'] as bool?,
       isSuspended: json['isSuspended'] as bool?,
       name: json['name'] as String?,
       nr: json['nr'] as String?,
@@ -557,7 +574,9 @@ Map<String, dynamic> _$ClientToJson(Client instance) => <String, dynamic>{
       'billingEmail': instance.billingEmail,
       'city': instance.city,
       'country': instance.country,
+      'domainNamesForUserOnboarding': instance.domainNamesForUserOnboarding,
       'id': instance.id,
+      'isDeliveringTrustForPrivateUse': instance.isDeliveringTrustForPrivateUse,
       'isSuspended': instance.isSuspended,
       'name': instance.name,
       'nr': instance.nr,
@@ -907,6 +926,7 @@ ContractUser _$ContractUserFromJson(Map<String, dynamic> json) => ContractUser(
               .toList() ??
           [],
       email: json['email'] as String?,
+      enabled: json['enabled'] as bool?,
       firstName: json['firstName'] as String?,
       houseNumber: json['houseNumber'] as String?,
       id: (json['id'] as num?)?.toInt(),
@@ -935,6 +955,7 @@ Map<String, dynamic> _$ContractUserToJson(ContractUser instance) =>
       'dateOfBirth': instance.dateOfBirth,
       'documentLinks': instance.documentLinks,
       'email': instance.email,
+      'enabled': instance.enabled,
       'firstName': instance.firstName,
       'houseNumber': instance.houseNumber,
       'id': instance.id,
@@ -1848,6 +1869,9 @@ Map<String, dynamic> _$NonAvailabilityResponseToJson(
     };
 
 Onboarding _$OnboardingFromJson(Map<String, dynamic> json) => Onboarding(
+      $client: json['client'] == null
+          ? null
+          : OnboardingClient.fromJson(json['client'] as Map<String, dynamic>),
       legal: json['legal'] == null
           ? null
           : OnboardingLegal.fromJson(json['legal'] as Map<String, dynamic>),
@@ -1863,10 +1887,24 @@ Onboarding _$OnboardingFromJson(Map<String, dynamic> json) => Onboarding(
 
 Map<String, dynamic> _$OnboardingToJson(Onboarding instance) =>
     <String, dynamic>{
+      'client': instance.$client?.toJson(),
       'legal': instance.legal?.toJson(),
       'personal': instance.personal?.toJson(),
       'phone': instance.phone?.toJson(),
       'status': onboardingStatusNullableToJson(instance.status),
+    };
+
+OnboardingClient _$OnboardingClientFromJson(Map<String, dynamic> json) =>
+    OnboardingClient(
+      subscriptions: (json['subscriptions'] as List<dynamic>?)
+              ?.map((e) => Subscription.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$OnboardingClientToJson(OnboardingClient instance) =>
+    <String, dynamic>{
+      'subscriptions': instance.subscriptions?.map((e) => e.toJson()).toList(),
     };
 
 OnboardingLegal _$OnboardingLegalFromJson(Map<String, dynamic> json) =>
@@ -2320,13 +2358,22 @@ Subscription _$SubscriptionFromJson(Map<String, dynamic> json) => Subscription(
       clientName: json['clientName'] as String?,
       clientRoles: subscriptionClientRolesNullableFromJson(json['clientRoles']),
       commitment: (json['commitment'] as num?)?.toInt(),
+      delegatedTrustClientId: (json['delegatedTrustClientId'] as num?)?.toInt(),
       endDate: json['endDate'] == null
           ? null
           : DateTime.parse(json['endDate'] as String),
       id: (json['id'] as num?)?.toInt(),
+      possibleFormulas: (json['possibleFormulas'] as List<dynamic>?)
+              ?.map((e) => BattFormula.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
       startDate: json['startDate'] == null
           ? null
           : DateTime.parse(json['startDate'] as String),
+      subscriptionContract: json['subscriptionContract'] == null
+          ? null
+          : SubscriptionContract.fromJson(
+              json['subscriptionContract'] as Map<String, dynamic>),
       subscriptionType: json['subscriptionType'] as String?,
       vehicleId: json['vehicleId'] as String?,
       vehicles: (json['vehicles'] as List<dynamic>?)
@@ -2342,8 +2389,41 @@ Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
       'clientRoles':
           subscriptionClientRolesNullableToJson(instance.clientRoles),
       'commitment': instance.commitment,
+      'delegatedTrustClientId': instance.delegatedTrustClientId,
       'endDate': instance.endDate?.toIso8601String(),
       'id': instance.id,
+      'possibleFormulas':
+          instance.possibleFormulas?.map((e) => e.toJson()).toList(),
+      'startDate': instance.startDate?.toIso8601String(),
+      'subscriptionContract': instance.subscriptionContract?.toJson(),
+      'subscriptionType': instance.subscriptionType,
+      'vehicleId': instance.vehicleId,
+      'vehicles': instance.vehicles,
+    };
+
+SubscriptionContract _$SubscriptionContractFromJson(
+        Map<String, dynamic> json) =>
+    SubscriptionContract(
+      commitment: (json['commitment'] as num?)?.toInt(),
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      subscriptionType: json['subscriptionType'] as String?,
+      vehicleId: json['vehicleId'] as String?,
+      vehicles: (json['vehicles'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$SubscriptionContractToJson(
+        SubscriptionContract instance) =>
+    <String, dynamic>{
+      'commitment': instance.commitment,
+      'endDate': instance.endDate?.toIso8601String(),
       'startDate': instance.startDate?.toIso8601String(),
       'subscriptionType': instance.subscriptionType,
       'vehicleId': instance.vehicleId,
@@ -2571,14 +2651,35 @@ Map<String, dynamic> _$UpdateBookingRequestToJson(
     };
 
 UpdateClient _$UpdateClientFromJson(Map<String, dynamic> json) => UpdateClient(
+      city: json['city'] as String,
+      country: json['country'] as String,
+      domainNameForUserOnboarding:
+          json['domainNameForUserOnboarding'] as String?,
+      email: json['email'] as String,
+      houseNumber: json['houseNumber'] as String,
+      name: json['name'] as String,
+      odooId: (json['odooId'] as num?)?.toInt(),
+      postalCode: json['postalCode'] as String,
+      street: json['street'] as String,
       suspended: json['suspended'] as bool?,
       suspendedReason: json['suspendedReason'] as String?,
+      vat: json['vat'] as String?,
     );
 
 Map<String, dynamic> _$UpdateClientToJson(UpdateClient instance) =>
     <String, dynamic>{
+      'city': instance.city,
+      'country': instance.country,
+      'domainNameForUserOnboarding': instance.domainNameForUserOnboarding,
+      'email': instance.email,
+      'houseNumber': instance.houseNumber,
+      'name': instance.name,
+      'odooId': instance.odooId,
+      'postalCode': instance.postalCode,
+      'street': instance.street,
       'suspended': instance.suspended,
       'suspendedReason': instance.suspendedReason,
+      'vat': instance.vat,
     };
 
 UpdateIssueRequest _$UpdateIssueRequestFromJson(Map<String, dynamic> json) =>
@@ -2880,6 +2981,8 @@ VehicleContract _$VehicleContractFromJson(Map<String, dynamic> json) =>
       endDate: json['endDate'] == null
           ? null
           : DateTime.parse(json['endDate'] as String),
+      isDeliveringTrustForPrivateUse:
+          json['isDeliveringTrustForPrivateUse'] as bool?,
       mainUserId: (json['mainUserId'] as num?)?.toInt(),
       maxInvoiceAmountExclVat:
           (json['maxInvoiceAmountExclVat'] as num?)?.toDouble(),
@@ -2915,6 +3018,7 @@ Map<String, dynamic> _$VehicleContractToJson(VehicleContract instance) =>
       'creditedDayPriceExclVat': instance.creditedDayPriceExclVat,
       'creditedKmPriceExclVat': instance.creditedKmPriceExclVat,
       'endDate': instance.endDate?.toIso8601String(),
+      'isDeliveringTrustForPrivateUse': instance.isDeliveringTrustForPrivateUse,
       'mainUserId': instance.mainUserId,
       'maxInvoiceAmountExclVat': instance.maxInvoiceAmountExclVat,
       'mileageKmAtEndOfContract': instance.mileageKmAtEndOfContract,
@@ -3185,6 +3289,31 @@ Map<String, dynamic> _$VehicleUsageUpdateStatusRequestToJson(
       'mileage': instance.mileage,
       'status': vehicleUsageUpdateStatusRequestStatusToJson(instance.status),
       'statusMessage': instance.statusMessage,
+    };
+
+VehiclesAndGroupsResponse _$VehiclesAndGroupsResponseFromJson(
+        Map<String, dynamic> json) =>
+    VehiclesAndGroupsResponse(
+      adminVehicleIds: (json['adminVehicleIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+      groups: (json['groups'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+      ownerVehicleIds: (json['ownerVehicleIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$VehiclesAndGroupsResponseToJson(
+        VehiclesAndGroupsResponse instance) =>
+    <String, dynamic>{
+      'adminVehicleIds': instance.adminVehicleIds,
+      'groups': instance.groups,
+      'ownerVehicleIds': instance.ownerVehicleIds,
     };
 
 VehiclesPage _$VehiclesPageFromJson(Map<String, dynamic> json) => VehiclesPage(

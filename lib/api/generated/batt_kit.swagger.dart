@@ -498,6 +498,40 @@ abstract class BattKit extends ChopperService {
     @Path('clientId') required int? clientId,
   });
 
+  ///Get vehicles and groups for a client
+  ///@param clientId Client ID
+  ///@param date Date in RFC3339 format (default: current date)
+  ///@param userId User ID (optional, to check if the user is a MainUser of the client)
+  Future<chopper.Response<VehiclesAndGroupsResponse>>
+  clientV1ClientsClientIdVehiclesGet({
+    required int? clientId,
+    String? date,
+    String? userId,
+  }) {
+    generatedMapping.putIfAbsent(
+      VehiclesAndGroupsResponse,
+      () => VehiclesAndGroupsResponse.fromJsonFactory,
+    );
+
+    return _clientV1ClientsClientIdVehiclesGet(
+      clientId: clientId,
+      date: date,
+      userId: userId,
+    );
+  }
+
+  ///Get vehicles and groups for a client
+  ///@param clientId Client ID
+  ///@param date Date in RFC3339 format (default: current date)
+  ///@param userId User ID (optional, to check if the user is a MainUser of the client)
+  @GET(path: '/client/v1/clients/{clientId}/vehicles')
+  Future<chopper.Response<VehiclesAndGroupsResponse>>
+  _clientV1ClientsClientIdVehiclesGet({
+    @Path('clientId') required int? clientId,
+    @Query('date') String? date,
+    @Query('userId') String? userId,
+  });
+
   ///
   ///@param page
   Future<chopper.Response<ClientContractSummaryDtoApiPagedResponse>>
