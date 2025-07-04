@@ -15,6 +15,26 @@ enum AdjacentNonAvailabilityType {
   const AdjacentNonAvailabilityType(this.value);
 }
 
+enum BattFormulaType {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('BattFun')
+  battfun('BattFun'),
+  @JsonValue('BattFunPlus')
+  battfunplus('BattFunPlus'),
+  @JsonValue('BattFan')
+  battfan('BattFan'),
+  @JsonValue('BattFanPlus')
+  battfanplus('BattFanPlus'),
+  @JsonValue('Batt4Bussiness')
+  batt4bussiness('Batt4Bussiness');
+
+  final String? value;
+
+  const BattFormulaType(this.value);
+}
+
 enum BatteryStatusCharging {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),

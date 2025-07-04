@@ -84,6 +84,27 @@
         },
         "type": "object"
       },
+      "BattFormula": {
+        "properties": {
+          "minCommitment": {
+            "type": "integer"
+          },
+          "type": {
+            "enum": [
+              "BattFun",
+              "BattFunPlus",
+              "BattFan",
+              "BattFanPlus",
+              "Batt4Bussiness"
+            ],
+            "type": "string"
+          },
+          "warrantyAmount": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
       "BatteryStatus": {
         "properties": {
           "ageInSeconds": {
@@ -607,8 +628,14 @@
           "country": {
             "type": "string"
           },
+          "domainNamesForUserOnboarding": {
+            "type": "string"
+          },
           "id": {
             "type": "integer"
+          },
+          "isDeliveringTrustForPrivateUse": {
+            "type": "boolean"
           },
           "isSuspended": {
             "type": "boolean"
@@ -1069,6 +1096,9 @@
           },
           "email": {
             "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
           },
           "firstName": {
             "type": "string"
@@ -2130,6 +2160,9 @@
       },
       "Onboarding": {
         "properties": {
+          "client": {
+            "$ref": "#/components/schemas/OnboardingClient"
+          },
           "legal": {
             "$ref": "#/components/schemas/OnboardingLegal"
           },
@@ -2149,6 +2182,17 @@
               "COMPLETED"
             ],
             "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "OnboardingClient": {
+        "properties": {
+          "subscriptions": {
+            "items": {
+              "$ref": "#/components/schemas/Subscription"
+            },
+            "type": "array"
           }
         },
         "type": "object"
@@ -2746,12 +2790,52 @@
           "commitment": {
             "type": "integer"
           },
+          "delegatedTrustClientId": {
+            "type": "integer"
+          },
           "endDate": {
             "format": "date-time",
             "type": "string"
           },
           "id": {
             "type": "integer"
+          },
+          "possibleFormulas": {
+            "items": {
+              "$ref": "#/components/schemas/BattFormula"
+            },
+            "type": "array"
+          },
+          "startDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "subscriptionContract": {
+            "$ref": "#/components/schemas/SubscriptionContract"
+          },
+          "subscriptionType": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          },
+          "vehicles": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "SubscriptionContract": {
+        "properties": {
+          "commitment": {
+            "type": "integer"
+          },
+          "endDate": {
+            "format": "date-time",
+            "type": "string"
           },
           "startDate": {
             "format": "date-time",
@@ -3043,13 +3127,52 @@
       },
       "UpdateClient": {
         "properties": {
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "domainNameForUserOnboarding": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "houseNumber": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "odooId": {
+            "type": "integer"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
           "suspended": {
             "type": "boolean"
           },
           "suspendedReason": {
             "type": "string"
+          },
+          "vat": {
+            "type": "string"
           }
         },
+        "required": [
+          "city",
+          "country",
+          "email",
+          "houseNumber",
+          "name",
+          "postalCode",
+          "street"
+        ],
         "type": "object"
       },
       "UpdateIssueRequest": {
@@ -3458,6 +3581,9 @@
             "format": "date-time",
             "type": "string"
           },
+          "isDeliveringTrustForPrivateUse": {
+            "type": "boolean"
+          },
           "mainUserId": {
             "type": "integer"
           },
@@ -3823,6 +3949,29 @@
         "required": [
           "status"
         ],
+        "type": "object"
+      },
+      "VehiclesAndGroupsResponse": {
+        "properties": {
+          "adminVehicleIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "groups": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "ownerVehicleIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
         "type": "object"
       },
       "VehiclesPage": {
@@ -4567,7 +4716,7 @@
         ]
       },
       "put": {
-        "description": "Update a client, suspend. When unsuspending, sets reason to null",
+        "description": "Update a client",
         "parameters": [
           {
             "description": "Client ID",
@@ -4703,6 +4852,74 @@
           }
         },
         "summary": "Add a user to a client (admin)",
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/client/v1/clients/{clientId}/vehicles": {
+      "get": {
+        "description": "Get vehicles and groups for a client based on the client's contract and a time",
+        "parameters": [
+          {
+            "description": "Client ID",
+            "in": "path",
+            "name": "clientId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Date in RFC3339 format (default: current date)",
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "User ID (optional, to check if the user is a MainUser of the client)",
+            "in": "query",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehiclesAndGroupsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get vehicles and groups for a client",
         "tags": [
           "admin"
         ]

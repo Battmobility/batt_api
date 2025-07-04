@@ -365,6 +365,28 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<VehiclesAndGroupsResponse>>
+      _clientV1ClientsClientIdVehiclesGet({
+    required int? clientId,
+    String? date,
+    String? userId,
+  }) {
+    final Uri $url = Uri.parse('/client/v1/clients/${clientId}/vehicles');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'date': date,
+      'userId': userId,
+    };
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
+    return client
+        .send<VehiclesAndGroupsResponse, VehiclesAndGroupsResponse>($request);
+  }
+
+  @override
   Future<Response<ClientContractSummaryDtoApiPagedResponse>>
       _contractV1ContractsGet({String? page}) {
     final Uri $url = Uri.parse('/contract/v1/contracts');
