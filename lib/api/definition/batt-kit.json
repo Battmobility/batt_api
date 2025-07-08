@@ -93,6 +93,7 @@
             "enum": [
               "BattFun",
               "BattFunPlus",
+              "BattFunPlusDL",
               "BattFan",
               "BattFanPlus",
               "Batt4Bussiness"
