@@ -23,6 +23,8 @@ enum BattFormulaType {
   battfun('BattFun'),
   @JsonValue('BattFunPlus')
   battfunplus('BattFunPlus'),
+  @JsonValue('BattFunPlusDL')
+  battfunplusdl('BattFunPlusDL'),
   @JsonValue('BattFan')
   battfan('BattFan'),
   @JsonValue('BattFanPlus')
