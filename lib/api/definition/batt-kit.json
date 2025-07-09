@@ -2781,6 +2781,9 @@
           "clientName": {
             "type": "string"
           },
+          "clientSuspended": {
+            "type": "boolean"
+          },
           "clientRoles": {
             "enum": [
               "User",
