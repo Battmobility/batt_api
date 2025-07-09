@@ -2356,6 +2356,7 @@ Map<String, dynamic> _$StoreTeslaTokensRequestToJson(
 Subscription _$SubscriptionFromJson(Map<String, dynamic> json) => Subscription(
       clientId: (json['clientId'] as num?)?.toInt(),
       clientName: json['clientName'] as String?,
+      clientSuspended: json['clientSuspended'] as bool?,
       clientRoles: subscriptionClientRolesNullableFromJson(json['clientRoles']),
       commitment: (json['commitment'] as num?)?.toInt(),
       delegatedTrustClientId: (json['delegatedTrustClientId'] as num?)?.toInt(),
@@ -2386,6 +2387,7 @@ Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
     <String, dynamic>{
       'clientId': instance.clientId,
       'clientName': instance.clientName,
+      'clientSuspended': instance.clientSuspended,
       'clientRoles':
           subscriptionClientRolesNullableToJson(instance.clientRoles),
       'commitment': instance.commitment,
