@@ -11046,6 +11046,7 @@ class Subscription {
   const Subscription({
     this.clientId,
     this.clientName,
+    this.clientSuspended,
     this.clientRoles,
     this.commitment,
     this.delegatedTrustClientId,
@@ -11069,6 +11070,8 @@ class Subscription {
   final int? clientId;
   @JsonKey(name: 'clientName')
   final String? clientName;
+  @JsonKey(name: 'clientSuspended')
+  final bool? clientSuspended;
   @JsonKey(
     name: 'clientRoles',
     toJson: subscriptionClientRolesNullableToJson,
@@ -11110,6 +11113,11 @@ class Subscription {
                 const DeepCollectionEquality().equals(
                   other.clientName,
                   clientName,
+                )) &&
+            (identical(other.clientSuspended, clientSuspended) ||
+                const DeepCollectionEquality().equals(
+                  other.clientSuspended,
+                  clientSuspended,
                 )) &&
             (identical(other.clientRoles, clientRoles) ||
                 const DeepCollectionEquality().equals(
@@ -11172,6 +11180,7 @@ class Subscription {
   int get hashCode =>
       const DeepCollectionEquality().hash(clientId) ^
       const DeepCollectionEquality().hash(clientName) ^
+      const DeepCollectionEquality().hash(clientSuspended) ^
       const DeepCollectionEquality().hash(clientRoles) ^
       const DeepCollectionEquality().hash(commitment) ^
       const DeepCollectionEquality().hash(delegatedTrustClientId) ^
@@ -11190,6 +11199,7 @@ extension $SubscriptionExtension on Subscription {
   Subscription copyWith({
     int? clientId,
     String? clientName,
+    bool? clientSuspended,
     enums.SubscriptionClientRoles? clientRoles,
     int? commitment,
     int? delegatedTrustClientId,
@@ -11205,6 +11215,7 @@ extension $SubscriptionExtension on Subscription {
     return Subscription(
       clientId: clientId ?? this.clientId,
       clientName: clientName ?? this.clientName,
+      clientSuspended: clientSuspended ?? this.clientSuspended,
       clientRoles: clientRoles ?? this.clientRoles,
       commitment: commitment ?? this.commitment,
       delegatedTrustClientId:
@@ -11223,6 +11234,7 @@ extension $SubscriptionExtension on Subscription {
   Subscription copyWithWrapped({
     Wrapped<int?>? clientId,
     Wrapped<String?>? clientName,
+    Wrapped<bool?>? clientSuspended,
     Wrapped<enums.SubscriptionClientRoles?>? clientRoles,
     Wrapped<int?>? commitment,
     Wrapped<int?>? delegatedTrustClientId,
@@ -11238,6 +11250,9 @@ extension $SubscriptionExtension on Subscription {
     return Subscription(
       clientId: (clientId != null ? clientId.value : this.clientId),
       clientName: (clientName != null ? clientName.value : this.clientName),
+      clientSuspended: (clientSuspended != null
+          ? clientSuspended.value
+          : this.clientSuspended),
       clientRoles: (clientRoles != null ? clientRoles.value : this.clientRoles),
       commitment: (commitment != null ? commitment.value : this.commitment),
       delegatedTrustClientId: (delegatedTrustClientId != null

@@ -93,6 +93,7 @@
             "enum": [
               "BattFun",
               "BattFunPlus",
+              "BattFunPlusDL",
               "BattFan",
               "BattFanPlus",
               "Batt4Bussiness"
@@ -2779,6 +2780,9 @@
           },
           "clientName": {
             "type": "string"
+          },
+          "clientSuspended": {
+            "type": "boolean"
           },
           "clientRoles": {
             "enum": [
