@@ -939,6 +939,9 @@ ContractUser _$ContractUserFromJson(Map<String, dynamic> json) => ContractUser(
       postalCode: json['postalCode'] as String?,
       sofBattRemoteId: json['sofBattRemoteId'] as String?,
       streetname: json['streetname'] as String?,
+      convictions: json['convictions'] == null
+          ? null
+          : Convictions.fromJson(json['convictions'] as Map<String, dynamic>),
       subscriptions: (json['subscriptions'] as List<dynamic>?)
               ?.map((e) => Subscription.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -968,6 +971,7 @@ Map<String, dynamic> _$ContractUserToJson(ContractUser instance) =>
       'postalCode': instance.postalCode,
       'sofBattRemoteId': instance.sofBattRemoteId,
       'streetname': instance.streetname,
+      'convictions': instance.convictions?.toJson(),
       'subscriptions': instance.subscriptions?.map((e) => e.toJson()).toList(),
       'verifiedCellPhoneNumber': instance.verifiedCellPhoneNumber,
     };
