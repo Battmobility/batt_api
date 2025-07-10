@@ -2832,6 +2832,26 @@
         },
         "type": "object"
       },
+      "UpdateUser": {
+          "type": "object",
+          "properties": {
+              "email": {
+                  "type": "string"
+              },
+              "enabled": {
+                  "type": "boolean"
+              },
+              "firstName": {
+                  "type": "string"
+              },
+              "lastName": {
+                  "type": "string"
+              },
+              "phoneNumber": {
+                  "type": "string"
+              }
+          }
+      },
       "SubscriptionContract": {
         "properties": {
           "commitment": {
@@ -8050,7 +8070,78 @@
         "tags": [
           "admin"
         ]
-      }
+      },
+      "put": {
+                "description": "Update a user",
+                "tags": [
+                    "admin"
+                ],
+                "summary": "Update a user (admin)",
+                "parameters": [
+                    {
+                        "description": "User ID",
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateUser"
+                            }
+                        }
+                    },
+                    "description": "User",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContractUser"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
     },
     "/user/v1/verification-email-resends": {
       "post": {
