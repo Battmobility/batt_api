@@ -1699,10 +1699,14 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<VehiclesPage>> _vehicleV1VehiclesGet({bool? activeOnly}) {
+  Future<Response<VehiclesPage>> _vehicleV1VehiclesGet({
+    bool? activeOnly,
+    bool? temporaryRebased,
+  }) {
     final Uri $url = Uri.parse('/vehicle/v1/vehicles');
     final Map<String, dynamic> $params = <String, dynamic>{
-      'activeOnly': activeOnly
+      'activeOnly': activeOnly,
+      'temporaryRebased': temporaryRebased,
     };
     final Request $request = Request(
       'GET',

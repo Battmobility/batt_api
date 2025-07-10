@@ -2312,22 +2312,29 @@ abstract class BattKit extends ChopperService {
 
   ///
   ///@param activeOnly
+  ///@param temporaryRebased
   Future<chopper.Response<VehiclesPage>> vehicleV1VehiclesGet({
     bool? activeOnly,
+    bool? temporaryRebased,
   }) {
     generatedMapping.putIfAbsent(
       VehiclesPage,
       () => VehiclesPage.fromJsonFactory,
     );
 
-    return _vehicleV1VehiclesGet(activeOnly: activeOnly);
+    return _vehicleV1VehiclesGet(
+      activeOnly: activeOnly,
+      temporaryRebased: temporaryRebased,
+    );
   }
 
   ///
   ///@param activeOnly
+  ///@param temporaryRebased
   @GET(path: '/vehicle/v1/vehicles')
   Future<chopper.Response<VehiclesPage>> _vehicleV1VehiclesGet({
     @Query('activeOnly') bool? activeOnly,
+    @Query('temporaryRebased') bool? temporaryRebased,
   });
 
   ///
