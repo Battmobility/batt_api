@@ -4337,6 +4337,7 @@ class ContractUser {
     this.postalCode,
     this.sofBattRemoteId,
     this.streetname,
+    this.convictions,
     this.subscriptions,
     this.verifiedCellPhoneNumber,
   });
@@ -4387,6 +4388,8 @@ class ContractUser {
   final String? sofBattRemoteId;
   @JsonKey(name: 'streetname')
   final String? streetname;
+  @JsonKey(name: 'convictions')
+  final Convictions? convictions;
   @JsonKey(name: 'subscriptions', defaultValue: <Subscription>[])
   final List<Subscription>? subscriptions;
   @JsonKey(name: 'verifiedCellPhoneNumber')
@@ -4488,6 +4491,11 @@ class ContractUser {
                   other.streetname,
                   streetname,
                 )) &&
+            (identical(other.convictions, convictions) ||
+                const DeepCollectionEquality().equals(
+                  other.convictions,
+                  convictions,
+                )) &&
             (identical(other.subscriptions, subscriptions) ||
                 const DeepCollectionEquality().equals(
                   other.subscriptions,
@@ -4528,6 +4536,7 @@ class ContractUser {
       const DeepCollectionEquality().hash(postalCode) ^
       const DeepCollectionEquality().hash(sofBattRemoteId) ^
       const DeepCollectionEquality().hash(streetname) ^
+      const DeepCollectionEquality().hash(convictions) ^
       const DeepCollectionEquality().hash(subscriptions) ^
       const DeepCollectionEquality().hash(verifiedCellPhoneNumber) ^
       runtimeType.hashCode;
@@ -4555,6 +4564,7 @@ extension $ContractUserExtension on ContractUser {
     String? postalCode,
     String? sofBattRemoteId,
     String? streetname,
+    Convictions? convictions,
     List<Subscription>? subscriptions,
     bool? verifiedCellPhoneNumber,
   }) {
@@ -4579,6 +4589,7 @@ extension $ContractUserExtension on ContractUser {
       postalCode: postalCode ?? this.postalCode,
       sofBattRemoteId: sofBattRemoteId ?? this.sofBattRemoteId,
       streetname: streetname ?? this.streetname,
+      convictions: convictions ?? this.convictions,
       subscriptions: subscriptions ?? this.subscriptions,
       verifiedCellPhoneNumber:
           verifiedCellPhoneNumber ?? this.verifiedCellPhoneNumber,
@@ -4606,6 +4617,7 @@ extension $ContractUserExtension on ContractUser {
     Wrapped<String?>? postalCode,
     Wrapped<String?>? sofBattRemoteId,
     Wrapped<String?>? streetname,
+    Wrapped<Convictions?>? convictions,
     Wrapped<List<Subscription>?>? subscriptions,
     Wrapped<bool?>? verifiedCellPhoneNumber,
   }) {
@@ -4640,6 +4652,7 @@ extension $ContractUserExtension on ContractUser {
           ? sofBattRemoteId.value
           : this.sofBattRemoteId),
       streetname: (streetname != null ? streetname.value : this.streetname),
+      convictions: (convictions != null ? convictions.value : this.convictions),
       subscriptions: (subscriptions != null
           ? subscriptions.value
           : this.subscriptions),
