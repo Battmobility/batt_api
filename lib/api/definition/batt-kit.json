@@ -3486,6 +3486,12 @@
             "format": "date-time",
             "type": "string"
           },
+           "vehicleLocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VehicleLocation"
+            }
+          },
           "licensePlate": {
             "type": "string"
           },
@@ -3559,6 +3565,22 @@
           }
         },
         "type": "object"
+      },
+      "VehicleLocation": {
+        "type": "object",
+        "properties": {
+          "vehicleBaseLocation": {
+            "$ref": "#/components/schemas/VehicleBaseLocation"
+          },
+          "from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "until": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       },
       "VehicleBrandPage": {
         "properties": {
