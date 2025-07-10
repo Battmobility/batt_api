@@ -1800,6 +1800,28 @@ abstract class BattKit extends ChopperService {
     @Path('userId') required int? userId,
   });
 
+  ///Update a user (admin)
+  ///@param userId User ID
+  Future<chopper.Response<ContractUser>> userV1UsersUserIdDetailsPut({
+    required int? userId,
+    required UpdateUser? body,
+  }) {
+    generatedMapping.putIfAbsent(
+      ContractUser,
+      () => ContractUser.fromJsonFactory,
+    );
+
+    return _userV1UsersUserIdDetailsPut(userId: userId, body: body);
+  }
+
+  ///Update a user (admin)
+  ///@param userId User ID
+  @PUT(path: '/user/v1/users/{userId}/details', optionalBody: true)
+  Future<chopper.Response<ContractUser>> _userV1UsersUserIdDetailsPut({
+    @Path('userId') required int? userId,
+    @Body() required UpdateUser? body,
+  });
+
   ///Requests a resend of the verification email that is part of the user signup process
   Future<chopper.Response> userV1VerificationEmailResendsPost({
     required ResendVerificationEmail? body,

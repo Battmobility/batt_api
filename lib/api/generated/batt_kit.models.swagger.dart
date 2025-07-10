@@ -11277,6 +11277,109 @@ extension $SubscriptionExtension on Subscription {
 }
 
 @JsonSerializable(explicitToJson: true)
+class UpdateUser {
+  const UpdateUser({
+    this.email,
+    this.enabled,
+    this.firstName,
+    this.lastName,
+    this.phoneNumber,
+  });
+
+  factory UpdateUser.fromJson(Map<String, dynamic> json) =>
+      _$UpdateUserFromJson(json);
+
+  static const toJsonFactory = _$UpdateUserToJson;
+  Map<String, dynamic> toJson() => _$UpdateUserToJson(this);
+
+  @JsonKey(name: 'email')
+  final String? email;
+  @JsonKey(name: 'enabled')
+  final bool? enabled;
+  @JsonKey(name: 'firstName')
+  final String? firstName;
+  @JsonKey(name: 'lastName')
+  final String? lastName;
+  @JsonKey(name: 'phoneNumber')
+  final String? phoneNumber;
+  static const fromJsonFactory = _$UpdateUserFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is UpdateUser &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.enabled, enabled) ||
+                const DeepCollectionEquality().equals(
+                  other.enabled,
+                  enabled,
+                )) &&
+            (identical(other.firstName, firstName) ||
+                const DeepCollectionEquality().equals(
+                  other.firstName,
+                  firstName,
+                )) &&
+            (identical(other.lastName, lastName) ||
+                const DeepCollectionEquality().equals(
+                  other.lastName,
+                  lastName,
+                )) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                const DeepCollectionEquality().equals(
+                  other.phoneNumber,
+                  phoneNumber,
+                )));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(enabled) ^
+      const DeepCollectionEquality().hash(firstName) ^
+      const DeepCollectionEquality().hash(lastName) ^
+      const DeepCollectionEquality().hash(phoneNumber) ^
+      runtimeType.hashCode;
+}
+
+extension $UpdateUserExtension on UpdateUser {
+  UpdateUser copyWith({
+    String? email,
+    bool? enabled,
+    String? firstName,
+    String? lastName,
+    String? phoneNumber,
+  }) {
+    return UpdateUser(
+      email: email ?? this.email,
+      enabled: enabled ?? this.enabled,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+    );
+  }
+
+  UpdateUser copyWithWrapped({
+    Wrapped<String?>? email,
+    Wrapped<bool?>? enabled,
+    Wrapped<String?>? firstName,
+    Wrapped<String?>? lastName,
+    Wrapped<String?>? phoneNumber,
+  }) {
+    return UpdateUser(
+      email: (email != null ? email.value : this.email),
+      enabled: (enabled != null ? enabled.value : this.enabled),
+      firstName: (firstName != null ? firstName.value : this.firstName),
+      lastName: (lastName != null ? lastName.value : this.lastName),
+      phoneNumber: (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class SubscriptionContract {
   const SubscriptionContract({
     this.commitment,

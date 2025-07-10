@@ -2403,6 +2403,23 @@ Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
       'vehicles': instance.vehicles,
     };
 
+UpdateUser _$UpdateUserFromJson(Map<String, dynamic> json) => UpdateUser(
+      email: json['email'] as String?,
+      enabled: json['enabled'] as bool?,
+      firstName: json['firstName'] as String?,
+      lastName: json['lastName'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
+    );
+
+Map<String, dynamic> _$UpdateUserToJson(UpdateUser instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+      'enabled': instance.enabled,
+      'firstName': instance.firstName,
+      'lastName': instance.lastName,
+      'phoneNumber': instance.phoneNumber,
+    };
+
 SubscriptionContract _$SubscriptionContractFromJson(
         Map<String, dynamic> json) =>
     SubscriptionContract(

@@ -1333,6 +1333,22 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<ContractUser>> _userV1UsersUserIdDetailsPut({
+    required int? userId,
+    required UpdateUser? body,
+  }) {
+    final Uri $url = Uri.parse('/user/v1/users/${userId}/details');
+    final $body = body;
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<ContractUser, ContractUser>($request);
+  }
+
+  @override
   Future<Response<dynamic>> _userV1VerificationEmailResendsPost(
       {required ResendVerificationEmail? body}) {
     final Uri $url = Uri.parse('/user/v1/verification-email-resends');
