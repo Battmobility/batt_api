@@ -1137,6 +1137,9 @@
           "streetname": {
             "type": "string"
           },
+          "convictions": {
+            "$ref": "#/components/schemas/Convictions"
+          },
           "subscriptions": {
             "items": {
               "$ref": "#/components/schemas/Subscription"
