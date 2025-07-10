@@ -13596,6 +13596,7 @@ class Vehicle {
     this.imageUrl,
     this.lastPosition,
     this.lastPositionTimestamp,
+    this.vehicleLocations,
     this.licensePlate,
     this.name,
     this.operationalStatus,
@@ -13630,6 +13631,8 @@ class Vehicle {
   final GpsLocation? lastPosition;
   @JsonKey(name: 'lastPositionTimestamp')
   final DateTime? lastPositionTimestamp;
+  @JsonKey(name: 'vehicleLocations', defaultValue: <VehicleLocation>[])
+  final List<VehicleLocation>? vehicleLocations;
   @JsonKey(name: 'licensePlate')
   final String? licensePlate;
   @JsonKey(name: 'name')
@@ -13699,6 +13702,11 @@ class Vehicle {
                   other.lastPositionTimestamp,
                   lastPositionTimestamp,
                 )) &&
+            (identical(other.vehicleLocations, vehicleLocations) ||
+                const DeepCollectionEquality().equals(
+                  other.vehicleLocations,
+                  vehicleLocations,
+                )) &&
             (identical(other.licensePlate, licensePlate) ||
                 const DeepCollectionEquality().equals(
                   other.licensePlate,
@@ -13743,6 +13751,7 @@ class Vehicle {
       const DeepCollectionEquality().hash(imageUrl) ^
       const DeepCollectionEquality().hash(lastPosition) ^
       const DeepCollectionEquality().hash(lastPositionTimestamp) ^
+      const DeepCollectionEquality().hash(vehicleLocations) ^
       const DeepCollectionEquality().hash(licensePlate) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(operationalStatus) ^
@@ -13764,6 +13773,7 @@ extension $VehicleExtension on Vehicle {
     String? imageUrl,
     GpsLocation? lastPosition,
     DateTime? lastPositionTimestamp,
+    List<VehicleLocation>? vehicleLocations,
     String? licensePlate,
     String? name,
     enums.VehicleOperationalStatus? operationalStatus,
@@ -13783,6 +13793,7 @@ extension $VehicleExtension on Vehicle {
       lastPosition: lastPosition ?? this.lastPosition,
       lastPositionTimestamp:
           lastPositionTimestamp ?? this.lastPositionTimestamp,
+      vehicleLocations: vehicleLocations ?? this.vehicleLocations,
       licensePlate: licensePlate ?? this.licensePlate,
       name: name ?? this.name,
       operationalStatus: operationalStatus ?? this.operationalStatus,
@@ -13803,6 +13814,7 @@ extension $VehicleExtension on Vehicle {
     Wrapped<String?>? imageUrl,
     Wrapped<GpsLocation?>? lastPosition,
     Wrapped<DateTime?>? lastPositionTimestamp,
+    Wrapped<List<VehicleLocation>?>? vehicleLocations,
     Wrapped<String?>? licensePlate,
     Wrapped<String?>? name,
     Wrapped<enums.VehicleOperationalStatus?>? operationalStatus,
@@ -13829,6 +13841,9 @@ extension $VehicleExtension on Vehicle {
       lastPositionTimestamp: (lastPositionTimestamp != null
           ? lastPositionTimestamp.value
           : this.lastPositionTimestamp),
+      vehicleLocations: (vehicleLocations != null
+          ? vehicleLocations.value
+          : this.vehicleLocations),
       licensePlate: (licensePlate != null
           ? licensePlate.value
           : this.licensePlate),
@@ -14067,6 +14082,78 @@ extension $VehicleBrandExtension on VehicleBrand {
     return VehicleBrand(
       id: (id != null ? id.value : this.id),
       name: (name != null ? name.value : this.name),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class VehicleLocation {
+  const VehicleLocation({this.vehicleBaseLocation, this.from, this.until});
+
+  factory VehicleLocation.fromJson(Map<String, dynamic> json) =>
+      _$VehicleLocationFromJson(json);
+
+  static const toJsonFactory = _$VehicleLocationToJson;
+  Map<String, dynamic> toJson() => _$VehicleLocationToJson(this);
+
+  @JsonKey(name: 'vehicleBaseLocation')
+  final VehicleBaseLocation? vehicleBaseLocation;
+  @JsonKey(name: 'from')
+  final DateTime? from;
+  @JsonKey(name: 'until')
+  final DateTime? until;
+  static const fromJsonFactory = _$VehicleLocationFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is VehicleLocation &&
+            (identical(other.vehicleBaseLocation, vehicleBaseLocation) ||
+                const DeepCollectionEquality().equals(
+                  other.vehicleBaseLocation,
+                  vehicleBaseLocation,
+                )) &&
+            (identical(other.from, from) ||
+                const DeepCollectionEquality().equals(other.from, from)) &&
+            (identical(other.until, until) ||
+                const DeepCollectionEquality().equals(other.until, until)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(vehicleBaseLocation) ^
+      const DeepCollectionEquality().hash(from) ^
+      const DeepCollectionEquality().hash(until) ^
+      runtimeType.hashCode;
+}
+
+extension $VehicleLocationExtension on VehicleLocation {
+  VehicleLocation copyWith({
+    VehicleBaseLocation? vehicleBaseLocation,
+    DateTime? from,
+    DateTime? until,
+  }) {
+    return VehicleLocation(
+      vehicleBaseLocation: vehicleBaseLocation ?? this.vehicleBaseLocation,
+      from: from ?? this.from,
+      until: until ?? this.until,
+    );
+  }
+
+  VehicleLocation copyWithWrapped({
+    Wrapped<VehicleBaseLocation?>? vehicleBaseLocation,
+    Wrapped<DateTime?>? from,
+    Wrapped<DateTime?>? until,
+  }) {
+    return VehicleLocation(
+      vehicleBaseLocation: (vehicleBaseLocation != null
+          ? vehicleBaseLocation.value
+          : this.vehicleBaseLocation),
+      from: (from != null ? from.value : this.from),
+      until: (until != null ? until.value : this.until),
     );
   }
 }
