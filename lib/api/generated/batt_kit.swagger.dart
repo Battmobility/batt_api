@@ -1532,6 +1532,21 @@ abstract class BattKit extends ChopperService {
     @Path('userEmail') required String? userEmail,
   });
 
+  ///Get an uploaded document from the user
+  ///@param filename File name
+  Future<chopper.Response<String>> userV1DocumentsFilenameGet({
+    required String? filename,
+  }) {
+    return _userV1DocumentsFilenameGet(filename: filename);
+  }
+
+  ///Get an uploaded document from the user
+  ///@param filename File name
+  @GET(path: '/user/v1/documents/{filename}')
+  Future<chopper.Response<String>> _userV1DocumentsFilenameGet({
+    @Path('filename') required String? filename,
+  });
+
   ///Requests a password reset email to be sent
   Future<chopper.Response> userV1PasswordResetsPost({
     required PasswordReset? body,
@@ -1581,21 +1596,6 @@ abstract class BattKit extends ChopperService {
   @PUT(path: '/user/v1/users/devices', optionalBody: true)
   Future<chopper.Response> _userV1UsersDevicesPut({
     @Body() required RegisterDeviceRequest? body,
-  });
-
-  ///Get an uploaded document from the user
-  ///@param filename File name
-  Future<chopper.Response<String>> userV1UsersDocumentsFilenameGet({
-    required String? filename,
-  }) {
-    return _userV1UsersDocumentsFilenameGet(filename: filename);
-  }
-
-  ///Get an uploaded document from the user
-  ///@param filename File name
-  @GET(path: '/user/v1/users/documents/{filename}')
-  Future<chopper.Response<String>> _userV1UsersDocumentsFilenameGet({
-    @Path('filename') required String? filename,
   });
 
   ///Get information about your own user
@@ -1704,9 +1704,11 @@ abstract class BattKit extends ChopperService {
   ///Search users based on first and last name
   ///@param firstNameHint First name
   ///@param lastNameHint Last name
+  ///@param phoneNumber Phone number
   Future<chopper.Response<List<ContractUser>>> userV1UsersSearchesGet({
-    required String? firstNameHint,
-    required String? lastNameHint,
+    String? firstNameHint,
+    String? lastNameHint,
+    String? phoneNumber,
   }) {
     generatedMapping.putIfAbsent(
       ContractUser,
@@ -1716,16 +1718,19 @@ abstract class BattKit extends ChopperService {
     return _userV1UsersSearchesGet(
       firstNameHint: firstNameHint,
       lastNameHint: lastNameHint,
+      phoneNumber: phoneNumber,
     );
   }
 
   ///Search users based on first and last name
   ///@param firstNameHint First name
   ///@param lastNameHint Last name
+  ///@param phoneNumber Phone number
   @GET(path: '/user/v1/users/searches')
   Future<chopper.Response<List<ContractUser>>> _userV1UsersSearchesGet({
-    @Query('firstNameHint') required String? firstNameHint,
-    @Query('lastNameHint') required String? lastNameHint,
+    @Query('firstNameHint') String? firstNameHint,
+    @Query('lastNameHint') String? lastNameHint,
+    @Query('phoneNumber') String? phoneNumber,
   });
 
   ///Get an uploaded document from the user by admin
@@ -1798,28 +1803,6 @@ abstract class BattKit extends ChopperService {
   @GET(path: '/user/v1/users/{userId}/details')
   Future<chopper.Response<ContractUser>> _userV1UsersUserIdDetailsGet({
     @Path('userId') required int? userId,
-  });
-
-  ///Update a user (admin)
-  ///@param userId User ID
-  Future<chopper.Response<ContractUser>> userV1UsersUserIdDetailsPut({
-    required int? userId,
-    required UpdateUser? body,
-  }) {
-    generatedMapping.putIfAbsent(
-      ContractUser,
-      () => ContractUser.fromJsonFactory,
-    );
-
-    return _userV1UsersUserIdDetailsPut(userId: userId, body: body);
-  }
-
-  ///Update a user (admin)
-  ///@param userId User ID
-  @PUT(path: '/user/v1/users/{userId}/details', optionalBody: true)
-  Future<chopper.Response<ContractUser>> _userV1UsersUserIdDetailsPut({
-    @Path('userId') required int? userId,
-    @Body() required UpdateUser? body,
   });
 
   ///Requests a resend of the verification email that is part of the user signup process

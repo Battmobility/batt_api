@@ -1090,6 +1090,18 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<String>> _userV1DocumentsFilenameGet(
+      {required String? filename}) {
+    final Uri $url = Uri.parse('/user/v1/documents/${filename}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<String, String>($request);
+  }
+
+  @override
   Future<Response<dynamic>> _userV1PasswordResetsPost(
       {required PasswordReset? body}) {
     final Uri $url = Uri.parse('/user/v1/password-resets');
@@ -1139,18 +1151,6 @@ final class _$BattKit extends BattKit {
       body: $body,
     );
     return client.send<dynamic, dynamic>($request);
-  }
-
-  @override
-  Future<Response<String>> _userV1UsersDocumentsFilenameGet(
-      {required String? filename}) {
-    final Uri $url = Uri.parse('/user/v1/users/documents/${filename}');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
-    );
-    return client.send<String, String>($request);
   }
 
   @override
@@ -1265,13 +1265,15 @@ final class _$BattKit extends BattKit {
 
   @override
   Future<Response<List<ContractUser>>> _userV1UsersSearchesGet({
-    required String? firstNameHint,
-    required String? lastNameHint,
+    String? firstNameHint,
+    String? lastNameHint,
+    String? phoneNumber,
   }) {
     final Uri $url = Uri.parse('/user/v1/users/searches');
     final Map<String, dynamic> $params = <String, dynamic>{
       'firstNameHint': firstNameHint,
       'lastNameHint': lastNameHint,
+      'phoneNumber': phoneNumber,
     };
     final Request $request = Request(
       'GET',
@@ -1328,22 +1330,6 @@ final class _$BattKit extends BattKit {
       'GET',
       $url,
       client.baseUrl,
-    );
-    return client.send<ContractUser, ContractUser>($request);
-  }
-
-  @override
-  Future<Response<ContractUser>> _userV1UsersUserIdDetailsPut({
-    required int? userId,
-    required UpdateUser? body,
-  }) {
-    final Uri $url = Uri.parse('/user/v1/users/${userId}/details');
-    final $body = body;
-    final Request $request = Request(
-      'PUT',
-      $url,
-      client.baseUrl,
-      body: $body,
     );
     return client.send<ContractUser, ContractUser>($request);
   }
