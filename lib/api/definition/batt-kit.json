@@ -84,28 +84,6 @@
         },
         "type": "object"
       },
-      "BattFormula": {
-        "properties": {
-          "minCommitment": {
-            "type": "integer"
-          },
-          "type": {
-            "enum": [
-              "BattFun",
-              "BattFunPlus",
-              "BattFunPlusDL",
-              "BattFan",
-              "BattFanPlus",
-              "Batt4Bussiness"
-            ],
-            "type": "string"
-          },
-          "warrantyAmount": {
-            "type": "integer"
-          }
-        },
-        "type": "object"
-      },
       "BatteryStatus": {
         "properties": {
           "ageInSeconds": {
@@ -629,14 +607,8 @@
           "country": {
             "type": "string"
           },
-          "domainNamesForUserOnboarding": {
-            "type": "string"
-          },
           "id": {
             "type": "integer"
-          },
-          "isDeliveringTrustForPrivateUse": {
-            "type": "boolean"
           },
           "isSuspended": {
             "type": "boolean"
@@ -1098,9 +1070,6 @@
           "email": {
             "type": "string"
           },
-          "enabled": {
-            "type": "boolean"
-          },
           "firstName": {
             "type": "string"
           },
@@ -1136,9 +1105,6 @@
           },
           "streetname": {
             "type": "string"
-          },
-          "convictions": {
-            "$ref": "#/components/schemas/Convictions"
           },
           "subscriptions": {
             "items": {
@@ -2164,9 +2130,6 @@
       },
       "Onboarding": {
         "properties": {
-          "client": {
-            "$ref": "#/components/schemas/OnboardingClient"
-          },
           "legal": {
             "$ref": "#/components/schemas/OnboardingLegal"
           },
@@ -2186,17 +2149,6 @@
               "COMPLETED"
             ],
             "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "OnboardingClient": {
-        "properties": {
-          "subscriptions": {
-            "items": {
-              "$ref": "#/components/schemas/Subscription"
-            },
-            "type": "array"
           }
         },
         "type": "object"
@@ -2784,9 +2736,6 @@
           "clientName": {
             "type": "string"
           },
-          "clientSuspended": {
-            "type": "boolean"
-          },
           "clientRoles": {
             "enum": [
               "User",
@@ -2797,72 +2746,12 @@
           "commitment": {
             "type": "integer"
           },
-          "delegatedTrustClientId": {
-            "type": "integer"
-          },
           "endDate": {
             "format": "date-time",
             "type": "string"
           },
           "id": {
             "type": "integer"
-          },
-          "possibleFormulas": {
-            "items": {
-              "$ref": "#/components/schemas/BattFormula"
-            },
-            "type": "array"
-          },
-          "startDate": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "subscriptionContract": {
-            "$ref": "#/components/schemas/SubscriptionContract"
-          },
-          "subscriptionType": {
-            "type": "string"
-          },
-          "vehicleId": {
-            "type": "string"
-          },
-          "vehicles": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
-          }
-        },
-        "type": "object"
-      },
-      "UpdateUser": {
-          "type": "object",
-          "properties": {
-              "email": {
-                  "type": "string"
-              },
-              "enabled": {
-                  "type": "boolean"
-              },
-              "firstName": {
-                  "type": "string"
-              },
-              "lastName": {
-                  "type": "string"
-              },
-              "phoneNumber": {
-                  "type": "string"
-              }
-          }
-      },
-      "SubscriptionContract": {
-        "properties": {
-          "commitment": {
-            "type": "integer"
-          },
-          "endDate": {
-            "format": "date-time",
-            "type": "string"
           },
           "startDate": {
             "format": "date-time",
@@ -3154,52 +3043,13 @@
       },
       "UpdateClient": {
         "properties": {
-          "city": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          },
-          "domainNameForUserOnboarding": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "houseNumber": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "odooId": {
-            "type": "integer"
-          },
-          "postalCode": {
-            "type": "string"
-          },
-          "street": {
-            "type": "string"
-          },
           "suspended": {
             "type": "boolean"
           },
           "suspendedReason": {
             "type": "string"
-          },
-          "vat": {
-            "type": "string"
           }
         },
-        "required": [
-          "city",
-          "country",
-          "email",
-          "houseNumber",
-          "name",
-          "postalCode",
-          "street"
-        ],
         "type": "object"
       },
       "UpdateIssueRequest": {
@@ -3486,12 +3336,6 @@
             "format": "date-time",
             "type": "string"
           },
-           "vehicleLocations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/VehicleLocation"
-            }
-          },
           "licensePlate": {
             "type": "string"
           },
@@ -3511,6 +3355,12 @@
           },
           "vehicleBrand": {
             "$ref": "#/components/schemas/VehicleBrand"
+          },
+          "vehicleLocations": {
+            "items": {
+              "$ref": "#/components/schemas/VehicleLocation"
+            },
+            "type": "array"
           },
           "vehicleModel": {
             "$ref": "#/components/schemas/VehicleModel"
@@ -3566,22 +3416,6 @@
         },
         "type": "object"
       },
-      "VehicleLocation": {
-        "type": "object",
-        "properties": {
-          "vehicleBaseLocation": {
-            "$ref": "#/components/schemas/VehicleBaseLocation"
-          },
-          "from": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "until": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
       "VehicleBrandPage": {
         "properties": {
           "vehicleBrands": {
@@ -3629,9 +3463,6 @@
           "endDate": {
             "format": "date-time",
             "type": "string"
-          },
-          "isDeliveringTrustForPrivateUse": {
-            "type": "boolean"
           },
           "mainUserId": {
             "type": "integer"
@@ -3770,6 +3601,22 @@
               "$ref": "#/components/schemas/VehicleGroup"
             },
             "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleLocation": {
+        "properties": {
+          "from": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "until": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "vehicleBaseLocation": {
+            "$ref": "#/components/schemas/VehicleBaseLocation"
           }
         },
         "type": "object"
@@ -4765,7 +4612,7 @@
         ]
       },
       "put": {
-        "description": "Update a client",
+        "description": "Update a client, suspend. When unsuspending, sets reason to null",
         "parameters": [
           {
             "description": "Client ID",
@@ -7440,6 +7287,69 @@
         ]
       }
     },
+    "/user/v1/documents/{filename}": {
+      "get": {
+        "description": "Get an uploaded document from the user",
+        "parameters": [
+          {
+            "description": "File name",
+            "in": "path",
+            "name": "filename",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              " application/pdf": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              " image/heic": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              " image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              " image/tiff": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              " image/webp": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Document"
+          }
+        },
+        "summary": "Get an uploaded document from the user",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
     "/user/v1/password-resets": {
       "post": {
         "description": "Requests a password reset email to be sent",
@@ -7600,69 +7510,6 @@
             "description": "OK"
           }
         },
-        "tags": [
-          "user-facade"
-        ]
-      }
-    },
-    "/user/v1/users/documents/{filename}": {
-      "get": {
-        "description": "Get an uploaded document from the user",
-        "parameters": [
-          {
-            "description": "File name",
-            "in": "path",
-            "name": "filename",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              " application/pdf": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/heic": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/png": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/tiff": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/webp": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              "image/jpeg": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              }
-            },
-            "description": "Document"
-          }
-        },
-        "summary": "Get an uploaded document from the user",
         "tags": [
           "user-facade"
         ]
@@ -7876,7 +7723,6 @@
             "description": "First name",
             "in": "query",
             "name": "firstNameHint",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -7885,7 +7731,14 @@
             "description": "Last name",
             "in": "query",
             "name": "lastNameHint",
-            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Phone number",
+            "in": "query",
+            "name": "phoneNumber",
             "schema": {
               "type": "string"
             }
@@ -8095,78 +7948,7 @@
         "tags": [
           "admin"
         ]
-      },
-      "put": {
-                "description": "Update a user",
-                "tags": [
-                    "admin"
-                ],
-                "summary": "Update a user (admin)",
-                "parameters": [
-                    {
-                        "description": "User ID",
-                        "name": "userId",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/UpdateUser"
-                            }
-                        }
-                    },
-                    "description": "User",
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ContractUser"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorResponse"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+      }
     },
     "/user/v1/verification-email-resends": {
       "post": {
@@ -8897,7 +8679,6 @@
             "in": "query",
             "name": "temporaryRebased",
             "schema": {
-              "default": true,
               "type": "boolean"
             }
           }
