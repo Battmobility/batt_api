@@ -4337,6 +4337,7 @@ class ContractUser {
     this.postalCode,
     this.sofBattRemoteId,
     this.streetname,
+    this.convictions,
     this.subscriptions,
     this.verifiedCellPhoneNumber,
   });
@@ -4387,6 +4388,8 @@ class ContractUser {
   final String? sofBattRemoteId;
   @JsonKey(name: 'streetname')
   final String? streetname;
+  @JsonKey(name: 'convictions')
+  final Convictions? convictions;
   @JsonKey(name: 'subscriptions', defaultValue: <Subscription>[])
   final List<Subscription>? subscriptions;
   @JsonKey(name: 'verifiedCellPhoneNumber')
@@ -4488,6 +4491,11 @@ class ContractUser {
                   other.streetname,
                   streetname,
                 )) &&
+            (identical(other.convictions, convictions) ||
+                const DeepCollectionEquality().equals(
+                  other.convictions,
+                  convictions,
+                )) &&
             (identical(other.subscriptions, subscriptions) ||
                 const DeepCollectionEquality().equals(
                   other.subscriptions,
@@ -4528,6 +4536,7 @@ class ContractUser {
       const DeepCollectionEquality().hash(postalCode) ^
       const DeepCollectionEquality().hash(sofBattRemoteId) ^
       const DeepCollectionEquality().hash(streetname) ^
+      const DeepCollectionEquality().hash(convictions) ^
       const DeepCollectionEquality().hash(subscriptions) ^
       const DeepCollectionEquality().hash(verifiedCellPhoneNumber) ^
       runtimeType.hashCode;
@@ -4555,6 +4564,7 @@ extension $ContractUserExtension on ContractUser {
     String? postalCode,
     String? sofBattRemoteId,
     String? streetname,
+    Convictions? convictions,
     List<Subscription>? subscriptions,
     bool? verifiedCellPhoneNumber,
   }) {
@@ -4579,6 +4589,7 @@ extension $ContractUserExtension on ContractUser {
       postalCode: postalCode ?? this.postalCode,
       sofBattRemoteId: sofBattRemoteId ?? this.sofBattRemoteId,
       streetname: streetname ?? this.streetname,
+      convictions: convictions ?? this.convictions,
       subscriptions: subscriptions ?? this.subscriptions,
       verifiedCellPhoneNumber:
           verifiedCellPhoneNumber ?? this.verifiedCellPhoneNumber,
@@ -4606,6 +4617,7 @@ extension $ContractUserExtension on ContractUser {
     Wrapped<String?>? postalCode,
     Wrapped<String?>? sofBattRemoteId,
     Wrapped<String?>? streetname,
+    Wrapped<Convictions?>? convictions,
     Wrapped<List<Subscription>?>? subscriptions,
     Wrapped<bool?>? verifiedCellPhoneNumber,
   }) {
@@ -4640,6 +4652,7 @@ extension $ContractUserExtension on ContractUser {
           ? sofBattRemoteId.value
           : this.sofBattRemoteId),
       streetname: (streetname != null ? streetname.value : this.streetname),
+      convictions: (convictions != null ? convictions.value : this.convictions),
       subscriptions: (subscriptions != null
           ? subscriptions.value
           : this.subscriptions),
@@ -11277,6 +11290,109 @@ extension $SubscriptionExtension on Subscription {
 }
 
 @JsonSerializable(explicitToJson: true)
+class UpdateUser {
+  const UpdateUser({
+    this.email,
+    this.enabled,
+    this.firstName,
+    this.lastName,
+    this.phoneNumber,
+  });
+
+  factory UpdateUser.fromJson(Map<String, dynamic> json) =>
+      _$UpdateUserFromJson(json);
+
+  static const toJsonFactory = _$UpdateUserToJson;
+  Map<String, dynamic> toJson() => _$UpdateUserToJson(this);
+
+  @JsonKey(name: 'email')
+  final String? email;
+  @JsonKey(name: 'enabled')
+  final bool? enabled;
+  @JsonKey(name: 'firstName')
+  final String? firstName;
+  @JsonKey(name: 'lastName')
+  final String? lastName;
+  @JsonKey(name: 'phoneNumber')
+  final String? phoneNumber;
+  static const fromJsonFactory = _$UpdateUserFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is UpdateUser &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.enabled, enabled) ||
+                const DeepCollectionEquality().equals(
+                  other.enabled,
+                  enabled,
+                )) &&
+            (identical(other.firstName, firstName) ||
+                const DeepCollectionEquality().equals(
+                  other.firstName,
+                  firstName,
+                )) &&
+            (identical(other.lastName, lastName) ||
+                const DeepCollectionEquality().equals(
+                  other.lastName,
+                  lastName,
+                )) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                const DeepCollectionEquality().equals(
+                  other.phoneNumber,
+                  phoneNumber,
+                )));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(enabled) ^
+      const DeepCollectionEquality().hash(firstName) ^
+      const DeepCollectionEquality().hash(lastName) ^
+      const DeepCollectionEquality().hash(phoneNumber) ^
+      runtimeType.hashCode;
+}
+
+extension $UpdateUserExtension on UpdateUser {
+  UpdateUser copyWith({
+    String? email,
+    bool? enabled,
+    String? firstName,
+    String? lastName,
+    String? phoneNumber,
+  }) {
+    return UpdateUser(
+      email: email ?? this.email,
+      enabled: enabled ?? this.enabled,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+    );
+  }
+
+  UpdateUser copyWithWrapped({
+    Wrapped<String?>? email,
+    Wrapped<bool?>? enabled,
+    Wrapped<String?>? firstName,
+    Wrapped<String?>? lastName,
+    Wrapped<String?>? phoneNumber,
+  }) {
+    return UpdateUser(
+      email: (email != null ? email.value : this.email),
+      enabled: (enabled != null ? enabled.value : this.enabled),
+      firstName: (firstName != null ? firstName.value : this.firstName),
+      lastName: (lastName != null ? lastName.value : this.lastName),
+      phoneNumber: (phoneNumber != null ? phoneNumber.value : this.phoneNumber),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class SubscriptionContract {
   const SubscriptionContract({
     this.commitment,
@@ -13480,6 +13596,7 @@ class Vehicle {
     this.imageUrl,
     this.lastPosition,
     this.lastPositionTimestamp,
+    this.vehicleLocations,
     this.licensePlate,
     this.name,
     this.operationalStatus,
@@ -13514,6 +13631,8 @@ class Vehicle {
   final GpsLocation? lastPosition;
   @JsonKey(name: 'lastPositionTimestamp')
   final DateTime? lastPositionTimestamp;
+  @JsonKey(name: 'vehicleLocations', defaultValue: <VehicleLocation>[])
+  final List<VehicleLocation>? vehicleLocations;
   @JsonKey(name: 'licensePlate')
   final String? licensePlate;
   @JsonKey(name: 'name')
@@ -13583,6 +13702,11 @@ class Vehicle {
                   other.lastPositionTimestamp,
                   lastPositionTimestamp,
                 )) &&
+            (identical(other.vehicleLocations, vehicleLocations) ||
+                const DeepCollectionEquality().equals(
+                  other.vehicleLocations,
+                  vehicleLocations,
+                )) &&
             (identical(other.licensePlate, licensePlate) ||
                 const DeepCollectionEquality().equals(
                   other.licensePlate,
@@ -13627,6 +13751,7 @@ class Vehicle {
       const DeepCollectionEquality().hash(imageUrl) ^
       const DeepCollectionEquality().hash(lastPosition) ^
       const DeepCollectionEquality().hash(lastPositionTimestamp) ^
+      const DeepCollectionEquality().hash(vehicleLocations) ^
       const DeepCollectionEquality().hash(licensePlate) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(operationalStatus) ^
@@ -13648,6 +13773,7 @@ extension $VehicleExtension on Vehicle {
     String? imageUrl,
     GpsLocation? lastPosition,
     DateTime? lastPositionTimestamp,
+    List<VehicleLocation>? vehicleLocations,
     String? licensePlate,
     String? name,
     enums.VehicleOperationalStatus? operationalStatus,
@@ -13667,6 +13793,7 @@ extension $VehicleExtension on Vehicle {
       lastPosition: lastPosition ?? this.lastPosition,
       lastPositionTimestamp:
           lastPositionTimestamp ?? this.lastPositionTimestamp,
+      vehicleLocations: vehicleLocations ?? this.vehicleLocations,
       licensePlate: licensePlate ?? this.licensePlate,
       name: name ?? this.name,
       operationalStatus: operationalStatus ?? this.operationalStatus,
@@ -13687,6 +13814,7 @@ extension $VehicleExtension on Vehicle {
     Wrapped<String?>? imageUrl,
     Wrapped<GpsLocation?>? lastPosition,
     Wrapped<DateTime?>? lastPositionTimestamp,
+    Wrapped<List<VehicleLocation>?>? vehicleLocations,
     Wrapped<String?>? licensePlate,
     Wrapped<String?>? name,
     Wrapped<enums.VehicleOperationalStatus?>? operationalStatus,
@@ -13713,6 +13841,9 @@ extension $VehicleExtension on Vehicle {
       lastPositionTimestamp: (lastPositionTimestamp != null
           ? lastPositionTimestamp.value
           : this.lastPositionTimestamp),
+      vehicleLocations: (vehicleLocations != null
+          ? vehicleLocations.value
+          : this.vehicleLocations),
       licensePlate: (licensePlate != null
           ? licensePlate.value
           : this.licensePlate),
@@ -13951,6 +14082,78 @@ extension $VehicleBrandExtension on VehicleBrand {
     return VehicleBrand(
       id: (id != null ? id.value : this.id),
       name: (name != null ? name.value : this.name),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class VehicleLocation {
+  const VehicleLocation({this.vehicleBaseLocation, this.from, this.until});
+
+  factory VehicleLocation.fromJson(Map<String, dynamic> json) =>
+      _$VehicleLocationFromJson(json);
+
+  static const toJsonFactory = _$VehicleLocationToJson;
+  Map<String, dynamic> toJson() => _$VehicleLocationToJson(this);
+
+  @JsonKey(name: 'vehicleBaseLocation')
+  final VehicleBaseLocation? vehicleBaseLocation;
+  @JsonKey(name: 'from')
+  final DateTime? from;
+  @JsonKey(name: 'until')
+  final DateTime? until;
+  static const fromJsonFactory = _$VehicleLocationFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is VehicleLocation &&
+            (identical(other.vehicleBaseLocation, vehicleBaseLocation) ||
+                const DeepCollectionEquality().equals(
+                  other.vehicleBaseLocation,
+                  vehicleBaseLocation,
+                )) &&
+            (identical(other.from, from) ||
+                const DeepCollectionEquality().equals(other.from, from)) &&
+            (identical(other.until, until) ||
+                const DeepCollectionEquality().equals(other.until, until)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(vehicleBaseLocation) ^
+      const DeepCollectionEquality().hash(from) ^
+      const DeepCollectionEquality().hash(until) ^
+      runtimeType.hashCode;
+}
+
+extension $VehicleLocationExtension on VehicleLocation {
+  VehicleLocation copyWith({
+    VehicleBaseLocation? vehicleBaseLocation,
+    DateTime? from,
+    DateTime? until,
+  }) {
+    return VehicleLocation(
+      vehicleBaseLocation: vehicleBaseLocation ?? this.vehicleBaseLocation,
+      from: from ?? this.from,
+      until: until ?? this.until,
+    );
+  }
+
+  VehicleLocation copyWithWrapped({
+    Wrapped<VehicleBaseLocation?>? vehicleBaseLocation,
+    Wrapped<DateTime?>? from,
+    Wrapped<DateTime?>? until,
+  }) {
+    return VehicleLocation(
+      vehicleBaseLocation: (vehicleBaseLocation != null
+          ? vehicleBaseLocation.value
+          : this.vehicleBaseLocation),
+      from: (from != null ? from.value : this.from),
+      until: (until != null ? until.value : this.until),
     );
   }
 }

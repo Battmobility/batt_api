@@ -939,6 +939,9 @@ ContractUser _$ContractUserFromJson(Map<String, dynamic> json) => ContractUser(
       postalCode: json['postalCode'] as String?,
       sofBattRemoteId: json['sofBattRemoteId'] as String?,
       streetname: json['streetname'] as String?,
+      convictions: json['convictions'] == null
+          ? null
+          : Convictions.fromJson(json['convictions'] as Map<String, dynamic>),
       subscriptions: (json['subscriptions'] as List<dynamic>?)
               ?.map((e) => Subscription.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -968,6 +971,7 @@ Map<String, dynamic> _$ContractUserToJson(ContractUser instance) =>
       'postalCode': instance.postalCode,
       'sofBattRemoteId': instance.sofBattRemoteId,
       'streetname': instance.streetname,
+      'convictions': instance.convictions?.toJson(),
       'subscriptions': instance.subscriptions?.map((e) => e.toJson()).toList(),
       'verifiedCellPhoneNumber': instance.verifiedCellPhoneNumber,
     };
@@ -2403,6 +2407,23 @@ Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
       'vehicles': instance.vehicles,
     };
 
+UpdateUser _$UpdateUserFromJson(Map<String, dynamic> json) => UpdateUser(
+      email: json['email'] as String?,
+      enabled: json['enabled'] as bool?,
+      firstName: json['firstName'] as String?,
+      lastName: json['lastName'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
+    );
+
+Map<String, dynamic> _$UpdateUserToJson(UpdateUser instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+      'enabled': instance.enabled,
+      'firstName': instance.firstName,
+      'lastName': instance.lastName,
+      'phoneNumber': instance.phoneNumber,
+    };
+
 SubscriptionContract _$SubscriptionContractFromJson(
         Map<String, dynamic> json) =>
     SubscriptionContract(
@@ -2862,6 +2883,10 @@ Vehicle _$VehicleFromJson(Map<String, dynamic> json) => Vehicle(
       lastPositionTimestamp: json['lastPositionTimestamp'] == null
           ? null
           : DateTime.parse(json['lastPositionTimestamp'] as String),
+      vehicleLocations: (json['vehicleLocations'] as List<dynamic>?)
+              ?.map((e) => VehicleLocation.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
       licensePlate: json['licensePlate'] as String?,
       name: json['name'] as String?,
       operationalStatus:
@@ -2890,6 +2915,8 @@ Map<String, dynamic> _$VehicleToJson(Vehicle instance) => <String, dynamic>{
       'lastPosition': instance.lastPosition?.toJson(),
       'lastPositionTimestamp':
           instance.lastPositionTimestamp?.toIso8601String(),
+      'vehicleLocations':
+          instance.vehicleLocations?.map((e) => e.toJson()).toList(),
       'licensePlate': instance.licensePlate,
       'name': instance.name,
       'operationalStatus':
@@ -2950,6 +2977,26 @@ Map<String, dynamic> _$VehicleBrandToJson(VehicleBrand instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+    };
+
+VehicleLocation _$VehicleLocationFromJson(Map<String, dynamic> json) =>
+    VehicleLocation(
+      vehicleBaseLocation: json['vehicleBaseLocation'] == null
+          ? null
+          : VehicleBaseLocation.fromJson(
+              json['vehicleBaseLocation'] as Map<String, dynamic>),
+      from:
+          json['from'] == null ? null : DateTime.parse(json['from'] as String),
+      until: json['until'] == null
+          ? null
+          : DateTime.parse(json['until'] as String),
+    );
+
+Map<String, dynamic> _$VehicleLocationToJson(VehicleLocation instance) =>
+    <String, dynamic>{
+      'vehicleBaseLocation': instance.vehicleBaseLocation?.toJson(),
+      'from': instance.from?.toIso8601String(),
+      'until': instance.until?.toIso8601String(),
     };
 
 VehicleBrandPage _$VehicleBrandPageFromJson(Map<String, dynamic> json) =>
