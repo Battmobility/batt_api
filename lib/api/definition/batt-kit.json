@@ -7304,37 +7304,37 @@
         "responses": {
           "200": {
             "content": {
-              " application/pdf": {
+              "application/pdf": {
                 "schema": {
                   "format": "binary",
                   "type": "string"
                 }
               },
-              " image/heic": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/png": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/tiff": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/webp": {
+              "image/heic": {
                 "schema": {
                   "format": "binary",
                   "type": "string"
                 }
               },
               "image/jpeg": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/tiff": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/webp": {
                 "schema": {
                   "format": "binary",
                   "type": "string"
@@ -7791,37 +7791,37 @@
         "responses": {
           "200": {
             "content": {
-              " application/pdf": {
+              "application/pdf": {
                 "schema": {
                   "format": "binary",
                   "type": "string"
                 }
               },
-              " image/heic": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/png": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/tiff": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/webp": {
+              "image/heic": {
                 "schema": {
                   "format": "binary",
                   "type": "string"
                 }
               },
               "image/jpeg": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/tiff": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/webp": {
                 "schema": {
                   "format": "binary",
                   "type": "string"
