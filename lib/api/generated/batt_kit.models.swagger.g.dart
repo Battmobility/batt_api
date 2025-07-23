@@ -1331,6 +1331,26 @@ Map<String, dynamic> _$CreateVehiclesRatesResponseToJson(
       'rates': instance.rates.map((e) => e.toJson()).toList(),
     };
 
+CreditDetails _$CreditDetailsFromJson(Map<String, dynamic> json) =>
+    CreditDetails(
+      creditStatus: creditDetailsCreditStatusFromJson(json['creditStatus']),
+      errorMessage: json['errorMessage'] as String?,
+      invoiceStatus: creditDetailsInvoiceStatusFromJson(json['invoiceStatus']),
+      totalRideCreditExclVat:
+          (json['totalRideCreditExclVat'] as num?)?.toDouble(),
+      totalRideCreditInclVat:
+          (json['totalRideCreditInclVat'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$CreditDetailsToJson(CreditDetails instance) =>
+    <String, dynamic>{
+      'creditStatus': creditDetailsCreditStatusToJson(instance.creditStatus),
+      'errorMessage': instance.errorMessage,
+      'invoiceStatus': creditDetailsInvoiceStatusToJson(instance.invoiceStatus),
+      'totalRideCreditExclVat': instance.totalRideCreditExclVat,
+      'totalRideCreditInclVat': instance.totalRideCreditInclVat,
+    };
+
 DeleteVehiclesFromGroupRequest _$DeleteVehiclesFromGroupRequestFromJson(
         Map<String, dynamic> json) =>
     DeleteVehiclesFromGroupRequest(
@@ -1426,6 +1446,33 @@ Map<String, dynamic> _$FlespiCallbackRequestToJson(
       'position.latitude': instance.positionLatitude,
       'position.longitude': instance.positionLongitude,
       'timestamp': instance.timestamp,
+    };
+
+GetBookingCreditDetailsRequest _$GetBookingCreditDetailsRequestFromJson(
+        Map<String, dynamic> json) =>
+    GetBookingCreditDetailsRequest(
+      bookingIds: (json['bookingIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$GetBookingCreditDetailsRequestToJson(
+        GetBookingCreditDetailsRequest instance) =>
+    <String, dynamic>{
+      'bookingIds': instance.bookingIds,
+    };
+
+GetBookingCreditDetailsResponse _$GetBookingCreditDetailsResponseFromJson(
+        Map<String, dynamic> json) =>
+    GetBookingCreditDetailsResponse(
+      details: json['details'] as Map<String, dynamic>?,
+    );
+
+Map<String, dynamic> _$GetBookingCreditDetailsResponseToJson(
+        GetBookingCreditDetailsResponse instance) =>
+    <String, dynamic>{
+      'details': instance.details,
     };
 
 GetVehicleModelsRatesEntry _$GetVehicleModelsRatesEntryFromJson(

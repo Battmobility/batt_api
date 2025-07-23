@@ -6408,6 +6408,132 @@ extension $CreateVehiclesRatesResponseExtension on CreateVehiclesRatesResponse {
 }
 
 @JsonSerializable(explicitToJson: true)
+class CreditDetails {
+  const CreditDetails({
+    required this.creditStatus,
+    this.errorMessage,
+    required this.invoiceStatus,
+    this.totalRideCreditExclVat,
+    this.totalRideCreditInclVat,
+  });
+
+  factory CreditDetails.fromJson(Map<String, dynamic> json) =>
+      _$CreditDetailsFromJson(json);
+
+  static const toJsonFactory = _$CreditDetailsToJson;
+  Map<String, dynamic> toJson() => _$CreditDetailsToJson(this);
+
+  @JsonKey(
+    name: 'creditStatus',
+    toJson: creditDetailsCreditStatusToJson,
+    fromJson: creditDetailsCreditStatusFromJson,
+  )
+  final enums.CreditDetailsCreditStatus creditStatus;
+  @JsonKey(name: 'errorMessage')
+  final String? errorMessage;
+  @JsonKey(
+    name: 'invoiceStatus',
+    toJson: creditDetailsInvoiceStatusToJson,
+    fromJson: creditDetailsInvoiceStatusFromJson,
+  )
+  final enums.CreditDetailsInvoiceStatus invoiceStatus;
+  @JsonKey(name: 'totalRideCreditExclVat')
+  final double? totalRideCreditExclVat;
+  @JsonKey(name: 'totalRideCreditInclVat')
+  final double? totalRideCreditInclVat;
+  static const fromJsonFactory = _$CreditDetailsFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is CreditDetails &&
+            (identical(other.creditStatus, creditStatus) ||
+                const DeepCollectionEquality().equals(
+                  other.creditStatus,
+                  creditStatus,
+                )) &&
+            (identical(other.errorMessage, errorMessage) ||
+                const DeepCollectionEquality().equals(
+                  other.errorMessage,
+                  errorMessage,
+                )) &&
+            (identical(other.invoiceStatus, invoiceStatus) ||
+                const DeepCollectionEquality().equals(
+                  other.invoiceStatus,
+                  invoiceStatus,
+                )) &&
+            (identical(other.totalRideCreditExclVat, totalRideCreditExclVat) ||
+                const DeepCollectionEquality().equals(
+                  other.totalRideCreditExclVat,
+                  totalRideCreditExclVat,
+                )) &&
+            (identical(other.totalRideCreditInclVat, totalRideCreditInclVat) ||
+                const DeepCollectionEquality().equals(
+                  other.totalRideCreditInclVat,
+                  totalRideCreditInclVat,
+                )));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(creditStatus) ^
+      const DeepCollectionEquality().hash(errorMessage) ^
+      const DeepCollectionEquality().hash(invoiceStatus) ^
+      const DeepCollectionEquality().hash(totalRideCreditExclVat) ^
+      const DeepCollectionEquality().hash(totalRideCreditInclVat) ^
+      runtimeType.hashCode;
+}
+
+extension $CreditDetailsExtension on CreditDetails {
+  CreditDetails copyWith({
+    enums.CreditDetailsCreditStatus? creditStatus,
+    String? errorMessage,
+    enums.CreditDetailsInvoiceStatus? invoiceStatus,
+    double? totalRideCreditExclVat,
+    double? totalRideCreditInclVat,
+  }) {
+    return CreditDetails(
+      creditStatus: creditStatus ?? this.creditStatus,
+      errorMessage: errorMessage ?? this.errorMessage,
+      invoiceStatus: invoiceStatus ?? this.invoiceStatus,
+      totalRideCreditExclVat:
+          totalRideCreditExclVat ?? this.totalRideCreditExclVat,
+      totalRideCreditInclVat:
+          totalRideCreditInclVat ?? this.totalRideCreditInclVat,
+    );
+  }
+
+  CreditDetails copyWithWrapped({
+    Wrapped<enums.CreditDetailsCreditStatus>? creditStatus,
+    Wrapped<String?>? errorMessage,
+    Wrapped<enums.CreditDetailsInvoiceStatus>? invoiceStatus,
+    Wrapped<double?>? totalRideCreditExclVat,
+    Wrapped<double?>? totalRideCreditInclVat,
+  }) {
+    return CreditDetails(
+      creditStatus: (creditStatus != null
+          ? creditStatus.value
+          : this.creditStatus),
+      errorMessage: (errorMessage != null
+          ? errorMessage.value
+          : this.errorMessage),
+      invoiceStatus: (invoiceStatus != null
+          ? invoiceStatus.value
+          : this.invoiceStatus),
+      totalRideCreditExclVat: (totalRideCreditExclVat != null
+          ? totalRideCreditExclVat.value
+          : this.totalRideCreditExclVat),
+      totalRideCreditInclVat: (totalRideCreditInclVat != null
+          ? totalRideCreditInclVat.value
+          : this.totalRideCreditInclVat),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class DeleteVehiclesFromGroupRequest {
   const DeleteVehiclesFromGroupRequest({this.vehicleIds});
 
@@ -6856,6 +6982,102 @@ extension $FlespiCallbackRequestExtension on FlespiCallbackRequest {
           ? positionLongitude.value
           : this.positionLongitude),
       timestamp: (timestamp != null ? timestamp.value : this.timestamp),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class GetBookingCreditDetailsRequest {
+  const GetBookingCreditDetailsRequest({required this.bookingIds});
+
+  factory GetBookingCreditDetailsRequest.fromJson(Map<String, dynamic> json) =>
+      _$GetBookingCreditDetailsRequestFromJson(json);
+
+  static const toJsonFactory = _$GetBookingCreditDetailsRequestToJson;
+  Map<String, dynamic> toJson() => _$GetBookingCreditDetailsRequestToJson(this);
+
+  @JsonKey(name: 'bookingIds', defaultValue: <String>[])
+  final List<String> bookingIds;
+  static const fromJsonFactory = _$GetBookingCreditDetailsRequestFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is GetBookingCreditDetailsRequest &&
+            (identical(other.bookingIds, bookingIds) ||
+                const DeepCollectionEquality().equals(
+                  other.bookingIds,
+                  bookingIds,
+                )));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(bookingIds) ^ runtimeType.hashCode;
+}
+
+extension $GetBookingCreditDetailsRequestExtension
+    on GetBookingCreditDetailsRequest {
+  GetBookingCreditDetailsRequest copyWith({List<String>? bookingIds}) {
+    return GetBookingCreditDetailsRequest(
+      bookingIds: bookingIds ?? this.bookingIds,
+    );
+  }
+
+  GetBookingCreditDetailsRequest copyWithWrapped({
+    Wrapped<List<String>>? bookingIds,
+  }) {
+    return GetBookingCreditDetailsRequest(
+      bookingIds: (bookingIds != null ? bookingIds.value : this.bookingIds),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class GetBookingCreditDetailsResponse {
+  const GetBookingCreditDetailsResponse({this.details});
+
+  factory GetBookingCreditDetailsResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetBookingCreditDetailsResponseFromJson(json);
+
+  static const toJsonFactory = _$GetBookingCreditDetailsResponseToJson;
+  Map<String, dynamic> toJson() =>
+      _$GetBookingCreditDetailsResponseToJson(this);
+
+  @JsonKey(name: 'details')
+  final Map<String, dynamic>? details;
+  static const fromJsonFactory = _$GetBookingCreditDetailsResponseFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is GetBookingCreditDetailsResponse &&
+            (identical(other.details, details) ||
+                const DeepCollectionEquality().equals(other.details, details)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(details) ^ runtimeType.hashCode;
+}
+
+extension $GetBookingCreditDetailsResponseExtension
+    on GetBookingCreditDetailsResponse {
+  GetBookingCreditDetailsResponse copyWith({Map<String, dynamic>? details}) {
+    return GetBookingCreditDetailsResponse(details: details ?? this.details);
+  }
+
+  GetBookingCreditDetailsResponse copyWithWrapped({
+    Wrapped<Map<String, dynamic>?>? details,
+  }) {
+    return GetBookingCreditDetailsResponse(
+      details: (details != null ? details.value : this.details),
     );
   }
 }
@@ -16671,6 +16893,164 @@ createVehicleContractBillingTypeNullableListFromJson(
 
   return createVehicleContractBillingType
       .map((e) => createVehicleContractBillingTypeFromJson(e.toString()))
+      .toList();
+}
+
+String? creditDetailsCreditStatusNullableToJson(
+  enums.CreditDetailsCreditStatus? creditDetailsCreditStatus,
+) {
+  return creditDetailsCreditStatus?.value;
+}
+
+String? creditDetailsCreditStatusToJson(
+  enums.CreditDetailsCreditStatus creditDetailsCreditStatus,
+) {
+  return creditDetailsCreditStatus.value;
+}
+
+enums.CreditDetailsCreditStatus creditDetailsCreditStatusFromJson(
+  Object? creditDetailsCreditStatus, [
+  enums.CreditDetailsCreditStatus? defaultValue,
+]) {
+  return enums.CreditDetailsCreditStatus.values.firstWhereOrNull(
+        (e) => e.value == creditDetailsCreditStatus,
+      ) ??
+      defaultValue ??
+      enums.CreditDetailsCreditStatus.swaggerGeneratedUnknown;
+}
+
+enums.CreditDetailsCreditStatus? creditDetailsCreditStatusNullableFromJson(
+  Object? creditDetailsCreditStatus, [
+  enums.CreditDetailsCreditStatus? defaultValue,
+]) {
+  if (creditDetailsCreditStatus == null) {
+    return null;
+  }
+  return enums.CreditDetailsCreditStatus.values.firstWhereOrNull(
+        (e) => e.value == creditDetailsCreditStatus,
+      ) ??
+      defaultValue;
+}
+
+String creditDetailsCreditStatusExplodedListToJson(
+  List<enums.CreditDetailsCreditStatus>? creditDetailsCreditStatus,
+) {
+  return creditDetailsCreditStatus?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> creditDetailsCreditStatusListToJson(
+  List<enums.CreditDetailsCreditStatus>? creditDetailsCreditStatus,
+) {
+  if (creditDetailsCreditStatus == null) {
+    return [];
+  }
+
+  return creditDetailsCreditStatus.map((e) => e.value!).toList();
+}
+
+List<enums.CreditDetailsCreditStatus> creditDetailsCreditStatusListFromJson(
+  List? creditDetailsCreditStatus, [
+  List<enums.CreditDetailsCreditStatus>? defaultValue,
+]) {
+  if (creditDetailsCreditStatus == null) {
+    return defaultValue ?? [];
+  }
+
+  return creditDetailsCreditStatus
+      .map((e) => creditDetailsCreditStatusFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.CreditDetailsCreditStatus>?
+creditDetailsCreditStatusNullableListFromJson(
+  List? creditDetailsCreditStatus, [
+  List<enums.CreditDetailsCreditStatus>? defaultValue,
+]) {
+  if (creditDetailsCreditStatus == null) {
+    return defaultValue;
+  }
+
+  return creditDetailsCreditStatus
+      .map((e) => creditDetailsCreditStatusFromJson(e.toString()))
+      .toList();
+}
+
+String? creditDetailsInvoiceStatusNullableToJson(
+  enums.CreditDetailsInvoiceStatus? creditDetailsInvoiceStatus,
+) {
+  return creditDetailsInvoiceStatus?.value;
+}
+
+String? creditDetailsInvoiceStatusToJson(
+  enums.CreditDetailsInvoiceStatus creditDetailsInvoiceStatus,
+) {
+  return creditDetailsInvoiceStatus.value;
+}
+
+enums.CreditDetailsInvoiceStatus creditDetailsInvoiceStatusFromJson(
+  Object? creditDetailsInvoiceStatus, [
+  enums.CreditDetailsInvoiceStatus? defaultValue,
+]) {
+  return enums.CreditDetailsInvoiceStatus.values.firstWhereOrNull(
+        (e) => e.value == creditDetailsInvoiceStatus,
+      ) ??
+      defaultValue ??
+      enums.CreditDetailsInvoiceStatus.swaggerGeneratedUnknown;
+}
+
+enums.CreditDetailsInvoiceStatus? creditDetailsInvoiceStatusNullableFromJson(
+  Object? creditDetailsInvoiceStatus, [
+  enums.CreditDetailsInvoiceStatus? defaultValue,
+]) {
+  if (creditDetailsInvoiceStatus == null) {
+    return null;
+  }
+  return enums.CreditDetailsInvoiceStatus.values.firstWhereOrNull(
+        (e) => e.value == creditDetailsInvoiceStatus,
+      ) ??
+      defaultValue;
+}
+
+String creditDetailsInvoiceStatusExplodedListToJson(
+  List<enums.CreditDetailsInvoiceStatus>? creditDetailsInvoiceStatus,
+) {
+  return creditDetailsInvoiceStatus?.map((e) => e.value!).join(',') ?? '';
+}
+
+List<String> creditDetailsInvoiceStatusListToJson(
+  List<enums.CreditDetailsInvoiceStatus>? creditDetailsInvoiceStatus,
+) {
+  if (creditDetailsInvoiceStatus == null) {
+    return [];
+  }
+
+  return creditDetailsInvoiceStatus.map((e) => e.value!).toList();
+}
+
+List<enums.CreditDetailsInvoiceStatus> creditDetailsInvoiceStatusListFromJson(
+  List? creditDetailsInvoiceStatus, [
+  List<enums.CreditDetailsInvoiceStatus>? defaultValue,
+]) {
+  if (creditDetailsInvoiceStatus == null) {
+    return defaultValue ?? [];
+  }
+
+  return creditDetailsInvoiceStatus
+      .map((e) => creditDetailsInvoiceStatusFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.CreditDetailsInvoiceStatus>?
+creditDetailsInvoiceStatusNullableListFromJson(
+  List? creditDetailsInvoiceStatus, [
+  List<enums.CreditDetailsInvoiceStatus>? defaultValue,
+]) {
+  if (creditDetailsInvoiceStatus == null) {
+    return defaultValue;
+  }
+
+  return creditDetailsInvoiceStatus
+      .map((e) => creditDetailsInvoiceStatusFromJson(e.toString()))
       .toList();
 }
 

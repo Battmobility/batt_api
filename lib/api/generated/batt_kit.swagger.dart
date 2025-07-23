@@ -369,6 +369,24 @@ abstract class BattKit extends ChopperService {
     @Body() required UpdateBookingRequest? body,
   });
 
+  ///Returns crediting details for the given bookings
+  Future<chopper.Response<GetBookingCreditDetailsResponse>>
+  bookingV1CreditDetailsPost({required GetBookingCreditDetailsRequest? body}) {
+    generatedMapping.putIfAbsent(
+      GetBookingCreditDetailsResponse,
+      () => GetBookingCreditDetailsResponse.fromJsonFactory,
+    );
+
+    return _bookingV1CreditDetailsPost(body: body);
+  }
+
+  ///Returns crediting details for the given bookings
+  @POST(path: '/booking/v1/credit-details', optionalBody: true)
+  Future<chopper.Response<GetBookingCreditDetailsResponse>>
+  _bookingV1CreditDetailsPost({
+    @Body() required GetBookingCreditDetailsRequest? body,
+  });
+
   ///Create a new vehicle
   Future<chopper.Response<Vehicle>> bookingV1VehiclesPost({
     required CreateVehicleRequest? body,

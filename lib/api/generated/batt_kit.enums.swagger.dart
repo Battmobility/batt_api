@@ -293,6 +293,46 @@ enum CreateVehicleContractBillingType {
   const CreateVehicleContractBillingType(this.value);
 }
 
+enum CreditDetailsCreditStatus {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('PENDING')
+  pending('PENDING'),
+  @JsonValue('SKIPPED')
+  skipped('SKIPPED'),
+  @JsonValue('CREDITED')
+  credited('CREDITED'),
+  @JsonValue('WAITING_FOR_APPROVAL')
+  waitingForApproval('WAITING_FOR_APPROVAL'),
+  @JsonValue('UNKNOWN')
+  unknown('UNKNOWN');
+
+  final String? value;
+
+  const CreditDetailsCreditStatus(this.value);
+}
+
+enum CreditDetailsInvoiceStatus {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue('SKIPPED')
+  skipped('SKIPPED'),
+  @JsonValue('INVOICED')
+  invoiced('INVOICED'),
+  @JsonValue('WAITING_FOR_APPROVAL')
+  waitingForApproval('WAITING_FOR_APPROVAL'),
+  @JsonValue('READY_FOR_INVOICE')
+  readyForInvoice('READY_FOR_INVOICE'),
+  @JsonValue('UNKNOWN')
+  unknown('UNKNOWN');
+
+  final String? value;
+
+  const CreditDetailsInvoiceStatus(this.value);
+}
+
 enum FormulaChangeOption {
   @JsonValue(null)
   swaggerGeneratedUnknown(null),
