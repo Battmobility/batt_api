@@ -1569,6 +1569,47 @@
         ],
         "type": "object"
       },
+      "CreditDetails": {
+        "properties": {
+          "creditStatus": {
+            "enum": [
+              "PENDING",
+              "SKIPPED",
+              "CREDITED",
+              "WAITING_FOR_APPROVAL",
+              "UNKNOWN"
+            ],
+            "type": "string"
+          },
+          "errorMessage": {
+            "description": "ErrorMessage if present, indicates an error in processing the booking credit details.",
+            "type": "string"
+          },
+          "invoiceStatus": {
+            "enum": [
+              "SKIPPED",
+              "INVOICED",
+              "WAITING_FOR_APPROVAL",
+              "READY_FOR_INVOICE",
+              "UNKNOWN"
+            ],
+            "type": "string"
+          },
+          "totalRideCreditExclVat": {
+            "description": "TotalRideCreditExclVat not present if InvoiceStatus is \"SKIPPED\" or \"UNKNOWN\" or in case of an error; equals the stored credit value if CreditStatus is \"CREDITED\" or \"WAITING_FOR_APPROVAL\"; equals the projected credit value if CreditStatus is \"PENDING\" and InvoiceStatus is not \"SKIPPED\" or \"UNKNOWN\".",
+            "type": "number"
+          },
+          "totalRideCreditInclVat": {
+            "description": "TotalRideCreditInclVat same as TotalRideCreditExclVat, but including VAT",
+            "type": "number"
+          }
+        },
+        "required": [
+          "creditStatus",
+          "invoiceStatus"
+        ],
+        "type": "object"
+      },
       "DeleteVehiclesFromGroupRequest": {
         "properties": {
           "vehicleIds": {
@@ -1676,6 +1717,31 @@
           "SameDayOfMonth"
         ],
         "type": "string"
+      },
+      "GetBookingCreditDetailsRequest": {
+        "properties": {
+          "bookingIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "bookingIds"
+        ],
+        "type": "object"
+      },
+      "GetBookingCreditDetailsResponse": {
+        "properties": {
+          "details": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/CreditDetails"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
       },
       "GetVehicleModelsRatesEntry": {
         "properties": {
@@ -4400,6 +4466,58 @@
             "description": "OK"
           }
         },
+        "tags": [
+          "booking-facade"
+        ]
+      }
+    },
+    "/booking/v1/credit-details": {
+      "post": {
+        "description": "Booking IDs are returned lowercased",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetBookingCreditDetailsRequest"
+              }
+            }
+          },
+          "description": "Booking IDs",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetBookingCreditDetailsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Returns crediting details for the given bookings",
         "tags": [
           "booking-facade"
         ]
