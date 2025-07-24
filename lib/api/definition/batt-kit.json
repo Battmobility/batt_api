@@ -1718,31 +1718,6 @@
         ],
         "type": "string"
       },
-      "GetBookingCreditDetailsRequest": {
-        "properties": {
-          "bookingIds": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
-          }
-        },
-        "required": [
-          "bookingIds"
-        ],
-        "type": "object"
-      },
-      "GetBookingCreditDetailsResponse": {
-        "properties": {
-          "details": {
-            "additionalProperties": {
-              "$ref": "#/components/schemas/CreditDetails"
-            },
-            "type": "object"
-          }
-        },
-        "type": "object"
-      },
       "GetVehicleModelsRatesEntry": {
         "properties": {
           "dayPrice": {
@@ -2475,6 +2450,31 @@
         "required": [
           "email"
         ],
+        "type": "object"
+      },
+      "SearchBookingCreditDetailsRequest": {
+        "properties": {
+          "bookingIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "bookingIds"
+        ],
+        "type": "object"
+      },
+      "SearchBookingCreditDetailsResponse": {
+        "properties": {
+          "details": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/CreditDetails"
+            },
+            "type": "object"
+          }
+        },
         "type": "object"
       },
       "SearchBookingsRequest": {
@@ -4478,7 +4478,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetBookingCreditDetailsRequest"
+                "$ref": "#/components/schemas/SearchBookingCreditDetailsRequest"
               }
             }
           },
@@ -4490,7 +4490,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetBookingCreditDetailsResponse"
+                  "$ref": "#/components/schemas/SearchBookingCreditDetailsResponse"
                 }
               }
             },
