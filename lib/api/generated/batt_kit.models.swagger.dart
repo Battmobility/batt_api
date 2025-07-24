@@ -6987,102 +6987,6 @@ extension $FlespiCallbackRequestExtension on FlespiCallbackRequest {
 }
 
 @JsonSerializable(explicitToJson: true)
-class GetBookingCreditDetailsRequest {
-  const GetBookingCreditDetailsRequest({required this.bookingIds});
-
-  factory GetBookingCreditDetailsRequest.fromJson(Map<String, dynamic> json) =>
-      _$GetBookingCreditDetailsRequestFromJson(json);
-
-  static const toJsonFactory = _$GetBookingCreditDetailsRequestToJson;
-  Map<String, dynamic> toJson() => _$GetBookingCreditDetailsRequestToJson(this);
-
-  @JsonKey(name: 'bookingIds', defaultValue: <String>[])
-  final List<String> bookingIds;
-  static const fromJsonFactory = _$GetBookingCreditDetailsRequestFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is GetBookingCreditDetailsRequest &&
-            (identical(other.bookingIds, bookingIds) ||
-                const DeepCollectionEquality().equals(
-                  other.bookingIds,
-                  bookingIds,
-                )));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(bookingIds) ^ runtimeType.hashCode;
-}
-
-extension $GetBookingCreditDetailsRequestExtension
-    on GetBookingCreditDetailsRequest {
-  GetBookingCreditDetailsRequest copyWith({List<String>? bookingIds}) {
-    return GetBookingCreditDetailsRequest(
-      bookingIds: bookingIds ?? this.bookingIds,
-    );
-  }
-
-  GetBookingCreditDetailsRequest copyWithWrapped({
-    Wrapped<List<String>>? bookingIds,
-  }) {
-    return GetBookingCreditDetailsRequest(
-      bookingIds: (bookingIds != null ? bookingIds.value : this.bookingIds),
-    );
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class GetBookingCreditDetailsResponse {
-  const GetBookingCreditDetailsResponse({this.details});
-
-  factory GetBookingCreditDetailsResponse.fromJson(Map<String, dynamic> json) =>
-      _$GetBookingCreditDetailsResponseFromJson(json);
-
-  static const toJsonFactory = _$GetBookingCreditDetailsResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$GetBookingCreditDetailsResponseToJson(this);
-
-  @JsonKey(name: 'details')
-  final Map<String, dynamic>? details;
-  static const fromJsonFactory = _$GetBookingCreditDetailsResponseFromJson;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is GetBookingCreditDetailsResponse &&
-            (identical(other.details, details) ||
-                const DeepCollectionEquality().equals(other.details, details)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(details) ^ runtimeType.hashCode;
-}
-
-extension $GetBookingCreditDetailsResponseExtension
-    on GetBookingCreditDetailsResponse {
-  GetBookingCreditDetailsResponse copyWith({Map<String, dynamic>? details}) {
-    return GetBookingCreditDetailsResponse(details: details ?? this.details);
-  }
-
-  GetBookingCreditDetailsResponse copyWithWrapped({
-    Wrapped<Map<String, dynamic>?>? details,
-  }) {
-    return GetBookingCreditDetailsResponse(
-      details: (details != null ? details.value : this.details),
-    );
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
 class GetVehicleModelsRatesEntry {
   const GetVehicleModelsRatesEntry({
     required this.dayPrice,
@@ -9975,6 +9879,105 @@ extension $ResendVerificationEmailExtension on ResendVerificationEmail {
   ResendVerificationEmail copyWithWrapped({Wrapped<String>? email}) {
     return ResendVerificationEmail(
       email: (email != null ? email.value : this.email),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class SearchBookingCreditDetailsRequest {
+  const SearchBookingCreditDetailsRequest({required this.bookingIds});
+
+  factory SearchBookingCreditDetailsRequest.fromJson(
+    Map<String, dynamic> json,
+  ) => _$SearchBookingCreditDetailsRequestFromJson(json);
+
+  static const toJsonFactory = _$SearchBookingCreditDetailsRequestToJson;
+  Map<String, dynamic> toJson() =>
+      _$SearchBookingCreditDetailsRequestToJson(this);
+
+  @JsonKey(name: 'bookingIds', defaultValue: <String>[])
+  final List<String> bookingIds;
+  static const fromJsonFactory = _$SearchBookingCreditDetailsRequestFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is SearchBookingCreditDetailsRequest &&
+            (identical(other.bookingIds, bookingIds) ||
+                const DeepCollectionEquality().equals(
+                  other.bookingIds,
+                  bookingIds,
+                )));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(bookingIds) ^ runtimeType.hashCode;
+}
+
+extension $SearchBookingCreditDetailsRequestExtension
+    on SearchBookingCreditDetailsRequest {
+  SearchBookingCreditDetailsRequest copyWith({List<String>? bookingIds}) {
+    return SearchBookingCreditDetailsRequest(
+      bookingIds: bookingIds ?? this.bookingIds,
+    );
+  }
+
+  SearchBookingCreditDetailsRequest copyWithWrapped({
+    Wrapped<List<String>>? bookingIds,
+  }) {
+    return SearchBookingCreditDetailsRequest(
+      bookingIds: (bookingIds != null ? bookingIds.value : this.bookingIds),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class SearchBookingCreditDetailsResponse {
+  const SearchBookingCreditDetailsResponse({this.details});
+
+  factory SearchBookingCreditDetailsResponse.fromJson(
+    Map<String, dynamic> json,
+  ) => _$SearchBookingCreditDetailsResponseFromJson(json);
+
+  static const toJsonFactory = _$SearchBookingCreditDetailsResponseToJson;
+  Map<String, dynamic> toJson() =>
+      _$SearchBookingCreditDetailsResponseToJson(this);
+
+  @JsonKey(name: 'details')
+  final Map<String, dynamic>? details;
+  static const fromJsonFactory = _$SearchBookingCreditDetailsResponseFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is SearchBookingCreditDetailsResponse &&
+            (identical(other.details, details) ||
+                const DeepCollectionEquality().equals(other.details, details)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(details) ^ runtimeType.hashCode;
+}
+
+extension $SearchBookingCreditDetailsResponseExtension
+    on SearchBookingCreditDetailsResponse {
+  SearchBookingCreditDetailsResponse copyWith({Map<String, dynamic>? details}) {
+    return SearchBookingCreditDetailsResponse(details: details ?? this.details);
+  }
+
+  SearchBookingCreditDetailsResponse copyWithWrapped({
+    Wrapped<Map<String, dynamic>?>? details,
+  }) {
+    return SearchBookingCreditDetailsResponse(
+      details: (details != null ? details.value : this.details),
     );
   }
 }
