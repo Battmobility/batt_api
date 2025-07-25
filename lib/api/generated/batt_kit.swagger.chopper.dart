@@ -266,8 +266,9 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<GetBookingCreditDetailsResponse>> _bookingV1CreditDetailsPost(
-      {required GetBookingCreditDetailsRequest? body}) {
+  Future<Response<SearchBookingCreditDetailsResponse>>
+      _bookingV1CreditDetailsPost(
+          {required SearchBookingCreditDetailsRequest? body}) {
     final Uri $url = Uri.parse('/booking/v1/credit-details');
     final $body = body;
     final Request $request = Request(
@@ -276,8 +277,8 @@ final class _$BattKit extends BattKit {
       client.baseUrl,
       body: $body,
     );
-    return client.send<GetBookingCreditDetailsResponse,
-        GetBookingCreditDetailsResponse>($request);
+    return client.send<SearchBookingCreditDetailsResponse,
+        SearchBookingCreditDetailsResponse>($request);
   }
 
   @override

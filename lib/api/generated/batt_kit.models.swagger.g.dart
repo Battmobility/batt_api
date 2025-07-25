@@ -1475,33 +1475,6 @@ Map<String, dynamic> _$FlespiCallbackRequestToJson(
       'timestamp': instance.timestamp,
     };
 
-GetBookingCreditDetailsRequest _$GetBookingCreditDetailsRequestFromJson(
-        Map<String, dynamic> json) =>
-    GetBookingCreditDetailsRequest(
-      bookingIds: (json['bookingIds'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          [],
-    );
-
-Map<String, dynamic> _$GetBookingCreditDetailsRequestToJson(
-        GetBookingCreditDetailsRequest instance) =>
-    <String, dynamic>{
-      'bookingIds': instance.bookingIds,
-    };
-
-GetBookingCreditDetailsResponse _$GetBookingCreditDetailsResponseFromJson(
-        Map<String, dynamic> json) =>
-    GetBookingCreditDetailsResponse(
-      details: json['details'] as Map<String, dynamic>?,
-    );
-
-Map<String, dynamic> _$GetBookingCreditDetailsResponseToJson(
-        GetBookingCreditDetailsResponse instance) =>
-    <String, dynamic>{
-      'details': instance.details,
-    };
-
 GetVehicleModelsRatesEntry _$GetVehicleModelsRatesEntryFromJson(
         Map<String, dynamic> json) =>
     GetVehicleModelsRatesEntry(
@@ -2158,6 +2131,33 @@ Map<String, dynamic> _$ResendVerificationEmailToJson(
         ResendVerificationEmail instance) =>
     <String, dynamic>{
       'email': instance.email,
+    };
+
+SearchBookingCreditDetailsRequest _$SearchBookingCreditDetailsRequestFromJson(
+        Map<String, dynamic> json) =>
+    SearchBookingCreditDetailsRequest(
+      bookingIds: (json['bookingIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$SearchBookingCreditDetailsRequestToJson(
+        SearchBookingCreditDetailsRequest instance) =>
+    <String, dynamic>{
+      'bookingIds': instance.bookingIds,
+    };
+
+SearchBookingCreditDetailsResponse _$SearchBookingCreditDetailsResponseFromJson(
+        Map<String, dynamic> json) =>
+    SearchBookingCreditDetailsResponse(
+      details: json['details'] as Map<String, dynamic>?,
+    );
+
+Map<String, dynamic> _$SearchBookingCreditDetailsResponseToJson(
+        SearchBookingCreditDetailsResponse instance) =>
+    <String, dynamic>{
+      'details': instance.details,
     };
 
 SearchBookingsRequest _$SearchBookingsRequestFromJson(

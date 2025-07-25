@@ -370,11 +370,13 @@ abstract class BattKit extends ChopperService {
   });
 
   ///Returns crediting details for the given bookings
-  Future<chopper.Response<GetBookingCreditDetailsResponse>>
-  bookingV1CreditDetailsPost({required GetBookingCreditDetailsRequest? body}) {
+  Future<chopper.Response<SearchBookingCreditDetailsResponse>>
+  bookingV1CreditDetailsPost({
+    required SearchBookingCreditDetailsRequest? body,
+  }) {
     generatedMapping.putIfAbsent(
-      GetBookingCreditDetailsResponse,
-      () => GetBookingCreditDetailsResponse.fromJsonFactory,
+      SearchBookingCreditDetailsResponse,
+      () => SearchBookingCreditDetailsResponse.fromJsonFactory,
     );
 
     return _bookingV1CreditDetailsPost(body: body);
@@ -382,9 +384,9 @@ abstract class BattKit extends ChopperService {
 
   ///Returns crediting details for the given bookings
   @POST(path: '/booking/v1/credit-details', optionalBody: true)
-  Future<chopper.Response<GetBookingCreditDetailsResponse>>
+  Future<chopper.Response<SearchBookingCreditDetailsResponse>>
   _bookingV1CreditDetailsPost({
-    @Body() required GetBookingCreditDetailsRequest? body,
+    @Body() required SearchBookingCreditDetailsRequest? body,
   });
 
   ///Create a new vehicle
