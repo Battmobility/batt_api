@@ -370,13 +370,11 @@ abstract class BattKit extends ChopperService {
   });
 
   ///Returns crediting details for the given bookings
-  Future<chopper.Response<SearchBookingCreditDetailsResponse>>
-  bookingV1CreditDetailsPost({
-    required SearchBookingCreditDetailsRequest? body,
-  }) {
+  Future<chopper.Response<GetBookingCreditDetailsResponse>>
+  bookingV1CreditDetailsPost({required GetBookingCreditDetailsRequest? body}) {
     generatedMapping.putIfAbsent(
-      SearchBookingCreditDetailsResponse,
-      () => SearchBookingCreditDetailsResponse.fromJsonFactory,
+      GetBookingCreditDetailsResponse,
+      () => GetBookingCreditDetailsResponse.fromJsonFactory,
     );
 
     return _bookingV1CreditDetailsPost(body: body);
@@ -384,9 +382,9 @@ abstract class BattKit extends ChopperService {
 
   ///Returns crediting details for the given bookings
   @POST(path: '/booking/v1/credit-details', optionalBody: true)
-  Future<chopper.Response<SearchBookingCreditDetailsResponse>>
+  Future<chopper.Response<GetBookingCreditDetailsResponse>>
   _bookingV1CreditDetailsPost({
-    @Body() required SearchBookingCreditDetailsRequest? body,
+    @Body() required GetBookingCreditDetailsRequest? body,
   });
 
   ///Create a new vehicle
@@ -421,17 +419,23 @@ abstract class BattKit extends ChopperService {
 
   ///Get all clients, optionally filtered by name
   ///@param name Filter clients by name (LIKE search)
-  Future<chopper.Response<List<Client>>> clientV1ClientsGet({String? name}) {
+  ///@param suspended Filter clients by suspended status
+  Future<chopper.Response<List<Client>>> clientV1ClientsGet({
+    String? name,
+    bool? suspended,
+  }) {
     generatedMapping.putIfAbsent(Client, () => Client.fromJsonFactory);
 
-    return _clientV1ClientsGet(name: name);
+    return _clientV1ClientsGet(name: name, suspended: suspended);
   }
 
   ///Get all clients, optionally filtered by name
   ///@param name Filter clients by name (LIKE search)
+  ///@param suspended Filter clients by suspended status
   @GET(path: '/client/v1/clients')
   Future<chopper.Response<List<Client>>> _clientV1ClientsGet({
     @Query('name') String? name,
+    @Query('suspended') bool? suspended,
   });
 
   ///
@@ -1581,18 +1585,22 @@ abstract class BattKit extends ChopperService {
   });
 
   ///Get all users
-  Future<chopper.Response<List<ContractUser>>> userV1UsersGet() {
+  ///@param enabled Filter users by enabled status
+  Future<chopper.Response<List<ContractUser>>> userV1UsersGet({bool? enabled}) {
     generatedMapping.putIfAbsent(
       ContractUser,
       () => ContractUser.fromJsonFactory,
     );
 
-    return _userV1UsersGet();
+    return _userV1UsersGet(enabled: enabled);
   }
 
   ///Get all users
+  ///@param enabled Filter users by enabled status
   @GET(path: '/user/v1/users')
-  Future<chopper.Response<List<ContractUser>>> _userV1UsersGet();
+  Future<chopper.Response<List<ContractUser>>> _userV1UsersGet({
+    @Query('enabled') bool? enabled,
+  });
 
   ///Initiates user signup
   Future<chopper.Response> userV1UsersPost({required SignupUser? body}) {
@@ -1823,6 +1831,28 @@ abstract class BattKit extends ChopperService {
   @GET(path: '/user/v1/users/{userId}/details')
   Future<chopper.Response<ContractUser>> _userV1UsersUserIdDetailsGet({
     @Path('userId') required int? userId,
+  });
+
+  ///Update a user (admin)
+  ///@param userId User ID
+  Future<chopper.Response<ContractUser>> userV1UsersUserIdDetailsPut({
+    required int? userId,
+    required UpdateUser? body,
+  }) {
+    generatedMapping.putIfAbsent(
+      ContractUser,
+      () => ContractUser.fromJsonFactory,
+    );
+
+    return _userV1UsersUserIdDetailsPut(userId: userId, body: body);
+  }
+
+  ///Update a user (admin)
+  ///@param userId User ID
+  @PUT(path: '/user/v1/users/{userId}/details', optionalBody: true)
+  Future<chopper.Response<ContractUser>> _userV1UsersUserIdDetailsPut({
+    @Path('userId') required int? userId,
+    @Body() required UpdateUser? body,
   });
 
   ///Requests a resend of the verification email that is part of the user signup process

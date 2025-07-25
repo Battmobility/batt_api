@@ -266,9 +266,8 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<SearchBookingCreditDetailsResponse>>
-      _bookingV1CreditDetailsPost(
-          {required SearchBookingCreditDetailsRequest? body}) {
+  Future<Response<GetBookingCreditDetailsResponse>> _bookingV1CreditDetailsPost(
+      {required GetBookingCreditDetailsRequest? body}) {
     final Uri $url = Uri.parse('/booking/v1/credit-details');
     final $body = body;
     final Request $request = Request(
@@ -277,8 +276,8 @@ final class _$BattKit extends BattKit {
       client.baseUrl,
       body: $body,
     );
-    return client.send<SearchBookingCreditDetailsResponse,
-        SearchBookingCreditDetailsResponse>($request);
+    return client.send<GetBookingCreditDetailsResponse,
+        GetBookingCreditDetailsResponse>($request);
   }
 
   @override
@@ -310,9 +309,15 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<List<Client>>> _clientV1ClientsGet({String? name}) {
+  Future<Response<List<Client>>> _clientV1ClientsGet({
+    String? name,
+    bool? suspended,
+  }) {
     final Uri $url = Uri.parse('/client/v1/clients');
-    final Map<String, dynamic> $params = <String, dynamic>{'name': name};
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'name': name,
+      'suspended': suspended,
+    };
     final Request $request = Request(
       'GET',
       $url,
@@ -1132,12 +1137,14 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<List<ContractUser>>> _userV1UsersGet() {
+  Future<Response<List<ContractUser>>> _userV1UsersGet({bool? enabled}) {
     final Uri $url = Uri.parse('/user/v1/users');
+    final Map<String, dynamic> $params = <String, dynamic>{'enabled': enabled};
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
+      parameters: $params,
     );
     return client.send<List<ContractUser>, ContractUser>($request);
   }
@@ -1346,6 +1353,22 @@ final class _$BattKit extends BattKit {
       'GET',
       $url,
       client.baseUrl,
+    );
+    return client.send<ContractUser, ContractUser>($request);
+  }
+
+  @override
+  Future<Response<ContractUser>> _userV1UsersUserIdDetailsPut({
+    required int? userId,
+    required UpdateUser? body,
+  }) {
+    final Uri $url = Uri.parse('/user/v1/users/${userId}/details');
+    final $body = body;
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      body: $body,
     );
     return client.send<ContractUser, ContractUser>($request);
   }
