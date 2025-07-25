@@ -84,6 +84,31 @@
         },
         "type": "object"
       },
+      "BattFormula": {
+        "properties": {
+          "minCommitment": {
+            "type": "integer"
+          },
+          "type": {
+            "enum": [
+              "BattFun",
+              "BattFunPlus",
+              "BattFunPlusDL",
+              "BattForBusiness",
+              "BattFan",
+              "BattFanPlus",
+              "BattMax",
+              "EigenBeheer",
+              "Straal"
+            ],
+            "type": "string"
+          },
+          "warrantyAmount": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
       "BatteryStatus": {
         "properties": {
           "ageInSeconds": {
@@ -607,8 +632,17 @@
           "country": {
             "type": "string"
           },
+          "domainNamesForUserOnboarding": {
+            "type": "string"
+          },
           "id": {
             "type": "integer"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "isDeliveringTrustForPrivateUse": {
+            "type": "boolean"
           },
           "isSuspended": {
             "type": "boolean"
@@ -1052,6 +1086,9 @@
           "city": {
             "type": "string"
           },
+          "convictions": {
+            "$ref": "#/components/schemas/Convictions"
+          },
           "dateCurrentLicense": {
             "type": "string"
           },
@@ -1069,6 +1106,9 @@
           },
           "email": {
             "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
           },
           "firstName": {
             "type": "string"
@@ -1718,6 +1758,31 @@
         ],
         "type": "string"
       },
+      "GetBookingCreditDetailsRequest": {
+        "properties": {
+          "bookingIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "bookingIds"
+        ],
+        "type": "object"
+      },
+      "GetBookingCreditDetailsResponse": {
+        "properties": {
+          "details": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/CreditDetails"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
       "GetVehicleModelsRatesEntry": {
         "properties": {
           "dayPrice": {
@@ -2171,6 +2236,9 @@
       },
       "Onboarding": {
         "properties": {
+          "client": {
+            "$ref": "#/components/schemas/OnboardingClient"
+          },
           "legal": {
             "$ref": "#/components/schemas/OnboardingLegal"
           },
@@ -2190,6 +2258,17 @@
               "COMPLETED"
             ],
             "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "OnboardingClient": {
+        "properties": {
+          "subscriptions": {
+            "items": {
+              "$ref": "#/components/schemas/Subscription"
+            },
+            "type": "array"
           }
         },
         "type": "object"
@@ -2450,31 +2529,6 @@
         "required": [
           "email"
         ],
-        "type": "object"
-      },
-      "SearchBookingCreditDetailsRequest": {
-        "properties": {
-          "bookingIds": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
-          }
-        },
-        "required": [
-          "bookingIds"
-        ],
-        "type": "object"
-      },
-      "SearchBookingCreditDetailsResponse": {
-        "properties": {
-          "details": {
-            "additionalProperties": {
-              "$ref": "#/components/schemas/CreditDetails"
-            },
-            "type": "object"
-          }
-        },
         "type": "object"
       },
       "SearchBookingsRequest": {
@@ -2809,7 +2863,13 @@
             ],
             "type": "string"
           },
+          "clientSuspended": {
+            "type": "boolean"
+          },
           "commitment": {
+            "type": "integer"
+          },
+          "delegatedTrustClientId": {
             "type": "integer"
           },
           "endDate": {
@@ -2818,6 +2878,43 @@
           },
           "id": {
             "type": "integer"
+          },
+          "possibleFormulas": {
+            "items": {
+              "$ref": "#/components/schemas/BattFormula"
+            },
+            "type": "array"
+          },
+          "startDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "subscriptionContract": {
+            "$ref": "#/components/schemas/SubscriptionContract"
+          },
+          "subscriptionType": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          },
+          "vehicles": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "SubscriptionContract": {
+        "properties": {
+          "commitment": {
+            "type": "integer"
+          },
+          "endDate": {
+            "format": "date-time",
+            "type": "string"
           },
           "startDate": {
             "format": "date-time",
@@ -3109,10 +3206,40 @@
       },
       "UpdateClient": {
         "properties": {
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "domainNameForUserOnboarding": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "houseNumber": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "odooId": {
+            "type": "integer"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
           "suspended": {
             "type": "boolean"
           },
           "suspendedReason": {
+            "type": "string"
+          },
+          "vat": {
             "type": "string"
           }
         },
@@ -3198,6 +3325,26 @@
           "providerDeviceId",
           "providerId"
         ],
+        "type": "object"
+      },
+      "UpdateUser": {
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          }
+        },
         "type": "object"
       },
       "UpdateVehicleRequest": {
@@ -3529,6 +3676,9 @@
           "endDate": {
             "format": "date-time",
             "type": "string"
+          },
+          "isDeliveringTrustForPrivateUse": {
+            "type": "boolean"
           },
           "mainUserId": {
             "type": "integer"
@@ -4478,7 +4628,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SearchBookingCreditDetailsRequest"
+                "$ref": "#/components/schemas/GetBookingCreditDetailsRequest"
               }
             }
           },
@@ -4490,7 +4640,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SearchBookingCreditDetailsResponse"
+                  "$ref": "#/components/schemas/GetBookingCreditDetailsResponse"
                 }
               }
             },
@@ -4646,6 +4796,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "Filter clients by suspended status",
+            "in": "query",
+            "name": "suspended",
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -4730,7 +4888,7 @@
         ]
       },
       "put": {
-        "description": "Update a client, suspend. When unsuspending, sets reason to null",
+        "description": "Update a client",
         "parameters": [
           {
             "description": "Client ID",
@@ -7516,6 +7674,16 @@
     "/user/v1/users": {
       "get": {
         "description": "Get all for admin purposes",
+        "parameters": [
+          {
+            "description": "Filter users by enabled status",
+            "in": "query",
+            "name": "enabled",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -8063,6 +8231,77 @@
           }
         },
         "summary": "Get a user by ID (admin)",
+        "tags": [
+          "admin"
+        ]
+      },
+      "put": {
+        "description": "Update a user",
+        "parameters": [
+          {
+            "description": "User ID",
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUser"
+              }
+            }
+          },
+          "description": "User",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContractUser"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update a user (admin)",
         "tags": [
           "admin"
         ]
