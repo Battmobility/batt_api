@@ -4825,6 +4825,28 @@
         "tags": [
           "client-facade"
         ]
+      },
+      "post": {
+        "description": "Create a new client as an admin",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateClient"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Client"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create a new client (admin)",
+        "tags": [
+          "admin"
+        ]
       }
     },
     "/client/v1/clients/{clientId}": {
@@ -7423,15 +7445,7 @@
       "post": {
         "description": "Create a new client and",
         "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateClient"
-              }
-            }
-          },
-          "description": "Client",
-          "required": true
+          "$ref": "#/components/requestBodies/CreateClient"
         },
         "responses": {
           "200": {
