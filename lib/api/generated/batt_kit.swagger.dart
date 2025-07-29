@@ -369,6 +369,26 @@ abstract class BattKit extends ChopperService {
     @Body() required UpdateBookingRequest? body,
   });
 
+  ///Returns crediting details for the given bookings
+  Future<chopper.Response<SearchBookingCreditDetailsResponse>>
+  bookingV1CreditDetailsPost({
+    required SearchBookingCreditDetailsRequest? body,
+  }) {
+    generatedMapping.putIfAbsent(
+      SearchBookingCreditDetailsResponse,
+      () => SearchBookingCreditDetailsResponse.fromJsonFactory,
+    );
+
+    return _bookingV1CreditDetailsPost(body: body);
+  }
+
+  ///Returns crediting details for the given bookings
+  @POST(path: '/booking/v1/credit-details', optionalBody: true)
+  Future<chopper.Response<SearchBookingCreditDetailsResponse>>
+  _bookingV1CreditDetailsPost({
+    @Body() required SearchBookingCreditDetailsRequest? body,
+  });
+
   ///Create a new vehicle
   Future<chopper.Response<Vehicle>> bookingV1VehiclesPost({
     required CreateVehicleRequest? body,
@@ -401,17 +421,38 @@ abstract class BattKit extends ChopperService {
 
   ///Get all clients, optionally filtered by name
   ///@param name Filter clients by name (LIKE search)
-  Future<chopper.Response<List<Client>>> clientV1ClientsGet({String? name}) {
+  ///@param suspended Filter clients by suspended status
+  Future<chopper.Response<List<Client>>> clientV1ClientsGet({
+    String? name,
+    bool? suspended,
+  }) {
     generatedMapping.putIfAbsent(Client, () => Client.fromJsonFactory);
 
-    return _clientV1ClientsGet(name: name);
+    return _clientV1ClientsGet(name: name, suspended: suspended);
   }
 
   ///Get all clients, optionally filtered by name
   ///@param name Filter clients by name (LIKE search)
+  ///@param suspended Filter clients by suspended status
   @GET(path: '/client/v1/clients')
   Future<chopper.Response<List<Client>>> _clientV1ClientsGet({
     @Query('name') String? name,
+    @Query('suspended') bool? suspended,
+  });
+
+  ///Create a new client (admin)
+  Future<chopper.Response<Client>> clientV1ClientsPost({
+    required CreateClient? body,
+  }) {
+    generatedMapping.putIfAbsent(Client, () => Client.fromJsonFactory);
+
+    return _clientV1ClientsPost(body: body);
+  }
+
+  ///Create a new client (admin)
+  @POST(path: '/client/v1/clients', optionalBody: true)
+  Future<chopper.Response<Client>> _clientV1ClientsPost({
+    @Body() required CreateClient? body,
   });
 
   ///
@@ -1532,6 +1573,21 @@ abstract class BattKit extends ChopperService {
     @Path('userEmail') required String? userEmail,
   });
 
+  ///Get an uploaded document from the user
+  ///@param filename File name
+  Future<chopper.Response<String>> userV1DocumentsFilenameGet({
+    required String? filename,
+  }) {
+    return _userV1DocumentsFilenameGet(filename: filename);
+  }
+
+  ///Get an uploaded document from the user
+  ///@param filename File name
+  @GET(path: '/user/v1/documents/{filename}')
+  Future<chopper.Response<String>> _userV1DocumentsFilenameGet({
+    @Path('filename') required String? filename,
+  });
+
   ///Requests a password reset email to be sent
   Future<chopper.Response> userV1PasswordResetsPost({
     required PasswordReset? body,
@@ -1546,18 +1602,22 @@ abstract class BattKit extends ChopperService {
   });
 
   ///Get all users
-  Future<chopper.Response<List<ContractUser>>> userV1UsersGet() {
+  ///@param enabled Filter users by enabled status
+  Future<chopper.Response<List<ContractUser>>> userV1UsersGet({bool? enabled}) {
     generatedMapping.putIfAbsent(
       ContractUser,
       () => ContractUser.fromJsonFactory,
     );
 
-    return _userV1UsersGet();
+    return _userV1UsersGet(enabled: enabled);
   }
 
   ///Get all users
+  ///@param enabled Filter users by enabled status
   @GET(path: '/user/v1/users')
-  Future<chopper.Response<List<ContractUser>>> _userV1UsersGet();
+  Future<chopper.Response<List<ContractUser>>> _userV1UsersGet({
+    @Query('enabled') bool? enabled,
+  });
 
   ///Initiates user signup
   Future<chopper.Response> userV1UsersPost({required SignupUser? body}) {
@@ -1581,21 +1641,6 @@ abstract class BattKit extends ChopperService {
   @PUT(path: '/user/v1/users/devices', optionalBody: true)
   Future<chopper.Response> _userV1UsersDevicesPut({
     @Body() required RegisterDeviceRequest? body,
-  });
-
-  ///Get an uploaded document from the user
-  ///@param filename File name
-  Future<chopper.Response<String>> userV1UsersDocumentsFilenameGet({
-    required String? filename,
-  }) {
-    return _userV1UsersDocumentsFilenameGet(filename: filename);
-  }
-
-  ///Get an uploaded document from the user
-  ///@param filename File name
-  @GET(path: '/user/v1/users/documents/{filename}')
-  Future<chopper.Response<String>> _userV1UsersDocumentsFilenameGet({
-    @Path('filename') required String? filename,
   });
 
   ///Get information about your own user
@@ -1704,9 +1749,11 @@ abstract class BattKit extends ChopperService {
   ///Search users based on first and last name
   ///@param firstNameHint First name
   ///@param lastNameHint Last name
+  ///@param phoneNumber Phone number
   Future<chopper.Response<List<ContractUser>>> userV1UsersSearchesGet({
-    required String? firstNameHint,
-    required String? lastNameHint,
+    String? firstNameHint,
+    String? lastNameHint,
+    String? phoneNumber,
   }) {
     generatedMapping.putIfAbsent(
       ContractUser,
@@ -1716,16 +1763,19 @@ abstract class BattKit extends ChopperService {
     return _userV1UsersSearchesGet(
       firstNameHint: firstNameHint,
       lastNameHint: lastNameHint,
+      phoneNumber: phoneNumber,
     );
   }
 
   ///Search users based on first and last name
   ///@param firstNameHint First name
   ///@param lastNameHint Last name
+  ///@param phoneNumber Phone number
   @GET(path: '/user/v1/users/searches')
   Future<chopper.Response<List<ContractUser>>> _userV1UsersSearchesGet({
-    @Query('firstNameHint') required String? firstNameHint,
-    @Query('lastNameHint') required String? lastNameHint,
+    @Query('firstNameHint') String? firstNameHint,
+    @Query('lastNameHint') String? lastNameHint,
+    @Query('phoneNumber') String? phoneNumber,
   });
 
   ///Get an uploaded document from the user by admin
@@ -1798,6 +1848,28 @@ abstract class BattKit extends ChopperService {
   @GET(path: '/user/v1/users/{userId}/details')
   Future<chopper.Response<ContractUser>> _userV1UsersUserIdDetailsGet({
     @Path('userId') required int? userId,
+  });
+
+  ///Update a user (admin)
+  ///@param userId User ID
+  Future<chopper.Response<ContractUser>> userV1UsersUserIdDetailsPut({
+    required int? userId,
+    required UpdateUser? body,
+  }) {
+    generatedMapping.putIfAbsent(
+      ContractUser,
+      () => ContractUser.fromJsonFactory,
+    );
+
+    return _userV1UsersUserIdDetailsPut(userId: userId, body: body);
+  }
+
+  ///Update a user (admin)
+  ///@param userId User ID
+  @PUT(path: '/user/v1/users/{userId}/details', optionalBody: true)
+  Future<chopper.Response<ContractUser>> _userV1UsersUserIdDetailsPut({
+    @Path('userId') required int? userId,
+    @Body() required UpdateUser? body,
   });
 
   ///Requests a resend of the verification email that is part of the user signup process
@@ -2290,22 +2362,29 @@ abstract class BattKit extends ChopperService {
 
   ///
   ///@param activeOnly
+  ///@param temporaryRebased
   Future<chopper.Response<VehiclesPage>> vehicleV1VehiclesGet({
     bool? activeOnly,
+    bool? temporaryRebased,
   }) {
     generatedMapping.putIfAbsent(
       VehiclesPage,
       () => VehiclesPage.fromJsonFactory,
     );
 
-    return _vehicleV1VehiclesGet(activeOnly: activeOnly);
+    return _vehicleV1VehiclesGet(
+      activeOnly: activeOnly,
+      temporaryRebased: temporaryRebased,
+    );
   }
 
   ///
   ///@param activeOnly
+  ///@param temporaryRebased
   @GET(path: '/vehicle/v1/vehicles')
   Future<chopper.Response<VehiclesPage>> _vehicleV1VehiclesGet({
     @Query('activeOnly') bool? activeOnly,
+    @Query('temporaryRebased') bool? temporaryRebased,
   });
 
   ///

@@ -94,9 +94,12 @@
               "BattFun",
               "BattFunPlus",
               "BattFunPlusDL",
+              "BattForBusiness",
               "BattFan",
               "BattFanPlus",
-              "Batt4Bussiness"
+              "BattMax",
+              "EigenBeheer",
+              "Straal"
             ],
             "type": "string"
           },
@@ -635,6 +638,9 @@
           "id": {
             "type": "integer"
           },
+          "isActive": {
+            "type": "boolean"
+          },
           "isDeliveringTrustForPrivateUse": {
             "type": "boolean"
           },
@@ -1079,6 +1085,9 @@
           },
           "city": {
             "type": "string"
+          },
+          "convictions": {
+            "$ref": "#/components/schemas/Convictions"
           },
           "dateCurrentLicense": {
             "type": "string"
@@ -1597,6 +1606,47 @@
         },
         "required": [
           "rates"
+        ],
+        "type": "object"
+      },
+      "CreditDetails": {
+        "properties": {
+          "creditStatus": {
+            "enum": [
+              "PENDING",
+              "SKIPPED",
+              "CREDITED",
+              "WAITING_FOR_APPROVAL",
+              "UNKNOWN"
+            ],
+            "type": "string"
+          },
+          "errorMessage": {
+            "description": "ErrorMessage if present, indicates an error in processing the booking credit details.",
+            "type": "string"
+          },
+          "invoiceStatus": {
+            "enum": [
+              "SKIPPED",
+              "INVOICED",
+              "WAITING_FOR_APPROVAL",
+              "READY_FOR_INVOICE",
+              "UNKNOWN"
+            ],
+            "type": "string"
+          },
+          "totalRideCreditExclVat": {
+            "description": "TotalRideCreditExclVat not present if InvoiceStatus is \"SKIPPED\" or \"UNKNOWN\" or in case of an error; equals the stored credit value if CreditStatus is \"CREDITED\" or \"WAITING_FOR_APPROVAL\"; equals the projected credit value if CreditStatus is \"PENDING\" and InvoiceStatus is not \"SKIPPED\" or \"UNKNOWN\".",
+            "type": "number"
+          },
+          "totalRideCreditInclVat": {
+            "description": "TotalRideCreditInclVat same as TotalRideCreditExclVat, but including VAT",
+            "type": "number"
+          }
+        },
+        "required": [
+          "creditStatus",
+          "invoiceStatus"
         ],
         "type": "object"
       },
@@ -2456,6 +2506,31 @@
         ],
         "type": "object"
       },
+      "SearchBookingCreditDetailsRequest": {
+        "properties": {
+          "bookingIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "bookingIds"
+        ],
+        "type": "object"
+      },
+      "SearchBookingCreditDetailsResponse": {
+        "properties": {
+          "details": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/CreditDetails"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
       "SearchBookingsRequest": {
         "properties": {
           "adminComments": {
@@ -2781,15 +2856,15 @@
           "clientName": {
             "type": "string"
           },
-          "clientSuspended": {
-            "type": "boolean"
-          },
           "clientRoles": {
             "enum": [
               "User",
               "MainUser"
             ],
             "type": "string"
+          },
+          "clientSuspended": {
+            "type": "boolean"
           },
           "commitment": {
             "type": "integer"
@@ -3168,15 +3243,6 @@
             "type": "string"
           }
         },
-        "required": [
-          "city",
-          "country",
-          "email",
-          "houseNumber",
-          "name",
-          "postalCode",
-          "street"
-        ],
         "type": "object"
       },
       "UpdateIssueRequest": {
@@ -3259,6 +3325,26 @@
           "providerDeviceId",
           "providerId"
         ],
+        "type": "object"
+      },
+      "UpdateUser": {
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          }
+        },
         "type": "object"
       },
       "UpdateVehicleRequest": {
@@ -3482,6 +3568,12 @@
           },
           "vehicleBrand": {
             "$ref": "#/components/schemas/VehicleBrand"
+          },
+          "vehicleLocations": {
+            "items": {
+              "$ref": "#/components/schemas/VehicleLocation"
+            },
+            "type": "array"
           },
           "vehicleModel": {
             "$ref": "#/components/schemas/VehicleModel"
@@ -3725,6 +3817,22 @@
               "$ref": "#/components/schemas/VehicleGroup"
             },
             "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "VehicleLocation": {
+        "properties": {
+          "from": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "until": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "vehicleBaseLocation": {
+            "$ref": "#/components/schemas/VehicleBaseLocation"
           }
         },
         "type": "object"
@@ -4513,6 +4621,58 @@
         ]
       }
     },
+    "/booking/v1/credit-details": {
+      "post": {
+        "description": "Booking IDs are returned lowercased",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBookingCreditDetailsRequest"
+              }
+            }
+          },
+          "description": "Booking IDs",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchBookingCreditDetailsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Returns crediting details for the given bookings",
+        "tags": [
+          "booking-facade"
+        ]
+      }
+    },
     "/booking/v1/vehicles": {
       "post": {
         "description": "If successful, the vehicle will be created.",
@@ -4636,6 +4796,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "Filter clients by suspended status",
+            "in": "query",
+            "name": "suspended",
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -4656,6 +4824,28 @@
         "summary": "Get all clients, optionally filtered by name",
         "tags": [
           "client-facade"
+        ]
+      },
+      "post": {
+        "description": "Create a new client as an admin",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateClient"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Client"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create a new client (admin)",
+        "tags": [
+          "admin"
         ]
       }
     },
@@ -7255,15 +7445,7 @@
       "post": {
         "description": "Create a new client and",
         "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateClient"
-              }
-            }
-          },
-          "description": "Client",
-          "required": true
+          "$ref": "#/components/requestBodies/CreateClient"
         },
         "responses": {
           "200": {
@@ -7395,6 +7577,69 @@
         ]
       }
     },
+    "/user/v1/documents/{filename}": {
+      "get": {
+        "description": "Get an uploaded document from the user",
+        "parameters": [
+          {
+            "description": "File name",
+            "in": "path",
+            "name": "filename",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/heic": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/tiff": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/webp": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Document"
+          }
+        },
+        "summary": "Get an uploaded document from the user",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
     "/user/v1/password-resets": {
       "post": {
         "description": "Requests a password reset email to be sent",
@@ -7443,6 +7688,16 @@
     "/user/v1/users": {
       "get": {
         "description": "Get all for admin purposes",
+        "parameters": [
+          {
+            "description": "Filter users by enabled status",
+            "in": "query",
+            "name": "enabled",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -7555,69 +7810,6 @@
             "description": "OK"
           }
         },
-        "tags": [
-          "user-facade"
-        ]
-      }
-    },
-    "/user/v1/users/documents/{filename}": {
-      "get": {
-        "description": "Get an uploaded document from the user",
-        "parameters": [
-          {
-            "description": "File name",
-            "in": "path",
-            "name": "filename",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              " application/pdf": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/heic": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/png": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/tiff": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/webp": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              "image/jpeg": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              }
-            },
-            "description": "Document"
-          }
-        },
-        "summary": "Get an uploaded document from the user",
         "tags": [
           "user-facade"
         ]
@@ -7831,7 +8023,6 @@
             "description": "First name",
             "in": "query",
             "name": "firstNameHint",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -7840,7 +8031,14 @@
             "description": "Last name",
             "in": "query",
             "name": "lastNameHint",
-            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Phone number",
+            "in": "query",
+            "name": "phoneNumber",
             "schema": {
               "type": "string"
             }
@@ -7893,37 +8091,37 @@
         "responses": {
           "200": {
             "content": {
-              " application/pdf": {
+              "application/pdf": {
                 "schema": {
                   "format": "binary",
                   "type": "string"
                 }
               },
-              " image/heic": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/png": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/tiff": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              },
-              " image/webp": {
+              "image/heic": {
                 "schema": {
                   "format": "binary",
                   "type": "string"
                 }
               },
               "image/jpeg": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/tiff": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/webp": {
                 "schema": {
                   "format": "binary",
                   "type": "string"
@@ -8047,6 +8245,77 @@
           }
         },
         "summary": "Get a user by ID (admin)",
+        "tags": [
+          "admin"
+        ]
+      },
+      "put": {
+        "description": "Update a user",
+        "parameters": [
+          {
+            "description": "User ID",
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUser"
+              }
+            }
+          },
+          "description": "User",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContractUser"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update a user (admin)",
         "tags": [
           "admin"
         ]
@@ -8774,6 +9043,13 @@
             "name": "activeOnly",
             "schema": {
               "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "temporaryRebased",
+            "schema": {
               "type": "boolean"
             }
           }
