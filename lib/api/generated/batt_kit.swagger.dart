@@ -440,6 +440,21 @@ abstract class BattKit extends ChopperService {
     @Query('suspended') bool? suspended,
   });
 
+  ///Create a new client (admin)
+  Future<chopper.Response<Client>> clientV1ClientsPost({
+    required CreateClient? body,
+  }) {
+    generatedMapping.putIfAbsent(Client, () => Client.fromJsonFactory);
+
+    return _clientV1ClientsPost(body: body);
+  }
+
+  ///Create a new client (admin)
+  @POST(path: '/client/v1/clients', optionalBody: true)
+  Future<chopper.Response<Client>> _clientV1ClientsPost({
+    @Body() required CreateClient? body,
+  });
+
   ///
   ///@param clientId Client ID
   Future<chopper.Response<Client>> clientV1ClientsClientIdGet({

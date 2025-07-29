@@ -329,6 +329,19 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<Client>> _clientV1ClientsPost({required CreateClient? body}) {
+    final Uri $url = Uri.parse('/client/v1/clients');
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<Client, Client>($request);
+  }
+
+  @override
   Future<Response<Client>> _clientV1ClientsClientIdGet(
       {required int? clientId}) {
     final Uri $url = Uri.parse('/client/v1/clients/${clientId}');
