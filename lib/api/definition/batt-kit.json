@@ -1039,6 +1039,17 @@
         },
         "type": "object"
       },
+      "ClientRef": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "ClientReferenceDto": {
         "additionalProperties": false,
         "properties": {
@@ -1085,6 +1096,12 @@
           },
           "city": {
             "type": "string"
+          },
+          "clients": {
+            "items": {
+              "$ref": "#/components/schemas/ClientRef"
+            },
+            "type": "array"
           },
           "convictions": {
             "$ref": "#/components/schemas/Convictions"
