@@ -888,6 +888,16 @@ Map<String, dynamic> _$ClientContractVehicleRecordToJson(
       'yearlyKmsOnContract': instance.yearlyKmsOnContract,
     };
 
+ClientRef _$ClientRefFromJson(Map<String, dynamic> json) => ClientRef(
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String?,
+    );
+
+Map<String, dynamic> _$ClientRefToJson(ClientRef instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+    };
+
 ClientReferenceDto _$ClientReferenceDtoFromJson(Map<String, dynamic> json) =>
     ClientReferenceDto(
       id: (json['id'] as num?)?.toInt(),
@@ -920,6 +930,10 @@ Map<String, dynamic> _$ConfigValueToJson(ConfigValue instance) =>
 ContractUser _$ContractUserFromJson(Map<String, dynamic> json) => ContractUser(
       boxNumber: json['boxNumber'] as String?,
       city: json['city'] as String?,
+      clients: (json['clients'] as List<dynamic>?)
+              ?.map((e) => ClientRef.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
       convictions: json['convictions'] == null
           ? null
           : Convictions.fromJson(json['convictions'] as Map<String, dynamic>),
@@ -955,6 +969,7 @@ Map<String, dynamic> _$ContractUserToJson(ContractUser instance) =>
     <String, dynamic>{
       'boxNumber': instance.boxNumber,
       'city': instance.city,
+      'clients': instance.clients?.map((e) => e.toJson()).toList(),
       'convictions': instance.convictions?.toJson(),
       'dateCurrentLicense': instance.dateCurrentLicense,
       'dateLicenseUntil': instance.dateLicenseUntil,

@@ -4197,6 +4197,55 @@ extension $ClientContractVehicleRecordExtension on ClientContractVehicleRecord {
 }
 
 @JsonSerializable(explicitToJson: true)
+class ClientRef {
+  const ClientRef({this.id, this.name});
+
+  factory ClientRef.fromJson(Map<String, dynamic> json) =>
+      _$ClientRefFromJson(json);
+
+  static const toJsonFactory = _$ClientRefToJson;
+  Map<String, dynamic> toJson() => _$ClientRefToJson(this);
+
+  @JsonKey(name: 'id')
+  final int? id;
+  @JsonKey(name: 'name')
+  final String? name;
+  static const fromJsonFactory = _$ClientRefFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is ClientRef &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(name) ^
+      runtimeType.hashCode;
+}
+
+extension $ClientRefExtension on ClientRef {
+  ClientRef copyWith({int? id, String? name}) {
+    return ClientRef(id: id ?? this.id, name: name ?? this.name);
+  }
+
+  ClientRef copyWithWrapped({Wrapped<int?>? id, Wrapped<String?>? name}) {
+    return ClientRef(
+      id: (id != null ? id.value : this.id),
+      name: (name != null ? name.value : this.name),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class ClientReferenceDto {
   const ClientReferenceDto({this.id, this.name});
 
@@ -4332,6 +4381,7 @@ class ContractUser {
   const ContractUser({
     this.boxNumber,
     this.city,
+    this.clients,
     this.convictions,
     this.dateCurrentLicense,
     this.dateLicenseUntil,
@@ -4365,6 +4415,8 @@ class ContractUser {
   final String? boxNumber;
   @JsonKey(name: 'city')
   final String? city;
+  @JsonKey(name: 'clients', defaultValue: <ClientRef>[])
+  final List<ClientRef>? clients;
   @JsonKey(name: 'convictions')
   final Convictions? convictions;
   @JsonKey(name: 'dateCurrentLicense')
@@ -4420,6 +4472,11 @@ class ContractUser {
                 )) &&
             (identical(other.city, city) ||
                 const DeepCollectionEquality().equals(other.city, city)) &&
+            (identical(other.clients, clients) ||
+                const DeepCollectionEquality().equals(
+                  other.clients,
+                  clients,
+                )) &&
             (identical(other.convictions, convictions) ||
                 const DeepCollectionEquality().equals(
                   other.convictions,
@@ -4531,6 +4588,7 @@ class ContractUser {
   int get hashCode =>
       const DeepCollectionEquality().hash(boxNumber) ^
       const DeepCollectionEquality().hash(city) ^
+      const DeepCollectionEquality().hash(clients) ^
       const DeepCollectionEquality().hash(convictions) ^
       const DeepCollectionEquality().hash(dateCurrentLicense) ^
       const DeepCollectionEquality().hash(dateLicenseUntil) ^
@@ -4559,6 +4617,7 @@ extension $ContractUserExtension on ContractUser {
   ContractUser copyWith({
     String? boxNumber,
     String? city,
+    List<ClientRef>? clients,
     Convictions? convictions,
     String? dateCurrentLicense,
     String? dateLicenseUntil,
@@ -4584,6 +4643,7 @@ extension $ContractUserExtension on ContractUser {
     return ContractUser(
       boxNumber: boxNumber ?? this.boxNumber,
       city: city ?? this.city,
+      clients: clients ?? this.clients,
       convictions: convictions ?? this.convictions,
       dateCurrentLicense: dateCurrentLicense ?? this.dateCurrentLicense,
       dateLicenseUntil: dateLicenseUntil ?? this.dateLicenseUntil,
@@ -4612,6 +4672,7 @@ extension $ContractUserExtension on ContractUser {
   ContractUser copyWithWrapped({
     Wrapped<String?>? boxNumber,
     Wrapped<String?>? city,
+    Wrapped<List<ClientRef>?>? clients,
     Wrapped<Convictions?>? convictions,
     Wrapped<String?>? dateCurrentLicense,
     Wrapped<String?>? dateLicenseUntil,
@@ -4637,6 +4698,7 @@ extension $ContractUserExtension on ContractUser {
     return ContractUser(
       boxNumber: (boxNumber != null ? boxNumber.value : this.boxNumber),
       city: (city != null ? city.value : this.city),
+      clients: (clients != null ? clients.value : this.clients),
       convictions: (convictions != null ? convictions.value : this.convictions),
       dateCurrentLicense: (dateCurrentLicense != null
           ? dateCurrentLicense.value
