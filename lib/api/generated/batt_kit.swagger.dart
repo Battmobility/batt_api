@@ -1750,7 +1750,7 @@ abstract class BattKit extends ChopperService {
   ///@param firstNameHint First name
   ///@param lastNameHint Last name
   ///@param phoneNumber Phone number
-  Future<chopper.Response<List<ContractUser>>> userV1UsersSearchesGet({
+  Future<chopper.Response<List<ContractUser>>> userV1UsersSearchesPost({
     String? firstNameHint,
     String? lastNameHint,
     String? phoneNumber,
@@ -1760,7 +1760,7 @@ abstract class BattKit extends ChopperService {
       () => ContractUser.fromJsonFactory,
     );
 
-    return _userV1UsersSearchesGet(
+    return _userV1UsersSearchesPost(
       firstNameHint: firstNameHint,
       lastNameHint: lastNameHint,
       phoneNumber: phoneNumber,
@@ -1771,8 +1771,8 @@ abstract class BattKit extends ChopperService {
   ///@param firstNameHint First name
   ///@param lastNameHint Last name
   ///@param phoneNumber Phone number
-  @GET(path: '/user/v1/users/searches')
-  Future<chopper.Response<List<ContractUser>>> _userV1UsersSearchesGet({
+  @POST(path: '/user/v1/users/searches', optionalBody: true)
+  Future<chopper.Response<List<ContractUser>>> _userV1UsersSearchesPost({
     @Query('firstNameHint') String? firstNameHint,
     @Query('lastNameHint') String? lastNameHint,
     @Query('phoneNumber') String? phoneNumber,

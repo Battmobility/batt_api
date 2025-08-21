@@ -1301,7 +1301,7 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<List<ContractUser>>> _userV1UsersSearchesGet({
+  Future<Response<List<ContractUser>>> _userV1UsersSearchesPost({
     String? firstNameHint,
     String? lastNameHint,
     String? phoneNumber,
@@ -1313,7 +1313,7 @@ final class _$BattKit extends BattKit {
       'phoneNumber': phoneNumber,
     };
     final Request $request = Request(
-      'GET',
+      'POST',
       $url,
       client.baseUrl,
       parameters: $params,
