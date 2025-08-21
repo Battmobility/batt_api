@@ -1,5 +1,18 @@
 {
   "components": {
+    "requestBodies": {
+      "CreateClient": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CreateClient"
+            }
+          }
+        },
+        "description": "Client",
+        "required": true
+      }
+    },
     "schemas": {
       "AddVehicleLocationRequest": {
         "properties": {
@@ -8033,7 +8046,7 @@
       }
     },
     "/user/v1/users/searches": {
-      "get": {
+      "post": {
         "description": "Search users based on first and last name and return user details for each found user",
         "parameters": [
           {
