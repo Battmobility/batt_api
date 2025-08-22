@@ -4152,7 +4152,7 @@
             "name": "userId",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
