@@ -4142,6 +4142,74 @@
         ]
       }
     },
+    "/admin/v1/users/{userId}/onboarding/documents": {
+      "put": {
+        "description": "Registers documents for a user",
+        "parameters": [
+          {
+            "description": "User ID",
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "backDriverLicense": {
+                    "description": "Back driver license",
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "backId": {
+                    "description": "Back id",
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "damageStatistic": {
+                    "description": "Damage claim statistic",
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "frontDriverLicense": {
+                    "description": "Front driver license",
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "frontId": {
+                    "description": "Front id",
+                    "format": "binary",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Onboarding"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Upload documents as admin",
+        "tags": [
+          "admin-facade"
+        ]
+      }
+    },
     "/availability/v1/non-availabilities": {
       "post": {
         "operationId": "createNonAvailability",
@@ -8033,7 +8101,7 @@
       }
     },
     "/user/v1/users/searches": {
-      "get": {
+      "post": {
         "description": "Search users based on first and last name and return user details for each found user",
         "parameters": [
           {

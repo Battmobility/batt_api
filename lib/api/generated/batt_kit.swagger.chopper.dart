@@ -31,6 +31,49 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<Onboarding>> _adminV1UsersUserIdOnboardingDocumentsPut({
+    required String? userId,
+    MultipartFile? backDriverLicense,
+    MultipartFile? backId,
+    MultipartFile? damageStatistic,
+    MultipartFile? frontDriverLicense,
+    MultipartFile? frontId,
+  }) {
+    final Uri $url =
+        Uri.parse('/admin/v1/users/${userId}/onboarding/documents');
+    final List<PartValue> $parts = <PartValue>[
+      PartValueFile<MultipartFile?>(
+        'backDriverLicense',
+        backDriverLicense,
+      ),
+      PartValueFile<MultipartFile?>(
+        'backId',
+        backId,
+      ),
+      PartValueFile<MultipartFile?>(
+        'damageStatistic',
+        damageStatistic,
+      ),
+      PartValueFile<MultipartFile?>(
+        'frontDriverLicense',
+        frontDriverLicense,
+      ),
+      PartValueFile<MultipartFile?>(
+        'frontId',
+        frontId,
+      ),
+    ];
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      parts: $parts,
+      multipart: true,
+    );
+    return client.send<Onboarding, Onboarding>($request);
+  }
+
+  @override
   Future<Response<NonAvailabilityResponse>>
       _availabilityV1NonAvailabilitiesPost(
           {required CreateNonAvailabilityRequest? body}) {
@@ -1301,7 +1344,7 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<List<ContractUser>>> _userV1UsersSearchesGet({
+  Future<Response<List<ContractUser>>> _userV1UsersSearchesPost({
     String? firstNameHint,
     String? lastNameHint,
     String? phoneNumber,
@@ -1313,7 +1356,7 @@ final class _$BattKit extends BattKit {
       'phoneNumber': phoneNumber,
     };
     final Request $request = Request(
-      'GET',
+      'POST',
       $url,
       client.baseUrl,
       parameters: $params,
