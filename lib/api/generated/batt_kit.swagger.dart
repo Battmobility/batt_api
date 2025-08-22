@@ -61,46 +61,6 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response<String>>
   _wellKnownAppspecificComTesla3pPublicKeyPemGet();
 
-  ///Upload documents as admin
-  ///@param userId User ID
-  Future<chopper.Response<Onboarding>>
-  adminV1UsersUserIdOnboardingDocumentsPut({
-    required int? userId,
-    MultipartFile? backDriverLicense,
-    MultipartFile? backId,
-    MultipartFile? damageStatistic,
-    MultipartFile? frontDriverLicense,
-    MultipartFile? frontId,
-  }) {
-    generatedMapping.putIfAbsent(Onboarding, () => Onboarding.fromJsonFactory);
-
-    return _adminV1UsersUserIdOnboardingDocumentsPut(
-      userId: userId,
-      backDriverLicense: backDriverLicense,
-      backId: backId,
-      damageStatistic: damageStatistic,
-      frontDriverLicense: frontDriverLicense,
-      frontId: frontId,
-    );
-  }
-
-  ///Upload documents as admin
-  ///@param userId User ID
-  @PUT(
-    path: '/admin/v1/users/{userId}/onboarding/documents',
-    optionalBody: true,
-  )
-  @Multipart()
-  Future<chopper.Response<Onboarding>>
-  _adminV1UsersUserIdOnboardingDocumentsPut({
-    @Path('userId') required int? userId,
-    @PartFile() MultipartFile? backDriverLicense,
-    @PartFile() MultipartFile? backId,
-    @PartFile() MultipartFile? damageStatistic,
-    @PartFile() MultipartFile? frontDriverLicense,
-    @PartFile() MultipartFile? frontId,
-  });
-
   ///
   Future<chopper.Response<NonAvailabilityResponse>>
   availabilityV1NonAvailabilitiesPost({
@@ -1910,6 +1870,41 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response<ContractUser>> _userV1UsersUserIdDetailsPut({
     @Path('userId') required int? userId,
     @Body() required UpdateUser? body,
+  });
+
+  ///Upload documents as admin
+  ///@param userId User ID
+  Future<chopper.Response<Onboarding>> userV1UsersUserIdDocumentsPut({
+    required int? userId,
+    MultipartFile? backDriverLicense,
+    MultipartFile? backId,
+    MultipartFile? damageStatistic,
+    MultipartFile? frontDriverLicense,
+    MultipartFile? frontId,
+  }) {
+    generatedMapping.putIfAbsent(Onboarding, () => Onboarding.fromJsonFactory);
+
+    return _userV1UsersUserIdDocumentsPut(
+      userId: userId,
+      backDriverLicense: backDriverLicense,
+      backId: backId,
+      damageStatistic: damageStatistic,
+      frontDriverLicense: frontDriverLicense,
+      frontId: frontId,
+    );
+  }
+
+  ///Upload documents as admin
+  ///@param userId User ID
+  @PUT(path: '/user/v1/users/{userId}/documents', optionalBody: true)
+  @Multipart()
+  Future<chopper.Response<Onboarding>> _userV1UsersUserIdDocumentsPut({
+    @Path('userId') required int? userId,
+    @PartFile() MultipartFile? backDriverLicense,
+    @PartFile() MultipartFile? backId,
+    @PartFile() MultipartFile? damageStatistic,
+    @PartFile() MultipartFile? frontDriverLicense,
+    @PartFile() MultipartFile? frontId,
   });
 
   ///Requests a resend of the verification email that is part of the user signup process

@@ -31,49 +31,6 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<Onboarding>> _adminV1UsersUserIdOnboardingDocumentsPut({
-    required int? userId,
-    MultipartFile? backDriverLicense,
-    MultipartFile? backId,
-    MultipartFile? damageStatistic,
-    MultipartFile? frontDriverLicense,
-    MultipartFile? frontId,
-  }) {
-    final Uri $url =
-        Uri.parse('/admin/v1/users/${userId}/onboarding/documents');
-    final List<PartValue> $parts = <PartValue>[
-      PartValueFile<MultipartFile?>(
-        'backDriverLicense',
-        backDriverLicense,
-      ),
-      PartValueFile<MultipartFile?>(
-        'backId',
-        backId,
-      ),
-      PartValueFile<MultipartFile?>(
-        'damageStatistic',
-        damageStatistic,
-      ),
-      PartValueFile<MultipartFile?>(
-        'frontDriverLicense',
-        frontDriverLicense,
-      ),
-      PartValueFile<MultipartFile?>(
-        'frontId',
-        frontId,
-      ),
-    ];
-    final Request $request = Request(
-      'PUT',
-      $url,
-      client.baseUrl,
-      parts: $parts,
-      multipart: true,
-    );
-    return client.send<Onboarding, Onboarding>($request);
-  }
-
-  @override
   Future<Response<NonAvailabilityResponse>>
       _availabilityV1NonAvailabilitiesPost(
           {required CreateNonAvailabilityRequest? body}) {
@@ -1428,6 +1385,48 @@ final class _$BattKit extends BattKit {
       body: $body,
     );
     return client.send<ContractUser, ContractUser>($request);
+  }
+
+  @override
+  Future<Response<Onboarding>> _userV1UsersUserIdDocumentsPut({
+    required int? userId,
+    MultipartFile? backDriverLicense,
+    MultipartFile? backId,
+    MultipartFile? damageStatistic,
+    MultipartFile? frontDriverLicense,
+    MultipartFile? frontId,
+  }) {
+    final Uri $url = Uri.parse('/user/v1/users/${userId}/documents');
+    final List<PartValue> $parts = <PartValue>[
+      PartValueFile<MultipartFile?>(
+        'backDriverLicense',
+        backDriverLicense,
+      ),
+      PartValueFile<MultipartFile?>(
+        'backId',
+        backId,
+      ),
+      PartValueFile<MultipartFile?>(
+        'damageStatistic',
+        damageStatistic,
+      ),
+      PartValueFile<MultipartFile?>(
+        'frontDriverLicense',
+        frontDriverLicense,
+      ),
+      PartValueFile<MultipartFile?>(
+        'frontId',
+        frontId,
+      ),
+    ];
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      parts: $parts,
+      multipart: true,
+    );
+    return client.send<Onboarding, Onboarding>($request);
   }
 
   @override
