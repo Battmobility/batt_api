@@ -1,18 +1,5 @@
 {
   "components": {
-    "requestBodies": {
-      "CreateClient": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/CreateClient"
-            }
-          }
-        },
-        "description": "Client",
-        "required": true
-      }
-    },
     "schemas": {
       "AddVehicleLocationRequest": {
         "properties": {
@@ -4152,6 +4139,74 @@
         },
         "tags": [
           "tesla-facade"
+        ]
+      }
+    },
+    "/admin/v1/users/{userId}/onboarding/documents": {
+      "put": {
+        "description": "Registers documents for a user",
+        "parameters": [
+          {
+            "description": "User ID",
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "backDriverLicense": {
+                    "description": "Back driver license",
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "backId": {
+                    "description": "Back id",
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "damageStatistic": {
+                    "description": "Damage claim statistic",
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "frontDriverLicense": {
+                    "description": "Front driver license",
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "frontId": {
+                    "description": "Front id",
+                    "format": "binary",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Onboarding"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Upload documents as admin",
+        "tags": [
+          "admin-facade"
         ]
       }
     },
