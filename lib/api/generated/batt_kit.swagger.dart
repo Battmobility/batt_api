@@ -65,7 +65,7 @@ abstract class BattKit extends ChopperService {
   ///@param userId User ID
   Future<chopper.Response<Onboarding>>
   adminV1UsersUserIdOnboardingDocumentsPut({
-    required String? userId,
+    required int? userId,
     MultipartFile? backDriverLicense,
     MultipartFile? backId,
     MultipartFile? damageStatistic,
@@ -93,7 +93,7 @@ abstract class BattKit extends ChopperService {
   @Multipart()
   Future<chopper.Response<Onboarding>>
   _adminV1UsersUserIdOnboardingDocumentsPut({
-    @Path('userId') required String? userId,
+    @Path('userId') required int? userId,
     @PartFile() MultipartFile? backDriverLicense,
     @PartFile() MultipartFile? backId,
     @PartFile() MultipartFile? damageStatistic,

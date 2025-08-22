@@ -32,7 +32,7 @@ final class _$BattKit extends BattKit {
 
   @override
   Future<Response<Onboarding>> _adminV1UsersUserIdOnboardingDocumentsPut({
-    required String? userId,
+    required int? userId,
     MultipartFile? backDriverLicense,
     MultipartFile? backId,
     MultipartFile? damageStatistic,
