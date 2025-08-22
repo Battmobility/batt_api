@@ -16231,6 +16231,117 @@ extension $VehiclesPageExtension on VehiclesPage {
 }
 
 @JsonSerializable(explicitToJson: true)
+class AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody {
+  const AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody({
+    this.backDriverLicense,
+    this.backId,
+    this.damageStatistic,
+    this.frontDriverLicense,
+    this.frontId,
+  });
+
+  factory AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody.fromJson(
+    Map<String, dynamic> json,
+  ) => _$AdminV1UsersUserIdOnboardingDocumentsPut$RequestBodyFromJson(json);
+
+  static const toJsonFactory =
+      _$AdminV1UsersUserIdOnboardingDocumentsPut$RequestBodyToJson;
+  Map<String, dynamic> toJson() =>
+      _$AdminV1UsersUserIdOnboardingDocumentsPut$RequestBodyToJson(this);
+
+  @JsonKey(name: 'backDriverLicense')
+  final String? backDriverLicense;
+  @JsonKey(name: 'backId')
+  final String? backId;
+  @JsonKey(name: 'damageStatistic')
+  final String? damageStatistic;
+  @JsonKey(name: 'frontDriverLicense')
+  final String? frontDriverLicense;
+  @JsonKey(name: 'frontId')
+  final String? frontId;
+  static const fromJsonFactory =
+      _$AdminV1UsersUserIdOnboardingDocumentsPut$RequestBodyFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody &&
+            (identical(other.backDriverLicense, backDriverLicense) ||
+                const DeepCollectionEquality().equals(
+                  other.backDriverLicense,
+                  backDriverLicense,
+                )) &&
+            (identical(other.backId, backId) ||
+                const DeepCollectionEquality().equals(other.backId, backId)) &&
+            (identical(other.damageStatistic, damageStatistic) ||
+                const DeepCollectionEquality().equals(
+                  other.damageStatistic,
+                  damageStatistic,
+                )) &&
+            (identical(other.frontDriverLicense, frontDriverLicense) ||
+                const DeepCollectionEquality().equals(
+                  other.frontDriverLicense,
+                  frontDriverLicense,
+                )) &&
+            (identical(other.frontId, frontId) ||
+                const DeepCollectionEquality().equals(other.frontId, frontId)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(backDriverLicense) ^
+      const DeepCollectionEquality().hash(backId) ^
+      const DeepCollectionEquality().hash(damageStatistic) ^
+      const DeepCollectionEquality().hash(frontDriverLicense) ^
+      const DeepCollectionEquality().hash(frontId) ^
+      runtimeType.hashCode;
+}
+
+extension $AdminV1UsersUserIdOnboardingDocumentsPut$RequestBodyExtension
+    on AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody {
+  AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody copyWith({
+    String? backDriverLicense,
+    String? backId,
+    String? damageStatistic,
+    String? frontDriverLicense,
+    String? frontId,
+  }) {
+    return AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody(
+      backDriverLicense: backDriverLicense ?? this.backDriverLicense,
+      backId: backId ?? this.backId,
+      damageStatistic: damageStatistic ?? this.damageStatistic,
+      frontDriverLicense: frontDriverLicense ?? this.frontDriverLicense,
+      frontId: frontId ?? this.frontId,
+    );
+  }
+
+  AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody copyWithWrapped({
+    Wrapped<String?>? backDriverLicense,
+    Wrapped<String?>? backId,
+    Wrapped<String?>? damageStatistic,
+    Wrapped<String?>? frontDriverLicense,
+    Wrapped<String?>? frontId,
+  }) {
+    return AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody(
+      backDriverLicense: (backDriverLicense != null
+          ? backDriverLicense.value
+          : this.backDriverLicense),
+      backId: (backId != null ? backId.value : this.backId),
+      damageStatistic: (damageStatistic != null
+          ? damageStatistic.value
+          : this.damageStatistic),
+      frontDriverLicense: (frontDriverLicense != null
+          ? frontDriverLicense.value
+          : this.frontDriverLicense),
+      frontId: (frontId != null ? frontId.value : this.frontId),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class UserV1UsersOnboardingDocumentsPut$RequestBody {
   const UserV1UsersOnboardingDocumentsPut$RequestBody({
     this.backDriverLicense,

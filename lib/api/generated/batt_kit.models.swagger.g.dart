@@ -3441,6 +3441,28 @@ Map<String, dynamic> _$VehiclesPageToJson(VehiclesPage instance) =>
       'vehicles': instance.vehicles?.map((e) => e.toJson()).toList(),
     };
 
+AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody
+    _$AdminV1UsersUserIdOnboardingDocumentsPut$RequestBodyFromJson(
+            Map<String, dynamic> json) =>
+        AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody(
+          backDriverLicense: json['backDriverLicense'] as String?,
+          backId: json['backId'] as String?,
+          damageStatistic: json['damageStatistic'] as String?,
+          frontDriverLicense: json['frontDriverLicense'] as String?,
+          frontId: json['frontId'] as String?,
+        );
+
+Map<String, dynamic>
+    _$AdminV1UsersUserIdOnboardingDocumentsPut$RequestBodyToJson(
+            AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody instance) =>
+        <String, dynamic>{
+          'backDriverLicense': instance.backDriverLicense,
+          'backId': instance.backId,
+          'damageStatistic': instance.damageStatistic,
+          'frontDriverLicense': instance.frontDriverLicense,
+          'frontId': instance.frontId,
+        };
+
 UserV1UsersOnboardingDocumentsPut$RequestBody
     _$UserV1UsersOnboardingDocumentsPut$RequestBodyFromJson(
             Map<String, dynamic> json) =>
