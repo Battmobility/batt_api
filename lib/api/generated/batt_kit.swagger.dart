@@ -61,6 +61,46 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response<String>>
   _wellKnownAppspecificComTesla3pPublicKeyPemGet();
 
+  ///Upload documents as admin
+  ///@param userId User ID
+  Future<chopper.Response<Onboarding>>
+  adminV1UsersUserIdOnboardingDocumentsPut({
+    required String? userId,
+    MultipartFile? backDriverLicense,
+    MultipartFile? backId,
+    MultipartFile? damageStatistic,
+    MultipartFile? frontDriverLicense,
+    MultipartFile? frontId,
+  }) {
+    generatedMapping.putIfAbsent(Onboarding, () => Onboarding.fromJsonFactory);
+
+    return _adminV1UsersUserIdOnboardingDocumentsPut(
+      userId: userId,
+      backDriverLicense: backDriverLicense,
+      backId: backId,
+      damageStatistic: damageStatistic,
+      frontDriverLicense: frontDriverLicense,
+      frontId: frontId,
+    );
+  }
+
+  ///Upload documents as admin
+  ///@param userId User ID
+  @PUT(
+    path: '/admin/v1/users/{userId}/onboarding/documents',
+    optionalBody: true,
+  )
+  @Multipart()
+  Future<chopper.Response<Onboarding>>
+  _adminV1UsersUserIdOnboardingDocumentsPut({
+    @Path('userId') required String? userId,
+    @PartFile() MultipartFile? backDriverLicense,
+    @PartFile() MultipartFile? backId,
+    @PartFile() MultipartFile? damageStatistic,
+    @PartFile() MultipartFile? frontDriverLicense,
+    @PartFile() MultipartFile? frontId,
+  });
+
   ///
   Future<chopper.Response<NonAvailabilityResponse>>
   availabilityV1NonAvailabilitiesPost({
