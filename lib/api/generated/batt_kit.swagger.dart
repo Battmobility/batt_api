@@ -457,10 +457,13 @@ abstract class BattKit extends ChopperService {
 
   ///
   ///@param clientId Client ID
-  Future<chopper.Response<Client>> clientV1ClientsClientIdGet({
+  Future<chopper.Response<ClientWithRoles>> clientV1ClientsClientIdGet({
     required int? clientId,
   }) {
-    generatedMapping.putIfAbsent(Client, () => Client.fromJsonFactory);
+    generatedMapping.putIfAbsent(
+      ClientWithRoles,
+      () => ClientWithRoles.fromJsonFactory,
+    );
 
     return _clientV1ClientsClientIdGet(clientId: clientId);
   }
@@ -468,7 +471,7 @@ abstract class BattKit extends ChopperService {
   ///
   ///@param clientId Client ID
   @GET(path: '/client/v1/clients/{clientId}')
-  Future<chopper.Response<Client>> _clientV1ClientsClientIdGet({
+  Future<chopper.Response<ClientWithRoles>> _clientV1ClientsClientIdGet({
     @Path('clientId') required int? clientId,
   });
 

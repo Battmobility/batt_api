@@ -342,7 +342,7 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<Client>> _clientV1ClientsClientIdGet(
+  Future<Response<ClientWithRoles>> _clientV1ClientsClientIdGet(
       {required int? clientId}) {
     final Uri $url = Uri.parse('/client/v1/clients/${clientId}');
     final Request $request = Request(
@@ -350,7 +350,7 @@ final class _$BattKit extends BattKit {
       $url,
       client.baseUrl,
     );
-    return client.send<Client, Client>($request);
+    return client.send<ClientWithRoles, ClientWithRoles>($request);
   }
 
   @override
