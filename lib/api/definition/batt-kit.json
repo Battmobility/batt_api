@@ -1,5 +1,18 @@
 {
   "components": {
+    "requestBodies": {
+      "CreateClient": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CreateClient"
+            }
+          }
+        },
+        "description": "Client",
+        "required": true
+      }
+    },
     "schemas": {
       "AddVehicleLocationRequest": {
         "properties": {
@@ -653,6 +666,9 @@
           "nr": {
             "type": "string"
           },
+          "odooId": {
+            "type": "integer"
+          },
           "postalCode": {
             "type": "string"
           },
@@ -1064,6 +1080,71 @@
         },
         "type": "object"
       },
+      "ClientWithRoles": {
+        "properties": {
+          "billingEmail": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "clientAddressedToLine1": {
+            "type": "string"
+          },
+          "clientAddressedToLine2": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "domainNamesForUserOnboarding": {
+            "type": "string"
+          },
+          "exactId": {
+            "type": "integer"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "isDeliveringTrustForPrivateUse": {
+            "type": "boolean"
+          },
+          "isSuspended": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "nr": {
+            "type": "string"
+          },
+          "odooId": {
+            "type": "integer"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
+          "suspensionReason": {
+            "type": "string"
+          },
+          "users": {
+            "items": {
+              "$ref": "#/components/schemas/ContractUserWithRoles"
+            },
+            "type": "array"
+          },
+          "vat": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "CommitmentChangeOption": {
         "enum": [
           "AnyDay",
@@ -1155,6 +1236,95 @@
             "type": "string"
           },
           "postalCode": {
+            "type": "string"
+          },
+          "sofBattRemoteId": {
+            "type": "string"
+          },
+          "streetname": {
+            "type": "string"
+          },
+          "subscriptions": {
+            "items": {
+              "$ref": "#/components/schemas/Subscription"
+            },
+            "type": "array"
+          },
+          "verifiedCellPhoneNumber": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "ContractUserWithRoles": {
+        "properties": {
+          "boxNumber": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "clients": {
+            "items": {
+              "$ref": "#/components/schemas/ClientRef"
+            },
+            "type": "array"
+          },
+          "convictions": {
+            "$ref": "#/components/schemas/Convictions"
+          },
+          "dateCurrentLicense": {
+            "type": "string"
+          },
+          "dateLicenseUntil": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string"
+          },
+          "documentLinks": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "email": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "houseNumber": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "licenseNum": {
+            "type": "string"
+          },
+          "licenseType": {
+            "type": "integer"
+          },
+          "nationality": {
+            "type": "string"
+          },
+          "nrOfAccidents": {
+            "type": "integer"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "roles": {
             "type": "string"
           },
           "sofBattRemoteId": {
@@ -4885,7 +5055,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Client"
+                  "$ref": "#/components/schemas/ClientWithRoles"
                 }
               }
             },
@@ -4964,7 +5134,7 @@
         },
         "summary": "Update a client",
         "tags": [
-          "user-facade"
+          "admin"
         ]
       }
     },
@@ -8398,6 +8568,26 @@
               }
             },
             "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Invalid request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal server error"
           }
         },
         "summary": "Upload documents as admin",
