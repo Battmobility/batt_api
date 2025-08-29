@@ -3870,6 +3870,9 @@
           "mainUserId": {
             "type": "integer"
           },
+          "mainUserRemoteId": {
+            "type": "string"
+          },
           "maxInvoiceAmountExclVat": {
             "type": "number"
           },
@@ -8202,6 +8205,71 @@
         ]
       }
     },
+    "/user/v1/users/remote/{remoteId}/subscriptions": {
+      "get": {
+        "description": "Get subscriptions for a user by their SofBatt remote ID",
+        "parameters": [
+          {
+            "description": "Remote ID",
+            "in": "path",
+            "name": "remoteId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Subscription"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get subscriptions for a user by remote ID (admin)",
+        "tags": [
+          "admin"
+        ]
+      }
+    },
     "/user/v1/users/searches": {
       "post": {
         "description": "Search users based on first and last name and return user details for each found user",
@@ -8638,6 +8706,76 @@
         "summary": "Requests a resend of the verification email that is part of the user signup process",
         "tags": [
           "user-facade"
+        ]
+      }
+    },
+    "/users/v1/users/{remoteId}/vehicles": {
+      "get": {
+        "description": "Get vehicles and groups for a user by their SofBatt remote ID, combining all vehicles and groups from all their clients",
+        "parameters": [
+          {
+            "description": "SofBatt Remote ID",
+            "in": "path",
+            "name": "remoteId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Date in RFC3339 format (default: current date)",
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehiclesAndGroupsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get vehicles and groups for a user by remote ID",
+        "tags": [
+          "admin"
         ]
       }
     },
@@ -9671,6 +9809,58 @@
           }
         },
         "summary": "Get all vehicle contracts for a specific client",
+        "tags": [
+          "vehiclecontracts"
+        ]
+      }
+    },
+    "/vehiclecontract/v1/vehiclecontracts/vehicles/{vehicleId}": {
+      "get": {
+        "description": "Retrieves a list of all vehicle contracts associated with a given vehicle ID.",
+        "parameters": [
+          {
+            "description": "Vehicle ID",
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleContractResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get all vehicle contracts for a specific vehicle",
         "tags": [
           "vehiclecontracts"
         ]
