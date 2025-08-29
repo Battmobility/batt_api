@@ -1749,6 +1749,26 @@ abstract class BattKit extends ChopperService {
     @Body() required OnboardingPhone? body,
   });
 
+  ///Get subscriptions for a user by remote ID (admin)
+  ///@param remoteId Remote ID
+  Future<chopper.Response<List<Subscription>>>
+  userV1UsersRemoteRemoteIdSubscriptionsGet({required String? remoteId}) {
+    generatedMapping.putIfAbsent(
+      Subscription,
+      () => Subscription.fromJsonFactory,
+    );
+
+    return _userV1UsersRemoteRemoteIdSubscriptionsGet(remoteId: remoteId);
+  }
+
+  ///Get subscriptions for a user by remote ID (admin)
+  ///@param remoteId Remote ID
+  @GET(path: '/user/v1/users/remote/{remoteId}/subscriptions')
+  Future<chopper.Response<List<Subscription>>>
+  _userV1UsersRemoteRemoteIdSubscriptionsGet({
+    @Path('remoteId') required String? remoteId,
+  });
+
   ///Search users based on first and last name
   ///@param firstNameHint First name
   ///@param lastNameHint Last name
@@ -1921,6 +1941,29 @@ abstract class BattKit extends ChopperService {
   @POST(path: '/user/v1/verification-email-resends', optionalBody: true)
   Future<chopper.Response> _userV1VerificationEmailResendsPost({
     @Body() required ResendVerificationEmail? body,
+  });
+
+  ///Get vehicles and groups for a user by remote ID
+  ///@param remoteId SofBatt Remote ID
+  ///@param date Date in RFC3339 format (default: current date)
+  Future<chopper.Response<VehiclesAndGroupsResponse>>
+  usersV1UsersRemoteIdVehiclesGet({required String? remoteId, String? date}) {
+    generatedMapping.putIfAbsent(
+      VehiclesAndGroupsResponse,
+      () => VehiclesAndGroupsResponse.fromJsonFactory,
+    );
+
+    return _usersV1UsersRemoteIdVehiclesGet(remoteId: remoteId, date: date);
+  }
+
+  ///Get vehicles and groups for a user by remote ID
+  ///@param remoteId SofBatt Remote ID
+  ///@param date Date in RFC3339 format (default: current date)
+  @GET(path: '/users/v1/users/{remoteId}/vehicles')
+  Future<chopper.Response<VehiclesAndGroupsResponse>>
+  _usersV1UsersRemoteIdVehiclesGet({
+    @Path('remoteId') required String? remoteId,
+    @Query('date') String? date,
   });
 
   ///
@@ -2620,6 +2663,30 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response<VehicleContractResponse>>
   _vehiclecontractV1VehiclecontractsClientsClientIdGet({
     @Path('clientId') required int? clientId,
+  });
+
+  ///Get all vehicle contracts for a specific vehicle
+  ///@param vehicleId Vehicle ID
+  Future<chopper.Response<VehicleContractResponse>>
+  vehiclecontractV1VehiclecontractsVehiclesVehicleIdGet({
+    required String? vehicleId,
+  }) {
+    generatedMapping.putIfAbsent(
+      VehicleContractResponse,
+      () => VehicleContractResponse.fromJsonFactory,
+    );
+
+    return _vehiclecontractV1VehiclecontractsVehiclesVehicleIdGet(
+      vehicleId: vehicleId,
+    );
+  }
+
+  ///Get all vehicle contracts for a specific vehicle
+  ///@param vehicleId Vehicle ID
+  @GET(path: '/vehiclecontract/v1/vehiclecontracts/vehicles/{vehicleId}')
+  Future<chopper.Response<VehicleContractResponse>>
+  _vehiclecontractV1VehiclecontractsVehiclesVehicleIdGet({
+    @Path('vehicleId') required String? vehicleId,
   });
 
   ///

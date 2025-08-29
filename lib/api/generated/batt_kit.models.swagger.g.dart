@@ -3202,6 +3202,7 @@ VehicleContract _$VehicleContractFromJson(Map<String, dynamic> json) =>
       isDeliveringTrustForPrivateUse:
           json['isDeliveringTrustForPrivateUse'] as bool?,
       mainUserId: (json['mainUserId'] as num?)?.toInt(),
+      mainUserRemoteId: json['mainUserRemoteId'] as String?,
       maxInvoiceAmountExclVat:
           (json['maxInvoiceAmountExclVat'] as num?)?.toDouble(),
       mileageKmAtEndOfContract:
@@ -3238,6 +3239,7 @@ Map<String, dynamic> _$VehicleContractToJson(VehicleContract instance) =>
       'endDate': instance.endDate?.toIso8601String(),
       'isDeliveringTrustForPrivateUse': instance.isDeliveringTrustForPrivateUse,
       'mainUserId': instance.mainUserId,
+      'mainUserRemoteId': instance.mainUserRemoteId,
       'maxInvoiceAmountExclVat': instance.maxInvoiceAmountExclVat,
       'mileageKmAtEndOfContract': instance.mileageKmAtEndOfContract,
       'mileageKmAtStartOfContract': instance.mileageKmAtStartOfContract,

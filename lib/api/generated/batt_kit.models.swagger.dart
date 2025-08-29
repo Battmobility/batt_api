@@ -15118,6 +15118,7 @@ class VehicleContract {
     this.endDate,
     this.isDeliveringTrustForPrivateUse,
     this.mainUserId,
+    this.mainUserRemoteId,
     this.maxInvoiceAmountExclVat,
     this.mileageKmAtEndOfContract,
     this.mileageKmAtStartOfContract,
@@ -15166,6 +15167,8 @@ class VehicleContract {
   final bool? isDeliveringTrustForPrivateUse;
   @JsonKey(name: 'mainUserId')
   final int? mainUserId;
+  @JsonKey(name: 'mainUserRemoteId')
+  final String? mainUserRemoteId;
   @JsonKey(name: 'maxInvoiceAmountExclVat')
   final double? maxInvoiceAmountExclVat;
   @JsonKey(name: 'mileageKmAtEndOfContract')
@@ -15265,6 +15268,11 @@ class VehicleContract {
                   other.mainUserId,
                   mainUserId,
                 )) &&
+            (identical(other.mainUserRemoteId, mainUserRemoteId) ||
+                const DeepCollectionEquality().equals(
+                  other.mainUserRemoteId,
+                  mainUserRemoteId,
+                )) &&
             (identical(
                   other.maxInvoiceAmountExclVat,
                   maxInvoiceAmountExclVat,
@@ -15359,6 +15367,7 @@ class VehicleContract {
       const DeepCollectionEquality().hash(endDate) ^
       const DeepCollectionEquality().hash(isDeliveringTrustForPrivateUse) ^
       const DeepCollectionEquality().hash(mainUserId) ^
+      const DeepCollectionEquality().hash(mainUserRemoteId) ^
       const DeepCollectionEquality().hash(maxInvoiceAmountExclVat) ^
       const DeepCollectionEquality().hash(mileageKmAtEndOfContract) ^
       const DeepCollectionEquality().hash(mileageKmAtStartOfContract) ^
@@ -15388,6 +15397,7 @@ extension $VehicleContractExtension on VehicleContract {
     DateTime? endDate,
     bool? isDeliveringTrustForPrivateUse,
     int? mainUserId,
+    String? mainUserRemoteId,
     double? maxInvoiceAmountExclVat,
     int? mileageKmAtEndOfContract,
     int? mileageKmAtStartOfContract,
@@ -15418,6 +15428,7 @@ extension $VehicleContractExtension on VehicleContract {
       isDeliveringTrustForPrivateUse:
           isDeliveringTrustForPrivateUse ?? this.isDeliveringTrustForPrivateUse,
       mainUserId: mainUserId ?? this.mainUserId,
+      mainUserRemoteId: mainUserRemoteId ?? this.mainUserRemoteId,
       maxInvoiceAmountExclVat:
           maxInvoiceAmountExclVat ?? this.maxInvoiceAmountExclVat,
       mileageKmAtEndOfContract:
@@ -15451,6 +15462,7 @@ extension $VehicleContractExtension on VehicleContract {
     Wrapped<DateTime?>? endDate,
     Wrapped<bool?>? isDeliveringTrustForPrivateUse,
     Wrapped<int?>? mainUserId,
+    Wrapped<String?>? mainUserRemoteId,
     Wrapped<double?>? maxInvoiceAmountExclVat,
     Wrapped<int?>? mileageKmAtEndOfContract,
     Wrapped<int?>? mileageKmAtStartOfContract,
@@ -15489,6 +15501,9 @@ extension $VehicleContractExtension on VehicleContract {
           ? isDeliveringTrustForPrivateUse.value
           : this.isDeliveringTrustForPrivateUse),
       mainUserId: (mainUserId != null ? mainUserId.value : this.mainUserId),
+      mainUserRemoteId: (mainUserRemoteId != null
+          ? mainUserRemoteId.value
+          : this.mainUserRemoteId),
       maxInvoiceAmountExclVat: (maxInvoiceAmountExclVat != null
           ? maxInvoiceAmountExclVat.value
           : this.maxInvoiceAmountExclVat),
