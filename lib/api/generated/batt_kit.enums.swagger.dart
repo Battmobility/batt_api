@@ -1035,6 +1035,12 @@ enum VehicleContractBattMaxType {
 
   @JsonValue('Bridge')
   bridge('Bridge'),
+  @JsonValue('Lease')
+  lease('Lease'),
+  @JsonValue('Me')
+  me('Me'),
+  @JsonValue('Rent')
+  rent('Rent'),
   @JsonValue('Standard')
   standard('Standard');
 
