@@ -8205,7 +8205,57 @@
         ]
       }
     },
-    "/user/v1/users/remote/{remoteId}/subscriptions": {
+    "/user/v1/users/searches": {
+      "post": {
+        "description": "Search users based on first and last name and return user details for each found user",
+        "parameters": [
+          {
+            "description": "First name",
+            "in": "query",
+            "name": "firstNameHint",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Last name",
+            "in": "query",
+            "name": "lastNameHint",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Phone number",
+            "in": "query",
+            "name": "phoneNumber",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ContractUser"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Search users based on first and last name",
+        "tags": [
+          "user-facade"
+        ]
+      }
+    },
+    "/user/v1/users/{remoteId}/subscriptions": {
       "get": {
         "description": "Get subscriptions for a user by their SofBatt remote ID",
         "parameters": [
@@ -8267,56 +8317,6 @@
         "summary": "Get subscriptions for a user by remote ID (admin)",
         "tags": [
           "admin"
-        ]
-      }
-    },
-    "/user/v1/users/searches": {
-      "post": {
-        "description": "Search users based on first and last name and return user details for each found user",
-        "parameters": [
-          {
-            "description": "First name",
-            "in": "query",
-            "name": "firstNameHint",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Last name",
-            "in": "query",
-            "name": "lastNameHint",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Phone number",
-            "in": "query",
-            "name": "phoneNumber",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/ContractUser"
-                  },
-                  "type": "array"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "summary": "Search users based on first and last name",
-        "tags": [
-          "user-facade"
         ]
       }
     },
@@ -9862,7 +9862,7 @@
         },
         "summary": "Get all vehicle contracts for a specific vehicle",
         "tags": [
-          "vehiclecontracts"
+          "admin"
         ]
       }
     },
