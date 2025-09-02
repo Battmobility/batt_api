@@ -3832,6 +3832,9 @@
           "battMaxType": {
             "enum": [
               "Bridge",
+              "Lease",
+              "Me",
+              "Rent",
               "Standard"
             ],
             "type": "string"
