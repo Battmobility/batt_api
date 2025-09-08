@@ -1301,6 +1301,19 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<List<Subscription>>>
+      _userV1UsersRemoteRemoteIdSubscriptionsGet({required String? remoteId}) {
+    final Uri $url =
+        Uri.parse('/user/v1/users/remote/${remoteId}/subscriptions');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<List<Subscription>, Subscription>($request);
+  }
+
+  @override
   Future<Response<List<ContractUser>>> _userV1UsersSearchesPost({
     String? firstNameHint,
     String? lastNameHint,
@@ -1319,18 +1332,6 @@ final class _$BattKit extends BattKit {
       parameters: $params,
     );
     return client.send<List<ContractUser>, ContractUser>($request);
-  }
-
-  @override
-  Future<Response<List<Subscription>>> _userV1UsersRemoteIdSubscriptionsGet(
-      {required String? remoteId}) {
-    final Uri $url = Uri.parse('/user/v1/users/${remoteId}/subscriptions');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
-    );
-    return client.send<List<Subscription>, Subscription>($request);
   }
 
   @override

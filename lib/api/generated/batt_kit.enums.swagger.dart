@@ -519,6 +519,8 @@ enum OnboardingStatus {
   personal('PERSONAL'),
   @JsonValue('PHONE')
   phone('PHONE'),
+  @JsonValue('PHONE_VERIFIED')
+  phoneVerified('PHONE_VERIFIED'),
   @JsonValue('COMPLETED')
   completed('COMPLETED');
 
@@ -1035,12 +1037,6 @@ enum VehicleContractBattMaxType {
 
   @JsonValue('Bridge')
   bridge('Bridge'),
-  @JsonValue('Lease')
-  lease('Lease'),
-  @JsonValue('Me')
-  me('Me'),
-  @JsonValue('Rent')
-  rent('Rent'),
   @JsonValue('Standard')
   standard('Standard');
 
