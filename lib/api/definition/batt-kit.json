@@ -3534,6 +3534,18 @@
         },
         "type": "object"
       },
+      "UpdateVehicleContract": {
+        "properties": {
+          "endDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "endMileage": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
       "UpdateVehicleRequest": {
         "properties": {
           "addVehicleLocationRequest": {
@@ -9864,6 +9876,58 @@
         "summary": "Get all vehicle contracts for a specific vehicle",
         "tags": [
           "admin",
+          "vehiclecontracts"
+        ]
+      }
+    },
+    "/vehiclecontract/v1/vehiclecontracts/{contractId}/vehicles/{vehicleId}": {
+      "put": {
+        "description": "Updates the end mileage and end date for a specific vehicle contract.",
+        "parameters": [
+          {
+            "description": "Vehicle ID",
+            "in": "path",
+            "name": "vehicleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Vehicle Contract ID",
+            "in": "path",
+            "name": "contractId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateVehicleContract"
+              }
+            }
+          },
+          "description": "Vehicle Contract update details",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientContractVehicleRecord"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update a vehicle contract's end mileage and end date",
+        "tags": [
           "vehiclecontracts"
         ]
       }
