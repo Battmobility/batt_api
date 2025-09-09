@@ -2689,6 +2689,42 @@ abstract class BattKit extends ChopperService {
     @Path('vehicleId') required String? vehicleId,
   });
 
+  ///Update a vehicle contract's end mileage and end date
+  ///@param vehicleId Vehicle ID
+  ///@param contractId Vehicle Contract ID
+  Future<chopper.Response<ClientContractVehicleRecord>>
+  vehiclecontractV1VehiclecontractsContractIdVehiclesVehicleIdPut({
+    required String? vehicleId,
+    required int? contractId,
+    required UpdateVehicleContract? body,
+  }) {
+    generatedMapping.putIfAbsent(
+      ClientContractVehicleRecord,
+      () => ClientContractVehicleRecord.fromJsonFactory,
+    );
+
+    return _vehiclecontractV1VehiclecontractsContractIdVehiclesVehicleIdPut(
+      vehicleId: vehicleId,
+      contractId: contractId,
+      body: body,
+    );
+  }
+
+  ///Update a vehicle contract's end mileage and end date
+  ///@param vehicleId Vehicle ID
+  ///@param contractId Vehicle Contract ID
+  @PUT(
+    path:
+        '/vehiclecontract/v1/vehiclecontracts/{contractId}/vehicles/{vehicleId}',
+    optionalBody: true,
+  )
+  Future<chopper.Response<ClientContractVehicleRecord>>
+  _vehiclecontractV1VehiclecontractsContractIdVehiclesVehicleIdPut({
+    @Path('vehicleId') required String? vehicleId,
+    @Path('contractId') required int? contractId,
+    @Body() required UpdateVehicleContract? body,
+  });
+
   ///
   Future<chopper.Response<Issue>> webApiIssueV1IssuesPost({
     required CreateIssueRequest? body,

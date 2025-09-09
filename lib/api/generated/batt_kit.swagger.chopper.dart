@@ -1989,6 +1989,26 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<ClientContractVehicleRecord>>
+      _vehiclecontractV1VehiclecontractsContractIdVehiclesVehicleIdPut({
+    required String? vehicleId,
+    required int? contractId,
+    required UpdateVehicleContract? body,
+  }) {
+    final Uri $url = Uri.parse(
+        '/vehiclecontract/v1/vehiclecontracts/${contractId}/vehicles/${vehicleId}');
+    final $body = body;
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<ClientContractVehicleRecord,
+        ClientContractVehicleRecord>($request);
+  }
+
+  @override
   Future<Response<Issue>> _webApiIssueV1IssuesPost(
       {required CreateIssueRequest? body}) {
     final Uri $url = Uri.parse('/web-api/issue/v1/issues');
