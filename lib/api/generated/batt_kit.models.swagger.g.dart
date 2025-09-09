@@ -2088,7 +2088,7 @@ Map<String, dynamic> _$OnboardingLegalToJson(OnboardingLegal instance) =>
 
 OnboardingPersonal _$OnboardingPersonalFromJson(Map<String, dynamic> json) =>
     OnboardingPersonal(
-      box: json['box'] as String,
+      box: json['box'] as String?,
       city: json['city'] as String,
       dateCurrentLicense: DateTime.parse(json['dateCurrentLicense'] as String),
       dateLicenseUntil: DateTime.parse(json['dateLicenseUntil'] as String),

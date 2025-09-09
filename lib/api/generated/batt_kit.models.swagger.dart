@@ -9910,7 +9910,7 @@ extension $OnboardingLegalExtension on OnboardingLegal {
 @JsonSerializable(explicitToJson: true)
 class OnboardingPersonal {
   const OnboardingPersonal({
-    required this.box,
+    this.box,
     required this.city,
     required this.dateCurrentLicense,
     required this.dateLicenseUntil,
@@ -9933,7 +9933,7 @@ class OnboardingPersonal {
   Map<String, dynamic> toJson() => _$OnboardingPersonalToJson(this);
 
   @JsonKey(name: 'box')
-  final String box;
+  final String? box;
   @JsonKey(name: 'city')
   final String city;
   @JsonKey(name: 'dateCurrentLicense')
@@ -10091,7 +10091,7 @@ extension $OnboardingPersonalExtension on OnboardingPersonal {
   }
 
   OnboardingPersonal copyWithWrapped({
-    Wrapped<String>? box,
+    Wrapped<String?>? box,
     Wrapped<String>? city,
     Wrapped<DateTime>? dateCurrentLicense,
     Wrapped<DateTime>? dateLicenseUntil,
