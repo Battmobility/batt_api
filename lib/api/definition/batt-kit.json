@@ -2505,7 +2505,6 @@
           }
         },
         "required": [
-          "box",
           "city",
           "dateCurrentLicense",
           "dateLicenseUntil",
