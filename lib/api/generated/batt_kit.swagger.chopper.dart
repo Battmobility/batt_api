@@ -31,49 +31,6 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<Onboarding>> _adminV1UsersUserIdOnboardingDocumentsPut({
-    required String? userId,
-    MultipartFile? backDriverLicense,
-    MultipartFile? backId,
-    MultipartFile? damageStatistic,
-    MultipartFile? frontDriverLicense,
-    MultipartFile? frontId,
-  }) {
-    final Uri $url =
-        Uri.parse('/admin/v1/users/${userId}/onboarding/documents');
-    final List<PartValue> $parts = <PartValue>[
-      PartValueFile<MultipartFile?>(
-        'backDriverLicense',
-        backDriverLicense,
-      ),
-      PartValueFile<MultipartFile?>(
-        'backId',
-        backId,
-      ),
-      PartValueFile<MultipartFile?>(
-        'damageStatistic',
-        damageStatistic,
-      ),
-      PartValueFile<MultipartFile?>(
-        'frontDriverLicense',
-        frontDriverLicense,
-      ),
-      PartValueFile<MultipartFile?>(
-        'frontId',
-        frontId,
-      ),
-    ];
-    final Request $request = Request(
-      'PUT',
-      $url,
-      client.baseUrl,
-      parts: $parts,
-      multipart: true,
-    );
-    return client.send<Onboarding, Onboarding>($request);
-  }
-
-  @override
   Future<Response<NonAvailabilityResponse>>
       _availabilityV1NonAvailabilitiesPost(
           {required CreateNonAvailabilityRequest? body}) {
@@ -385,7 +342,7 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<Client>> _clientV1ClientsClientIdGet(
+  Future<Response<ClientWithRoles>> _clientV1ClientsClientIdGet(
       {required int? clientId}) {
     final Uri $url = Uri.parse('/client/v1/clients/${clientId}');
     final Request $request = Request(
@@ -393,7 +350,7 @@ final class _$BattKit extends BattKit {
       $url,
       client.baseUrl,
     );
-    return client.send<Client, Client>($request);
+    return client.send<ClientWithRoles, ClientWithRoles>($request);
   }
 
   @override
@@ -1344,6 +1301,19 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<List<Subscription>>>
+      _userV1UsersRemoteRemoteIdSubscriptionsGet({required String? remoteId}) {
+    final Uri $url =
+        Uri.parse('/user/v1/users/remote/${remoteId}/subscriptions');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<List<Subscription>, Subscription>($request);
+  }
+
+  @override
   Future<Response<List<ContractUser>>> _userV1UsersSearchesPost({
     String? firstNameHint,
     String? lastNameHint,
@@ -1431,6 +1401,48 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<Onboarding>> _userV1UsersUserIdDocumentsPut({
+    required int? userId,
+    MultipartFile? backDriverLicense,
+    MultipartFile? backId,
+    MultipartFile? damageStatistic,
+    MultipartFile? frontDriverLicense,
+    MultipartFile? frontId,
+  }) {
+    final Uri $url = Uri.parse('/user/v1/users/${userId}/documents');
+    final List<PartValue> $parts = <PartValue>[
+      PartValueFile<MultipartFile?>(
+        'backDriverLicense',
+        backDriverLicense,
+      ),
+      PartValueFile<MultipartFile?>(
+        'backId',
+        backId,
+      ),
+      PartValueFile<MultipartFile?>(
+        'damageStatistic',
+        damageStatistic,
+      ),
+      PartValueFile<MultipartFile?>(
+        'frontDriverLicense',
+        frontDriverLicense,
+      ),
+      PartValueFile<MultipartFile?>(
+        'frontId',
+        frontId,
+      ),
+    ];
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      parts: $parts,
+      multipart: true,
+    );
+    return client.send<Onboarding, Onboarding>($request);
+  }
+
+  @override
   Future<Response<dynamic>> _userV1VerificationEmailResendsPost(
       {required ResendVerificationEmail? body}) {
     final Uri $url = Uri.parse('/user/v1/verification-email-resends');
@@ -1442,6 +1454,23 @@ final class _$BattKit extends BattKit {
       body: $body,
     );
     return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<VehiclesAndGroupsResponse>> _usersV1UsersRemoteIdVehiclesGet({
+    required String? remoteId,
+    String? date,
+  }) {
+    final Uri $url = Uri.parse('/users/v1/users/${remoteId}/vehicles');
+    final Map<String, dynamic> $params = <String, dynamic>{'date': date};
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
+    return client
+        .send<VehiclesAndGroupsResponse, VehiclesAndGroupsResponse>($request);
   }
 
   @override
@@ -1935,6 +1964,21 @@ final class _$BattKit extends BattKit {
           {required int? clientId}) {
     final Uri $url =
         Uri.parse('/vehiclecontract/v1/vehiclecontracts/clients/${clientId}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client
+        .send<VehicleContractResponse, VehicleContractResponse>($request);
+  }
+
+  @override
+  Future<Response<VehicleContractResponse>>
+      _vehiclecontractV1VehiclecontractsVehiclesVehicleIdGet(
+          {required String? vehicleId}) {
+    final Uri $url =
+        Uri.parse('/vehiclecontract/v1/vehiclecontracts/vehicles/${vehicleId}');
     final Request $request = Request(
       'GET',
       $url,

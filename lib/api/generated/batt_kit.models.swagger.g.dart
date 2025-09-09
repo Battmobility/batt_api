@@ -561,6 +561,7 @@ Client _$ClientFromJson(Map<String, dynamic> json) => Client(
       isSuspended: json['isSuspended'] as bool?,
       name: json['name'] as String?,
       nr: json['nr'] as String?,
+      odooId: (json['odooId'] as num?)?.toInt(),
       postalCode: json['postalCode'] as String?,
       street: json['street'] as String?,
       suspensionReason: json['suspensionReason'] as String?,
@@ -582,6 +583,7 @@ Map<String, dynamic> _$ClientToJson(Client instance) => <String, dynamic>{
       'isSuspended': instance.isSuspended,
       'name': instance.name,
       'nr': instance.nr,
+      'odooId': instance.odooId,
       'postalCode': instance.postalCode,
       'street': instance.street,
       'suspensionReason': instance.suspensionReason,
@@ -910,6 +912,58 @@ Map<String, dynamic> _$ClientReferenceDtoToJson(ClientReferenceDto instance) =>
       'name': instance.name,
     };
 
+ClientWithRoles _$ClientWithRolesFromJson(Map<String, dynamic> json) =>
+    ClientWithRoles(
+      billingEmail: json['billingEmail'] as String?,
+      city: json['city'] as String?,
+      clientAddressedToLine1: json['clientAddressedToLine1'] as String?,
+      clientAddressedToLine2: json['clientAddressedToLine2'] as String?,
+      country: json['country'] as String?,
+      domainNamesForUserOnboarding:
+          json['domainNamesForUserOnboarding'] as String?,
+      exactId: (json['exactId'] as num?)?.toInt(),
+      id: (json['id'] as num?)?.toInt(),
+      isActive: json['isActive'] as bool?,
+      isDeliveringTrustForPrivateUse:
+          json['isDeliveringTrustForPrivateUse'] as bool?,
+      isSuspended: json['isSuspended'] as bool?,
+      name: json['name'] as String?,
+      nr: json['nr'] as String?,
+      odooId: (json['odooId'] as num?)?.toInt(),
+      postalCode: json['postalCode'] as String?,
+      street: json['street'] as String?,
+      suspensionReason: json['suspensionReason'] as String?,
+      users: (json['users'] as List<dynamic>?)
+              ?.map((e) =>
+                  ContractUserWithRoles.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      vat: json['vat'] as String?,
+    );
+
+Map<String, dynamic> _$ClientWithRolesToJson(ClientWithRoles instance) =>
+    <String, dynamic>{
+      'billingEmail': instance.billingEmail,
+      'city': instance.city,
+      'clientAddressedToLine1': instance.clientAddressedToLine1,
+      'clientAddressedToLine2': instance.clientAddressedToLine2,
+      'country': instance.country,
+      'domainNamesForUserOnboarding': instance.domainNamesForUserOnboarding,
+      'exactId': instance.exactId,
+      'id': instance.id,
+      'isActive': instance.isActive,
+      'isDeliveringTrustForPrivateUse': instance.isDeliveringTrustForPrivateUse,
+      'isSuspended': instance.isSuspended,
+      'name': instance.name,
+      'nr': instance.nr,
+      'odooId': instance.odooId,
+      'postalCode': instance.postalCode,
+      'street': instance.street,
+      'suspensionReason': instance.suspensionReason,
+      'users': instance.users?.map((e) => e.toJson()).toList(),
+      'vat': instance.vat,
+    };
+
 ConfigValue _$ConfigValueFromJson(Map<String, dynamic> json) => ConfigValue(
       id: json['id'] as String?,
       key: json['key'] as String?,
@@ -987,6 +1041,77 @@ Map<String, dynamic> _$ContractUserToJson(ContractUser instance) =>
       'nrOfAccidents': instance.nrOfAccidents,
       'phoneNumber': instance.phoneNumber,
       'postalCode': instance.postalCode,
+      'sofBattRemoteId': instance.sofBattRemoteId,
+      'streetname': instance.streetname,
+      'subscriptions': instance.subscriptions?.map((e) => e.toJson()).toList(),
+      'verifiedCellPhoneNumber': instance.verifiedCellPhoneNumber,
+    };
+
+ContractUserWithRoles _$ContractUserWithRolesFromJson(
+        Map<String, dynamic> json) =>
+    ContractUserWithRoles(
+      boxNumber: json['boxNumber'] as String?,
+      city: json['city'] as String?,
+      clients: (json['clients'] as List<dynamic>?)
+              ?.map((e) => ClientRef.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      convictions: json['convictions'] == null
+          ? null
+          : Convictions.fromJson(json['convictions'] as Map<String, dynamic>),
+      dateCurrentLicense: json['dateCurrentLicense'] as String?,
+      dateLicenseUntil: json['dateLicenseUntil'] as String?,
+      dateOfBirth: json['dateOfBirth'] as String?,
+      documentLinks: (json['documentLinks'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+      email: json['email'] as String?,
+      enabled: json['enabled'] as bool?,
+      firstName: json['firstName'] as String?,
+      houseNumber: json['houseNumber'] as String?,
+      id: (json['id'] as num?)?.toInt(),
+      lastName: json['lastName'] as String?,
+      licenseNum: json['licenseNum'] as String?,
+      licenseType: (json['licenseType'] as num?)?.toInt(),
+      nationality: json['nationality'] as String?,
+      nrOfAccidents: (json['nrOfAccidents'] as num?)?.toInt(),
+      phoneNumber: json['phoneNumber'] as String?,
+      postalCode: json['postalCode'] as String?,
+      roles: json['roles'] as String?,
+      sofBattRemoteId: json['sofBattRemoteId'] as String?,
+      streetname: json['streetname'] as String?,
+      subscriptions: (json['subscriptions'] as List<dynamic>?)
+              ?.map((e) => Subscription.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      verifiedCellPhoneNumber: json['verifiedCellPhoneNumber'] as bool?,
+    );
+
+Map<String, dynamic> _$ContractUserWithRolesToJson(
+        ContractUserWithRoles instance) =>
+    <String, dynamic>{
+      'boxNumber': instance.boxNumber,
+      'city': instance.city,
+      'clients': instance.clients?.map((e) => e.toJson()).toList(),
+      'convictions': instance.convictions?.toJson(),
+      'dateCurrentLicense': instance.dateCurrentLicense,
+      'dateLicenseUntil': instance.dateLicenseUntil,
+      'dateOfBirth': instance.dateOfBirth,
+      'documentLinks': instance.documentLinks,
+      'email': instance.email,
+      'enabled': instance.enabled,
+      'firstName': instance.firstName,
+      'houseNumber': instance.houseNumber,
+      'id': instance.id,
+      'lastName': instance.lastName,
+      'licenseNum': instance.licenseNum,
+      'licenseType': instance.licenseType,
+      'nationality': instance.nationality,
+      'nrOfAccidents': instance.nrOfAccidents,
+      'phoneNumber': instance.phoneNumber,
+      'postalCode': instance.postalCode,
+      'roles': instance.roles,
       'sofBattRemoteId': instance.sofBattRemoteId,
       'streetname': instance.streetname,
       'subscriptions': instance.subscriptions?.map((e) => e.toJson()).toList(),
@@ -3077,6 +3202,7 @@ VehicleContract _$VehicleContractFromJson(Map<String, dynamic> json) =>
       isDeliveringTrustForPrivateUse:
           json['isDeliveringTrustForPrivateUse'] as bool?,
       mainUserId: (json['mainUserId'] as num?)?.toInt(),
+      mainUserRemoteId: json['mainUserRemoteId'] as String?,
       maxInvoiceAmountExclVat:
           (json['maxInvoiceAmountExclVat'] as num?)?.toDouble(),
       mileageKmAtEndOfContract:
@@ -3113,6 +3239,7 @@ Map<String, dynamic> _$VehicleContractToJson(VehicleContract instance) =>
       'endDate': instance.endDate?.toIso8601String(),
       'isDeliveringTrustForPrivateUse': instance.isDeliveringTrustForPrivateUse,
       'mainUserId': instance.mainUserId,
+      'mainUserRemoteId': instance.mainUserRemoteId,
       'maxInvoiceAmountExclVat': instance.maxInvoiceAmountExclVat,
       'mileageKmAtEndOfContract': instance.mileageKmAtEndOfContract,
       'mileageKmAtStartOfContract': instance.mileageKmAtStartOfContract,
@@ -3441,28 +3568,6 @@ Map<String, dynamic> _$VehiclesPageToJson(VehiclesPage instance) =>
       'vehicles': instance.vehicles?.map((e) => e.toJson()).toList(),
     };
 
-AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody
-    _$AdminV1UsersUserIdOnboardingDocumentsPut$RequestBodyFromJson(
-            Map<String, dynamic> json) =>
-        AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody(
-          backDriverLicense: json['backDriverLicense'] as String?,
-          backId: json['backId'] as String?,
-          damageStatistic: json['damageStatistic'] as String?,
-          frontDriverLicense: json['frontDriverLicense'] as String?,
-          frontId: json['frontId'] as String?,
-        );
-
-Map<String, dynamic>
-    _$AdminV1UsersUserIdOnboardingDocumentsPut$RequestBodyToJson(
-            AdminV1UsersUserIdOnboardingDocumentsPut$RequestBody instance) =>
-        <String, dynamic>{
-          'backDriverLicense': instance.backDriverLicense,
-          'backId': instance.backId,
-          'damageStatistic': instance.damageStatistic,
-          'frontDriverLicense': instance.frontDriverLicense,
-          'frontId': instance.frontId,
-        };
-
 UserV1UsersOnboardingDocumentsPut$RequestBody
     _$UserV1UsersOnboardingDocumentsPut$RequestBodyFromJson(
             Map<String, dynamic> json) =>
@@ -3484,4 +3589,25 @@ Map<String, dynamic> _$UserV1UsersOnboardingDocumentsPut$RequestBodyToJson(
       'frontDriverLicense': instance.frontDriverLicense,
       'frontId': instance.frontId,
       'selfie': instance.selfie,
+    };
+
+UserV1UsersUserIdDocumentsPut$RequestBody
+    _$UserV1UsersUserIdDocumentsPut$RequestBodyFromJson(
+            Map<String, dynamic> json) =>
+        UserV1UsersUserIdDocumentsPut$RequestBody(
+          backDriverLicense: json['backDriverLicense'] as String?,
+          backId: json['backId'] as String?,
+          damageStatistic: json['damageStatistic'] as String?,
+          frontDriverLicense: json['frontDriverLicense'] as String?,
+          frontId: json['frontId'] as String?,
+        );
+
+Map<String, dynamic> _$UserV1UsersUserIdDocumentsPut$RequestBodyToJson(
+        UserV1UsersUserIdDocumentsPut$RequestBody instance) =>
+    <String, dynamic>{
+      'backDriverLicense': instance.backDriverLicense,
+      'backId': instance.backId,
+      'damageStatistic': instance.damageStatistic,
+      'frontDriverLicense': instance.frontDriverLicense,
+      'frontId': instance.frontId,
     };

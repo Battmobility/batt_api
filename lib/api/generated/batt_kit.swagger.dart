@@ -61,46 +61,6 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response<String>>
   _wellKnownAppspecificComTesla3pPublicKeyPemGet();
 
-  ///Upload documents as admin
-  ///@param userId User ID
-  Future<chopper.Response<Onboarding>>
-  adminV1UsersUserIdOnboardingDocumentsPut({
-    required String? userId,
-    MultipartFile? backDriverLicense,
-    MultipartFile? backId,
-    MultipartFile? damageStatistic,
-    MultipartFile? frontDriverLicense,
-    MultipartFile? frontId,
-  }) {
-    generatedMapping.putIfAbsent(Onboarding, () => Onboarding.fromJsonFactory);
-
-    return _adminV1UsersUserIdOnboardingDocumentsPut(
-      userId: userId,
-      backDriverLicense: backDriverLicense,
-      backId: backId,
-      damageStatistic: damageStatistic,
-      frontDriverLicense: frontDriverLicense,
-      frontId: frontId,
-    );
-  }
-
-  ///Upload documents as admin
-  ///@param userId User ID
-  @PUT(
-    path: '/admin/v1/users/{userId}/onboarding/documents',
-    optionalBody: true,
-  )
-  @Multipart()
-  Future<chopper.Response<Onboarding>>
-  _adminV1UsersUserIdOnboardingDocumentsPut({
-    @Path('userId') required String? userId,
-    @PartFile() MultipartFile? backDriverLicense,
-    @PartFile() MultipartFile? backId,
-    @PartFile() MultipartFile? damageStatistic,
-    @PartFile() MultipartFile? frontDriverLicense,
-    @PartFile() MultipartFile? frontId,
-  });
-
   ///
   Future<chopper.Response<NonAvailabilityResponse>>
   availabilityV1NonAvailabilitiesPost({
@@ -497,10 +457,13 @@ abstract class BattKit extends ChopperService {
 
   ///
   ///@param clientId Client ID
-  Future<chopper.Response<Client>> clientV1ClientsClientIdGet({
+  Future<chopper.Response<ClientWithRoles>> clientV1ClientsClientIdGet({
     required int? clientId,
   }) {
-    generatedMapping.putIfAbsent(Client, () => Client.fromJsonFactory);
+    generatedMapping.putIfAbsent(
+      ClientWithRoles,
+      () => ClientWithRoles.fromJsonFactory,
+    );
 
     return _clientV1ClientsClientIdGet(clientId: clientId);
   }
@@ -508,7 +471,7 @@ abstract class BattKit extends ChopperService {
   ///
   ///@param clientId Client ID
   @GET(path: '/client/v1/clients/{clientId}')
-  Future<chopper.Response<Client>> _clientV1ClientsClientIdGet({
+  Future<chopper.Response<ClientWithRoles>> _clientV1ClientsClientIdGet({
     @Path('clientId') required int? clientId,
   });
 
@@ -1786,6 +1749,26 @@ abstract class BattKit extends ChopperService {
     @Body() required OnboardingPhone? body,
   });
 
+  ///Get subscriptions for a user by remote ID (admin)
+  ///@param remoteId Remote ID
+  Future<chopper.Response<List<Subscription>>>
+  userV1UsersRemoteRemoteIdSubscriptionsGet({required String? remoteId}) {
+    generatedMapping.putIfAbsent(
+      Subscription,
+      () => Subscription.fromJsonFactory,
+    );
+
+    return _userV1UsersRemoteRemoteIdSubscriptionsGet(remoteId: remoteId);
+  }
+
+  ///Get subscriptions for a user by remote ID (admin)
+  ///@param remoteId Remote ID
+  @GET(path: '/user/v1/users/remote/{remoteId}/subscriptions')
+  Future<chopper.Response<List<Subscription>>>
+  _userV1UsersRemoteRemoteIdSubscriptionsGet({
+    @Path('remoteId') required String? remoteId,
+  });
+
   ///Search users based on first and last name
   ///@param firstNameHint First name
   ///@param lastNameHint Last name
@@ -1912,6 +1895,41 @@ abstract class BattKit extends ChopperService {
     @Body() required UpdateUser? body,
   });
 
+  ///Upload documents as admin
+  ///@param userId User ID
+  Future<chopper.Response<Onboarding>> userV1UsersUserIdDocumentsPut({
+    required int? userId,
+    MultipartFile? backDriverLicense,
+    MultipartFile? backId,
+    MultipartFile? damageStatistic,
+    MultipartFile? frontDriverLicense,
+    MultipartFile? frontId,
+  }) {
+    generatedMapping.putIfAbsent(Onboarding, () => Onboarding.fromJsonFactory);
+
+    return _userV1UsersUserIdDocumentsPut(
+      userId: userId,
+      backDriverLicense: backDriverLicense,
+      backId: backId,
+      damageStatistic: damageStatistic,
+      frontDriverLicense: frontDriverLicense,
+      frontId: frontId,
+    );
+  }
+
+  ///Upload documents as admin
+  ///@param userId User ID
+  @PUT(path: '/user/v1/users/{userId}/documents', optionalBody: true)
+  @Multipart()
+  Future<chopper.Response<Onboarding>> _userV1UsersUserIdDocumentsPut({
+    @Path('userId') required int? userId,
+    @PartFile() MultipartFile? backDriverLicense,
+    @PartFile() MultipartFile? backId,
+    @PartFile() MultipartFile? damageStatistic,
+    @PartFile() MultipartFile? frontDriverLicense,
+    @PartFile() MultipartFile? frontId,
+  });
+
   ///Requests a resend of the verification email that is part of the user signup process
   Future<chopper.Response> userV1VerificationEmailResendsPost({
     required ResendVerificationEmail? body,
@@ -1923,6 +1941,29 @@ abstract class BattKit extends ChopperService {
   @POST(path: '/user/v1/verification-email-resends', optionalBody: true)
   Future<chopper.Response> _userV1VerificationEmailResendsPost({
     @Body() required ResendVerificationEmail? body,
+  });
+
+  ///Get vehicles and groups for a user by remote ID
+  ///@param remoteId SofBatt Remote ID
+  ///@param date Date in RFC3339 format (default: current date)
+  Future<chopper.Response<VehiclesAndGroupsResponse>>
+  usersV1UsersRemoteIdVehiclesGet({required String? remoteId, String? date}) {
+    generatedMapping.putIfAbsent(
+      VehiclesAndGroupsResponse,
+      () => VehiclesAndGroupsResponse.fromJsonFactory,
+    );
+
+    return _usersV1UsersRemoteIdVehiclesGet(remoteId: remoteId, date: date);
+  }
+
+  ///Get vehicles and groups for a user by remote ID
+  ///@param remoteId SofBatt Remote ID
+  ///@param date Date in RFC3339 format (default: current date)
+  @GET(path: '/users/v1/users/{remoteId}/vehicles')
+  Future<chopper.Response<VehiclesAndGroupsResponse>>
+  _usersV1UsersRemoteIdVehiclesGet({
+    @Path('remoteId') required String? remoteId,
+    @Query('date') String? date,
   });
 
   ///
@@ -2622,6 +2663,30 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response<VehicleContractResponse>>
   _vehiclecontractV1VehiclecontractsClientsClientIdGet({
     @Path('clientId') required int? clientId,
+  });
+
+  ///Get all vehicle contracts for a specific vehicle
+  ///@param vehicleId Vehicle ID
+  Future<chopper.Response<VehicleContractResponse>>
+  vehiclecontractV1VehiclecontractsVehiclesVehicleIdGet({
+    required String? vehicleId,
+  }) {
+    generatedMapping.putIfAbsent(
+      VehicleContractResponse,
+      () => VehicleContractResponse.fromJsonFactory,
+    );
+
+    return _vehiclecontractV1VehiclecontractsVehiclesVehicleIdGet(
+      vehicleId: vehicleId,
+    );
+  }
+
+  ///Get all vehicle contracts for a specific vehicle
+  ///@param vehicleId Vehicle ID
+  @GET(path: '/vehiclecontract/v1/vehiclecontracts/vehicles/{vehicleId}')
+  Future<chopper.Response<VehicleContractResponse>>
+  _vehiclecontractV1VehiclecontractsVehiclesVehicleIdGet({
+    @Path('vehicleId') required String? vehicleId,
   });
 
   ///

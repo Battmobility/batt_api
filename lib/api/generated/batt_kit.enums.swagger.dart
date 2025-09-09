@@ -519,6 +519,8 @@ enum OnboardingStatus {
   personal('PERSONAL'),
   @JsonValue('PHONE')
   phone('PHONE'),
+  @JsonValue('PHONE_VERIFIED')
+  phoneVerified('PHONE_VERIFIED'),
   @JsonValue('COMPLETED')
   completed('COMPLETED');
 
