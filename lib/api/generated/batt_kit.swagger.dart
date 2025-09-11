@@ -1749,26 +1749,6 @@ abstract class BattKit extends ChopperService {
     @Body() required OnboardingPhone? body,
   });
 
-  ///Get subscriptions for a user by remote ID (admin)
-  ///@param remoteId Remote ID
-  Future<chopper.Response<List<Subscription>>>
-  userV1UsersRemoteRemoteIdSubscriptionsGet({required String? remoteId}) {
-    generatedMapping.putIfAbsent(
-      Subscription,
-      () => Subscription.fromJsonFactory,
-    );
-
-    return _userV1UsersRemoteRemoteIdSubscriptionsGet(remoteId: remoteId);
-  }
-
-  ///Get subscriptions for a user by remote ID (admin)
-  ///@param remoteId Remote ID
-  @GET(path: '/user/v1/users/remote/{remoteId}/subscriptions')
-  Future<chopper.Response<List<Subscription>>>
-  _userV1UsersRemoteRemoteIdSubscriptionsGet({
-    @Path('remoteId') required String? remoteId,
-  });
-
   ///Search users based on first and last name
   ///@param firstNameHint First name
   ///@param lastNameHint Last name
@@ -1799,6 +1779,26 @@ abstract class BattKit extends ChopperService {
     @Query('firstNameHint') String? firstNameHint,
     @Query('lastNameHint') String? lastNameHint,
     @Query('phoneNumber') String? phoneNumber,
+  });
+
+  ///Get subscriptions for a user by remote ID (admin)
+  ///@param remoteId Remote ID
+  Future<chopper.Response<List<Subscription>>>
+  userV1UsersRemoteIdSubscriptionsGet({required String? remoteId}) {
+    generatedMapping.putIfAbsent(
+      Subscription,
+      () => Subscription.fromJsonFactory,
+    );
+
+    return _userV1UsersRemoteIdSubscriptionsGet(remoteId: remoteId);
+  }
+
+  ///Get subscriptions for a user by remote ID (admin)
+  ///@param remoteId Remote ID
+  @GET(path: '/user/v1/users/{remoteId}/subscriptions')
+  Future<chopper.Response<List<Subscription>>>
+  _userV1UsersRemoteIdSubscriptionsGet({
+    @Path('remoteId') required String? remoteId,
   });
 
   ///Get an uploaded document from the user by admin
