@@ -765,6 +765,18 @@ final class _$BattKit extends BattKit {
   }
 
   @override
+  Future<Response<dynamic>> _syncV1ClientsClientIdPost(
+      {required int? clientId}) {
+    final Uri $url = Uri.parse('/sync/v1/clients/${clientId}');
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
   Future<Response<BatteryStatus>> _telematicsV1BatteryDatabaseVehicleIdGet(
       {required String? vehicleId}) {
     final Uri $url = Uri.parse('/telematics/v1/battery/database/${vehicleId}');
@@ -850,6 +862,19 @@ final class _$BattKit extends BattKit {
       body: $body,
     );
     return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<TelematicsDevice>> _telematicsV1DevicesByDeviceIdDeviceIdGet(
+      {required String? deviceId}) {
+    final Uri $url =
+        Uri.parse('/telematics/v1/devices/by-device-id/${deviceId}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<TelematicsDevice, TelematicsDevice>($request);
   }
 
   @override
@@ -946,6 +971,20 @@ final class _$BattKit extends BattKit {
       body: $body,
     );
     return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<TelematicsMetricsPage>> _telematicsV1MileageBatchPost(
+      {required BatchTelematicsMetricsRequest? body}) {
+    final Uri $url = Uri.parse('/telematics/v1/mileage/batch');
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<TelematicsMetricsPage, TelematicsMetricsPage>($request);
   }
 
   @override

@@ -338,6 +338,56 @@ extension $ApiValidationResponseExtension on ApiValidationResponse {
 }
 
 @JsonSerializable(explicitToJson: true)
+class BatchTelematicsMetricsRequest {
+  const BatchTelematicsMetricsRequest({required this.vehicleIds});
+
+  factory BatchTelematicsMetricsRequest.fromJson(Map<String, dynamic> json) =>
+      _$BatchTelematicsMetricsRequestFromJson(json);
+
+  static const toJsonFactory = _$BatchTelematicsMetricsRequestToJson;
+  Map<String, dynamic> toJson() => _$BatchTelematicsMetricsRequestToJson(this);
+
+  @JsonKey(name: 'vehicleIds', defaultValue: <String>[])
+  final List<String> vehicleIds;
+  static const fromJsonFactory = _$BatchTelematicsMetricsRequestFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is BatchTelematicsMetricsRequest &&
+            (identical(other.vehicleIds, vehicleIds) ||
+                const DeepCollectionEquality().equals(
+                  other.vehicleIds,
+                  vehicleIds,
+                )));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(vehicleIds) ^ runtimeType.hashCode;
+}
+
+extension $BatchTelematicsMetricsRequestExtension
+    on BatchTelematicsMetricsRequest {
+  BatchTelematicsMetricsRequest copyWith({List<String>? vehicleIds}) {
+    return BatchTelematicsMetricsRequest(
+      vehicleIds: vehicleIds ?? this.vehicleIds,
+    );
+  }
+
+  BatchTelematicsMetricsRequest copyWithWrapped({
+    Wrapped<List<String>>? vehicleIds,
+  }) {
+    return BatchTelematicsMetricsRequest(
+      vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class BattFormula {
   const BattFormula({this.minCommitment, this.type, this.warrantyAmount});
 
@@ -4257,7 +4307,7 @@ extension $ClientRefExtension on ClientRef {
 
 @JsonSerializable(explicitToJson: true)
 class ClientReferenceDto {
-  const ClientReferenceDto({this.id, this.name});
+  const ClientReferenceDto({this.id, this.name, this.odooId});
 
   factory ClientReferenceDto.fromJson(Map<String, dynamic> json) =>
       _$ClientReferenceDtoFromJson(json);
@@ -4269,6 +4319,8 @@ class ClientReferenceDto {
   final int? id;
   @JsonKey(name: 'name')
   final String? name;
+  @JsonKey(name: 'odooId')
+  final int? odooId;
   static const fromJsonFactory = _$ClientReferenceDtoFromJson;
 
   @override
@@ -4278,7 +4330,9 @@ class ClientReferenceDto {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.odooId, odooId) ||
+                const DeepCollectionEquality().equals(other.odooId, odooId)));
   }
 
   @override
@@ -4288,21 +4342,28 @@ class ClientReferenceDto {
   int get hashCode =>
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(odooId) ^
       runtimeType.hashCode;
 }
 
 extension $ClientReferenceDtoExtension on ClientReferenceDto {
-  ClientReferenceDto copyWith({int? id, String? name}) {
-    return ClientReferenceDto(id: id ?? this.id, name: name ?? this.name);
+  ClientReferenceDto copyWith({int? id, String? name, int? odooId}) {
+    return ClientReferenceDto(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      odooId: odooId ?? this.odooId,
+    );
   }
 
   ClientReferenceDto copyWithWrapped({
     Wrapped<int?>? id,
     Wrapped<String?>? name,
+    Wrapped<int?>? odooId,
   }) {
     return ClientReferenceDto(
       id: (id != null ? id.value : this.id),
       name: (name != null ? name.value : this.name),
+      odooId: (odooId != null ? odooId.value : this.odooId),
     );
   }
 }
@@ -11554,9 +11615,9 @@ class SearchTelematicsTrackingRequest {
     this.endDate,
     this.eventReason,
     this.latestPerVehicle,
-    this.maxResults,
     this.startDate,
     this.vehicleIds,
+    this.voltageMax,
   });
 
   factory SearchTelematicsTrackingRequest.fromJson(Map<String, dynamic> json) =>
@@ -11578,12 +11639,12 @@ class SearchTelematicsTrackingRequest {
   final enums.SearchTelematicsTrackingRequestEventReason? eventReason;
   @JsonKey(name: 'latestPerVehicle')
   final bool? latestPerVehicle;
-  @JsonKey(name: 'maxResults')
-  final int? maxResults;
   @JsonKey(name: 'startDate')
   final DateTime? startDate;
   @JsonKey(name: 'vehicleIds', defaultValue: <String>[])
   final List<String>? vehicleIds;
+  @JsonKey(name: 'voltageMax')
+  final double? voltageMax;
   static const fromJsonFactory = _$SearchTelematicsTrackingRequestFromJson;
 
   @override
@@ -11610,11 +11671,6 @@ class SearchTelematicsTrackingRequest {
                   other.latestPerVehicle,
                   latestPerVehicle,
                 )) &&
-            (identical(other.maxResults, maxResults) ||
-                const DeepCollectionEquality().equals(
-                  other.maxResults,
-                  maxResults,
-                )) &&
             (identical(other.startDate, startDate) ||
                 const DeepCollectionEquality().equals(
                   other.startDate,
@@ -11624,6 +11680,11 @@ class SearchTelematicsTrackingRequest {
                 const DeepCollectionEquality().equals(
                   other.vehicleIds,
                   vehicleIds,
+                )) &&
+            (identical(other.voltageMax, voltageMax) ||
+                const DeepCollectionEquality().equals(
+                  other.voltageMax,
+                  voltageMax,
                 )));
   }
 
@@ -11636,9 +11697,9 @@ class SearchTelematicsTrackingRequest {
       const DeepCollectionEquality().hash(endDate) ^
       const DeepCollectionEquality().hash(eventReason) ^
       const DeepCollectionEquality().hash(latestPerVehicle) ^
-      const DeepCollectionEquality().hash(maxResults) ^
       const DeepCollectionEquality().hash(startDate) ^
       const DeepCollectionEquality().hash(vehicleIds) ^
+      const DeepCollectionEquality().hash(voltageMax) ^
       runtimeType.hashCode;
 }
 
@@ -11649,18 +11710,18 @@ extension $SearchTelematicsTrackingRequestExtension
     DateTime? endDate,
     enums.SearchTelematicsTrackingRequestEventReason? eventReason,
     bool? latestPerVehicle,
-    int? maxResults,
     DateTime? startDate,
     List<String>? vehicleIds,
+    double? voltageMax,
   }) {
     return SearchTelematicsTrackingRequest(
       charging: charging ?? this.charging,
       endDate: endDate ?? this.endDate,
       eventReason: eventReason ?? this.eventReason,
       latestPerVehicle: latestPerVehicle ?? this.latestPerVehicle,
-      maxResults: maxResults ?? this.maxResults,
       startDate: startDate ?? this.startDate,
       vehicleIds: vehicleIds ?? this.vehicleIds,
+      voltageMax: voltageMax ?? this.voltageMax,
     );
   }
 
@@ -11669,9 +11730,9 @@ extension $SearchTelematicsTrackingRequestExtension
     Wrapped<DateTime?>? endDate,
     Wrapped<enums.SearchTelematicsTrackingRequestEventReason?>? eventReason,
     Wrapped<bool?>? latestPerVehicle,
-    Wrapped<int?>? maxResults,
     Wrapped<DateTime?>? startDate,
     Wrapped<List<String>?>? vehicleIds,
+    Wrapped<double?>? voltageMax,
   }) {
     return SearchTelematicsTrackingRequest(
       charging: (charging != null ? charging.value : this.charging),
@@ -11680,9 +11741,9 @@ extension $SearchTelematicsTrackingRequestExtension
       latestPerVehicle: (latestPerVehicle != null
           ? latestPerVehicle.value
           : this.latestPerVehicle),
-      maxResults: (maxResults != null ? maxResults.value : this.maxResults),
       startDate: (startDate != null ? startDate.value : this.startDate),
       vehicleIds: (vehicleIds != null ? vehicleIds.value : this.vehicleIds),
+      voltageMax: (voltageMax != null ? voltageMax.value : this.voltageMax),
     );
   }
 }
@@ -12545,6 +12606,110 @@ extension $TelematicsDeviceExtension on TelematicsDevice {
 }
 
 @JsonSerializable(explicitToJson: true)
+class TelematicsMetrics {
+  const TelematicsMetrics({this.batteryStatus, this.mileage});
+
+  factory TelematicsMetrics.fromJson(Map<String, dynamic> json) =>
+      _$TelematicsMetricsFromJson(json);
+
+  static const toJsonFactory = _$TelematicsMetricsToJson;
+  Map<String, dynamic> toJson() => _$TelematicsMetricsToJson(this);
+
+  @JsonKey(name: 'batteryStatus')
+  final BatteryStatus? batteryStatus;
+  @JsonKey(name: 'mileage')
+  final Mileage? mileage;
+  static const fromJsonFactory = _$TelematicsMetricsFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is TelematicsMetrics &&
+            (identical(other.batteryStatus, batteryStatus) ||
+                const DeepCollectionEquality().equals(
+                  other.batteryStatus,
+                  batteryStatus,
+                )) &&
+            (identical(other.mileage, mileage) ||
+                const DeepCollectionEquality().equals(other.mileage, mileage)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(batteryStatus) ^
+      const DeepCollectionEquality().hash(mileage) ^
+      runtimeType.hashCode;
+}
+
+extension $TelematicsMetricsExtension on TelematicsMetrics {
+  TelematicsMetrics copyWith({BatteryStatus? batteryStatus, Mileage? mileage}) {
+    return TelematicsMetrics(
+      batteryStatus: batteryStatus ?? this.batteryStatus,
+      mileage: mileage ?? this.mileage,
+    );
+  }
+
+  TelematicsMetrics copyWithWrapped({
+    Wrapped<BatteryStatus?>? batteryStatus,
+    Wrapped<Mileage?>? mileage,
+  }) {
+    return TelematicsMetrics(
+      batteryStatus: (batteryStatus != null
+          ? batteryStatus.value
+          : this.batteryStatus),
+      mileage: (mileage != null ? mileage.value : this.mileage),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class TelematicsMetricsPage {
+  const TelematicsMetricsPage({this.metrics});
+
+  factory TelematicsMetricsPage.fromJson(Map<String, dynamic> json) =>
+      _$TelematicsMetricsPageFromJson(json);
+
+  static const toJsonFactory = _$TelematicsMetricsPageToJson;
+  Map<String, dynamic> toJson() => _$TelematicsMetricsPageToJson(this);
+
+  @JsonKey(name: 'metrics')
+  final Map<String, dynamic>? metrics;
+  static const fromJsonFactory = _$TelematicsMetricsPageFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is TelematicsMetricsPage &&
+            (identical(other.metrics, metrics) ||
+                const DeepCollectionEquality().equals(other.metrics, metrics)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(metrics) ^ runtimeType.hashCode;
+}
+
+extension $TelematicsMetricsPageExtension on TelematicsMetricsPage {
+  TelematicsMetricsPage copyWith({Map<String, dynamic>? metrics}) {
+    return TelematicsMetricsPage(metrics: metrics ?? this.metrics);
+  }
+
+  TelematicsMetricsPage copyWithWrapped({
+    Wrapped<Map<String, dynamic>?>? metrics,
+  }) {
+    return TelematicsMetricsPage(
+      metrics: (metrics != null ? metrics.value : this.metrics),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class TelematicsProvider {
   const TelematicsProvider({this.id});
 
@@ -12809,6 +12974,7 @@ class TelematicsTracking {
     this.mileage,
     this.telematicsId,
     this.vehicleId,
+    this.voltage12V,
   });
 
   factory TelematicsTracking.fromJson(Map<String, dynamic> json) =>
@@ -12839,6 +13005,8 @@ class TelematicsTracking {
   final String? telematicsId;
   @JsonKey(name: 'vehicleId')
   final String? vehicleId;
+  @JsonKey(name: 'voltage12V')
+  final double? voltage12V;
   static const fromJsonFactory = _$TelematicsTrackingFromJson;
 
   @override
@@ -12889,6 +13057,11 @@ class TelematicsTracking {
                 const DeepCollectionEquality().equals(
                   other.vehicleId,
                   vehicleId,
+                )) &&
+            (identical(other.voltage12V, voltage12V) ||
+                const DeepCollectionEquality().equals(
+                  other.voltage12V,
+                  voltage12V,
                 )));
   }
 
@@ -12906,6 +13079,7 @@ class TelematicsTracking {
       const DeepCollectionEquality().hash(mileage) ^
       const DeepCollectionEquality().hash(telematicsId) ^
       const DeepCollectionEquality().hash(vehicleId) ^
+      const DeepCollectionEquality().hash(voltage12V) ^
       runtimeType.hashCode;
 }
 
@@ -12920,6 +13094,7 @@ extension $TelematicsTrackingExtension on TelematicsTracking {
     double? mileage,
     String? telematicsId,
     String? vehicleId,
+    double? voltage12V,
   }) {
     return TelematicsTracking(
       address: address ?? this.address,
@@ -12931,6 +13106,7 @@ extension $TelematicsTrackingExtension on TelematicsTracking {
       mileage: mileage ?? this.mileage,
       telematicsId: telematicsId ?? this.telematicsId,
       vehicleId: vehicleId ?? this.vehicleId,
+      voltage12V: voltage12V ?? this.voltage12V,
     );
   }
 
@@ -12944,6 +13120,7 @@ extension $TelematicsTrackingExtension on TelematicsTracking {
     Wrapped<double?>? mileage,
     Wrapped<String?>? telematicsId,
     Wrapped<String?>? vehicleId,
+    Wrapped<double?>? voltage12V,
   }) {
     return TelematicsTracking(
       address: (address != null ? address.value : this.address),
@@ -12961,6 +13138,7 @@ extension $TelematicsTrackingExtension on TelematicsTracking {
           ? telematicsId.value
           : this.telematicsId),
       vehicleId: (vehicleId != null ? vehicleId.value : this.vehicleId),
+      voltage12V: (voltage12V != null ? voltage12V.value : this.voltage12V),
     );
   }
 }

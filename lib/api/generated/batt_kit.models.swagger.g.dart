@@ -87,6 +87,21 @@ Map<String, dynamic> _$ApiValidationResponseToJson(
       'validationErrors': instance.validationErrors,
     };
 
+BatchTelematicsMetricsRequest _$BatchTelematicsMetricsRequestFromJson(
+        Map<String, dynamic> json) =>
+    BatchTelematicsMetricsRequest(
+      vehicleIds: (json['vehicleIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$BatchTelematicsMetricsRequestToJson(
+        BatchTelematicsMetricsRequest instance) =>
+    <String, dynamic>{
+      'vehicleIds': instance.vehicleIds,
+    };
+
 BattFormula _$BattFormulaFromJson(Map<String, dynamic> json) => BattFormula(
       minCommitment: (json['minCommitment'] as num?)?.toInt(),
       type: battFormulaTypeNullableFromJson(json['type']),
@@ -904,12 +919,14 @@ ClientReferenceDto _$ClientReferenceDtoFromJson(Map<String, dynamic> json) =>
     ClientReferenceDto(
       id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
+      odooId: (json['odooId'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$ClientReferenceDtoToJson(ClientReferenceDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'odooId': instance.odooId,
     };
 
 ClientWithRoles _$ClientWithRolesFromJson(Map<String, dynamic> json) =>
@@ -2445,7 +2462,6 @@ SearchTelematicsTrackingRequest _$SearchTelematicsTrackingRequestFromJson(
       eventReason: searchTelematicsTrackingRequestEventReasonNullableFromJson(
           json['eventReason']),
       latestPerVehicle: json['latestPerVehicle'] as bool?,
-      maxResults: (json['maxResults'] as num?)?.toInt(),
       startDate: json['startDate'] == null
           ? null
           : DateTime.parse(json['startDate'] as String),
@@ -2453,6 +2469,7 @@ SearchTelematicsTrackingRequest _$SearchTelematicsTrackingRequestFromJson(
               ?.map((e) => e as String)
               .toList() ??
           [],
+      voltageMax: (json['voltageMax'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$SearchTelematicsTrackingRequestToJson(
@@ -2463,9 +2480,9 @@ Map<String, dynamic> _$SearchTelematicsTrackingRequestToJson(
       'eventReason': searchTelematicsTrackingRequestEventReasonNullableToJson(
           instance.eventReason),
       'latestPerVehicle': instance.latestPerVehicle,
-      'maxResults': instance.maxResults,
       'startDate': instance.startDate?.toIso8601String(),
       'vehicleIds': instance.vehicleIds,
+      'voltageMax': instance.voltageMax,
     };
 
 SearchVehiclesRequest _$SearchVehiclesRequestFromJson(
@@ -2651,6 +2668,35 @@ Map<String, dynamic> _$TelematicsDeviceToJson(TelematicsDevice instance) =>
       'vehicleId': instance.vehicleId,
     };
 
+TelematicsMetrics _$TelematicsMetricsFromJson(Map<String, dynamic> json) =>
+    TelematicsMetrics(
+      batteryStatus: json['batteryStatus'] == null
+          ? null
+          : BatteryStatus.fromJson(
+              json['batteryStatus'] as Map<String, dynamic>),
+      mileage: json['mileage'] == null
+          ? null
+          : Mileage.fromJson(json['mileage'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$TelematicsMetricsToJson(TelematicsMetrics instance) =>
+    <String, dynamic>{
+      'batteryStatus': instance.batteryStatus?.toJson(),
+      'mileage': instance.mileage?.toJson(),
+    };
+
+TelematicsMetricsPage _$TelematicsMetricsPageFromJson(
+        Map<String, dynamic> json) =>
+    TelematicsMetricsPage(
+      metrics: json['metrics'] as Map<String, dynamic>?,
+    );
+
+Map<String, dynamic> _$TelematicsMetricsPageToJson(
+        TelematicsMetricsPage instance) =>
+    <String, dynamic>{
+      'metrics': instance.metrics,
+    };
+
 TelematicsProvider _$TelematicsProviderFromJson(Map<String, dynamic> json) =>
     TelematicsProvider(
       id: json['id'] as String?,
@@ -2720,6 +2766,7 @@ TelematicsTracking _$TelematicsTrackingFromJson(Map<String, dynamic> json) =>
       mileage: (json['mileage'] as num?)?.toDouble(),
       telematicsId: json['telematicsId'] as String?,
       vehicleId: json['vehicleId'] as String?,
+      voltage12V: (json['voltage12V'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$TelematicsTrackingToJson(TelematicsTracking instance) =>
@@ -2734,6 +2781,7 @@ Map<String, dynamic> _$TelematicsTrackingToJson(TelematicsTracking instance) =>
       'mileage': instance.mileage,
       'telematicsId': instance.telematicsId,
       'vehicleId': instance.vehicleId,
+      'voltage12V': instance.voltage12V,
     };
 
 TelematicsVehicleUsage _$TelematicsVehicleUsageFromJson(

@@ -1095,6 +1095,19 @@ abstract class BattKit extends ChopperService {
   });
 
   ///
+  ///@param clientId
+  Future<chopper.Response> syncV1ClientsClientIdPost({required int? clientId}) {
+    return _syncV1ClientsClientIdPost(clientId: clientId);
+  }
+
+  ///
+  ///@param clientId
+  @POST(path: '/sync/v1/clients/{clientId}', optionalBody: true)
+  Future<chopper.Response> _syncV1ClientsClientIdPost({
+    @Path('clientId') required int? clientId,
+  });
+
+  ///
   ///@param vehicleId
   Future<chopper.Response<BatteryStatus>>
   telematicsV1BatteryDatabaseVehicleIdGet({required String? vehicleId}) {
@@ -1210,6 +1223,26 @@ abstract class BattKit extends ChopperService {
   @POST(path: '/telematics/v1/devices', optionalBody: true)
   Future<chopper.Response> _telematicsV1DevicesPost({
     @Body() required TelematicsRequest? body,
+  });
+
+  ///
+  ///@param deviceId
+  Future<chopper.Response<TelematicsDevice>>
+  telematicsV1DevicesByDeviceIdDeviceIdGet({required String? deviceId}) {
+    generatedMapping.putIfAbsent(
+      TelematicsDevice,
+      () => TelematicsDevice.fromJsonFactory,
+    );
+
+    return _telematicsV1DevicesByDeviceIdDeviceIdGet(deviceId: deviceId);
+  }
+
+  ///
+  ///@param deviceId
+  @GET(path: '/telematics/v1/devices/by-device-id/{deviceId}')
+  Future<chopper.Response<TelematicsDevice>>
+  _telematicsV1DevicesByDeviceIdDeviceIdGet({
+    @Path('deviceId') required String? deviceId,
   });
 
   ///
@@ -1339,6 +1372,25 @@ abstract class BattKit extends ChopperService {
   Future<chopper.Response> _telematicsV1LockVehicleIdPut({
     @Path('vehicleId') required String? vehicleId,
     @Body() required ChangeLockRequest? body,
+  });
+
+  ///
+  Future<chopper.Response<TelematicsMetricsPage>> telematicsV1MileageBatchPost({
+    required BatchTelematicsMetricsRequest? body,
+  }) {
+    generatedMapping.putIfAbsent(
+      TelematicsMetricsPage,
+      () => TelematicsMetricsPage.fromJsonFactory,
+    );
+
+    return _telematicsV1MileageBatchPost(body: body);
+  }
+
+  ///
+  @POST(path: '/telematics/v1/mileage/batch', optionalBody: true)
+  Future<chopper.Response<TelematicsMetricsPage>>
+  _telematicsV1MileageBatchPost({
+    @Body() required BatchTelematicsMetricsRequest? body,
   });
 
   ///
