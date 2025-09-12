@@ -2946,6 +2946,22 @@ Map<String, dynamic> _$UpdateUserToJson(UpdateUser instance) =>
       'phoneNumber': instance.phoneNumber,
     };
 
+UpdateVehicleContract _$UpdateVehicleContractFromJson(
+        Map<String, dynamic> json) =>
+    UpdateVehicleContract(
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
+      endMileage: (json['endMileage'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$UpdateVehicleContractToJson(
+        UpdateVehicleContract instance) =>
+    <String, dynamic>{
+      'endDate': instance.endDate?.toIso8601String(),
+      'endMileage': instance.endMileage,
+    };
+
 UpdateVehicleRequest _$UpdateVehicleRequestFromJson(
         Map<String, dynamic> json) =>
     UpdateVehicleRequest(

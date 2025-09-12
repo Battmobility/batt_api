@@ -1301,19 +1301,6 @@ final class _$BattKit extends BattKit {
   }
 
   @override
-  Future<Response<List<Subscription>>>
-      _userV1UsersRemoteRemoteIdSubscriptionsGet({required String? remoteId}) {
-    final Uri $url =
-        Uri.parse('/user/v1/users/remote/${remoteId}/subscriptions');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
-    );
-    return client.send<List<Subscription>, Subscription>($request);
-  }
-
-  @override
   Future<Response<List<ContractUser>>> _userV1UsersSearchesPost({
     String? firstNameHint,
     String? lastNameHint,
@@ -1332,6 +1319,18 @@ final class _$BattKit extends BattKit {
       parameters: $params,
     );
     return client.send<List<ContractUser>, ContractUser>($request);
+  }
+
+  @override
+  Future<Response<List<Subscription>>> _userV1UsersRemoteIdSubscriptionsGet(
+      {required String? remoteId}) {
+    final Uri $url = Uri.parse('/user/v1/users/${remoteId}/subscriptions');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<List<Subscription>, Subscription>($request);
   }
 
   @override
@@ -1986,6 +1985,26 @@ final class _$BattKit extends BattKit {
     );
     return client
         .send<VehicleContractResponse, VehicleContractResponse>($request);
+  }
+
+  @override
+  Future<Response<ClientContractVehicleRecord>>
+      _vehiclecontractV1VehiclecontractsContractIdVehiclesVehicleIdPut({
+    required String? vehicleId,
+    required int? contractId,
+    required UpdateVehicleContract? body,
+  }) {
+    final Uri $url = Uri.parse(
+        '/vehiclecontract/v1/vehiclecontracts/${contractId}/vehicles/${vehicleId}');
+    final $body = body;
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<ClientContractVehicleRecord,
+        ClientContractVehicleRecord>($request);
   }
 
   @override

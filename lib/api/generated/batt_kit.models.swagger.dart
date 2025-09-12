@@ -14045,6 +14045,67 @@ extension $UpdateUserExtension on UpdateUser {
 }
 
 @JsonSerializable(explicitToJson: true)
+class UpdateVehicleContract {
+  const UpdateVehicleContract({this.endDate, this.endMileage});
+
+  factory UpdateVehicleContract.fromJson(Map<String, dynamic> json) =>
+      _$UpdateVehicleContractFromJson(json);
+
+  static const toJsonFactory = _$UpdateVehicleContractToJson;
+  Map<String, dynamic> toJson() => _$UpdateVehicleContractToJson(this);
+
+  @JsonKey(name: 'endDate')
+  final DateTime? endDate;
+  @JsonKey(name: 'endMileage')
+  final int? endMileage;
+  static const fromJsonFactory = _$UpdateVehicleContractFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is UpdateVehicleContract &&
+            (identical(other.endDate, endDate) ||
+                const DeepCollectionEquality().equals(
+                  other.endDate,
+                  endDate,
+                )) &&
+            (identical(other.endMileage, endMileage) ||
+                const DeepCollectionEquality().equals(
+                  other.endMileage,
+                  endMileage,
+                )));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(endDate) ^
+      const DeepCollectionEquality().hash(endMileage) ^
+      runtimeType.hashCode;
+}
+
+extension $UpdateVehicleContractExtension on UpdateVehicleContract {
+  UpdateVehicleContract copyWith({DateTime? endDate, int? endMileage}) {
+    return UpdateVehicleContract(
+      endDate: endDate ?? this.endDate,
+      endMileage: endMileage ?? this.endMileage,
+    );
+  }
+
+  UpdateVehicleContract copyWithWrapped({
+    Wrapped<DateTime?>? endDate,
+    Wrapped<int?>? endMileage,
+  }) {
+    return UpdateVehicleContract(
+      endDate: (endDate != null ? endDate.value : this.endDate),
+      endMileage: (endMileage != null ? endMileage.value : this.endMileage),
+    );
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class UpdateVehicleRequest {
   const UpdateVehicleRequest({
     this.addVehicleLocationRequest,
